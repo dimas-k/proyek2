@@ -142,7 +142,7 @@
                         </div>
                     @enderror
                 </div>
-                {{-- <div class="mb-3">
+                <div class="mb-3">
                     <label for="" class="form-label">Uraian Singkat Ciptaan</label>
                     <textarea class="form-control @error('uraian_singkat') is-invalid @enderror" placeholder="Masukkan Uraian Siangkat" name="uraian_singkat" id="floatingTextarea2"
                         style="height: 150px"></textarea>
@@ -151,8 +151,8 @@
                             {{ $message }}
                         </div>
                     @enderror
-                </div> --}}
-                <div class="mb-3">
+                </div>
+                {{-- <div class="mb-3">
                     <label for="" class="form-label">Uraian Singkat Ciptaan</label>
                     <trix-editor class=" form-control @error('uraian_singkat') is-invalid @enderror trix-content"
                         placeholder="Masukkan Uraian Siangkat" name="uraian_singkat"
@@ -162,7 +162,7 @@
                             {{ $message }}
                         </div>
                     @enderror
-                </div>
+                </div> --}}
                 <div class="mb-3">
                     <label for="" class="form-label">Dokumen Invensi (Manual Book/Buku/Dll)</label>
                     <input type="file" class="form-control @error('dokumen_invensi') is-invalid @enderror"

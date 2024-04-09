@@ -25,6 +25,10 @@ Route::get('/', function () {
     return view('landing-page.index');
 });
 
+Route::get('/home', function () {
+    return view('umum.index');
+});
+
 Route::get('/pengajuan-paten',[PatenController::class, 'showPengajuan']);
 Route::post('/simpanpaten',[PatenController::class,'store']);
 

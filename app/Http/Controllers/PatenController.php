@@ -148,7 +148,7 @@ class PatenController extends Controller
         $paten->alamat = $request->alamat;
         $paten->no_telepon = $request->no_telepon;
         $paten->tanggal_lahir = $request->tanggal_lahir;
-        $paten->ktp_inventor = $request->file('ktp_inventor')getC->store('dokumen-paten');
+        $paten->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-paten');
         $paten->email = $request->email;
         $paten->kewarganegaraan = $request->kewarganegaraan;
         $paten->kode_pos = $request->kode_pos;

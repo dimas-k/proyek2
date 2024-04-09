@@ -33,21 +33,27 @@
                     <div class="card-body">
                         <h5 class="card-title mb-3 mt-3 fw-normal font-family-Kokoro ">Cari Paten</h5>
 
-                        <form action="/paten" method="GET">
+                        <form action={{ route('paten.cari') }} method="GET">
                             <div class="mb-1 row">
-                                <label for="" class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Judul Paten</label>
-                                <div class="col-xxl-10">
-                                    <input type="search" class="form-control form-control-sm fw-normal font-family-Kokoro" name="cari_judul">
-                                </div>
-                            </div>
-                            <div class="mb-1 row">
-                                <label for="" class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Nama Invensi</label>
+                                <label for="" class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Judul
+                                    Paten</label>
                                 <div class="col-xxl-10">
                                     <input type="search"
-                                        class="form-control form-control-sm fw-normal font-family-Kokoro" id="" name="cari_nama">
+                                        class="form-control form-control-sm fw-normal font-family-Kokoro"
+                                        name="cari_judul">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary mb-2 mt-3 fw-normal font-family-Kokoro">Cari</button>
+                            <div class="mb-1 row">
+                                <label for="" class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Nama
+                                    Invensi</label>
+                                <div class="col-xxl-10">
+                                    <input type="search"
+                                        class="form-control form-control-sm fw-normal font-family-Kokoro" id=""
+                                        name="cari_nama">
+                                </div>
+                            </div>
+                            <button type="submit"
+                                class="btn btn-primary mb-2 mt-3 fw-normal font-family-Kokoro">Cari</button>
                         </form>
 
                     </div>
@@ -78,7 +84,8 @@
 
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card shadow-sm p-1" style="width: 18rem;">
-                    <a href="/paten/menunggu-tanggapan-formalitas" class="link-dark link-underline link-underline-opacity-0">
+                    <a href="/paten/menunggu-tanggapan-formalitas"
+                        class="link-dark link-underline link-underline-opacity-0">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="align-self-center ">
@@ -114,7 +121,8 @@
             </div>
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card shadow-sm p-1" style="width: 18rem;">
-                    <a href="/paten/meunggu-pembayaran-substansif" class="link-dark link-underline link-underline-opacity-0">
+                    <a href="/paten/meunggu-pembayaran-substansif"
+                        class="link-dark link-underline link-underline-opacity-0">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="align-self-center">
@@ -150,7 +158,8 @@
             </div>
             <div class="col-xl-3 col-sm-6 col-12 mt-4">
                 <div class="card shadow-sm p-1" style="width: 18rem;">
-                    <a href="/paten/substansif-tahap-lanjut" class="link-dark link-underline link-underline-opacity-0">
+                    <a href="/paten/substansif-tahap-lanjut"
+                        class="link-dark link-underline link-underline-opacity-0">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="align-self-center">
@@ -186,7 +195,8 @@
             </div>
             <div class="col-xl-3 col-sm-6 col-12 mt-4">
                 <div class="card shadow-sm p-1" style="width: 18rem;">
-                    <a href="/paten/menunggu-tanggapan-substansif" class="link-dark link-underline link-underline-opacity-0">
+                    <a href="/paten/menunggu-tanggapan-substansif"
+                        class="link-dark link-underline link-underline-opacity-0">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="align-self-center">
@@ -257,16 +267,16 @@
             </thead>
             <tbody>
                 @foreach ($paten as $i => $p)
-                <tr>
-                    <th scope="row">{{ $i + 1 }}</th>
-                    <td>{{ $p->nama_lengkap }}</td>
-                    <td>{{ $p->jenis_paten }}</td>
-                    <td>{{ $p->judul_paten }}</td>
-                    <td>{{ $p->tanggal_permohonan }}</td>
-                    <td>{{ $p->status }}</td>
-                    <td><a class="btn btn-primary" href={{ Route('paten.show', $p->id) }}>Selengkapnya</a></td>
-                </tr>
-            @endforeach
+                    <tr>
+                        <th scope="row">{{ $i + 1 }}</th>
+                        <td>{{ $p->nama_lengkap }}</td>
+                        <td>{{ $p->jenis_paten }}</td>
+                        <td>{{ $p->judul_paten }}</td>
+                        <td>{{ $p->tanggal_permohonan }}</td>
+                        <td>{{ $p->status }}</td>
+                        <td><a class="btn btn-primary" href={{ Route('paten.show', $p->id) }}>Selengkapnya</a></td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         {{ $paten->links() }}

@@ -15,14 +15,6 @@ class PatenController extends Controller
         $paten = Paten::latest()->paginate(5);
         $carijudul = $request->get('cari_judul');
         $carinama = $request->get('cari_nama');
-        $p = Paten:: all();
-
-        if(!empty($carijudul)){
-            $p->where('judul_paten','LIKE',"%$carijudul%");
-        }
-        if($carinama){
-            $p->where('nama_lengkap','LIKE',"%$carijudul%");
-        }
 
         $hitung = Paten:: all()->count();
         $pf = Paten::where('status', 'Pemeriksaan Formalitas')->count();
@@ -36,6 +28,26 @@ class PatenController extends Controller
         $catat = Paten::where('status', 'Diberi')->count();
         $tolak = Paten::where('status', 'Ditolak')->count();
         return view('paten.index', compact('pf', 'paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung'));
+    }
+
+    public function cari(Request $request){
+        $carijudul = $request->input('cari_judul');
+        $carinama = $request->input('cari_nama');
+        $paten = Paten::where('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5);
+
+        $hitung = Paten:: all()->count();
+        $pf = Paten::where('status', 'Pemeriksaan Formalitas')->count();
+        $mt = Paten::where('status', 'Menunggu Tanggapan Formalitas')->count();
+        $mp = Paten::where('status', 'Masa pengumuman')->count();
+        $mps = Paten::where('status', 'Menunggu Pembayaran Substansif')->count();
+        $staw = Paten::where('status', 'Substansif Tahap Awal')->count();
+        $stl = Paten::where('status', 'Substansif Tahap Lanjut')->count();
+        $stak = Paten::where('status', 'Substansif Tahap Akhir')->count();
+        $mts = Paten::where('status', 'Menunggu Tanggapan Substansif')->count();
+        $catat = Paten::where('status', 'Diberi')->count();
+        $tolak = Paten::where('status', 'Ditolak')->count();
+
+        return view('paten.index', compact('paten','pf','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung'));
     }
 
     public function pemeriksaanFormalitas()
@@ -136,7 +148,7 @@ class PatenController extends Controller
         $paten->alamat = $request->alamat;
         $paten->no_telepon = $request->no_telepon;
         $paten->tanggal_lahir = $request->tanggal_lahir;
-        $paten->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-paten');
+        $paten->ktp_inventor = $request->file('ktp_inventor')getC->store('dokumen-paten');
         $paten->email = $request->email;
         $paten->kewarganegaraan = $request->kewarganegaraan;
         $paten->kode_pos = $request->kode_pos;

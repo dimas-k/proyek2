@@ -70,7 +70,6 @@ class AdminController extends Controller
         $validasidata = $request->validate([
             'username'=>'required|min:3',
             'password'=> 'required|max:10'
-            
         ]);
         $user = new User;
         $user->nama_lengkap = $request->nama_lengkap;

@@ -51,6 +51,7 @@ Route::get('/paten/substansif-tahap-akhir',[PatenController::class, 'substansifA
 Route::get('/paten/menunggu-tanggapan-substansif',[PatenController::class, 'mengungguTanggapanSubstansif']);
 Route::get('/paten/diberi',[PatenController::class, 'diberi']);
 Route::get('/paten/ditolak',[PatenController::class, 'ditolak']);
+Route::get('cari', [PatenController::class, 'cari'])->name('paten.cari');
 
 Route::get('/hak-cipta',[HakCiptaController::class, 'index']);
 Route::get('/hak-cipta/tercatat',[HakCiptaController::class, 'listTercatat']);

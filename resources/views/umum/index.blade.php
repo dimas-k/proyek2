@@ -34,7 +34,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet" />
 
   <!-- Custom styles for this template -->
-  <link href="{{css/font-awesome.min.css}}" rel="stylesheet" />
+  <link href={{ assets('assets2/css/font-awesome.min.css') }} rel="stylesheet" />
 
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />

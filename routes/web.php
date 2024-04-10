@@ -58,6 +58,7 @@ Route::get('/hak-cipta/tercatat',[HakCiptaController::class, 'listTercatat']);
 Route::get('/hak-cipta/ditolak',[HakCiptaController::class, 'tolak']);
 Route::get('/hak-cipta/keterangan-belum-lengkap',[HakCiptaController::class, 'belumLengkap']);
 Route::get('/hak-cipta/show/{id}',[HakCiptaController::class, 'show'])->name('hak-cipta.show');
+Route::get('cari', [HakCiptaController::class, 'cari'])->name('hc.cari');
 
 Route::get('/desain-industri',[DesainIndustriController::class, 'index']);
 Route::get('/desain-industri/diberi',[DesainIndustriController::class, 'diberi']);

@@ -36,20 +36,20 @@
                         <form action="get" method="">
                             @csrf
                             <div class="mb-1 row">
-                                <label for="staticEmail"
-                                    class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Judul Paten</label>
+                                <label for=""
+                                    class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Judul Hak Cipta</label>
                                 <div class="col-xxl-10">
                                     <input type="search"
-                                        class="form-control form-control-sm fw-normal font-family-Kokoro">
+                                        class="form-control form-control-sm fw-normal font-family-Kokoro" name="cari_hc">
                                 </div>
                             </div>
                             <div class="mb-1 row">
-                                <label for="inputPassword"
+                                <label for=""
                                     class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Nama Invensi</label>
                                 <div class="col-xxl-10">
                                     <input type="search"
                                         class="form-control form-control-sm fw-normal font-family-Kokoro"
-                                        id="inputPassword">
+                                        id="" name="cari_nama">
                                 </div>
                             </div>
                             <button type="button"

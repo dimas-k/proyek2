@@ -16,6 +16,17 @@ class HakCiptaController extends Controller
         $hc = HakCipta::latest()->paginate(5);
         return view('Hakcipta.index', compact('hc','tercatat','null','tolak','itung'));
     }
+    public function cari(Request $request){
+        $carijudul = $request->input('cari_hc');
+        $carinama = $request->input('cari_nama');
+        $hc = HakCipta::where('judul_ciptaan','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5);
+
+        $itung = HakCipta::all()->count();
+        $tercatat = HakCipta::where('status', 'Tercatat')->count();
+        $null = HakCipta::where('status', 'Keterangan Belum Lengkap')->count();
+        $tolak = HakCipta::where('status', 'Ditolak')->count();
+        return view('Hakcipta.index', compact('hc','tercatat','null','tolak','itung'));
+    }
 
     public function listTercatat()
     {

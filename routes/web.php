@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminPatenController;
 use App\Http\Controllers\AdminHaKCiptaController;
 use App\Http\Controllers\DesainIndustriController;
 use App\Http\Controllers\AdminDesainIndustriController;
+use App\Http\Controllers\DosenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -117,4 +118,6 @@ Route::get('/admin/desain_industri/edit/{id}',[AdminDesainIndustriController::cl
 Route::post('/admin/desain-industri/update/{id}',[AdminDesainIndustriController::class, 'update'])->name('admin_desainindustri.update');
 Route::get('/admin/desain-industri/show/{id}',[AdminDesainIndustriController::class, 'show'])->name('admin_desainindustri.show');
 
+
+Route::get('/dosen/login/',[DosenController::class, 'index']);
 

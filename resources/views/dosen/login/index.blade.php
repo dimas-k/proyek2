@@ -15,22 +15,21 @@
     <div class="container-lg">
         <div class="cont">
             <div class="form sign-in">
-                <h2>Welcome back,</h2>
+                <h2>Selamat datang kembali</h2>
                 <label>
-                    <span>Email</span>
-                    <input type="email" />
+                    <span>Username</span>
+                    <input type="text" />
                 </label>
                 <label>
                     <span>Password</span>
                     <input type="password" />
                 </label>
-                <p class="forgot-pass">Forgot password?</p>
                 <button type="button" class="submit">Sign In</button>
             </div>
             <div class="sub-cont">
                 <div class="img">
                     <div class="img__text m--up">
-                        <h2>New here?</h2>
+                        <h2>Apakah anda ingin membuat akun ?</h2>
                         <p>Sign up and discover great amount of new opportunities!</p>
                     </div>
                     <div class="img__text m--in">

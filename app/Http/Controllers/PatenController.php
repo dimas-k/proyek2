@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Paten;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PatenController extends Controller
 {
@@ -33,7 +34,8 @@ class PatenController extends Controller
     public function cari(Request $request){
         $carijudul = $request->input('cari_judul');
         $carinama = $request->input('cari_nama');
-        $paten = Paten::where('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5);
+        $paten = Paten::where('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //yang bener
+        // $patenw = DB::table('paten')->selectraw("WHERE judul_paten LIKE %$carijudul% or nama_lengkap LIKE %$carinama%")->get();  //yang salah
 
         $hitung = Paten:: all()->count();
         $pf = Paten::where('status', 'Pemeriksaan Formalitas')->count();

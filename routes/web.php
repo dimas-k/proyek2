@@ -41,7 +41,6 @@ Route::post('/simpandi',[DesainIndustriController::class,'store']);
 
 Route::get('/paten',[PatenController::class, 'index']);
 Route::get('/paten/show/{id}',[PatenController::class, 'show'])->name('paten.show');
-Route::get('/paten/cari',[PatenController::class, 'search'])->name('paten.cari');
 Route::get('/paten/pemeriksaan-formalitas',[PatenController::class, 'pemeriksaanFormalitas']);
 Route::get('/paten/menunggu-tanggapan-formalitas',[PatenController::class, 'menungguTanggapan']);
 Route::get('/paten/masa-pengumuman',[PatenController::class, 'masaPengumuman']);
@@ -52,14 +51,14 @@ Route::get('/paten/substansif-tahap-akhir',[PatenController::class, 'substansifA
 Route::get('/paten/menunggu-tanggapan-substansif',[PatenController::class, 'mengungguTanggapanSubstansif']);
 Route::get('/paten/diberi',[PatenController::class, 'diberi']);
 Route::get('/paten/ditolak',[PatenController::class, 'ditolak']);
-Route::get('cari', [PatenController::class, 'cari'])->name('paten.cari');
+Route::get('/cari', [PatenController::class, 'cari'])->name('paten.cari');
 
 Route::get('/hak-cipta',[HakCiptaController::class, 'index']);
 Route::get('/hak-cipta/tercatat',[HakCiptaController::class, 'listTercatat']);
 Route::get('/hak-cipta/ditolak',[HakCiptaController::class, 'tolak']);
 Route::get('/hak-cipta/keterangan-belum-lengkap',[HakCiptaController::class, 'belumLengkap']);
 Route::get('/hak-cipta/show/{id}',[HakCiptaController::class, 'show'])->name('hak-cipta.show');
-Route::get('cari', [HakCiptaController::class, 'cari'])->name('hc.cari');
+Route::get('/cari/hak-cipta', [HakCiptaController::class, 'cari'])->name('hc.cari');
 
 Route::get('/desain-industri',[DesainIndustriController::class, 'index']);
 Route::get('/desain-industri/diberi',[DesainIndustriController::class, 'diberi']);

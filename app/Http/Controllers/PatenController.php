@@ -28,14 +28,14 @@ class PatenController extends Controller
         $mts = Paten::where('status', 'Menunggu Tanggapan Substansif')->count();
         $catat = Paten::where('status', 'Diberi')->count();
         $tolak = Paten::where('status', 'Ditolak')->count();
-        return view('paten.index', compact('pf', 'paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung'));
+        return view('umum-page.paten.index', compact('pf', 'paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung'));
     }
 
     public function cari(Request $request){
         $carijudul = $request->input('cari_judul');
         $carinama = $request->input('cari_nama');
         $paten = Paten::where('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //yang bener
-        // $patenw = DB::table('paten')->selectraw("WHERE judul_paten LIKE %$carijudul% or nama_lengkap LIKE %$carinama%")->get();  //yang salah
+        // $paten = DB::table('paten')->whereRaw('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //penggunaan raw queri
 
         $hitung = Paten:: all()->count();
         $pf = Paten::where('status', 'Pemeriksaan Formalitas')->count();
@@ -49,7 +49,7 @@ class PatenController extends Controller
         $catat = Paten::where('status', 'Diberi')->count();
         $tolak = Paten::where('status', 'Ditolak')->count();
 
-        return view('paten.index', compact('paten','pf','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung'));
+        return view('umum-page.paten.index', compact('paten','pf','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung'));
     }
 
     public function pemeriksaanFormalitas()

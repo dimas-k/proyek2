@@ -14,7 +14,7 @@ class HakCiptaController extends Controller
         $null = HakCipta::where('status', 'Keterangan Belum Lengkap')->count();
         $tolak = HakCipta::where('status', 'Ditolak')->count();
         $hc = HakCipta::latest()->paginate(5);
-        return view('Hakcipta.index', compact('hc','tercatat','null','tolak','itung'));
+        return view('umum-page.Hakcipta.index', compact('hc','tercatat','null','tolak','itung'));
     }
     public function cari(Request $request){
         $carijudul = $request->input('cari_hc');

@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+use App\Models\Paten;
 
+use App\Models\HakCipta;
+use Illuminate\Http\Request;
+use App\Models\DesainIndustri;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +17,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('loginadmin.login');
+        return view('admin.loginadmin.login');
     }
 
     public function authenticate(Request $request)
@@ -33,6 +36,13 @@ class AdminController extends Controller
 
         return back()->with('loginError', 'Login Gagal!');
 
+    }
+    public function dashboardAdmin()
+    {
+        $paten = Paten::all();
+        $hc = HakCipta::all();
+        $di = DesainIndustri::all();
+        return view('admin.dashboard.index', compact('paten','hc','di'));
     }
 
     public function logout(request $request)

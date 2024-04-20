@@ -19,7 +19,7 @@ class DesainIndustriController extends Controller
         $priksa = DesainIndustri::where('status','Pemeriksaan')->count();
         $null = DesainIndustri::where('status','Keterangan Belum Lengkap')->count();
         $tolak = DesainIndustri::where('status','Ditolak')->count();
-        return view('Desainindustri.index', compact('di', 'priksa', 'proses', 'null','tolak','beri','itung')); 
+        return view('umum-page.Desainindustri.index', compact('di', 'priksa', 'proses', 'null','tolak','beri','itung')); 
     }
     
     public function diberi()

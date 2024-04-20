@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_lengkap');
-            $table->string('jabatan');
-            $table->string('alamat');
             $table->string('no_telepon');
+            $table->string('alamat');
+            $table->string('ktp')->nullable();
+            $table->string('kerjaan')->nullable();
+            $table->string('jabatan')->nullable();
+            $table->bigInteger('nip')->nullable();
             $table->string('username');
             $table->string('password');
             $table->timestamps();

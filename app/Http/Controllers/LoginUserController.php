@@ -1,0 +1,113 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Middleware\Role;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Hash;
+
+class LoginUserController extends Controller
+{
+    public function index()
+    {
+        return view('login-user.login.index');
+    }
+    public function regist(){
+        return view('login-user.regist.index');
+    }
+    public function registDosen(){
+        return view('login-user.regist.dosen.index');
+    }
+    public function registUmum(){
+        return view('login-user.regist.other.index');
+    }
+    public function autentikasi(Request $request){
+    
+        $credentials = $request-> validate([
+            'username' => 'required',
+            'password' => 'required',
+            
+            
+        ]);
+        
+        // dd($request);
+        if(Auth::attempt($credentials) or Auth::user()->role === 'Dosen')
+        {
+            $request->session()->regenerate();
+            return redirect()->intended('/admin/dashboard');
+        }
+        elseif(Auth::attempt($credentials) or Auth::user()->role ==='Umum')
+        { 
+            $request->session()->regenerate();
+            return redirect()->intended('/');
+        }
+
+        return back()->with('loginError', 'Login Gagal!');
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $validasidata = $request->validate([
+            'username'=>'required|min:3',
+            'password'=> 'required|max:10',
+            'ktp'=>'required|mimes:pdf|max:2028',
+        ]);
+        $user = new User;
+        $user->nama_lengkap = $request->nama_lengkap;
+        $user->no_telepon = $request->no_telepon;
+        $user->alamat = $request->alamat;
+        $user->ktp = $request->file('ktp')->store('dokumen_user');
+        $user->kerjaan = $request->kerjaan;
+        $user->jabatan = $request->jabatan;
+        $user->nip = $request->nip;
+        $user->username = $request->username;
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
+        $user->save($validasidata);
+        
+        if ($request->role == 'Dosen'){
+            return redirect()->intended('register/dosen/')->with('success','Data anda telah ditabahkan');
+        }else{
+            return redirect()->intended('register/umum/')->with('success','Data anda telah ditabahkan');
+        }
+        
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+}

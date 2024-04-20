@@ -14,10 +14,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $paten = Paten::all();
-        $hc = HakCipta::all();
-        $di = DesainIndustri::all();
-        return view('dashboard.index', compact('paten','hc','di'));
+        
     }
 
     /**

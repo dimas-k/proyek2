@@ -23,63 +23,63 @@ class AdminPatenController extends Controller
         $mts = Paten::where('status', 'Menunggu Tanggapan Substansif')->count();
         $beri = Paten::where('status', 'Diberi')->count();
         $tolak = Paten::where('status', 'Ditolak')->count();
-        return view('adminpaten.index', compact('paten','pf','mt','mp','mps','staw','stl','stak','mts','beri','tolak'));
+        return view('admin.adminpaten.index', compact('paten','pf','mt','mp','mps','staw','stl','stak','mts','beri','tolak'));
     }
 
     public function pemeriksaanFormalitas()
     {
         $cek = Paten::latest()->where('status', 'Pemeriksaan Formalitas')->get();
-        return view('admin-paten-pf.index', compact('cek'));
+        return view('admin.adminpaten.admin-paten-pf.index', compact('cek'));
     }
 
     public function menungguTanggapan()
     {
         $cek = Paten::latest()->where('status', 'Menunggu Tanggapan Formalitas')->get();
-        return view('admin-paten-mt.index', compact('cek'));
+        return view('admin.adminpaten.admin-paten-mt.index', compact('cek'));
     }
 
     public function masaPengumuman()
     {
         $cek = Paten::latest()->where('status', 'Masa Pengumuman')->get();
-        return view('admin-paten-mp.index', compact('cek'));
+        return view('admin.adminpaten.admin-paten-mp.index', compact('cek'));
     }
 
     public function pembayaranSubstansif()
     {
         $cek = Paten::latest()->where('status', 'Menunggu Pembayaran Substansif')->get();
-        return view('admin-paten-mps.index', compact('cek'));
+        return view('admin.adminpaten.admin-paten-mps.index', compact('cek'));
     }
 
     public function substansifAwal()
     {
         $cek = Paten::latest()->where('status', 'Substansif Tahap Awal')->get();
-        return view('admin-paten-staw.index', compact('cek'));
+        return view('admin.adminpaten.admin-paten-staw.index', compact('cek'));
     }
 
     public function substansifLanjut()
     {
         $cek = Paten::latest()->where('status', 'Substansif Tahap Lanjut')->get();
-        return view('admin-paten-stl.index', compact('cek'));
+        return view('admin.adminpaten.admin-paten-stl.index', compact('cek'));
     }
     public function substansifAkhir()
     {
         $cek = Paten::latest()->where('status', 'Substansif Tahap Akhir')->get();
-        return view('admin-paten-stak.index', compact('cek'));
+        return view('admin.adminpaten.admin-paten-stak.index', compact('cek'));
     }
     public function mengungguTanggapanSubstansif()
     {
         $cek = Paten::latest()->where('status', 'Menunggu Tanggapan Substansif')->get();
-        return view('admin-paten-mts.index', compact('cek'));
+        return view('admin.adminpaten.admin-paten-mts.index', compact('cek'));
     }
     public function diberi()
     {
         $cek = Paten::latest()->where('status', 'Diberi')->get();
-        return view('admin-paten-beri.index', compact('cek'));
+        return view('admin.adminpaten.admin-paten-beri.index', compact('cek'));
     }
     public function ditolak()
     {
         $cek = Paten::latest()->where('status', 'Ditolak')->get();
-        return view('admin-paten-tlk.index', compact('cek'));
+        return view('admin.adminpaten.admin-paten-tlk.index', compact('cek'));
     }
 
     /**

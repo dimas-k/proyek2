@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminHaKCiptaController;
 use App\Http\Controllers\DesainIndustriController;
 use App\Http\Controllers\AdminDesainIndustriController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\LoginUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +24,14 @@ use App\Http\Controllers\DosenController;
 */
 
 Route::get('/', function () {
-    return view('landing-page.index');
+    return view('umum-page.landing-page.index');
 });
 
 Route::get('/home', function () {
     return view('umum.index');
+});
+Route::get('/dosen', function () {
+    return view('dosen.index');
 });
 
 Route::get('/pengajuan-paten',[PatenController::class, 'showPengajuan']);
@@ -71,7 +75,7 @@ Route::get('/desain-industri/show/{id}',[DesainIndustriController::class, 'show'
 Route::get('/login-admin',[AdminController::class,'index'])->name('login')->middleware('guest'); 
 Route::post('/autentikasi',[AdminController::class,'authenticate']);
 Route::get('/logout', [AdminController::class, 'logout']);
-Route::get('/admin/dashboard', [DashboardController::class,'index'])->middleware('auth');
+Route::get('/admin/dashboard', [AdminController::class,'dashboardAdmin'])->middleware('auth');
 
 Route::get('/admin/paten',[AdminPatenController::class, 'index'])->middleware('auth');
 Route::get('/admin/paten/pemeriksaan-formalitas',[AdminPatenController::class, 'pemeriksaanFormalitas']);
@@ -118,5 +122,15 @@ Route::post('/admin/desain-industri/update/{id}',[AdminDesainIndustriController:
 Route::get('/admin/desain-industri/show/{id}',[AdminDesainIndustriController::class, 'show'])->name('admin_desainindustri.show');
 
 
-Route::get('/dosen/login/',[DosenController::class, 'index']);
+Route::get('/login',[LoginUserController::class, 'index']);
+Route::get('/register',[LoginUserController::class, 'regist']);
+Route::get('/register/dosen/',[LoginUserController::class, 'registDosen'])->name('regist.dosen');
+Route::get('/register/umum/',[LoginUserController::class, 'registUmum'])->name('regist.other');
+Route::post('/simpan/akun/',[LoginUserController::class, 'store'])->name('simpan.akun');
+Route::post('/autentikasi/user',[LoginUserController::class, 'autentikasi'])->name('autentikasi.user');
+Route::group(['middleware'=>['auth','role:Umum']],function(){
+
+});
+
+
 

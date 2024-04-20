@@ -15,33 +15,33 @@ class AdminDesainIndustriController extends Controller
         $priksa = DesainIndustri::where('status','Pemeriksaan')->count();
         $null = DesainIndustri::where('status','Keterangan Belum Lengkap')->count();
         $tolak = DesainIndustri::where('status','Ditolak')->count();
-        return view('admindi.index', compact('di', 'priksa', 'proses', 'null','tolak','beri')); 
+        return view('admin.admindi.index', compact('di', 'priksa', 'proses', 'null','tolak','beri')); 
     }
 
     public function diberi()
     {
         $cek = DesainIndustri::latest()->where('status','Diberi')->get();
-        return view('admin-di-beri.index', compact('cek')); 
+        return view('admin.admindi.admin-di-beri.index', compact('cek')); 
     }
     public function proses()
     {
         $cek = DesainIndustri::latest()->where('status','Dalam Proses Usulan')->get();
-        return view('admin-di-proses.index', compact('cek'));
+        return view('admin.admindi.admin-di-proses.index', compact('cek'));
     }
     public function pemeriksaan()
     {
         $cek = DesainIndustri::latest()->where('status','Pemeriksaan')->get();
-        return view('admin-di-priksa.index', compact('cek'));
+        return view('admin.admindi.admin-di-priksa.index', compact('cek'));
     }
     public function ditolak()
     {
         $cek = DesainIndustri::latest()->where('status','Ditolak')->get();
-        return view('admin-di-tolak.index', compact('cek'));
+        return view('admin.admindi.admin-di-tolak.index', compact('cek'));
     }
     public function keteranganBelumLengkap()
     {
         $cek = DesainIndustri::latest()->where('status','Keterangan Belum Lengkap')->get();
-        return view('admin-di-null.index', compact('cek'));
+        return view('admin.admindi.admin-di-null.index', compact('cek'));
     }
 
 

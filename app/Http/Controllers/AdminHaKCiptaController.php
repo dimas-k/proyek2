@@ -13,23 +13,23 @@ class AdminHaKCiptaController extends Controller
         $tolak = HakCipta::where('status', 'Ditolak')->count();
         $null = HakCipta::where('status', 'Keterangan Belum Lengkap')->count();
         $hak_cipta = HakCipta::latest()->get();
-        return view('adminhk.index', compact('hak_cipta','tercatat','null','tolak'));
+        return view('admin.adminhk.index', compact('hak_cipta','tercatat','null','tolak'));
     }
 
     public function listTercatat()
     {
         $cek = HakCipta::latest()->where('status', 'Tercatat')->get();
-        return view('admin-hc-tercatat.index', compact('cek'));
+        return view('admin.adminhk.admin-hc-tercatat.index', compact('cek'));
     }
     public function belumLengkap()
     {
         $cek = HakCipta::latest()->where('status', 'Keterangan Belum Lengkap')->get();
-        return view('admin-hc-kbl.index', compact('cek'));
+        return view('admin.adminhk.admin-hc-kbl.index', compact('cek'));
     }
     public function tolak()
     {
         $cek = HakCipta::latest()->where('status', 'Ditolak')->get();
-        return view('admin-hc-t.index', compact('cek'));
+        return view('admin.adminhk.admin-hc-t.index', compact('cek'));
     }
 
     /**

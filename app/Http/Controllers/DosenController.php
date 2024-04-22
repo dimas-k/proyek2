@@ -11,7 +11,7 @@ class DosenController extends Controller
      */
     public function index()
     {
-        return view('dosen.login.index');
+        return view('dosen.index');
     }
 
     /**

@@ -23,6 +23,7 @@ class LoginUserController extends Controller
     public function registUmum(){
         return view('login-user.regist.other.index');
     }
+    
     public function autentikasi(Request $request){
     
         $credentials = $request-> validate([
@@ -33,17 +34,18 @@ class LoginUserController extends Controller
         ]);
         
         // dd($request);
-        if(Auth::attempt($credentials) or Auth::user()->role === 'Dosen')
+        if(Auth::attempt($credentials))
         {
             $request->session()->regenerate();
-            return redirect()->intended('/admin/dashboard');
+           if(Auth::user()->role =='Dosen')
+           {
+             return redirect('dosen/dashboard');
+           }
+           elseif(Auth::user()->role =='Umum')
+           {
+                return redirect('umum/dashboard');
+           }
         }
-        elseif(Auth::attempt($credentials) or Auth::user()->role ==='Umum')
-        { 
-            $request->session()->regenerate();
-            return redirect()->intended('/');
-        }
-
         return back()->with('loginError', 'Login Gagal!');
 
     }

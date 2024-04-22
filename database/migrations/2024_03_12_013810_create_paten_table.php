@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('kewarganegaraan');
             $table->integer('kode_pos');
+            $table->string('institusi');
             $table->string('jenis_paten');
             $table->string('judul_paten');
             $table->string('abstrak_paten');

@@ -4,8 +4,8 @@
             <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
             <!-- sidebar-toggle-->
             <a class="logo-horizontal " href="index.html">
-                <img src="assets-user/images/brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
-                <img src="assets-user/images/brand/logo-3.png" class="header-brand-img light-logo1"
+                <img src={{ asset('assets-user/images/brand/logo.png') }} class="header-brand-img desktop-logo" alt="logo">
+                <img src={{ asset('assets-user/images/brand/logo-3.png') }} class="header-brand-img light-logo1"
                     alt="logo">
             </a>
             <!-- LOGO -->
@@ -163,7 +163,7 @@
                                         <a class="dropdown-item d-flex" href="chat.html">
                                             <span
                                                 class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                data-bs-image-src="../assets/images/users/15.jpg"></span>
+                                                data-bs-image-src={{ asset('assets-user/images/users/15.jpg') }}></span>
                                             <div class="wd-90p">
                                                 <div class="d-flex">
                                                     <h5 class="mb-1">Abagael Luth</h5>
@@ -177,7 +177,7 @@
                                         <a class="dropdown-item d-flex" href="chat.html">
                                             <span
                                                 class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                data-bs-image-src="../assets/images/users/12.jpg"></span>
+                                                data-bs-image-src={{ asset('assets-user/images/users/12.jpg') }}></span>
                                             <div class="wd-90p">
                                                 <div class="d-flex">
                                                     <h5 class="mb-1">Brizid Dawson</h5>
@@ -191,7 +191,7 @@
                                         <a class="dropdown-item d-flex" href="chat.html">
                                             <span
                                                 class="avatar avatar-md brround me-3 align-self-center cover-image"
-                                                data-bs-image-src="../assets/images/users/4.jpg"></span>
+                                                data-bs-image-src={{ asset('assets-user/images/users/4.jpg') }}></span>
                                             <div class="wd-90p">
                                                 <div class="d-flex">
                                                     <h5 class="mb-1">Shannon Shaw</h5>
@@ -219,7 +219,7 @@
                             <!-- SIDE-MENU -->
                             <div class="dropdown d-flex profile-1">
                                 <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
-                                    <img src="../assets/images/users/21.jpg" alt="profile-user"
+                                    <img src={{ asset('assets-user/images/users/21.jpg') }} alt="profile-user"
                                         class="avatar  profile-user brround cover-image">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">

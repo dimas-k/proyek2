@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('kewarganegaraan');
             $table->integer('kode_pos');
+            $table->string('institusi');
             $table->string('jenis_di');
             $table->string('judul_di');
             $table->string('uraian_di');

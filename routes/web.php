@@ -30,9 +30,9 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('umum.index');
 });
-Route::get('/dosen', function () {
-    return view('dosen.index');
-});
+// Route::get('/dosen', function () {
+//     return view('dosen.index');
+// });
 
 Route::get('/pengajuan-paten',[PatenController::class, 'showPengajuan']);
 Route::post('/simpanpaten',[PatenController::class,'store']);
@@ -119,17 +119,18 @@ Route::get('/admin/desain-industri/keterangan-belum-lengkap',[AdminDesainIndustr
 Route::get('/admin/desain-industri/delete/{id}',[AdminDesainIndustriController::class, 'destroy'])->name('admin_desainindustri.delete');
 Route::get('/admin/desain_industri/edit/{id}',[AdminDesainIndustriController::class, 'edit'])->name('admin_desainindustri.edit');
 Route::post('/admin/desain-industri/update/{id}',[AdminDesainIndustriController::class, 'update'])->name('admin_desainindustri.update');
-Route::get('/admin/desain-industri/show/{id}',[AdminDesainIndustriController::class, 'show'])->name('admin_desainindustri.show');
+Route::get('/admin/desain-industri/show/{id}',[AdminDesainIndustriController::class, 'show'])->name('admin_desainindustri.show'); 
 
-
-Route::get('/login',[LoginUserController::class, 'index']);
-Route::get('/register',[LoginUserController::class, 'regist']);
-Route::get('/register/dosen/',[LoginUserController::class, 'registDosen'])->name('regist.dosen');
-Route::get('/register/umum/',[LoginUserController::class, 'registUmum'])->name('regist.other');
-Route::post('/simpan/akun/',[LoginUserController::class, 'store'])->name('simpan.akun');
-Route::post('/autentikasi/user',[LoginUserController::class, 'autentikasi'])->name('autentikasi.user');
-Route::group(['middleware'=>['auth','role:Umum']],function(){
-
+Route::middleware(['guest'])->group(function(){
+    Route::get('/login',[LoginUserController::class, 'index']);
+    Route::get('/register',[LoginUserController::class, 'regist']);
+    Route::get('/register/dosen/',[LoginUserController::class, 'registDosen'])->name('regist.dosen');
+    Route::get('/register/umum/',[LoginUserController::class, 'registUmum'])->name('regist.other');
+    Route::post('/simpan/akun/',[LoginUserController::class, 'store'])->name('simpan.akun');
+    Route::post('/autentikasi/user',[LoginUserController::class, 'autentikasi'])->name('autentikasi.user');
+});
+Route::middleware(['auth','role:Dosen'])->group(function(){
+    Route::get('/dosen/dashboard',[DosenController::class, 'index']);
 });
 
 

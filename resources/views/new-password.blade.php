@@ -29,7 +29,7 @@
                     @endforeach
                 </div>
             @endif
-            @if(sesion()->has('error'))
+            @if(session()->has('error'))
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
             @if(session()->has('success'))
@@ -41,7 +41,7 @@
                 <main>
                     <div class="ms-auto me-auto mt-5" style="width:500px" >
                         <p>we will send a link to yur email</p>
-                        <form action="{{ route('reset.password.post') }}" method="POST" class="ms-auto me-auto mt-auto" style="">
+                        <form action="{{route('reset.password.post')}}" method="POST" class="ms-auto me-auto mt-auto" style="">
                             @csrf
                             <input type="text" name="token" hidden value="{{$token}}"> 
                             <div class="mb-3">

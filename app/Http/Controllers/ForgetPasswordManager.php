@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Routing\Controller;
-use Illuminate\Validation\Validator;
 
 class ForgetPasswordManager extends Controller
 {

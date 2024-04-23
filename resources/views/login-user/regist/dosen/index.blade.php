@@ -59,6 +59,15 @@
                     @enderror
                   </div>
                   <div class="form-outline form-white mb-4">
+                    <label class="form-label" for="pass">Email</label>
+                    <input type="text" id="pass" name="email" class="form-control form-control @error('email') is-invalid @enderror" required>
+                    @error('email')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
+                  <div class="form-outline form-white mb-4">
                     <label class="form-label" for="pass">Alamat</label>
                     <input type="text" id="pass" name="alamat" class="form-control form-control @error('alamat') is-invalid @enderror" required>
                     @error('alamat')

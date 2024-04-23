@@ -39,11 +39,11 @@ class LoginUserController extends Controller
             $request->session()->regenerate();
            if(Auth::user()->role =='Dosen')
            {
-             return redirect('dosen/dashboard');
+             return redirect('/dosen/dashboard');
            }
            elseif(Auth::user()->role =='Umum')
            {
-                return redirect('umum/dashboard');
+                return redirect('/umum/dashboard');
            }
         }
         return back()->with('loginError', 'Login Gagal!');
@@ -56,6 +56,7 @@ class LoginUserController extends Controller
     public function store(Request $request)
     {
         $validasidata = $request->validate([
+            'email' => 'required|email',
             'username'=>'required|min:3',
             'password'=> 'required|max:10',
             'ktp'=>'required|mimes:pdf|max:2028',
@@ -63,6 +64,7 @@ class LoginUserController extends Controller
         $user = new User;
         $user->nama_lengkap = $request->nama_lengkap;
         $user->no_telepon = $request->no_telepon;
+        $user->email = $request->email;
         $user->alamat = $request->alamat;
         $user->ktp = $request->file('ktp')->store('dokumen_user');
         $user->kerjaan = $request->kerjaan;
@@ -79,6 +81,13 @@ class LoginUserController extends Controller
             return redirect()->intended('register/umum/')->with('success','Data anda telah ditabahkan');
         }
         
+    }
+
+    public function logout(request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        return redirect('/login');
     }
 
     /**

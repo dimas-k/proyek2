@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('nama_lengkap');
             $table->string('no_telepon');
+            $table->string('email')->nullable();
             $table->string('alamat');
             $table->string('ktp')->nullable();
             $table->string('kerjaan')->nullable();

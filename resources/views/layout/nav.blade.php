@@ -34,6 +34,9 @@
                 <li class="nav-item">
                     <a class="nav-link fs-6 fw-normal font-family-Lucida Sans col-xxl-0 m-0 px-3 py-2" href="/disclaimer">Disclaimer</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link fs-6 fw-normal font-family-Lucida Sans col-xxl-0 m-0 px-3 py-2" href="/login" target="_blank"><button class="btn btn-outline-primary btn-sm">Login</button></a>
+                </li>
             </ul>
         </div>
     </div>

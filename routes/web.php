@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UmumController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PatenController;
@@ -27,9 +28,6 @@ Route::get('/', function () {
     return view('umum-page.landing-page.index');
 });
 
-Route::get('/home', function () {
-    return view('umum.index');
-});
 // Route::get('/dosen', function () {
 //     return view('dosen.index');
 // });
@@ -72,7 +70,7 @@ Route::get('/desain-industri/ditolak',[DesainIndustriController::class, 'ditolak
 Route::get('/desain-industri/keterangan-belum-lengkap',[DesainIndustriController::class, 'keteranganBelumLengkap']);
 Route::get('/desain-industri/show/{id}',[DesainIndustriController::class, 'show'])->name('desain-industri.show');
 
-Route::get('/login-admin',[AdminController::class,'index'])->name('login')->middleware('guest'); 
+Route::get('/login-admin',[AdminController::class,'index'])->name('login'); 
 Route::post('/autentikasi',[AdminController::class,'authenticate']);
 Route::get('/logout', [AdminController::class, 'logout']);
 Route::get('/admin/dashboard', [AdminController::class,'dashboardAdmin'])->middleware('auth');
@@ -129,8 +127,14 @@ Route::middleware(['guest'])->group(function(){
     Route::post('/simpan/akun/',[LoginUserController::class, 'store'])->name('simpan.akun');
     Route::post('/autentikasi/user',[LoginUserController::class, 'autentikasi'])->name('autentikasi.user');
 });
+
 Route::middleware(['auth','role:Dosen'])->group(function(){
     Route::get('/dosen/dashboard',[DosenController::class, 'index']);
+    Route::get('/logout/dosen',[LoginUserController::class, 'logout']);
+});
+Route::middleware(['auth','role:Umum'])->group(function(){
+    Route::get('/umum/dashboard',[UmumController::class, 'index']);
+    Route::get('/logout/umum/',[LoginUserController::class, 'logout'])->name('logout.umum');
 });
 
 

@@ -65,8 +65,10 @@
                 <div>
                   <p class="mb-0 text-center">Belum Punya Akun? <a href="/register" class="fw-bold">Registrasi</a>
                   </p>
+                  <br>
+                  <p class="mb-0 text-center"><a href="{{ route("forget.password") }}" class="fw-bold">Lupa password?</a>
+                  </p>
                 </div>
-    
               </div>
             </div>
           </div>

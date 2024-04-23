@@ -11,6 +11,8 @@ use App\Http\Controllers\DesainIndustriController;
 use App\Http\Controllers\AdminDesainIndustriController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\LoginUserController;
+use App\Http\Controllers\ForgetPasswordManager;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -134,4 +136,11 @@ Route::middleware(['auth','role:Dosen'])->group(function(){
 });
 
 
-
+Route::get("/forget-password",[ForgetPasswordManager::class, "forgetPassword"])
+    ->name("forget.password");
+Route::post("/forget-password",[ForgetPasswordManager::class, "forgetPasswordPost"])
+    ->name("forget.password.post");
+Route::get("/reset-password/{token}",[ForgetPasswordManager::class, "resetPassword"])
+    ->name("resetPassword");
+Route::post("/reset-password",[ForgetPasswordManager::class, "resetPasswordPost"])
+    ->name("reset.password.post");

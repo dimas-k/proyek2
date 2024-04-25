@@ -35,7 +35,7 @@ class ForgetPasswordManager extends Controller
             $message->subject("Reset Password");
         });
 
-        return redirect()->to(route("forget.password"))->with("success", "We have sent an email to reset your password.");
+        return redirect()->to(route("forget.password"))->with("success", "Kami sudah mengirimkan email kepada alamat email dibawah");
     }
 
     function resetPassword($token) {

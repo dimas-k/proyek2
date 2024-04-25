@@ -60,7 +60,7 @@
                   </div>
                   <div class="form-outline form-white mb-4">
                     <label class="form-label" for="pass">Email</label>
-                    <input type="text" id="pass" name="email" class="form-control form-control @error('email') is-invalid @enderror" required>
+                    <input type="text" id="" name="email" class="form-control form-control @error('email') is-invalid @enderror" required>
                     @error('email')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -96,7 +96,7 @@
                   </div>
                   <div class="form-outline form-white mb-4">
                     <label class="form-label" for="pass">NIP</label>
-                    <input type="number" id="pass" name="nip" class="form-control form-control @error('nip') is-invalid @enderror" required>
+                    <input type="number" id="" name="nip" class="form-control form-control @error('nip') is-invalid @enderror" required>
                     @error('nip')
                     <div class="invalid-feedback">
                       {{ $message }}

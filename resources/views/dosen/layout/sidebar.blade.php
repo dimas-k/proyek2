@@ -27,8 +27,8 @@
                             class="side-menu__label">Dashboard</span></a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href=""><i class="bi bi-cart pe-3"></i></i><span
-                            class="side-menu__label">Product</span></a>
+                    <a class="side-menu__item" data-bs-toggle="slide" href=""><i class="side-menu__icon fa fa-list"></i><span
+                            class="side-menu__label">Paten</span></a>
                 </li>
                 
             </ul>

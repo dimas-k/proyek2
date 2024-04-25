@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
     <link rel="stylesheet" href={{ asset('assets-login-user/login.css') }}>
-    <title>SIKI POLINDRA || Register Dosen</title>
+    <title>SIKI POLINDRA || Register Umum</title>
 </head>
 <body>
     <div class="container mt-4">
@@ -71,6 +71,15 @@
                     <label class="form-label" for="pass">No telepon</label>
                     <input type="number" id="pass" name="no_telepon" class="form-control form-control @error('no_telepon') is-invalid @enderror" required>
                     @error('no_telepon')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
+                  <div class="form-outline form-white mb-4">
+                    <label class="form-label" for="pass">Email</label>
+                    <input type="text" id="pass" name="email" class="form-control form-control @error('email') is-invalid @enderror" required>
+                    @error('email')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>

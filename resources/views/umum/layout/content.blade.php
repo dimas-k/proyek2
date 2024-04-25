@@ -6,11 +6,11 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Dashboard 01</h1>
+                <h1 class="page-title">Dashboard</h1>
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard 01</li>
+                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                     </ol>
                 </div>
             </div>
@@ -131,15 +131,15 @@
                 </div>
                 <!-- COL END -->
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-3">
-                    <div class="card overflow-hidden">
+                    {{-- <div class="card overflow-hidden">
                         <div class="card-body pb-0 bg-recentorder">
                             <h3 class="card-title text-white">Recent Orders</h3>
                             <div class="chartjs-wrapper-demo">
                                 <canvas id="recentorders" class="chart-dropshadow"></canvas>
                             </div>
                         </div>
-                        <div id="flotback-chart" class="flot-background"></div>
-                        <div class="card-body">
+                        <div id="flotback-chart" class="flot-background"></div> --}}
+                        {{-- <div class="card-body">
                             <div class="d-flex mb-4 mt-3">
                                 <div
                                     class="avatar avatar-md bg-secondary-transparent text-secondary bradius me-3">
@@ -167,7 +167,7 @@
                                     <p class="fw-bold fs-20 mb-0"> 3,675 </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <!-- COL END -->

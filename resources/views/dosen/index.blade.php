@@ -63,7 +63,7 @@
         </div>
 
         <!-- Sidebar-right -->
-        <div class="sidebar sidebar-right sidebar-animate">
+        {{-- <div class="sidebar sidebar-right sidebar-animate">
             <div class="panel panel-primary card mb-0 shadow-none border-0">
                 <div class="tab-menu-heading border-0 d-flex p-3">
                     <div class="card-title mb-0"><i class="fe fe-bell me-2"></i><span
@@ -548,11 +548,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!--/Sidebar-right-->
 
         <!-- Country-selector modal-->
-        <div class="modal fade" id="country-selector">
+        {{-- <div class="modal fade" id="country-selector">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content country-select-modal">
                     <div class="modal-header">
@@ -632,7 +632,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Country-selector modal-->
 
         <!-- FOOTER -->

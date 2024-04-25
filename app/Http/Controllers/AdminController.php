@@ -61,7 +61,7 @@ class AdminController extends Controller
     public function lihat()
     {
         $admin = User::all();
-        return view('admin.index', compact('admin'));
+        return view('admin.admin-page.index', compact('admin'));
     }
 
     /**
@@ -99,7 +99,7 @@ class AdminController extends Controller
     public function show(string $id)
     {
         $user = User::find($id);
-        return view('showadmin.index', compact('user'));
+        return view('admin.admin-page.index', compact('user'));
     }
 
     /**

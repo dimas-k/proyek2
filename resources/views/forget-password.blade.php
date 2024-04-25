@@ -40,14 +40,14 @@
             <div class="card bg-light text-black" style="border-radius: 2rem;">
                 <main>
                     <div class="ms-auto me-auto mt-5" style="width:500px" >
-                        <p>we will send a link to yur email</p>
+                        <p>Kami akan mengirim kan email ke alamat email anda</p>
                         <form action="{{ route('forget.password.post') }}" method="POST" class="ms-auto me-auto mt-auto" style="">
                             @csrf
                             <div class="mb-3">
-                                <label class="form-label">Email Address</label>
-                                <input type="email" class="form-control" name="email">
+                                <label class="form-label">Alamat email</label>
+                                <input type="email" class="form-control" name="email" placeholder="Masukkan email yang terdaftar">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary mb-4">Submit</button>
                         </form>
                     </div>
                 </main>

@@ -69,7 +69,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('tambah-admin.index');
+        return view('admin.admin-page.tambah-admin.index');
     }
 
     /**
@@ -108,7 +108,7 @@ class AdminController extends Controller
     public function edit(string $id)
     {
         $user = User::find($id);
-        return view('editadmin.index', compact('user'));
+        return view('admin.admin-page.editadmin.index', compact('user'));
     }
 
     /**

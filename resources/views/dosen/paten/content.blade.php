@@ -6,11 +6,11 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Dashboard</h1>
+                <h1 class="page-title">Paten</h1>
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        <li class="breadcrumb-item active" aria-current="page">Paten</li>
                     </ol>
                 </div>
             </div>
@@ -25,8 +25,8 @@
                                 <div class="card-body">
                                     <div class="d-flex">
                                         <div class="mt-2">
-                                            <h6 class="">Paten</h6>
-                                            <h2 class="mb-0 number-font">{{ $paten }}</h2>
+                                            <h6 class="">Total Users</h6>
+                                            <h2 class="mb-0 number-font">44,278</h2>
                                         </div>
                                         {{-- <div class="ms-auto">
                                             <div class="chart-wrapper mt-1">
@@ -46,8 +46,8 @@
                                 <div class="card-body">
                                     <div class="d-flex">
                                         <div class="mt-2">
-                                            <h6 class="">Hak Cipta</h6>
-                                            <h2 class="mb-0 number-font">{{ $hc }}</h2>
+                                            <h6 class="">Total Profit</h6>
+                                            <h2 class="mb-0 number-font">67,987</h2>
                                         </div>
                                         {{-- <div class="ms-auto">
                                             <div class="chart-wrapper mt-1">
@@ -67,8 +67,8 @@
                                 <div class="card-body">
                                     <div class="d-flex">
                                         <div class="mt-2">
-                                            <h6 class="">Desain Industri</h6>
-                                            <h2 class="mb-0 number-font">{{ $di }}</h2>
+                                            <h6 class="">Total Expenses</h6>
+                                            <h2 class="mb-0 number-font">$76,965</h2>
                                         </div>
                                         {{-- <div class="ms-auto">
                                             <div class="chart-wrapper mt-1">

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DesainIndustri;
+use App\Models\HakCipta;
+use App\Models\Paten;
 use Illuminate\Http\Request;
 
 class DosenController extends Controller
@@ -11,7 +14,14 @@ class DosenController extends Controller
      */
     public function index()
     {
-        return view('dosen.index');
+        $paten = Paten::count();
+        $hc = HakCipta::count();
+        $di = DesainIndustri::count();
+        return view('dosen.index', compact('paten','hc','di'));
+    }
+    public function paten()
+    {
+        return view('dosen.paten.index');
     }
 
     /**

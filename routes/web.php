@@ -121,6 +121,12 @@ Route::get('/admin/desain_industri/edit/{id}',[AdminDesainIndustriController::cl
 Route::post('/admin/desain-industri/update/{id}',[AdminDesainIndustriController::class, 'update'])->name('admin_desainindustri.update');
 Route::get('/admin/desain-industri/show/{id}',[AdminDesainIndustriController::class, 'show'])->name('admin_desainindustri.show'); 
 
+Route::get('/admin/pengguna/dosen',[AdminController::class, 'lihatDosen'])->name('lihat.dosen');
+Route::get('/admin/pengguna/umum',[AdminController::class, 'lihatUmum'])->name('lihat.dosen');
+Route::post('/admin/pengguna/dosen/tambah',[AdminController::class, 'dosenNew'])->name('tambah.dosen');
+Route::get('/admin/pengguna/dosen/hapus/{id}',[AdminController::class, 'hapusDosen'])->name('dosen.hapus');
+
+
 Route::middleware(['guest'])->group(function(){
     Route::get('/login',[LoginUserController::class, 'index']);
     Route::get('/register',[LoginUserController::class, 'regist']);
@@ -132,6 +138,7 @@ Route::middleware(['guest'])->group(function(){
 
 Route::middleware(['auth','role:Dosen'])->group(function(){
     Route::get('/dosen/dashboard',[DosenController::class, 'index']);
+    Route::get('/dosen/paten',[DosenController::class, 'paten']);
     Route::get('/logout/dosen',[LoginUserController::class, 'logout']);
 });
 Route::middleware(['auth','role:Umum'])->group(function(){

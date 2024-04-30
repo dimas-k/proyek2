@@ -36,7 +36,6 @@ class LoginUserController extends Controller
         // dd($request);
         if(Auth::attempt($credentials))
         {
-            $request->session()->regenerate();
            if(Auth::user()->role =='Dosen')
            {
              return redirect('/dosen/dashboard');

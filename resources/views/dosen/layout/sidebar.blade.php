@@ -30,6 +30,25 @@
                     <a class="side-menu__item" data-bs-toggle="slide" href="/dosen/paten"><i class="side-menu__icon fa fa-list"></i><span
                             class="side-menu__label">Paten</span></a>
                 </li>
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="/dosen/hak-cipta"><i class="side-menu__icon fa fa-list"></i><span
+                            class="side-menu__label">Hak Cipta</span></a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="/dosen/desain-industri"><i class="side-menu__icon fa fa-list"></i><span
+                            class="side-menu__label">Desain Industri</span></a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href=""><i class=" side-menu__icon fa fa-wpforms" data-bs-toggle="tooltip" title="fa fa-wpforms"></i><span
+                            class="side-menu__label">Pengajuan KI</span><i
+                            class="angle fe fe-chevron-right"></i></a>
+                    <ul class="slide-menu">
+                        <li><a href="/dosen/pengajuan/paten" class="slide-item"> Paten</a></li>
+                        <li><a href="/dosen/hak-cipta/pengajuan" class="slide-item"> Hak Cipta</a></li>
+                        <li><a href="/dosen/desain-industri/pengajuan" class="slide-item"> Desain Industri</a></li>
+                        
+                    </ul>
+                </li>
                 
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"

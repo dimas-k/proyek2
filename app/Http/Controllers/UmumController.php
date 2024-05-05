@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DesainIndustri;
+use App\Models\HakCipta;
+use App\Models\Paten;
 use Illuminate\Http\Request;
 
 class UmumController extends Controller
@@ -11,7 +14,25 @@ class UmumController extends Controller
      */
     public function index()
     {
-        return view('umum.index');
+        $paten = Paten::where('institusi', 'Umum')->count();
+        $hc = HakCipta::where('institusi', 'Umum')->count();
+        $di = DesainIndustri::where('institusi', 'Umum')->count();;
+        return view('umum.index', compact('paten', 'hc', 'di'));
+    }
+    public function paten()
+    {
+        $paten = Paten::where('institusi', 'Umum')->get();
+        return view('umum.paten.index', compact('paten'));
+    }
+    public function hakCipta()
+    {
+        $hc = HakCipta::where('institusi', 'Umum')->get();
+        return view('umum.hakcipta.index', compact('hc'));
+    }
+    public function desainIndustri()
+    {
+        $di = DesainIndustri::where('institusi', 'Umum')->get();
+        return view('umum.desainindustri.index', compact('di'));
     }
 
     /**

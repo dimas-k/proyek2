@@ -152,17 +152,6 @@
                         </div>
                     @enderror
                 </div>
-                {{-- <div class="mb-3">
-                    <label for="" class="form-label">Uraian Singkat Ciptaan</label>
-                    <trix-editor class=" form-control @error('uraian_singkat') is-invalid @enderror trix-content"
-                        placeholder="Masukkan Uraian Siangkat" name="uraian_singkat"
-                        style="height: 180px"></trix-editor>
-                    @error('uarian_singkat')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div> --}}
                 <div class="mb-3">
                     <label for="" class="form-label">Dokumen Invensi (Manual Book/Buku/Dll)</label>
                     <input type="file" class="form-control @error('dokumen_invensi') is-invalid @enderror"

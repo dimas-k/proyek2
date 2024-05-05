@@ -138,11 +138,30 @@ Route::middleware(['guest'])->group(function(){
 
 Route::middleware(['auth','role:Dosen'])->group(function(){
     Route::get('/dosen/dashboard',[DosenController::class, 'index']);
+
     Route::get('/dosen/paten',[DosenController::class, 'paten']);
+    Route::get('/dosen/pengajuan/paten',[DosenController::class, 'pengajuanPaten']);
+    Route::post('/dosen/pengajuan/paten/simpan',[DosenController::class, 'storePaten'])->name('simpan.dosen.paten');
+    Route::get('/dosen/paten/lihat/{id}',[DosenController::class, 'lihatPaten'])->name('dsn.paten.lihat');
+    Route::get('/dosen/paten/hapus/{id}',[DosenController::class, 'hapusPaten'])->name('dsn.paten.hapus');
+
+    Route::get('/dosen/desain-industri',[DosenController::class, 'desainIndustri']);
+    Route::get('/dosen/hak-cipta',[DosenController::class, 'hakCipta']);
+    Route::get('/dosen/hak-cipta/pengajuan',[DosenController::class, 'pengajuanHc']);
+    Route::post('/dosen/hak-cipta/pengajuan/simpan',[DosenController::class, 'storeHc']);
+
+    Route::get('/dosen/desain-industri/pengajuan',[DosenController::class, 'pengajuanDi']);
+    Route::post('/dosen/desain-industri/pengajuan/simpan',[DosenController::class, 'storeDi']);
     Route::get('/logout/dosen',[LoginUserController::class, 'logout']);
 });
 Route::middleware(['auth','role:Umum'])->group(function(){
     Route::get('/umum/dashboard',[UmumController::class, 'index']);
+    Route::get('/umum/paten',[UmumController::class, 'paten']);
+
+    Route::get('/umum/hak-cipta',[UmumController::class, 'hakCipta']);
+
+    Route::get('/umum/desain-industri',[UmumController::class, 'desainIndustri']);
+
     Route::get('/logout/umum/',[LoginUserController::class, 'logout'])->name('logout.umum');
 });
 

@@ -2,12 +2,12 @@
     <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
     <div class="app-sidebar">
         <div class="side-header">
-            <a class="header-brand1" href="index.html">
+            <a class="header-brand1" href="/dosen/dashboard">
                 {{-- <img src={{ asset('assets-user/images/brand/logo.png') }} class="header-brand-img desktop-logo" alt="logo">
                 <img src={{ asset('assets-user/images/brand/logo-1.png') }} class="header-brand-img toggle-logo"
                     alt="logo"> --}}
-                <img src={{ asset('assets-user/images/brand/logo-2.png') }} class="header-brand-img light-logo" alt="logo">
-                <img src={{ asset('assets-user/images/brand/logo-3.png') }} class="header-brand-img light-logo1"
+                <img src={{ asset('assets/polindra21.png') }} class="header-brand-img light-logo" alt="logo">
+                <img src={{ asset('assets-user/images/brand/logo-no-bg-1.png') }} class="header-brand-img light-logo1"
                     alt="logo">
             </a>
             <!-- LOGO -->
@@ -19,16 +19,35 @@
                 </svg></div>
             <ul class="side-menu">
                 <li class="sub-category">
-                    <h3>Main</h3>
+                    <h3>Menu Utama</h3>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="index.html"><i
+                    <a class="side-menu__item" data-bs-toggle="slide" href="/dosen/dashboard"><i
                             class="side-menu__icon fe fe-home"></i><span
                             class="side-menu__label">Dashboard</span></a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href=""><i class="bi bi-cart pe-3"></i></i><span
-                            class="side-menu__label">Product</span></a>
+                    <a class="side-menu__item" data-bs-toggle="slide" href="/umum/paten"><i class="side-menu__icon fa fa-list"></i><span
+                            class="side-menu__label">Paten</span></a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="/umum/hak-cipta"><i class="side-menu__icon fa fa-list"></i><span
+                            class="side-menu__label">Hak Cipta</span></a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="/umum/desain-industri"><i class="side-menu__icon fa fa-list"></i><span
+                            class="side-menu__label">Desain Industri</span></a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href=""><i class=" side-menu__icon fa fa-wpforms" data-bs-toggle="tooltip" title="fa fa-wpforms"></i><span
+                            class="side-menu__label">Pengajuan KI</span><i
+                            class="angle fe fe-chevron-right"></i></a>
+                    <ul class="slide-menu">
+                        <li><a href="/dosen/pengajuan/paten" class="slide-item"> Paten</a></li>
+                        <li><a href="/dosen/hak-cipta/pengajuan" class="slide-item"> Hak Cipta</a></li>
+                        <li><a href="/dosen/desain-industri/pengajuan" class="slide-item"> Desain Industri</a></li>
+                        
+                    </ul>
                 </li>
                 
             </ul>

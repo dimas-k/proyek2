@@ -20,87 +20,68 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                            <div class="card overflow-hidden">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <div class="mt-2">
-                                            <h6 class="">Total Users</h6>
-                                            <h2 class="mb-0 number-font">44,278</h2>
-                                        </div>
-                                        <div class="ms-auto">
+                        <div class="d-flex justify-content-center">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                <div class="card overflow-hidden">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="mt-2">
+                                                <h6 class="">Paten</h6>
+                                                <h2 class="mb-0 number-font">{{ $paten }}</h2>
+                                            </div>
+                                            {{-- <div class="ms-auto">
                                             <div class="chart-wrapper mt-1">
                                                 <canvas id="saleschart"
                                                     class="h-8 w-9 chart-dropshadow"></canvas>
                                             </div>
+                                        </div> --}}
                                         </div>
-                                    </div>
-                                    <span class="text-muted fs-12"><span class="text-secondary"><i
+                                        {{-- <span class="text-muted fs-12"><span class="text-secondary"><i
                                                 class="fe fe-arrow-up-circle  text-secondary"></i> 5%</span>
-                                        Last week</span>
+                                        Last week</span> --}}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                            <div class="card overflow-hidden">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <div class="mt-2">
-                                            <h6 class="">Total Profit</h6>
-                                            <h2 class="mb-0 number-font">67,987</h2>
-                                        </div>
-                                        <div class="ms-auto">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                <div class="card overflow-hidden">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="mt-2">
+                                                <h6 class="">Hak Cipta</h6>
+                                                <h2 class="mb-0 number-font">{{ $hc }}</h2>
+                                            </div>
+                                            {{-- <div class="ms-auto">
                                             <div class="chart-wrapper mt-1">
                                                 <canvas id="leadschart"
                                                     class="h-8 w-9 chart-dropshadow"></canvas>
                                             </div>
+                                        </div> --}}
                                         </div>
-                                    </div>
-                                    <span class="text-muted fs-12"><span class="text-pink"><i
+                                        {{-- <span class="text-muted fs-12"><span class="text-pink"><i
                                                 class="fe fe-arrow-down-circle text-pink"></i> 0.75%</span>
-                                        Last 6 days</span>
+                                        Last 6 days</span> --}}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                            <div class="card overflow-hidden">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <div class="mt-2">
-                                            <h6 class="">Total Expenses</h6>
-                                            <h2 class="mb-0 number-font">$76,965</h2>
-                                        </div>
-                                        <div class="ms-auto">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                <div class="card overflow-hidden">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="mt-2">
+                                                <h6 class="">Desain Industri</h6>
+                                                <h2 class="mb-0 number-font">{{ $di }}</h2>
+                                            </div>
+                                            {{-- <div class="ms-auto">
                                             <div class="chart-wrapper mt-1">
                                                 <canvas id="profitchart"
                                                     class="h-8 w-9 chart-dropshadow"></canvas>
                                             </div>
+                                        </div> --}}
                                         </div>
-                                    </div>
-                                    <span class="text-muted fs-12"><span class="text-green"><i
+                                        {{-- <span class="text-muted fs-12"><span class="text-green"><i
                                                 class="fe fe-arrow-up-circle text-green"></i> 0.9%</span>
-                                        Last 9 days</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                            <div class="card overflow-hidden">
-                                <div class="card-body">
-                                    <div class="d-flex">
-                                        <div class="mt-2">
-                                            <h6 class="">Total Cost</h6>
-                                            <h2 class="mb-0 number-font">$59,765</h2>
-                                        </div>
-                                        <div class="ms-auto">
-                                            <div class="chart-wrapper mt-1">
-                                                <canvas id="costchart"
-                                                    class="h-8 w-9 chart-dropshadow"></canvas>
-                                            </div>
-                                        </div>
+                                        Last 9 days</span> --}}
                                     </div>
-                                    <span class="text-muted fs-12"><span class="text-warning"><i
-                                                class="fe fe-arrow-up-circle text-warning"></i> 0.6%</span>
-                                        Last year</span>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +92,7 @@
 
             <!-- ROW-2 -->
             <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-9">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Sales Analytics</h3>
@@ -130,16 +111,16 @@
                     </div>
                 </div>
                 <!-- COL END -->
-                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-3">
-                    {{-- <div class="card overflow-hidden">
+                {{-- <div class="col-sm-12 col-md-12 col-lg-12 col-xl-3">
+                    <div class="card overflow-hidden">
                         <div class="card-body pb-0 bg-recentorder">
                             <h3 class="card-title text-white">Recent Orders</h3>
                             <div class="chartjs-wrapper-demo">
                                 <canvas id="recentorders" class="chart-dropshadow"></canvas>
                             </div>
                         </div>
-                        <div id="flotback-chart" class="flot-background"></div> --}}
-                        {{-- <div class="card-body">
+                        <div id="flotback-chart" class="flot-background"></div>
+                        <div class="card-body">
                             <div class="d-flex mb-4 mt-3">
                                 <div
                                     class="avatar avatar-md bg-secondary-transparent text-secondary bradius me-3">
@@ -167,15 +148,15 @@
                                     <p class="fw-bold fs-20 mb-0"> 3,675 </p>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- COL END -->
             </div>
             <!-- ROW-2 END -->
 
             <!-- ROW-4 -->
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-12 col-sm-12">
                     <div class="card">
                         <div class="card-header">
@@ -2202,7 +2183,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- ROW-4 END -->
         </div>
         <!-- CONTAINER END -->

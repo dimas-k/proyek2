@@ -6,7 +6,7 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Paten</h1>
+                <h1 class="page-title">Desain Industri</h1>
                 <div>
                     <ol class="breadcrumb">
                         {{-- <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li> --}}
@@ -25,14 +25,21 @@
                             </h3>
                         </div>
                         <div class="card-body">
+                            @if (session()->has('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
                             <div class="table-responsive">
                                 <table class="table table-hover p-1">
                                     <thead>
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Nama lengkap</th>
-                                            <th scope="col">Jenis ciptaan</th>
-                                            <th scope="col">Judul ciptaan</th>
+                                            <th scope="col">Jenis Disain</th>
+                                            <th scope="col">Judul Disain</th>
                                             <th scope="col">Tanggal pengajuan</th>
                                             <th scope="col">Status paten</th>
                                             <th scope="col">Aksi</th>
@@ -47,14 +54,37 @@
                                                 <td>{{ $d->judul_di }}</td>
                                                 <td>{{ $d->tanggal_permohonan }}</td>
                                                 <td>{{ $d->status }}</td>
-                                                <td><a href={{ Route('admin_paten.show', $d->id) }}
-                                                        class="btn btn-info"><i class="bi bi-eye"></i></a>
-                                                    <a href={{ Route('admin_paten.edit', $d->id) }}
-                                                        class="btn btn-warning"><i class="bi bi-pencil"></i></a>
-                                                    <a href={{ Route('admin_paten.delete', $d->id) }}
-                                                        class="btn btn-danger"
-                                                        onclick="return confirm('Apakah Kamu Yakin?')"><i
-                                                            class="bi bi-trash3"></i></a>
+                                                <td><a href={{ Route('umum.di.lihat', $d->id) }}
+                                                        class="btn btn-info"><i class="fa fa-eye" data-bs-toggle="tooltip"></i></a>
+                                                    <a href={{ Route('umum.di.edit', $d->id) }}
+                                                        class="btn btn-warning"><i class="fa fa-pencil" data-bs-toggle="tooltip"></i></a>
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        data-bs-target="#staticBackdrop">
+                                                        <i class="fa fa-trash" data-bs-toggle="tooltip"></i>
+                                                    </button>
+                                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                                        data-bs-keyboard="false" tabindex="-1"
+                                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                                                        Peringatan</h1>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Anda yakin akan menghapus pengajuan ini
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-outline-secondary"
+                                                                        data-bs-dismiss="modal">Batal</button>
+                                                                    <a href={{ Route('umum.di.hapus', $d->id) }}
+                                                                        class="btn btn-danger">Hapus</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach

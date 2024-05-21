@@ -176,8 +176,8 @@ class PatenController extends Controller
      */
     public function show(string $id)
     {
-        $p = Paten::find($id);
-        return view('patenshow.index', compact('p'));
+        $paten = Paten::find($id);
+        return view('patenshow.index', compact('paten'));
     }
 
     /**

@@ -122,7 +122,9 @@ Route::post('/admin/desain-industri/update/{id}',[AdminDesainIndustriController:
 Route::get('/admin/desain-industri/show/{id}',[AdminDesainIndustriController::class, 'show'])->name('admin_desainindustri.show'); 
 
 Route::get('/admin/pengguna/dosen',[AdminController::class, 'lihatDosen'])->name('lihat.dosen');
+Route::get('/admin/pengguna/dosen/{id}',[AdminController::class, 'detailDosen'])->name('detail.Dosen');
 Route::get('/admin/pengguna/umum',[AdminController::class, 'lihatUmum'])->name('lihat.dosen');
+Route::post('/admin/pengguna/umum/tambah',[AdminController::class, 'umumNew'])->name('tambah.umum');
 Route::post('/admin/pengguna/dosen/tambah',[AdminController::class, 'dosenNew'])->name('tambah.dosen');
 Route::get('/admin/pengguna/dosen/hapus/{id}',[AdminController::class, 'hapusDosen'])->name('dosen.hapus');
 
@@ -143,24 +145,55 @@ Route::middleware(['auth','role:Dosen'])->group(function(){
     Route::get('/dosen/pengajuan/paten',[DosenController::class, 'pengajuanPaten']);
     Route::post('/dosen/pengajuan/paten/simpan',[DosenController::class, 'storePaten'])->name('simpan.dosen.paten');
     Route::get('/dosen/paten/lihat/{id}',[DosenController::class, 'lihatPaten'])->name('dsn.paten.lihat');
+    Route::get('dosen/paten/edit/{id}',[DosenController::class, 'editPaten'])->name('dsn.edit.paten');
+    Route::post('/dosen/paten/update/{id}',[DosenController::class, 'updatePaten'])->name('dsn.update.paten');
     Route::get('/dosen/paten/hapus/{id}',[DosenController::class, 'hapusPaten'])->name('dsn.paten.hapus');
-
-    Route::get('/dosen/desain-industri',[DosenController::class, 'desainIndustri']);
+    
     Route::get('/dosen/hak-cipta',[DosenController::class, 'hakCipta']);
+    Route::get('/dosen/hak-cipta/lihat/{id}',[DosenController::class, 'lihatHc'])->name('dsn.lihat.hc');
+    Route::get('/dosen/hak-cipta/edit/{id}',[DosenController::class, 'editHc'])->name('dsn.edit.hc');
+    Route::post('/dosen/hak-cipta/update/{id}',[DosenController::class, 'updateHc'])->name('dsn.update.hc');
     Route::get('/dosen/hak-cipta/pengajuan',[DosenController::class, 'pengajuanHc']);
     Route::post('/dosen/hak-cipta/pengajuan/simpan',[DosenController::class, 'storeHc']);
-
+    
+    Route::get('/dosen/desain-industri',[DosenController::class, 'desainIndustri']);
     Route::get('/dosen/desain-industri/pengajuan',[DosenController::class, 'pengajuanDi']);
+    Route::get('/dosen/desain-industri/lihat/{id}',[DosenController::class, 'lihatDi'])->name('dsn.di.lihat');
+    Route::get('/dosen/desain-industri/edit/{id}', [DosenController::class, 'editDi'])->name('dsn.edit.di');
+    Route::post('/dosen/desain-industri/update/{id}',[DosenController::class, 'updateDi'])->name('dsn.update.di');
     Route::post('/dosen/desain-industri/pengajuan/simpan',[DosenController::class, 'storeDi']);
     Route::get('/logout/dosen',[LoginUserController::class, 'logout']);
 });
 Route::middleware(['auth','role:Umum'])->group(function(){
     Route::get('/umum/dashboard',[UmumController::class, 'index']);
+
     Route::get('/umum/paten',[UmumController::class, 'paten']);
-
+    Route::get('/umum/pengajuan/paten',[UmumController::class, 'pengajuanPaten']);
+    Route::post('/umum/pengajuan/paten/simpan',[UmumController::class, 'simpanPaten'])->name('simpan.umum.paten');
+    Route::get('/umum/paten/lihat/{id}',[UmumController::class, 'lihatPaten'])->name('umum.paten.lihat');
+    Route::get('/umum/paten/edit/{id}',[UmumController::class, 'editPaten'])->name('umum.paten.edit');
+    Route::post('/umum/paten/update/simpan/{id}',[UmumController::class, 'updatepaten'])->name('umum.paten.update');
+    Route::get('/umum/paten/hapus/{id}',[UmumController::class, 'hapusPaten'])->name('umum.paten.hapus');
+    
     Route::get('/umum/hak-cipta',[UmumController::class, 'hakCipta']);
-
+    Route::get('/umum/hak-cipta/lihat/{id}',[UmumController::class, 'lihatHc'])->name('umum.hc.lihat');
+    Route::get('/umum/hak-cipta/edit/{id}',[UmumController::class, 'editHc'])->name('umum.hc.edit');
+    Route::get('/umum/hak-cipta/pengajuan',[UmumController::class, 'pengajuanHc']);
+    Route::post('/umum/pengajuan/hak-cipta/simpan',[UmumController::class, 'simpanHc'])->name('simpan.umum.hc');
+    Route::post('/umum/hak-cipta/update/simpan/{id}',[UmumController::class, 'updateHc'])->name('umum.hc.update');
+    Route::get('/umum/hak-cipta/hapus/{id}',[UmumController::class, 'hapusHc'])->name('umum.hc.hapus');
+    
     Route::get('/umum/desain-industri',[UmumController::class, 'desainIndustri']);
+    Route::get('/umum/desain-industri/pengajuan',[UmumController::class, 'pengajuanDi']);
+    Route::post('/umum/desain-industri/pengajuan/simpan',[UmumController::class, 'simpanDi'])->name('simpan.umum.di');
+    Route::get('/umum/desain-industri/lihat/{id}',[UmumController::class, 'lihatDi'])->name('umum.di.lihat');
+    Route::get('/umum/desain-industri/edit/{id}',[UmumController::class, 'editDi'])->name('umum.di.edit');
+    Route::post('/umum/desain-industri/update/simpan/{id}',[UmumController::class, 'updateDi'])->name('umum.di.update');
+    Route::get('/umum/desain-industri/hapus/{id}',[UmumController::class, 'hapusDi'])->name('umum.di.hapus');
+    
+    Route::get('/umum/user/lihat',[UmumController::class, 'lihatProfil'])->name('umum.profil.lihat');
+    Route::get('/umum/user/edit/{id}',[UmumController::class, 'editProfil'])->name('umum.profil.edit');
+    Route::post('/umum/profili/update/simpan/{id}',[UmumController::class, 'updateProfil'])->name('umum.profil.update');
 
     Route::get('/logout/umum/',[LoginUserController::class, 'logout'])->name('logout.umum');
 });

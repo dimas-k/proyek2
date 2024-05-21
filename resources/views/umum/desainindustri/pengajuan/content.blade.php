@@ -6,10 +6,10 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Paten</h1>
+                <h1 class="page-title">Pengajuan Desain industri</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Desain Industri</a></li>
+                        <li class="breadcrumb-item"><a href="/umum/desain-industri">Desain Industri</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Pengajuan</li>
                     </ol>
                 </div>
@@ -21,8 +21,8 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Hak
-                                Cipta
+                            <h3 class="card-title"><i class="fa fa-wpforms me-2" data-bs-toggle="tooltip"></i>Formulir
+                                Pengajuan Desain Industri
                             </h3>
                         </div>
                         <div class="card-body">
@@ -41,7 +41,7 @@
                                     Perlukan
                                 </a>
                             </span>
-                            <form enctype="multipart/form-data" method="post" action="/dosen/desain-industri/pengajuan/simpan">
+                            <form enctype="multipart/form-data" method="post" action="/umum/desain-industri/pengajuan/simpan">
                                 @csrf
                                 <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                                 <div class="container">
@@ -126,7 +126,7 @@
                                         @enderror
                                     </div>
                                     <input type="text" class="form-control @error('institusi') is-invalid @enderror" id=""
-                                            value="Dosen" name="institusi" hidden>
+                                            value="Umum" name="institusi" hidden>
                                 </div>
                 
                                 <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR DESAIN INDUSTRI</p>

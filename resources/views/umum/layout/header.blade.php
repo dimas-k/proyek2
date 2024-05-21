@@ -203,12 +203,12 @@
                                 </div>
                             </div> --}}
                             <!-- MESSAGE-BOX -->
-                            <div class="dropdown d-flex header-settings">
+                            {{-- <div class="dropdown d-flex header-settings">
                                 <a href="javascript:void(0);" class="nav-link icon"
                                     data-bs-toggle="sidebar-right" data-target=".sidebar-right">
                                     <i class="fe fe-align-right"></i>
                                 </a>
-                            </div>
+                            </div> --}}
                             <!-- SIDE-MENU -->
                             <div class="dropdown d-flex profile-1">
                                 <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
@@ -222,7 +222,7 @@
                                         </div>
                                     </div>
                                     <div class="dropdown-divider m-0"></div>
-                                    <a class="dropdown-item" href="profile.html">
+                                    <a class="dropdown-item" href={{ route('umum.profil.lihat') }}>
                                         <i class="dropdown-icon fe fe-user"></i> Profile
                                     </a>
                                     <a class="dropdown-item" href="/logout/umum/">

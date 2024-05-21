@@ -51,7 +51,7 @@
                                 </div>
                             </div> --}}
                             <!-- SEARCH -->
-                            <div class="dropdown  d-flex notifications">
+                            {{-- <div class="dropdown  d-flex notifications">
                                 <a class="nav-link icon" data-bs-toggle="dropdown"><i
                                         class="fe fe-bell"></i><span class=" pulse"></span>
                                 </a>
@@ -108,14 +108,14 @@
                                         class="dropdown-item text-center p-3 text-muted">View all
                                         Notification</a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- NOTIFICATIONS -->
-                            <div class="dropdown d-flex header-settings">
+                            {{-- <div class="dropdown d-flex header-settings">
                                 <a href="javascript:void(0);" class="nav-link icon"
                                     data-bs-toggle="sidebar-right" data-target=".sidebar-right">
                                     <i class="fe fe-align-right"></i>
                                 </a>
-                            </div>
+                            </div> --}}
                             <!-- SIDE-MENU -->
                             <div class="dropdown d-flex profile-1">
                                 <a href="javascript:void(0)" data-bs-toggle="dropdown" class="nav-link leading-none d-flex">
@@ -132,10 +132,10 @@
                                     <a class="dropdown-item" href="profile.html">
                                         <i class="dropdown-icon fe fe-user"></i> Profile
                                     </a>
-                                    <a class="dropdown-item" href="email-inbox.html">
+                                    {{-- <a class="dropdown-item" href="email-inbox.html">
                                         <i class="dropdown-icon fe fe-mail"></i> Inbox
                                         <span class="badge bg-danger rounded-pill float-end">5</span>
-                                    </a>
+                                    </a> --}}
                                     <a class="dropdown-item" href="/logout/dosen">
                                         <i class="dropdown-icon fe fe-alert-circle"></i> Log out
                                     </a>

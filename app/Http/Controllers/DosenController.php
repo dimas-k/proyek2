@@ -14,19 +14,30 @@ class DosenController extends Controller
      */
     public function index()
     {
-        $paten = Paten::count();
-        $hc = HakCipta::count();
-        $di = DesainIndustri::count();
+        $paten = Paten::where('institusi', 'Dosen')->count();
+        $hc = HakCipta::where('institusi', 'Dosen')->count();
+        $di = DesainIndustri::where('institusi', 'Dosen')->count();
         return view('dosen.index', compact('paten','hc','di'));
     }
     public function paten()
     {
-        $paten = Paten::latest()->paginate(5);
-        return view('dosen.paten.index', compact('paten'));
+        $paten = Paten::where('institusi', 'Dosen')->get();
+        $pf = Paten::where('status', 'Pemeriksaan Formalitas')->where('institusi', 'Dosen')->count();
+        $mt = Paten::where('status', 'Menunggu Tanggapan Formalitas')->where('institusi', 'Dosen')->count();
+        $mp = Paten::where('status', 'Masa pengumuman')->where('institusi', 'Dosen')->count();
+        $mps = Paten::where('status', 'Menunggu Pembayaran Substansif')->where('institusi', 'Dosen')->count();
+        $staw = Paten::where('status', 'Substansif Tahap Awal')->where('institusi', 'Dosen')->count();
+        $stl = Paten::where('status', 'Substansif Tahap Lanjut')->where('institusi', 'Dosen')->count();
+        $stak = Paten::where('status', 'Substansif Tahap Akhir')->where('institusi', 'Dosen')->count();
+        $mts = Paten::where('status', 'Menunggu Tanggapan Substansif')->where('institusi', 'Dosen')->count();
+        $catat = Paten::where('status', 'Diberi')->where('institusi', 'Dosen')->count();
+        $tolak = Paten::where('status', 'Ditolak')->where('institusi', 'Dosen')->count();
+        return view('dosen.paten.index', compact('pf', 'paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak'));
     }
+    
     public function hakCipta()
     {
-        $hc = HakCipta::latest()->paginate(5);
+        $hc = HakCipta::where('institusi', 'Dosen')->get();
         return view('dosen.hakcipta.index', compact('hc'));
     }
     public function pengajuanPaten()
@@ -39,12 +50,17 @@ class DosenController extends Controller
     }
     public function desainIndustri()
     {
-        $di = DesainIndustri::latest()->paginate(5);
+        $di = DesainIndustri::where('institusi', 'Dosen')->get();
         return view('dosen.desainindustri.index', compact('di'));
     }
     public function pengajuanDi()
     {
         return view('dosen.desainindustri.pengajuan.index');
+    }
+    public function lihatDi(string $id)
+    {
+        $di = DesainIndustri::find($id);
+        return view('dosen.desainindustri.lihat.index', compact('di'));
     }
     public function hapusPaten(string $id)
     {
@@ -55,6 +71,11 @@ class DosenController extends Controller
     {
         $paten = Paten::find($id);
         return view('dosen.paten.lihat.index', compact('paten'));
+    }
+    public function editPaten(string $id)
+    {
+        $paten = Paten::find($id);
+        return view('dosen.paten.edit.index', compact('paten'));
     }
 
     /**
@@ -73,6 +94,8 @@ class DosenController extends Controller
             'kewarganegaraan'=> 'required',
             'kode_pos'=> 'required|integer',
             'institusi'=> 'required',
+            'jurusan'=> 'required',
+            'prodi'=> 'required',
             'jenis_paten'=> 'required',
             'judul_paten'=> 'required',
             'deskripsi_paten'=> 'required|mimes:pdf|max:2028',
@@ -94,6 +117,8 @@ class DosenController extends Controller
         $paten->kewarganegaraan = $request->kewarganegaraan;
         $paten->kode_pos = $request->kode_pos;
         $paten->institusi = $request->institusi;
+        $paten->jurusan = $request->jurusan;
+        $paten->prodi = $request->prodi;
         $paten->jenis_paten = $request-> jenis_paten;
         $paten->judul_paten = $request->judul_paten;
         $paten->abstrak_paten = $request->file('abstrak_paten')->store('dokumen-paten');
@@ -110,7 +135,67 @@ class DosenController extends Controller
         
         return redirect('/dosen/pengajuan/paten')->with('success', 'Data Paten berhasil Disimpan!');
     }
-    public function storeHc(Request $request)
+    public function updatePaten(Request $request, string $id)
+    {
+        $validasidata = $request->validate([
+            'nama_lengkap'=> 'required',
+            'alamat'=> 'required',
+            'no_telepon'=> 'required',
+            'tanggal_lahir'=> 'required',
+            'ktp_inventor'=> 'required|mimes:pdf',
+            'email'=> 'required|email',
+            'kewarganegaraan'=> 'required',
+            'kode_pos'=> 'required|integer',
+            'institusi'=> 'required',
+            'jurusan'=> 'required',
+            'prodi'=> 'required',
+            'jenis_paten'=> 'required',
+            'judul_paten'=> 'required',
+            'deskripsi_paten'=> 'required|mimes:pdf|max:2028',
+            'abstrak_paten'=> 'required|mimes:pdf|max:2028',
+            'pengalihan_hak'=> 'required|mimes:pdf|max:2028',
+            'klaim'=> 'required|mimes:pdf',
+            'pernyataan_kepemilikan'=> 'required|mimes:pdf',
+            'surat_kuasa'=> 'required|mimes:pdf',
+            'gambar_paten'=> 'required|mimes:pdf',
+            'gambar_tampilan'=> 'required|mimes:pdf',
+        ]);
+        $paten = Paten::find($id);
+        $paten->nama_lengkap = $request->nama_lengkap;
+        $paten->alamat = $request->alamat;
+        $paten->no_telepon = $request->no_telepon;
+        $paten->tanggal_lahir = $request->tanggal_lahir;
+        $paten->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-paten');
+        $paten->email = $request->email;
+        $paten->kewarganegaraan = $request->kewarganegaraan;
+        $paten->kode_pos = $request->kode_pos;
+        $paten->institusi = $request->institusi;
+        $paten->jenis_paten = $request-> jenis_paten;
+        $paten->judul_paten = $request->judul_paten;
+        $paten->abstrak_paten = $request->file('abstrak_paten')->store('dokumen-paten');
+        $paten->deskripsi_paten = $request->file('deskripsi_paten')->store('dokumen-paten');
+        $paten->pengalihan_hak = $request->file('pengalihan_hak')->store('dokumen-paten');
+        $paten->klaim = $request->file('klaim')->store('dokumen-paten');
+        $paten->pernyataan_kepemilikan = $request->file('pernyataan_kepemilikan')->store('dokumen-paten');
+        $paten->surat_kuasa = $request->file('surat_kuasa')->store('dokumen-paten');
+        $paten->gambar_paten = $request->file('gambar_paten')->store('dokumen-paten');
+        $paten->gambar_tampilan = $request->file('gambar_tampilan')->store('dokumen-paten');
+        $paten->tanggal_permohonan = $request->tanggal_permohonan;
+        $paten->save($validasidata);
+
+        return redirect('/dosen/paten')->with('success', 'Data paten berhasil di update');
+    }
+    public function lihatHc(string $id)
+    {
+        $hc = HakCipta::find($id);
+        return view('dosen.hakcipta.lihat.index', compact('hc'));
+    }
+    public function editHc(string $id)
+    {
+        $hc = HakCipta::find($id);
+        return view('dosen.hakcipta.edit.index', compact('hc'));
+    }
+    public function updateHc(Request $request, string $id)
     {
         $validasidata = $request->validate([
             'nama_lengkap'=> 'required',
@@ -132,7 +217,7 @@ class DosenController extends Controller
 
         ]);
 
-        $hc = new HakCipta();
+        $hc = HakCipta::find($id);
         $hc->nama_lengkap = $request->nama_lengkap;
         $hc->alamat = $request->alamat;
         $hc->no_telepon = $request->no_telepon;
@@ -151,9 +236,61 @@ class DosenController extends Controller
         $hc->tanggal_permohonan = $request->tanggal_permohonan;
         $hc->save($validasidata);
 
+        return redirect('/dosen/hak-cipta')->with('success', 'Data hak cipta berhasil di update');
+    }
+    public function storeHc(Request $request)
+    {
+        $validasidata = $request->validate([
+            'nama_lengkap'=> 'required',
+            'alamat'=> 'required',
+            'no_telepon'=> 'required',
+            'tanggal_lahir'=> 'required',
+            'ktp_inventor'=> 'required|mimes:pdf',
+            'email'=> 'required|email',
+            'kewarganegaraan'=> 'required',
+            'kode_pos'=> 'required',
+            'institusi'=> 'required',
+            'jurusan'=> 'required',
+            'prodi'=> 'required',
+            'jenis_ciptaan'=> 'required',
+            'judul_ciptaan'=> 'required',
+            'uraian_singkat'=>'required|max:60000',
+            'dokumen_invensi'=>'required|mimes:pdf',
+            'surat_pengalihan'=>'required|mimes:pdf',
+            'surat_pernyataan'=>'required|mimes:pdf',
+            'tanggal_permohonan'=>'required'
+
+        ]);
+
+        $hc = new HakCipta();
+        $hc->nama_lengkap = $request->nama_lengkap;
+        $hc->alamat = $request->alamat;
+        $hc->no_telepon = $request->no_telepon;
+        $hc->tanggal_lahir = $request->tanggal_lahir;
+        $hc->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-hc');
+        $hc->email = $request->email;
+        $hc->kewarganegaraan = $request->kewarganegaraan;
+        $hc->kode_pos = $request->kode_pos;
+        $hc->institusi = $request->institusi;
+        $hc->jurusan = $request->jurusan; 
+        $hc->prodi = $request->prodi;
+        $hc->jenis_ciptaan = $request-> jenis_ciptaan;
+        $hc->judul_ciptaan = $request->judul_ciptaan;
+        $hc->uraian_singkat = $request->uraian_singkat;
+        $hc->dokumen_invensi = $request->file('dokumen_invensi')->store('dokumen-hc');
+        $hc->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-hc');
+        $hc->surat_pernyataan = $request->file('surat_pernyataan')->store('dokumen-hc');
+        $hc->tanggal_permohonan = $request->tanggal_permohonan;
+        $hc->save($validasidata);
+
         return redirect('/dosen/hak-cipta/pengajuan')->with('success', 'Data hak cipta berhasil Disimpan!');
     }
-    public function storeDi(Request $request)
+    public function editDi(string $id)
+    {
+        $di = DesainIndustri::find($id);
+        return view('dosen.desainindustri.edit.index', compact('di'));
+    }
+    public function updateDi(Request $request, string $id)
     {
         $validasidata = $request->validate([
             'nama_lengkap'=> 'required',
@@ -173,6 +310,49 @@ class DosenController extends Controller
             'surat_pengalihan'=>'required|mimes:pdf',
             'tanggal_permohonan'=>'required'
         ]);
+        $di = DesainIndustri::find($id);
+        $di->nama_lengkap = $request->nama_lengkap;
+        $di->alamat = $request->alamat;
+        $di->no_telepon = $request->no_telepon;
+        $di->tanggal_lahir = $request->tanggal_lahir;
+        $di->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-di');
+        $di->email = $request->email;
+        $di->kewarganegaraan = $request->kewarganegaraan;
+        $di->kode_pos = $request->kode_pos;
+        $di->institusi = $request->institusi;
+        $di->jenis_di = $request->jenis_di;
+        $di->judul_di = $request->judul_di;
+        $di->uraian_di = $request->file('uraian_di')->store('dokumen-di');
+        $di->gambar_di = $request->file('gambar_di')->store('dokumen-di');
+        $di->surat_kepemilikan = $request->file('surat_kepemilikan')->store('dokumen-di');
+        $di->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-di');
+        $di->tanggal_permohonan = $request->tanggal_permohonan;
+        $di->save($validasidata);
+
+        return redirect('/dosen/desain-industri')->with('success', 'Data desain industri berhasil Diupdate!');
+    }
+    public function storeDi(Request $request)
+    {
+        $validasidata = $request->validate([
+            'nama_lengkap'=> 'required',
+            'alamat'=> 'required',
+            'no_telepon'=> 'required',
+            'tanggal_lahir'=> 'required',
+            'ktp_inventor'=> 'required|mimes:pdf',
+            'email'=> 'required|email',
+            'kewarganegaraan'=> 'required',
+            'kode_pos'=> 'required',
+            'institusi'=> 'required',
+            'jurusan'=> 'required',
+            'prodi'=> 'required',
+            'jenis_di'=> 'required',
+            'judul_di'=>'required',
+            'uraian_di'=>'required|mimes:pdf',
+            'gambar_di'=>'required|mimes:pdf',
+            'surat_kepemilikan'=>'required|mimes:pdf',
+            'surat_pengalihan'=>'required|mimes:pdf',
+            'tanggal_permohonan'=>'required'
+        ]);
         $di = new DesainIndustri();
         $di->nama_lengkap = $request->nama_lengkap;
         $di->alamat = $request->alamat;
@@ -183,6 +363,8 @@ class DosenController extends Controller
         $di->kewarganegaraan = $request->kewarganegaraan;
         $di->kode_pos = $request->kode_pos;
         $di->institusi = $request->institusi;
+        $di->jurusan = $request->jurusan; 
+        $di->prodi = $request->prodi;
         $di->jenis_di = $request->jenis_di;
         $di->judul_di = $request->judul_di;
         $di->uraian_di = $request->file('uraian_di')->store('dokumen-di');

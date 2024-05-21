@@ -22,7 +22,7 @@
                     <h3>Menu Utama</h3>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="/dosen/dashboard"><i
+                    <a class="side-menu__item" data-bs-toggle="slide" href="/umum/dashboard"><i
                             class="side-menu__icon fe fe-home"></i><span
                             class="side-menu__label">Dashboard</span></a>
                 </li>
@@ -43,9 +43,9 @@
                             class="side-menu__label">Pengajuan KI</span><i
                             class="angle fe fe-chevron-right"></i></a>
                     <ul class="slide-menu">
-                        <li><a href="/dosen/pengajuan/paten" class="slide-item"> Paten</a></li>
-                        <li><a href="/dosen/hak-cipta/pengajuan" class="slide-item"> Hak Cipta</a></li>
-                        <li><a href="/dosen/desain-industri/pengajuan" class="slide-item"> Desain Industri</a></li>
+                        <li><a href="/umum/pengajuan/paten" class="slide-item"> Paten</a></li>
+                        <li><a href="/umum/hak-cipta/pengajuan" class="slide-item"> Hak Cipta</a></li>
+                        <li><a href="/umum/desain-industri/pengajuan" class="slide-item"> Desain Industri</a></li>
                         
                     </ul>
                 </li>

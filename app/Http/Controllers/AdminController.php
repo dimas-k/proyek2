@@ -68,11 +68,12 @@ class AdminController extends Controller
         $dosen = User::where('role', 'Dosen')->get();
         return view('admin.dosen-page.index', compact('dosen'));
     }
-    public function lihatUmum()
+    public function detailDosen($id)
     {
-        $umum = User::where('role', 'Umum')->get();
-        return view('admin.umum.index', compact('umum'));
+        $dsn = User::find($id);
+        return view('admin.dosen-page.lihat.index', compact('dsn'));
     }
+    
     public function dosenNew(Request $request)
     {
         $validasidata = $request->validate([
@@ -99,9 +100,40 @@ class AdminController extends Controller
     }
     public function hapusDosen(string $id)
     {
-        User::findOrFail($id)->delete();
+        User::find($id)->delete();
         return redirect()->back();
     }
+    public function lihatUmum()
+    {
+        $umum = User::where('role', 'Umum')->get();
+        return view('admin.umum.index', compact('umum'));
+    }
+    public function umumNew(Request $request)
+    {
+        $validasidata = $request->validate([
+            'email' => 'required|email',
+            'username'=>'required|min:3',
+            'password'=> 'required|max:10',
+            'ktp'=>'required|mimes:pdf|max:2028',
+        ]);
+        $user = new User;
+        $user->nama_lengkap = $request->nama_lengkap;
+        $user->no_telepon = $request->no_telepon;
+        $user->email = $request->email;
+        $user->alamat = $request->alamat;
+        $user->ktp = $request->file('ktp')->store('dokumen_user');
+        $user->kerjaan = $request->kerjaan;
+        $user->jabatan = $request->jabatan;
+        $user->nip = $request->nip;
+        $user->username = $request->username;
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
+        $user->save($validasidata);
+
+        return redirect('/admin/pengguna/umum')->with('success','Data dosen telah ditambahkan');
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

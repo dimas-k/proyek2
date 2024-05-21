@@ -21,16 +21,6 @@
                 <li class="nav-item">
                     <a class="nav-link fs-6 fw-normal font-family-Lucida Sans col-xxl-0 m-0 px-3 py-2" href="/desain-industri">Desain Industri</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fs-6 fw-normal font-family-Lucida Sans col-xxl-0 m-0 px-3 py-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Pengajuan KI
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item fs-6 fw-normal font-family-Lucida Sans col-xxl-0 m-0 px-3 py-2" href="/pengajuan-paten">Paten</a></li>
-                      <li><a class="dropdown-item fs-6 fw-normal font-family-Lucida Sans col-xxl-0 m-0 px-3 py-2" href="/pengajuan-hak-cipta">Hak Cipta</a></li>
-                      <li><a class="dropdown-item fs-6 fw-normal font-family-Lucida Sans col-xxl-0 m-0 px-3 py-2" href="/pengajuan-desain-industri">Desain Industri</a></li>
-                    </ul>
-                  </li>
                 <li class="nav-item">
                     <a class="nav-link fs-6 fw-normal font-family-Lucida Sans col-xxl-0 m-0 px-3 py-2" href="/disclaimer">Disclaimer</a>
                 </li>

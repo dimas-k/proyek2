@@ -25,6 +25,13 @@
                             </h3>
                         </div>
                         <div class="card-body">
+                            @if (session()->has('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
                             <div class="table-responsive">
                                 <table class="table table-hover p-1">
                                     <thead>
@@ -47,9 +54,9 @@
                                                 <td>{{ $p->judul_paten }}</td>
                                                 <td>{{ $p->tanggal_permohonan }}</td>
                                                 <td>{{ $p->status }}</td>
-                                                <td><a href={{ Route('dsn.paten.lihat', $p->id) }}
+                                                <td><a href={{ Route('umum.paten.lihat', $p->id) }}
                                                         class="btn btn-info"><i class="bi bi-eye"></i></a>
-                                                    <a href={{ Route('admin_paten.edit', $p->id) }}
+                                                    <a href={{ Route('umum.paten.edit', $p->id) }}
                                                         class="btn btn-warning"><i class="fa fa-pencil" data-bs-toggle="tooltip"></i></a>
                                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                                         data-bs-target="#staticBackdrop">
@@ -67,12 +74,12 @@
                                                                         data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    Anda yakin akan menghapus akun ini
+                                                                    Anda yakin akan menghapus pengajuan ini
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-outline-secondary"
                                                                         data-bs-dismiss="modal">Batal</button>
-                                                                    <a href={{ Route('dsn.paten.hapus', $p->id) }}
+                                                                    <a href={{ Route('umum.paten.hapus', $p->id) }}
                                                                         class="btn btn-danger">Hapus</a>
                                                                 </div>
                                                             </div>

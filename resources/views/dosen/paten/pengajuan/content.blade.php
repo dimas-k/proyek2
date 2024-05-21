@@ -9,7 +9,7 @@
                 <h1 class="page-title">Pengajuan Paten</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/dosen/hak-cipta">Hak-cipta</a></li>
+                        <li class="breadcrumb-item"><a href="/dosen/paten">Paten</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Pengajuan</li>
                     </ol>
                 </div>
@@ -132,8 +132,48 @@
                                             </div>
                                         @enderror
                                     </div>
-                                    <input type="text" class="form-control @error('institusi') is-invalid @enderror"
-                                        id="" value="Polindra" name="institusi" hidden>
+                                    <input type="text"
+                                        class="form-control @error('institusi') is-invalid @enderror" id=""
+                                        value="Dosen" name="institusi" hidden>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Jurusan</label>
+                                        <select class="form-select @error('jurusan') is-invalid @enderror"
+                                            aria-label="Default select example" name="jurusan">
+                                            <option selected>Pilih Jurusan</option>
+                                            <option value="Teknik Informatika">Teknik Informatika</option>
+                                            <option value="Teknik Mesin">Teknik Mesin
+                                            </option>
+                                            <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan Tata Udara</option>
+                                            <option value="Keperawatan">Keperawatan
+                                            </option>
+                                        </select>
+                                        @error('jurusan')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Prodi</label>
+                                        <select class="form-select @error('prodi') is-invalid @enderror"
+                                            aria-label="Default select example" name="prodi">
+                                            <option selected>Pilih Prodi</option>
+                                            <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
+                                            <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat Lunak</option>
+                                            <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi Kota Cerdas
+                                            </option>
+                                            <option value="D3 Tenknik Mesin">D3 Tenknik Mesin</option>
+                                            <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur</option>
+                                            <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan Tata Udara</option>
+                                            <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi Kontrol</option>
+                                            <option value="D3 Keperawatan">D3 Keperawan</option>
+                                        </select>
+                                        @error('prodi')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
                                 </div>
                                 <br><br>
                                 <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR PATEN</p>

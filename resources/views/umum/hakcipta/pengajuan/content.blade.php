@@ -6,10 +6,10 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Pengajuan Paten</h1>
+                <h1 class="page-title">Pengajuan Hak Cipta</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/dosen/paten">Paten</a></li>
+                        <li class="breadcrumb-item"><a href="/umum/hak-cipta">Hak Cipta</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Pengajuan</li>
                     </ol>
                 </div>
@@ -41,7 +41,7 @@
                                     Perlukan
                                 </a>
                             </span>
-                            <form method="post" enctype="multipart/form-data" action="/dosen/hak-cipta/pengajuan/simpan">
+                            <form method="post" enctype="multipart/form-data" action="/umum/pengajuan/hak-cipta/simpan">
                                 @csrf
                                 <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                                 <div class="container">
@@ -126,7 +126,7 @@
                                         @enderror
                                     </div>
                                     <input type="text" class="form-control @error('institusi') is-invalid @enderror" id=""
-                                            value="Dosen" name="institusi" hidden>
+                                            value="Umum" name="institusi" hidden>
                                 </div>
                     
                                 <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR HAK CIPTA</p>

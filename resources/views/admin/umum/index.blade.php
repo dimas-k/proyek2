@@ -116,22 +116,11 @@
                                                 @enderror
                                             </div>
                                             <div class="mb-2">
-                                                <label class="col-form-label" for="pass">Jabatan</label>
-                                                <input type="text" id="" name="jabatan"
-                                                    class="form-control form-control @error('jabatan') is-invalid @enderror"
+                                                <label class="col-form-label" for="pass">Bekerja Sebagai</label>
+                                                <input type="text" id="" name="kerjaan"
+                                                    class="form-control form-control @error('kerjaan') is-invalid @enderror"
                                                     required>
-                                                @error('jabatan')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-2">
-                                                <label class="col-form-label" for="">NIP</label>
-                                                <input type="number" id="" name="nip"
-                                                    class="form-control form-control @error('nip') is-invalid @enderror"
-                                                    required>
-                                                @error('nip')
+                                                @error('kerjaan')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>

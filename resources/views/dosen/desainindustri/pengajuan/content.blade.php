@@ -9,7 +9,7 @@
                 <h1 class="page-title">Paten</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Desain Industri</a></li>
+                        <li class="breadcrumb-item"><a href="/dosen/desain-industri">Desain Industri</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Pengajuan</li>
                     </ol>
                 </div>
@@ -21,8 +21,8 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Hak
-                                Cipta
+                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Pengajuan
+                                Desain Industri
                             </h3>
                         </div>
                         <div class="card-body">
@@ -41,13 +41,15 @@
                                     Perlukan
                                 </a>
                             </span>
-                            <form enctype="multipart/form-data" method="post" action="/dosen/desain-industri/pengajuan/simpan">
+                            <form enctype="multipart/form-data" method="post"
+                                action="/dosen/desain-industri/pengajuan/simpan">
                                 @csrf
                                 <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                                 <div class="container">
                                     <div class="mb-3">
                                         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                        <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror"
+                                        <input type="text"
+                                            class="form-control @error('nama_lengkap') is-invalid @enderror"
                                             id="" placeholder="Masukkan Nama"name="nama_lengkap">
                                         @error('nama_lengkap')
                                             <div class="invalid-feedback">
@@ -57,8 +59,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control @error('alamat') is-invalid @enderror" id=""
-                                            placeholder="Masukkan Alamat" name="alamat">
+                                        <input type="text" class="form-control @error('alamat') is-invalid @enderror"
+                                            id="" placeholder="Masukkan Alamat" name="alamat">
                                         @error('alamat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -67,8 +69,9 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">No telepon</label>
-                                        <input type="number" class="form-control @error('no_telepon') is-invalid @enderror" id=""
-                                            placeholder="Masukkan No telepon" name="no_telepon">
+                                        <input type="number"
+                                            class="form-control @error('no_telepon') is-invalid @enderror"
+                                            id="" placeholder="Masukkan No telepon" name="no_telepon">
                                         @error('no_telepon')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -87,7 +90,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">KTP Inventor</label>
-                                        <input type="file" class="form-control @error('ktp_inventor') is-invalid @enderror"
+                                        <input type="file"
+                                            class="form-control @error('ktp_inventor') is-invalid @enderror"
                                             id="" name="ktp_inventor">
                                         @error('ktp_inventor')
                                             <div class="invalid-feedback">
@@ -97,8 +101,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Email</label>
-                                        <input type="email" class="form-control @error('email') is-invalid @enderror" id=""
-                                            placeholder="Masukkan Email" name="email">
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                            id="" placeholder="Masukkan Email" name="email">
                                         @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -107,8 +111,10 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Kewarganegaraan</label>
-                                        <input type="text" class="form-control @error('kewarganegaraan') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan">
+                                        <input type="text"
+                                            class="form-control @error('kewarganegaraan') is-invalid @enderror"
+                                            id="" placeholder="Masukkan Kewarganegaraan"
+                                            name="kewarganegaraan">
                                         @error('kewarganegaraan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -117,7 +123,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Kode Pos</label>
-                                        <input type="number" class="form-control @error('kode_pos') is-invalid @enderror" id=""
+                                        <input type="number"
+                                            class="form-control @error('kode_pos') is-invalid @enderror" id=""
                                             placeholder="Masukkan Kode Pos" name="kode_pos">
                                         @error('kode_pos')
                                             <div class="invalid-feedback">
@@ -125,40 +132,92 @@
                                             </div>
                                         @enderror
                                     </div>
-                                    <input type="text" class="form-control @error('institusi') is-invalid @enderror" id=""
-                                            value="Dosen" name="institusi" hidden>
+                                    <input type="text"
+                                        class="form-control @error('institusi') is-invalid @enderror" id=""
+                                        value="Dosen" name="institusi" hidden>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Jurusan</label>
+                                        <select class="form-select @error('jurusan') is-invalid @enderror"
+                                            aria-label="Default select example" name="jurusan">
+                                            <option selected>Pilih Jurusan</option>
+                                            <option value="Teknik Informatika">Teknik Informatika</option>
+                                            <option value="Teknik Mesin">Teknik Mesin
+                                            </option>
+                                            <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan Tata
+                                                Udara</option>
+                                            <option value="Keperawatan">Keperawatan
+                                            </option>
+                                        </select>
+                                        @error('jurusan')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Prodi</label>
+                                        <select class="form-select @error('prodi') is-invalid @enderror"
+                                            aria-label="Default select example" name="prodi">
+                                            <option selected>Pilih Prodi</option>
+                                            <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
+                                            <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat Lunak
+                                            </option>
+                                            <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi Kota
+                                                Cerdas
+                                            </option>
+                                            <option value="D3 Tenknik Mesin">D3 Tenknik Mesin</option>
+                                            <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur
+                                            </option>
+                                            <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan
+                                                Tata Udara</option>
+                                            <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi
+                                                Kontrol</option>
+                                            <option value="D3 Keperawatan">D3 Keperawan</option>
+                                        </select>
+                                        @error('prodi')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
                                 </div>
-                
+
                                 <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR DESAIN INDUSTRI</p>
                                 <div class="container">
                                     <label for="" class="form-label">Jenis Desain</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="jenis_di" id="" value="Satu desain">
+                                        <input class="form-check-input" type="radio" name="jenis_di"
+                                            id="" value="Satu desain">
                                         <label class="form-check-label" for="Satu desain">
-                                          Satu Desain
+                                            Satu Desain
                                         </label>
-                                      </div>
-                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="jenis_di" id="" value="Pecahan satu desain">
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="jenis_di"
+                                            id="" value="Pecahan satu desain">
                                         <label class="form-check-label" for="Pecahan satu desain">
-                                          Pecahan Satu Desain
+                                            Pecahan Satu Desain
                                         </label>
-                                      </div>
-                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="jenis_di" id="" value="Satu kesatuan desain">
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="jenis_di"
+                                            id="" value="Satu kesatuan desain">
                                         <label class="form-check-label" for="Satu kesatuan desain">
-                                          Satu Kesatuan Desain
+                                            Satu Kesatuan Desain
                                         </label>
-                                      </div>
-                                      <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="jenis_di" id="" value="Kesatuan pecahan satu desain">
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="jenis_di"
+                                            id="" value="Kesatuan pecahan satu desain">
                                         <label class="form-check-label" for="Kesatuan pecahan satu desain">
-                                          Kesatuan Pecahan Satu Desain
+                                            Kesatuan Pecahan Satu Desain
                                         </label>
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Judul Desain Industri</label>
-                                        <input type="text" class="form-control @error('judul_di') is-invalid @enderror" placeholder="Masukkan Judul Desain Industri" name="judul_di">
+                                        <input type="text"
+                                            class="form-control @error('judul_di') is-invalid @enderror"
+                                            placeholder="Masukkan Judul Desain Industri" name="judul_di">
                                         @error('judul_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -167,7 +226,9 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Gambar Desain Industri</label>
-                                        <input type="file" class="form-control @error('gambar_di') is-invalid @enderror" placeholder="" name="gambar_di">
+                                        <input type="file"
+                                            class="form-control @error('gambar_di') is-invalid @enderror"
+                                            placeholder="" name="gambar_di">
                                         @error('gambar_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -176,7 +237,9 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Uraian Desain Industri</label>
-                                        <input type="file" class="form-control @error('uraian_di') is-invalid @enderror" placeholder="" name="uraian_di">
+                                        <input type="file"
+                                            class="form-control @error('uraian_di') is-invalid @enderror"
+                                            placeholder="" name="uraian_di">
                                         @error('uraian_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -185,7 +248,9 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Surat Pernyataan Kepemilikan</label>
-                                        <input type="file" class="form-control @error('surat_kepemilikan') is-invalid @enderror"  placeholder="" name="surat_kepemilikan">
+                                        <input type="file"
+                                            class="form-control @error('surat_kepemilikan') is-invalid @enderror"
+                                            placeholder="" name="surat_kepemilikan">
                                         @error('surat_kepemilikan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -194,7 +259,9 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Surat Pengalihan Hak</label>
-                                        <input type="file" class="form-control @error('surat_pengalihan') is-invalid @enderror"  placeholder="" name="surat_pengalihan">
+                                        <input type="file"
+                                            class="form-control @error('surat_pengalihan') is-invalid @enderror"
+                                            placeholder="" name="surat_pengalihan">
                                         @error('surat_pengalihan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -203,14 +270,16 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Tanggal Pengajuan</label>
-                                        <input type="date" name="tanggal_permohonan" id="tanggalpengajuan" class="form-control @error('tanggal_permohonan') is-invalid @enderror">
+                                        <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
+                                            class="form-control @error('tanggal_permohonan') is-invalid @enderror">
                                         @error('tanggal_permohonan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror
                                     </div>
-                                    <p class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>Harap Isi semua Form Dengan Benar</p>
+                                    <p class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>Harap
+                                        Isi semua Form Dengan Benar</p>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal">
                                         Simpan

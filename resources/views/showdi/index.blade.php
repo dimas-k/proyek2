@@ -10,7 +10,7 @@
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="shortcut icon" href={{ URL('storage/polindra21.png') }}>
-    <title>SIKI POLINDRA-Admin | Data Paten {{ $di->nama_lengkap }}</title>
+    <title>SIKI POLINDRA | Data Desain Industri</title>
 </head>
 
 <body>

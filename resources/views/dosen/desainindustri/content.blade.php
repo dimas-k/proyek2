@@ -6,7 +6,7 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Paten</h1>
+                <h1 class="page-title">Desain Industri</h1>
                 <div>
                     <ol class="breadcrumb">
                         {{-- <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li> --}}
@@ -15,7 +15,65 @@
                 </div>
             </div>
             <!-- PAGE-HEADER END -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+                <div class="row">
 
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Diterima</h6>
+                                        <h2 class="mb-0 number-font">20</h2>
+                                    </div>
+                                    {{-- <div class="ms-auto">
+                                        <div class="chart-wrapper mt-1">
+                                            <canvas id="saleschart"
+                                                class="h-8 w-9 chart-dropshadow"></canvas>
+                                        </div>
+                                    </div> --}}
+                                </div>
+                                {{-- <span class="text-muted fs-12"><span class="text-secondary"><i
+                                            class="fe fe-arrow-up-circle  text-secondary"></i> 5%</span>
+                                    Last week</span> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Ditolak</h6>
+                                        <h2 class="mb-0 number-font">40</h2>
+                                    </div>
+                                    {{-- <div class="ms-auto">
+                                        <div class="chart-wrapper mt-1">
+                                            <canvas id="leadschart"
+                                                class="h-8 w-9 chart-dropshadow"></canvas>
+                                        </div>
+                                    </div> --}}
+                                </div>
+                                {{-- <span class="text-muted fs-12"><span class="text-pink"><i
+                                            class="fe fe-arrow-down-circle text-pink"></i> 0.75%</span>
+                                    Last 6 days</span> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Pemeriksaan Formalitas</h6>
+                                        <h2 class="mb-0 number-font">6</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- ROW-2 -->
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -26,6 +84,13 @@
                             </h3>
                         </div>
                         <div class="card-body">
+                            @if (session()->has('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
                             <div class="table-responsive">
                                 <table class="table table-hover p-1">
                                     <thead>
@@ -48,14 +113,13 @@
                                                 <td>{{ $d->judul_di }}</td>
                                                 <td>{{ $d->tanggal_permohonan }}</td>
                                                 <td>{{ $d->status }}</td>
-                                                <td><a href={{ Route('admin_paten.show', $d->id) }}
-                                                        class="btn btn-info"><i class="bi bi-eye"></i></a>
-                                                    <a href={{ Route('admin_paten.edit', $d->id) }}
-                                                        class="btn btn-warning"><i class="bi bi-pencil"></i></a>
-                                                    <a href={{ Route('admin_paten.delete', $d->id) }}
+                                                <td><a href={{ Route('dsn.di.lihat', $d->id) }}
+                                                        class="btn btn-info"><i class="fa fa-eye" data-bs-toggle="tooltip"></i></a>
+                                                    <a href={{ Route('dsn.edit.di', $d->id) }}
+                                                        class="btn btn-warning"><i class="fa fa-pencil" data-bs-toggle="tooltip"></i></a>
+                                                    {{-- <a href={{ Route('admin_paten.delete', $d->id) }}
                                                         class="btn btn-danger"
-                                                        onclick="return confirm('Apakah Kamu Yakin?')"><i
-                                                            class="bi bi-trash3"></i></a>
+                                                        onclick="return confirm('Apakah Kamu Yakin?')"><i class="fa fa-trash" data-bs-toggle="tooltip"></i></a> --}}
                                                 </td>
                                             </tr>
                                         @endforeach

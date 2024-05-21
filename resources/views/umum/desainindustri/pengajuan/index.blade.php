@@ -50,14 +50,14 @@
         <div class="page-main">
 
             <!-- app-Header -->
-            @include('dosen.layout.header')
+            @include('umum.layout.header')
             <!-- /app-Header -->
 
             <!--APP-SIDEBAR-->
-            @include('dosen.layout.sidebar')
+            @include('umum.layout.sidebar')
 
             <!--app-content open-->
-            @include('dosen.desainindustri.pengajuan.content') 
+            @include('umum.desainindustri.pengajuan.content') 
             <!--app-content close-->
 
         </div>

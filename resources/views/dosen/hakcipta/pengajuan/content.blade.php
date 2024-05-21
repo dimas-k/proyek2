@@ -41,13 +41,15 @@
                                     Perlukan
                                 </a>
                             </span>
-                            <form method="post" enctype="multipart/form-data" action="/dosen/hak-cipta/pengajuan/simpan">
+                            <form method="post" enctype="multipart/form-data"
+                                action="/dosen/hak-cipta/pengajuan/simpan">
                                 @csrf
                                 <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                                 <div class="container">
                                     <div class="mb-3">
                                         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                        <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror"
+                                        <input type="text"
+                                            class="form-control @error('nama_lengkap') is-invalid @enderror"
                                             id="" placeholder="Masukkan Nama"name="nama_lengkap">
                                         @error('nama_lengkap')
                                             <div class="invalid-feedback">
@@ -57,8 +59,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control @error('alamat') is-invalid @enderror" id=""
-                                            placeholder="Masukkan Alamat" name="alamat">
+                                        <input type="text" class="form-control @error('alamat') is-invalid @enderror"
+                                            id="" placeholder="Masukkan Alamat" name="alamat">
                                         @error('alamat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -67,7 +69,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">No telepon</label>
-                                        <input type="number" class="form-control @error('no_telepon') is-invalid @enderror"
+                                        <input type="number"
+                                            class="form-control @error('no_telepon') is-invalid @enderror"
                                             id="" placeholder="Masukkan No telepon" name="no_telepon">
                                         @error('no_telepon')
                                             <div class="invalid-feedback">
@@ -87,7 +90,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">KTP Inventor</label>
-                                        <input type="file" class="form-control @error('ktp_inventor') is-invalid @enderror"
+                                        <input type="file"
+                                            class="form-control @error('ktp_inventor') is-invalid @enderror"
                                             id="" name="ktp_inventor">
                                         @error('ktp_inventor')
                                             <div class="invalid-feedback">
@@ -97,8 +101,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Email</label>
-                                        <input type="email" class="form-control @error('email') is-invalid @enderror" id=""
-                                            placeholder="Masukkan Email" name="email">
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                            id="" placeholder="Masukkan Email" name="email">
                                         @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -107,8 +111,10 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Kewarganegaraan</label>
-                                        <input type="text" class="form-control @error('kewarganegaraan') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan">
+                                        <input type="text"
+                                            class="form-control @error('kewarganegaraan') is-invalid @enderror"
+                                            id="" placeholder="Masukkan Kewarganegaraan"
+                                            name="kewarganegaraan">
                                         @error('kewarganegaraan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -117,7 +123,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Kode Pos</label>
-                                        <input type="number" class="form-control @error('kode_pos') is-invalid @enderror" id=""
+                                        <input type="number"
+                                            class="form-control @error('kode_pos') is-invalid @enderror" id=""
                                             placeholder="Masukkan Kode Pos" name="kode_pos">
                                         @error('kode_pos')
                                             <div class="invalid-feedback">
@@ -125,15 +132,62 @@
                                             </div>
                                         @enderror
                                     </div>
-                                    <input type="text" class="form-control @error('institusi') is-invalid @enderror" id=""
-                                            value="Dosen" name="institusi" hidden>
+                                    <input type="text"
+                                        class="form-control @error('institusi') is-invalid @enderror" id=""
+                                        value="Dosen" name="institusi" hidden>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Jurusan</label>
+                                        <select class="form-select @error('jurusan') is-invalid @enderror"
+                                            aria-label="Default select example" name="jurusan">
+                                            <option selected>Pilih Jurusan</option>
+                                            <option value="Teknik Informatika">Teknik Informatika</option>
+                                            <option value="Teknik Mesin">Teknik Mesin
+                                            </option>
+                                            <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan Tata
+                                                Udara</option>
+                                            <option value="Keperawatan">Keperawatan
+                                            </option>
+                                        </select>
+                                        @error('jurusan')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Prodi</label>
+                                        <select class="form-select @error('prodi') is-invalid @enderror"
+                                            aria-label="Default select example" name="prodi">
+                                            <option selected>Pilih Prodi</option>
+                                            <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
+                                            <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat Lunak
+                                            </option>
+                                            <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi Kota
+                                                Cerdas
+                                            </option>
+                                            <option value="D3 Tenknik Mesin">D3 Tenknik Mesin</option>
+                                            <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur
+                                            </option>
+                                            <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan
+                                                Tata Udara</option>
+                                            <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi
+                                                Kontrol</option>
+                                            <option value="D3 Keperawatan">D3 Keperawan</option>
+                                        </select>
+                                        @error('prodi')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
                                 </div>
-                    
+
                                 <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR HAK CIPTA</p>
                                 <div class="container">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Jenis Ciptaan</label>
-                                        <input type="text" class="form-control @error('jenis_ciptaan') is-invalid @enderror"
+                                        <input type="text"
+                                            class="form-control @error('jenis_ciptaan') is-invalid @enderror"
                                             placeholder="Masukkan Jenis Ciptaan" name="jenis_ciptaan">
                                         @error('jenis_ciptaan')
                                             <div class="invalid-feedback">
@@ -143,7 +197,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Judul Ciptaan</label>
-                                        <input type="text" class="form-control @error('judul_ciptaan') is-invalid @enderror"
+                                        <input type="text"
+                                            class="form-control @error('judul_ciptaan') is-invalid @enderror"
                                             placeholder="Masukkan Judul Ciptaan" name="judul_ciptaan">
                                         @error('judul_ciptaan')
                                             <div class="invalid-feedback">
@@ -153,17 +208,19 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Uraian Singkat Ciptaan</label>
-                                        <textarea class="form-control @error('uraian_singkat') is-invalid @enderror" placeholder="Masukkan Uraian Siangkat" name="uraian_singkat" id="floatingTextarea2"
-                                            style="height: 150px"></textarea>
-                                            @error('uarian_singkat')
+                                        <textarea class="form-control @error('uraian_singkat') is-invalid @enderror" placeholder="Masukkan Uraian Siangkat"
+                                            name="uraian_singkat" id="floatingTextarea2" style="height: 150px"></textarea>
+                                        @error('uarian_singkat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Dokumen Invensi (Manual Book/Buku/Dll)</label>
-                                        <input type="file" class="form-control @error('dokumen_invensi') is-invalid @enderror"
+                                        <label for="" class="form-label">Dokumen Invensi (Manual
+                                            Book/Buku/Dll)</label>
+                                        <input type="file"
+                                            class="form-control @error('dokumen_invensi') is-invalid @enderror"
                                             placeholder="" name="dokumen_invensi">
                                         @error('dokumen_invensi')
                                             <div class="invalid-feedback">
@@ -173,7 +230,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Surat Pengalihan Hak Cipta</label>
-                                        <input type="file" class="form-control @error('surat_pengalihan') is-invalid @enderror"
+                                        <input type="file"
+                                            class="form-control @error('surat_pengalihan') is-invalid @enderror"
                                             placeholder="" name="surat_pengalihan">
                                         @error('surat_pengalihan')
                                             <div class="invalid-feedback">
@@ -183,7 +241,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Surat Pernyataan</label>
-                                        <input type="file" class="form-control @error('surat_pernyataan') is-invalid @enderror"
+                                        <input type="file"
+                                            class="form-control @error('surat_pernyataan') is-invalid @enderror"
                                             placeholder="" name="surat_pernyataan">
                                         @error('surat_pernyataan')
                                             <div class="invalid-feedback">
@@ -201,7 +260,8 @@
                                             </div>
                                         @enderror
                                     </div>
-                                    <p class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>Harap Isi semua Form Dengan
+                                    <p class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>Harap
+                                        Isi semua Form Dengan
                                         Benar</p>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal">

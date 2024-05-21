@@ -10,7 +10,7 @@
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="shortcut icon" href={{ URL('storage/polindra21.png') }}>
-    <title>SIKI POLINDRA | Data {{ $hc->judul_ciptaan }}</title>
+    <title>SIKI POLINDRA | Lihat Data Hak-Cipta</title>
 </head>
 
 <body>
@@ -20,27 +20,64 @@
             <h3 class=""><i class="bi bi-clipboard2-data me-2 mt-3"></i>Data Hak Cipta</h3>
 
             <div class="border border-2 border-dark rounded"></div>
-            <p class="mb-3 mt-3"><b>Nama Lengkap</b> : {{ $hc->nama_lengkap }}</p>
+            <div class="table-responsive">
+                <table class="table table-borderless p-1">
 
-            <p class="mb-3"><b>No Telepon</b> : {{ $hc->no_telepon }}</p>
-
-            <p class="mb-3"><b>Kewarganegaraan</b> : {{ $hc->kewarganegaraan }}</p>
-
-            <p class="mb-3"><b>Kode pos</b> : {{ $hc->kode_pos }}</p>
-
-            <p class="mb-3"><b>Jenis Ciptaan</b> : {{ $hc->jenis_ciptaan }}</p>
-
-            <p class="mb-3"><b>Judul Ciptaan</b> : {{ $hc->judul_ciptaan }}</p>
-
-            <p class="mb-3"><b>Tanggal Pengajuan</b> : {{ $hc->tanggal_permohonan }}</p>
-
-            <p class="mb-3"><b>Uraian Singkat</b> : {{ $hc->uraian_singkat }}</p>
-            
-            <p class="mb-3"><b>Sertifikat Hak Cipta</b> : <a href={{ asset('storage/' . $hc->sertifikat_hakcipta) }}
-                class="link-dark link-underline link-underline-opacity-0" target="_blank"><i
-                    class="bi bi-download me-1 ms-1"></i>Download Sertifikat Hak Cipta</a></a></p>
-
-            <p class="mb-3"><b>Status</b> : {{ $hc->status }}</p>
+                    <tr>
+                        <th>Nama Lengkap</th>
+                        <td>: {{ $hc->nama_lengkap }}</td>
+                    </tr>
+                    <tr>
+                        <th>Alamat</th>
+                        <td>: {{ $hc->alamat }}</td>
+                    </tr>
+                    <tr>
+                        <th>No Telepon</th>
+                        <td>: {{ $hc->no_telepon }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tanggal lahir</th>
+                        <td>: {{ $hc->tanggal_lahir }}</td>
+                    </tr>
+                    <tr>
+                        <th>KTP</th>
+                        <td>: <a href={{ asset('storage/' . $hc->ktp_inventor) }} class=""
+                                target="_blank">Lihat KTP</a></td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>: {{ $hc->email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Kewarganegaraan</th>
+                        <td>: {{ $hc->kewarganegaraan }}</td>
+                    </tr>
+                    <tr>
+                        <th>Kode Pos</th>
+                        <td>: {{ $hc->kode_pos }}</td>
+                    </tr>
+                    <tr>
+                        <th>Jenis Ciptaann</th>
+                        <td>: {{ $hc->jenis_ciptaan }}</td>
+                    </tr>
+                    <tr>
+                        <th>Judul Ciptaan</th>
+                        <td>: {{ $hc->judul_ciptaan }}</td>
+                    </tr>
+                    <tr>
+                        <th>Abstrak Ciptaan</th>
+                        <td >: {{ $hc->uraian_singkat }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tanggal pengajuan</th>
+                        <td>: {{ $hc->tanggal_permohonan }}</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>: {{ $hc->status }}</td>
+                    </tr>
+                </table>
+            </div> 
             
         </div>
     </div>

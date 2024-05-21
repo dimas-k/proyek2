@@ -26,6 +26,13 @@
                             </h3>
                         </div>
                         <div class="card-body">
+                            @if (session()->has('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
                             <div class="table-responsive">
                                 <table class="table table-hover p-1">
                                     <thead>
@@ -48,14 +55,37 @@
                                                 <td>{{ $p->judul_ciptaan }}</td>
                                                 <td>{{ $p->tanggal_permohonan }}</td>
                                                 <td>{{ $p->status }}</td>
-                                                <td><a href={{ Route('admin_paten.show', $p->id) }}
-                                                        class="btn btn-info"><i class="bi bi-eye"></i></a>
-                                                    <a href={{ Route('admin_paten.edit', $p->id) }}
-                                                        class="btn btn-warning"><i class="bi bi-pencil"></i></a>
-                                                    <a href={{ Route('admin_paten.delete', $p->id) }}
-                                                        class="btn btn-danger"
-                                                        onclick="return confirm('Apakah Kamu Yakin?')"><i
-                                                            class="bi bi-trash3"></i></a>
+                                                <td><a href={{ Route('umum.hc.lihat', $p->id) }}
+                                                        class="btn btn-info"><i class="fa fa-eye" data-bs-toggle="tooltip"></i></a>
+                                                    <a href={{ Route('umum.hc.edit', $p->id) }}
+                                                        class="btn btn-warning"><i class="fa fa-pencil" data-bs-toggle="tooltip"></i></a>
+                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                        data-bs-target="#staticBackdrop">
+                                                        <i class="fa fa-trash" data-bs-toggle="tooltip"></i>
+                                                    </button>
+                                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                                        data-bs-keyboard="false" tabindex="-1"
+                                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                                                        Peringatan</h1>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Anda yakin akan menghapus pengajuan ini
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-outline-secondary"
+                                                                        data-bs-dismiss="modal">Batal</button>
+                                                                    <a href={{ Route('umum.hc.hapus', $p->id) }}
+                                                                        class="btn btn-danger">Hapus</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach

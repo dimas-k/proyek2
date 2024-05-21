@@ -15,7 +15,177 @@
                 </div>
             </div>
             <!-- PAGE-HEADER END -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+                <div class="row">
 
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Diterima</h6>
+                                        <h2 class="mb-0 number-font">{{ $catat }}</h2>
+                                    </div>
+                                    {{-- <div class="ms-auto">
+                                        <div class="chart-wrapper mt-1">
+                                            <canvas id="saleschart"
+                                                class="h-8 w-9 chart-dropshadow"></canvas>
+                                        </div>
+                                    </div> --}}
+                                </div>
+                                {{-- <span class="text-muted fs-12"><span class="text-secondary"><i
+                                            class="fe fe-arrow-up-circle  text-secondary"></i> 5%</span>
+                                    Last week</span> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Ditolak</h6>
+                                        <h2 class="mb-0 number-font">{{ $tolak }}</h2>
+                                    </div>
+                                    {{-- <div class="ms-auto">
+                                        <div class="chart-wrapper mt-1">
+                                            <canvas id="leadschart"
+                                                class="h-8 w-9 chart-dropshadow"></canvas>
+                                        </div>
+                                    </div> --}}
+                                </div>
+                                {{-- <span class="text-muted fs-12"><span class="text-pink"><i
+                                            class="fe fe-arrow-down-circle text-pink"></i> 0.75%</span>
+                                    Last 6 days</span> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Pemeriksaan Formalitas</h6>
+                                        <h2 class="mb-0 number-font">{{ $pf }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Menunggu Tanggapan Formlitas</h6>
+                                        <h2 class="mb-0 number-font">{{ $mt }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Masa Pengumuman</h6>
+                                        <h2 class="mb-0 number-font">{{ $mp }}</h2>
+                                    </div>
+                                    {{-- <div class="ms-auto">
+                                        <div class="chart-wrapper mt-1">
+                                            <canvas id="saleschart"
+                                                class="h-8 w-9 chart-dropshadow"></canvas>
+                                        </div>
+                                    </div> --}}
+                                </div>
+                                {{-- <span class="text-muted fs-12"><span class="text-secondary"><i
+                                            class="fe fe-arrow-up-circle  text-secondary"></i> 5%</span>
+                                    Last week</span> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Menunggu Tanggapan Substansif</h6>
+                                        <h2 class="mb-0 number-font">{{ $mts }}</h2>
+                                    </div>
+                                    {{-- <div class="ms-auto">
+                                        <div class="chart-wrapper mt-1">
+                                            <canvas id="leadschart"
+                                                class="h-8 w-9 chart-dropshadow"></canvas>
+                                        </div>
+                                    </div> --}}
+                                </div>
+                                {{-- <span class="text-muted fs-12"><span class="text-pink"><i
+                                            class="fe fe-arrow-down-circle text-pink"></i> 0.75%</span>
+                                    Last 6 days</span> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Substansif Tahap Akhir</h6>
+                                        <h2 class="mb-0 number-font">{{ $stak }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Substansif Tahap Lanjut</h6>
+                                        <h2 class="mb-0 number-font">6</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Substansif Tahap Awal</h6>
+                                        <h2 class="mb-0 number-font">6</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Menunggu Tanggapan substansif
+                                            <h2 class="mb-0 number-font">6</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- ROW-2 -->
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -25,6 +195,29 @@
                             </h3>
                         </div>
                         <div class="card-body">
+                            @if (session()->has('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+                            <div class="d-flex justify-content-end">
+                                <form action="/cari" method="GET">
+                                    <div class="row g-2 align-items-center">
+                                        <div class="col-auto">
+                                            <label for="" class="col-form-label">Cari Paten</label>
+                                        </div>
+                                        <div class="col-auto">
+                                            <input type="text" id="" class="form-control"
+                                                aria-describedby="">
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="submit" class="btn btn-primary ">Cari</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             <div class="table-responsive">
                                 <table class="table table-hover p-1">
                                     <thead>
@@ -49,28 +242,33 @@
                                                 <td>{{ $p->status }}</td>
                                                 <td><a href={{ Route('dsn.paten.lihat', $p->id) }}
                                                         class="btn btn-info"><i class="bi bi-eye"></i></a>
-                                                    <a href={{ Route('admin_paten.edit', $p->id) }}
-                                                        class="btn btn-warning"><i class="fa fa-pencil" data-bs-toggle="tooltip"></i></a>
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop">
+                                                    <a href={{ Route('dsn.edit.paten', $p->id) }}
+                                                        class="btn btn-warning"><i class="fa fa-pencil"
+                                                            data-bs-toggle="tooltip"></i></a>
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                                         <i class="fa fa-trash" data-bs-toggle="tooltip"></i>
                                                     </button>
-                                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                                        data-bs-keyboard="false" tabindex="-1"
-                                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="staticBackdrop"
+                                                        data-bs-backdrop="static" data-bs-keyboard="false"
+                                                        tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                                        aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                                                    <h1 class="modal-title fs-5"
+                                                                        id="staticBackdropLabel">
                                                                         Peringatan</h1>
                                                                     <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     Anda yakin akan menghapus akun ini
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-outline-secondary"
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-secondary"
                                                                         data-bs-dismiss="modal">Batal</button>
                                                                     <a href={{ Route('dsn.paten.hapus', $p->id) }}
                                                                         class="btn btn-danger">Hapus</a>

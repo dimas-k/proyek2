@@ -15,28 +15,31 @@
 
 <body>
     {{-- Top nav bar --}}
-    <div class="container-fluid border">
-        <nav class="navbar navbar-expand bg-body-tertiary">
-            <div class="container-fluid">
-                <img class="navbar-brand" src={{ asset('assets/polindra2.jpg') }}>
-                <a class="navbar-brand fs-6 fw-normal font-family-Kokoro" href="#">Sistem Informasi Kekayaan
-                    Intelektual<br>Politeknik Negeri Indramayu</a>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Selamat datang, {{ auth()->user()->nama_lengkap }}
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="/logout"><i class="bi bi-arrow-bar-left me-2"></i>Log
-                                        Out</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+    <div class="responsif">
+        <div class="container-fluid border">
+            <nav class="navbar navbar-expand bg-body-tertiary">
+                <div class="container-fluid">
+                    <img class="navbar-brand" src={{ asset('assets/polindra2.jpg') }}>
+                    <a class="navbar-brand fs-6 fw-normal font-family-Kokoro" href="#">Sistem Informasi Kekayaan
+                        Intelektual<br>Politeknik Negeri Indramayu</a>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Selamat datang, {{ auth()->user()->nama_lengkap }}
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="/logout"><i
+                                                class="bi bi-arrow-bar-left me-2"></i>Log
+                                            Out</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </div>
     {{-- end of top naavbar --}}
     <div class="container-fluid">
@@ -174,62 +177,66 @@
                     </div>
                     <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-3"></i>Daftar Akun Dosen
                     </h3>
-                    <table class="table table-hover font-family-Kokoro">
-                        <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Nama lengkap</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Jabatan</th>
-                                <th scope="col">Alamat</th>
-                                <th scope="col">No telepon</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($dosen as $i => $a)
+                    <div class="table-responsive">
+                        <table class="table table-hover font-family-Kokoro">
+                            <thead>
                                 <tr>
-                                    <th scope="row">{{ $i + 1 }}</th>
-                                    <td>{{ $a->nama_lengkap }}</td>
-                                    <td>{{ $a->email }}</td>
-                                    <td>{{ $a->jabatan }}</td>
-                                    <td>{{ $a->alamat }}</td>
-                                    <td>{{ $a->no_telepon }}</td>
-                                    <td><a href={{ Route('admin.edit', $a->id) }} class="btn btn-warning"><i
-                                                class="bi bi-pencil"></i></a>
-                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop">
-                                            <i class="bi bi-trash3"></i>
-                                        </button>
-                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                            data-bs-keyboard="false" tabindex="-1"
-                                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                                                            Peringatan</h1>
-                                                        <button type="button" class="btn-close"
-                                                            data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Anda yakin akan menghapus akun ini
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-outline-secondary"
-                                                            data-bs-dismiss="modal">Batal</button>
-                                                        <a href={{ Route('dosen.hapus', $a->id) }}
-                                                            class="btn btn-danger">Hapus</a>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Nama lengkap</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Jabatan</th>
+                                    <th scope="col">Alamat</th>
+                                    <th scope="col">No telepon</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($dosen as $i => $a)
+                                    <tr>
+                                        <th scope="row">{{ $i + 1 }}</th>
+                                        <td>{{ $a->nama_lengkap }}</td>
+                                        <td>{{ $a->email }}</td>
+                                        <td>{{ $a->jabatan }}</td>
+                                        <td>{{ $a->alamat }}</td>
+                                        <td>{{ $a->no_telepon }}</td>
+                                        <td><a href={{ Route('detail.Dosen', $a->id) }} class="btn btn-primary"><i
+                                                    class="bi bi-eye"></i></a>
+                                            <a href={{ Route('admin.edit', $a->id) }} class="btn btn-warning"><i
+                                                    class="bi bi-pencil"></i></a>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#staticBackdrop{{ $a->id }}">
+                                                <i class="bi bi-trash3"></i>
+                                            </button>
+                                            <div class="modal fade" id="staticBackdrop{{ $a->id }}" data-bs-backdrop="static"
+                                                data-bs-keyboard="false" tabindex="-1"
+                                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                                                Peringatan</h1>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Anda yakin akan menghapus akun ini
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline-secondary"
+                                                                data-bs-dismiss="modal">Batal</button>
+                                                            <a href={{ Route('dosen.hapus', $a->id) }}
+                                                                class="btn btn-danger">Hapus</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

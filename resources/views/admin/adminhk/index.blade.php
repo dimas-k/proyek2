@@ -135,6 +135,7 @@
                                 <th scope="col">Nama lengkap</th>
                                 <th scope="col">Jenis Ciptaan</th>
                                 <th scope="col">Judul Ciptaan</th>
+                                <th scope="col">Institusi</th>
                                 <th scope="col">Tanggal pengajuan</th>
                                 <th scope="col">Status Hak Cipta</th>
                                 <th scope="col">Action</th>
@@ -147,6 +148,7 @@
                                     <td>{{ $hk->nama_lengkap }}</td>
                                     <td>{{ $hk->jenis_ciptaan }}</td>
                                     <td>{{ $hk->judul_ciptaan }}</td>
+                                    <td>{{ $hk->institusi }}</td>
                                     <td>{{ $hk->tanggal_permohonan }}</td>
                                     <td>{{ $hk->status }}</td>
                                     <td><a href={{ Route('admin_hakcipta.show', $hk->id) }} class="btn btn-info"><i

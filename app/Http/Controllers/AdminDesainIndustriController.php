@@ -67,7 +67,7 @@ class AdminDesainIndustriController extends Controller
     public function show(string $id)
     {
         $di = DesainIndustri::find($id);
-        return view('showdi.index', compact('di'));
+        return view('admin.admindi.showdi.index', compact('di'));
     }
 
     /**

@@ -250,6 +250,22 @@
                         </div>
                     @endif
                     <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-3"></i>Daftar Paten</h3>
+                    <div class="d-flex justify-content-end mb-3">
+                        <form action="/umum/paten/cari" method="GET">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-auto">
+                                    <label for="" class="col-form-label">Cari Paten</label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" id="" class="form-control"
+                                        aria-describedby="" name="cari">
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary ">Cari</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <table class="table table-hover font-family-Kokoro border rounded">
                         <thead>
                             <tr>
@@ -257,6 +273,7 @@
                                 <th scope="col">Nama lengkap</th>
                                 <th scope="col">Jenis Paten</th>
                                 <th scope="col">Judul paten</th>
+                                <th scope="col">Institusi</th>
                                 <th scope="col">Tanggal pengajuan</th>
                                 <th scope="col">Status paten</th>
                                 <th scope="col">Action</th>
@@ -269,6 +286,7 @@
                                     <td>{{ $p->nama_lengkap }}</td>
                                     <td>{{ $p->jenis_paten }}</td>
                                     <td>{{ $p->judul_paten }}</td>
+                                    <td>{{ $p->institusi }}</td>
                                     <td>{{ $p->tanggal_permohonan }}</td>
                                     <td>{{ $p->status }}</td>
                                     <td><a href={{ Route('admin_paten.show', $p->id) }} class="btn btn-info"><i

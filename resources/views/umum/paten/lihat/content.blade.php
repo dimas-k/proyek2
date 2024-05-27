@@ -43,7 +43,7 @@
                                     </tr>
                                     <tr>
                                         <th>Tanggal lahir</th>
-                                        <td>: {{ $paten->tanggal_lahir }}</td>
+                                        <td>: {{ \Carbon\Carbon::parse($p->tanggal_lahir)->format('d-m-Y') }}</td>
                                     </tr>
                                     <tr>
                                         <th>KTP</th>
@@ -61,6 +61,14 @@
                                     <tr>
                                         <th>Kode Pos</th>
                                         <td>: {{ $paten->kode_pos }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Jurusan</th>
+                                        <td>: {{ $p->jurusan }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>prodi</th>
+                                        <td>: {{ $p->prodi }}</td>
                                     </tr>
                                     <tr>
                                         <th>Jenis Paten</th>
@@ -92,8 +100,8 @@
                                     </tr>
                                     <tr>
                                         <th>Pernyataan Kepemilikan</th>
-                                        <td>: <a href={{ asset('storage/' . $paten->pernyataan_kepemilikan) }} class=""
-                                                target="_blank">Lihat Pernyataan Kepemilikan</a></td>
+                                        <td>: <a href={{ asset('storage/' . $paten->pernyataan_kepemilikan) }}
+                                                class="" target="_blank">Lihat Pernyataan Kepemilikan</a></td>
                                     </tr>
                                     <tr>
                                         <th>Surat Kuasa</th>
@@ -116,8 +124,13 @@
                                     </tr>
                                     <tr>
                                         <th>Sertifikat Paten</th>
-                                        <td>: <a href={{ asset('storage/' . $paten->sertifikat_paten) }} class=""
-                                                target="_blank">Lihat sertifikat</a></td>
+                                        <td>: @if ($p->sertifikat != '')
+                                                <a href={{ asset('storage/' . $p->sertifikat_paten) }} class=""
+                                                    target="_blank">Lihat sertifikat</a>
+                                            @else
+                                                Paten Ini Belum Mendapatkan Sertifikat
+                                            @endif
+                                        </td>
                                     </tr>
                                 </table>
                             </div>

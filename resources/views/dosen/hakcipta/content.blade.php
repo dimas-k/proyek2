@@ -6,7 +6,7 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Paten</h1>
+                <h1 class="page-title">Hak Cipta</h1>
                 <div>
                     <ol class="breadcrumb">
                         {{-- <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li> --}}
@@ -24,7 +24,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Diterima</h6>
-                                        <h2 class="mb-0 number-font">20</h2>
+                                        <h2 class="mb-0 number-font">{{ $tercatat }}</h2>
                                     </div>
                                     {{-- <div class="ms-auto">
                                         <div class="chart-wrapper mt-1">
@@ -45,7 +45,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Ditolak</h6>
-                                        <h2 class="mb-0 number-font">40</h2>
+                                        <h2 class="mb-0 number-font">{{ $tolak }}</h2>
                                     </div>
                                     {{-- <div class="ms-auto">
                                         <div class="chart-wrapper mt-1">
@@ -65,8 +65,8 @@
                             <div class="card-body">
                                 <div class="d-flex">
                                     <div class="mt-2">
-                                        <h6 class="">Pemeriksaan Formalitas</h6>
-                                        <h2 class="mb-0 number-font">6</h2>
+                                        <h6 class="">Keterangan Belum Lengkap</h6>
+                                        <h2 class="mb-0 number-font">{{ $null }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -91,6 +91,22 @@
                                         aria-label="Close"></button>
                                 </div>
                             @endif
+                            <div class="d-flex justify-content-end mb-5">
+                                <form action="/hak-cipta/cari" method="GET">
+                                    <div class="row g-2 align-items-center">
+                                        <div class="col-auto">
+                                            <label for="" class="col-form-label">Cari Hak Cipta</label>
+                                        </div>
+                                        <div class="col-auto">
+                                            <input type="text" id="" class="form-control"
+                                                aria-describedby="" name="cari">
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="submit" class="btn btn-primary ">Cari</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             <div class="table-responsive">
                                 <table class="table table-hover p-1">
                                     <thead>
@@ -114,13 +130,13 @@
                                                 <td>{{ $p->tanggal_permohonan }}</td>
                                                 <td>{{ $p->status }}</td>
                                                 <td><a href={{ Route('dsn.lihat.hc', $p->id) }}
-                                                        class="btn btn-info"><i class="bi bi-eye"></i></a>
+                                                        class="btn btn-info"><i class="fa fa-eye" data-bs-toggle="tooltip" ></i></a>
                                                     <a href={{ Route('dsn.edit.hc', $p->id) }}
-                                                        class="btn btn-warning"><i class="bi bi-pencil"></i></a>
-                                                    <a href={{ Route('admin_paten.delete', $p->id) }}
+                                                        class="btn btn-warning"><i class="fa fa-pencil" data-bs-toggle="tooltip"></i></a>
+                                                    {{-- <a href={{ Route('admin_paten.delete', $p->id) }}
                                                         class="btn btn-danger"
                                                         onclick="return confirm('Apakah Kamu Yakin?')"><i
-                                                            class="bi bi-trash3"></i></a>
+                                                            class="bi bi-trash3"></i></a> --}}
                                                 </td>
                                             </tr>
                                         @endforeach

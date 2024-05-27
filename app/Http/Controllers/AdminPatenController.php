@@ -85,6 +85,10 @@ class AdminPatenController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    public function cari(Request $request)
+    {
+        
+    }
     public function create()
     {
         //
@@ -104,7 +108,7 @@ class AdminPatenController extends Controller
     public function show(string $id)
     {
         $p = Paten::find($id);
-        return view('showpaten.index', compact('p'));
+        return view('admin.adminpaten.showpaten.index', compact('p'));
     }
 
     /**

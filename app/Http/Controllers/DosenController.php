@@ -21,7 +21,7 @@ class DosenController extends Controller
     }
     public function paten()
     {
-        $paten = Paten::where('institusi', 'Dosen')->get();
+        $paten = Paten::where('institusi', 'Dosen')->paginate(5);
         $pf = Paten::where('status', 'Pemeriksaan Formalitas')->where('institusi', 'Dosen')->count();
         $mt = Paten::where('status', 'Menunggu Tanggapan Formalitas')->where('institusi', 'Dosen')->count();
         $mp = Paten::where('status', 'Masa pengumuman')->where('institusi', 'Dosen')->count();
@@ -34,11 +34,43 @@ class DosenController extends Controller
         $tolak = Paten::where('status', 'Ditolak')->where('institusi', 'Dosen')->count();
         return view('dosen.paten.index', compact('pf', 'paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak'));
     }
+    public function cariPaten(Request $request){
+        $cari = $request->input('cari');
+        $paten = Paten::where('judul_paten','LIKE',"%".$cari."%")->orWhere('nama_lengkap','LIKE',"%".$cari."%")->orWhere('status','LIKE',"%".$cari."%")->paginate(5); //yang bener
+        // $paten = DB::table('paten')->whereRaw('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //penggunaan raw queri
+        // dd($cpaten);
+        // $paten = Paten::where('institusi', 'Dosen')->get();
+        $pf = Paten::where('status', 'Pemeriksaan Formalitas')->where('institusi', 'Dosen')->count();
+        $mt = Paten::where('status', 'Menunggu Tanggapan Formalitas')->where('institusi', 'Dosen')->count();                                                      
+        $mp = Paten::where('status', 'Masa pengumuman')->where('institusi', 'Dosen')->count();
+        $mps = Paten::where('status', 'Menunggu Pembayaran Substansif')->where('institusi', 'Dosen')->count();
+        $staw = Paten::where('status', 'Substansif Tahap Awal')->where('institusi', 'Dosen')->count();
+        $stl = Paten::where('status', 'Substansif Tahap Lanjut')->where('institusi', 'Dosen')->count();
+        $stak = Paten::where('status', 'Substansif Tahap Akhir')->where('institusi', 'Dosen')->count();
+        $mts = Paten::where('status', 'Menunggu Tanggapan Substansif')->where('institusi', 'Dosen')->count();
+        $catat = Paten::where('status', 'Diberi')->where('institusi', 'Dosen')->count();
+        $tolak = Paten::where('status', 'Ditolak')->where('institusi', 'Dosen')->count();
+        return view('dosen.paten.index', compact('pf','mt','mp','mps','staw','stl','stak','mts','catat','tolak','paten'));
+    }
     
     public function hakCipta()
     {
         $hc = HakCipta::where('institusi', 'Dosen')->get();
-        return view('dosen.hakcipta.index', compact('hc'));
+        $tercatat = HakCipta::where('status', 'Tercatat')->where('institusi', 'Dosen')->count();
+        $null = HakCipta::where('status', 'Keterangan Belum Lengkap')->where('institusi', 'Dosen')->count();
+        $tolak = HakCipta::where('status', 'Ditolak')->where('institusi', 'Dosen')->count();
+        return view('dosen.hakcipta.index', compact('hc','tercatat','null','tolak'));
+    }
+    public function cariHc(Request $request){
+        $cari = $request->input('cari');
+        $hc = HakCipta::where('judul_ciptaan','LIKE',"%".$cari."%")->orWhere('nama_lengkap','LIKE',"%".$cari."%")->orWhere('status','LIKE',"%".$cari."%")->paginate(5); //yang bener
+        // $paten = DB::table('paten')->whereRaw('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //penggunaan raw queri
+        // dd($cpaten);
+        // $paten = Paten::where('institusi', 'Dosen')->get();
+        $tercatat = HakCipta::where('status', 'Tercatat')->where('institusi', 'Dosen')->count();
+        $null = HakCipta::where('status', 'Keterangan Belum Lengkap')->where('institusi', 'Dosen')->count();
+        $tolak = HakCipta::where('status', 'Ditolak')->where('institusi', 'Dosen')->count();
+        return view('dosen.hakcipta.index', compact('hc','tercatat','null','tolak'));
     }
     public function pengajuanPaten()
     {
@@ -51,7 +83,25 @@ class DosenController extends Controller
     public function desainIndustri()
     {
         $di = DesainIndustri::where('institusi', 'Dosen')->get();
-        return view('dosen.desainindustri.index', compact('di'));
+        $beri = DesainIndustri::where('status','Diberi')->where('institusi', 'Dosen')->count();
+        $proses = DesainIndustri::where('status','Dalam Proses Usulan')->where('institusi', 'Dosen')->count();
+        $priksa = DesainIndustri::where('status','Pemeriksaan')->where('institusi', 'Dosen')->count();
+        $null = DesainIndustri::where('status','Keterangan Belum Lengkap')->where('institusi', 'Dosen')->count();
+        $tolak = DesainIndustri::where('status','Ditolak')->where('institusi', 'Dosen')->count();
+        return view('dosen.desainindustri.index', compact('di','priksa', 'proses', 'null','tolak','beri'));
+    }
+    public function cariDi(Request $request){
+        $cari = $request->input('cari');
+        $di = DesainIndustri::where('judul_di','LIKE',"%".$cari."%")->orWhere('nama_lengkap','LIKE',"%".$cari."%")->orWhere('status','LIKE',"%".$cari."%")->paginate(5); //yang bener
+        // $paten = DB::table('paten')->whereRaw('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //penggunaan raw queri
+        // dd($cpaten);
+        // $paten = Paten::where('institusi', 'Dosen')->get();
+        $beri = DesainIndustri::where('status','Diberi')->where('institusi', 'Dosen')->count();
+        $proses = DesainIndustri::where('status','Dalam Proses Usulan')->where('institusi', 'Dosen')->count();
+        $priksa = DesainIndustri::where('status','Pemeriksaan')->where('institusi', 'Dosen')->count();
+        $null = DesainIndustri::where('status','Keterangan Belum Lengkap')->where('institusi', 'Dosen')->count();
+        $tolak = DesainIndustri::where('status','Ditolak')->where('institusi', 'Dosen')->count();
+        return view('dosen.desainindustri.index', compact('di','priksa', 'proses', 'null','tolak','beri'));
     }
     public function pengajuanDi()
     {
@@ -170,6 +220,8 @@ class DosenController extends Controller
         $paten->kewarganegaraan = $request->kewarganegaraan;
         $paten->kode_pos = $request->kode_pos;
         $paten->institusi = $request->institusi;
+        $paten->jurusan = $request->jurusan;
+        $paten->prodi = $request->prodi;
         $paten->jenis_paten = $request-> jenis_paten;
         $paten->judul_paten = $request->judul_paten;
         $paten->abstrak_paten = $request->file('abstrak_paten')->store('dokumen-paten');

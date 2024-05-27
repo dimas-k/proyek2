@@ -26,7 +26,7 @@
                             </h3>
                         </div>
                         <div class="card-body">
-                            
+
                             <form action={{ Route('dsn.update.paten', $paten->id) }} enctype="multipart/form-data"
                                 method="post">
                                 @csrf
@@ -97,6 +97,7 @@
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
+                                                <p class="text-danger"><i class="fa fa-warning me-1" data-bs-toggle="tooltip"></i>Harap isi dengan isian yang sama. formulir pengajuan</p>
                                             </td>
                                         </tr>
                                         <tr>
@@ -143,6 +144,57 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <th>jurusan</th>
+                                            <td>
+                                                <select class="form-select @error('jurusan') is-invalid @enderror"
+                                                    aria-label="Default select example" name="jurusan">
+                                                    <option selected>Pilih Jurusan</option>
+                                                    <option value="Teknik Informatika">Teknik Informatika</option>
+                                                    <option value="Teknik Mesin">Teknik Mesin
+                                                    </option>
+                                                    <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan
+                                                        Tata Udara</option>
+                                                    <option value="Keperawatan">Keperawatan
+                                                    </option>
+                                                </select>
+                                                @error('jurusan')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                                <p class="text-danger"><i class="fa fa-warning me-1" data-bs-toggle="tooltip"></i>Harap isi dengan isian yang sama. formulir pengajuan</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Prodi</th>
+                                            <td>
+                                                <select class="form-select @error('prodi') is-invalid @enderror"
+                                                    aria-label="Default select example" name="prodi">
+                                                    <option selected>Pilih Prodi</option>
+                                                    <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
+                                                    <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat
+                                                        Lunak</option>
+                                                    <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi
+                                                        Kota Cerdas
+                                                    </option>
+                                                    <option value="D3 Tenknik Mesin">D3 Tenknik Mesin</option>
+                                                    <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur
+                                                    </option>
+                                                    <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik
+                                                        Pendingin dan Tata Udara</option>
+                                                    <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik
+                                                        Instrimentasi Kontrol</option>
+                                                    <option value="D3 Keperawatan">D3 Keperawan</option>
+                                                </select>
+                                                @error('prodi')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                                <p class="text-danger"><i class="fa fa-warning me-1" data-bs-toggle="tooltip"></i>Harap isi dengan isian yang sama. formulir pengajuan</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <th>Jenis Paten</th>
                                             <td>
                                                 <div class="form-check">
@@ -159,6 +211,7 @@
                                                         Paten Sederhana
                                                     </label>
                                                 </div>
+                                                <p class="text-danger"><i class="fa fa-warning me-1" data-bs-toggle="tooltip"></i>Harap isi dengan isian yang sama. formulir pengajuan</p>
                                             </td>
                                         </tr>
                                         <tr>
@@ -187,6 +240,7 @@
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
+                                                <p class="text-danger"><i class="fa fa-warning me-1" data-bs-toggle="tooltip"></i>Harap isi dengan isian yang sama. formulir pengajuan</p>
                                             </td>
                                         </tr>
                                         <tr>
@@ -200,6 +254,7 @@
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
+                                                <p class="text-danger"><i class="fa fa-warning me-1" data-bs-toggle="tooltip"></i>Harap isi dengan isian yang sama. formulir pengajuan</p>
                                             </td>
                                         </tr>
                                         <tr>
@@ -214,114 +269,121 @@
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
+                                                <p class="text-danger"><i class="fa fa-warning me-1" data-bs-toggle="tooltip"></i>Harap isi dengan isian yang sama. formulir pengajuan</p>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Klaim</th>
                                             <td>
                                                 <input type="file"
-                                            class="form-control @error('abstrak_paten') is-invalid @enderror"
-                                            id="" placeholder="" name="klaim">
-                                        @error('klaim')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
+                                                    class="form-control @error('abstrak_paten') is-invalid @enderror"
+                                                    id="" placeholder="" name="klaim">
+                                                @error('klaim')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                                <p class="text-danger"><i class="fa fa-warning me-1" data-bs-toggle="tooltip"></i>Harap isi dengan isian yang sama. formulir pengajuan</p>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Pernyataan Kepemilikan</th>
                                             <td>
                                                 <input type="file"
-                                            class="form-control @error('pernyataan_kepemilikan') is-invalid @enderror"
-                                            id="" placeholder="" name="pernyataan_kepemilikan">
-                                        @error('pernyataan_kepemilikan')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
+                                                    class="form-control @error('pernyataan_kepemilikan') is-invalid @enderror"
+                                                    id="" placeholder="" name="pernyataan_kepemilikan">
+                                                @error('pernyataan_kepemilikan')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                                <p class="text-danger"><i class="fa fa-warning me-1" data-bs-toggle="tooltip"></i>Harap isi dengan isian yang sama. formulir pengajuan</p>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Surat Kuasa</th>
                                             <td>
                                                 <input type="file"
-                                            class="form-control @error('surat_kuasa') is-invalid @enderror"
-                                            id="" placeholder="" name="surat_kuasa">
-                                        @error('surat_kuasa')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
+                                                    class="form-control @error('surat_kuasa') is-invalid @enderror"
+                                                    id="" placeholder="" name="surat_kuasa">
+                                                @error('surat_kuasa')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                                <p class="text-danger"><i class="fa fa-warning me-1" data-bs-toggle="tooltip"></i>Harap isi dengan isian yang sama. formulir pengajuan</p>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Gambar Paten</th>
                                             <td>
                                                 <input type="file"
-                                            class="form-control @error('gambar_paten') is-invalid @enderror"
-                                            id="" placeholder="" name="gambar_paten">
-                                        @error('surat_kuasa')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
+                                                    class="form-control @error('gambar_paten') is-invalid @enderror"
+                                                    id="" placeholder="" name="gambar_paten">
+                                                @error('surat_kuasa')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                                <p class="text-danger"><i class="fa fa-warning me-1" data-bs-toggle="tooltip"></i>Harap isi dengan isian yang sama. formulir pengajuan</p>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Gambar Tampilan</th>
                                             <td>
                                                 <input type="file"
-                                            class="form-control @error('gambar_tampilan') is-invalid @enderror"
-                                            id="" placeholder="" name="gambar_tampilan">
-                                        @error('gambar_tampilan')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
+                                                    class="form-control @error('gambar_tampilan') is-invalid @enderror"
+                                                    id="" placeholder="" name="gambar_tampilan">
+                                                @error('gambar_tampilan')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                                <p class="text-danger"><i class="fa fa-warning me-1" data-bs-toggle="tooltip"></i>Harap isi dengan isian yang sama. formulir pengajuan</p>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Tanggal pengajuan</th>
                                             <td>
                                                 <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
-                                                class="form-control @error('tanggal_permohonan') is-invalid @enderror" value="{{ $paten->tanggal_permohonan }}">
-                                            @error('tanggal_permohonan')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
+                                                    class="form-control @error('tanggal_permohonan') is-invalid @enderror"
+                                                    value="{{ $paten->tanggal_permohonan }}">
+                                                @error('tanggal_permohonan')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
-                                        Simpan
-                                    </button>
+                                    data-bs-target="#exampleModal">
+                                    Simpan
+                                </button>
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" data-bs-backdrop="static"
-                                        tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Perhatian
-                                                    </h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah anda yakin dengan data yang di inputkan ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-outline-danger"
-                                                        data-bs-dismiss="modal">Tidak</button>
-                                                    <button type="submit" class="btn btn-primary">Yakin</button>
-                                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Perhatian
+                                                </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin dengan data yang di inputkan ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-danger"
+                                                    data-bs-dismiss="modal">Tidak</button>
+                                                <button type="submit" class="btn btn-primary">Yakin</button>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                             </form>
                         </div>
                     </div>

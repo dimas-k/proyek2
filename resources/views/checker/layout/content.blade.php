@@ -6,67 +6,81 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Paten</h1>
+                <h1 class="page-title">Dashboard</h1>
                 <div>
                     <ol class="breadcrumb">
-                        {{-- <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li> --}}
-                        <li class="breadcrumb-item active" aria-current="page">Hak Cipta</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                     </ol>
                 </div>
             </div>
             <!-- PAGE-HEADER END -->
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                <div class="row">
 
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                        <div class="card overflow-hidden">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="mt-2">
-                                        <h6 class="">Diterima</h6>
-                                        <h2 class="mb-0 number-font">{{ $tercatat }}</h2>
-                                    </div>
-                                    {{-- <div class="ms-auto">
-                                        <div class="chart-wrapper mt-1">
-                                            <canvas id="saleschart"
-                                                class="h-8 w-9 chart-dropshadow"></canvas>
+            <!-- ROW-1 -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+                    <div class="row">
+                        <div class="d-flex justify-content-center">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                <div class="card overflow-hidden">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="mt-2">
+                                                <h6 class="">Paten</h6>
+                                                <h2 class="mb-0 number-font">{</h2>
+                                            </div>
+                                            {{-- <div class="ms-auto">
+                                            <div class="chart-wrapper mt-1">
+                                                <canvas id="saleschart"
+                                                    class="h-8 w-9 chart-dropshadow"></canvas>
+                                            </div>
+                                        </div> --}}
                                         </div>
-                                    </div> --}}
-                                </div>
-                                {{-- <span class="text-muted fs-12"><span class="text-secondary"><i
-                                            class="fe fe-arrow-up-circle  text-secondary"></i> 5%</span>
-                                    Last week</span> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                        <div class="card overflow-hidden">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="mt-2">
-                                        <h6 class="">Ditolak</h6>
-                                        <h2 class="mb-0 number-font">{{ $tolak }}</h2>
+                                        {{-- <span class="text-muted fs-12"><span class="text-secondary"><i
+                                                class="fe fe-arrow-up-circle  text-secondary"></i> 5%</span>
+                                        Last week</span> --}}
                                     </div>
-                                    {{-- <div class="ms-auto">
-                                        <div class="chart-wrapper mt-1">
-                                            <canvas id="leadschart"
-                                                class="h-8 w-9 chart-dropshadow"></canvas>
-                                        </div>
-                                    </div> --}}
                                 </div>
-                                {{-- <span class="text-muted fs-12"><span class="text-pink"><i
-                                            class="fe fe-arrow-down-circle text-pink"></i> 0.75%</span>
-                                    Last 6 days</span> --}}
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                        <div class="card overflow-hidden">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="mt-2">
-                                        <h6 class="">Keterangan Belum Lengkap</h6>
-                                        <h2 class="mb-0 number-font">{{ $null }}</h2>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                <div class="card overflow-hidden">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="mt-2">
+                                                <h6 class="">Hak Cipta</h6>
+                                                <h2 class="mb-0 number-font"></h2>
+                                            </div>
+                                            {{-- <div class="ms-auto">
+                                            <div class="chart-wrapper mt-1">
+                                                <canvas id="leadschart"
+                                                    class="h-8 w-9 chart-dropshadow"></canvas>
+                                            </div>
+                                        </div> --}}
+                                        </div>
+                                        {{-- <span class="text-muted fs-12"><span class="text-pink"><i
+                                                class="fe fe-arrow-down-circle text-pink"></i> 0.75%</span>
+                                        Last 6 days</span> --}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                                <div class="card overflow-hidden">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="mt-2">
+                                                <h6 class="">Desain Industri</h6>
+                                                <h2 class="mb-0 number-font"></h2>
+                                            </div>
+                                            {{-- <div class="ms-auto">
+                                            <div class="chart-wrapper mt-1">
+                                                <canvas id="profitchart"
+                                                    class="h-8 w-9 chart-dropshadow"></canvas>
+                                            </div>
+                                        </div> --}}
+                                        </div>
+                                        {{-- <span class="text-muted fs-12"><span class="text-green"><i
+                                                class="fe fe-arrow-up-circle text-green"></i> 0.9%</span>
+                                        Last 9 days</span> --}}
                                     </div>
                                 </div>
                             </div>
@@ -74,97 +88,24 @@
                     </div>
                 </div>
             </div>
+            <!-- ROW-1 END -->
+
             <!-- ROW-2 -->
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Hak
-                                Cipta
-                            </h3>
+                            <h3 class="card-title">Sales Analytics</h3>
                         </div>
                         <div class="card-body">
-                            @if (session()->has('success'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {{ session('success') }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
-                                </div>
-                            @endif
-                            <div class="d-flex justify-content-end mb-5">
-                                <form action="/umum/hak-cipta/cari" method="GET">
-                                    <div class="row g-2 align-items-center">
-                                        <div class="col-auto">
-                                            <label for="" class="col-form-label">Cari Hak Cipta</label>
-                                        </div>
-                                        <div class="col-auto">
-                                            <input type="text" id="" class="form-control"
-                                                aria-describedby="" name="cari">
-                                        </div>
-                                        <div class="col-auto">
-                                            <button type="submit" class="btn btn-primary ">Cari</button>
-                                        </div>
-                                    </div>
-                                </form>
+                            <div class="d-flex mx-auto text-center justify-content-center mb-4">
+                                <div class="d-flex text-center justify-content-center me-3"><span
+                                        class="dot-label bg-primary my-auto"></span>Total Sales</div>
+                                <div class="d-flex text-center justify-content-center"><span
+                                        class="dot-label bg-secondary my-auto"></span>Total Orders</div>
                             </div>
-                            <div class="table-responsive">
-                                <table class="table table-hover p-1">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">No</th>
-                                            <th scope="col">Nama lengkap</th>
-                                            <th scope="col">Jenis ciptaan</th>
-                                            <th scope="col">Judul ciptaan</th>
-                                            <th scope="col">Tanggal pengajuan</th>
-                                            <th scope="col">Status paten</th>
-                                            <th scope="col">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($hc as $i => $p)
-                                            <tr>
-                                                <th scope="row">{{ $i + 1 }}</th>
-                                                <td>{{ $p->nama_lengkap }}</td>
-                                                <td>{{ $p->jenis_ciptaan }}</td>
-                                                <td>{{ $p->judul_ciptaan }}</td>
-                                                <td>{{ $p->tanggal_permohonan }}</td>
-                                                <td>{{ $p->status }}</td>
-                                                <td><a href={{ Route('umum.hc.lihat', $p->id) }}
-                                                        class="btn btn-info"><i class="fa fa-eye" data-bs-toggle="tooltip"></i></a>
-                                                    <a href={{ Route('umum.hc.edit', $p->id) }}
-                                                        class="btn btn-warning"><i class="fa fa-pencil" data-bs-toggle="tooltip"></i></a>
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop">
-                                                        <i class="fa fa-trash" data-bs-toggle="tooltip"></i>
-                                                    </button>
-                                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                                        data-bs-keyboard="false" tabindex="-1"
-                                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                                                                        Peringatan</h1>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    Anda yakin akan menghapus pengajuan ini
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-outline-secondary"
-                                                                        data-bs-dismiss="modal">Batal</button>
-                                                                    <a href={{ Route('umum.hc.hapus', $p->id) }}
-                                                                        class="btn btn-danger">Hapus</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                            <div class="chartjs-wrapper-demo">
+                                <canvas id="transactions" class="chart-dropshadow"></canvas>
                             </div>
                         </div>
                     </div>

@@ -98,6 +98,30 @@ class AdminController extends Controller
 
         return redirect('/admin/pengguna/dosen')->with('success','Data dosen telah ditambahkan');
     }
+    public function editDosen(Request $request, string $id)
+    {
+        $validasidata = $request->validate([
+            'email' => 'required|email',
+            'username'=>'required|min:3',
+            'password'=> 'required|max:10',
+            'ktp'=>'required|mimes:pdf|max:2028',
+        ]);
+        $user = User::find($id);
+        $user->nama_lengkap = $request->nama_lengkap;
+        $user->no_telepon = $request->no_telepon;
+        $user->email = $request->email;
+        $user->alamat = $request->alamat;
+        $user->ktp = $request->file('ktp')->store('dokumen_user');
+        $user->kerjaan = $request->kerjaan;
+        $user->jabatan = $request->jabatan;
+        $user->nip = $request->nip;
+        $user->username = $request->username;
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
+        $user->save($validasidata);
+
+        return redirect('/admin/pengguna/dosen')->with('success','Data dosen telah diubah');
+    }
     public function hapusDosen(string $id)
     {
         User::find($id)->delete();

@@ -115,8 +115,8 @@
                             <div class="card-body">
                                 <div class="d-flex">
                                     <div class="mt-2">
-                                        <h6 class="">Menunggu Tanggapan Substansif</h6>
-                                        <h2 class="mb-0 number-font">{{ $mts }}</h2>
+                                        <h6 class="">Menunggu Pembayaran Substansif</h6>
+                                        <h2 class="mb-0 number-font">{{ $mps }}</h2>
                                     </div>
                                     {{-- <div class="ms-auto">
                                         <div class="chart-wrapper mt-1">
@@ -149,7 +149,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Substansif Tahap Lanjut</h6>
-                                        <h2 class="mb-0 number-font">6</h2>
+                                        <h2 class="mb-0 number-font"> {{ $stl }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Substansif Tahap Awal</h6>
-                                        <h2 class="mb-0 number-font">6</h2>
+                                        <h2 class="mb-0 number-font">{{ $staw }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -178,7 +178,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Menunggu Tanggapan substansif
-                                            <h2 class="mb-0 number-font">6</h2>
+                                            <h2 class="mb-0 number-font">{{ $mts }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -202,15 +202,15 @@
                                         aria-label="Close"></button>
                                 </div>
                             @endif
-                            <div class="d-flex justify-content-end">
-                                <form action="/cari" method="GET">
+                            <div class="d-flex justify-content-end mb-5">
+                                <form action="/paten/cari" method="GET">
                                     <div class="row g-2 align-items-center">
                                         <div class="col-auto">
                                             <label for="" class="col-form-label">Cari Paten</label>
                                         </div>
                                         <div class="col-auto">
                                             <input type="text" id="" class="form-control"
-                                                aria-describedby="">
+                                                aria-describedby="" name="cari">
                                         </div>
                                         <div class="col-auto">
                                             <button type="submit" class="btn btn-primary ">Cari</button>
@@ -241,11 +241,11 @@
                                                 <td>{{ $p->tanggal_permohonan }}</td>
                                                 <td>{{ $p->status }}</td>
                                                 <td><a href={{ Route('dsn.paten.lihat', $p->id) }}
-                                                        class="btn btn-info"><i class="bi bi-eye"></i></a>
+                                                        class="btn btn-info"><i class="fa fa-eye" data-bs-toggle="tooltip" ></i></a>
                                                     <a href={{ Route('dsn.edit.paten', $p->id) }}
                                                         class="btn btn-warning"><i class="fa fa-pencil"
                                                             data-bs-toggle="tooltip"></i></a>
-                                                    <button type="button" class="btn btn-danger"
+                                                    {{-- <button type="button" class="btn btn-danger"
                                                         data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                                         <i class="fa fa-trash" data-bs-toggle="tooltip"></i>
                                                     </button>
@@ -275,12 +275,13 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {{-- {{ $paten->links() }} --}}
                             </div>
                         </div>
                     </div>

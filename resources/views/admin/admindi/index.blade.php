@@ -168,6 +168,7 @@
                                 <th scope="col">Nama lengkap</th>
                                 <th scope="col">Jenis Ciptaan</th>
                                 <th scope="col">Judul Ciptaan</th>
+                                <th scope="col">Institusi</th>
                                 <th scope="col">Tanggal pengajuan</th>
                                 <th scope="col">Status </th>
                                 <th scope="col">Action</th>
@@ -180,6 +181,7 @@
                                     <td>{{ $di->nama_lengkap }}</td>
                                     <td>{{ $di->jenis_di }}</td>
                                     <td>{{ $di->judul_di }}</td>
+                                    <td>{{ $di->institusi }}</td>
                                     <td>{{ $di->tanggal_permohonan }}</td>
                                     <td>{{ $di->status }}</td>
                                     <td><a href={{ Route('admin_desainindustri.show', $di->id) }} class="btn btn-info"><i class="bi bi-eye"></i></a>

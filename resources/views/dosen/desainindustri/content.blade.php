@@ -24,7 +24,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Diterima</h6>
-                                        <h2 class="mb-0 number-font">20</h2>
+                                        <h2 class="mb-0 number-font">{{ $desainDi }}</h2>
                                     </div>
                                     {{-- <div class="ms-auto">
                                         <div class="chart-wrapper mt-1">
@@ -45,7 +45,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Ditolak</h6>
-                                        <h2 class="mb-0 number-font">40</h2>
+                                        <h2 class="mb-0 number-font">{{ $desainDK }}</h2>
                                     </div>
                                     {{-- <div class="ms-auto">
                                         <div class="chart-wrapper mt-1">
@@ -66,7 +66,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Pemeriksaan Formalitas</h6>
-                                        <h2 class="mb-0 number-font">6</h2>
+                                        <h2 class="mb-0 number-font">{{ $desainP }}</h2>
                                     </div>
                                 </div>
                             </div>

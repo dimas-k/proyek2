@@ -6,6 +6,8 @@ use App\Models\DesainIndustri;
 use App\Models\HakCipta;
 use App\Models\Paten;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class DosenController extends Controller
 {
@@ -17,7 +19,29 @@ class DosenController extends Controller
         $paten = Paten::where('institusi', 'Dosen')->count();
         $hc = HakCipta::where('institusi', 'Dosen')->count();
         $di = DesainIndustri::where('institusi', 'Dosen')->count();
-        return view('dosen.index', compact('paten','hc','di'));
+        //HakCipta
+        $hcTolak = HakCipta::where('status', 'Ditolak')->where('user_id', Auth::user()->id)->count();
+        $hcTerima = HakCipta::where('status', 'Diterima')->where('user_id', Auth::user()->id)->count();
+        $hcKet = HakCipta::where('status', 'Keterangan belum lengkap')->where('user_id', Auth::user()->id)->count();
+        //Paten
+        $patenPF = Paten::where('user_id', Auth::user()->id)->where('status', 'Pemeriksaan formalitas')->count();
+        $patenMTF = Paten::where('user_id', Auth::user()->id)->where('status', 'Menunggu tanggapan formalitas')->count();
+        $patenMP = Paten::where('user_id', Auth::user()->id)->where('status', 'Masa pengumuman')->count();
+        $patenMPS = Paten::where('user_id', Auth::user()->id)->where('status', 'Menunggu pembayaran substansif')->count();
+        $patenSTAW = Paten::where('user_id', Auth::user()->id)->where('status', 'Substansif tahap awal')->count();
+        $patenSTL = Paten::where('user_id', Auth::user()->id)->where('status', 'Substansif tahap lanjut')->count();
+        $patenSTAK = Paten::where('user_id', Auth::user()->id)->where('status', 'Substansif tahap akhir')->count();
+        $patenMTS = Paten::where('user_id', Auth::user()->id)->where('status', 'Menunggu tanggapan substansif')->count();
+        $patenDI = Paten::where('user_id', Auth::user()->id)->where('status', 'Diberi')->count();
+        $patenDK = Paten::where('user_id', Auth::user()->id)->where('status', 'Ditolak')->count();
+        //Desain Industri
+        $desainDi = DesainIndustri::where('user_id', Auth::user()->id)->where('status', 'Diberi')->count();
+        $desainDK = DesainIndustri::where('user_id', Auth::user()->id)->where('status', 'Ditolak')->count();
+        $desainP = DesainIndustri::where('user_id', Auth::user()->id)->where('status', 'Pemeriksaan')->count();
+        $desainKBL = DesainIndustri::where('user_id', Auth::user()->id)->where('status', 'Keterangan belum lengkap')->count();
+        $desainDPU = DesainIndustri::where('user_id', Auth::user()->id)->where('status', 'Dalam proses usulan')->count();
+
+        return view('dosen.index', compact('paten','hc','di', 'hcTolak', 'hcKet', 'hcTerima','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','desainDi','desainDK','desainP','desainKBL','desainDPU'));
     }
     public function paten()
     {
@@ -37,8 +61,11 @@ class DosenController extends Controller
     
     public function hakCipta()
     {
+        $hcTolak = HakCipta::where('status', 'Ditolak')->where('user_id', Auth::user()->id)->count();
+        $hcTerima = HakCipta::where('status', 'Diterima')->where('user_id', Auth::user()->id)->count();
+        $hcKet = HakCipta::where('status', 'Keterangan belum lengkap')->where('user_id', Auth::user()->id)->count();
         $hc = HakCipta::where('institusi', 'Dosen')->get();
-        return view('dosen.hakcipta.index', compact('hc'));
+        return view('dosen.hakcipta.index', compact('hc','hcTolak','hcTerima','hcKet'));
     }
     public function pengajuanPaten()
     {
@@ -50,8 +77,13 @@ class DosenController extends Controller
     }
     public function desainIndustri()
     {
+        $desainDi = DesainIndustri::where('user_id', Auth::user()->id)->where('status', 'Diberi')->count();
+        $desainDK = DesainIndustri::where('user_id', Auth::user()->id)->where('status', 'Ditolak')->count();
+        $desainP = DesainIndustri::where('user_id', Auth::user()->id)->where('status', 'Pemeriksaan')->count();
+        $desainKBL = DesainIndustri::where('user_id', Auth::user()->id)->where('status', 'Keterangan belum lengkap')->count();
+        $desainDPU = DesainIndustri::where('user_id', Auth::user()->id)->where('status', 'Dalam proses usulan')->count();
         $di = DesainIndustri::where('institusi', 'Dosen')->get();
-        return view('dosen.desainindustri.index', compact('di'));
+        return view('dosen.desainindustri.index', compact('di','desainDi','desainDK','desainP','desainKBL','desainDPU'));
     }
     public function pengajuanDi()
     {

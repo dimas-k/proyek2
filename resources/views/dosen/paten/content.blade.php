@@ -149,7 +149,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Substansif Tahap Lanjut</h6>
-                                        <h2 class="mb-0 number-font">6</h2>
+                                        <h2 class="mb-0 number-font">{{ $stl }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Substansif Tahap Awal</h6>
-                                        <h2 class="mb-0 number-font">6</h2>
+                                        <h2 class="mb-0 number-font">{{ $staw }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -178,7 +178,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Menunggu Tanggapan substansif
-                                            <h2 class="mb-0 number-font">6</h2>
+                                            <h2 class="mb-0 number-font">{{ $mts }}</h2>
                                     </div>
                                 </div>
                             </div>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Paten;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class PatenController extends Controller
 {
@@ -13,7 +15,7 @@ class PatenController extends Controller
      */
     public function index(Request $request)
     {
-        $paten = Paten::latest()->paginate(5);
+        $paten1 = Paten::latest()->paginate(5);
         $carijudul = $request->get('cari_judul');
         $carinama = $request->get('cari_nama');
 
@@ -28,7 +30,20 @@ class PatenController extends Controller
         $mts = Paten::where('status', 'Menunggu Tanggapan Substansif')->count();
         $catat = Paten::where('status', 'Diberi')->count();
         $tolak = Paten::where('status', 'Ditolak')->count();
-        return view('umum-page.paten.index', compact('pf', 'paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung'));
+
+        $paten = Paten::where('institusi')->count();
+        $patenPF = Paten::where('status', 'Pemeriksaan formalitas')->count();
+        $patenMTF = Paten::where('status', 'Menunggu tanggapan formalitas')->count();
+        $patenMP = Paten::where('status', 'Masa pengumuman')->count();
+        $patenMPS = Paten::where('status', 'Menunggu pembayaran substansif')->count();
+        $patenSTAW = Paten::where('status', 'Substansif tahap awal')->count();
+        $patenSTL = Paten::where('status', 'Substansif tahap lanjut')->count();
+        $patenSTAK = Paten::where('status', 'Substansif tahap akhir')->count();
+        $patenMTS = Paten::where('status', 'Menunggu tanggapan substansif')->count();
+        $patenDI = Paten::where('status', 'Diberi')->count();
+        $patenDK = Paten::where('status', 'Ditolak')->count();
+
+        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK'));
     }
 
     public function cari(Request $request){

@@ -718,6 +718,151 @@
     <!-- CUSTOM JS -->
     <script src="{{ asset('assets-user/js/custom.js') }}"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // hak cipta
+        const hcTolak = document.getElementById('hcTolak').value;
+        const hcTerima = document.getElementById('hcTerima').value;
+        const hcKet = document.getElementById('hcKet').value;
+
+        // paten
+        const patenPF = document.getElementById('patenPF').value;
+        const patenMTF = document.getElementById('patenMTF').value;
+        const patenMP = document.getElementById('patenMP').value;
+        const patenMPS = document.getElementById('patenMPS').value;
+        const patenSTAW = document.getElementById('patenSTAW').value;
+        const patenSTL = document.getElementById('patenSTL').value;
+        const patenSTAK = document.getElementById('patenSTAK').value;
+        const patenMTS = document.getElementById('patenMTS').value;
+        const patenDI = document.getElementById('patenDI').value;
+        const patenDK = document.getElementById('patenDK').value;
+
+        //Desain Industri
+        const desainDi = document.getElementById('desainDi').value;
+        const desainDK = document.getElementById('desainDK').value;
+        const desainP = document.getElementById('desainP').value;
+        const desainKBL = document.getElementById('desainKBL').value;
+        const desainDPU = document.getElementById('desainDPU').value;
+
+
+
+
+        const hc = document.getElementById('hc-chart').getContext('2d');
+        const paten = document.getElementById('paten-chart').getContext('2d');
+        const di = document.getElementById('di-chart').getContext('2d');
+
+        const hcChart = new Chart(hc, {
+            type: 'bar',
+            data: {
+                labels: ['Keterangan belum lengkap', 'Ditolak', 'Diterima'],
+                datasets: [
+                    {
+                    label: 'HAK CIPTA',
+                    data: [hcKet, hcTolak, hcTerima],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                    ],
+                    borderWidth: 2
+                },
+            ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        const patenChart = new Chart(paten, {
+            type: 'bar',
+            data: {
+                labels: ['Diberi', 'Ditolak', 'Pemeriksaan Formalitas','Menunggu pembayaran substansif','Menunggu tanggapan substansif','Substansif tahap awal','Substansi tahap lanjut','Substansi tahap akhir','Masa pengumuman','Menunggu tanggapan formalitas'],
+                datasets: [
+                    {
+                    label: 'HAK CIPTA',
+                    data: [patenDI,patenDK,patenPF,patenMPS,patenMTS,patenSTAW,patenSTL,patenSTAK,patenMP,patenMTF],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                    ],
+                    borderWidth: 1
+                },
+            ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        const diChart = new Chart(di, {
+            type: 'bar',
+            data: {
+                labels: ['Ditolak', 'Diberi','Pemeriksaan','Dalam proses usulan','Keterangan belum lengkap'],
+                datasets: [
+                    {
+                    label: 'HAK CIPTA',
+                    data: [desainDK, desainDi, desainP,desainDPU,desainKBL],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                    ],
+                    borderWidth: 1
+                },
+            ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
 </body>
 
 </html>

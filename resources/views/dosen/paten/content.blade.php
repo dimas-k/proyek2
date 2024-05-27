@@ -149,7 +149,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Substansif Tahap Lanjut</h6>
-                                        <h2 class="mb-0 number-font"> {{ $stl }}</h2>
+                                        <h2 class="mb-0 number-font">{{ $stl }}</h2>
                                     </div>
                                 </div>
                             </div>

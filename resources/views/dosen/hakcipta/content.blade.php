@@ -45,7 +45,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Ditolak</h6>
-                                        <h2 class="mb-0 number-font">{{ $tolak }}</h2>
+                                        <h2 class="mb-0 number-font">{{ $hcTolak }}</h2>
                                     </div>
                                     {{-- <div class="ms-auto">
                                         <div class="chart-wrapper mt-1">
@@ -65,8 +65,8 @@
                             <div class="card-body">
                                 <div class="d-flex">
                                     <div class="mt-2">
-                                        <h6 class="">Keterangan Belum Lengkap</h6>
-                                        <h2 class="mb-0 number-font">{{ $null }}</h2>
+                                        <h6 class="">Pemeriksaan Formalitas</h6>
+                                        <h2 class="mb-0 number-font">{{ $hcKet }}</h2>
                                     </div>
                                 </div>
                             </div>

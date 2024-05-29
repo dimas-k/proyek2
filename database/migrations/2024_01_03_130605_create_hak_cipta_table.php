@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('hak_cipta', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('nama_lengkap');
             $table->string('alamat');
             $table->string('no_telepon');

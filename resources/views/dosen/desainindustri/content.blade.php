@@ -17,6 +17,7 @@
             <!-- PAGE-HEADER END -->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
                 <div class="row">
+
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
                         <div class="card overflow-hidden">
                             <div class="card-body">
@@ -65,35 +66,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Pemeriksaan Formalitas</h6>
-                                        <h2 class="mb-0 number-font">6</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                        <div class="card overflow-hidden">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="mt-2">
-                                        <h6 class="">Dalam Proses Usulan</h6>
-                                        <h2 class="mb-0 number-font">6</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
-                        <div class="card overflow-hidden">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="mt-2">
-                                        <h6 class="">Keterangan Belum Lengkap</h6>
-                                        <h2 class="mb-0 number-font">{{ $null }}</h2>
+                                        <h2 class="mb-0 number-font">{{ $desainP }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -118,22 +91,6 @@
                                         aria-label="Close"></button>
                                 </div>
                             @endif
-                            <div class="d-flex justify-content-end mb-5">
-                                <form action="/desain-industri/cari" method="GET">
-                                    <div class="row g-2 align-items-center">
-                                        <div class="col-auto">
-                                            <label for="" class="col-form-label">Cari Desain Industri</label>
-                                        </div>
-                                        <div class="col-auto">
-                                            <input type="text" id="" class="form-control"
-                                                aria-describedby="" name="cari">
-                                        </div>
-                                        <div class="col-auto">
-                                            <button type="submit" class="btn btn-primary ">Cari</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
                             <div class="table-responsive">
                                 <table class="table table-hover p-1">
                                     <thead>

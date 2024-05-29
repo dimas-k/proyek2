@@ -56,10 +56,16 @@ class LoginUserController extends Controller
     public function store(Request $request)
     {
         $validasidata = $request->validate([
+            'nama_lengkap' => 'required|string',
+            'no_telepon'=>'required|integer',
             'email' => 'required|email',
+            'alamat' => 'required|string',
+            'ktp'=>'required|mimes:pdf|max:2028',
+            'kerjaan'=>'required|string',
+            'jabatan'=>'required|string',
+            'nip'=>'required|integer',
             'username'=>'required|min:3',
             'password'=> 'required|max:10',
-            'ktp'=>'required|mimes:pdf|max:2028',
         ]);
         $user = new User;
         $user->nama_lengkap = $request->nama_lengkap;

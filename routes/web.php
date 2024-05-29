@@ -78,7 +78,7 @@ Route::post('/autentikasi', [AdminController::class, 'authenticate']);
 Route::get('/logout', [AdminController::class, 'logout']);
 
 Route::middleware(['auth', 'role:Admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboardAdmin'])->middleware('auth');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboardAdmin']);
     Route::get('/admin/paten', [AdminPatenController::class, 'index'])->middleware('auth');
     Route::get('/admin/paten/pemeriksaan-formalitas', [AdminPatenController::class, 'pemeriksaanFormalitas']);
     Route::get('/admin/paten/menunggu-tanggapan-formalitas', [AdminPatenController::class, 'menungguTanggapan']);
@@ -103,7 +103,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/listadmin/tambah', [AdminController::class, 'create'])->name('admin.tambah');
     Route::post('/simpan', [AdminController::class, 'store']);
 
-    Route::get('/admin/hak-cipta', [AdminHaKCiptaController::class, 'index'])->middleware('auth');
+    Route::get('/admin/hak-cipta', [AdminHaKCiptaController::class, 'index']);
     Route::get('/admin/hak-cipta/delete/{id}', [AdminHaKCiptaController::class, 'destroy'])->name('admin_hakcipta.delete');
     Route::get('/admin/hak-cipta/edit/{id}', [AdminHaKCiptaController::class, 'edit'])->name('admin_hakcipta.edit');
     Route::post('/admin/hak-cipta/update/{id}', [AdminHaKCiptaController::class, 'update'])->name('admin_hakcipta.update');
@@ -112,7 +112,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/hak-cipta/ditolak', [AdminHaKCiptaController::class, 'tolak']);
     Route::get('/admin/hak-cipta/keterangan-belum-lengkap', [AdminHaKCiptaController::class, 'belumLengkap']);
 
-    Route::get('/admin/desain-industri', [AdminDesainIndustriController::class, 'index'])->middleware('auth');
+    Route::get('/admin/desain-industri', [AdminDesainIndustriController::class, 'index']);
     Route::get('/admin/desain-industri/diberi', [AdminDesainIndustriController::class, 'diberi']);
     Route::get('/admin/desain-industri/dalam-proses-usulan', [AdminDesainIndustriController::class, 'proses']);
     Route::get('/admin/desain-industri/pemeriksaan', [AdminDesainIndustriController::class, 'pemeriksaan']);

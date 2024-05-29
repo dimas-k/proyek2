@@ -167,7 +167,7 @@ class DosenController extends Controller
         $validasidata = $request->validate([
             'nama_lengkap'=> 'required|text',
             'alamat'=> 'required|text',
-            'no_telepon'=> 'required|integer',
+            'no_telepon'=> 'required',
             'tanggal_lahir'=> 'required|date',
             'ktp_inventor'=> 'required|mimes:pdf|max:2028',
             'email'=> 'required|email',

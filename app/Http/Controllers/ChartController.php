@@ -34,7 +34,7 @@ class ChartController extends Controller
                 ]
             ]
         ]);
-        return view('umum-page.landing-page.index',compact('years','data'));
+        // return view('umum-page.landing-page.index',compact('years','data'));
     }
 }
 

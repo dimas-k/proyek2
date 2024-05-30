@@ -788,7 +788,7 @@
                 labels: ['Diberi', 'Ditolak', 'Pemeriksaan Formalitas','Menunggu pembayaran substansif','Menunggu tanggapan substansif','Substansif tahap awal','Substansi tahap lanjut','Substansi tahap akhir','Masa pengumuman','Menunggu tanggapan formalitas'],
                 datasets: [
                     {
-                    label: 'HAK CIPTA',
+                    label: 'PATEN',
                     data: [patenDI,patenDK,patenPF,patenMPS,patenMTS,patenSTAW,patenSTL,patenSTAK,patenMP,patenMTF],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -833,7 +833,7 @@
                 labels: ['Ditolak', 'Diberi','Pemeriksaan','Dalam proses usulan','Keterangan belum lengkap'],
                 datasets: [
                     {
-                    label: 'HAK CIPTA',
+                    label: 'DESAIN INDUSTRI',
                     data: [desainDK, desainDi, desainP,desainDPU,desainKBL],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',

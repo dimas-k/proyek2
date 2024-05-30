@@ -43,7 +43,7 @@
                                     </tr>
                                     <tr>
                                         <th>Tanggal lahir</th>
-                                        <td>: {{ $di->tanggal_lahir }}</td>
+                                        <td>: {{ \Carbon\Carbon::parse($di->tanggal_lahir)->format('d-m-Y') }}</td>
                                     </tr>
                                     <tr>
                                         <th>KTP</th>
@@ -87,7 +87,7 @@
                                     </tr>
                                     <tr>
                                         <th>Tanggal pengajuan</th>
-                                        <td>: {{ $di->tanggal_permohonan }}</td>
+                                        <td>: {{ \Carbon\Carbon::parse($di->tanggal_permohonan)->format('d-m-Y') }}</td>
                                     </tr>
                                     <tr>
                                         <th>Status</th>

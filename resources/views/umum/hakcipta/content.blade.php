@@ -127,13 +127,13 @@
                                                 <td>{{ $p->nama_lengkap }}</td>
                                                 <td>{{ $p->jenis_ciptaan }}</td>
                                                 <td>{{ $p->judul_ciptaan }}</td>
-                                                <td>{{ $p->tanggal_permohonan }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y') }}</td>
                                                 <td>{{ $p->status }}</td>
                                                 <td><a href={{ Route('umum.hc.lihat', $p->id) }}
                                                         class="btn btn-info"><i class="fa fa-eye" data-bs-toggle="tooltip"></i></a>
                                                     <a href={{ Route('umum.hc.edit', $p->id) }}
                                                         class="btn btn-warning"><i class="fa fa-pencil" data-bs-toggle="tooltip"></i></a>
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                    {{-- <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                                         data-bs-target="#staticBackdrop">
                                                         <i class="fa fa-trash" data-bs-toggle="tooltip"></i>
                                                     </button>
@@ -159,7 +159,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </td>
                                             </tr>
                                         @endforeach

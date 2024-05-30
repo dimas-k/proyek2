@@ -226,3 +226,5 @@ Route::get("/reset-password/{token}", [ForgetPasswordManager::class, "resetPassw
     ->name("reset.password");
 Route::post("/reset-password", [ForgetPasswordManager::class, "resetPasswordPost"])
     ->name("reset.password.post");
+
+    

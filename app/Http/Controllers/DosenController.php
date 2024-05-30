@@ -102,6 +102,7 @@ class DosenController extends Controller
     }
     public function pengajuanHc()
     {
+    
         return view('dosen.hakcipta.pengajuan.index');
     }
     public function desainIndustri()

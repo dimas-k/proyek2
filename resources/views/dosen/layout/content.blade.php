@@ -120,8 +120,10 @@
                             <input type="hidden" id="desainKBL" value="{{ $desainKBL }}">
                             <input type="hidden" id="desainDPU" value="{{ $desainDPU }}">
 
-                            <canvas id="hc-chart"></canvas>
                             <canvas id="paten-chart"></canvas>
+                            <br>
+                            <canvas id="hc-chart"></canvas>
+                            <br>
                             <canvas id="di-chart"></canvas>                            
 
                         </div>

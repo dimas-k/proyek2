@@ -117,7 +117,7 @@ class AdminPatenController extends Controller
     public function edit(string $id)
     {
         $p = Paten::find($id);
-        return view('editpaten.index', compact('p'));
+        return view('admin.adminpaten.editpaten.index', compact('p'));
     }
 
     /**

@@ -56,12 +56,12 @@ class LoginUserController extends Controller
     public function store(Request $request)
     {
         $validasidata = $request->validate([
-            'nama_lengkap' => 'required',
-            'no_telepon'=>'required',
+            'nama_lengkap' => 'required|string',
+            'no_telepon'=>'required|string',
             'email' => 'required|email',
-            'ktp'=>'required|mimes:pdf',
-            'username'=>'required',
-            'password'=> 'required|max:10'
+            'ktp'=>'required|mimes:pdf|max:2028',
+            'username'=>'required|min:3',
+            'password'=> 'required|max:10',
         ]);
         $user = new User;
         $user->nama_lengkap = $request->nama_lengkap;
@@ -79,9 +79,9 @@ class LoginUserController extends Controller
 
         
         if ($request->role == 'Dosen'){
-            return redirect()->intended('register/dosen/')->with('success','Data anda telah ditabahkan');
+            return redirect()->intended('register/dosen/')->with('success','Data anda telah ditambahkan');
         }else{
-            return redirect()->intended('register/umum/')->with('success','Data anda telah ditabahkan');
+            return redirect()->intended('register/umum/')->with('success','Data anda telah ditambahkan');
         }
         
     }

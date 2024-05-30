@@ -279,30 +279,40 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $paten1->links() }}
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Diagram</h3>
-                </div>
-                <div class="card-body">
-                    {{-- paten --}}
-                    <input type="hidden" id="patenPF" value="{{ $patenPF }}">
-                    <input type="hidden" id="patenMTF" value="{{ $patenMTF }}">
-                    <input type="hidden" id="patenMP" value="{{ $patenMP }}">
-                    <input type="hidden" id="patenMPS" value="{{ $patenMPS }}">
-                    <input type="hidden" id="patenSTAW" value="{{ $patenSTAW }}">
-                    <input type="hidden" id="patenSTL" value="{{ $patenSTL }}">
-                    <input type="hidden" id="patenSTAK" value="{{ $patenSTAK }}">
-                    <input type="hidden" id="patenMTS" value="{{ $patenMTS }}">
-                    <input type="hidden" id="patenDI" value="{{ $patenDI }}">
-                    <input type="hidden" id="patenDK" value="{{ $patenDK }}">
-                    <canvas id="paten-chart"></canvas>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Diagram</h3>
+                        <div class="input-group mb-3">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Action</a></li>
+                              <li><a class="dropdown-item" href="#">Another action</a></li>
+                              <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        {{-- paten --}}
+                        <input type="hidden" id="patenPF" value="{{ $patenPF }}">
+                        <input type="hidden" id="patenMTF" value="{{ $patenMTF }}">
+                        <input type="hidden" id="patenMP" value="{{ $patenMP }}">
+                        <input type="hidden" id="patenMPS" value="{{ $patenMPS }}">
+                        <input type="hidden" id="patenSTAW" value="{{ $patenSTAW }}">
+                        <input type="hidden" id="patenSTL" value="{{ $patenSTL }}">
+                        <input type="hidden" id="patenSTAK" value="{{ $patenSTAK }}">
+                        <input type="hidden" id="patenMTS" value="{{ $patenMTS }}">
+                        <input type="hidden" id="patenDI" value="{{ $patenDI }}">
+                        <input type="hidden" id="patenDK" value="{{ $patenDK }}">
+                        <canvas id="paten-chart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
+        {{ $paten1->links() }}
+    </div>
+
     <footer class="text-center text-lg-star bg-body-white shadow-lg mt-5">
         <!-- Copyright -->
         <div class="text-center p-3">

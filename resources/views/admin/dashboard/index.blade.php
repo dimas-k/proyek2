@@ -101,8 +101,38 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-11 col-md-11 col-lg-11 col-xl-11">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title"></h3>
+                                    <div class="input-group mb-3">
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
+                                        <ul class="dropdown-menu">
+                                          <li><a class="dropdown-item" href="#">PATEN</a></li>
+                                          <li><a class="dropdown-item" href="#">DESAIN INDUSTRI</a></li>
+                                          <li><a class="dropdown-item" href="#">HAK CIPTA</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    {{-- paten --}}
+                                    <input type="hidden" id="patenPF" value="{{ $patenPF }}">
+                                    <input type="hidden" id="patenMTF" value="{{ $patenMTF }}">
+                                    <input type="hidden" id="patenMP" value="{{ $patenMP }}">
+                                    <input type="hidden" id="patenMPS" value="{{ $patenMPS }}">
+                                    <input type="hidden" id="patenSTAW" value="{{ $patenSTAW }}">
+                                    <input type="hidden" id="patenSTL" value="{{ $patenSTL }}">
+                                    <input type="hidden" id="patenSTAK" value="{{ $patenSTAK }}">
+                                    <input type="hidden" id="patenMTS" value="{{ $patenMTS }}">
+                                    <input type="hidden" id="patenDI" value="{{ $patenDI }}">
+                                    <input type="hidden" id="patenDK" value="{{ $patenDK }}">
+                                    <canvas id="paten-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                {{-- end of ki --}}
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -113,6 +143,66 @@
         </script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js"
             integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+        const patenPF = document.getElementById('patenPF').value;
+        const patenMTF = document.getElementById('patenMTF').value;
+        const patenMP = document.getElementById('patenMP').value;
+        const patenMPS = document.getElementById('patenMPS').value;
+        const patenSTAW = document.getElementById('patenSTAW').value;
+        const patenSTL = document.getElementById('patenSTL').value;
+        const patenSTAK = document.getElementById('patenSTAK').value;
+        const patenMTS = document.getElementById('patenMTS').value;
+        const patenDI = document.getElementById('patenDI').value;
+        const patenDK = document.getElementById('patenDK').value;   
+        const paten = document.getElementById('paten-chart').getContext('2d');
+        const patenChart = new Chart(paten, {
+            type: 'bar',
+            data: {
+                labels: ['Diberi', 'Ditolak', 'Pemeriksaan Formalitas','Menunggu pembayaran substansif','Menunggu tanggapan substansif','Substansif tahap awal','Substansi tahap lanjut','Substansi tahap akhir','Masa pengumuman','Menunggu tanggapan formalitas'],
+                datasets: [
+                    {
+                    label: 'PATEN',
+                    data: [patenDI,patenDK,patenPF,patenMPS,patenMTS,patenSTAW,patenSTL,patenSTAK,patenMP,patenMTF],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                    ],
+                    borderWidth: 1
+                },
+            ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
         </script>
 </body>
 

@@ -29,16 +29,7 @@
                                                 <h6 class="">Paten</h6>
                                                 <h2 class="mb-0 number-font">{{ $paten }}</h2>
                                             </div>
-                                            {{-- <div class="ms-auto">
-                                            <div class="chart-wrapper mt-1">
-                                                <canvas id="saleschart"
-                                                    class="h-8 w-9 chart-dropshadow"></canvas>
-                                            </div>
-                                        </div> --}}
                                         </div>
-                                        {{-- <span class="text-muted fs-12"><span class="text-secondary"><i
-                                                class="fe fe-arrow-up-circle  text-secondary"></i> 5%</span>
-                                        Last week</span> --}}
                                     </div>
                                 </div>
                             </div>
@@ -50,16 +41,7 @@
                                                 <h6 class="">Hak Cipta</h6>
                                                 <h2 class="mb-0 number-font">{{ $hc }}</h2>
                                             </div>
-                                            {{-- <div class="ms-auto">
-                                            <div class="chart-wrapper mt-1">
-                                                <canvas id="leadschart"
-                                                    class="h-8 w-9 chart-dropshadow"></canvas>
-                                            </div>
-                                        </div> --}}
                                         </div>
-                                        {{-- <span class="text-muted fs-12"><span class="text-pink"><i
-                                                class="fe fe-arrow-down-circle text-pink"></i> 0.75%</span>
-                                        Last 6 days</span> --}}
                                     </div>
                                 </div>
                             </div>
@@ -2122,8 +2104,7 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
-            <!-- ROW-4 END -->
+            </div>
         </div>
         <!-- CONTAINER END -->
     </div>

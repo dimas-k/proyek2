@@ -42,7 +42,18 @@ class AdminController extends Controller
         $paten = Paten::all();
         $hc = HakCipta::all();
         $di = DesainIndustri::all();
-        return view('admin.dashboard.index', compact('paten','hc','di'));
+
+        $patenPF = Paten::where('status', 'Pemeriksaan formalitas')->count();
+        $patenMTF = Paten::where('status', 'Menunggu tanggapan formalitas')->count();
+        $patenMP = Paten::where('status', 'Masa pengumuman')->count();
+        $patenMPS = Paten::where('status', 'Menunggu pembayaran substansif')->count();
+        $patenSTAW = Paten::where('status', 'Substansif tahap awal')->count();
+        $patenSTL = Paten::where('status', 'Substansif tahap lanjut')->count();
+        $patenSTAK = Paten::where('status', 'Substansif tahap akhir')->count();
+        $patenMTS = Paten::where('status', 'Menunggu tanggapan substansif')->count();
+        $patenDI = Paten::where('status', 'Diberi')->count();
+        $patenDK = Paten::where('status', 'Ditolak')->count();
+        return view('admin.dashboard.index', compact('paten','hc','di','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTAK','patenMTS','patenDI','patenDK'));
     }
 
     public function logout(request $request)

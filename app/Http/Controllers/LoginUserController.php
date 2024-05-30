@@ -57,14 +57,15 @@ class LoginUserController extends Controller
     {
         $validasidata = $request->validate([
             'nama_lengkap' => 'required|string',
-            'no_telepon'=>'required|string',
+            'no_telepon'=>'required|integer',
             'email' => 'required|email',
             'alamat' => 'required|string',
             'ktp'=>'required|mimes:pdf|max:2028',
+            'kerjaan'=>'required|string',
             'jabatan'=>'required|string',
             'nip'=>'required|integer',
             'username'=>'required|min:3',
-            'password'=> 'required|max:10'
+            'password'=> 'required|max:10',
         ]);
         $user = new User;
         $user->nama_lengkap = $request->nama_lengkap;
@@ -79,6 +80,7 @@ class LoginUserController extends Controller
         $user->password = Hash::make($request->password);
         $user->role = $request->role;
         $user->save($validasidata);
+
         
         if ($request->role == 'Dosen'){
             return redirect()->intended('register/dosen/')->with('success','Data anda telah ditambahkan');

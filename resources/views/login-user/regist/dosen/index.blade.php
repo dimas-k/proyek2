@@ -25,17 +25,10 @@
             </div>
           @endif
 
-          @if(session()->has('loginError'))
-            <div class="alert alert-danger alert-dismissible fade show rounded" role="alert">
-              {{ session('loginError') }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          @endif
-
           <div class="col-12 col-md-8 col-lg-6 col-xl-5">
             <div class="card bg-light text-black" style="border-radius: 1rem;">
               <div class="card-body p-5">
-                <form class="mb-md-5 mt-md-4 pb-5" enctype="multipart/form-data" method="post" action={{ route('simpan.akun') }}>
+                <form class="mb-md-5 mt-md-4 pb-5" enctype="multipart/form-data" method="post" action="/simpan/akun/">
                   @csrf
                   <h2 class="fw-bold mb-2 text-uppercase text-center">Registrasi Dosen</h2>
                   <p class="text-black-50 mb-5">Masukkan data anda dengan benar!</p>
@@ -51,8 +44,8 @@
                   </div>
     
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="no_telepone">No telepon</label>
-                    <input type="number" id="no_telepone" name="no_telepon" class="form-control form-control @error('no_telepon') is-invalid @enderror" required>
+                    <label class="form-label" for="pass">No telepon</label>
+                    <input type="number" id="pass" name="no_telepon" class="form-control form-control @error('no_telepon') is-invalid @enderror" required>
                     @error('no_telepon')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -60,8 +53,8 @@
                     @enderror
                   </div>
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="email">Email</label>
-                    <input type="email" id="email" name="email" class="form-control form-control @error('email') is-invalid @enderror" required>
+                    <label class="form-label" for="pass">Email</label>
+                    <input type="text" id="" name="email" class="form-control form-control @error('email') is-invalid @enderror" required>
                     @error('email')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -69,8 +62,8 @@
                     @enderror
                   </div>
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="alamat">Alamat</label>
-                    <input type="text" id="alamat" name="alamat" class="form-control form-control @error('alamat') is-invalid @enderror" required>
+                    <label class="form-label" for="pass">Alamat</label>
+                    <input type="text" id="pass" name="alamat" class="form-control form-control @error('alamat') is-invalid @enderror" required>
                     @error('alamat')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -78,8 +71,8 @@
                     @enderror
                   </div>
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="ktp">KTP</label>
-                    <input type="file" id="ktp" name="ktp" class="form-control form-control @error('ktp') is-invalid @enderror" required>
+                    <label class="form-label" for="pass">KTP</label>
+                    <input type="file" id="pass" name="ktp" class="form-control form-control @error('ktp') is-invalid @enderror" required>
                     @error('ktp')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -87,8 +80,8 @@
                     @enderror
                   </div>
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="jabatan">Jabatan</label>
-                    <input type="text" id="jabatan" name="jabatan" class="form-control form-control @error('jabatan') is-invalid @enderror" required>
+                    <label class="form-label" for="pass">Jabatan</label>
+                    <input type="text" id="pass" name="jabatan" class="form-control form-control @error('jabatan') is-invalid @enderror" required>
                     @error('jabatan')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -105,8 +98,8 @@
                     @enderror
                   </div>
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="username">Username</label>
-                    <input type="text" id="username" name="username" class="form-control form-control @error('username') is-invalid @enderror" required>
+                    <label class="form-label" for="pass">Username</label>
+                    <input type="text" id="pass" name="username" class="form-control form-control @error('username') is-invalid @enderror" required>
                     @error('username')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -114,8 +107,8 @@
                     @enderror
                   </div>
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="password">password</label>
-                    <input type="password" id="password" name="password" class="form-control form-control @error('password') is-invalid @enderror" required>
+                    <label class="form-label" for="pass">password</label>
+                    <input type="password" id="pass" name="password" class="form-control form-control @error('password') is-invalid @enderror" required>
                     @error('password')
                     <div class="invalid-feedback">
                       {{ $message }}

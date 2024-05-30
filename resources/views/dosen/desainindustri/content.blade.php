@@ -111,7 +111,7 @@
                                                 <td>{{ $d->nama_lengkap }}</td>
                                                 <td>{{ $d->jenis_di }}</td>
                                                 <td>{{ $d->judul_di }}</td>
-                                                <td>{{ $d->tanggal_permohonan }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($d->tanggal_permohonan)->format('d-m-Y ') }}</td>
                                                 <td>{{ $d->status }}</td>
                                                 <td><a href={{ Route('dsn.di.lihat', $d->id) }}
                                                         class="btn btn-info"><i class="fa fa-eye" data-bs-toggle="tooltip"></i></a>

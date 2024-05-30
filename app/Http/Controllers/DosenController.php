@@ -165,9 +165,9 @@ class DosenController extends Controller
     public function storePaten(Request $request)
     {
         $validasidata = $request->validate([
-            'nama_lengkap'=> 'required|string',
-            'alamat'=> 'required|string',
-            'no_telepon'=> 'required|string',
+            'nama_lengkap'=> 'required|text',
+            'alamat'=> 'required|text',
+            'no_telepon'=> 'required|integer',
             'tanggal_lahir'=> 'required|date',
             'ktp_inventor'=> 'required|mimes:pdf|max:2028',
             'email'=> 'required|email',

@@ -79,7 +79,7 @@
                     </div>
                     @enderror
                   </div>
-                  <div class="form-outline form-white mb-4">
+                  {{-- <div class="form-outline form-white mb-4">
                     <label class="form-label" for="pass">Jabatan</label>
                     <input type="text" id="pass" name="jabatan" class="form-control form-control @error('jabatan') is-invalid @enderror" required>
                     @error('jabatan')
@@ -87,7 +87,7 @@
                       {{ $message }}
                     </div>
                     @enderror
-                  </div>
+                  </div> --}}
                   <div class="form-outline form-white mb-4">
                     <label class="form-label" for="nip">NIP</label>
                     <input type="number" id="nip" name="nip" class="form-control form-control @error('nip') is-invalid @enderror" required>

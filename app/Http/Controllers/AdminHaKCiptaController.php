@@ -63,7 +63,7 @@ class AdminHaKCiptaController extends Controller
     public function edit(string $id)
     {
         $hk = HakCipta::find($id);
-        return view('edithk.index', compact('hk'));
+        return view('admin.adminhk.edithk.index', compact('hk'));
     }
 
     /**

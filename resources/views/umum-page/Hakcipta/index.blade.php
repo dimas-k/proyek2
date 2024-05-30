@@ -151,6 +151,28 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Diagram</h3>
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        hak cipta
+                        <input type="hidden" id="hcTolak" value="{{ $hcTolak }}">
+                        <input type="hidden" id="hcTerima" value="{{ $hcTerima }}">
+                        <input type="hidden" id="hcKet" value="{{ $hcKet }}">
+                        <canvas id="hc-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
         {{ $hc->links() }}
     </div>
     <footer class="text-center text-lg-star bg-body-white shadow-lg mt-5">
@@ -168,6 +190,49 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <script>
+            // hak cipta
+            const hcTolak = document.getElementById('hcTolak').value;
+            const hcTerima = document.getElementById('hcTerima').value;
+            const hcKet = document.getElementById('hcKet').value;
+            const hc = document.getElementById('hc-chart').getContext('2d');
+
+            const hcChart = new Chart(hc, {
+                type: 'bar',
+                data: {
+                    labels: ['Keterangan belum lengkap', 'Ditolak', 'Diterima'],
+                    datasets: [
+                        {
+                        label: 'HAK CIPTA',
+                        data: [hcKet, hcTolak, hcTerima],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                        ],
+                        borderWidth: 2
+                    },
+                ]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+    </div>
+        </script>
+
 </body>
 
 </html>

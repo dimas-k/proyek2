@@ -51,8 +51,8 @@
                   </div>
     
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="pass">No telepon</label>
-                    <input type="number" id="pass" name="no_telepon" class="form-control form-control @error('no_telepon') is-invalid @enderror" required>
+                    <label class="form-label" for="no_telepone">No telepon</label>
+                    <input type="number" id="no_telepone" name="no_telepon" class="form-control form-control @error('no_telepon') is-invalid @enderror" required>
                     @error('no_telepon')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -60,8 +60,8 @@
                     @enderror
                   </div>
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="pass">Email</label>
-                    <input type="text" id="" name="email" class="form-control form-control @error('email') is-invalid @enderror" required>
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control form-control @error('email') is-invalid @enderror" required>
                     @error('email')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -69,8 +69,8 @@
                     @enderror
                   </div>
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="pass">Alamat</label>
-                    <input type="text" id="pass" name="alamat" class="form-control form-control @error('alamat') is-invalid @enderror" required>
+                    <label class="form-label" for="alamat">Alamat</label>
+                    <input type="text" id="alamat" name="alamat" class="form-control form-control @error('alamat') is-invalid @enderror" required>
                     @error('alamat')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -78,8 +78,8 @@
                     @enderror
                   </div>
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="pass">KTP</label>
-                    <input type="file" id="pass" name="ktp" class="form-control form-control @error('ktp') is-invalid @enderror" required>
+                    <label class="form-label" for="ktp">KTP</label>
+                    <input type="file" id="ktp" name="ktp" class="form-control form-control @error('ktp') is-invalid @enderror" required>
                     @error('ktp')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -87,8 +87,8 @@
                     @enderror
                   </div>
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="pass">Jabatan</label>
-                    <input type="text" id="pass" name="jabatan" class="form-control form-control @error('jabatan') is-invalid @enderror" required>
+                    <label class="form-label" for="jabatan">Jabatan</label>
+                    <input type="text" id="jabatan" name="jabatan" class="form-control form-control @error('jabatan') is-invalid @enderror" required>
                     @error('jabatan')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -96,8 +96,8 @@
                     @enderror
                   </div>
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="pass">NIP</label>
-                    <input type="number" id="" name="nip" class="form-control form-control @error('nip') is-invalid @enderror" required>
+                    <label class="form-label" for="nip">NIP</label>
+                    <input type="number" id="nip" name="nip" class="form-control form-control @error('nip') is-invalid @enderror" required>
                     @error('nip')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -105,8 +105,8 @@
                     @enderror
                   </div>
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="pass">Username</label>
-                    <input type="text" id="pass" name="username" class="form-control form-control @error('username') is-invalid @enderror" required>
+                    <label class="form-label" for="username">Username</label>
+                    <input type="text" id="username" name="username" class="form-control form-control @error('username') is-invalid @enderror" required>
                     @error('username')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -114,8 +114,8 @@
                     @enderror
                   </div>
                   <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="pass">password</label>
-                    <input type="password" id="pass" name="password" class="form-control form-control @error('password') is-invalid @enderror" required>
+                    <label class="form-label" for="password">password</label>
+                    <input type="password" id="password" name="password" class="form-control form-control @error('password') is-invalid @enderror" required>
                     @error('password')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -124,7 +124,7 @@
                   </div>
                   <input type="text" value="Dosen" name="role" class="form-control form-control" hidden>
                   <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                    <button class="btn btn-dark btn-lg px-5 text-white" type="submit" id="submit">Register</button>
+                    <button class="btn btn-dark btn-lg px-5 text-white" type="submit" id="submit" name="submit">Register</button>
                   </div>
                 </form>
                 <div>

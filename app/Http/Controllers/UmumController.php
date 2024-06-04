@@ -18,7 +18,7 @@ class UmumController extends Controller
      */
     public function index()
     {
-        // $paten = Paten::where('user_id', Auth::user()->id)->where('institusi', 'Umum')->count();
+        $paten = Paten::where('user_id', Auth::user()->id)->where('institusi', 'Umum')->count();
         $hc = HakCipta::where('user_id', Auth::user()->id)->where('institusi', 'Umum')->count();
         $di = DesainIndustri::where('user_id', Auth::user()->id)->where('institusi', 'Umum')->count();;
         return view('umum.index', compact('paten', 'hc', 'di'));

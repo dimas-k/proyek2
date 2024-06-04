@@ -50,14 +50,14 @@
         <div class="page-main">
 
             <!-- app-Header -->
-            @include('dosen.layout.header')
+            @include('checker.layout.header')
             <!-- /app-Header -->
 
             <!--APP-SIDEBAR-->
-            @include('dosen.layout.sidebar')
+            @include('checker.layout.sidebar')
 
             <!--app-content open-->
-            @include('dosen.paten.edit.content')
+            @include('checker.cekpaten.nilai.content')
             <!--app-content close-->
 
         </div>

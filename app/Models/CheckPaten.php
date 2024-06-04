@@ -7,19 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Paten extends Model
+class CheckPaten extends Model
 {
     use HasFactory;
-    protected $searchable = [
-        'nama_lengkap',
-        'judul_paten'
+    protected  $table = 'check_paten';
+
+    protected $fillable = [
+        'cek_data',
+        'keterangan'
     ];
 
-    protected $guarded = 'id';
-    protected $table = 'paten';
-
-    public function cek() : HasOne
+    public function paten() :BelongsTo
     {
-        return $this->hasOne(CheckPaten::class);
+        return $this->belongsTo(Paten::class);
     }
 }

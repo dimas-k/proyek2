@@ -120,7 +120,7 @@
                                     </tr>
                                     <tr>
                                         <th>Tanggal pengajuan</th>
-                                        <td>{{ $paten->tanggal_permohonan }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($hc->tanggal_permohonan)->format('d-m-Y') }}</td>
                                     </tr>
                                     <tr>
                                         <th>Sertifikat Paten</th>

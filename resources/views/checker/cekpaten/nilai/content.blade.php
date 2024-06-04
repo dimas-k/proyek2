@@ -6,11 +6,11 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Desain industri</h1>
+                <h1 class="page-title">Paten</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/dosen/desain-industri">Desain industri</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Lihat</li>
+                        <li class="breadcrumb-item"><a href="/dosen/paten">Paten</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">edit</li>
                     </ol>
                 </div>
             </div>
@@ -21,91 +21,77 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Desain Industri
-                                {{ $di->nama_lengkap }}
+                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Paten
+                                
                             </h3>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-borderless p-1">
 
-                                    <tr>
-                                        <th>Nama Lengkap</th>
-                                        <td>: {{ $di->nama_lengkap }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Alamat</th>
-                                        <td>: {{ $di->alamat }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>No Telepon</th>
-                                        <td>: {{ $di->no_telepon }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Tanggal lahir</th>
-                                        <td>: {{ \Carbon\Carbon::parse($di->tanggal_lahir)->format('d-m-Y') }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>KTP</th>
-                                        <td>: <a href={{ asset('storage/' . $di->ktp_inventor) }} class=""
-                                                target="_blank">Lihat KTP</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Email</th>
-                                        <td>: {{ $di->email }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Kewarganegaraan</th>
-                                        <td>: {{ $di->kewarganegaraan }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Kode Pos</th>
-                                        <td>: {{ $di->kode_pos }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Jenis Disain Industri</th>
-                                        <td>: {{ $di->jenis_di }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Judul Desain Industri</th>
-                                        <td>: {{ $di->judul_di }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Gambar desain Industri</th>
-                                        <td >: <a href={{ asset('storage/' . $di->gambar_di) }} class=""
-                                            target="_blank">Lihat Dokumen Invensi</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Uraian Desain Industri</th>
-                                        <td>: <a href={{ asset('storage/' . $di->uraian_di) }} class=""
-                                                target="_blank">Lihat Dokumen Invensi</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Surat Pengalihan hak</th>
-                                        <td>: <a href={{ asset('storage/' . $di->surat_pengalihan) }} class=""
-                                                target="_blank">Lihat Pengalihan Hak Invensi</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Tanggal pengajuan</th>
-                                        <td>: {{ \Carbon\Carbon::parse($di->tanggal_permohonan)->format('d-m-Y') }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Status</th>
-                                        <td>: {{ $di->status }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Sertifikat Paten</th>
-                                        <td>: @if ($di->sertifikat_hakcipta != "")
-                                                <a href={{ asset('storage/' . $di->sertifikat_hakcipta) }}
-                                                    class="" target="_blank">Lihat sertifikat</a>
-                                            @else 
-                                            Desain Industri Anda Belum Mendapatkan Sertifikat    
-                                            @endif
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
+                            <form action={{ route('simpan.nilai', ['id'=>request()->segment(5)]) }} enctype="multipart/form-data"
+                                method="post">
+                                @csrf
+                                <div class="table-responsive">
+                                    <table class="table table-borderless p-1">
+
+                                        <tr>
+                                            <th>Nilai Paten</th>
+                                            <td>
+                                                <select class="form-select @error('cek_data') is-invalid @enderror"
+                                                    aria-label="Default select example" name="cek_data">
+                                                    <option selected>Pilih Status Paten</option>
+                                                    <option value="Benar">Benar
+                                                    </option>
+                                                    <option value="Salah">Salah</option>
+                                                    <option value="Menunggu Pemeriksaan">Menunggu Pemeriksaan</option>
+                                                </select>
+                                                @error('status')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                            <tr>
+                                                <th>Keterangan</th>
+                                                <td><input type="text"
+                                                    class="form-control @error('keterangan') is-invalid @enderror"
+                                                    id="" name="keterangan" placeholder="Masukkan keterangan">
+                                                @error('keterangan')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror</td>
+                                            </tr>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Simpan
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Perhatian
+                                                </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin dengan data yang di inputkan ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-danger"
+                                                    data-bs-dismiss="modal">Tidak</button>
+                                                <button type="submit" class="btn btn-primary">Yakin</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

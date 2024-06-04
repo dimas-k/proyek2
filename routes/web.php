@@ -1,19 +1,21 @@
 <?php
 
-use App\Http\Controllers\UmumController;
+use App\Services\PatenQueryBuilder;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UmumController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DosenController;
 use App\Http\Controllers\PatenController;
+use App\Http\Controllers\CheckerController;
 use App\Http\Controllers\HakCiptaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\AdminPatenController;
+use App\Http\Controllers\ForgetPasswordManager;
 use App\Http\Controllers\AdminHaKCiptaController;
 use App\Http\Controllers\DesainIndustriController;
 use App\Http\Controllers\AdminDesainIndustriController;
-use App\Http\Controllers\CheckerController;
-use App\Http\Controllers\DosenController;
-use App\Http\Controllers\LoginUserController;
-use App\Http\Controllers\ForgetPasswordManager;
 
 
 /*
@@ -177,6 +179,11 @@ Route::middleware(['auth', 'role:Umum'])->group(function () {
     Route::get('/umum/dashboard', [UmumController::class, 'index']);
 
     Route::get('/umum/paten', [UmumController::class, 'paten']);
+    // Route::get('/umum/paten', function(){
+    //     $dpaten = new PatenQueryBuilder();
+    //     $paten = $dpaten->getIdUser()->getInstitusi('Umum')->get();
+    //     return response()->json($paten);
+    // });
     Route::get('/umum/pengajuan/paten', [UmumController::class, 'pengajuanPaten']);
     Route::post('/umum/pengajuan/paten/simpan', [UmumController::class, 'simpanPaten'])->name('simpan.umum.paten');
     Route::get('/umum/paten/lihat/{id}', [UmumController::class, 'lihatPaten'])->name('umum.paten.lihat');
@@ -214,6 +221,14 @@ Route::get('/login/checker', [CheckerController::class, 'loginChecker']);
 Route::post('/login/checker/autentikasi', [CheckerController::class, 'autentikasi'])->name('autentikasi.checker');
 Route::middleware(['auth', 'role:Checker'])->group(function () {
     Route::get('/checker/dashboard', [CheckerController::class, 'dashboard']);
+
+    Route::get('/checker/cek/paten',[CheckerController::class, 'lamanPaten']);
+    Route::get('/checker/cek/paten/lihat/{id}',[CheckerController::class, 'cekPaten'])->name('patencek.lihat');
+    Route::get('/checker/cek/paten/nilai/{id}',[CheckerController::class, 'cek']);
+    Route::post('/checker/cek/paten/nilai/simpan/{id}',[CheckerController::class, 'simpanCek'])->name('simpan.nilai');
+
+    Route::get('/checker/cek/hak-cipta',[CheckerController::class, 'lamanHc']);
+
     Route::get('/checker/logout', [CheckerController::class, 'logout']);
 });
 
@@ -226,3 +241,5 @@ Route::get("/reset-password/{token}", [ForgetPasswordManager::class, "resetPassw
     ->name("reset.password");
 Route::post("/reset-password", [ForgetPasswordManager::class, "resetPasswordPost"])
     ->name("reset.password.post");
+
+    

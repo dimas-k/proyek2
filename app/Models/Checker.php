@@ -10,4 +10,5 @@ use Laravel\Sanctum\HasApiTokens;
 class Checker extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    
 }

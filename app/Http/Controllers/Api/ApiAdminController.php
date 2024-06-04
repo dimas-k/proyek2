@@ -34,7 +34,7 @@ class ApiAdminController extends Controller
     }        
     public function getAllData() {
         try {
-            $user = user::first()->get();
+            $user = User::first()->get();
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -83,5 +83,28 @@ class ApiAdminController extends Controller
             "status" => 200,
             "message" => "Data sudah dihapus",
         ]);
+    }
+    public function updateData(Request $request, $id)
+    {
+        try {
+            $user = User::find($id);
+            $user->nama_lengkap = $request->nama_lengkap;
+            $user->jabatan = $request->jabatan;
+            $user->alamat = $request->alamat;
+            $user->no_telepon = $request->no_telepon;
+            $user->username = $request->username;
+            $user->password = Hash::make($request->password);
+            $user->save();
+        } catch (\Throwable $th) {
+            return response()->json([
+                "status" => 400,
+                "message" => $th
+            ]);
+        }
+        return response()->json([
+            "status" => 200,
+            "message" => "Data berhasil diupdate"
+        ]);
+
     }
 }

@@ -20,9 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/admin/store',[ApiAdminController::class, "store"]);
-Route::get('/admin/store',[ApiAdminController::class, "store"]);
 Route::get('/admin/get/data',[ApiAdminController::class, "getAllData"]);
 Route::get('/admin/get/data/{id}',[ApiAdminController::class, "getData"]);
-Route::get('/admin/delete/data/{id}',[ApiAdminController::class, "deleteData"]);
+Route::delete('/admin/delete/data/{id}',[ApiAdminController::class, "deleteData"]);
+Route::put('/admin/update/data/{id}',[ApiAdminController::class, "updateData"]);
 
 

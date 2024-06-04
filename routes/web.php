@@ -13,6 +13,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\AdminPatenController;
 use App\Http\Controllers\ForgetPasswordManager;
+use App\Http\Controllers\Api\ApiUsersController;
 use App\Http\Controllers\AdminHaKCiptaController;
 use App\Http\Controllers\DesainIndustriController;
 use App\Http\Controllers\AdminDesainIndustriController;
@@ -242,5 +243,3 @@ Route::get("/reset-password/{token}", [ForgetPasswordManager::class, "resetPassw
     ->name("reset.password");
 Route::post("/reset-password", [ForgetPasswordManager::class, "resetPasswordPost"])
     ->name("reset.password.post");
-
-    

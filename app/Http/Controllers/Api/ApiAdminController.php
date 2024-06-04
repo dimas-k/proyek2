@@ -32,7 +32,4 @@ class ApiAdminController extends Controller
             "message" => "Data successfully submited!!"
         ]);
     }
-    public function getData(Request $request) {
-        
-    }
 }

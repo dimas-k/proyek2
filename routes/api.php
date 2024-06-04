@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/admin/store',[ApiAdminController::class, "store"]);
+Route::get('/admin/store',[ApiAdminController::class, "store"]);
 

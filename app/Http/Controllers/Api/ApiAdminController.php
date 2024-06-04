@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-
+use PhpParser\Node\Stmt\TryCatch;
 
 class ApiAdminController extends Controller
 {
@@ -31,5 +31,8 @@ class ApiAdminController extends Controller
             "status" => 200,
             "message" => "Data successfully submited!!"
         ]);
+    }
+    public function getData(Request $request) {
+        
     }
 }

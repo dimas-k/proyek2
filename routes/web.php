@@ -228,6 +228,7 @@ Route::middleware(['auth', 'role:Checker'])->group(function () {
     Route::post('/checker/cek/paten/nilai/simpan/{id}',[CheckerController::class, 'simpanCek'])->name('simpan.nilai');
 
     Route::get('/checker/cek/hak-cipta',[CheckerController::class, 'lamanHc']);
+    Route::get('/checker/cek/hak-cipta/lihat/{id}',[CheckerController::class, 'cekHc'])->name('hccek.lihat');
 
     Route::get('/checker/logout', [CheckerController::class, 'logout']);
 });

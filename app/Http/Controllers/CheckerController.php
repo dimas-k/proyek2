@@ -77,8 +77,16 @@ class CheckerController extends Controller
     public function lamanHc()
     {
         $hc = HakCipta::with('cekHc')->paginate(5);
-        // $hc = CheckHc::with('hc')->paginate(5);
         return view('checker.cekhc.index', compact('hc'));
+    }
+    public function cekHc(string $id)
+    {
+        $hc = HakCipta::with('cekHc')->find($id);
+        return view('checker.cekhc.lihat.index', compact('hc'));
+    }
+    public function lamanCekHc()
+    {
+        return view('');
     }
     public function logout(request $request)
     {

@@ -166,27 +166,27 @@ class DosenController extends Controller
     public function storePaten(Request $request)
     {
         $validasidata = $request->validate([
-            'nama_lengkap'=> 'required|text',
-            'alamat'=> 'required|text',
-            'no_telepon'=> 'required|integer',
+            'nama_lengkap'=> 'required',
+            'alamat'=> 'required',
+            'no_telepon'=> 'required|max:14',
             'tanggal_lahir'=> 'required|date',
             'ktp_inventor'=> 'required|mimes:pdf|max:2028',
             'email'=> 'required|email',
-            'kewarganegaraan'=> 'required|string',
+            'kewarganegaraan'=> 'required',
             'kode_pos'=> 'required|integer',
             'institusi'=> 'required',
             'jurusan'=> 'required',
             'prodi'=> 'required',
             'jenis_paten'=> 'required',
-            'judul_paten'=> 'required|string',
+            'judul_paten'=> 'required',
             'deskripsi_paten'=> 'required|mimes:pdf|max:2028',
             'abstrak_paten'=> 'required|mimes:pdf|max:2028',
             'pengalihan_hak'=> 'required|mimes:pdf|max:2028',
             'klaim'=> 'required|mimes:pdf|max:2028',
-            'pernyataan_kepemilikan'=> 'required|mimes:pdf',
+            'pernyataan_kepemilikan'=> 'required|mimes:pdf|max:2028',
             'surat_kuasa'=> 'required|mimes:pdf|max:2028',
             'gambar_paten'=> 'required|mimes:pdf|max:2028',
-            'gambar_tampilan'=> 'required|mimes:pdf|max:2028'
+            'gambar_tampilan'=> 'required|mimes:pdf|max:2028',
         ]);
         $paten = new Paten();
         $paten->user_id = Auth::user()->id; 

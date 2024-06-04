@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('desain_industri', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('user_id')->constrained('users');
+            $table->unsignedBigInteger('cek_id')->constrained('check_di')->nullable();
             $table->string('nama_lengkap');
             $table->string('alamat');
             $table->string('no_telepon');

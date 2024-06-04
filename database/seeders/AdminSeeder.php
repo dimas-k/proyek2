@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -24,5 +25,6 @@ class AdminSeeder extends Seeder
                 'password'=>Hash::make('12345')
             ]
         ));
+        // User::factory()->count(5)->create();
     }
 }

@@ -22,17 +22,17 @@
                     <h3>Menu Utama</h3>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="/dosen/dashboard"><i
+                    <a class="side-menu__item" data-bs-toggle="slide" href="/checker/dashboard"><i
                             class="side-menu__icon fe fe-home"></i><span
                             class="side-menu__label">Dashboard</span></a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="/dosen/paten"><i class="side-menu__icon fa fa-list"></i><span
-                            class="side-menu__label">Paten</span></a>
+                    <a class="side-menu__item" data-bs-toggle="slide" href="/checker/cek/paten"><i class="side-menu__icon fa fa-list"></i><span
+                            class="side-menu__label">Cek Paten</span></a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="/dosen/hak-cipta"><i class="side-menu__icon fa fa-list"></i><span
-                            class="side-menu__label">Hak Cipta</span></a>
+                    <a class="side-menu__item" data-bs-toggle="slide" href="/checker/cek/hak-cipta"><i class="side-menu__icon fa fa-list"></i><span
+                            class="side-menu__label">Cek Hak Cipta</span></a>
                 </li>
                 <li class="slide">
                     <a class="side-menu__item" data-bs-toggle="slide" href="/dosen/desain-industri"><i class="side-menu__icon fa fa-list"></i><span

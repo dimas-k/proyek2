@@ -32,9 +32,9 @@ class ApiAdminController extends Controller
             "message" => "Data successfully submited!!"
         ]);
     }
-    public function getData(Request $request) {
+    public function getAllData() {
         try {
-            $user = user::where('nama_lengkap', 'ica')->get();
+            $user = user::first()->get();
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -46,6 +46,42 @@ class ApiAdminController extends Controller
             "status" => 200,
             "message" => "Data terpanggil",
             "list_data"=> $user
+        ]);
+    }
+
+    public function getData($id)
+    {
+        try {
+            $user = User::find($id);
+    
+        } catch (\Throwable $th) {
+            return response()->json([
+                "status" => 400,
+                "message" => $th
+            ]);
+        }
+        return response()->json([
+            "status" => 200,
+            "message" => "Data terpanggil",
+            "data"=> $user
+        ]);
+    }
+
+
+    public function deleteData($id)
+    {
+        try {
+            $user = User::find($id)->delete();
+    
+        } catch (\Throwable $th) {
+            return response()->json([
+                "status" => 400,
+                "message" => $th
+            ]);
+        }
+        return response()->json([
+            "status" => 200,
+            "message" => "Data sudah dihapus",
         ]);
     }
 }

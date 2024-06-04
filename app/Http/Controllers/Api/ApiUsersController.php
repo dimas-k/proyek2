@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use PhpParser\Node\Stmt\TryCatch;
 
 class ApiUsersController extends Controller
 {
@@ -36,7 +35,7 @@ class ApiUsersController extends Controller
             "status" => 200,
             "message" => "Data User Berhasil Dibuat!"
         ]);
-    }        
+    }
     public function getAllData() {
         try {
             $user = User::first()->get();
@@ -71,7 +70,6 @@ class ApiUsersController extends Controller
             "data"=> $user
         ]);
     }
-
 
     public function deleteData($id)
     {

@@ -61,7 +61,7 @@ class LoginUserController extends Controller
             'email' => 'required|email',
             'ktp'=>'required|mimes:pdf|max:2028',
             'username'=>'required|min:3',
-            'password'=> 'required|max:10',
+            'password'=> 'required|max:10'
         ]);
         $user = new User;
         $user->nama_lengkap = $request->nama_lengkap;

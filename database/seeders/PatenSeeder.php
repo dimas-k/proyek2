@@ -42,3 +42,4 @@ class PatenSeeder extends Seeder
         ]);
 }
 }
+

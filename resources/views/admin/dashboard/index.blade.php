@@ -106,12 +106,17 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="input-group mb-3">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter Diagram</button>
-                                        <ul class="dropdown-menu">
+                                        {{-- <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter Diagram</button> --}}
+                                        {{-- <ul class="dropdown-menu">
                                           <li><a class="dropdown-item" href="#">PATEN</a></li>
                                           <li><a class="dropdown-item" href="#">DESAIN INDUSTRI</a></li>
                                           <li><a class="dropdown-item" href="#">HAK CIPTA</a></li>
-                                        </ul>
+                                        </ul> --}}
+                                        <select id="filter-chart" value="chart-paten" name="" id="">
+                                            <option id="chart-paten" value="paten-chart">Paten</option>
+                                            <option id="chart-hc" value="hc-chart">Hak Cipta</option>
+                                            <option id="chart-di" value="di-chart">Desain Industri</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -126,7 +131,17 @@
                                     <input type="hidden" id="patenMTS" value="{{ $patenMTS }}">
                                     <input type="hidden" id="patenDI" value="{{ $patenDI }}">
                                     <input type="hidden" id="patenDK" value="{{ $patenDK }}">
-                                    <canvas id="paten-chart"></canvas>
+                                    <canvas class="canvas-chart" id="paten-chart"></canvas>
+                                    <input type="hidden" id="hcTolak" value="{{ $hcTolak }}">
+                                    <input type="hidden" id="hcTerima" value="{{ $hcTerima }}">
+                                    <input type="hidden" id="hcKet" value="{{ $hcKet }}">
+                                    <canvas class="canvas-chart" id="hc-chart"></canvas>
+                                    <input type="hidden" id="desainDi" value="{{ $desainDi }}">
+                                    <input type="hidden" id="desainDK" value="{{ $desainDK }}">
+                                    <input type="hidden" id="desainP" value="{{ $desainP }}">
+                                    <input type="hidden" id="desainKBL" value="{{ $desainKBL }}">
+                                    <input type="hidden" id="desainDPU" value="{{ $desainDPU }}">
+                                    <canvas class="canvas-chart" id="di-chart"></canvas>  
                                 </div>
                             </div>
                         </div>
@@ -134,6 +149,7 @@
                 </div>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
         </script>
@@ -144,7 +160,6 @@
             integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous">
         </script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
         <script>
         const patenPF = document.getElementById('patenPF').value;
         const patenMTF = document.getElementById('patenMTF').value;
@@ -205,7 +220,106 @@
                 }
             }
         });
+            // hak cipta
+        const hcTolak = document.getElementById('hcTolak').value;
+        const hcTerima = document.getElementById('hcTerima').value;
+        const hcKet = document.getElementById('hcKet').value;
+        const hc = document.getElementById('hc-chart').getContext('2d');
+        const hcChart = new Chart(hc, {
+            type: 'bar',
+            data: {
+                labels: ['Keterangan belum lengkap', 'Ditolak', 'Diterima'],
+                datasets: [
+                    {
+                    label: 'HAK CIPTA',
+                    data: [hcKet, hcTolak, hcTerima],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                    ],
+                    borderWidth: 2
+                },
+            ]
+            },
+            options: {
+            scales: {
+                y: {
+                    suggestedMin: 0,
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            }
+        }
+        });
+            //desain industri
+        const desainDi = document.getElementById('desainDi').value;
+        const desainDK = document.getElementById('desainDK').value;
+        const desainP = document.getElementById('desainP').value;
+        const desainKBL = document.getElementById('desainKBL').value;
+        const desainDPU = document.getElementById('desainDPU').value;
+        const di = document.getElementById('di-chart').getContext('2d');
+        const diChart = new Chart(di, {
+            type: 'bar',
+            data: {
+                labels: ['Ditolak', 'Diberi','Pemeriksaan','Dalam proses usulan','Keterangan belum lengkap'],
+                datasets: [
+                    {
+                    label: 'DESAIN INDUSTRI',
+                    data: [desainDK, desainDi, desainP,desainDPU,desainKBL],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                    ],
+                    borderWidth: 1
+                },
+            ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        suggestedMin: 0,
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+            }
+        });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".canvas-chart").hide()
+                $('#paten-chart').show()
+
+                $('#filter-chart').change(function () {
+                    const value = $(this).val()
+                    $(".canvas-chart").hide()
+                    $('#' + value).show()
+                })
+            }
+        )
         </script>
     </body>
-
 </html>
+
+
+
+
+

@@ -8,18 +8,23 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use PhpParser\Node\Stmt\TryCatch;
 
-class ApiAdminController extends Controller
+class ApiUsersController extends Controller
 {
     public function store(Request $request){
 
         try {
             $user = new User;
             $user->nama_lengkap = $request->nama_lengkap;
-            $user->jabatan = $request->jabatan;
-            $user->alamat = $request->alamat;
             $user->no_telepon = $request->no_telepon;
+            $user->email = $request->email;
+            $user->alamat = $request->alamat;
+            $user->ktp = $request->ktp;
+            $user->kerjaan = $request->kerjaan;
+            $user->jabatan = $request->jabatan;
+            $user->nip = $request->nip;
             $user->username = $request->username;
             $user->password = Hash::make($request->password);
+            $user->role = $request->role;
             $user->save();
         } catch (\Throwable $th) {
             return response()->json([
@@ -29,7 +34,7 @@ class ApiAdminController extends Controller
         }
         return response()->json([
             "status" => 200,
-            "message" => "Data successfully submited!!"
+            "message" => "Data User Berhasil Dibuat!"
         ]);
     }        
     public function getAllData() {
@@ -62,7 +67,7 @@ class ApiAdminController extends Controller
         }
         return response()->json([
             "status" => 200,
-            "message" => "Data terpanggil",
+            "message" => "Data Berhasil Terpanggil!",
             "data"=> $user
         ]);
     }
@@ -89,11 +94,16 @@ class ApiAdminController extends Controller
         try {
             $user = User::find($id);
             $user->nama_lengkap = $request->nama_lengkap;
-            $user->jabatan = $request->jabatan;
-            $user->alamat = $request->alamat;
             $user->no_telepon = $request->no_telepon;
+            $user->email = $request->email;
+            $user->alamat = $request->alamat;
+            $user->ktp = $request->ktp;
+            $user->kerjaan = $request->kerjaan;
+            $user->jabatan = $request->jabatan;
+            $user->nip = $request->nip;
             $user->username = $request->username;
             $user->password = Hash::make($request->password);
+            $user->role = $request->role;
             $user->save();
         } catch (\Throwable $th) {
             return response()->json([

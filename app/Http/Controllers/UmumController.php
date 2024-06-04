@@ -161,7 +161,7 @@ class UmumController extends Controller
             'pernyataan_kepemilikan' => 'required|mimes:pdf',
             'surat_kuasa' => 'required|mimes:pdf',
             'gambar_paten' => 'required|mimes:pdf',
-            'gambar_tampilan' => 'required|mimes:pdf',
+            'gambar_tampilan' => 'required|mimes:pdf'
         ]);
         $paten = Paten::find($id);
         $paten->user_id = Auth::user()->id;
@@ -324,7 +324,7 @@ class UmumController extends Controller
             'pernyataan_kepemilikan' => 'required|mimes:pdf',
             'surat_kuasa' => 'required|mimes:pdf',
             'gambar_paten' => 'required|mimes:pdf',
-            'gambar_tampilan' => 'required|mimes:pdf',
+            'gambar_tampilan' => 'required|mimes:pdf'
         ]);
         $paten = new Paten();
         $paten->user_id = Auth::user()->id;

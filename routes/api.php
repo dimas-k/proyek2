@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\ApiAdminController;
+use App\Http\Controllers\Api\ApiUsersController;
 use App\Http\Controllers\Api\UmumPatenController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,10 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/admin/store',[ApiAdminController::class, "store"]);
-Route::get('/admin/get/data',[ApiAdminController::class, "getAllData"]);
-Route::get('/admin/get/data/{id}',[ApiAdminController::class, "getData"]);
-Route::delete('/admin/delete/data/{id}',[ApiAdminController::class, "deleteData"]);
-Route::put('/admin/update/data/{id}',[ApiAdminController::class, "updateData"]);
+Route::post('/users/store',[ApiUsersController::class, "store"]);
+Route::get('/users/get/data',[ApiUsersController::class, "getAllData"]);
+Route::get('/users/get/data/{id}',[ApiUsersController::class, "getData"]);
+Route::delete('/users/delete/data/{id}',[ApiUsersController::class, "deleteData"]);
+Route::put('/users/update/data/{id}',[ApiUsersController::class, "updateData"]);
 
 

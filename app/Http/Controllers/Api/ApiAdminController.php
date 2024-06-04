@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-
+use PhpParser\Node\Stmt\TryCatch;
 
 class ApiAdminController extends Controller
 {
@@ -33,6 +33,19 @@ class ApiAdminController extends Controller
         ]);
     }
     public function getData(Request $request) {
-        
+        try {
+            $user = user::where('nama_lengkap', 'ica')->get();
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                "status" => 400,
+                "message" => $th
+            ]);
+        }
+        return response()->json([
+            "status" => 200,
+            "message" => "Data terpanggil",
+            "list_data"=> $user
+        ]);
     }
 }

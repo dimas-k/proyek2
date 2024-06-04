@@ -387,7 +387,10 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        suggestedMin: 0,
+                        ticks: {
+                            precision: 0
+                        }
                     }
                 }
             }

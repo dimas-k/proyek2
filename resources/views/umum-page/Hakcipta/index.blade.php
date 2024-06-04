@@ -222,12 +222,15 @@
                 ]
                 },
                 options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
+                scales: {
+                    y: {
+                        suggestedMin: 0,
+                        ticks: {
+                            precision: 0
                         }
                     }
                 }
+            }
             });
         </script>
     </div>

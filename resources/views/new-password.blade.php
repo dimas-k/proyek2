@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
     <link rel="stylesheet" href={{ asset('assets-login-user/login.css') }}>
     <title>SIKI POLINDRA || Login</title>
@@ -36,27 +37,28 @@
                 <div class="alert alert-success">{{ session('success') }}</div>
             @endif    
         </div>    
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="col-6 col-md-6 col-lg-6 col-xl-6">
             <div class="card bg-light text-black" style="border-radius: 1rem;">
                 <main>
-                    <div class="ms-auto me-auto mt-5" style="width:500px" >
+                    <div class="ms-auto me-auto mt-5" style="width:400px" >
                         <p>we will send a link to yur email</p>
-                        <form action="{{route('reset.password.post')}}" method="POST" class="ms-auto me-auto mt-auto" style="">
+                        <form action="{{route('reset.password.post')}}" method="POST" class="ms-auto me-auto mt-auto">
                             @csrf
                             <input type="text" name="token" hidden value="{{$token}}"> 
-                            <div class="mb-3">
+                            <div class="mb-2">
                                 <label class="form-label">Email Address</label>
                                 <input type="email" class="form-control" name="email">
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-2">
                                 <label class="form-label">Enter new password</label>
                                 <input type="password" class="form-control" name="password">
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-2">
                                 <label class="form-label">Confirm Password</label>
                                 <input type="password" class="form-control" name="password_confirmation">
+                                <br>
+                                <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </main>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
 
-<head>
+    <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
@@ -9,9 +9,9 @@
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
     <title>SIKI POLINDRA-Admin | Dashboard</title>
-</head>
-
-<body>
+    </head>
+    
+    <body>
     {{-- Top nav bar --}}
     <div class="container-fluid border">
         <nav class="navbar navbar-expand bg-body-tertiary">
@@ -102,12 +102,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-11 col-md-11 col-lg-11 col-xl-11">
+                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title"></h3>
                                     <div class="input-group mb-3">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter Diagram</button>
                                         <ul class="dropdown-menu">
                                           <li><a class="dropdown-item" href="#">PATEN</a></li>
                                           <li><a class="dropdown-item" href="#">DESAIN INDUSTRI</a></li>
@@ -198,12 +197,15 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        suggestedMin: 0,
+                        ticks: {
+                            precision: 0
+                        }
                     }
                 }
             }
         });
         </script>
-</body>
+    </body>
 
 </html>

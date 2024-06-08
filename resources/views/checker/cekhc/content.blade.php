@@ -35,7 +35,7 @@
                                 <form action="/paten/cari" method="GET">
                                     <div class="row g-2 align-items-center">
                                         <div class="col-auto">
-                                            <label for="" class="col-form-label">Cari Paten</label>
+                                            <label for="" class="col-form-label">Cari Hak Cipta</label>
                                         </div>
                                         <div class="col-auto">
                                             <input type="text" id="" class="form-control"
@@ -53,10 +53,10 @@
                                         <tr>
                                             <th scope="col">No</th>
                                             <th scope="col">Nama lengkap</th>
-                                            <th scope="col">Jenis Paten</th>
-                                            <th scope="col">Judul paten</th>
+                                            <th scope="col">Jenis Ciptaan</th>
+                                            <th scope="col">Judul Ciptaan</th>
                                             <th scope="col">Tanggal pengajuan</th>
-                                            <th scope="col">Status paten</th>
+                                            <th scope="col">Status Hak Cipta</th>
                                             <th scope="col">Status Cek Data</th>
                                             <th scope="col">Keterangan</th>
                                             <th scope="col">Aksi</th>
@@ -73,7 +73,7 @@
                                                 </td>
                                                 <td>{{ $p->status }}</td>
                                                 <td>
-                                                    @if ($p->cekHcHc?->cek_data == 'Benar')
+                                                    @if ($p->cekHc?->cek_data == 'Benar')
                                                         <i class="fa fa-check-circle" style="color: green"
                                                             data-bs-toggle="tooltip"></i>
                                                     @elseif($p->cekHc?->cek_data == 'Salah')
@@ -81,7 +81,7 @@
                                                             data-bs-toggle="tooltip"></i>
                                                     @else
                                                         <i class="fa fa-minus-circle" style="color: yellow"
-                                                            data-bs-toggle="tooltip"></i>{{ $p->cekHc?->cek_data }}
+                                                            data-bs-toggle="tooltip"></i>
                                                     @endif
                                                 </td>
                                                 <td>
@@ -94,9 +94,9 @@
                                                 <td><a href={{ Route('hccek.lihat', $p->id) }}
                                                         class="btn btn-info"><i class="fa fa-eye"
                                                             data-bs-toggle="tooltip"></i></a>
-                                                    <a href={{ Route('dsn.edit.paten', $p->id) }}
+                                                    {{-- <a href={{ Route('dsn.edit.paten', $p->id) }}
                                                         class="btn btn-warning"><i class="fa fa-pencil"
-                                                            data-bs-toggle="tooltip"></i></a>
+                                                            data-bs-toggle="tooltip"></i></a> --}}
                                                 </td>
                                             </tr>
                                         @endforeach

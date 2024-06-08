@@ -21,9 +21,8 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Hak
-                                Cipta
-                                {{ $hc->nama_lengkap }}
+                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Desain Industri
+                                {{ $di->nama_lengkap }}
                             </h3>
                         </div>
                         <div class="card-body">
@@ -32,78 +31,79 @@
 
                                     <tr>
                                         <th>Nama Lengkap</th>
-                                        <td>: {{ $hc->nama_lengkap }}</td>
+                                        <td>: {{ $di->nama_lengkap }}</td>
                                     </tr>
                                     <tr>
                                         <th>Alamat</th>
-                                        <td>: {{ $hc->alamat }}</td>
+                                        <td>: {{ $di->alamat }}</td>
                                     </tr>
                                     <tr>
                                         <th>No Telepon</th>
-                                        <td>: {{ $hc->no_telepon }}</td>
+                                        <td>: {{ $di->no_telepon }}</td>
                                     </tr>
                                     <tr>
                                         <th>Tanggal lahir</th>
-                                        <td>: {{ \Carbon\Carbon::parse($hc->tanggal_lahir)->format('d-m-Y') }}</td>
+                                        <td>: {{ \Carbon\Carbon::parse($di->tanggal_lahir)->format('d-m-Y') }}</td>
                                     </tr>
                                     <tr>
                                         <th>KTP</th>
-                                        <td>: <a href={{ asset('storage/' . $hc->ktp_inventor) }} class=""
+                                        <td>: <a href={{ asset('storage/' . $di->ktp_inventor) }} class=""
                                                 target="_blank">Lihat KTP</a></td>
                                     </tr>
                                     <tr>
                                         <th>Email</th>
-                                        <td>: {{ $hc->email }}</td>
+                                        <td>: {{ $di->email }}</td>
                                     </tr>
                                     <tr>
                                         <th>Kewarganegaraan</th>
-                                        <td>: {{ $hc->kewarganegaraan }}</td>
+                                        <td>: {{ $di->kewarganegaraan }}</td>
                                     </tr>
                                     <tr>
                                         <th>Kode Pos</th>
-                                        <td>: {{ $hc->kode_pos }}</td>
+                                        <td>: {{ $di->kode_pos }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Jenis Ciptaann</th>
-                                        <td>: {{ $hc->jenis_ciptaan }}</td>
+                                        <th>Jenis Desain</th>
+                                        <td>: {{ $di->jenis_di }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Judul Ciptaan</th>
-                                        <td>: {{ $hc->judul_ciptaan }}</td>
+                                        <th>Judul Desain</th>
+                                        <td>: {{ $di->judul_di }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Abstrak Ciptaan</th>
-                                        <td>: {{ $hc->uraian_singkat }}</td>
+                                        <th>uraian Desain</th>
+                                        <td>: <a href={{ asset('storage/' . $di->uraian_di) }} class=""
+                                                target="_blank">Lihat uraian Desain</a></td>
                                     </tr>
                                     <tr>
-                                        <th>Dokumen invensi</th>
-                                        <td>: <a href={{ asset('storage/' . $hc->dokumen_invensi) }} class=""
+                                        <th>gambar Desain</th>
+                                        <td>: <a href={{ asset('storage/' . $di->gambar_di) }} class=""
                                                 target="_blank">Lihat Dokumen Invensi</a></td>
                                     </tr>
                                     <tr>
-                                        <th>Pengalihan hak invensi</th>
-                                        <td>: <a href={{ asset('storage/' . $hc->surat_pengalihan) }} class=""
-                                                target="_blank">Lihat Pengalihan Hak Invensi</a></td>
+                                        <th>surat Kepemilikan</th>
+                                        <td>: <a href={{ asset('storage/' . $di->surat_kepemilikan) }} class=""
+                                                target="_blank">Lihat Klaim</a></td>
                                     </tr>
                                     <tr>
-                                        <th>surat pernyataan</th>
-                                        <td>: <a href={{ asset('storage/' . $hc->surat_pernyataan) }} class=""
-                                                target="_blank">Lihat Klaim</a></td>
+                                        <th>Pengalihan hak invensi</th>
+                                        <td>: <a href={{ asset('storage/' . $di->surat_pengalihan) }} class=""
+                                                target="_blank">Lihat Pengalihan Hak Invensi</a></td>
                                     </tr>
 
                                     <tr>
                                         <th>Tanggal pengajuan</th>
-                                        <td>: {{ \Carbon\Carbon::parse($hc->tanggal_permohonan)->format('d-m-Y ') }}
+                                        <td>: {{ \Carbon\Carbon::parse($di->tanggal_permohonan)->format('d-m-Y ') }}
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>Status</th>
-                                        <td>: {{ $hc->status }}</td>
+                                        <td>: {{ $di->status }}</td>
                                     </tr>
                                     <tr>
                                         <th>Sertifikat Paten</th>
-                                        <td>: @if ($hc->sertifikat_hakcipta != '')
-                                                <a href={{ asset('storage/' . $hc->sertifikat_hakcipta) }}
+                                        <td>: @if ($di->sertifikat_hakcipta != '')
+                                                <a href={{ asset('storage/' . $di->sertifikat_hakcipta) }}
                                                     class="" target="_blank">Lihat sertifikat</a>
                                             @else
                                                 Hak Cipta Ini Belum Mendapatkan Sertifikat
@@ -114,17 +114,17 @@
                                     <tr>
                                         <th>Keterangan status data hak cipta</th>
                                         <td>
-                                            : @if ($hc->cekHc?->keterangan == '')
+                                            : @if ($di->cekDi?->keterangan == '')
                                                 Data Hak Cipta Belum Dicek
                                             @else
-                                                {{ $hc->cekHc?->keterangan }}
+                                                {{ $di->cekDi?->keterangan }}
                                             @endif
                                         </td>
                                     </tr>
                                 </table>
-                                <a class="btn btn-primary me-3"
-                                    href="/checker/cek/hak-cipta/nilai/{{ request()->segment(5) }}">Nilai Data Hak Cipta</a>
-                                <a href="/checker/cek/hak-cipta/nilai/update/{{ request()->segment(5) }}" class="btn btn-secondary">Update nilai Data hak Cipta</a>
+                                <a class="btn btn-primary me-2"
+                                    href="/checker/cek/desain-industri/nilai/{{ request()->segment(5) }}">Nilai Data Desain Industri</a>
+                                <a href="/checker/cek/desain-industri/nilai/update/{{ request()->segment(5) }}" class="btn btn-secondary">Update Nilai Data Desain Industri</a>
                             </div>
                         </div>
                     </div>

@@ -127,6 +127,7 @@
                                 </table>
                                 <a class="btn btn-primary"
                                     href="/checker/cek/paten/nilai/{{ request()->segment(5) }}">Nilai Data Paten</a>
+                                    <a href="/checker/cek/paten/nilai/update/{{ request()->segment(5) }}" class="btn btn-secondary">Update nilai Data hak Cipta</a>
                             </div>
                         </div>
                     </div>

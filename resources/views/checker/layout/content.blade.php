@@ -27,7 +27,7 @@
                                         <div class="d-flex">
                                             <div class="mt-2">
                                                 <h6 class="">Paten</h6>
-                                                <h2 class="mb-0 number-font"></h2>
+                                                <h2 class="mb-0 number-font">{{ $paten }}</h2>
                                             </div>
                                             {{-- <div class="ms-auto">
                                             <div class="chart-wrapper mt-1">
@@ -48,7 +48,7 @@
                                         <div class="d-flex">
                                             <div class="mt-2">
                                                 <h6 class="">Hak Cipta</h6>
-                                                <h2 class="mb-0 number-font"></h2>
+                                                <h2 class="mb-0 number-font">{{ $hc }}</h2>
                                             </div>
                                             {{-- <div class="ms-auto">
                                             <div class="chart-wrapper mt-1">
@@ -69,7 +69,7 @@
                                         <div class="d-flex">
                                             <div class="mt-2">
                                                 <h6 class="">Desain Industri</h6>
-                                                <h2 class="mb-0 number-font"></h2>
+                                                <h2 class="mb-0 number-font">{{ $di }}</h2>
                                             </div>
                                             {{-- <div class="ms-auto">
                                             <div class="chart-wrapper mt-1">

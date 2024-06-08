@@ -3,7 +3,7 @@
         <div class="d-flex">
             <a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="javascript:void(0)"></a>
             <!-- sidebar-toggle-->
-            <a class="logo-horizontal " href="/dosen/dashboard">
+            <a class="logo-horizontal " href="/checker/dashboard">
                 <img src={{ asset('assets/polindra21.png') }} class="header-brand-img desktop-logo" alt="logo">
                 <img src={{ asset('assets-user/images/brand/logo-no-bg-1.png') }} class="header-brand-img light-logo1"
                     alt="logo" style="width: 220px">

@@ -95,9 +95,9 @@
                                                 <td><a href={{ Route('patencek.lihat', $p->id) }}
                                                         class="btn btn-info"><i class="fa fa-eye"
                                                             data-bs-toggle="tooltip"></i></a>
-                                                    <a href={{ Route('dsn.edit.paten', $p->id) }}
+                                                    {{-- <a href={{ Route('dsn.edit.paten', $p->id) }}
                                                         class="btn btn-warning"><i class="fa fa-pencil"
-                                                            data-bs-toggle="tooltip"></i></a>
+                                                            data-bs-toggle="tooltip"></i></a> --}}
                                                     {{-- <button type="button" class="btn btn-danger"
                                                         data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                                         <i class="fa fa-trash" data-bs-toggle="tooltip"></i>

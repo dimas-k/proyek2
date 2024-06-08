@@ -6,125 +6,103 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Hak Cipta</h1>
+                <h1 class="page-title">Desain Industri</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/dosen/paten">Paten</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Lihat</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Desain Industri</li>
                     </ol>
                 </div>
             </div>
             <!-- PAGE-HEADER END -->
-
             <!-- ROW-2 -->
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Hak
-                                Cipta
-                                {{ $hc->nama_lengkap }}
+                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Desain Industri
                             </h3>
                         </div>
                         <div class="card-body">
+                            @if (session()->has('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+                            <div class="d-flex justify-content-end mb-5">
+                                <form action="/paten/cari" method="GET">
+                                    <div class="row g-2 align-items-center">
+                                        <div class="col-auto">
+                                            <label for="" class="col-form-label">Cari Desain Industri</label>
+                                        </div>
+                                        <div class="col-auto">
+                                            <input type="text" id="" class="form-control"
+                                                aria-describedby="" name="cari">
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="submit" class="btn btn-primary ">Cari</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             <div class="table-responsive">
-                                <table class="table table-borderless p-1">
-
-                                    <tr>
-                                        <th>Nama Lengkap</th>
-                                        <td>: {{ $hc->nama_lengkap }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Alamat</th>
-                                        <td>: {{ $hc->alamat }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>No Telepon</th>
-                                        <td>: {{ $hc->no_telepon }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Tanggal lahir</th>
-                                        <td>: {{ \Carbon\Carbon::parse($hc->tanggal_lahir)->format('d-m-Y') }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>KTP</th>
-                                        <td>: <a href={{ asset('storage/' . $hc->ktp_inventor) }} class=""
-                                                target="_blank">Lihat KTP</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Email</th>
-                                        <td>: {{ $hc->email }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Kewarganegaraan</th>
-                                        <td>: {{ $hc->kewarganegaraan }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Kode Pos</th>
-                                        <td>: {{ $hc->kode_pos }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Jenis Ciptaann</th>
-                                        <td>: {{ $hc->jenis_ciptaan }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Judul Ciptaan</th>
-                                        <td>: {{ $hc->judul_ciptaan }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Abstrak Ciptaan</th>
-                                        <td>: {{ $hc->uraian_singkat }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Dokumen invensi</th>
-                                        <td>: <a href={{ asset('storage/' . $hc->dokumen_invensi) }} class=""
-                                                target="_blank">Lihat Dokumen Invensi</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Pengalihan hak invensi</th>
-                                        <td>: <a href={{ asset('storage/' . $hc->surat_pengalihan) }} class=""
-                                                target="_blank">Lihat Pengalihan Hak Invensi</a></td>
-                                    </tr>
-                                    <tr>
-                                        <th>surat pernyataan</th>
-                                        <td>: <a href={{ asset('storage/' . $hc->surat_pernyataan) }} class=""
-                                                target="_blank">Lihat Klaim</a></td>
-                                    </tr>
-
-                                    <tr>
-                                        <th>Tanggal pengajuan</th>
-                                        <td>: {{ \Carbon\Carbon::parse($hc->tanggal_permohonan)->format('d-m-Y ') }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Status</th>
-                                        <td>: {{ $hc->status }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Sertifikat Paten</th>
-                                        <td>: @if ($hc->sertifikat_hakcipta != '')
-                                                <a href={{ asset('storage/' . $hc->sertifikat_hakcipta) }}
-                                                    class="" target="_blank">Lihat sertifikat</a>
-                                            @else
-                                                Hak Cipta Ini Belum Mendapatkan Sertifikat
-                                            @endif
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>Keterangan status data hak cipta</th>
-                                        <td>
-                                            : @if ($hc->cekHc?->keterangan == '')
-                                                Data Hak Cipta Belum Dicek
-                                            @else
-                                                {{ $hc->cekHc?->keterangan }}
-                                            @endif
-                                        </td>
-                                    </tr>
+                                <table class="table table-hover p-1">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama lengkap</th>
+                                            <th scope="col">Jenis Desain</th>
+                                            <th scope="col">Judul Desain</th>
+                                            <th scope="col">Tanggal pengajuan</th>
+                                            <th scope="col">Status Desain Industri</th>
+                                            <th scope="col">Status Cek Data</th>
+                                            <th scope="col">Keterangan</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($di as $i => $p)
+                                            <tr>
+                                                <th scope="row">{{ $i + 1 }}</th>
+                                                <td>{{ $p->nama_lengkap }}</td>
+                                                <td>{{ $p->jenis_di }}</td>
+                                                <td>{{ $p->judul_di }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y ') }}
+                                                </td>
+                                                <td>{{ $p->status }}</td>
+                                                <td>
+                                                    @if ($p->cekDi?->cek_data == 'Benar')
+                                                        <i class="fa fa-check-circle" style="color: green"
+                                                            data-bs-toggle="tooltip"></i>
+                                                    @elseif($p->cekDi?->cek_data == 'Salah')
+                                                        <i class="fa fa-times-circle" style="color: red"
+                                                            data-bs-toggle="tooltip"></i>
+                                                    @else
+                                                        <i class="fa fa-minus-circle" style="color: yellow"
+                                                            data-bs-toggle="tooltip"></i>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($p->cekDi?->keterangan == '')
+                                                        Data Hak Cipta Belum Dicek
+                                                    @else
+                                                        {{ $p->cekDi?->keterangan }}
+                                                    @endif
+                                                </td>
+                                                <td><a href={{ Route('lihat.desain', $p->id) }}
+                                                        class="btn btn-info"><i class="fa fa-eye"
+                                                            data-bs-toggle="tooltip"></i></a>
+                                                    {{-- <a href={{ Route('dsn.edit.paten', $p->id) }}
+                                                        class="btn btn-warning"><i class="fa fa-pencil"
+                                                            data-bs-toggle="tooltip"></i></a> --}}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
                                 </table>
-                                <a class="btn btn-primary me-3"
-                                    href="/checker/cek/hak-cipta/nilai/{{ request()->segment(5) }}">Nilai Data Hak Cipta</a>
-                                <a href="/checker/cek/hak-cipta/nilai/update/{{ request()->segment(5) }}" class="btn btn-secondary">Update nilai Data hak Cipta</a>
+                                {{ $di->links() }}
                             </div>
                         </div>
                     </div>

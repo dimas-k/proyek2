@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CheckDi;
+use App\Models\DesainIndustri;
 use App\Models\Paten;
 use App\Models\Checker;
 use App\Models\CheckHc;
@@ -16,7 +18,10 @@ class CheckerController extends Controller
 {
     public function dashboard()
     {
-        return view('checker.dashboard.index');
+        $paten = Paten::all()->count();
+        $hc = HakCipta::all()->count();
+        $di = DesainIndustri::all()->count();
+        return view('checker.dashboard.index', compact('paten', 'hc', 'di'));
     }
     public function loginChecker()
     {
@@ -73,6 +78,26 @@ class CheckerController extends Controller
 
         return redirect('/checker/cek/paten')->with('success', 'Data Paten berhasil dinilai!');
     }
+    public function lamanupdatePaten(string $id)
+    {
+        $paten = CheckPaten::find($id);
+        return view('checker.cekpaten.update.index', compact('paten'));
+    }
+    public function updateCekPaten(Request $request, string $id)
+    {
+        $validasi = $request->validate([
+            'cek_data' => 'required',
+            'keterangan' => 'required'
+        ]);
+
+        $cek = CheckPaten::find($id);
+        $cek->paten_id = $id;
+        $cek ->cek_data = $request->cek_data;
+        $cek ->keterangan = $request->keterangan;
+        $cek->save($validasi);
+
+        return redirect('/checker/cek/paten')->with('success', 'Peniliaian Paten Berhasil diupdate!');
+    }
     
     public function lamanHc()
     {
@@ -86,7 +111,90 @@ class CheckerController extends Controller
     }
     public function lamanCekHc()
     {
-        return view('');
+        return view('checker.cekhc.nilai.index');
+    }
+    public function simpanCekHc(Request $request, string $id)
+    {
+        $validasi = $request->validate([
+            'cek_data' => 'required',
+            'keterangan' => 'required'
+        ]);
+        
+        $cek = new CheckHc();
+        $cek->hak_cipta_id = $id;
+        $cek ->cek_data = $request->cek_data;
+        $cek ->keterangan = $request->keterangan;
+        $cek->save($validasi);
+        
+        return redirect('/checker/cek/hak-cipta')->with('success', 'Data Hak Cipta berhasil dinilai!');
+    }
+    public function lamanUpdateCekhc(string $id)
+    {
+        $hc = CheckHc::find($id);
+        return view('checker.cekhc.update.index', compact('hc'));
+    }
+    public function updateCekHc(Request $request, string $id)
+    {
+        $validasi = $request->validate([
+            'cek_data' => 'required',
+            'keterangan' => 'required'
+        ]);
+        
+        $cek = CheckHc::find($id);
+        $cek->hak_cipta_id = $id;
+        $cek ->cek_data = $request->cek_data;
+        $cek ->keterangan = $request->keterangan;
+        $cek->save($validasi);
+        
+        return redirect('/checker/cek/hak-cipta')->with('success', 'Penilaian Hak Cipta Berhasil diupdate!');
+    }
+    public function lamanDi()
+    {
+        $di = DesainIndustri::with('cekDi')->paginate(5);
+        return view('checker.cekdi.index', compact('di'));
+    }
+    public function cekDi(string $id)
+    {
+        $di = DesainIndustri::with('cekDi')->find($id);
+        return view('checker.cekdi.lihat.index', compact('di'));
+    }
+    public function lamanCekDi()
+    {
+        return view('checker.cekdi.nilai.index');
+    }
+    
+    public function simpanCekDi(Request $request, string $id)
+    {
+        $validasi = $request->validate([
+            'cek_data' => 'required',
+            'keterangan' => 'required'
+        ]);
+        
+        $cek = new CheckDi();
+        $cek->desain_industri_id = $id;
+        $cek ->cek_data = $request->cek_data;
+        $cek ->keterangan = $request->keterangan;
+        $cek->save($validasi);
+        
+        return redirect('/checker/cek/desain-industri')->with('success', 'Data Desain industri berhasil dinilai!');
+    }
+    public function updateCekDi(Request $request, string $id)
+    {
+        $validasi = $request->validate([
+            'cek_data' => 'required',
+            'keterangan' => 'required'
+        ]);
+        $updatedi = CheckDi::find($id);
+        $updatedi->desain_industri_id = $id;
+        $updatedi ->cek_data = $request->cek_data;
+        $updatedi ->keterangan = $request->keterangan;
+        $updatedi->save($validasi);
+        return redirect('/checker/cek/desain-industri')->with('success', 'Penilaian Desain Industri Berhasil diupdate!');
+    }
+    public function lamanUpdateCekDi(string $id)
+    {
+        $di = CheckDi::find($id);
+        return view('checker.cekdi.update.index', compact('di'));
     }
     public function logout(request $request)
     {

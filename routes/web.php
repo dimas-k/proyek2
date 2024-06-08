@@ -227,9 +227,22 @@ Route::middleware(['auth', 'role:Checker'])->group(function () {
     Route::get('/checker/cek/paten/lihat/{id}',[CheckerController::class, 'cekPaten'])->name('patencek.lihat');
     Route::get('/checker/cek/paten/nilai/{id}',[CheckerController::class, 'cek']);
     Route::post('/checker/cek/paten/nilai/simpan/{id}',[CheckerController::class, 'simpanCek'])->name('simpan.nilai');
+    Route::get('checker/cek/paten/nilai/update/{id}', [CheckerController::class, 'lamanUpdatePaten']);
+    Route::post('/checker/cek/paten/nilai/update/{id}', [CheckerController::class, 'updateCekPaten'])->name('update.cek.paten');
 
     Route::get('/checker/cek/hak-cipta',[CheckerController::class, 'lamanHc']);
     Route::get('/checker/cek/hak-cipta/lihat/{id}',[CheckerController::class, 'cekHc'])->name('hccek.lihat');
+    Route::get('/checker/cek/hak-cipta/nilai/{id}', [CheckerController::class, 'lamanCekhc'])->name('hccek.nilai');
+    Route::post('/checker/cek/hak-cipta/nilai/simpan/{id}',[CheckerController::class, 'simpanCekhc'])->name('hcnilai.simpan');
+    Route::get('/checker/cek/hak-cipta/nilai/update/{id}', [CheckerController::class, 'lamanUpdateCekhc']);
+    Route::post('checker/cek/hak-cipta/nilai/update/simpan/{id}', [CheckerController::class, 'updateCekhc'])->name('hc.update.cek');
+
+    Route::get('/checker/cek/desain-industri', [CheckerController::class, 'lamanDi']);
+    Route::get('checker/cek/desain-industri/lihat/{id}', [CheckerController::class, 'cekDi'])->name('lihat.desain');
+    Route::get('/checker/cek/desain-industri/nilai/{id}', [CheckerController::class, 'lamanCekDi']);
+    Route::post('checker/cek/desain-industri/nilai/simpan/{id}', [CheckerController::class, 'simpanCekDi'])->name('cekdi.simpan');
+    Route::get('/checker/cek/desain-industri/nilai/update/{id}', [CheckerController::class, 'lamanUpdateCekDi'])->name('update.cekdi');
+    Route::post('checker/cek/desain-industri/nilai/update/simpan/{id}', [CheckerController::class, 'updateCekDi'])->name('update.cekdi');
 
     Route::get('/checker/logout', [CheckerController::class, 'logout']);
 });

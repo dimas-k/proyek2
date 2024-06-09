@@ -42,7 +42,7 @@
     
                   <div class="form-outline form-white mb-4">
                     <label class="form-label" for="username">Nama Lengkap</label>
-                    <input type="text" id="username" name="nama_lengkap" class="form-control form-control @error('nama_lengkap') is-invalid @enderror" required >
+                    <input type="text" id="username" name="nama_lengkap" class="form-control form-control @error('nama_lengkap') is-invalid @enderror" required required value="{{ old('nama_lengkap') }}">
                     @error('username')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -51,7 +51,7 @@
                   </div>
                   <div class="form-outline form-white mb-4">
                     <label class="form-label" for="username">KTP</label>
-                    <input type="file" id="username" name="ktp" class="form-control form-control @error('ktp') is-invalid @enderror" required >
+                    <input type="file" id="username" name="ktp" class="form-control form-control @error('ktp') is-invalid @enderror" required required value="{{ old('ktp') }}">
                     @error('ktp')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -61,7 +61,7 @@
     
                   <div class="form-outline form-white mb-4">
                     <label class="form-label" for="pass">Alamat</label>
-                    <input type="text" id="pass" name="alamat" class="form-control form-control @error('alamat') is-invalid @enderror" required>
+                    <input type="text" id="pass" name="alamat" class="form-control form-control @error('alamat') is-invalid @enderror" requiredrequired value="{{ old('alamat') }}">
                     @error('alamat')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -70,7 +70,7 @@
                   </div>
                   <div class="form-outline form-white mb-4">
                     <label class="form-label" for="pass">No telepon</label>
-                    <input type="number" id="pass" name="no_telepon" class="form-control form-control @error('no_telepon') is-invalid @enderror" required>
+                    <input type="number" id="pass" name="no_telepon" class="form-control form-control @error('no_telepon') is-invalid @enderror" required required value="{{ old('no_telepon') }}">
                     @error('no_telepon')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -79,7 +79,7 @@
                   </div>
                   <div class="form-outline form-white mb-4">
                     <label class="form-label" for="pass">Email</label>
-                    <input type="text" id="pass" name="email" class="form-control form-control @error('email') is-invalid @enderror" required>
+                    <input type="text" id="pass" name="email" class="form-control form-control @error('email') is-invalid @enderror" required required value="{{ old('email') }}">
                     @error('email')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -88,7 +88,7 @@
                   </div>
                   <div class="form-outline form-white mb-4">
                     <label class="form-label" for="pass">Bekerja sebagai</label>
-                    <input type="text" id="pass" name="kerjaan" class="form-control form-control @error('kerjaan') is-invalid @enderror" required>
+                    <input type="text" id="pass" name="kerjaan" class="form-control form-control @error('kerjaan') is-invalid @enderror" required required value="{{ old('kerjaan') }}">
                     @error('kerjaan')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -97,7 +97,7 @@
                   </div>
                   <div class="form-outline form-white mb-4">
                     <label class="form-label" for="pass">Username</label>
-                    <input type="text" id="pass" name="username" class="form-control form-control @error('username') is-invalid @enderror" required>
+                    <input type="text" id="pass" name="username" class="form-control form-control @error('username') is-invalid @enderror" required required value="{{ old('username') }}">
                     @error('username')
                     <div class="invalid-feedback">
                       {{ $message }}

@@ -55,11 +55,13 @@
                             <div class="d-flex flex-row">
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm p-2" style="width: 18rem;">
-                                        <a href="/admin/desain-industri/diberi" class="link-dark link-underline link-underline-opacity-0">
+                                        <a href="/admin/desain-industri/diberi"
+                                            class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center me-5">
-                                                        <i class="bi bi-check-square float-start me-5" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-check-square float-start me-5"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
                                                         <h3 class="ms-5 d-flex justify-content-end">{{ $beri }}
@@ -71,33 +73,38 @@
                                         </a>
                                     </div>
                                 </div>
-                    
+
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm " style="width: 18rem;">
-                                        <a href="/admin/desain-industri/dalam-proses-usulan" class="link-dark link-underline link-underline-opacity-0">
+                                        <a href="/admin/desain-industri/dalam-proses-usulan"
+                                            class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center ">
-                                                        <i class="bi bi-recycle float-start me-4" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-recycle float-start me-4"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
                                                         <h3 class="ms-5 d-flex justify-content-end">{{ $proses }}
                                                         </h3>
-                                                        <span class="ms-5 d-flex justify-content-end">Dalam Proses Usulan</span>
+                                                        <span class="ms-5 d-flex justify-content-end">Dalam Proses
+                                                            Usulan</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
                                 </div>
-                    
+
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm p-2" style="width: 18rem;">
-                                        <a href="/admin/desain-industri/pemeriksaan" class="link-dark link-underline link-underline-opacity-0">
+                                        <a href="/admin/desain-industri/pemeriksaan"
+                                            class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center me-5">
-                                                        <i class="bi bi-search float-start me-4" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-search float-start me-4"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
                                                         <h3 class="ms-5 d-flex justify-content-end">{{ $priksa }}
@@ -109,19 +116,22 @@
                                         </a>
                                     </div>
                                 </div>
-                    
+
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm" style="width: 18rem;">
-                                        <a href="/admin/desain-industri/keterangan-belum-lengkap" class="link-dark link-underline link-underline-opacity-0">
+                                        <a href="/admin/desain-industri/keterangan-belum-lengkap"
+                                            class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center">
-                                                        <i class="bi bi-question-square float-start me-3" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-question-square float-start me-3"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
                                                         <h3 class="ms-5 d-flex justify-content-end">{{ $null }}
                                                         </h3>
-                                                        <span class="ms-3 d-flex justify-content-end">Keterangan belum Lengkap</span>
+                                                        <span class="ms-3 d-flex justify-content-end">Keterangan belum
+                                                            Lengkap</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -132,11 +142,13 @@
                             <div class="d-flex flex-row">
                                 <div class="col-xl-3 col-sm-6 col-12 mt-3">
                                     <div class="card shadow-sm p-2" style="width: 18rem;">
-                                        <a href="/admin/desain-industri/ditolak" class="link-dark link-underline link-underline-opacity-0">
+                                        <a href="/admin/desain-industri/ditolak"
+                                            class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center">
-                                                        <i class="bi bi-x-square float-start me-5 pe-5" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-x-square float-start me-5 pe-5"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
                                                         <h3 class="ms-5 d-flex justify-content-end">{{ $tolak }}
@@ -160,7 +172,8 @@
                                 aria-label="Close"></button>
                         </div>
                     @endif
-                    <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-3"></i>Daftar Desain Industri</h3>
+                    <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-3"></i>Daftar Desain
+                        Industri</h3>
                     <table class="table table-hover font-family-Kokoro">
                         <thead>
                             <tr>
@@ -171,6 +184,8 @@
                                 <th scope="col">Institusi</th>
                                 <th scope="col">Tanggal pengajuan</th>
                                 <th scope="col">Status </th>
+                                <th scope="col">Status Cek Data </th>
+                                <th scope="col">Keterangan </th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -182,13 +197,364 @@
                                     <td>{{ $di->jenis_di }}</td>
                                     <td>{{ $di->judul_di }}</td>
                                     <td>{{ $di->institusi }}</td>
-                                    <td>{{ $di->tanggal_permohonan }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($di->tanggal_permohonan)->format('d-m-Y ') }}</td>
                                     <td>{{ $di->status }}</td>
-                                    <td><a href={{ Route('admin_desainindustri.show', $di->id) }} class="btn btn-info"><i class="bi bi-eye"></i></a>
-                                        <a href={{ Route('admin_desainindustri.edit', $di->id) }}
-                                            class="btn btn-warning"><i class="bi bi-pencil"></i></a> <a
-                                            href={{ Route('admin_desainindustri.delete', $di->id) }}
-                                            class="btn btn-danger" onclick="return confirm('Apakah Kamu Yakin?')"><i class="bi bi-trash3"></i></a></td>
+                                    <td>
+                                        @if ($di->cekhc?->cek_data == 'Benar')
+                                            <i class="bi bi-check-circle-fill" style="color: green"></i>
+                                        @elseif($di->cekhc?->cek_data == 'Salah')
+                                            <i class="bi bi-times-circle" style="color: red"></i>
+                                        @else
+                                            <i class="bi bi-dash-circle-fill"
+                                                style="color: yellow"></i>{{ $di->cekhc?->cek_data }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($di->cekhc?->keterangan == '')
+                                            Data Paten Belum Dicek
+                                        @else
+                                            {{ $di->cekhc?->keterangan }}
+                                        @endif
+                                    </td>
+                                    <td><a href={{ Route('admin_desainindustri.show', $di->id) }}
+                                            class="btn btn-info"><i class="bi bi-eye"></i></a>
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal{{ $di->id }}">
+                                            <i class="bi bi-pencil"></i>
+                                        </button>
+                                        <div class="modal fade" id="exampleModal{{ $di->id }}" tabindex="-1"
+                                            data-bs-backdrop="static" aria-labelledby="exampleModalLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-scrollable">
+                                                <div class="modal-content p-2">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel"> Edit
+                                                            Desain {{ $di->nama_lengkap }}</h1>
+                                                        <button type="button" class="btn-close"
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form enctype="multipart/form-data" method="post"
+                                                            action={{ Route('admin_desainindustri.update', $di->id) }}>
+                                                            @csrf
+                                                            <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS
+                                                            </p>
+                                                            <div class="container">
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">Nama
+                                                                        Lengkap</label>
+                                                                    <input type="text"
+                                                                        class="form-control @error('nama_lengkap') is-invalid @enderror"
+                                                                        id="" placeholder="Masukkan Nama"
+                                                                        name="nama_lengkap"
+                                                                        value="{{ $di->nama_lengkap }}">
+                                                                    @error('kewarganegaraan')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for=""
+                                                                        class="form-label">Alamat</label>
+                                                                    <input type="text"
+                                                                        class="form-control @error('alamat') is-invalid @enderror"
+                                                                        id="" placeholder="Masukkan Alamat"
+                                                                        name="alamat" value="{{ $di->alamat }}">
+                                                                    @error('kewarganegaraan')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">No
+                                                                        telepon</label>
+                                                                    <input type="text"
+                                                                        class="form-control @error('no_telepon') is-invalid @enderror"
+                                                                        id=""
+                                                                        placeholder="Masukkan No telepon"
+                                                                        name="no_telepon"
+                                                                        value="{{ $di->no_telepon }}">
+                                                                    @error('no_telepon')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">Tanggal
+                                                                        Lahir</label>
+                                                                    <input type="date"
+                                                                        class="form-control @error('tanggal_lahir') is-invalid @enderror"
+                                                                        id="" placeholder=""
+                                                                        name="tanggal_lahir"
+                                                                        value="{{ $di->tanggal_lahir }}">
+                                                                    @error('tanggal_lahir')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="Ktp" class="form-label">KTP
+                                                                        Inventor</label>
+                                                                    <input type="file"
+                                                                        class="form-control @error('ktp_inventor') is-invalid @enderror"
+                                                                        id="" name="ktp_inventor"
+                                                                        value="{{ $di->ktp_inventor }}">
+                                                                    @error('ktp_inventor')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for=""
+                                                                        class="form-label">Email</label>
+                                                                    <input type="email"
+                                                                        class="form-control @error('email') is-invalid @enderror"
+                                                                        id="" placeholder="Masukkan Email"
+                                                                        name="email" value="{{ $di->email }}">
+                                                                    @error('email')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for=""
+                                                                        class="form-label">Kewarganegaraan</label>
+                                                                    <input type="text"
+                                                                        class="form-control @error('kewarganegaraan') is-invalid @enderror"
+                                                                        id=""
+                                                                        placeholder="Masukkan Kewarganegaraan"
+                                                                        name="kewarganegaraan"
+                                                                        value="{{ $di->kewarganegaraan }}">
+                                                                    @error('kewarganegaraan')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">Kode
+                                                                        Pos</label>
+                                                                    <input type="text"
+                                                                        class="form-control @error('kode_pos') is-invalid @enderror"
+                                                                        id="" placeholder="Masukkan Kode Pos"
+                                                                        name="kode_pos" value="{{ $di->kode_pos }}">
+                                                                    @error('kode_pos')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+
+                                                            <p class="fs-4 fw-normal font-family-Kokoro mt-5">II.
+                                                                FORMULIR DESAIN INDUSTRI</p>
+                                                            <div class="container">
+                                                                <label for="" class="form-label">Jenis
+                                                                    Desain</label>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="jenis_di" id=""
+                                                                        value="Satu desain">
+                                                                    <label class="form-check-label" for="Satu desain">
+                                                                        Satu Desain
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="jenis_di" id=""
+                                                                        value="Pecahan satu desain">
+                                                                    <label class="form-check-label"
+                                                                        for="Pecahan satu desain">
+                                                                        Pecahan Satu Desain
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="jenis_di" id=""
+                                                                        value="Satu kesatuan desain">
+                                                                    <label class="form-check-label"
+                                                                        for="Satu kesatuan desain">
+                                                                        Satu Kesatuan Desain
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="jenis_di" id=""
+                                                                        value="Kesatuan pecahan satu desain">
+                                                                    <label class="form-check-label"
+                                                                        for="Kesatuan pecahan satu desain">
+                                                                        Kesatuan Pecahan Satu Desain
+                                                                    </label>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">Judul
+                                                                        Desain Industri</label>
+                                                                    <input type="text"
+                                                                        class="form-control @error('judul_di') is-invalid @enderror"
+                                                                        id=""
+                                                                        placeholder="Masukkan Judul Paten"
+                                                                        name="judul_di" value="{{ $di->judul_di }}">
+                                                                    @error('judul_di')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">Gambar
+                                                                        Desain Industri</label>
+                                                                    <input type="file"
+                                                                        class="form-control @error('gambar_di') is-invalid @enderror"
+                                                                        placeholder="" name="gambar_di"
+                                                                        value="{{ $di->gambar_di }}">
+                                                                    @error('gambar_di')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">Uraian
+                                                                        Desain Industri</label>
+                                                                    <input type="file"
+                                                                        class="form-control @error('uraian_di') is-invalid @enderror"
+                                                                        placeholder="" name="uraian_di"
+                                                                        value="{{ $di->uraian_di }}">
+                                                                    @error('uraian_di')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">Surat
+                                                                        Pernyataan Kepemilikan</label>
+                                                                    <input type="file"
+                                                                        class="form-control @error('surat_kepemilikan') is-invalid @enderror"
+                                                                        placeholder="" name="surat_kepemilikan"
+                                                                        value="{{ $di->surat_kepemilikan }}">
+                                                                    @error('surat_kepemilikan')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">Surat
+                                                                        Pengalihan Hak</label>
+                                                                    <input type="file"
+                                                                        class="form-control @error('surat_pengalihan') is-invalid @enderror"
+                                                                        placeholder="" name="surat_pengalihan"
+                                                                        value="{{ $di->surat_pengalihan }}">
+                                                                    @error('surat_pengalihan')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">Tanggal
+                                                                        Pengajuan</label>
+                                                                    <input type="date" name="tanggal_permohonan"
+                                                                        id="tanggalpengajuan"
+                                                                        class="form-control  @error('tanggal_permohonan') is-invalid @enderror"
+                                                                        value="{{ $di->tanggal_permohonan }}">
+                                                                    @error('tanggal_permohonan')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">Status
+                                                                        Desain Industri</label>
+                                                                    <select
+                                                                        class="form-select @error('status') is-invalid @enderror"
+                                                                        aria-label="Default select example"
+                                                                        name="status">
+                                                                        <option selected>Pilih Status Desain</option>
+                                                                        <option value="Dalam Proses Usulan">Dalam
+                                                                            Proses Usulan</option>
+                                                                        <option value="Pemeriksaan">Pemeriksaan
+                                                                        </option>
+                                                                        <option value="Diberi">Diberi</option>
+                                                                        <option value="Ditolak">Ditolak</option>
+                                                                        <option value="Keterangam Belum Lengkap">
+                                                                            Keterangam Belum Lengkap</option>
+                                                                    </select>
+                                                                    @error('status')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">Serifikat
+                                                                        Desain Industri</label>
+                                                                    <input type="file"
+                                                                        class="form-control @error('sertifikat_desain') is-invalid @enderror"
+                                                                        id="" placeholder=""
+                                                                        name="sertifikat_desain">
+                                                                    @error('sertifikat_desain')
+                                                                        <div class="invalid-feedback">
+                                                                            {{ $message }}
+                                                                        </div>
+                                                                    @enderror
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button"
+                                                                    class="btn btn-outline-secondary"
+                                                                    data-bs-dismiss="modal">Batal</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Update</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#staticBackdrop{{ $di->id }}">
+                                            <i class="bi bi-trash3"></i>
+                                        </button>
+                                        <div class="modal fade" id="staticBackdrop{{ $di->id }}"
+                                            data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                                            Peringatan</h1>
+                                                        <button type="button" class="btn-close"
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Anda yakin akan menghapus hak cipta milik
+                                                        {{ $di->nama_lengkap }},
+                                                        dengan judul Desain "{{ $di->judul_di }}" ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-outline-secondary"
+                                                            data-bs-dismiss="modal">Batal</button>
+                                                        <a href={{ Route('admin_desainindustri.delete', $di->id) }}
+                                                            class="btn btn-danger">Hapus</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- <a href={{ Route('admin_desainindustri.delete', $di->id) }}
+                                            class="btn btn-danger" onclick="return confirm('Apakah Kamu Yakin?')"><i
+                                                class="bi bi-trash3"></i></a> --}}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

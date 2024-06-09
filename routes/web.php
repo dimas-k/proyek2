@@ -94,6 +94,8 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/paten/diberi', [AdminPatenController::class, 'diberi']);
     Route::get('/admin/paten/ditolak', [AdminPatenController::class, 'ditolak']);
 
+    Route::get('/admin/paten/cari', [AdminPatenController::class, 'caripaten'])->name('admin.paten.cari');
+
     Route::get('/admin/paten/delete/{id}', [AdminPatenController::class, 'destroy'])->name('admin_paten.delete');
     Route::get('/admin/paten/edit/{id}', [AdminPatenController::class, 'edit'])->name('admin_paten.edit');
     Route::post('/admin/paten/update/{id}', [AdminPatenController::class, 'update'])->name('admin_paten.update');
@@ -114,6 +116,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/hak-cipta/tercatat', [AdminHaKCiptaController::class, 'listTercatat']);
     Route::get('/admin/hak-cipta/ditolak', [AdminHaKCiptaController::class, 'tolak']);
     Route::get('/admin/hak-cipta/keterangan-belum-lengkap', [AdminHaKCiptaController::class, 'belumLengkap']);
+    Route::get('/admin/hak-cipta/cari',[AdminHaKCiptaController::class, 'cariHk']);
+
+    
 
     Route::get('/admin/desain-industri', [AdminDesainIndustriController::class, 'index']);
     Route::get('/admin/desain-industri/diberi', [AdminDesainIndustriController::class, 'diberi']);

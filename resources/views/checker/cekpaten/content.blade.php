@@ -70,7 +70,7 @@
                                                 <td>{{ $p->nama_lengkap }}</td>
                                                 <td>{{ $p->jenis_paten }}</td>
                                                 <td>{{ $p->judul_paten }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($p->paten?->tanggal_permohonan)->format('d-m-Y ') }}
+                                                <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y ') }}
                                                 </td>
                                                 <td>{{ $p->status }}</td>
                                                 <td>

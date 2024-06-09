@@ -9,7 +9,7 @@ class AdminDesainIndustriController extends Controller
 {
     public function index()
     {   
-        $di = DesainIndustri::latest()->get();
+        $di = DesainIndustri::with('cekDi')->latest()->get();
         $beri = DesainIndustri::where('status','Diberi')->count();
         $proses = DesainIndustri::where('status','Dalam Proses Usulan')->count();
         $priksa = DesainIndustri::where('status','Pemeriksaan')->count();

@@ -281,7 +281,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                {{-- {{ $paten->links() }} --}}
+                                {{ $paten->links() }}
                             </div>
                         </div>
                     </div>

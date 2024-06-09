@@ -73,11 +73,7 @@ class AdminController extends Controller
         return redirect('/login-admin');
     }
 
-    public function dashboard()
-    {
-        $admin = User::all();
-        return view('admin.index', compact('admin'));
-    }
+   
 
     public function lihat()
     {

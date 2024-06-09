@@ -12,7 +12,23 @@ class AdminPatenController extends Controller
      */
     public function index()
     {
-        $paten = Paten::latest()->get();
+        $paten = Paten::with('cek')->latest()->paginate(5);
+        $pf = Paten::where('status', 'Pemeriksaan Formalitas')->count();
+        $mt = Paten::where('status', 'Menunggu Tanggapan Formalitas')->count();
+        $mp = Paten::where('status', 'Masa pengumuman')->count();
+        $mps = Paten::where('status', 'Menunggu Pembayaran Substansif')->count();
+        $staw = Paten::where('status', 'Substansif Tahap Awal')->count();
+        $stl = Paten::where('status', 'Substansif Tahap Lanjut')->count();
+        $stak = Paten::where('status', 'Substansif Tahap Akhir')->count();
+        $mts = Paten::where('status', 'Menunggu Tanggapan Substansif')->count();
+        $beri = Paten::where('status', 'Diberi')->count();
+        $tolak = Paten::where('status', 'Ditolak')->count();
+        return view('admin.adminpaten.index', compact('paten','pf','mt','mp','mps','staw','stl','stak','mts','beri','tolak'));
+    }
+    public function cariPaten(Request $request)
+    {
+        $cari = $request->input('cari');
+        $paten = Paten::with('cek')->where('judul_paten', 'LIKE', "%" . $cari . "%")->orWhere('nama_lengkap', 'LIKE', "%" . $cari . "%")->orWhere('status', 'LIKE', "%" . $cari . "%")->paginate(5);
         $pf = Paten::where('status', 'Pemeriksaan Formalitas')->count();
         $mt = Paten::where('status', 'Menunggu Tanggapan Formalitas')->count();
         $mp = Paten::where('status', 'Masa pengumuman')->count();

@@ -53,17 +53,20 @@
                         <div class="card-body">
                             <div class="d-flex flex-row">
                                 <div class="col-xl-3 col-sm-6 col-12">
-                                    <a href="/admin/paten/pemeriksaan-formalitas" class="link-dark link-underline link-underline-opacity-0">
+                                    <a href="/admin/paten/pemeriksaan-formalitas"
+                                        class="link-dark link-underline link-underline-opacity-0">
                                         <div class="card shadow-sm" style="width: 18rem;">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center me-5">
-                                                        <i class="bi bi-search float-start me-4" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-search float-start me-4"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
                                                         <h3 class="ms-5 d-flex justify-content-end">{{ $pf }}
                                                         </h3>
-                                                        <span class="ms-4 d-flex justify-content-end">Pemeriksaan Formalitas</span>
+                                                        <span class="ms-4 d-flex justify-content-end">Pemeriksaan
+                                                            Formalitas</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -72,16 +75,19 @@
                                 </div>
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm" style="width: 18rem;">
-                                        <a href="/admin/paten/menunggu-tanggapan-formalitas" class="link-dark link-underline link-underline-opacity-0">
+                                        <a href="/admin/paten/menunggu-tanggapan-formalitas"
+                                            class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center ">
-                                                        <i class="bi bi-recycle float-start me-3" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-recycle float-start me-3"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
                                                         <h3 class="ms-5 d-flex justify-content-end">{{ $mt }}
                                                         </h3>
-                                                        <span class="ms-3 d-flex justify-content-end">Menunggu Tanggapan Formalitas</span>
+                                                        <span class="ms-3 d-flex justify-content-end">Menunggu Tanggapan
+                                                            Formalitas</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -90,16 +96,19 @@
                                 </div>
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm p-2" style="width: 18rem;">
-                                        <a href="/admin/paten/masa-pengumuman" class="link-dark link-underline link-underline-opacity-0">
+                                        <a href="/admin/paten/masa-pengumuman"
+                                            class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center">
-                                                        <i class="bi bi-exclamation-circle float-start me-3" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-exclamation-circle float-start me-3"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
                                                         <h3 class="ms-5 d-flex justify-content-end">{{ $mp }}
                                                         </h3>
-                                                        <span class="ms-4 d-flex justify-content-end">Masa Pengumuman</span>
+                                                        <span class="ms-4 d-flex justify-content-end">Masa
+                                                            Pengumuman</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -108,16 +117,19 @@
                                 </div>
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm" style="width: 18rem;">
-                                        <a href="/admin/paten/menunggu-pembayaran-substansif" class="link-dark link-underline link-underline-opacity-0">
+                                        <a href="/admin/paten/menunggu-pembayaran-substansif"
+                                            class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center">
-                                                        <i class="bi bi-question-square float-start me-2" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-question-square float-start me-2"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
                                                         <h3 class="ms-5 d-flex justify-content-end">{{ $mps }}
                                                         </h3>
-                                                        <span class="ms-3 d-flex justify-content-end">Menunggu Pembayaran Substansif</span>
+                                                        <span class="ms-3 d-flex justify-content-end">Menunggu
+                                                            Pembayaran Substansif</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -128,16 +140,19 @@
                             <div class="d-flex flex-row mt-3">
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm" style="width: 18rem;">
-                                        <a href="/admin/paten/substansif-tahap-awal" class="link-dark link-underline link-underline-opacity-0">
+                                        <a href="/admin/paten/substansif-tahap-awal"
+                                            class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center">
-                                                        <i class="bi bi-clipboard-data float-start me-5" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-clipboard-data float-start me-5"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
                                                         <h3 class="ms-5 d-flex justify-content-end">{{ $staw }}
                                                         </h3>
-                                                        <span class="ms-3 d-flex justify-content-end">Substansif Tahap Awal</span>
+                                                        <span class="ms-3 d-flex justify-content-end">Substansif Tahap
+                                                            Awal</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -146,16 +161,19 @@
                                 </div>
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm" style="width: 18rem;">
-                                        <a href="/admin/paten/substansif-tahap-lanjut" class="link-dark link-underline link-underline-opacity-0">
+                                        <a href="/admin/paten/substansif-tahap-lanjut"
+                                            class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center">
-                                                        <i class="bi bi-clipboard-data float-start me-5" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-clipboard-data float-start me-5"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
                                                         <h3 class="ms-5 d-flex justify-content-end">{{ $stl }}
                                                         </h3>
-                                                        <span class="ms-3 d-flex justify-content-end">Substansif Tahap Lanjut</span>
+                                                        <span class="ms-3 d-flex justify-content-end">Substansif Tahap
+                                                            Lanjut</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,16 +182,20 @@
                                 </div>
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm" style="width: 18rem;">
-                                        <a href="/admin/paten/substansif-tahap-akhir" class="link-dark link-underline link-underline-opacity-0">
+                                        <a href="/admin/paten/substansif-tahap-akhir"
+                                            class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center">
-                                                        <i class="bi bi-clipboard-data float-start me-5" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-clipboard-data float-start me-5"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
-                                                        <h3 class="ms-5 d-flex justify-content-end">{{ $stak }}
+                                                        <h3 class="ms-5 d-flex justify-content-end">
+                                                            {{ $stak }}
                                                         </h3>
-                                                        <span class="ms-3 d-flex justify-content-end">Substansif Tahap Akhir</span>
+                                                        <span class="ms-3 d-flex justify-content-end">Substansif Tahap
+                                                            Akhir</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -182,16 +204,20 @@
                                 </div>
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm" style="width: 18rem;">
-                                        <a href="/admin/paten/menunggu-tanggapan-substansif" class="link-dark link-underline link-underline-opacity-0">
+                                        <a href="/admin/paten/menunggu-tanggapan-substansif"
+                                            class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center">
-                                                        <i class="bi bi-question-square float-start me-2" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-question-square float-start me-2"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
-                                                        <h3 class="ms-5 d-flex justify-content-end">{{ $mts }}
+                                                        <h3 class="ms-5 d-flex justify-content-end">
+                                                            {{ $mts }}
                                                         </h3>
-                                                        <span class="ms-3 d-flex justify-content-end">Menunggu Tanggapan Substansif</span>
+                                                        <span class="ms-3 d-flex justify-content-end">Menunggu
+                                                            Tanggapan Substansif</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -203,14 +229,17 @@
                             <div class="d-flex flex-row mt-3">
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm p-1" style="width: 18rem;">
-                                        <a href="/admin/paten/diberi" class="link-dark link-underline link-underline-opacity-0">
+                                        <a href="/admin/paten/diberi"
+                                            class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center">
-                                                        <i class="bi bi-check-square float-start pe-5 me-5" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-check-square float-start pe-5 me-5"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
-                                                        <h3 class="ms-5 d-flex justify-content-end">{{ $beri }}
+                                                        <h3 class="ms-5 d-flex justify-content-end">
+                                                            {{ $beri }}
                                                         </h3>
                                                         <span class="ms-5 d-flex justify-content-end">Diberi</span>
                                                     </div>
@@ -221,14 +250,17 @@
                                 </div>
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm p-1" style="width: 18rem;">
-                                        <a href="/admin/paten/ditolak" class="link-dark link-underline link-underline-opacity-0">
+                                        <a href="/admin/paten/ditolak"
+                                            class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
                                                     <div class="align-self-center">
-                                                        <i class="bi bi-x-square float-start pe-5 me-5" style="font-size: 50px;"></i>
+                                                        <i class="bi bi-x-square float-start pe-5 me-5"
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
-                                                        <h3 class="ms-5 d-flex justify-content-end">{{ $tolak }}
+                                                        <h3 class="ms-5 d-flex justify-content-end">
+                                                            {{ $tolak }}
                                                         </h3>
                                                         <span class="ms-5 d-flex justify-content-end">Ditolak</span>
                                                     </div>
@@ -251,14 +283,14 @@
                     @endif
                     <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-3"></i>Daftar Paten</h3>
                     <div class="d-flex justify-content-end mb-3">
-                        <form action="/umum/paten/cari" method="GET">
+                        <form action="/admin/paten/cari" method="GET">
                             <div class="row g-2 align-items-center">
                                 <div class="col-auto">
                                     <label for="" class="col-form-label">Cari Paten</label>
                                 </div>
                                 <div class="col-auto">
-                                    <input type="text" id="" class="form-control"
-                                        aria-describedby="" name="cari">
+                                    <input type="text" id="" class="form-control" aria-describedby=""
+                                        name="cari">
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-primary ">Cari</button>
@@ -266,41 +298,459 @@
                             </div>
                         </form>
                     </div>
-                    <table class="table table-hover font-family-Kokoro border rounded">
-                        <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Nama lengkap</th>
-                                <th scope="col">Jenis Paten</th>
-                                <th scope="col">Judul paten</th>
-                                <th scope="col">Institusi</th>
-                                <th scope="col">Tanggal pengajuan</th>
-                                <th scope="col">Status paten</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($paten as $i => $p)
+                    <div class="table-responsive">
+                        <table class="table table-hover font-family-Kokoro border rounded">
+                            <thead>
                                 <tr>
-                                    <th scope="row">{{ $i + 1 }}</th>
-                                    <td>{{ $p->nama_lengkap }}</td>
-                                    <td>{{ $p->jenis_paten }}</td>
-                                    <td>{{ $p->judul_paten }}</td>
-                                    <td>{{ $p->institusi }}</td>
-                                    <td>{{ $p->tanggal_permohonan }}</td>
-                                    <td>{{ $p->status }}</td>
-                                    <td><a href={{ Route('admin_paten.show', $p->id) }} class="btn btn-info"><i
-                                                class="bi bi-eye"></i></a>
-                                        <a href={{ Route('admin_paten.edit', $p->id) }} class="btn btn-warning"><i
-                                                class="bi bi-pencil"></i></a>
-                                        <a href={{ Route('admin_paten.delete', $p->id) }} class="btn btn-danger"
-                                            onclick="return confirm('Apakah Kamu Yakin?')"><i
-                                                class="bi bi-trash3"></i></a>
-                                    </td>
+                                    <th scope="col">No</th>
+                                    <th scope="col">Nama lengkap</th>
+                                    <th scope="col">Jenis Paten</th>
+                                    <th scope="col">Judul paten</th>
+                                    <th scope="col">Institusi</th>
+                                    <th scope="col">Tanggal pengajuan</th>
+                                    <th scope="col">Status paten</th>
+                                    <th scope="col">Status Cek Data</th>
+                                    <th scope="col">Keterangan</th>
+                                    <th scope="col">Action</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($paten as $i => $p)
+                                    <tr>
+                                        <th scope="row">{{ $i + 1 }}</th>
+                                        <td>{{ $p->nama_lengkap }}</td>
+                                        <td>{{ $p->jenis_paten }}</td>
+                                        <td>{{ $p->judul_paten }}</td>
+                                        <td>{{ $p->institusi }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y ') }}</td>
+                                        <td>{{ $p->status }}</td>
+                                        <td>
+                                            @if ($p->cek?->cek_data == 'Benar')
+                                                <i class="bi bi-check-circle-fill" style="color: green"></i>
+                                            @elseif($p->cek?->cek_data == 'Salah')
+                                                <i class="bi bi-times-circle" style="color: red"></i>
+                                            @else
+                                                <i class="bi bi-dash-circle-fill"
+                                                    style="color: yellow"></i>{{ $p->cek?->cek_data }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($p->cek?->keterangan == '')
+                                                Data Paten Belum Dicek
+                                            @else
+                                                {{ $p->cek?->keterangan }}
+                                            @endif
+                                        </td>
+                                        <td><a href={{ Route('admin_paten.show', $p->id) }} class="btn btn-info"><i
+                                                    class="bi bi-eye"></i></a>
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal{{ $p->id }}">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <div class="modal fade" id="exampleModal{{ $p->id }}"
+                                                tabindex="-1" data-bs-backdrop="static"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-scrollable">
+                                                    <div class="modal-content p-2">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel"> Edit
+                                                                paten {{ $p->nama_lengkap }}</h1>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="{{ Route('admin_paten.update', $p->id) }}"
+                                                                enctype="multipart/form-data" method="POST">
+                                                                @csrf
+                                                                <p class="fs-4 fw-normal font-family-Kokoro">I.
+                                                                    IDENTITAS
+                                                                </p>
+                                                                <div class="container">
+                                                                    <div class="mb-3">
+                                                                        <label for="nama_lengkap"
+                                                                            class="form-label">Nama
+                                                                            Lengkap</label>
+                                                                        <input type="text"
+                                                                            class="form-control @error('nama_lengkap') is-invalid @enderror"
+                                                                            id=""
+                                                                            placeholder="Masukkan Nama"name="nama_lengkap"
+                                                                            value="{{ $p->nama_lengkap }}">
+                                                                        @error('nama_lengkap')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for=""
+                                                                            class="form-label">Alamat</label>
+                                                                        <input type="text"
+                                                                            class="form-control @error('alamat') is-invalid @enderror"
+                                                                            id=""
+                                                                            placeholder="Masukkan Alamat"
+                                                                            name="alamat"
+                                                                            value="{{ $p->alamat }}">
+                                                                        @error('alamat')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="" class="form-label">No
+                                                                            telepon</label>
+                                                                        <input type="text"
+                                                                            class="form-control @error('no_telepon') is-invalid @enderror"
+                                                                            id=""
+                                                                            placeholder="Masukkan No telepon"
+                                                                            name="no_telepon"
+                                                                            value={{ $p->no_telepon }}>
+                                                                        @error('no_telepon')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for=""
+                                                                            class="form-label">Tanggal
+                                                                            Lahir</label>
+                                                                        <input type="date" name="tanggal_lahir"
+                                                                            id=""
+                                                                            class="form-control @error('tanggal_lahir') is-invalid @enderror"
+                                                                            value={{ $p->tanggal_lahir }}>
+                                                                        @error('tanggal_lahir')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="" class="form-label">KTP
+                                                                            Inventor</label>
+                                                                        <input type="file"
+                                                                            class="form-control @error('ktp_inventor') is-invalid @enderror"
+                                                                            id="" name="ktp_inventor">
+                                                                        @error('ktp_inventor')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for=""
+                                                                            class="form-label">Email</label>
+                                                                        <input type="email"
+                                                                            class="form-control @error('email') is-invalid @enderror"
+                                                                            id=""
+                                                                            placeholder="Masukkan Email"
+                                                                            name="email" value={{ $p->email }}>
+                                                                        @error('email')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for=""
+                                                                            class="form-label">Kewarganegaraan</label>
+                                                                        <input type="text"
+                                                                            class="form-control @error('kewarganegaraan') is-invalid @enderror"
+                                                                            id=""
+                                                                            placeholder="Masukkan Kewarganegaraan"
+                                                                            name="kewarganegaraan"
+                                                                            value={{ $p->kewarganegaraan }}>
+                                                                        @error('kewarganegaraan')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="" class="form-label">Kode
+                                                                            Pos</label>
+                                                                        <input type="number"
+                                                                            class="form-control @error('kode_pos') is-invalid @enderror"
+                                                                            id=""
+                                                                            placeholder="Masukkan Kode Pos"
+                                                                            name="kode_pos" value={{ $p->kode_pos }}>
+                                                                        @error('kode_pos')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                                <p class="fs-4 fw-normal font-family-Kokoro mt-5">II.
+                                                                    FORMULIR PATEN</p>
+                                                                <div class="container">
+                                                                    <label for="" class="form-label">Jenis
+                                                                        Paten</label>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="jenis_paten" id=""
+                                                                            value="Paten">
+                                                                        <label class="form-check-label"
+                                                                            for="Paten">
+                                                                            Paten
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="jenis_paten" id=""
+                                                                            value="Paten sederhana">
+                                                                        <label class="form-check-label"
+                                                                            for="Paten sederhana">
+                                                                            Paten Sederhana
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="" class="form-label">Judul
+                                                                            Paten</label>
+                                                                        <input type="text"
+                                                                            class="form-control @error('judul_paten') is-invalid @enderror"
+                                                                            id=""
+                                                                            placeholder="Masukkan Judul Paten"
+                                                                            name="judul_paten"
+                                                                            value="{{ $p->judul_paten }}">
+                                                                        @error('judul_paten')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for=""
+                                                                            class="form-label">Abstrak
+                                                                            Paten</label>
+                                                                        <input type="file"
+                                                                            class="form-control @error('abstrak_paten') is-invalid @enderror"
+                                                                            id="" placeholder=""
+                                                                            name="abstrak_paten">
+                                                                        @error('abstrak_paten')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for=""
+                                                                            class="form-label">Deskripsi
+                                                                            Paten</label>
+                                                                        <input type="file"
+                                                                            class="form-control @error('deskripsi_paten') is-invalid @enderror"
+                                                                            id="" placeholder=""
+                                                                            name="deskripsi_paten">
+                                                                        @error('deskripsi_paten')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for=""
+                                                                            class="form-label">Pengalihan Hak
+                                                                            Invensi</label>
+                                                                        <input type="file"
+                                                                            class="form-control @error('pengalihan_hak') is-invalid @enderror"
+                                                                            id="" placeholder=""
+                                                                            name="pengalihan_hak">
+                                                                        @error('pengalihan_hak')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for=""
+                                                                            class="form-label">Klaim</label>
+                                                                        <input type="file"
+                                                                            class="form-control @error('abstrak_paten') is-invalid @enderror"
+                                                                            id="" placeholder=""
+                                                                            name="klaim">
+                                                                        @error('klaim')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for=""
+                                                                            class="form-label">Pernyataan kepemikikan
+                                                                            Inventor</label>
+                                                                        <input type="file"
+                                                                            class="form-control @error('pernyataan_kepemilikan') is-invalid @enderror"
+                                                                            id="" placeholder=""
+                                                                            name="pernyataan_kepemilikan">
+                                                                        @error('pernyataan_kepemilikan')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="" class="form-label">Surat
+                                                                            kuasa</label>
+                                                                        <input type="file"
+                                                                            class="form-control @error('surat_kuasa') is-invalid @enderror"
+                                                                            id="" placeholder=""
+                                                                            name="surat_kuasa">
+                                                                        @error('surat_kuasa')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for=""
+                                                                            class="form-label">gambar
+                                                                            Paten</label>
+                                                                        <input type="file"
+                                                                            class="form-control @error('gambar_paten') is-invalid @enderror"
+                                                                            id="" placeholder=""
+                                                                            name="gambar_paten">
+                                                                        @error('surat_kuasa')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for=""
+                                                                            class="form-label">gambar
+                                                                            Tampilan</label>
+                                                                        <input type="file"
+                                                                            class="form-control @error('gambar_tampilan') is-invalid @enderror"
+                                                                            id="" placeholder=""
+                                                                            name="gambar_tampilan">
+                                                                        @error('gambar_tampilan')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for=""
+                                                                            class="form-label">Tanggal
+                                                                            Pengajuan</label>
+                                                                        <input type="date"
+                                                                            name="tanggal_permohonan"
+                                                                            id="tanggalpengajuan"
+                                                                            class="form-control @error('tanggal_permohonan') is-invalid @enderror"
+                                                                            value={{ $p->tanggal_permohonan }}>
+                                                                        @error('tanggal_permohonan')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for=""
+                                                                            class="form-label">Status
+                                                                            Paten</label>
+                                                                        <select
+                                                                            class="form-select @error('status') is-invalid @enderror"
+                                                                            aria-label="Default select example"
+                                                                            name="status">
+                                                                            <option selected>Pilih Status Paten</option>
+                                                                            <option value="Pemeriksaan Formalitas">
+                                                                                Pemeriksaan Formalitas</option>
+                                                                            <option
+                                                                                value="Menunggu Tanggapan Formalitas">
+                                                                                Menunggu Tanggapan Formalitas</option>
+                                                                            <option value="Masa pengumuman">Masa
+                                                                                pengumuman
+                                                                            </option>
+                                                                            <option
+                                                                                value="Menunggu Pembayaran Substasif">
+                                                                                Menunggu Pembayaran Substasif</option>
+                                                                            <option value="Substansif Tahap Awal">
+                                                                                Substansif Tahap Awal</option>
+                                                                            <option value="Substansif Tahap Lanjut">
+                                                                                Substansif Tahap Lanjut</option>
+                                                                            <option value="Substansif Tahap Akhir">
+                                                                                Substansif Tahap Akhir</option>
+                                                                            <option
+                                                                                value="Menunggu Tanggapan Substansif">
+                                                                                Menunggu Tanggapan Substansif</option>
+                                                                            <option value="Diberi">Diberi</option>
+                                                                            <option value="Ditolak">Ditolak</option>
+                                                                        </select>
+                                                                        @error('status')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for=""
+                                                                            class="form-label">Serifikat
+                                                                            Paten</label>
+                                                                        <input type="file"
+                                                                            class="form-control @error('sertifikat_paten') is-invalid @enderror"
+                                                                            id="" placeholder=""
+                                                                            name="sertifikat_paten">
+                                                                        @error('sertifikat_paten')
+                                                                            <div class="invalid-feedback">
+                                                                                {{ $message }}
+                                                                            </div>
+                                                                        @enderror
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="modal-footer">
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-secondary"
+                                                                        data-bs-dismiss="modal">Batal</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Update</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                data-bs-target="#staticBackdrop{{ $p->id }}">
+                                                <i class="bi bi-trash3"></i>
+                                            </button>
+                                            <div class="modal fade" id="staticBackdrop{{ $p->id }}"
+                                                data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                                                Peringatan</h1>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Anda yakin akan menghapus paten milik
+                                                            {{ $p->nama_lengkap }},
+                                                            dengan judul paten "{{ $p->judul_paten }}" ?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline-secondary"
+                                                                data-bs-dismiss="modal">Batal</button>
+                                                            <a href={{ Route('admin_paten.delete', $p->id) }}
+                                                                class="btn btn-danger">Hapus</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{-- <a href={{ Route('admin_paten.delete', $p->id) }} class="btn btn-danger"
+                                            onclick="return confirm('Apakah Kamu Yakin?')"><i
+                                                class="bi bi-trash3"></i></a> --}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    {{ $paten->links() }}
                 </div>
             </div>
         </div>

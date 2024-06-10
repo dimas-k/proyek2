@@ -146,7 +146,7 @@ class PatenController extends Controller
             'no_telepon'=> 'required',
             'tanggal_lahir'=> 'required',
             'ktp_inventor'=> 'required|mimes:pdf',
-            'email'=> 'required|email',
+            'email'=> 'required|email.dns',
             'kewarganegaraan'=> 'required',
             'kode_pos'=> 'required|integer',
             'jenis_paten'=> 'required',

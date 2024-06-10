@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ApiUsersController;
-use App\Http\Controllers\Api\UmumPatenController;
+use App\Http\Controllers\Api\ApiPatenController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +25,6 @@ Route::get('/users/get/data/{id}',[ApiUsersController::class, "getData"]);
 Route::delete('/users/delete/data/{id}',[ApiUsersController::class, "deleteData"]);
 Route::put('/users/update/data/{id}',[ApiUsersController::class, "updateData"]);
 
+
+Route::get('/paten/get/data',[ApiPatenController::class, "GetAllDataPaten"]);
 

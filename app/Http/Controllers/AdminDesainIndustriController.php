@@ -17,6 +17,17 @@ class AdminDesainIndustriController extends Controller
         $tolak = DesainIndustri::where('status','Ditolak')->count();
         return view('admin.admindi.index', compact('di', 'priksa', 'proses', 'null','tolak','beri')); 
     }
+    public function cariDi(Request $request)
+    {
+        $cari = $cari = $request->input('cari');
+        $di = DesainIndustri::with('cekDi')->where('judul_di', 'LIKE', "%" . $cari . "%")->orWhere('nama_lengkap', 'LIKE', "%" . $cari . "%")->orWhere('status', 'LIKE', "%" . $cari . "%")->paginate(5);
+        $beri = DesainIndustri::where('status','Diberi')->count();
+        $proses = DesainIndustri::where('status','Dalam Proses Usulan')->count();
+        $priksa = DesainIndustri::where('status','Pemeriksaan')->count();
+        $null = DesainIndustri::where('status','Keterangan Belum Lengkap')->count();
+        $tolak = DesainIndustri::where('status','Ditolak')->count();
+        return view('admin.admindi.index', compact('di', 'priksa', 'proses', 'null','tolak','beri')); 
+    }
 
     public function diberi()
     {

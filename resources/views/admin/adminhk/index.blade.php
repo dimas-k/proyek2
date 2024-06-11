@@ -180,7 +180,7 @@
                                     </td>
                                     <td>
                                         @if ($hk->cekhc?->keterangan == '')
-                                            Data Paten Belum Dicek
+                                            Data Hak Cipta Belum Dicek
                                         @else
                                             {{ $hk->cekhc?->keterangan }}
                                         @endif

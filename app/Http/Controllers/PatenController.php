@@ -20,6 +20,7 @@ class PatenController extends Controller
         $carinama = $request->get('cari_nama');
 
         $hitung = Paten:: all()->count();
+        
         $pf = Paten::where('status', 'Pemeriksaan Formalitas')->count();
         $mt = Paten::where('status', 'Menunggu Tanggapan Formalitas')->count();
         $mp = Paten::where('status', 'Masa pengumuman')->count();
@@ -42,8 +43,10 @@ class PatenController extends Controller
         $patenMTS = Paten::where('status', 'Menunggu tanggapan substansif')->count();
         $patenDI = Paten::where('status', 'Diberi')->count();
         $patenDK = Paten::where('status', 'Ditolak')->count();
-
-        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK'));
+        
+        $patenTahun = Paten::whereYear('tanggal_permohonan','2024')->count();
+        
+        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','patenTahun'));
     }
 
     public function cari(Request $request){

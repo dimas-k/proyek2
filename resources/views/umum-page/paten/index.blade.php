@@ -305,6 +305,7 @@
                         <input type="hidden" id="patenMTS" value="{{ $patenMTS }}">
                         <input type="hidden" id="patenDI" value="{{ $patenDI }}">
                         <input type="hidden" id="patenDK" value="{{ $patenDK }}">
+                        <input type="hidden" id="patenTahun" value="{{ $patenTahun }}">
                         <canvas id="paten-chart"></canvas>
                     </div>
                 </div>
@@ -334,51 +335,24 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
 
-        const patenPF = document.getElementById('patenPF').value;
-        const patenMTF = document.getElementById('patenMTF').value;
-        const patenMP = document.getElementById('patenMP').value;
-        const patenMPS = document.getElementById('patenMPS').value;
-        const patenSTAW = document.getElementById('patenSTAW').value;
-        const patenSTL = document.getElementById('patenSTL').value;
-        const patenSTAK = document.getElementById('patenSTAK').value;
-        const patenMTS = document.getElementById('patenMTS').value;
-        const patenDI = document.getElementById('patenDI').value;
-        const patenDK = document.getElementById('patenDK').value;
+        const patenTahun = document.getElementById('patenTahun').value;
         
         const paten = document.getElementById('paten-chart').getContext('2d');
 
         const patenChart = new Chart(paten, {
             type: 'bar',
             data: {
-                labels: ['Diberi', 'Ditolak', 'Pemeriksaan Formalitas','Menunggu pembayaran substansif','Menunggu tanggapan substansif','Substansif tahap awal','Substansi tahap lanjut','Substansi tahap akhir','Masa pengumuman','Menunggu tanggapan formalitas'],
+                labels: ['2024','2025','2026','2027'],
                 datasets: [
                     {
                     label: 'PATEN',
-                    data: [patenDI,patenDK,patenPF,patenMPS,patenMTS,patenSTAW,patenSTL,patenSTAK,patenMP,patenMTF],
+                    data: [patenTahun],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
 
                     ],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
                     ],
                     borderWidth: 1
                 },

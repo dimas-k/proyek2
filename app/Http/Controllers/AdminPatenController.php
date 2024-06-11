@@ -123,7 +123,7 @@ class AdminPatenController extends Controller
      */
     public function show(string $id)
     {
-        $p = Paten::find($id);
+        $p = Paten::with('cek')->find($id);
         return view('admin.adminpaten.showpaten.index', compact('p'));
     }
 

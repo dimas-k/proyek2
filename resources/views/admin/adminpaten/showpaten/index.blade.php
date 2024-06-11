@@ -157,6 +157,18 @@
                                 <th>Status Paten</th>
                                 <td>: {{ $p->status }}</td>
                             </tr>
+                            <tr>
+                                <th>
+                                    Keterangan Status Cek Paten
+                                </th>
+                                <td>:
+                                    @if ($p->cek?->keterangan == '')
+                                                Data Paten Belum Dicek
+                                            @else
+                                                {{ $p->cek?->keterangan }}
+                                            @endif
+                                </td>
+                            </tr>
                         </table>
                     </div>
                 </div>

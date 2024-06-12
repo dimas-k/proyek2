@@ -19,12 +19,29 @@
       <p class="fs-6 fw-normal font-family-Kokoro mt-3">
         <b>Sistem Informasi Kekayaan Intelektual POLINDRA (Sistem Informasi KI POLINDRA)</b> merupakan media informasi perkembangan permohonan KI yang dikelola oleh POLINDRA. Para pemangku kepentingan di POLINDRA, inventor, dan masyarakat luas dapat mengakses dan melihat perkembangan permohonan KI POLINDRA melalui Sistem Informasi KI POLINDRA, baik dalam bentuk grafik, tabel, dan informasi tertulis lainnya. Sistem Informasi KI POLINDRA menyediakan fitur-fitur perkembangan proses permohonan pelindungan KI POLINDRA, abstrak atau deskripsi singkat setiap KI, unduh berkas KI, dan formulir pengajuan KI online melalui unit pengelola KI POLINDRA.
       </p>
-      <br>
-      <br>
-      
-
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="input-group mb-3">
+                <select id="filter-chart" value="chart-paten" name="" id="">
+                  <option id="chart-paten" value="paten-chart">Paten</option>
+                  <option id="chart-hc" value="hc-chart">Hak Cipta</option>
+                  <option id="chart-di" value="di-chart">Desain Industri</option>
+                </select>
+              </div>
+            </div>
+              <div class="card-body">
+                <input type="hidden" id="paten" value="{{ $paten }}">
+                <input type="hidden" id="di" value="{{ $di }}">
+                <input type="hidden" id="hc" value="{{ $hc }}">
+                <canvas class="canvas-chart" id="chart" style="height:40vh; width:50vw"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
     <footer class="text-center text-lg-star bg-body-white shadow-lg mt-5">
         <!-- Copyright -->
       <div class="text-center p-3">
@@ -59,8 +76,70 @@
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>            
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <Script>
-      
-    </Script>
+      const paten = document.getElementById('paten').value;   
+      const hc = document.getElementById('hc').value;   
+      const di = document.getElementById('di').value;   
+      const chart = document.getElementById('chart').getContext('2d');
+      const chartHKI = new Chart(chart, {
+          type: 'bar',
+          data: {
+              labels:['Jumlah Pengajuan HKI'],
+              datasets: [
+                  {
+                  label: 'Paten',
+                  data: [paten],
+                  backgroundColor: [
+                      'rgba(255, 99, 132, 0.2)',
+
+                  ],
+                  borderColor: [
+                      'rgba(255, 99, 132, 1)',
+
+                  ],
+                  borderWidth: 1
+              },
+                  {
+                  label: 'Hak Cipta',
+                  data: [hc],
+                  backgroundColor: [
+                  'rgba(54, 162, 235, 0.2)',
+
+                  ],
+                  borderColor: [
+                  'rgba(54, 162, 235, 1)',
+
+                  ],
+                  borderWidth: 1
+              },
+                  {
+                  label: 'Desain Industri',
+                  data: [di],
+                  backgroundColor: [
+                  'rgba(255, 206, 86, 0.2)',
+
+                  ],
+                  borderColor: [
+                  'rgba(255, 206, 86, 1)',
+
+                  ],
+                  borderWidth: 1
+              },
+          ]
+          },
+          options: {
+              scales: {
+                  y: {
+                      suggestedMin: 0,
+                      ticks: {
+                          precision: 0
+                      }
+                  }
+              }
+          }
+      });
+    
+  </Script>
 </body>
 </html>

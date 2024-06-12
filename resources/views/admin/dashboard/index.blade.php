@@ -106,12 +106,6 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="input-group mb-3">
-                                        {{-- <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter Diagram</button> --}}
-                                        {{-- <ul class="dropdown-menu">
-                                          <li><a class="dropdown-item" href="#">PATEN</a></li>
-                                          <li><a class="dropdown-item" href="#">DESAIN INDUSTRI</a></li>
-                                          <li><a class="dropdown-item" href="#">HAK CIPTA</a></li>
-                                        </ul> --}}
                                         <select id="filter-chart" value="chart-paten" name="" id="">
                                             <option id="chart-paten" value="paten-chart">Paten</option>
                                             <option id="chart-hc" value="hc-chart">Hak Cipta</option>

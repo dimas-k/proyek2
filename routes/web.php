@@ -17,6 +17,7 @@ use App\Http\Controllers\Api\ApiUsersController;
 use App\Http\Controllers\AdminHaKCiptaController;
 use App\Http\Controllers\DesainIndustriController;
 use App\Http\Controllers\AdminDesainIndustriController;
+use App\Http\Controllers\UmumPageController;
 
 
 /*
@@ -30,9 +31,11 @@ use App\Http\Controllers\AdminDesainIndustriController;
 |
 */
 
-Route::get('/', function () {
-    return view('umum-page.landing-page.index');
-});
+// Route::get('/', function () {
+//     return view('umum-page.landing-page.index');
+// });
+
+Route::get('/',[UmumPageController::class, 'index'] );
 
 Route::get('/coba', function () {
     return view('dosen.index');

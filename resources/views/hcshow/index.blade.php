@@ -9,13 +9,13 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href={{ URL('storage/polindra21.png') }}>
+    <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
     <title>SIKI POLINDRA | Lihat Data Hak-Cipta</title>
 </head>
 
 <body>
     <div class="container-fluid">
-        <div class="bg-light rounded border p-4 mt-3 border-top-black">
+        <div class=" p-4 mt-3 ">
             <a href="/hak-cipta" class="link-dark link-underline link-underline-opacity-0 mb-3 "><i class="bi bi-arrow-left-circle mb-3" style="font-size: 30px;"></i></a>
             <h3 class=""><i class="bi bi-clipboard2-data me-2 mt-3"></i>Data Hak Cipta</h3>
 
@@ -36,25 +36,8 @@
                         <td>: {{ $hc->no_telepon }}</td>
                     </tr>
                     <tr>
-                        <th>Tanggal lahir</th>
-                        <td>: {{ $hc->tanggal_lahir }}</td>
-                    </tr>
-                    <tr>
-                        <th>KTP</th>
-                        <td>: <a href={{ asset('storage/' . $hc->ktp_inventor) }} class=""
-                                target="_blank">Lihat KTP</a></td>
-                    </tr>
-                    <tr>
                         <th>Email</th>
                         <td>: {{ $hc->email }}</td>
-                    </tr>
-                    <tr>
-                        <th>Kewarganegaraan</th>
-                        <td>: {{ $hc->kewarganegaraan }}</td>
-                    </tr>
-                    <tr>
-                        <th>Kode Pos</th>
-                        <td>: {{ $hc->kode_pos }}</td>
                     </tr>
                     <tr>
                         <th>Jenis Ciptaann</th>
@@ -65,8 +48,15 @@
                         <td>: {{ $hc->judul_ciptaan }}</td>
                     </tr>
                     <tr>
-                        <th>Abstrak Ciptaan</th>
+                        <th>Uraian Singkat</th>
                         <td >: {{ $hc->uraian_singkat }}</td>
+                    </tr>
+                    <tr>
+                        <th>Uraian Singkat</th>
+                        <td>
+                            :<a href={{ asset('storage/' . $hc->dokumen_invensi) }} class=""
+                                target="_blank">Lihat Dokumen Invensi</a>
+                        </td>
                     </tr>
                     <tr>
                         <th>Tanggal pengajuan</th>

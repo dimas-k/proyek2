@@ -36,6 +36,10 @@
                         <td>: {{ $di->no_telepon }}</td>
                     </tr>
                     <tr>
+                        <th>Email</th>
+                        <td>: {{ $di->email }}</td>
+                    </tr>
+                    <tr>
                         <th>Jenis Disain Industri</th>
                         <td>: {{ $di->jenis_di }}</td>
                     </tr>

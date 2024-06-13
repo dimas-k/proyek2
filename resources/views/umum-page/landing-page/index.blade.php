@@ -37,6 +37,10 @@
                 <input type="hidden" id="hc" value="{{ $hc }}">
                 <canvas class="canvas-chart" id="chart" style="height:40vh; width:50vw"></canvas>
               </div>
+              <div class="card-body">
+                <input type="hidden" id="gabungKi2024" value="{{ $gabungKi2024 }}">
+                <canvas class="canvas-chart" id="gabung2024" style="height:40vh; width:50vw"></canvas>
+              </div>
             </div>
           </div>
         </div>
@@ -83,52 +87,95 @@
       const di = document.getElementById('di').value;   
       const chart = document.getElementById('chart').getContext('2d');
       const chartHKI = new Chart(chart, {
+        type: 'bar',
+        data: {
+          labels:['Jumlah Pengajuan HKI'],
+          datasets: [
+              {
+              label: 'Paten',
+              data: [paten],
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+
+              ],
+              borderWidth: 1
+          },
+              {
+              label: 'Hak Cipta',
+              data: [hc],
+              backgroundColor: [
+              'rgba(54, 162, 235, 0.2)',
+
+              ],
+              borderColor: [
+              'rgba(54, 162, 235, 1)',
+
+              ],
+              borderWidth: 1
+          },
+              {
+              label: 'Desain Industri',
+              data: [di],
+              backgroundColor: [
+              'rgba(255, 206, 86, 0.2)',
+
+              ],
+              borderColor: [
+              'rgba(255, 206, 86, 1)',
+
+              ],
+              borderWidth: 1
+          },
+        ]
+        },
+        options: {
+            scales: {
+                y: {
+                    suggestedMin: 0,
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            },
+            categoryPercentage: 0.5
+          }
+      });
+    </script>
+    <script>
+      const gabungKi2024 = document.getElementById('gabungKi2024').value;
+      console.log(gabungKi2024);
+      
+      const chartgabung = document.getElementById('gabung2024').getContext('2d');
+
+      const p = new Chart(chartgabung, {
           type: 'bar',
           data: {
-              labels:['Jumlah Pengajuan HKI'],
+              labels: ['2024','2025','2026','2027'],
               datasets: [
                   {
-                  label: 'Paten',
-                  data: [paten],
+                  label:'',
+                  data: [gabungKi2024],
                   backgroundColor: [
                       'rgba(255, 99, 132, 0.2)',
 
                   ],
                   borderColor: [
                       'rgba(255, 99, 132, 1)',
-
-                  ],
-                  borderWidth: 1
-              },
-                  {
-                  label: 'Hak Cipta',
-                  data: [hc],
-                  backgroundColor: [
-                  'rgba(54, 162, 235, 0.2)',
-
-                  ],
-                  borderColor: [
-                  'rgba(54, 162, 235, 1)',
-
-                  ],
-                  borderWidth: 1
-              },
-                  {
-                  label: 'Desain Industri',
-                  data: [di],
-                  backgroundColor: [
-                  'rgba(255, 206, 86, 0.2)',
-
-                  ],
-                  borderColor: [
-                  'rgba(255, 206, 86, 1)',
-
                   ],
                   borderWidth: 1
               },
           ]
           },
           options: {
+              plugins:{
+                legend:{
+                  display:false
+                }
+              },
               scales: {
                   y: {
                       suggestedMin: 0,
@@ -136,10 +183,11 @@
                           precision: 0
                       }
                   }
-              }
+              },
+              categoryPercentage: 0.5
           }
       });
-    
+    </script>
   </Script>
 </body>
 </html>

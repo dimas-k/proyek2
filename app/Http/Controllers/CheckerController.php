@@ -45,7 +45,6 @@ class CheckerController extends Controller
     public function lamanPaten()
     {
         // $paten = Paten::join('check_paten', 'paten.id', '=', 'check_paten.id')->select('paten_id','nama_lengkap', 'jenis_paten', 'judul_paten', 'tanggal_permohonan', 'status', 'cek_data', 'keterangan')->get();
-        // $paten = CheckPaten::join('paten','check_paten.id', '=', 'paten.id')->select('paten_id','nama_lengkap', 'jenis_paten', 'judul_paten', 'tanggal_permohonan', 'status', 'cek_data', 'keterangan')->get();
         $paten = Paten::with('cek')->paginate(5);
 
         // dd($paten);

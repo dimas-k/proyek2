@@ -298,7 +298,7 @@
                         <input type="hidden" id="patenDI" value="{{ $patenDI }}">
                         <input type="hidden" id="patenDK" value="{{ $patenDK }}">
                         <input type="hidden" id="patenTahun" value="{{ $patenTahun }}">
-                        <canvas id="paten-chart"></canvas>
+                        <canvas id="paten-chart" style="height:40vh; width:50vw"></canvas>
                     </div>
                 </div>
             </div>
@@ -358,7 +358,9 @@
                             precision: 0
                         }
                     }
-                }
+                },
+                categoryPercentage: 0.5
+
             }
         });
     </script>

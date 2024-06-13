@@ -210,8 +210,8 @@ class AdminController extends Controller
      */
     public function show(string $id)
     {
-        $user = User::find($id);
-        return view('admin.admin-page.index', compact('user'));
+        $admin = User::find($id);
+        return view('admin.admin-page.show.index', compact('admin'));
     }
 
     /**

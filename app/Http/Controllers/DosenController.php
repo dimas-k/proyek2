@@ -155,8 +155,8 @@ class DosenController extends Controller
     }
     public function editPaten(string $id)
     {
-        $paten = Paten::find($id);
-        return view('dosen.paten.edit.index', compact('paten'));
+        $p = Paten::find($id);
+        return view('dosen.paten.edit.index', compact('p'));
     }
 
     /**

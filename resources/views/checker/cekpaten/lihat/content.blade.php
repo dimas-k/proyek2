@@ -9,7 +9,7 @@
                 <h1 class="page-title">Paten</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/dosen/paten">Paten</a></li>
+                        <li class="breadcrumb-item"><a href="/checker/cek/paten">Paten</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Lihat</li>
                     </ol>
                 </div>
@@ -31,7 +31,7 @@
 
                                     <tr>
                                         <th>Nama Lengkap</th>
-                                        <td>: {{ $paten->paten?->nama_lengkap }}</td>
+                                        <td>: {{ $paten->nama_lengkap }}</td>
                                     </tr>
                                     <tr>
                                         <th>Alamat</th>
@@ -125,9 +125,9 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <a class="btn btn-primary"
+                                <a class="btn btn-primary me-3"
                                     href="/checker/cek/paten/nilai/{{ request()->segment(5) }}">Nilai Data Paten</a>
-                                    <a href="/checker/cek/paten/nilai/update/{{ request()->segment(5) }}" class="btn btn-secondary">Update nilai Data hak Cipta</a>
+                                    <a href="/checker/cek/paten/nilai/update/{{ request()->segment(5) }}" class="btn btn-outline-secondary">Update nilai Data hak Cipta</a>
                             </div>
                         </div>
                     </div>

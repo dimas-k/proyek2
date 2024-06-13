@@ -10,7 +10,7 @@
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/dosen/hak-cipta">Hak Cipta</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Lihat</li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit</li>
                     </ol>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                                                 <input type="file"
                                                     class="form-control @error('ktp_inventor') is-invalid @enderror"
                                                     id="" name="ktp_inventor" value="{{ $hc->ktp_inventor }}">
-                                                {{-- <span class="text-danger"><i class="fa fa-warning me-2" data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang sama atau yang sudah di perbarui</span> --}}
+                                                <span class="text-danger"><i class="fa fa-warning me-2" data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang sama atau yang sudah di perbarui</span>
                                                 @error('ktp_inventor')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -188,7 +188,7 @@
                                                     class="form-control @error('dokumen_invensi') is-invalid @enderror"
                                                     placeholder="" name="dokumen_invensi"
                                                     value="{{ $hc->dokumen_invensi }}">
-                                                    {{-- <span class="text-danger"><i class="fa fa-warning me-2" data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang sama atau yang sudah di perbarui</span> --}}
+                                                    <span class="text-danger"><i class="fa fa-warning me-2" data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang sama atau yang sudah di perbarui</span>
                                                 @error('dokumen_invensi')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -203,7 +203,7 @@
                                                     class="form-control @error('surat_pengalihan') is-invalid @enderror"
                                                     placeholder="" name="surat_pengalihan"
                                                     value="{{ $hc->surat_pengalihan }}">
-                                                    {{-- <span class="text-danger"><i class="fa fa-warning me-2" data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang sama atau yang sudah di perbarui</span> --}}
+                                                    <span class="text-danger"><i class="fa fa-warning me-2" data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang sama atau yang sudah di perbarui</span>
                                                 @error('surat_pengalihan')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -218,7 +218,7 @@
                                                     class="form-control @error('surat_pernyataan') is-invalid @enderror"
                                                     placeholder="" name="surat_pernyataan"
                                                     value="{{ $hc->surat_pernyataan }}">
-                                                    {{-- <span class="text-danger"><i class="fa fa-warning me-2" data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang sama atau yang sudah di perbarui</span> --}}
+                                                    <span class="text-danger"><i class="fa fa-warning me-2" data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang sama atau yang sudah di perbarui</span>
                                                 @error('surat_pernyataan')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}

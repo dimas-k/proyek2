@@ -52,7 +52,7 @@
                         <td >: {{ $hc->uraian_singkat }}</td>
                     </tr>
                     <tr>
-                        <th>Uraian Singkat</th>
+                        <th>Dokumen Invensi</th>
                         <td>
                             :<a href={{ asset('storage/' . $hc->dokumen_invensi) }} class=""
                                 target="_blank">Lihat Dokumen Invensi</a>

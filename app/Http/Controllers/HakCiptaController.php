@@ -16,7 +16,7 @@ class HakCiptaController extends Controller
         $hc = HakCipta::latest()->paginate(5);
 
         $hcTolak = HakCipta::where('status', 'Ditolak')->count();
-        $hcTerima = HakCipta::where('status', 'Diterima')->count();
+        $hcTerima = HakCipta::where('status', 'Tercatat')->count();
         $hcKet = HakCipta::where('status', 'Keterangan belum lengkap')->count();
         
         return view('umum-page.Hakcipta.index', compact('hc','tercatat','null','tolak','itung','hcTolak','hcTerima','hcKet'));
@@ -30,7 +30,11 @@ class HakCiptaController extends Controller
         $tercatat = HakCipta::where('status', 'Tercatat')->count();
         $null = HakCipta::where('status', 'Keterangan Belum Lengkap')->count();
         $tolak = HakCipta::where('status', 'Ditolak')->count();
-        return view('Hakcipta.index', compact('hc','tercatat','null','tolak','itung'));
+
+        $hcTolak = HakCipta::where('status', 'Ditolak')->count();
+        $hcTerima = HakCipta::where('status', 'Tercatat')->count();
+        $hcKet = HakCipta::where('status', 'Keterangan belum lengkap')->count();
+        return view('Hakcipta.index', compact('hc','tercatat','null','tolak','itung', 'hcTolak','hcTerima','hcKet'));
     }
 
     public function listTercatat()

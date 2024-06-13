@@ -10,7 +10,7 @@
     <title>SIKI POLINDRA-Admin | Desain Industri</title>
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> --}}
-    <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">    
+    <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
@@ -56,8 +56,68 @@
                         </div>
                     @endif
                     <div class="d-flex justify-content-end">
-                        <a href={{ Route('admin.tambah') }}
-                        class="btn btn-success mb-2"><i class="bi bi-plus-circle me-1"></i>Tambah Admin</a>
+                        {{-- <a href={{ Route('admin.tambah') }} class="btn btn-success mb-2"><i
+                                class="bi bi-plus-circle me-1"></i>Tambah Admin</a> --}}
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"><i class="bi bi-plus-circle me-1"></i>Tambah Admin</button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content p-4">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah akun admin</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" action="/simpan" class="mt-3">
+                                            @csrf
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label" for="">Nama Lengkap</label>
+                                                <input type="text" id="" class="form-control" name="nama_lengkap" />
+                                            </div>
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label" for="">Jabatan</label>
+                                                <input type="text" id="" class="form-control" name="jabatan" />
+                                            </div>
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label" for="">Alamat</label>
+                                                <input type="text" id="" class="form-control" name="alamat"/>
+                                            </div>
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label" for="">No Telepon</label>
+                                                <input type="text" id="" class="form-control" name="no_telepon"/>
+                                            </div>
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label" for="">Username</label>
+                                                <input type="text" id="" class="form-control @error('username') is-invalid @enderror" name="username"/>
+                                                @error('username')
+                                                    <div class="invalid-feedback">
+                                                      {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                            </div>
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label" for="typePasswordX">Password</label>
+                                                <input type="Password" id="" class="form-control @error('password') is-invalid @enderror" name="password"/>
+                                                @error('password')
+                                                    <div class="invalid-feedback">
+                                                      {{ $message }}
+                                                    </div>
+                                                    @enderror
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button"
+                                                    class="btn btn-outline-secondary"
+                                                    data-bs-dismiss="modal">Batal</button>
+                                                <button type="submit"
+                                                    class="btn btn-primary">Tambah</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-3"></i>Daftar Admin</h3>
                     <table class="table table-hover font-family-Kokoro">
@@ -68,6 +128,7 @@
                                 <th scope="col">Jabatan</th>
                                 <th scope="col">Alamat</th>
                                 <th scope="col">No telepon</th>
+                                <th scope="col">Username</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -79,10 +140,113 @@
                                     <td>{{ $a->jabatan }}</td>
                                     <td>{{ $a->alamat }}</td>
                                     <td>{{ $a->no_telepon }}</td>
-                                    <td><a href={{ Route('admin.edit', $a->id ) }}
-                                            class="btn btn-warning"><i class="bi bi-pencil"></i></a> <a
-                                            href={{ Route('admin.delete', $a->id ) }}
-                                            class="btn btn-danger" onclick="return confirm('Apakah Kamu Yakin?')"><i class="bi bi-trash3"></i></a></td>
+                                    <td>{{ $a->username }}</td>
+                                    <td><a href={{ Route('admin.show', $a->id) }} class="btn btn-info"><i
+                                        class="bi bi-eye"></i></a>
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal{{ $a->id }}">
+                                            <i class="bi bi-pencil"></i>
+                                        </button>
+                                        <div class="modal fade" id="exampleModal{{ $a->id }}" tabindex="-1"
+                                            data-bs-backdrop="static" aria-labelledby="exampleModalLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-scrollable">
+                                                <div class="modal-content p-2">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel"> Edit
+                                                            admin {{ $a->nama_lengkap }}</h1>
+                                                        <button type="button" class="btn-close"
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form method="post"
+                                                            action={{ Route('admin.update', $a->id) }}>
+                                                            @csrf
+                                                            <div class="form-outline form-white mb-3">
+                                                                <label class="form-label" for="">Nama
+                                                                    Lengkap</label>
+                                                                <input type="text" id=""
+                                                                    class="form-control" name="nama_lengkap"
+                                                                    value="{{ $a->nama_lengkap }}" required>
+                                                            </div>
+                                                            <div class="form-outline form-white mb-3">
+                                                                <label class="form-label"
+                                                                    for="">Jabatan</label>
+                                                                <input type="text" id=""
+                                                                    class="form-control" name="jabatan"
+                                                                    value="{{ $a->jabatan }}">
+                                                            </div>
+                                                            <div class="form-outline form-white mb-3">
+                                                                <label class="form-label"
+                                                                    for="">Alamat</label>
+                                                                <input type="text" id=""
+                                                                    class="form-control" name="alamat"
+                                                                    value="{{ $a->alamat }}">
+                                                            </div>
+                                                            <div class="form-outline form-white mb-3">
+                                                                <label class="form-label" for="">No
+                                                                    Telepon</label>
+                                                                <input type="text" id=""
+                                                                    class="form-control" name="no_telepon"
+                                                                    value="{{ $a->no_telepon }}">
+                                                            </div>
+                                                            <div class="form-outline form-white mb-3">
+                                                                <label class="form-label"
+                                                                    for="">Username</label>
+                                                                <input type="text" id=""
+                                                                    class="form-control" name="username"
+                                                                    value="{{ $a->username }}" required>
+                                                            </div>
+                                                            <div class="form-outline form-white mb-3">
+                                                                <label class="form-label"
+                                                                    for="typePasswordX">Password</label>
+                                                                <input type="Password" id=""
+                                                                    class="form-control" name="password" required>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button"
+                                                                    class="btn btn-outline-secondary"
+                                                                    data-bs-dismiss="modal">Batal</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Update</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- <a href={{ Route('admin.delete', $a->id) }} class="btn btn-danger"
+                                            onclick="return confirm('Apakah Kamu Yakin?')"><i
+                                                class="bi bi-trash3"></i></a> --}}
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#staticBackdrop{{ $a->id }}">
+                                            <i class="bi bi-trash3"></i>
+                                        </button>
+                                        <div class="modal fade" id="staticBackdrop{{ $a->id }}"
+                                            data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                                            Peringatan</h1>
+                                                        <button type="button" class="btn-close"
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Anda yakin akan menghapus akun admin
+                                                        {{ $a->nama_lengkap }} ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-outline-secondary"
+                                                            data-bs-dismiss="modal">Batal</button>
+                                                        <a href={{ Route('admin.delete', $a->id) }}
+                                                            class="btn btn-danger">Hapus</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -94,7 +258,7 @@
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
         </script>
         <script src={{ asset('assets/bootstrap/js/dist/dropdown.js.map') }}></script>
-        <script src={{ asset('assets/bootstrap/js/dist/collapse.js.map') }}></script> 
+        <script src={{ asset('assets/bootstrap/js/dist/collapse.js.map') }}></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
         </script>

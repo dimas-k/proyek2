@@ -6,10 +6,10 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Hak Cipta</h1>
+                <h1 class="page-title">Desain Industri</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/dosen/paten">Paten</a></li>
+                        <li class="breadcrumb-item"><a href="/checker/cek/desain-industri">Desain Industri</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Lihat</li>
                     </ol>
                 </div>
@@ -122,9 +122,9 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <a class="btn btn-primary me-2"
+                                <a class="btn btn-primary me-3"
                                     href="/checker/cek/desain-industri/nilai/{{ request()->segment(5) }}">Nilai Data Desain Industri</a>
-                                <a href="/checker/cek/desain-industri/nilai/update/{{ request()->segment(5) }}" class="btn btn-secondary">Update Nilai Data Desain Industri</a>
+                                <a href="/checker/cek/desain-industri/nilai/update/{{ request()->segment(5) }}" class="btn btn-outline-secondary">Update Nilai Data Desain Industri</a>
                             </div>
                         </div>
                     </div>

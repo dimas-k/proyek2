@@ -37,8 +37,8 @@ use App\Http\Controllers\UmumPageController;
 
 Route::get('/',[UmumPageController::class, 'index'] );
 
-Route::get('/coba', function () {
-    return view('dosen.index');
+Route::get('/disclaimer', function () {
+    return view('umum-page.disclaimer.index');
 });
 
 Route::get('/pengajuan-paten', [PatenController::class, 'showPengajuan']);
@@ -109,6 +109,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::post('/admin/listadmin/update/{id}', [AdminController::class, 'update'])->name('admin.update');
     Route::get('/admin/listadmin/delete/{id}', [AdminController::class, 'destroy'])->name('admin.delete');
     Route::get('/admin/listadmin/tambah', [AdminController::class, 'create'])->name('admin.tambah');
+    Route::get('/admin/listadmin/lihat/{id}', [AdminController::class, 'show'])->name('admin.show');
     Route::post('/simpan', [AdminController::class, 'store']);
 
     Route::get('/admin/hak-cipta', [AdminHaKCiptaController::class, 'index']);

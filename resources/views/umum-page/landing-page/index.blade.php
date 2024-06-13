@@ -22,7 +22,7 @@
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
           <div class="card">
-            <div class="card-header">
+            {{-- <div class="card-header">
               <div class="input-group mb-3">
                 <select id="filter-chart" value="chart-paten" name="" id="">
                   <option id="chart-paten" value="paten-chart">Jumlah Pengajuan KI</option>
@@ -30,8 +30,9 @@
                   <option id="chart-di" value="di-chart">Desain Industri</option>
                 </select>
               </div>
-            </div>
+            </div> --}}
               <div class="card-body">
+                
                 <input type="hidden" id="paten" value="{{ $paten }}">
                 <input type="hidden" id="di" value="{{ $di }}">
                 <input type="hidden" id="hc" value="{{ $hc }}">

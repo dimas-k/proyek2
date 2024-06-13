@@ -93,6 +93,8 @@
                                         <input type="file"
                                             class="form-control @error('ktp_inventor') is-invalid @enderror"
                                             id="" name="ktp_inventor">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -209,6 +211,8 @@
                                         <input type="file"
                                             class="form-control @error('abstrak_paten') is-invalid @enderror"
                                             id="" placeholder="" name="abstrak_paten">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('abstrak_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -220,6 +224,8 @@
                                         <input type="file"
                                             class="form-control @error('deskripsi_paten') is-invalid @enderror"
                                             id="" placeholder="" name="deskripsi_paten">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('deskripsi_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -231,6 +237,8 @@
                                         <input type="file"
                                             class="form-control @error('pengalihan_hak') is-invalid @enderror"
                                             id="" placeholder="" name="pengalihan_hak">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('pengalihan_hak')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -242,6 +250,8 @@
                                         <input type="file"
                                             class="form-control @error('abstrak_paten') is-invalid @enderror"
                                             id="" placeholder="" name="klaim">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('klaim')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -254,6 +264,8 @@
                                         <input type="file"
                                             class="form-control @error('pernyataan_kepemilikan') is-invalid @enderror"
                                             id="" placeholder="" name="pernyataan_kepemilikan">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('pernyataan_kepemilikan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -265,6 +277,8 @@
                                         <input type="file"
                                             class="form-control @error('surat_kuasa') is-invalid @enderror"
                                             id="" placeholder="" name="surat_kuasa">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('surat_kuasa')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -276,6 +290,8 @@
                                         <input type="file"
                                             class="form-control @error('gambar_paten') is-invalid @enderror"
                                             id="" placeholder="" name="gambar_paten">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('surat_kuasa')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -287,6 +303,8 @@
                                         <input type="file"
                                             class="form-control @error('gambar_tampilan') is-invalid @enderror"
                                             id="" placeholder="" name="gambar_tampilan">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('gambar_tampilan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

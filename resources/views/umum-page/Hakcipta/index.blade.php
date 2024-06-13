@@ -151,10 +151,10 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="card">
-                    <div class="card-header">
+                    {{-- <div class="card-header">
                         <h3 class="card-title">Diagram</h3>
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
                         <ul class="dropdown-menu">
@@ -162,9 +162,9 @@
                           <li><a class="dropdown-item" href="#">Another action</a></li>
                           <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
-                    </div>
+                    </div> --}}
                     <div class="card-body">
-                        hak cipta
+                        <h3 class="card-title">Diagram Hak Cipta</h3>
                         <input type="hidden" id="hcTolak" value="{{ $hcTolak }}">
                         <input type="hidden" id="hcTerima" value="{{ $hcTerima }}">
                         <input type="hidden" id="hcKet" value="{{ $hcKet }}">
@@ -202,7 +202,7 @@
             const hcChart = new Chart(hc, {
                 type: 'bar',
                 data: {
-                    labels: ['Keterangan belum lengkap', 'Ditolak', 'Diterima'],
+                    labels: ['Keterangan belum lengkap', 'Ditolak', 'Tercatat'],
                     datasets: [
                         {
                         label: 'HAK CIPTA',

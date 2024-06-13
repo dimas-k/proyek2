@@ -279,13 +279,14 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="card">
-                    <div class="card-header">
+                    {{-- <div class="card-header">
                         <h3 class="card-title">Diagram Paten</h3>
-                    </div>
+                    </div> --}}
                     <div class="card-body">
+                        <h3 class="card-title">Diagram Paten</h3>
                         {{-- paten --}}
                         <input type="hidden" id="patenPF" value="{{ $patenPF }}">
                         <input type="hidden" id="patenMTF" value="{{ $patenMTF }}">

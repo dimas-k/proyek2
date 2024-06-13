@@ -89,6 +89,8 @@
                                         <label for="" class="form-label">KTP Inventor</label>
                                         <input type="file" class="form-control @error('ktp_inventor') is-invalid @enderror"
                                             id="" name="ktp_inventor">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -168,6 +170,8 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Gambar Desain Industri</label>
                                         <input type="file" class="form-control @error('gambar_di') is-invalid @enderror" placeholder="" name="gambar_di">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                            data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('gambar_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -177,6 +181,8 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Uraian Desain Industri</label>
                                         <input type="file" class="form-control @error('uraian_di') is-invalid @enderror" placeholder="" name="uraian_di">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                            data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('uraian_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -186,6 +192,8 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Surat Pernyataan Kepemilikan</label>
                                         <input type="file" class="form-control @error('surat_kepemilikan') is-invalid @enderror"  placeholder="" name="surat_kepemilikan">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                            data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('surat_kepemilikan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -195,6 +203,8 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Surat Pengalihan Hak</label>
                                         <input type="file" class="form-control @error('surat_pengalihan') is-invalid @enderror"  placeholder="" name="surat_pengalihan">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                            data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('surat_pengalihan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

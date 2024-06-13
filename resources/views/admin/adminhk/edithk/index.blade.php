@@ -174,7 +174,7 @@
                     <label for="" class="form-label">Status Paten</label>
                     <select class="form-select @error('status') is-invalid @enderror" aria-label="Default select example" name="status">
                         <option selected>Pilih Status Paten</option>
-                        <option value="Tercatat">Tercatat</option>
+                        <option value="Diterima">Diterima</option>
                         <option value="Ditolak">Ditolak</option>
                         <option value="Keterangan Belum Lengkap">Keterangan Belum Lengkap</option>
                       </select>

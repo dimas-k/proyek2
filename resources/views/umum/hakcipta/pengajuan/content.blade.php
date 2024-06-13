@@ -89,6 +89,8 @@
                                         <label for="" class="form-label">KTP Inventor</label>
                                         <input type="file" class="form-control @error('ktp_inventor') is-invalid @enderror"
                                             id="" name="ktp_inventor">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -189,6 +191,8 @@
                                         <label for="" class="form-label">Dokumen Invensi (Manual Book/Buku/Dll)</label>
                                         <input type="file" class="form-control @error('dokumen_invensi') is-invalid @enderror"
                                             placeholder="" name="dokumen_invensi">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('dokumen_invensi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -199,6 +203,8 @@
                                         <label for="" class="form-label">Surat Pengalihan Hak Cipta</label>
                                         <input type="file" class="form-control @error('surat_pengalihan') is-invalid @enderror"
                                             placeholder="" name="surat_pengalihan">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('surat_pengalihan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -209,6 +215,8 @@
                                         <label for="" class="form-label">Surat Pernyataan</label>
                                         <input type="file" class="form-control @error('surat_pernyataan') is-invalid @enderror"
                                             placeholder="" name="surat_pernyataan">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('surat_pernyataan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

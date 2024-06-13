@@ -124,7 +124,7 @@
                                 </table>
                                 <a class="btn btn-primary me-3"
                                     href="/checker/cek/hak-cipta/nilai/{{ request()->segment(5) }}">Nilai Data Hak Cipta</a>
-                                <a href="/checker/cek/hak-cipta/nilai/update/{{ request()->segment(5) }}" class="btn btn-secondary">Update nilai Data hak Cipta</a>
+                                <a href="/checker/cek/hak-cipta/nilai/update/{{ request()->segment(5) }}" class="btn btn-outline-secondary">Update nilai Data hak Cipta</a>
                             </div>
                         </div>
                     </div>

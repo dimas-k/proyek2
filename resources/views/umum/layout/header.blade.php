@@ -65,7 +65,7 @@
                                 </a>
                             </div> --}}
                             <!-- FULL-SCREEN -->
-                            <div class="dropdown  d-flex notifications">
+                            {{-- <div class="dropdown  d-flex notifications">
                                 <a class="nav-link icon" data-bs-toggle="dropdown"><i
                                         class="fe fe-bell"></i><span class=" pulse"></span>
                                 </a>
@@ -122,7 +122,7 @@
                                         class="dropdown-item text-center p-3 text-muted">View all
                                         Notification</a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- NOTIFICATIONS -->
                             {{-- <div class="dropdown  d-flex message">
                                 <a class="nav-link icon text-center" data-bs-toggle="dropdown">

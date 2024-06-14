@@ -25,7 +25,7 @@
             {{-- <div class="card-header">
               <div class="input-group mb-3">
                 <select id="filter-chart" value="chart-paten" name="" id="">
-                  <option id="chart-paten" value="paten-chart">Paten</option>
+                  <option id="chart-paten" value="paten-chart">Jumlah Pengajuan KI</option>
                   <option id="chart-hc" value="hc-chart">Hak Cipta</option>
                   <option id="chart-di" value="di-chart">Desain Industri</option>
                 </select>
@@ -153,39 +153,38 @@
       const chartgabung = document.getElementById('gabung2024').getContext('2d');
 
       const p = new Chart(chartgabung, {
-          type: 'bar',
-          data: {
-              labels: ['2024','2025','2026','2027'],
-              datasets: [
-                  {
-                  label:'',
-                  data: [gabungKi2024],
-                  backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
-
-                  ],
-                  borderColor: [
-                      'rgba(255, 99, 132, 1)',
-                  ],
-                  borderWidth: 1
-              },
-          ]
+        type: 'bar',
+        data: {
+          labels: ['2024','2025','2026','2027'],
+          datasets: [
+            {
+            label:'',
+            data: [gabungKi2024],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+            ],
+            borderWidth: 1
           },
-          options: {
-              plugins:{
-                legend:{
-                  display:false
+        ]
+        },
+        options: {
+          plugins:{
+            legend:{
+              display:false
+              }
+            },
+            scales: {
+              y: {
+                suggestedMin: 0,
+                ticks: {
+                  precision: 0
                 }
-              },
-              scales: {
-                  y: {
-                      suggestedMin: 0,
-                      ticks: {
-                          precision: 0
-                      }
-                  }
-              },
-              categoryPercentage: 0.5
+              }
+            },
+            categoryPercentage: 0.5
           }
       });
     </script>

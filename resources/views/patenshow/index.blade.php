@@ -44,7 +44,7 @@
                     </tr>
                     <tr>
                         <th>Abstrak Paten</th>
-                        <td>: <a href={{ asset('storage/' . $paten->abstrak_paten) }} class=""
+                        <td>: <a href={{ asset('storage/app/public/' . $paten->abstrak_paten) }} class=""
                                 target="_blank">Lihat Abstrak Paten</a></td>
                     </tr>
                     <tr>

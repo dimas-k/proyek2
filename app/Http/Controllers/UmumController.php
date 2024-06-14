@@ -443,7 +443,6 @@ class UmumController extends Controller
 
     public function lihatProfil()
     {
-        // $user = User::find($id);
         return view('umum.profil.index');
     }
     public function editProfil(string $id)

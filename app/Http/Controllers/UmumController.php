@@ -448,6 +448,7 @@ class UmumController extends Controller
     public function editProfil(string $id)
     {
         $user = User::find($id);
+        // dd($user->ktp);
 
         return view('umum.profil.edit.index', compact('user'));
     }
@@ -456,7 +457,6 @@ class UmumController extends Controller
         $validasidata = $request->validate([
             'email' => 'required|email',
             'username' => 'required|min:3',
-            'password' => 'required|max:10',
             'ktp' => 'required|mimes:pdf|max:2028',
         ]);
         $user = User::find($id);
@@ -464,11 +464,11 @@ class UmumController extends Controller
         $user->no_telepon = $request->no_telepon;
         $user->email = $request->email;
         $user->alamat = $request->alamat;
+
+        
         $user->ktp = $request->file('ktp')->store('dokumen_user');
         $user->kerjaan = $request->kerjaan;
         $user->username = $request->username;
-        $user->password = Hash::make($request->password);
-        $user->role = $request->role;
         $user->save($validasidata);
         return redirect('/umum/user/lihat')->with('success', 'Data berhasil Diupdate!');
     }

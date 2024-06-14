@@ -125,20 +125,6 @@
                                                 @enderror
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th>password</th>
-                                            <td><input type="password"
-                                                    class="form-control @error('password') is-invalid @enderror"
-                                                    id="" name="password" value="{{ auth()->user()->password }}">
-                                                @error('password')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                                <input type="text" class="form-control @error('role') is-invalid @enderror" id=""
-                                            value="Umum" name="role" hidden>
-                                            </td>
-                                        </tr>
                                     </table>
                                 </div>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"

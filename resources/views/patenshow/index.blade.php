@@ -14,7 +14,7 @@
 
 <body>
     <div class="container-fluid">
-        <div class="bg-light rounded border p-4 mt-3">
+        <div class="p-4 mt-3">
             <a href="/paten" class="link-dark link-underline link-underline-opacity-0 mb-5 "><i class="bi bi-arrow-left-circle mb-5" style="font-size: 30px;"></i></a>
             <h3 class=""><i class="bi bi-clipboard2-data me-2 mt-5"></i>Data Paten</h3>
 

@@ -137,39 +137,13 @@
                                                 <td>{{ $d->nama_lengkap }}</td>
                                                 <td>{{ $d->jenis_di }}</td>
                                                 <td>{{ $d->judul_di }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($di->tanggal_permohonan)->format('d-m-Y') }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($d->tanggal_permohonan)->format('d-m-Y') }}</td>
                                                 <td>{{ $d->status }}</td>
                                                 <td><a href={{ Route('umum.di.lihat', $d->id) }}
                                                         class="btn btn-info"><i class="fa fa-eye" data-bs-toggle="tooltip"></i></a>
                                                     <a href={{ Route('umum.di.edit', $d->id) }}
                                                         class="btn btn-warning"><i class="fa fa-pencil" data-bs-toggle="tooltip"></i></a>
-                                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop">
-                                                        <i class="fa fa-trash" data-bs-toggle="tooltip"></i>
-                                                    </button>
-                                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                                        data-bs-keyboard="false" tabindex="-1"
-                                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                                                                        Peringatan</h1>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    Anda yakin akan menghapus pengajuan ini
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-outline-secondary"
-                                                                        data-bs-dismiss="modal">Batal</button>
-                                                                    <a href={{ Route('umum.di.hapus', $d->id) }}
-                                                                        class="btn btn-danger">Hapus</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </td>
                                             </tr>
                                         @endforeach

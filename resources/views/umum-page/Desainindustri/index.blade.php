@@ -182,7 +182,7 @@
                         <td>{{ $d->nama_lengkap }}</td>
                         <td>{{ $d->jenis_di }}</td>
                         <td>{{ $d->judul_di }}</td>
-                        <td>{{ $d->tanggal_permohonan }}</td>
+                        <td>{{ \Carbon\Carbon::parse($d->tanggal_permohonan)->format('d-m-Y') }}</td>
                         <td>{{ $d->status }}</td>
                         <td><a class="btn btn-primary" href={{ Route('desain-industri.show', $d->id) }}>Selengkapnya</a></td>
                     </tr>
@@ -210,7 +210,10 @@
                         <canvas id="di-chart"></canvas>                            
 
                     </div>
+                </div>
+            </div>
         {{ $di->links() }}
+        </div>
     </div>
     <footer class="text-center text-lg-star bg-body-white shadow-lg mt-5">
         <!-- Copyright -->

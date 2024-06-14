@@ -90,7 +90,11 @@
                             </tr>
                             <tr>
                                 <th>Prodi</th>
-                                <td>: {{ $di->prodi }}</td>
+                                <td>: @if ($di->institusi = "Dosen")
+                                    {{ $di->prodi }}
+                                @else
+                                    
+                                @endif</td>
                             </tr>
                             <tr>
                                 <th>Jenis Disain Industri</th>

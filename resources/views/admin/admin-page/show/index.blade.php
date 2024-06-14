@@ -60,6 +60,10 @@
                                 <td>: {{ $admin->no_telepon }}</td>
                             </tr>
                             <tr>
+                                <th>Email</th>
+                                <td>: {{ $admin->email }}</td>
+                            </tr>
+                            <tr>
                                 <th>Alamat</th>
                                 <td>: {{ $admin->alamat }}</td>
                             </tr>

@@ -116,14 +116,14 @@ class AdminHaKCiptaController extends Controller
         $hc->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-hc');
         $hc->surat_pernyataan = $request->file('surat_pernyataan')->store('dokumen-hc');
         $hc->tanggal_permohonan = $request->tanggal_permohonan;
-        $hc->status = $request->status;
         if ($request->file('sertifikat_hakcipta') == null) {
             $hc->sertifikat_hakcipta = "";
         }else{
            $hc->sertifikat_hakcipta = $request->file('sertifikat_hakcipta')->store('dokumen-hc');  
         }
         $hc->save($validasidata);
-        return redirect('/admin/hak-cipta')->with('success','Data hak cipta berhasil di update');
+        return redirect('/admin/hak-cipta')->with('success','Data hak cipta berhasil di update')
+        ->withInput();
     }
 
     /**

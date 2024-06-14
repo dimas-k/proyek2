@@ -19,6 +19,8 @@ class AdminSeeder extends Seeder
             [
                 'nama_lengkap'=> 'Lugh Tuaha De',
                 'jabatan'=>'Operator',
+                'email'=> 'admin@admin.com',
+                'nip'=> '7382932839',
                 'alamat'=>'Jl. Sudirman No.22 Rt/02 Rw/03 Indramayu',
                 'no_telepon'=>'0897382902',
                 'username'=>'byan',

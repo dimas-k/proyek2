@@ -361,7 +361,6 @@
                     }
                 },
                 categoryPercentage: 0.5
-
             }
         });
     </script>

@@ -151,10 +151,10 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="row mt-5">
+        {{-- <div class="row mt-5">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="card">
-                    {{-- <div class="card-header">
+                    <div class="card-header">
                         <h3 class="card-title">Diagram</h3>
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
                         <ul class="dropdown-menu">
@@ -162,7 +162,7 @@
                           <li><a class="dropdown-item" href="#">Another action</a></li>
                           <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
-                    </div> --}}
+                    </div>
                     <div class="card-body">
                         <h3 class="card-title">Diagram Hak Cipta</h3>
                         <input type="hidden" id="hcTolak" value="{{ $hcTolak }}">
@@ -172,7 +172,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         {{ $hc->links() }}
     </div>
     <footer class="text-center text-lg-star bg-body-white shadow-lg mt-5">

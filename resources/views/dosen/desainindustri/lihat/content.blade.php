@@ -63,6 +63,14 @@
                                         <td>: {{ $di->kode_pos }}</td>
                                     </tr>
                                     <tr>
+                                        <th>Jurusan</th>
+                                        <td>: {{ $di->jurusan }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Prodi</th>
+                                        <td>: {{ $di->prodi }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Jenis Disain Industri</th>
                                         <td>: {{ $di->jenis_di }}</td>
                                     </tr>
@@ -94,7 +102,7 @@
                                         <td>: {{ $di->status }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Sertifikat Paten</th>
+                                        <th>Sertifikat Desain Industri</th>
                                         <td>: @if ($di->sertifikat_hakcipta != "")
                                                 <a href={{ asset('storage/' . $di->sertifikat_hakcipta) }}
                                                     class="" target="_blank">Lihat sertifikat</a>

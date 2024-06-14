@@ -50,6 +50,8 @@
                     <div class="card-body">
                         <input type="hidden" id="gabungKi2024" value="{{ $gabungKi2024 }}">
                         <input type="hidden" id="gabungKi2025" value="{{ $gabungKi2025 }}">
+                        <input type="hidden" id="gabungKi2026" value="{{ $gabungKi2026 }}">
+                        <input type="hidden" id="gabungKi2027" value="{{ $gabungKi2027 }}">
                         <canvas class="canvas-chart" id="gabung2024" style="height:40vh; width:50vw"></canvas>
                     </div>
                 </div>
@@ -141,6 +143,8 @@
     <script>
         const gabungKi2024 = document.getElementById('gabungKi2024').value;
         const gabungKi2025 = document.getElementById('gabungKi2025').value;
+        const gabungKi2026 = document.getElementById('gabungKi2026').value;
+        const gabungKi2027 = document.getElementById('gabungKi2027').value;
         const chartgabung = document.getElementById('gabung2024').getContext('2d');
 
         const p = new Chart(chartgabung, {
@@ -149,7 +153,7 @@
                 labels: ['2024', '2025', '2026', '2027'],
                 datasets: [{
                     label: '',
-                    data: [gabungKi2024,gabungKi2025],
+                    data: [gabungKi2024,gabungKi2025,gabungKi2026,gabungKi2027],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                     ],

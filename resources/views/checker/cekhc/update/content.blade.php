@@ -41,7 +41,7 @@
                                                     <option selected>Pilih Status Hak Cipta</option>
                                                     <option value="Benar">Benar
                                                     </option>
-                                                    <option value="Salah">Salah</option>
+                                                    <option value="Salah" >Salah</option>
                                                     <option value="Menunggu Pemeriksaan">Menunggu Pemeriksaan</option>
                                                 </select>
                                                 @error('cek_data')

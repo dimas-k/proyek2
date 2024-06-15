@@ -15,7 +15,7 @@ class DiSeeder extends Seeder
     {
         DB::table('desain_industri')->insert([
             [
-                'user_id' => 6,
+                'user_id' => 5,
                 'nama_lengkap' => "Suhendi",
                 'alamat' => "Suhendi",
                 'no_telepon' => "0809090",
@@ -30,9 +30,9 @@ class DiSeeder extends Seeder
                 'uraian_di' => "Suhendi",
                 'gambar_di' => "Suhendi.pdf",
                 'surat_kepemilikan' => "2004-07-01",
-                'surat_pengalihan' => "Keterangan belum lengkap",
+                'surat_pengalihan' => "suhendi.pdf",
                 'tanggal_permohonan' => "2004-07-01",
-                'status' => "Satu Desain",
+                'status' => "Diberi",
                 'sertifikat_desain' => "Suhendi.pdf",
             ]
         ]);

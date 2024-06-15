@@ -75,7 +75,6 @@
                     <th scope="col">Judul Desain</th>
                     <th scope="col">Tanggal pengajuan</th>
                     <th scope="col">Status paten</th>
-                    <th scope="col">Detail Pengajuan</th>
                 </tr>
             </thead>
             <tbody>
@@ -87,7 +86,6 @@
                         <td>{{ $d->judul_di }}</td>
                         <td>{{ $d->tanggal_permohonan }}</td>
                         <td>{{ $d->status }}</td>
-                        <td><a class="btn btn-primary" href={{ Route('desain-industri.show', $d->id) }}>Selengkapnya</a></td>
                     </tr>
                 @endforeach
             </tbody>

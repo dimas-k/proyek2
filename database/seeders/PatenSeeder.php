@@ -15,7 +15,7 @@ class PatenSeeder extends Seeder
     {
         DB::table('paten')->insert([
             [
-                'user_id' => 6,
+                'user_id' => 5,
                 'nama_lengkap' => "Suhendi",
                 'alamat' => "Suhendi",
                 'no_telepon' => "0809090",

@@ -262,7 +262,6 @@
                     <th scope="col">Judul paten</th>
                     <th scope="col">Tanggal pengajuan</th>
                     <th scope="col">Status paten</th>
-                    <th scope="col">Detail Pengajuan</th>
                 </tr>
             </thead>
             <tbody>
@@ -274,7 +273,6 @@
                         <td>{{ $p->judul_paten }}</td>
                         <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y') }}</td>
                         <td>{{ $p->status }}</td>
-                        <td><a class="btn btn-primary" href={{ Route('paten.show', $p->id) }}>Selengkapnya</a></td>
                     </tr>
                 @endforeach
             </tbody>

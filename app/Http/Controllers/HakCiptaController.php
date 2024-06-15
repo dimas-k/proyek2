@@ -18,8 +18,13 @@ class HakCiptaController extends Controller
         $hcTolak = HakCipta::where('status', 'Ditolak')->count();
         $hcTerima = HakCipta::where('status', 'Tercatat')->count();
         $hcKet = HakCipta::where('status', 'Keterangan belum lengkap')->count();
+
+        $hc2024 = HakCipta::whereYear('tanggal_permohonan','2024')->count();
+        $hc2025 = HakCipta::whereYear('tanggal_permohonan','2025')->count();
+        $hc2026 = HakCipta::whereYear('tanggal_permohonan','2026')->count();
+        $hc2027 = HakCipta::whereYear('tanggal_permohonan','2027')->count();
         
-        return view('umum-page.Hakcipta.index', compact('hc','tercatat','null','tolak','itung','hcTolak','hcTerima','hcKet'));
+        return view('umum-page.Hakcipta.index', compact('hc','tercatat','null','tolak','itung','hcTolak','hcTerima','hcKet','hc2024','hc2025','hc2026','hc2027'));
     }
     public function cari(Request $request){
         $carijudul = $request->input('cari_hc');

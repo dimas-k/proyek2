@@ -277,32 +277,23 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $paten1->links() }}
         <div class="row mt-5">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="card">
-                    {{-- <div class="card-header">
-                        <h3 class="card-title">Diagram Paten</h3>
-                    </div> --}}
+                    <div class="card-header">
+                        <h3 class="card-title">Diagram per-tahun Paten</h3>
+                    </div>
                     <div class="card-body">
-                        <h3 class="card-title">Diagram Paten</h3>
-                        {{-- paten --}}
-                        <input type="hidden" id="patenPF" value="{{ $patenPF }}">
-                        <input type="hidden" id="patenMTF" value="{{ $patenMTF }}">
-                        <input type="hidden" id="patenMP" value="{{ $patenMP }}">
-                        <input type="hidden" id="patenMPS" value="{{ $patenMPS }}">
-                        <input type="hidden" id="patenSTAW" value="{{ $patenSTAW }}">
-                        <input type="hidden" id="patenSTL" value="{{ $patenSTL }}">
-                        <input type="hidden" id="patenSTAK" value="{{ $patenSTAK }}">
-                        <input type="hidden" id="patenMTS" value="{{ $patenMTS }}">
-                        <input type="hidden" id="patenDI" value="{{ $patenDI }}">
-                        <input type="hidden" id="patenDK" value="{{ $patenDK }}">
-                        <input type="hidden" id="patenTahun" value="{{ $patenTahun }}">
-                        <canvas id="paten-chart" style="height:40vh; width:50vw"></canvas>
+                        <input type="hidden" id="paten2024" value="{{ $paten2024 }}">
+                        <input type="hidden" id="paten2025" value="{{ $paten2025 }}">
+                        <input type="hidden" id="paten2026" value="{{ $paten2026 }}">
+                        <input type="hidden" id="paten2027" value="{{ $paten2027 }}">
+                        <canvas id="paten-chart" style="height:30vh; width:68vw"></canvas>
                     </div>
                 </div>
             </div>
         </div>
-        {{ $paten1->links() }}
     </div>
 
     <footer class="text-center text-lg-star bg-body-white shadow-lg mt-5">
@@ -326,8 +317,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
 
-        const patenTahun = document.getElementById('patenTahun').value;
-        
+        const paten2024 = document.getElementById('paten2024').value;
+        const paten2025 = document.getElementById('paten2025').value;
+        const paten2026 = document.getElementById('paten2026').value;
+        const paten2027 = document.getElementById('paten2027').value;
         const paten = document.getElementById('paten-chart').getContext('2d');
 
         const patenChart = new Chart(paten, {
@@ -337,19 +330,21 @@
                 datasets: [
                     {
                     label: 'PATEN',
-                    data: [patenTahun],
+                    data: [paten2024,paten2025,paten2026,paten2027],
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 1)',
 
                     ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                    ],
-                    borderWidth: 1
+                    borderWidth: 2
                 },
             ]
             },
             options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
                 scales: {
                     y: {
                         suggestedMin: 0,

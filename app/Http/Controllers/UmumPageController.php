@@ -35,6 +35,6 @@ class UmumPageController extends Controller
         $di2027 = DesainIndustri::whereYear('tanggal_permohonan','2027')->count();
         $gabungKi2027 = $paten2027 + $di2027 + $hc2027 ;
 
-        return view('umum-page.landing-page.index',compact('paten', 'di', 'hc','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027'));
+        return view('umum-page.landing-page.index',compact('paten', 'di', 'hc','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027','paten2024','paten2025','paten2026','paten2027','hc2024','hc2025','hc2026','hc2027','di2024','di2025','di2026','di2027'));
     }
 }

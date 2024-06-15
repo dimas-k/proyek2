@@ -277,15 +277,14 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $paten1->links() }}
         <div class="row mt-5">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="card">
-                    {{-- <div class="card-header">
-                        <h3 class="card-title">Diagram Paten</h3>
-                    </div> --}}
+                    <div class="card-header">
+                        <h3 class="card-title">Diagram per-tahun Paten</h3>
+                    </div>
                     <div class="card-body">
-                        <h3 class="card-title">Diagram Paten</h3>
-                        {{-- paten --}}
                         <input type="hidden" id="patenPF" value="{{ $patenPF }}">
                         <input type="hidden" id="patenMTF" value="{{ $patenMTF }}">
                         <input type="hidden" id="patenMP" value="{{ $patenMP }}">
@@ -297,12 +296,11 @@
                         <input type="hidden" id="patenDI" value="{{ $patenDI }}">
                         <input type="hidden" id="patenDK" value="{{ $patenDK }}">
                         <input type="hidden" id="patenTahun" value="{{ $patenTahun }}">
-                        <canvas id="paten-chart" style="height:40vh; width:50vw"></canvas>
+                        <canvas id="paten-chart" style="height:30vh; width:68vw"></canvas>
                     </div>
                 </div>
             </div>
         </div>
-        {{ $paten1->links() }}
     </div>
 
     <footer class="text-center text-lg-star bg-body-white shadow-lg mt-5">

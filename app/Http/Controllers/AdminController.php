@@ -246,6 +246,6 @@ class AdminController extends Controller
     public function destroy(string $id)
     {
         User::findOrFail($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Akun Admin telah dihapus!');
     }
 }

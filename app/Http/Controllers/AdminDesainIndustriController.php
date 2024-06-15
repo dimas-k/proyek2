@@ -96,42 +96,13 @@ class AdminDesainIndustriController extends Controller
     public function update(Request $request, string $id)
     {
         $validasidata = $request->validate([
-            'nama_lengkap'=> 'required',
-            'alamat'=> 'required',
-            'no_telepon'=> 'required',
-            'tanggal_lahir'=> 'required',
-            'ktp_inventor'=> 'required|mimes:pdf',
-            'email'=> 'required|email',
-            'kewarganegaraan'=> 'required',
-            'kode_pos'=> 'required',
-            'jenis_di'=> 'required',
-            'judul_di'=>'required',
-            'uraian_di'=>'required|mimes:pdf',
-            'gambar_di'=>'required|mimes:pdf',
-            'surat_kepemilikan'=>'required|mimes:pdf',
-            'surat_pengalihan'=>'required|mimes:pdf',
-            'tanggal_permohonan'=>'required',
+            
             'status'=>'required',
             'sertifikat_desain'=>'mimes:pdf',
 
         ]);
 
         $di = DesainIndustri::find($id);
-        $di->nama_lengkap = $request->nama_lengkap;
-        $di->alamat = $request->alamat;
-        $di->no_telepon = $request->no_telepon;
-        $di->tanggal_lahir = $request->tanggal_lahir;
-        $di->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-di');
-        $di->email = $request->email;
-        $di->kewarganegaraan = $request->kewarganegaraan;
-        $di->kode_pos = $request->kode_pos;
-        $di->jenis_di = $request->jenis_di;
-        $di->judul_di = $request->judul_di;
-        $di->uraian_di = $request->file('uraian_di')->store('dokumen-di');
-        $di->gambar_di = $request->file('gambar_di')->store('dokumen-di');
-        $di->surat_kepemilikan = $request->file('surat_kepemilikan')->store('dokumen-di');
-        $di->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-di');
-        $di->tanggal_permohonan = $request->tanggal_permohonan;
         $di->status = $request->status;
         if ($request->file('sertifikat_desain') == null) {
             $di->sertifikat_desain = "";

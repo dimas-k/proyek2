@@ -46,38 +46,38 @@
             {{-- end of sidebar --}}
             <div class="col-lg-10 mt-2">
                 <div class="container bg-light rounded border pt-3">
-                    <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-person me-3"></i>Akun Admin
+                    <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-person me-3"></i>Akun Verifikator
                     </h3>
                     <div class="table-responsive">
                         <table class="table table-borderless p-1">
         
                             <tr>
                                 <th>Nama Lengkap</th>
-                                <td>: {{ $admin->nama_lengkap }}</td>
+                                <td>: {{ $verif->nama_lengkap }}</td>
                             </tr>
                             <tr>
                                 <th>No telepon</th>
-                                <td>: {{ $admin->no_telepon }}</td>
+                                <td>: {{ $verif->no_telepon }}</td>
                             </tr>
                             <tr>
                                 <th>Email</th>
-                                <td>: {{ $admin->email }}</td>
+                                <td>: {{ $verif->email }}</td>
                             </tr>
                             <tr>
                                 <th>Alamat</th>
-                                <td>: {{ $admin->alamat }}</td>
+                                <td>: {{ $verif->alamat }}</td>
                             </tr>
                             <tr>
                                 <th>Jabatan</th>
-                                <td>: {{ $admin->jabatan }}</td>
+                                <td>: {{ $verif->jabatan }}</td>
                             </tr>
                             <tr>
                                 <th>NIP</th>
-                                <td>{{ $admin->nip }}</td>
+                                <td>: {{ $verif->nip }}</td>
                             </tr>
                             <tr>
                                 <th>Username</th>
-                                <td>: {{ $admin->username }}</td>
+                                <td>: {{ $verif->username }}</td>
                             </tr>
                         </table>
                     </div>

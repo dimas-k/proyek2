@@ -198,7 +198,7 @@
                                             <div class="modal-dialog modal-dialog-scrollable">
                                                 <div class="modal-content p-2">
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="exampleModalLabel"> Edit
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel"> Edit status
                                                             Hak Cipta {{ $hk->nama_lengkap }}</h1>
                                                         <button type="button" class="btn-close"
                                                             data-bs-dismiss="modal" aria-label="Close"></button>
@@ -207,262 +207,38 @@
                                                         <form enctype="multipart/form-data" method="post"
                                                             action={{ Route('admin_hakcipta.update', $hk->id) }}>
                                                             @csrf
-                                                            <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS
-                                                            </p>
-                                                            <div class="container">
-                                                                <div class="mb-3">
-                                                                    <label for="nama_lengkap" class="form-label">Nama
-                                                                        Lengkap</label>
-                                                                    <input type="text"
-                                                                        class="form-control @error('nama_lengkap') is-invalid @enderror"
-                                                                        id=""
-                                                                        placeholder="Masukkan Nama"name="nama_lengkap"
-                                                                        value="{{ $hk->nama_lengkap }}">
-                                                                    @error('nama_lengkap')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for=""
-                                                                        class="form-label">Alamat</label>
-                                                                    <input type="text"
-                                                                        class="form-control @error('alamat') is-invalid @enderror"
-                                                                        id="" placeholder="Masukkan Alamat"
-                                                                        name="alamat" value="{{ $hk->alamat }}">
-                                                                    @error('alamat')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="" class="form-label">No
-                                                                        telepon</label>
-                                                                    <input type="text"
-                                                                        class="form-control @error('no_telepon') is-invalid @enderror"
-                                                                        id=""
-                                                                        placeholder="Masukkan No telepon"
-                                                                        name="no_telepon"
-                                                                        value="{{ $hk->no_telepon }}">
-                                                                    @error('no_telepon')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="" class="form-label">Tanggal
-                                                                        Lahir</label>
-                                                                    <input type="date" name="tanggal_lahir"
-                                                                        id=""
-                                                                        class="form-control @error('tanggal_lahir') is-invalid @enderror"
-                                                                        value="{{ $hk->tanggal_lahir }}">
-                                                                    @error('tanggal_lahir')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="" class="form-label">KTP
-                                                                        Inventor</label>
-                                                                    <input type="file"
-                                                                        class="form-control @error('ktp_inventor') is-invalid @enderror"
-                                                                        id="" name="ktp_inventor"
-                                                                        value="{{ $hk->ktp_inventor }}">
-                                                                    @error('ktp_inventor')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for=""
-                                                                        class="form-label">Email</label>
-                                                                    <input type="email"
-                                                                        class="form-control @error('email') is-invalid @enderror"
-                                                                        id="" placeholder="Masukkan Email"
-                                                                        name="email" value="{{ $hk->email }}">
-                                                                    @error('email')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for=""
-                                                                        class="form-label">Kewarganegaraan</label>
-                                                                    <input type="text"
-                                                                        class="form-control @error('kewarganegaraan') is-invalid @enderror"
-                                                                        id=""
-                                                                        placeholder="Masukkan Kewarganegaraan"
-                                                                        name="kewarganegaraan"
-                                                                        value="{{ $hk->kewarganegaraan }}">
-                                                                    @error('kewarganegaraan')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="" class="form-label">Kode
-                                                                        Pos</label>
-                                                                    <input type="number"
-                                                                        class="form-control @error('kode_pos') is-invalid @enderror"
-                                                                        id="" placeholder="Masukkan Kode Pos"
-                                                                        name="kode_pos" value="{{ $hk->kode_pos }}">
-                                                                    @error('kode_pos')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
+                                                            <div class="mb-3">
+                                                                <label for="" class="form-label">Status
+                                                                    Hak Cipta</label>
+                                                                <select
+                                                                    class="form-select @error('status') is-invalid @enderror"
+                                                                    aria-label="Default select example"
+                                                                    name="status">
+                                                                    <option selected>Pilih Status Hak Cipta</option>
+                                                                    <option value="Tercatat">Tercatat</option>
+                                                                    <option value="Ditolak">Ditolak</option>
+                                                                    <option value="Keterangan Belum Lengkap">
+                                                                        Keterangan Belum Lengkap</option>
+                                                                </select>
+                                                                @error('status')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
                                                             </div>
-
-                                                            <p class="fs-4 fw-normal font-family-Kokoro mt-5">II.
-                                                                FORMULIR HAK CIPTA</p>
-                                                            <div class="container">
-                                                                <div class="mb-3">
-                                                                    <label for="jenis_ciptaan" class="form-label">Jenis Ciptaan
-                                                                        <select class="form-select @error('jenis_ciptaan') is-invalid @enderror" aria-label="Default select example" name="jenis_ciptaan" id="jenis_ciptaan">
-                                                                            <option selected>Pilih Jenis Hak Cipta anda</option>
-                                                                            <option value="Buku, program komputer, pamflet, perwajahan (layout) karya tulis yang diterbitkan, dan semua hasil karya tulis lain">Buku, program komputer, pamflet, perwajahan (layout) karya tulis yang diterbitkan, dan semua hasil karya tulis lain;
-                                                                            </option>
-                                                                            <option value="Ceramah, kuliah, pidato, dan ciptaan lain yang sejenis dengan itu">Ceramah, kuliah, pidato, dan ciptaan lain yang sejenis dengan itu;
-                                                                            </option>
-                                                                            <option value="Alat peraga yang dibuat untuk kepentingan pendidikan dan ilmu pengetahuan">Alat peraga yang dibuat untuk kepentingan pendidikan dan ilmu pengetahuan;
-                                                                            </option>
-                                                                            <option value="Lagu atau musik dengan atau tanpa teks">Lagu atau musik dengan atau tanpa teks;
-                                                                            </option>
-                                                                            <option value="Drama atau drama musikal, tari, koreografi, pewayangan, dan pantomim">Drama atau drama musikal, tari, koreografi, pewayangan, dan pantomim;
-                                                                            </option>
-                                                                            <option value="Seni rupa dalam segala bentuk seperti seni lukis, gambar, seni ukir, seni kaligrafi, seni pahat, seni patung, kolase, dan seni terapan">Seni rupa dalam segala bentuk seperti seni lukis, gambar, seni ukir, seni kaligrafi, seni pahat, seni patung, kolase, dan seni terapan;
-                                                                            </option>
-                                                                            <option value="Arsitektur">Arsitektur;
-                                                                            </option>
-                                                                            <option value="Peta">Peta;
-                                                                            </option>
-                                                                            <option value="Seni Batik">Seni Batik;
-                                                                            </option>
-                                                                            <option value="Fotografi">Fotografi;
-                                                                            </option>
-                                                                            <option value="Terjemahan, tafsir, saduran, bunga rampai, dan karya lain dari hasil pengalihwujudan">Terjemahan, tafsir, saduran, bunga rampai, dan karya lain dari hasil pengalihwujudan.
-                                                                            </option>
-                                                                        </select>
-                                                                    </label>
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="" class="form-label">Judul
-                                                                        Ciptaan</label>
-                                                                    <input type="text"
-                                                                        class="form-control @error('judul_ciptaan') is-invalid @enderror"
-                                                                        placeholder="Masukkan Judul Ciptaan"
-                                                                        name="judul_ciptaan"
-                                                                        value="{{ $hk->judul_ciptaan }}">
-                                                                    @error('judul_ciptaan')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="" class="form-label">Uraian
-                                                                        Singkat Ciptaan</label>
-                                                                    <textarea class="form-control @error('uarian_singkat') is-invalid @enderror" placeholder="" name="uraian_singkat"
-                                                                        id="floatingTextarea2" style="height: 150px" value="{{ $hk->uraian_singkat }}">{{ $hk->uraian_singkat }}</textarea>
-                                                                    @error('uarian_singkat')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="" class="form-label">Dokumen
-                                                                        Invensi (Manual Book/Buku/Dll)</label>
-                                                                    <input type="file"
-                                                                        class="form-control @error('dokumen_invensi') is-invalid @enderror"
-                                                                        placeholder="" name="dokumen_invensi"
-                                                                        value="{{ $hk->dokumen_invensi }}">
-                                                                    @error('dokumen_invensi')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="" class="form-label">Surat
-                                                                        Pengalihan Hak Cipta</label>
-                                                                    <input type="file"
-                                                                        class="form-control @error('surat_pengalihan') is-invalid @enderror"
-                                                                        placeholder="" name="surat_pengalihan"
-                                                                        value="{{ $hk->surat_pengalihan }}">
-                                                                    @error('surat_pengalihan')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="" class="form-label">Surat
-                                                                        Pernyataan</label>
-                                                                    <input type="file"
-                                                                        class="form-control @error('surat_pernyataan') is-invalid @enderror"
-                                                                        placeholder="" name="surat_pernyataan"
-                                                                        value="{{ $hk->surat_pernyataan }}">
-                                                                    @error('surat_pernyataan')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="" class="form-label">Tanggal
-                                                                        Pengajuan</label>
-                                                                    <input type="date" name="tanggal_permohonan"
-                                                                        id="tanggalpengajuan"
-                                                                        class="form-control @error('tanggal_permohonan') is-invalid @enderror"
-                                                                        value="{{ $hk->tanggal_permohonan }}">
-                                                                    @error('tanggal_permohonan')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="" class="form-label">Status
-                                                                        Hak Cipta</label>
-                                                                    <select
-                                                                        class="form-select @error('status') is-invalid @enderror"
-                                                                        aria-label="Default select example"
-                                                                        name="status">
-                                                                        <option selected>Pilih Status Paten</option>
-                                                                        <option value="Tercatat">Tercatat</option>
-                                                                        <option value="Ditolak">Ditolak</option>
-                                                                        <option value="Keterangan Belum Lengkap">
-                                                                            Keterangan Belum Lengkap</option>
-                                                                    </select>
-                                                                    @error('status')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for=""
-                                                                        class="form-label">Sertifikat Hak Cipta</label>
-                                                                    <input type="file"
-                                                                        class="form-control @error('sertifikat_hakcipta') is-invalid @enderror"
-                                                                        placeholder="Masukkan sertifikat"
-                                                                        name="sertifikat_hakcipta"
-                                                                        value="{{ $hk->sertifikat_hakcipta }}">
-                                                                    @error('sertifikat_hakcipta')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
+                                                            <div class="mb-3">
+                                                                <label for=""
+                                                                    class="form-label">Sertifikat Hak Cipta</label>
+                                                                <input type="file"
+                                                                    class="form-control @error('sertifikat_hakcipta') is-invalid @enderror"
+                                                                    placeholder="Masukkan sertifikat"
+                                                                    name="sertifikat_hakcipta"
+                                                                    value="{{ $hk->sertifikat_hakcipta }}">
+                                                                @error('sertifikat_hakcipta')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button"

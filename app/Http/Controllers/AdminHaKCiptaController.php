@@ -81,41 +81,12 @@ class AdminHaKCiptaController extends Controller
     public function update(Request $request, string $id)
     {
         $validasidata = $request->validate([
-            'nama_lengkap'=> 'required',
-            'alamat'=> 'required',
-            'no_telepon'=> 'required',
-            'tanggal_lahir'=> 'required',
-            'ktp_inventor'=> 'required|mimes:pdf',
-            'email'=> 'required|email',
-            'kewarganegaraan'=> 'required',
-            'kode_pos'=> 'required',
-            'jenis_ciptaan'=> 'required',
-            'judul_ciptaan'=> 'required',
-            'uraian_singkat'=>'required',
-            'dokumen_invensi'=>'required|mimes:pdf',
-            'surat_pengalihan'=>'required|mimes:pdf',
-            'surat_pernyataan'=>'required|mimes:pdf',
-            'tanggal_permohonan'=>'required',
-            'status'=>'required',
+           
             'sertifikat_hakcipta'=>'mimes:pdf'
 
         ]);
         $hc = HakCipta::find($id);
-        $hc->nama_lengkap = $request->nama_lengkap;
-        $hc->alamat = $request->alamat;
-        $hc->no_telepon = $request->no_telepon;
-        $hc->tanggal_lahir = $request->tanggal_lahir;
-        $hc->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-hc');
-        $hc->email = $request->email;
-        $hc->kewarganegaraan = $request->kewarganegaraan;
-        $hc->kode_pos = $request->kode_pos;
-        $hc->jenis_ciptaan = $request-> jenis_ciptaan;
-        $hc->judul_ciptaan = $request->judul_ciptaan;
-        $hc->uraian_singkat = $request->uraian_singkat;
-        $hc->dokumen_invensi = $request->file('dokumen_invensi')->store('dokumen-hc');
-        $hc->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-hc');
-        $hc->surat_pernyataan = $request->file('surat_pernyataan')->store('dokumen-hc');
-        $hc->tanggal_permohonan = $request->tanggal_permohonan;
+        $hc->status = $request->status;
         if ($request->file('sertifikat_hakcipta') == null) {
             $hc->sertifikat_hakcipta = "";
         }else{

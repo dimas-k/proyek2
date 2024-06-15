@@ -20,6 +20,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/listadmin"><i class="bi bi-person me-4"></i>Admin</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/verif"><i class="bi bi-person me-4"></i>Verifikator</a>
+                        </li>
                         <li class="nav-item list-unstyled">
                             <a class="nav-link btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" href="#"
                                 data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false"><i class="bi bi-person me-4"></i>

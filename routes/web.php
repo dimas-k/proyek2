@@ -17,6 +17,7 @@ use App\Http\Controllers\Api\ApiUsersController;
 use App\Http\Controllers\AdminHaKCiptaController;
 use App\Http\Controllers\DesainIndustriController;
 use App\Http\Controllers\AdminDesainIndustriController;
+use App\Http\Controllers\AdminVerifController;
 use App\Http\Controllers\UmumPageController;
 
 
@@ -144,6 +145,12 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::post('/admin/pengguna/dosen/tambah', [AdminController::class, 'dosenNew'])->name('tambah.dosen');
     Route::get('/admin/pengguna/dosen/hapus/{id}', [AdminController::class, 'hapusDosen'])->name('dosen.hapus');
     Route::post('admin/pengguna/dosen/edit/{id}', [AdminController::class, 'editDosen'])->name('dosen.edit');
+
+    Route::get('/admin/verif', [AdminVerifController::class, 'lamanVerif']);
+    Route::post('admin/verif/simpan', [AdminVerifController::class, 'tambahVerif'])->name('simpan.verif');
+    Route::get('/admin/verif/hapus/{id}', [AdminVerifController::class, 'hapus'])->name('hapus.verif');
+    Route::get('/admin/verif/lihat/{id}', [AdminVerifController::class, 'lihat'])->name('lihat.verif');
+    Route::post('/admin/verif/update/{id}', [AdminVerifController::class, 'update'])->name('update.verif');
 });
 
 Route::middleware(['guest'])->group(function () {

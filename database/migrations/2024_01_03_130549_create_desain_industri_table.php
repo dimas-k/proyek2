@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('surat_kepemilikan');
             $table->string('surat_pengalihan');
             $table->date('tanggal_permohonan');
-            $table->string('status')->default('Keterangan Belum Lengkap');
+            $table->string('status')->default('Menunggu Verifikasi Data Oleh Verifikator');
             $table->string('sertifikat_desain')->nullable();
             $table->timestamps();
         });

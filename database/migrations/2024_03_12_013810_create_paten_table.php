@@ -38,7 +38,7 @@ return new class extends Migration
             $table->string('gambar_tampilan');
             $table->date('tanggal_permohonan');
             $table->string('sertifikat_paten')->nullable();
-            $table->string('status')->default('Menunggu Tanggapan Substansif');
+            $table->string('status')->default('Menunggu Verifikasi Data Oleh Verifikator');
             $table->timestamps();
         });
     }

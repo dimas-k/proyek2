@@ -17,9 +17,10 @@ class CheckerSeeder extends Seeder
         DB::table('users')->insert(array(
             [
                 'nama_lengkap'=> 'Lugh Tuaha De',
-                'jabatan'=>'Checker',
+                'jabatan'=>'Verifikator',
                 'alamat'=>'Jl. Sudirman No.22 Rt/02 Rw/03 Indramayu',
                 'no_telepon'=>'0897382902',
+                'email'=>'apalagi@gmail.com',
                 'nip'=>'733282738327',
                 'username'=>'siapa',
                 'password'=>Hash::make('12345'),

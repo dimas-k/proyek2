@@ -26,7 +26,13 @@ class DesainIndustriController extends Controller
         $desainKBL = DesainIndustri::where('status', 'Keterangan belum lengkap')->count();
         $desainDPU = DesainIndustri::where('status', 'Dalam proses usulan')->count();
 
-        return view('umum-page.Desainindustri.index', compact('di', 'priksa', 'proses', 'null','tolak','beri','itung','desainDi','desainDK','desainP','desainKBL','desainDPU')); 
+        $di2024 = DesainIndustri::whereYear('tanggal_permohonan','2024')->count();
+        $di2025 = DesainIndustri::whereYear('tanggal_permohonan','2025')->count();
+        $di2026 = DesainIndustri::whereYear('tanggal_permohonan','2026')->count();
+        $di2027 = DesainIndustri::whereYear('tanggal_permohonan','2027')->count();
+
+
+        return view('umum-page.Desainindustri.index', compact('di', 'priksa', 'proses', 'null','tolak','beri','itung','desainDi','desainDK','desainP','desainKBL','desainDPU','di2024','di2025','di2026','di2027')); 
     }
     
     public function diberi()

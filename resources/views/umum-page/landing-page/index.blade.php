@@ -41,18 +41,29 @@
               </div>
             </div> --}}
                     <div class="card-body">
-
-                        <input type="hidden" id="paten" value="{{ $paten }}">
-                        <input type="hidden" id="di" value="{{ $di }}">
-                        <input type="hidden" id="hc" value="{{ $hc }}">
-                        <canvas class="canvas-chart" id="chart" style="height:40vh; width:50vw"></canvas>
+                        {{-- Paten --}}
+                        <input type="hidden" id="paten2024" value="{{ $paten2024 }}">
+                        <input type="hidden" id="paten2025" value="{{ $paten2025 }}">
+                        <input type="hidden" id="paten2026" value="{{ $paten2026 }}">
+                        <input type="hidden" id="paten2027" value="{{ $paten2027 }}">
+                        {{-- Hak Cipta --}}
+                        <input type="hidden" id="hc2024" value="{{ $hc2024 }}">
+                        <input type="hidden" id="hc2025" value="{{ $hc2025 }}">
+                        <input type="hidden" id="hc2026" value="{{ $hc2026 }}">
+                        <input type="hidden" id="hc2027" value="{{ $hc2027 }}">
+                        {{-- Desain Industri --}}
+                        <input type="hidden" id="di2024" value="{{ $di2024 }}">
+                        <input type="hidden" id="di2025" value="{{ $di2025 }}">
+                        <input type="hidden" id="di2026" value="{{ $di2026 }}">
+                        <input type="hidden" id="di2027" value="{{ $di2027 }}">
+                        <canvas class="canvas-chart" id="chart" style="height:30vh; width:68vw"></canvas>
                     </div>
                     <div class="card-body">
                         <input type="hidden" id="gabungKi2024" value="{{ $gabungKi2024 }}">
                         <input type="hidden" id="gabungKi2025" value="{{ $gabungKi2025 }}">
                         <input type="hidden" id="gabungKi2026" value="{{ $gabungKi2026 }}">
                         <input type="hidden" id="gabungKi2027" value="{{ $gabungKi2027 }}">
-                        <canvas class="canvas-chart" id="gabung2024" style="height:40vh; width:50vw"></canvas>
+                        <canvas class="canvas-chart" id="gabung2024" style="height:30vh; width:68vw"></canvas>
                     </div>
                 </div>
             </div>
@@ -78,52 +89,54 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <Script>
-        const paten = document.getElementById('paten').value;
-        const hc = document.getElementById('hc').value;
-        const di = document.getElementById('di').value;
+        // Paten
+        const paten2024 = document.getElementById('paten2024').value;
+        const paten2025 = document.getElementById('paten2025').value;
+        const paten2026 = document.getElementById('paten2026').value;
+        const paten2027 = document.getElementById('paten2027').value;
+        // Hak Cipta
+        const hc2024 = document.getElementById('hc2024').value;
+        const hc2025 = document.getElementById('hc2025').value;
+        const hc2026 = document.getElementById('hc2026').value;
+        const hc2027 = document.getElementById('hc2027').value;
+        // Desain Industri
+        const di2024 = document.getElementById('di2024').value;
+        const di2025 = document.getElementById('di2025').value;
+        const di2026 = document.getElementById('di2026').value;
+        const di2027 = document.getElementById('di2027').value;
+
         const chart = document.getElementById('chart').getContext('2d');
         const chartHKI = new Chart(chart, {
             type: 'bar',
             data: {
-                labels: ['Jumlah Pengajuan HKI'],
+                labels: ['2024','2025','2026','2027'],
                 datasets: [{
                         label: 'Paten',
-                        data: [paten],
+                        data: [paten2024,paten2025,paten2026,paten2027],
                         backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-
-                        ],
-                        borderColor: [
                             'rgba(255, 99, 132, 1)',
 
                         ],
-                        borderWidth: 1
+                        borderWidth: 2
                     },
                     {
                         label: 'Hak Cipta',
-                        data: [hc],
+                        data: [hc2024, hc2025, hc2026, hc2027],
                         backgroundColor: [
-                            'rgba(54, 162, 235, 0.2)',
-
-                        ],
-                        borderColor: [
                             'rgba(54, 162, 235, 1)',
 
                         ],
-                        borderWidth: 1
+                        borderWidth: 2
                     },
                     {
                         label: 'Desain Industri',
-                        data: [di],
+                        data: [di2024, di2025, di2026, di2027],
                         backgroundColor: [
-                            'rgba(255, 206, 86, 0.2)',
-
-                        ],
-                        borderColor: [
                             'rgba(255, 206, 86, 1)',
 
                         ],
-                        borderWidth: 1
+
+                        borderWidth: 2
                     },
                 ]
             },
@@ -147,20 +160,16 @@
         const gabungKi2027 = document.getElementById('gabungKi2027').value;
         const chartgabung = document.getElementById('gabung2024').getContext('2d');
 
-        const p = new Chart(chartgabung, {
-            type: 'bar',
+            const p = new Chart(chartgabung, {
+            type: 'line',
             data: {
                 labels: ['2024', '2025', '2026', '2027'],
                 datasets: [{
                     label: '',
                     data: [gabungKi2024,gabungKi2025,gabungKi2026,gabungKi2027],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                    ],
-                    borderWidth: 1
+                    borderColor:
+                    'rgba(54, 162, 235, 1)',
+                    borderWidth: 2
                 }, ]
             },
             options: {
@@ -169,19 +178,45 @@
                         display: false
                     }
                 },
-                scales: {
-                    y: {
-                        suggestedMin: 0,
-                        ticks: {
-                            precision: 0
-                        }
+                elements:{
+                    line:{
+                        tension:0.5
                     }
                 },
-                categoryPercentage: 0.5
-            }
+                scales:{
+                    yAxes:[{
+                        ticks:{
+                            beginAtZero:true
+                        }
+                    }]
+                },
+                transitions: {
+                    show: {
+                        animations: {
+                            x: {
+                                from: 1
+                            },
+                            y: {
+                                from: 10
+                            }
+                        }
+                    },
+                    hide: {
+                        animations: {
+                            x: {
+                                to: 1
+                            },
+                            y: {
+                                to: 10
+                            }
+                        }
+                    }
+                }
+            },
         });
     </script>
     </Script>
 </body>
 
 </html>
+

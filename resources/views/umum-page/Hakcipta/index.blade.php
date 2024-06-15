@@ -149,11 +149,12 @@
                 @endforeach
             </tbody>
         </table>
-        {{-- <div class="row mt-5">
+        {{ $hc->links() }}
+        <div class="row mt-5">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Diagram</h3>
+                        <h3 class="card-title">Diagram per-tahun Hak Cipta</h3>
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
                         <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="#">Action</a></li>
@@ -162,16 +163,19 @@
                         </ul>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title">Diagram Hak Cipta</h3>
-                        <input type="hidden" id="hcTolak" value="{{ $hcTolak }}">
+                        {{-- <input type="hidden" id="hcTolak" value="{{ $hcTolak }}">
                         <input type="hidden" id="hcTerima" value="{{ $hcTerima }}">
                         <input type="hidden" id="hcKet" value="{{ $hcKet }}">
-                        <canvas id="hc-chart"></canvas>
+                        <canvas id="hc-chart" style="height:30vh; width:68vw"></canvas> --}}
+                        <input type="hidden" id="hc2024" value="{{ $hc2024 }}">
+                        <input type="hidden" id="hc2025" value="{{ $hc2025 }}">
+                        <input type="hidden" id="hc2026" value="{{ $hc2026 }}">
+                        <input type="hidden" id="hc2027" value="{{ $hc2027 }}">
+                        <canvas id="hc-chart-tahun" style="height:30vh; width:68vw"></canvas>
                     </div>
                 </div>
             </div>
-        </div> --}}
-        {{ $hc->links() }}
+        </div>
     </div>
     <footer class="text-center text-lg-star bg-body-white shadow-lg mt-5">
         <!-- Copyright -->
@@ -192,34 +196,69 @@
 
         <script>
             // hak cipta
-            const hcTolak = document.getElementById('hcTolak').value;
-            const hcTerima = document.getElementById('hcTerima').value;
-            const hcKet = document.getElementById('hcKet').value;
-            const hc = document.getElementById('hc-chart').getContext('2d');
+            // const hcTolak = document.getElementById('hcTolak').value;
+            // const hcTerima = document.getElementById('hcTerima').value;
+            // const hcKet = document.getElementById('hcKet').value;
+            // const hc = document.getElementById('hc-chart').getContext('2d');
 
-            const hcChart = new Chart(hc, {
-                type: 'bar',
-                data: {
-                    labels: ['Keterangan belum lengkap', 'Ditolak', 'Tercatat'],
-                    datasets: [
-                        {
-                        label: 'HAK CIPTA',
-                        data: [hcKet, hcTolak, hcTerima],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                        ],
-                        borderWidth: 2
-                    },
-                ]
+            // const hcChart = new Chart(hc, {
+            //     type: 'bar',
+            //     data: {
+            //         labels: ['Keterangan belum lengkap', 'Ditolak', 'Tercatat'],
+            //         datasets: [
+            //             {
+            //             label: 'HAK CIPTA',
+            //             data: [hcKet, hcTolak, hcTerima],
+            //             backgroundColor: [
+            //                 'rgba(255, 99, 132, 0.2)',
+            //                 'rgba(54, 162, 235, 0.2)',
+            //                 'rgba(255, 206, 86, 0.2)',
+            //             ],
+            //             borderColor: [
+            //                 'rgba(255, 99, 132, 1)',
+            //                 'rgba(54, 162, 235, 1)',
+            //                 'rgba(255, 206, 86, 1)',
+            //             ],
+            //             borderWidth: 2
+            //         },
+            //     ]
+            //     },
+            //     options: {
+            //     scales: {
+            //         y: {
+            //             suggestedMin: 0,
+            //             ticks: {
+            //                 precision: 0
+            //             }
+            //         }
+            //     }
+            // }
+            // });
+            // hak cipta per-tahun
+            const hc2024 = document.getElementById("hc2024").value;
+            const hc2025 = document.getElementById("hc2025").value;
+            const hc2026 = document.getElementById("hc2026").value;
+            const hc2027 = document.getElementById("hc2027").value;
+            const hcPerTahun = document.getElementById("hc-chart-tahun").getContext('2d');
+            const p = new Chart(hcPerTahun, {
+            type: 'bar',
+            data: {
+                labels: ['2024', '2025', '2026', '2027'],
+                datasets: [{
+                    label: '',
+                    data: [hc2024,hc2025,hc2026,hc2027],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 2
+                }, ]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
                 },
-                options: {
                 scales: {
                     y: {
                         suggestedMin: 0,
@@ -227,9 +266,11 @@
                             precision: 0
                         }
                     }
-                }
+                },
+                categoryPercentage: 0.5
             }
-            });
+        });
+
         </script>
     </div>
         </script>

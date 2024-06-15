@@ -187,31 +187,29 @@
                 @endforeach
             </tbody>
         </table>
-        {{-- <div class="row mt-5">
+        {{ $di->links() }}
+        <div class="row mt-5">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Diagram</h3>
+                        <h3 class="card-title">Diagram Per-tahun Desain Industri</h3>
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
                         <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="#">Action</a></li>
                           <li><a class="dropdown-item" href="#">Another action</a></li>
                           <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
                     </div>
                     <div class="card-body">
-                        <h3 class="card-title">Diagram Desain Industri</h3>
-                        <input type="hidden" id="desainDi" value="{{ $desainDi }}">
-                        <input type="hidden" id="desainDK" value="{{ $desainDK }}">
-                        <input type="hidden" id="desainP" value="{{ $desainP }}">
-                        <input type="hidden" id="desainKBL" value="{{ $desainKBL }}">
-                        <input type="hidden" id="desainDPU" value="{{ $desainDPU }}">
-                        <canvas id="di-chart"></canvas>                            
-
+                        <input type="hidden" id="di2024" value="{{ $di2024 }}">
+                        <input type="hidden" id="di2025" value="{{ $di2025 }}">
+                        <input type="hidden" id="di2026" value="{{ $di2026 }}">
+                        <input type="hidden" id="di2027" value="{{ $di2027 }}">
+                        <canvas id="di-chart" style="height:30vh; width:68vw"></canvas>
+                        
                     </div>
                 </div>
             </div>
-        </div> --}}
-        {{ $di->links() }}
         </div>
     </div>
     <footer class="text-center text-lg-star bg-body-white shadow-lg mt-5">
@@ -233,39 +231,33 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-        const desainDi = document.getElementById('desainDi').value;
-        const desainDK = document.getElementById('desainDK').value;
-        const desainP = document.getElementById('desainP').value;
-        const desainKBL = document.getElementById('desainKBL').value;
-        const desainDPU = document.getElementById('desainDPU').value;
+
+        const di2024 = document.getElementById('di2024').value;
+        const di2025 = document.getElementById('di2025').value;
+        const di2026 = document.getElementById('di2026').value;
+        const di2027 = document.getElementById('di2027').value;
         const di = document.getElementById('di-chart').getContext('2d');
         const diChart = new Chart(di, {
             type: 'bar',
             data: {
-                labels: ['Ditolak', 'Diberi','Pemeriksaan','Dalam proses usulan','Keterangan belum lengkap'],
+                labels: ['2024','2025','2026','2027'],
                 datasets: [
                     {
                     label: 'DESAIN INDUSTRI',
-                    data: [desainDK, desainDi, desainP,desainDPU,desainKBL],
+                    data: [di2024, di2025, di2026,di2027],
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
                         'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
                     ],
-                    borderWidth: 1
+                    borderWidth: 2
                 },
             ]
             },
             options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
                 scales: {
                     y: {
                         suggestedMin: 0,
@@ -273,9 +265,13 @@
                             precision: 0
                         }
                     }
-                }
+                },
+                categoryPercentage: 0.5
             }
+
         });
+
+
     </script>
 </body>
 

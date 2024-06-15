@@ -43,9 +43,12 @@ class PatenController extends Controller
         $patenDI = Paten::where('status', 'Diberi')->count();
         $patenDK = Paten::where('status', 'Ditolak')->count();
         
-        $patenTahun = Paten::whereYear('tanggal_permohonan','2024')->count();
+        $paten2024 = Paten::whereYear('tanggal_permohonan','2024')->count();
+        $paten2025 = Paten::whereYear('tanggal_permohonan','2025')->count();
+        $paten2026 = Paten::whereYear('tanggal_permohonan','2026')->count();
+        $paten2027 = Paten::whereYear('tanggal_permohonan','2027')->count();
         
-        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','patenTahun'));
+        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','paten2024','paten2025','paten2026','paten2027'));
     }
 
     public function cari(Request $request){

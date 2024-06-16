@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Paten;
+use App\Models\HakCipta;
 use Illuminate\Http\Request;
+use App\Models\DesainIndustri;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,11 +47,26 @@ class PatenController extends Controller
         $patenDK = Paten::where('status', 'Ditolak')->count();
         
         $paten2024 = Paten::whereYear('tanggal_permohonan','2024')->count();
+        $hc2024 = HakCipta::whereYear('tanggal_permohonan','2024')->count();
+        $di2024 = DesainIndustri::whereYear('tanggal_permohonan','2024')->count();
+        $gabungKi2024 = $paten2024 + $di2024 + $hc2024 ;
+
         $paten2025 = Paten::whereYear('tanggal_permohonan','2025')->count();
+        $hc2025 = HakCipta::whereYear('tanggal_permohonan','2025')->count();
+        $di2025 = DesainIndustri::whereYear('tanggal_permohonan','2025')->count();
+        $gabungKi2025 = $paten2025 + $di2025 + $hc2025 ;
+
         $paten2026 = Paten::whereYear('tanggal_permohonan','2026')->count();
+        $hc2026 = HakCipta::whereYear('tanggal_permohonan','2026')->count();
+        $di2026 = DesainIndustri::whereYear('tanggal_permohonan','2026')->count();
+        $gabungKi2026 = $paten2026 + $di2026 + $hc2026 ;
+
         $paten2027 = Paten::whereYear('tanggal_permohonan','2027')->count();
+        $hc2027 = HakCipta::whereYear('tanggal_permohonan','2027')->count();
+        $di2027 = DesainIndustri::whereYear('tanggal_permohonan','2027')->count();
+        $gabungKi2027 = $paten2027 + $di2027 + $hc2027 ;
         
-        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','paten2024','paten2025','paten2026','paten2027'));
+        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','paten2024','paten2025','paten2026','paten2027','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027'));
     }
 
     public function cari(Request $request){

@@ -285,6 +285,10 @@
                         <h3 class="card-title">Diagram per-tahun Paten</h3>
                     </div>
                     <div class="card-body">
+                        <input type="hidden" id="gabungKi2024" value="{{ $gabungKi2024 }}">
+                        <input type="hidden" id="gabungKi2025" value="{{ $gabungKi2025 }}">
+                        <input type="hidden" id="gabungKi2026" value="{{ $gabungKi2026 }}">
+                        <input type="hidden" id="gabungKi2027" value="{{ $gabungKi2027 }}">
                         <input type="hidden" id="paten2024" value="{{ $paten2024 }}">
                         <input type="hidden" id="paten2025" value="{{ $paten2025 }}">
                         <input type="hidden" id="paten2026" value="{{ $paten2026 }}">
@@ -321,23 +325,37 @@
         const paten2025 = document.getElementById('paten2025').value;
         const paten2026 = document.getElementById('paten2026').value;
         const paten2027 = document.getElementById('paten2027').value;
+
+        const gabungKi2024 = document.getElementById('gabungKi2024').value;
+        const gabungKi2025 = document.getElementById('gabungKi2025').value;
+        const gabungKi2026 = document.getElementById('gabungKi2026').value;
+        const gabungKi2027 = document.getElementById('gabungKi2027').value;
+
         const paten = document.getElementById('paten-chart').getContext('2d');
 
-        const patenChart = new Chart(paten, {
+        const p = new Chart(paten, {
             type: 'bar',
             data: {
-                labels: ['2024','2025','2026','2027'],
-                datasets: [
-                    {
-                    label: 'PATEN',
-                    data: [paten2024,paten2025,paten2026,paten2027],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 1)',
-
-                    ],
+                labels: ['2024', '2025', '2026', '2027'],
+                datasets: [{
+                    label: 'Jumlah Keseluruhan KI',
+                    data: [gabungKi2024,gabungKi2025,gabungKi2026,gabungKi2027],
+                    backgroundColor:
+                    'rgba(255, 99, 132, 0.2)',
+                    borderColor:
+                    'rgb(255, 99, 132)',
                     borderWidth: 2
-                },
-            ]
+                },{
+                        type:'line',
+                        label: 'Paten',
+                        data: [paten2024,paten2025,paten2026,paten2027],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+
+                        ],
+                        borderWidth: 5
+                    }
+                ]
             },
             options: {
                 plugins: {
@@ -345,16 +363,41 @@
                         display: false
                     }
                 },
-                scales: {
-                    y: {
-                        suggestedMin: 0,
-                        ticks: {
-                            precision: 0
-                        }
+                elements:{
+                    line:{
+                        tension:0.5
                     }
                 },
-                categoryPercentage: 0.5
-            }
+                scales:{
+                    yAxes:[{
+                        ticks:{
+                            beginAtZero:true
+                        }
+                    }]
+                },
+                transitions: {
+                    show: {
+                        animations: {
+                            x: {
+                                from: 1
+                            },
+                            y: {
+                                from: 1
+                            }
+                        }
+                    },
+                    hide: {
+                        animations: {
+                            x: {
+                                to: 10
+                            },
+                            y: {
+                                to: 10
+                            }
+                        }
+                    }
+                }
+            },
         });
     </script>
 

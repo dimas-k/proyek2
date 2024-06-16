@@ -104,6 +104,12 @@
         const di2025 = document.getElementById('di2025').value;
         const di2026 = document.getElementById('di2026').value;
         const di2027 = document.getElementById('di2027').value;
+        //gabungan
+        const gabungKi2024 = document.getElementById('gabungKi2024').value;
+        const gabungKi2025 = document.getElementById('gabungKi2025').value;
+        const gabungKi2026 = document.getElementById('gabungKi2026').value;
+        const gabungKi2027 = document.getElementById('gabungKi2027').value;
+        const chartgabung = document.getElementById('gabung2024').getContext('2d');
 
         const chart = document.getElementById('chart').getContext('2d');
         const chartHKI = new Chart(chart, {
@@ -150,16 +156,10 @@
                     }
                 },
                 categoryPercentage: 0.5
-            }
+            },
+            
         });
-    </script>
-    <script>
-        const gabungKi2024 = document.getElementById('gabungKi2024').value;
-        const gabungKi2025 = document.getElementById('gabungKi2025').value;
-        const gabungKi2026 = document.getElementById('gabungKi2026').value;
-        const gabungKi2027 = document.getElementById('gabungKi2027').value;
-        const chartgabung = document.getElementById('gabung2024').getContext('2d');
-
+        //---
             const p = new Chart(chartgabung, {
             type: 'line',
             data: {
@@ -170,7 +170,7 @@
                     borderColor:
                     'rgba(54, 162, 235, 1)',
                     borderWidth: 2
-                }, ]
+                }]
             },
             options: {
                 plugins: {
@@ -197,14 +197,14 @@
                                 from: 1
                             },
                             y: {
-                                from: 10
+                                from: 1
                             }
                         }
                     },
                     hide: {
                         animations: {
                             x: {
-                                to: 1
+                                to: 10
                             },
                             y: {
                                 to: 10
@@ -214,6 +214,9 @@
                 }
             },
         });
+    </script>
+    <script>
+
     </script>
     </Script>
 </body>

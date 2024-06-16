@@ -64,7 +64,7 @@
                     </tr>
                     <tr>
                         <th>Tanggal pengajuan</th>
-                        <td>{{ $paten->tanggal_permohonan }}</td>
+                        <td>: {{ $paten->tanggal_permohonan }}</td>
                     </tr>
                     <tr>
                         <th>Status Paten</th>

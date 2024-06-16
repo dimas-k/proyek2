@@ -227,6 +227,27 @@
                             </div>
 
                             <div class="d-flex flex-row mt-3">
+                                <div class="col-xl-4 col-sm-6 col-12">
+                                    <div class="card shadow-sm p-1" style="width: 23rem;">
+                                        <a href="/admin/paten/diberi"
+                                            class="link-dark link-underline link-underline-opacity-0">
+                                            <div class="card-body">
+                                                <div class="d-flex">
+                                                    <div class="align-self-center">
+                                                        <i class="bi bi-question-square float-start me-2"
+                                                        style="font-size: 50px;"></i>
+                                                    </div>
+                                                    <div class="align-self-center">
+                                                        <h3 class=" d-flex justify-content-end">
+                                                            {{ $mvdov }}
+                                                        </h3>
+                                                        <span class="ms-4 d-flex justify-content-end">Menunggu Verifikasi Data Oleh Verifikator</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm p-1" style="width: 18rem;">
                                         <a href="/admin/paten/diberi"

@@ -21,9 +21,10 @@ class AdminPatenController extends Controller
         $stl = Paten::where('status', 'Substansif Tahap Lanjut')->count();
         $stak = Paten::where('status', 'Substansif Tahap Akhir')->count();
         $mts = Paten::where('status', 'Menunggu Tanggapan Substansif')->count();
+        $mvdov = Paten::where('status', 'MenungguVerifikasi Data Oleh Verifikator')->count();
         $beri = Paten::where('status', 'Diberi')->count();
         $tolak = Paten::where('status', 'Ditolak')->count();
-        return view('admin.adminpaten.index', compact('paten','pf','mt','mp','mps','staw','stl','stak','mts','beri','tolak'));
+        return view('admin.adminpaten.index', compact('paten','pf','mt','mp','mps','staw','stl','stak','mts','beri','tolak', 'mvdov'));
     }
     public function cariPaten(Request $request)
     {

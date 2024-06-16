@@ -140,7 +140,27 @@
                                 </div>
                             </div>
                             <div class="d-flex flex-row">
-                                <div class="col-xl-3 col-sm-6 col-12 mt-3">
+                                <div class="col-xl-4 col-sm-6 col-12 mt-3">
+                                    <div class="card shadow-sm p-2" style="width: 25rem;">
+                                        <a href="/admin/desain-industri/ditolak"
+                                            class="link-dark link-underline link-underline-opacity-0">
+                                            <div class="card-body">
+                                                <div class="d-flex">
+                                                    <div class="align-self-center">
+                                                        <i class="bi bi-x-square float-start me-5 pe-5"
+                                                            style="font-size: 50px;"></i>
+                                                    </div>
+                                                    <div class="align-self-center">
+                                                        <h3 class="ms-5 d-flex justify-content-end">{{ $mvdov }}
+                                                        </h3>
+                                                        <span class="ms-5 d-flex justify-content-end">Menunggu Verifikasi Data Oleh Verifikator</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-sm-6 col-12 mt-3 ms-3">
                                     <div class="card shadow-sm p-2" style="width: 18rem;">
                                         <a href="/admin/desain-industri/ditolak"
                                             class="link-dark link-underline link-underline-opacity-0">

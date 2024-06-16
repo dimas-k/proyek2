@@ -51,7 +51,7 @@
                             Rincian Hak Cipta
                         </div>
                         <div class="card-body">
-                            <div class="d-flex flex-row justify-content-center">
+                            <div class="d-flex flex-row">
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm p-2" style="width: 18rem;">
                                         <a href="/admin/hak-cipta/tercatat"
@@ -107,6 +107,26 @@
                                                             {{ $null }}</h3>
                                                         <span class=" d-flex justify-content-end ms-5">Keterarangan
                                                             Belum lengkap</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-sm-6 col-12">
+                                    <div class="card shadow-sm" style="width: 18rem;">
+                                        <a href="/admin/hak-cipta/keterangan-belum-lengkap"
+                                            class="link-dark link-underline link-underline-opacity-0">
+                                            <div class="card-body">
+                                                <div class="d-flex">
+                                                    <div class="align-self-center">
+                                                        <i class="bi bi-question-square float-start me-2"
+                                                            style="font-size: 50px;"></i>
+                                                    </div>
+                                                    <div class="align-self-center">
+                                                        <h3 class="d-flex justify-content-end ms-5">
+                                                            {{ $mvdov }}</h3>
+                                                        <span class=" d-flex justify-content-end ms-5">Menunggu Verifikasi Data Oleh Verifikator</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -187,7 +207,7 @@
                                     </td>
                                     <td><a href={{ Route('admin_hakcipta.show', $hk->id) }} class="btn btn-info"><i
                                                 class="bi bi-eye"></i></a>
-                                        
+
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal{{ $hk->id }}">
                                             <i class="bi bi-pencil"></i>
@@ -198,7 +218,8 @@
                                             <div class="modal-dialog modal-dialog-scrollable">
                                                 <div class="modal-content p-2">
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="exampleModalLabel"> Edit status
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel"> Edit
+                                                            status
                                                             Hak Cipta {{ $hk->nama_lengkap }}</h1>
                                                         <button type="button" class="btn-close"
                                                             data-bs-dismiss="modal" aria-label="Close"></button>
@@ -227,8 +248,8 @@
                                                                 @enderror
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label for=""
-                                                                    class="form-label">Sertifikat Hak Cipta</label>
+                                                                <label for="" class="form-label">Sertifikat
+                                                                    Hak Cipta</label>
                                                                 <input type="file"
                                                                     class="form-control @error('sertifikat_hakcipta') is-invalid @enderror"
                                                                     placeholder="Masukkan sertifikat"

@@ -77,16 +77,24 @@
                                                 <input type="text" id="" class="form-control" name="nama_lengkap" />
                                             </div>
                                             <div class="form-outline form-white mb-4">
+                                                <label class="form-label" for="">No Telepon</label>
+                                                <input type="number" id="" class="form-control" name="no_telepon"/>
+                                            </div>
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label" for="">Email</label>
+                                                <input type="email" id="" class="form-control" name="email"/>
+                                            </div>
+                                            <div class="form-outline form-white mb-4">
                                                 <label class="form-label" for="">Jabatan</label>
                                                 <input type="text" id="" class="form-control" name="jabatan" />
                                             </div>
                                             <div class="form-outline form-white mb-4">
-                                                <label class="form-label" for="">Alamat</label>
-                                                <input type="text" id="" class="form-control" name="alamat"/>
+                                                <label class="form-label" for="">Nip</label>
+                                                <input type="number" id="" class="form-control" name="nip" />
                                             </div>
                                             <div class="form-outline form-white mb-4">
-                                                <label class="form-label" for="">No Telepon</label>
-                                                <input type="text" id="" class="form-control" name="no_telepon"/>
+                                                <label class="form-label" for="">Alamat</label>
+                                                <input type="text" id="" class="form-control" name="alamat"/>
                                             </div>
                                             <div class="form-outline form-white mb-4">
                                                 <label class="form-label" for="">Username</label>
@@ -156,7 +164,7 @@
                                                 <div class="modal-content p-2">
                                                     <div class="modal-header">
                                                         <h1 class="modal-title fs-5" id="exampleModalLabel"> Edit
-                                                            admin {{ $a->nama_lengkap }}</h1>
+                                                            verifikator {{ $a->nama_lengkap }}</h1>
                                                         <button type="button" class="btn-close"
                                                             data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
@@ -172,6 +180,20 @@
                                                                     value="{{ $a->nama_lengkap }}" required>
                                                             </div>
                                                             <div class="form-outline form-white mb-3">
+                                                                <label class="form-label" for="">No
+                                                                    Telepon</label>
+                                                                <input type="number" id=""
+                                                                    class="form-control" name="no_telepon"
+                                                                    value="{{ $a->no_telepon }}">
+                                                            </div>
+                                                            <div class="form-outline form-white mb-3">
+                                                                <label class="form-label" for="">
+                                                                    Email</label>
+                                                                <input type="email" id=""
+                                                                    class="form-control" name="email"
+                                                                    value="{{ $a->email }}">
+                                                            </div>
+                                                            <div class="form-outline form-white mb-3">
                                                                 <label class="form-label"
                                                                     for="">Jabatan</label>
                                                                 <input type="text" id=""
@@ -180,18 +202,19 @@
                                                             </div>
                                                             <div class="form-outline form-white mb-3">
                                                                 <label class="form-label"
+                                                                    for="">nip</label>
+                                                                <input type="number" id=""
+                                                                    class="form-control" name="nip"
+                                                                    value="{{ $a->nip }}">
+                                                            </div>
+                                                            <div class="form-outline form-white mb-3">
+                                                                <label class="form-label"
                                                                     for="">Alamat</label>
                                                                 <input type="text" id=""
                                                                     class="form-control" name="alamat"
                                                                     value="{{ $a->alamat }}">
                                                             </div>
-                                                            <div class="form-outline form-white mb-3">
-                                                                <label class="form-label" for="">No
-                                                                    Telepon</label>
-                                                                <input type="text" id=""
-                                                                    class="form-control" name="no_telepon"
-                                                                    value="{{ $a->no_telepon }}">
-                                                            </div>
+                                                            
                                                             <div class="form-outline form-white mb-3">
                                                                 <label class="form-label"
                                                                     for="">Username</label>
@@ -236,7 +259,7 @@
                                                             data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Anda yakin akan menghapus akun admin
+                                                        Anda yakin akan menghapus akun verif
                                                         {{ $a->nama_lengkap }} ?
                                                     </div>
                                                     <div class="modal-footer">

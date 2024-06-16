@@ -24,7 +24,9 @@ class AdminVerifController extends Controller
             'nama_lengkap' => 'required',
             'jabatan'=>'required',
             'alamat'=>'required',
+            'email'=>'required|email:dns|unique:users',
             'no_telepon'=>'required',
+            'nip'=>'required',
             'username'=>'required',
             'password'=>'required'
         ]);
@@ -32,6 +34,8 @@ class AdminVerifController extends Controller
         $verif->nama_lengkap = $request->nama_lengkap;
         $verif->jabatan = $request->jabatan;
         $verif->alamat = $request->alamat;
+        $verif->email = $request->email;
+        $verif->nip = $request->nip;
         $verif->no_telepon = $request->no_telepon;
         $verif->username = $request->username;
         $verif->password = Hash::make($request->password);
@@ -42,22 +46,26 @@ class AdminVerifController extends Controller
     public function update(string $id, Request $request)
     {
         $validasi = $request->validate([
-            'nama_lengkap' => 'required',
-            'jabatan'=>'required',
-            'alamat'=>'required',
-            'no_telepon'=>'required',
-            'username'=>'required',
-            'password'=>'required'
+            'nama_lengkap'=> 'required',
+            'no_telepon'=> 'required',
+            'email'=> 'required|email',
+            'jabatan'=> 'required',
+            'nip'=> 'required',
+            'alamat'=> 'required',
+            'username'=> 'required',
         ]);
         $verif = User::find($id);
         $verif->nama_lengkap = $request->nama_lengkap;
-        $verif->jabatan = $request->jabatan;
-        $verif->alamat = $request->alamat;
         $verif->no_telepon = $request->no_telepon;
+        $verif->email = $request->email;
+        $verif->jabatan = $request->jabatan;
+        $verif->nip = $request->nip;
+        $verif->alamat = $request->alamat;
         $verif->username = $request->username;
         $verif->password = Hash::make($request->password);
         $verif->save($validasi);
-        return redirect('/admin/verif')->with('success', 'Data verifikator berhasil di update');
+
+        return redirect('/admin/verif')->with('success', 'Data verifikator berhasil di update!');
     }
     public function hapus(string $id)
     {

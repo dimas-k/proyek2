@@ -14,8 +14,9 @@ class AdminDesainIndustriController extends Controller
         $proses = DesainIndustri::where('status','Dalam Proses Usulan')->count();
         $priksa = DesainIndustri::where('status','Pemeriksaan')->count();
         $null = DesainIndustri::where('status','Keterangan Belum Lengkap')->count();
+        $mvdov = DesainIndustri::where('status','Menunggu Verifikasi Data Oleh Verifikator')->count();
         $tolak = DesainIndustri::where('status','Ditolak')->count();
-        return view('admin.admindi.index', compact('di', 'priksa', 'proses', 'null','tolak','beri')); 
+        return view('admin.admindi.index', compact('di', 'priksa', 'proses', 'null','tolak','beri','mvdov')); 
     }
     public function cariDi(Request $request)
     {

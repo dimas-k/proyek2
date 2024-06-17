@@ -242,13 +242,15 @@
                         tension:0.5
                     }
                 },
-                scales:{
-                    yAxes:[{
-                        ticks:{
-                            beginAtZero:true
+                scales: {
+                    y: {
+                        suggestedMin: 0,
+                        ticks: {
+                            precision: 0
                         }
-                    }]
+                    }
                 },
+                categoryPercentage: 0.5,
                 transitions: {
                     show: {
                         animations: {

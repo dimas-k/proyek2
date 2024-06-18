@@ -16,8 +16,6 @@
     {{-- nav --}}
     @include('layout.nav')
     {{-- end nav --}}
-    
-
     <div class="container">
         <div class="row">
             <div class="col-xl-5 col-sm-7 col-13">
@@ -83,7 +81,6 @@
                     </a>
                 </div>
             </div>
-
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card shadow-sm " style="width: 18rem;">
                     <a href="/desain-industri/dalam-proses-usulan" class="link-dark link-underline link-underline-opacity-0">
@@ -102,7 +99,6 @@
                     </a>
                 </div>
             </div>
-
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card shadow-sm p-2" style="width: 18rem;">
                     <a href="/desain-industri/pemeriksaan" class="link-dark link-underline link-underline-opacity-0">
@@ -121,7 +117,6 @@
                     </a>
                 </div>
             </div>
-
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card shadow-sm" style="width: 18rem;">
                     <a href="/desain-industri/keterangan-belum-lengkap" class="link-dark link-underline link-underline-opacity-0">
@@ -160,7 +155,6 @@
             </div>
         </div>
     </div>
-
     <div class="container p-4">
         <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-2"></i>Daftar Desain Industri</h3>
         <table class="table table-hover font-family-Kokoro">
@@ -230,11 +224,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
-    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <script>
-
         const gabungKi2024 = document.getElementById('gabungKi2024').value;
         const gabungKi2025 = document.getElementById('gabungKi2025').value;
         const gabungKi2026 = document.getElementById('gabungKi2026').value;
@@ -312,8 +303,6 @@
                 }
             },
         });
-
-
     </script>
 </body>
 

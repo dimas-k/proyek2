@@ -171,7 +171,11 @@
                         <input type="hidden" id="hc2025" value="{{ $hc2025 }}">
                         <input type="hidden" id="hc2026" value="{{ $hc2026 }}">
                         <input type="hidden" id="hc2027" value="{{ $hc2027 }}">
-                        <canvas id="hc-chart-tahun" style="height:30vh; width:68vw"></canvas>
+                        <input type="hidden" id="gabungKi2024" value="{{ $gabungKi2024 }}">
+                        <input type="hidden" id="gabungKi2025" value="{{ $gabungKi2025 }}">
+                        <input type="hidden" id="gabungKi2026" value="{{ $gabungKi2026 }}">
+                        <input type="hidden" id="gabungKi2027" value="{{ $gabungKi2027 }}">
+                        <canvas id="gabungHc" style="height:30vh; width:68vw"></canvas>
                     </div>
                 </div>
             </div>
@@ -189,74 +193,53 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
-    </script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
         <script>
-            // hak cipta
-            // const hcTolak = document.getElementById('hcTolak').value;
-            // const hcTerima = document.getElementById('hcTerima').value;
-            // const hcKet = document.getElementById('hcKet').value;
-            // const hc = document.getElementById('hc-chart').getContext('2d');
-
-            // const hcChart = new Chart(hc, {
-            //     type: 'bar',
-            //     data: {
-            //         labels: ['Keterangan belum lengkap', 'Ditolak', 'Tercatat'],
-            //         datasets: [
-            //             {
-            //             label: 'HAK CIPTA',
-            //             data: [hcKet, hcTolak, hcTerima],
-            //             backgroundColor: [
-            //                 'rgba(255, 99, 132, 0.2)',
-            //                 'rgba(54, 162, 235, 0.2)',
-            //                 'rgba(255, 206, 86, 0.2)',
-            //             ],
-            //             borderColor: [
-            //                 'rgba(255, 99, 132, 1)',
-            //                 'rgba(54, 162, 235, 1)',
-            //                 'rgba(255, 206, 86, 1)',
-            //             ],
-            //             borderWidth: 2
-            //         },
-            //     ]
-            //     },
-            //     options: {
-            //     scales: {
-            //         y: {
-            //             suggestedMin: 0,
-            //             ticks: {
-            //                 precision: 0
-            //             }
-            //         }
-            //     }
-            // }
-            // });
             // hak cipta per-tahun
-            const hc2024 = document.getElementById("hc2024").value;
-            const hc2025 = document.getElementById("hc2025").value;
-            const hc2026 = document.getElementById("hc2026").value;
-            const hc2027 = document.getElementById("hc2027").value;
-            const hcPerTahun = document.getElementById("hc-chart-tahun").getContext('2d');
-            const p = new Chart(hcPerTahun, {
+        const hc2024 = document.getElementById("hc2024").value;
+        const hc2025 = document.getElementById("hc2025").value;
+        const hc2026 = document.getElementById("hc2026").value;
+        const hc2027 = document.getElementById("hc2027").value;
+        const gabungKi2024 = document.getElementById('gabungKi2024').value;
+        const gabungKi2025 = document.getElementById('gabungKi2025').value;
+        const gabungKi2026 = document.getElementById('gabungKi2026').value;
+        const gabungKi2027 = document.getElementById('gabungKi2027').value;
+        const chartgabung = document.getElementById('gabungHc').getContext('2d');
+
+        const h = new Chart(chartgabung, {
             type: 'bar',
             data: {
                 labels: ['2024', '2025', '2026', '2027'],
                 datasets: [{
-                    label: '',
-                    data: [hc2024,hc2025,hc2026,hc2027],
-                    backgroundColor: [
+                    label: 'Jumlah KI',
+                    data: [gabungKi2024,gabungKi2025,gabungKi2026,gabungKi2027],
+                    backgroundColor:
+                    'rgba(54, 162, 235, 0.2)',
+                    borderColor: [
                         'rgba(54, 162, 235, 1)',
                     ],
                     borderWidth: 2
-                }, ]
+                },{
+                    type:'line',
+                    label: 'Hak Cipta',
+                    data: [hc2024,hc2025,hc2026,hc2027],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 5
+                }]
             },
             options: {
                 plugins: {
                     legend: {
                         display: false
+                    }
+                },
+                elements:{
+                    line:{
+                        tension:0.5
                     }
                 },
                 scales: {
@@ -267,13 +250,34 @@
                         }
                     }
                 },
-                categoryPercentage: 0.5
-            }
+                categoryPercentage: 0.5,
+                transitions: {
+                    show: {
+                        animations: {
+                            x: {
+                                from: 1
+                            },
+                            y: {
+                                from: 1
+                            }
+                        }
+                    },
+                    hide: {
+                        animations: {
+                            x: {
+                                to: 10
+                            },
+                            y: {
+                                to: 10
+                            }
+                        }
+                    }
+                }
+            },
         });
 
         </script>
-    </div>
-        </script>
+    </script>
 
 </body>
 

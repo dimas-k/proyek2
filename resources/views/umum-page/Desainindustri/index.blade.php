@@ -201,12 +201,15 @@
                         </ul>
                     </div>
                     <div class="card-body">
+                        <input type="hidden" id="gabungKi2024" value="{{ $gabungKi2024 }}">
+                        <input type="hidden" id="gabungKi2025" value="{{ $gabungKi2025 }}">
+                        <input type="hidden" id="gabungKi2026" value="{{ $gabungKi2026 }}">
+                        <input type="hidden" id="gabungKi2027" value="{{ $gabungKi2027 }}">
                         <input type="hidden" id="di2024" value="{{ $di2024 }}">
                         <input type="hidden" id="di2025" value="{{ $di2025 }}">
                         <input type="hidden" id="di2026" value="{{ $di2026 }}">
                         <input type="hidden" id="di2027" value="{{ $di2027 }}">
                         <canvas id="di-chart" style="height:30vh; width:68vw"></canvas>
-                        
                     </div>
                 </div>
             </div>
@@ -232,30 +235,48 @@
 
     <script>
 
+        const gabungKi2024 = document.getElementById('gabungKi2024').value;
+        const gabungKi2025 = document.getElementById('gabungKi2025').value;
+        const gabungKi2026 = document.getElementById('gabungKi2026').value;
+        const gabungKi2027 = document.getElementById('gabungKi2027').value;
+
         const di2024 = document.getElementById('di2024').value;
         const di2025 = document.getElementById('di2025').value;
         const di2026 = document.getElementById('di2026').value;
         const di2027 = document.getElementById('di2027').value;
-        const di = document.getElementById('di-chart').getContext('2d');
-        const diChart = new Chart(di, {
+        const diChart = document.getElementById('di-chart').getContext('2d');
+        const di = new Chart(diChart, {
             type: 'bar',
             data: {
-                labels: ['2024','2025','2026','2027'],
-                datasets: [
-                    {
-                    label: 'DESAIN INDUSTRI',
+                labels: ['2024', '2025', '2026', '2027'],
+                datasets: [{
+                    label: 'Jumlah Keseluruhan KI',
+                    data: [gabungKi2024,gabungKi2025,gabungKi2026,gabungKi2027],
+                    backgroundColor:
+                    'rgba(255, 159, 64, 0.2)',
+                    borderColor:
+                    'rgba(255, 206, 86, 1)',
+                    borderWidth: 2
+                },{
+                    type:'line',
+                    label: 'Desain Industri',
                     data: [di2024, di2025, di2026,di2027],
-                    backgroundColor: [
+                    borderColor: [
                         'rgba(255, 206, 86, 1)',
                     ],
-                    borderWidth: 2
-                },
-            ]
+                    borderWidth: 5
+                }
+                ]
             },
             options: {
                 plugins: {
                     legend: {
                         display: false
+                    }
+                },
+                elements:{
+                    line:{
+                        tension:0.5
                     }
                 },
                 scales: {
@@ -266,9 +287,30 @@
                         }
                     }
                 },
-                categoryPercentage: 0.5
-            }
-
+                categoryPercentage: 0.5,
+                transitions: {
+                    show: {
+                        animations: {
+                            x: {
+                                from: 1
+                            },
+                            y: {
+                                from: 1
+                            }
+                        }
+                    },
+                    hide: {
+                        animations: {
+                            x: {
+                                to: 10
+                            },
+                            y: {
+                                to: 10
+                            }
+                        }
+                    }
+                }
+            },
         });
 
 

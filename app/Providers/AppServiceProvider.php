@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\Models\User;
+use App\Observers\UmumObserver;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\ServiceProvider;
    
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrap();
+        User::observe(UmumObserver::class);
     }
 }

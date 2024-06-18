@@ -92,8 +92,8 @@
                                     </tr>
                                     <tr>
                                         <th>Pernyataan Kepemilikan</th>
-                                        <td>: <a href={{ asset('storage/' . $paten->pernyataan_kepemilikan) }} class=""
-                                                target="_blank">Lihat Pernyataan Kepemilikan</a></td>
+                                        <td>: <a href={{ asset('storage/' . $paten->pernyataan_kepemilikan) }}
+                                                class="" target="_blank">Lihat Pernyataan Kepemilikan</a></td>
                                     </tr>
                                     <tr>
                                         <th>Surat Kuasa</th>
@@ -112,12 +112,31 @@
                                     </tr>
                                     <tr>
                                         <th>Tanggal pengajuan</th>
-                                        <td>{{ \Carbon\Carbon::parse($paten->tanggal_permohonan)->format('d-m-Y') }}</td>
+                                        <td>: {{ \Carbon\Carbon::parse($paten->tanggal_permohonan)->format('d-m-Y') }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Status Paten</th>
+                                        <td>: {{ $paten->status }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Keterangan data paten</th>
+                                        <td>: @if ($paten->cek?->keterangan == null)
+                                                Data Paten Belum Diverifikasi
+                                            @else
+                                                {{ $paten->cek?->keterangan }}
+                                            @endif
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Sertifikat Paten</th>
-                                        <td>: <a href={{ asset('storage/' . $paten->sertifikat_paten) }} class=""
-                                                target="_blank">Lihat sertifikat</a></td>
+                                        <td>: @if ($paten->sertifikat_paten == '')
+                                                Paten Anda Belum Memiliki Sertifikat
+                                            @else
+                                                <a href={{ asset('storage/' . $paten->sertifikat_paten) }}
+                                                    class="" target="_blank">Lihat sertifikat</a>
+                                            @endif
+                                        </td>
                                     </tr>
                                 </table>
                             </div>

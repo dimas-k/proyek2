@@ -102,6 +102,14 @@
                                         <td>: {{ $di->status }}</td>
                                     </tr>
                                     <tr>
+                                        <th>status data desain industri</th>
+                                        <td>: @if ($di->cekDi?->keterangan == null)
+                                            Data Desain Industri Belum Diverifikasi
+                                        @else
+                                            {{ $di->cekDi?->keterangan }}
+                                        @endif</td>
+                                    </tr>
+                                    <tr>
                                         <th>Sertifikat Desain Industri</th>
                                         <td>: @if ($di->sertifikat_hakcipta != "")
                                                 <a href={{ asset('storage/' . $di->sertifikat_hakcipta) }}

@@ -98,7 +98,9 @@
                                             <th scope="col">Jenis ciptaan</th>
                                             <th scope="col">Judul ciptaan</th>
                                             <th scope="col">Tanggal pengajuan</th>
-                                            <th scope="col">Status paten</th>
+                                            <th scope="col">Status Hak Cipta</th>
+                                            <th scope="col">Status Data Paten</th>
+                                            <th scope="col">Keterangan</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
@@ -109,12 +111,34 @@
                                                 <td>{{ $p->nama_lengkap }}</td>
                                                 <td>{{ $p->jenis_ciptaan }}</td>
                                                 <td>{{ $p->judul_ciptaan }}</td>
-                                                <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y') }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y') }}
+                                                </td>
                                                 <td>{{ $p->status }}</td>
+                                                <td>
+                                                    @if ($p->cekhc?->cek_data == 'Benar')
+                                                        <i class="fa fa-check-circle" style="color: green"
+                                                            data-bs-toggle="tooltip"></i>
+                                                    @elseif($p->cekhc?->cek_data == 'Salah')
+                                                        <i class="fa fa-times-circle" style="color: red"
+                                                            data-bs-toggle="tooltip"></i>
+                                                    @else
+                                                        <i class="fa fa-minus-circle" style="color: yellow"
+                                                            data-bs-toggle="tooltip"></i>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($p->cekhc?->keterangan == null)
+                                                        Data HakCipta Belum Diverifikasi
+                                                    @else
+                                                        {{ $p->cekhc?->keterangan }}
+                                                    @endif
+                                                </td>
                                                 <td><a href={{ Route('umum.hc.lihat', $p->id) }}
-                                                        class="btn btn-info"><i class="fa fa-eye" data-bs-toggle="tooltip"></i></a>
+                                                        class="btn btn-info"><i class="fa fa-eye"
+                                                            data-bs-toggle="tooltip"></i></a>
                                                     <a href={{ Route('umum.hc.edit', $p->id) }}
-                                                        class="btn btn-warning"><i class="fa fa-pencil" data-bs-toggle="tooltip"></i></a>
+                                                        class="btn btn-warning"><i class="fa fa-pencil"
+                                                            data-bs-toggle="tooltip"></i></a>
                                                     {{-- <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                                         data-bs-target="#staticBackdrop">
                                                         <i class="fa fa-trash" data-bs-toggle="tooltip"></i>

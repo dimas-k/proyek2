@@ -114,8 +114,8 @@
                                     <tr>
                                         <th>Keterangan status data hak cipta</th>
                                         <td>
-                                            : @if ($di->cekDi?->keterangan == '')
-                                                Data Hak Cipta Belum Dicek
+                                            : @if ($di->cekDi?->keterangan == null)
+                                                Data Desain Industri Belum Diverifikasi
                                             @else
                                                 {{ $di->cekDi?->keterangan }}
                                             @endif

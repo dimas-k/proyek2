@@ -192,6 +192,8 @@
                                             <th scope="col">Judul paten</th>
                                             <th scope="col">Tanggal pengajuan</th>
                                             <th scope="col">Status paten</th>
+                                            <th scope="col">Status Data paten</th>
+                                            <th scope="col">keterangan</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
@@ -204,6 +206,21 @@
                                                 <td>{{ $p->judul_paten }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y') }}</td>
                                                 <td>{{ $p->status }}</td>
+                                                <td> @if ($p->cek?->cek_data == 'Benar')
+                                                    <i class="fa fa-check-circle" style="color: green"
+                                                        data-bs-toggle="tooltip"></i>
+                                                @elseif($p->cek?->cek_data == 'Salah')
+                                                    <i class="fa fa-times-circle" style="color: red"
+                                                        data-bs-toggle="tooltip"></i>
+                                                @else
+                                                    <i class="fa fa-minus-circle" style="color: yellow"
+                                                        data-bs-toggle="tooltip"></i>
+                                                @endif</td>
+                                                <td>@if ($p->cek?->keterangan == null)
+                                                    Data Paten Belum Diverifikasi
+                                                @else
+                                                    {{ $p->cek?->keterangan }}
+                                                @endif</td>
                                                 <td><a href={{ Route('umum.paten.lihat', $p->id) }}
                                                         class="btn btn-info"><i class="bi bi-eye"></i></a>
                                                     <a href={{ Route('umum.paten.edit', $p->id) }}

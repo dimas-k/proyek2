@@ -153,7 +153,8 @@
                                                     <div class="align-self-center">
                                                         <h3 class="ms-5 d-flex justify-content-end">{{ $mvdov }}
                                                         </h3>
-                                                        <span class="ms-5 d-flex justify-content-end">Menunggu Verifikasi Data Oleh Verifikator</span>
+                                                        <span class="ms-5 d-flex justify-content-end">Menunggu
+                                                            Verifikasi Data Oleh Verifikator</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -275,8 +276,7 @@
                                                                 action={{ Route('admin_desainindustri.update', $di->id) }}>
                                                                 @csrf
                                                                 <div class="mb-3">
-                                                                    <label for=""
-                                                                        class="form-label">Status
+                                                                    <label for="" class="form-label">Status
                                                                         Desain Industri</label>
                                                                     <select
                                                                         class="form-select @error('status') is-invalid @enderror"
@@ -292,6 +292,10 @@
                                                                         <option value="Ditolak">Ditolak</option>
                                                                         <option value="Keterangam Belum Lengkap">
                                                                             Keterangam Belum Lengkap</option>
+                                                                        <option
+                                                                            value="Menunggu Verifikasi Data Oleh Verifikator">
+                                                                            Menunggu Verifikasi Data Oleh Verifikator
+                                                                        </option>
                                                                     </select>
                                                                     @error('status')
                                                                         <div class="invalid-feedback">
@@ -300,8 +304,7 @@
                                                                     @enderror
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for=""
-                                                                        class="form-label">Serifikat
+                                                                    <label for="" class="form-label">Serifikat
                                                                         Desain Industri</label>
                                                                     <input type="file"
                                                                         class="form-control @error('sertifikat_desain') is-invalid @enderror"

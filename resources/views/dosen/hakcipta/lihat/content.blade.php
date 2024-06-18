@@ -99,6 +99,14 @@
                                         <td>: {{ $hc->status }}</td>
                                     </tr>
                                     <tr>
+                                        <th>Status Data Hak CIpta</th>
+                                        <td>: @if ($hc->cekhc?->keterangan == null)
+                                            Data Hak Cipta Belum Diverifikasi
+                                        @else
+                                            {{ $hc->cekhc?->keterangan }}
+                                        @endif</td>
+                                    </tr>
+                                    <tr>
                                         <th>Sertifikat Paten</th>
                                         <td>: @if ($hc->sertifikat_hakcipta != "")
                                                 <a href={{ asset('storage/' . $hc->sertifikat_hakcipta) }}

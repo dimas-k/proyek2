@@ -126,7 +126,9 @@
                                             <th scope="col">Jenis Disain</th>
                                             <th scope="col">Judul Disain</th>
                                             <th scope="col">Tanggal pengajuan</th>
-                                            <th scope="col">Status paten</th>
+                                            <th scope="col">Status Desain</th>
+                                            <th scope="col">Status Data Desain</th>
+                                            <th scope="col">keterangan</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
@@ -139,6 +141,25 @@
                                                 <td>{{ $d->judul_di }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($d->tanggal_permohonan)->format('d-m-Y') }}</td>
                                                 <td>{{ $d->status }}</td>
+                                                <td>
+                                                    @if ($d->cekDi?->cek_data == 'Benar')
+                                                        <i class="fa fa-check-circle" style="color: green"
+                                                            data-bs-toggle="tooltip"></i>
+                                                    @elseif($d->cekDi?->cek_data == 'Salah')
+                                                        <i class="fa fa-times-circle" style="color: red"
+                                                            data-bs-toggle="tooltip"></i>
+                                                    @else
+                                                        <i class="fa fa-minus-circle" style="color: yellow"
+                                                            data-bs-toggle="tooltip"></i>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($d->cekDi?->keterangan == null)
+                                                        Data Desain Industri Belum Diverifikasi
+                                                    @else
+                                                        {{ $d->cekDi?->keterangan }}
+                                                    @endif
+                                                </td>
                                                 <td><a href={{ Route('umum.di.lihat', $d->id) }}
                                                         class="btn btn-info"><i class="fa fa-eye" data-bs-toggle="tooltip"></i></a>
                                                     <a href={{ Route('umum.di.edit', $d->id) }}

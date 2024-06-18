@@ -184,6 +184,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Menunggu Verifikasi Data Oleh Verifikator</h6>
+                                            <h2 class="mb-0 number-font">{{ $mvdov }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- ROW-2 -->
@@ -228,6 +240,8 @@
                                             <th scope="col">Judul paten</th>
                                             <th scope="col">Tanggal pengajuan</th>
                                             <th scope="col">Status paten</th>
+                                            <th scope="col">Status Data Paten</th>
+                                            <th scope="col">Keterangan</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
@@ -240,6 +254,25 @@
                                                 <td>{{ $p->judul_paten }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y ') }}</td>
                                                 <td>{{ $p->status }}</td>
+                                                <td>
+                                                    @if ($p->cek?->cek_data == 'Benar')
+                                                        <i class="fa fa-check-circle" style="color: green"
+                                                            data-bs-toggle="tooltip"></i>
+                                                    @elseif($p->cek?->cek_data == 'Salah')
+                                                        <i class="fa fa-times-circle" style="color: red"
+                                                            data-bs-toggle="tooltip"></i>
+                                                    @else
+                                                        <i class="fa fa-minus-circle" style="color: yellow"
+                                                            data-bs-toggle="tooltip"></i>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($p->cek?->keterangan == null)
+                                                        Data Paten Belum Diverifikasi
+                                                    @else
+                                                        {{ $p->cek?->keterangan }}
+                                                    @endif
+                                                </td>
                                                 <td><a href={{ Route('dsn.paten.lihat', $p->id) }}
                                                         class="btn btn-info"><i class="fa fa-eye" data-bs-toggle="tooltip" ></i></a>
                                                     <a href={{ Route('dsn.edit.paten', $p->id) }}

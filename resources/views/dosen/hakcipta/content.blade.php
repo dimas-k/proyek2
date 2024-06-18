@@ -72,6 +72,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Menunggu Verifikasi Data Oleh Verifikator</h6>
+                                        <h2 class="mb-0 number-font">{{ $mvdov }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- ROW-2 -->
@@ -116,7 +128,9 @@
                                             <th scope="col">Jenis ciptaan</th>
                                             <th scope="col">Judul ciptaan</th>
                                             <th scope="col">Tanggal pengajuan</th>
-                                            <th scope="col">Status paten</th>
+                                            <th scope="col">Status Hak Cipta</th>
+                                            <th scope="col">Status Data Hak Cipta</th>
+                                            <th scope="col">Keterangan</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
@@ -129,6 +143,26 @@
                                                 <td>{{ $p->judul_ciptaan }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y') }}</td>
                                                 <td>{{ $p->status }}</td>
+                                                <td>
+                                                    @if ($p->cekhc?->cek_data == 'Benar')
+                                                        <i class="fa fa-check-circle" style="color: green"
+                                                            data-bs-toggle="tooltip"></i>
+                                                    @elseif($p->cekhc?->cek_data == 'Salah')
+                                                        <i class="fa fa-times-circle" style="color: red"
+                                                            data-bs-toggle="tooltip"></i>
+                                                    @else
+                                                        <i class="fa fa-minus-circle" style="color: yellow"
+                                                            data-bs-toggle="tooltip"></i>{{ $p->cekhc?->cek_data }}
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($p->cekhc?->keterangan == '')
+                                                        Data Hak Cipta Belum Diverifikasi
+                                                    @else
+                                                        {{ $p->cekhc?->keterangan }}
+                                                    @endif
+                                                </td>
+                                        
                                                 <td><a href={{ Route('dsn.lihat.hc', $p->id) }}
                                                         class="btn btn-info"><i class="fa fa-eye" data-bs-toggle="tooltip" ></i></a>
                                                     <a href={{ Route('dsn.edit.hc', $p->id) }}

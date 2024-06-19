@@ -79,7 +79,7 @@
                   </div>
                   <div class="form-outline form-white mb-4">
                     <label class="form-label" for="pass">Email</label>
-                    <input type="text" id="pass" name="email" class="form-control form-control @error('email') is-invalid @enderror" required required value="{{ old('email') }}">
+                    <input type="email" id="pass" name="email" class="form-control form-control @error('email') is-invalid @enderror" required required value="{{ old('email') }}">
                     @error('email')
                     <div class="invalid-feedback">
                       {{ $message }}

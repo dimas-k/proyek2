@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Middleware\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Auth\User;
+// use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Models\ActivityLog;
 
 class LoginUserController extends Controller
 {
@@ -63,19 +65,36 @@ class LoginUserController extends Controller
             'username'=>'required|min:5|unique:users',
             'password'=> 'required|min:5|max:15'
         ]);
-        $user = new User;
-        $user->nama_lengkap = $request->nama_lengkap;
-        $user->no_telepon = $request->no_telepon;
-        $user->email = $request->email;
-        $user->alamat = $request->alamat;
-        $user->ktp = $request->file('ktp')->store('dokumen_user');
-        $user->kerjaan = $request->kerjaan;
-        $user->jabatan = $request->jabatan;
-        $user->nip = $request->nip;
-        $user->username = $request->username;
-        $user->password = Hash::make($request->password);
-        $user->role = $request->role;
+
+        $user = User::create([
+            'nama_lengkap' => $request->nama_lengkap,
+            'no_telepon' =>$request->no_telepon,
+            'email'=>$request->email,
+            'alamat'=>$request->alamat,
+            'ktp'=>$request->file('ktp')->store('dokumen_user'),
+            'kerjaan'=>$request->kerjaan,
+            'jabatan'=>$request->jabatan,
+            'nip'=>$request->nip,
+            'username'=>$request->username,
+            'password'=> Hash::make($request->password),
+            'role'=> $request->role
+        ]);
+        // $user->nama_lengkap = $request->nama_lengkap;
+        // $user->no_telepon = $request->no_telepon;
+        // $user->email = $request->email;
+        // $user->alamat = $request->alamat;
+        // $user->ktp = $request->file('ktp')->store('dokumen_user');
+        // $user->kerjaan = $request->kerjaan;
+        // $user->jabatan = $request->jabatan;
+        // $user->nip = $request->nip;
+        // $user->username = $request->username;
+        // $user->password = Hash::make($request->password);
+        // $user->role = $request->role;
         $user->save($validasidata);
+
+        // ActivityLog::create([
+        //     'descriptions' => 'create user ' . $user->nama_lengkap . ' Role ' . $user->role
+        // ]);
 
         
         if ($request->role == 'Dosen'){

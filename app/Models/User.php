@@ -4,10 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\ActivityLog;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -31,6 +32,7 @@ class User extends Authenticatable
         'password',
         'role',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -59,4 +61,13 @@ class User extends Authenticatable
     public function apakahUmum(){
         return $this->role === 'Umum';
     }
+
+    // protected static function booted()
+    // {
+    //     static::created(function ($user){
+    //         ActivityLog::create([
+    //             'descriptions' => 'create user ' . $user->nama_lengkap . ' Role ' . $user->role
+    //         ]);
+    //     });
+    // }
 }

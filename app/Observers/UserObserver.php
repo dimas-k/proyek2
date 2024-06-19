@@ -13,7 +13,7 @@ class UserObserver
     public function created(User $user): void
     {
         ActivityLog::create([
-            'descriptions' => 'create user' . $user->nama_lengkap
+            'descriptions' => 'create user ' . $user->nama_lengkap . ' Role ' . $user->role
         ]);
     }
 

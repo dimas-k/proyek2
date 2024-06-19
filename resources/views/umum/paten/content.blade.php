@@ -154,7 +154,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Menunggu Verifikasi Data Oleh Verifikator
-                                            <h2 class="mb-0 number-font">{{ $mts }}</h2>
+                                            <h2 class="mb-0 number-font">{{ $mvdov }}</h2>
                                     </div>
                                 </div>
                             </div>

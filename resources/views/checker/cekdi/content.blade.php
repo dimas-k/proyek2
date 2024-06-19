@@ -32,7 +32,7 @@
                                 </div>
                             @endif
                             <div class="d-flex justify-content-end mb-5">
-                                <form action="/checker/cek/desain-industri/cari" method="GET">
+                                <form action="/verifikator/cek/desain-industri/cari" method="GET">
                                     <div class="row g-2 align-items-center">
                                         <div class="col-auto">
                                             <label for="" class="col-form-label">Cari Desain Industri</label>
@@ -85,8 +85,8 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if ($p->cekDi?->keterangan == '')
-                                                        Data Desain Industri Belum Dicek
+                                                    @if ($p->cekDi?->keterangan == null)
+                                                        Data Desain Industri Belum Diverifikasi
                                                     @else
                                                         {{ $p->cekDi?->keterangan }}
                                                     @endif

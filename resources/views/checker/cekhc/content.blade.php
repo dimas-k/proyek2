@@ -32,7 +32,7 @@
                                 </div>
                             @endif
                             <div class="d-flex justify-content-end mb-5">
-                                <form action="/checker/cek/hak-cipta/cari" method="GET">
+                                <form action="/verifikator/cek/hak-cipta/cari" method="GET">
                                     <div class="row g-2 align-items-center">
                                         <div class="col-auto">
                                             <label for="" class="col-form-label">Cari Hak Cipta</label>
@@ -85,8 +85,8 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if ($p->cekHc?->keterangan == '')
-                                                        Data Hak Cipta Belum Dicek
+                                                    @if ($p->cekHc?->keterangan == null)
+                                                        Data Hak Cipta Belum Diverifikasi
                                                     @else
                                                         {{ $p->cekHc?->keterangan }}
                                                     @endif

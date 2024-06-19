@@ -57,6 +57,7 @@ return array(
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src/PhpOption'),
     'PhpMyAdmin\\SqlParser\\' => array($vendorDir . '/phpmyadmin/sql-parser/src'),
+    'ParseCsv\\' => array($vendorDir . '/parsecsv/php-parsecsv/src'),
     'PHPStan\\' => array($vendorDir . '/phpstan/phpstan-deprecation-rules/src'),
     'NunoMaduro\\Collision\\' => array($vendorDir . '/nunomaduro/collision/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
@@ -99,4 +100,5 @@ return array(
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
     'Asantibanez\\LivewireCharts\\' => array($vendorDir . '/asantibanez/livewire-charts/src'),
     'App\\' => array($baseDir . '/app', $vendorDir . '/laravel/pint/app'),
+    'Andes2912\\IndoBank\\' => array($vendorDir . '/andes2912/indobank/src'),
 );

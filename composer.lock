@@ -4,8 +4,81 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a1db0f08e3bd32ba43a48389950ec63",
+    "content-hash": "5ffd8bd9594be51326f19680400868c8",
     "packages": [
+        {
+            "name": "andes2912/indobank",
+            "version": "0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andes2912/indobank.git",
+                "reference": "90e415d7e299b9b371e802c9a59f098651bfb6a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andes2912/indobank/zipball/90e415d7e299b9b371e802c9a59f098651bfb6a9",
+                "reference": "90e415d7e299b9b371e802c9a59f098651bfb6a9",
+                "shasum": ""
+            },
+            "require": {
+                "parsecsv/php-parsecsv": "^1.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.*"
+            },
+            "type": "liblary",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Andes2912\\IndoBank\\IndoBankServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/RawDataGetter.php"
+                ],
+                "psr-4": {
+                    "Andes2912\\IndoBank\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andri Desmana",
+                    "email": "andridesmana29@gmail.com"
+                }
+            ],
+            "description": "List Bank of Indonesian",
+            "homepage": "https://andridesmana.pw/",
+            "keywords": [
+                "Bank",
+                "csv",
+                "indonesia",
+                "laravel",
+                "nama bank",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/andes2912/indobank/issues",
+                "source": "https://github.com/andes2912/indobank/tree/0.9"
+            },
+            "funding": [
+                {
+                    "url": "https://saweria.co/andes2912",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/andes2912",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-01-31T08:43:58+00:00"
+        },
         {
             "name": "asantibanez/livewire-charts",
             "version": "v3.0.1",
@@ -2598,6 +2671,70 @@
                 }
             ],
             "time": "2023-02-08T01:06:31+00:00"
+        },
+        {
+            "name": "parsecsv/php-parsecsv",
+            "version": "1.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/parsecsv/parsecsv-for-php.git",
+                "reference": "2d6236cae09133e0533d34ed45ba1e1ecafffebb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/parsecsv/parsecsv-for-php/zipball/2d6236cae09133e0533d34ed45ba1e1ecafffebb",
+                "reference": "2d6236cae09133e0533d34ed45ba1e1ecafffebb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "suggest": {
+                "illuminate/support": "Fluent array interface for map functions"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ParseCsv\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Myhrberg",
+                    "email": "contact@jimeh.me"
+                },
+                {
+                    "name": "William Knauss",
+                    "email": "will.knauss@gmail.com"
+                },
+                {
+                    "name": "Susann Sgorzaly",
+                    "homepage": "https://github.com/susgo"
+                },
+                {
+                    "name": "Christian Bläul",
+                    "homepage": "https://github.com/Fonata"
+                }
+            ],
+            "description": "CSV data parser for PHP",
+            "support": {
+                "issues": "https://github.com/parsecsv/parsecsv-for-php/issues",
+                "source": "https://github.com/parsecsv/parsecsv-for-php"
+            },
+            "time": "2021-11-07T14:15:46+00:00"
         },
         {
             "name": "phpoption/phpoption",

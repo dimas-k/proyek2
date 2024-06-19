@@ -16,7 +16,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/polindra21.png') }}" />
 
     <!-- TITLE -->
-    <title>SIKI POLINDRA | Checker | Dashbord</title>
+    <title>SIKI POLINDRA | Verifikator | Dashbord</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('assets-user/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />

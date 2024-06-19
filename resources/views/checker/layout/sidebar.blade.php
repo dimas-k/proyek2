@@ -2,7 +2,7 @@
     <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
     <div class="app-sidebar">
         <div class="side-header">
-            <a class="header-brand1" href="/checker/dashboard">
+            <a class="header-brand1" href="/verifikator/dashboard">
                 <img src={{ asset('assets/polindra21.png') }} class="header-brand-img light-logo" alt="logo">
                 <img src={{ asset('assets-user/images/brand/logo-no-bg-1.png') }} class="header-brand-img light-logo1"
                     alt="logo">
@@ -19,20 +19,20 @@
                     <h3>Menu Utama</h3>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="/checker/dashboard"><i
+                    <a class="side-menu__item" data-bs-toggle="slide" href="/verifikator/dashboard"><i
                             class="side-menu__icon fe fe-home"></i><span
                             class="side-menu__label">Dashboard</span></a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="/checker/cek/paten"><i class="side-menu__icon fa fa-list"></i><span
+                    <a class="side-menu__item" data-bs-toggle="slide" href="/verifikator/cek/paten"><i class="side-menu__icon fa fa-list"></i><span
                             class="side-menu__label">Cek Paten</span></a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="/checker/cek/hak-cipta"><i class="side-menu__icon fa fa-list"></i><span
+                    <a class="side-menu__item" data-bs-toggle="slide" href="/verifikator/cek/hak-cipta"><i class="side-menu__icon fa fa-list"></i><span
                             class="side-menu__label">Cek Hak Cipta</span></a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="/checker/cek/desain-industri"><i class="side-menu__icon fa fa-list"></i><span
+                    <a class="side-menu__item" data-bs-toggle="slide" href="/verifikator/cek/desain-industri"><i class="side-menu__icon fa fa-list"></i><span
                             class="side-menu__label">Cek Desain Industri</span></a>
                 </li>
                 

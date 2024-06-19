@@ -8,7 +8,7 @@
     <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
     <link rel="stylesheet" href={{ asset('assets-login-user/login.css') }}>
-    <title>SIKI POLINDRA || Login Checker</title>
+    <title>SIKI POLINDRA || Login Verifikator</title>
 </head>
 <body>
     <div class="container mt-4">
@@ -37,7 +37,7 @@
               <div class="card-body p-5">
                 <form class="mb-md-5 mt-md-4 pb-5" method="post" action={{ route('autentikasi.checker') }}>
                   @csrf
-                  <h2 class="fw-bold mb-2 text-uppercase text-center">Login Checker<br>SIKI POLINDRA</h2>
+                  <h2 class="fw-bold mb-2 text-uppercase text-center">Login Verifikator<br>SIKI POLINDRA</h2>
                   <p class="text-black-50 mb-5">Masukkan Username dan password Anda!</p>
     
                   <div class="form-outline form-white mb-4">

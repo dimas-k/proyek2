@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('activity_logs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('descriptions');
+            $table->text('descriptions');
             $table->timestamps();
         });
     }

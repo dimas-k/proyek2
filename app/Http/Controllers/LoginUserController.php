@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\ActivityLog;
 
 class LoginUserController extends Controller
 {

@@ -54,6 +54,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
+                        <div class="card overflow-hidden">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mt-2">
+                                        <h6 class="">Menunggu Verifikasi Data Oleh Verifikator</h6>
+                                        <h2 class="mb-0 number-font">{{ $mvdov }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- ROW-2 -->

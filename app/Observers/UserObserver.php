@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Models\ActivityLog;
 use App\Models\User;
 
 class UserObserver
@@ -11,7 +12,9 @@ class UserObserver
      */
     public function created(User $user): void
     {
-        dd($user);
+        ActivityLog::create([
+            'descriptions' => 'create user'.$user->nama_lengkap
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class UserObserver
 
     /**
      * Handle the User "deleted" event.
-     */
+     */ 
     public function deleted(User $user): void
     {
         //

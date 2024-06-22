@@ -136,7 +136,7 @@
                                         <i class="dropdown-icon fe fe-mail"></i> Inbox
                                         <span class="badge bg-danger rounded-pill float-end">5</span>
                                     </a> --}}
-                                    <a class="dropdown-item" href="/checker/logout">
+                                    <a class="dropdown-item" href="/verifikator/logout">
                                         <i class="dropdown-icon fe fe-alert-circle"></i> Log out
                                     </a>
                                 </div>

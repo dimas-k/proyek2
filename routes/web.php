@@ -113,7 +113,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/listadmin/lihat/{id}', [AdminController::class, 'show'])->name('admin.show');
     Route::post('/simpan', [AdminController::class, 'store']);
 
-    Route::get('/admin/hak-cipta', [AdminHaKCiptaController::class, 'index']);
+    Route::get("/admin/hak-cipta", [AdminHaKCiptaController::class, 'index']);
     Route::get('/admin/hak-cipta/delete/{id}', [AdminHaKCiptaController::class, 'destroy'])->name('admin_hakcipta.delete');
     Route::get('/admin/hak-cipta/edit/{id}', [AdminHaKCiptaController::class, 'edit'])->name('admin_hakcipta.edit');
     Route::post('/admin/hak-cipta/update/{id}', [AdminHaKCiptaController::class, 'update'])->name('admin_hakcipta.update');
@@ -239,7 +239,7 @@ Route::get('/login/verifikator', [CheckerController::class, 'loginChecker']);
 Route::post('/login/verifikator/autentikasi', [CheckerController::class, 'autentikasi'])->name('autentikasi.checker');
 
 Route::middleware(['auth', 'role:Checker'])->group(function () {
-    Route::get('/checker/dashboard', [CheckerController::class, 'dashboard']);
+    Route::get('/verifikator/dashboard', [CheckerController::class, 'dashboard']);
 
     Route::get('/verifikator/cek/paten',[CheckerController::class, 'lamanPaten']);
     Route::get('/verifikator/cek/paten/lihat/{id}',[CheckerController::class, 'cekPaten'])->name('patencek.lihat');

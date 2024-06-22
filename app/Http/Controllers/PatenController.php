@@ -66,7 +66,7 @@ class PatenController extends Controller
         $di2027 = DesainIndustri::whereYear('tanggal_permohonan','2027')->count();
         $gabungKi2027 = $paten2027 + $di2027 + $hc2027 ;
         
-        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','paten2024','paten2025','paten2026','paten2027','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027'));
+        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','paten2024','paten2025','paten2026','paten2027','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027','paten2024'));
     }
 
     public function cari(Request $request){

@@ -223,7 +223,8 @@
                                 <div class="align-self-center">
                                     <h3 class=" d-flex justify-content-end">{{ $catat }}
                                     </h3>
-                                    <span class=" d-flex justify-content-end">Menunggu Verifikasi Data Oleh Verifikator</span>
+                                    <span class=" d-flex justify-content-end">Menunggu Verifikasi Data Oleh
+                                        Verifikator</span>
                                 </div>
                             </div>
                         </div>
@@ -338,7 +339,6 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-
         const paten2024 = document.getElementById('paten2024').value;
         const paten2025 = document.getElementById('paten2025').value;
         const paten2026 = document.getElementById('paten2026').value;
@@ -357,23 +357,20 @@
                 labels: ['2024', '2025', '2026', '2027'],
                 datasets: [{
                     label: 'Jumlah Keseluruhan KI',
-                    data: [gabungKi2024,gabungKi2025,gabungKi2026,gabungKi2027],
-                    backgroundColor:
-                    'rgba(255, 99, 132, 0.2)',
-                    borderColor:
-                    'rgb(255, 99, 132)',
+                    data: [gabungKi2024, gabungKi2025, gabungKi2026, gabungKi2027],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgb(255, 99, 132)',
                     borderWidth: 2
-                },{
-                        type:'line',
-                        label: 'Paten',
-                        data: [paten2024,paten2025,paten2026,paten2027],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
+                }, {
+                    type: 'line',
+                    label: 'Paten',
+                    data: [paten2024, paten2025, paten2026, paten2027],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
 
-                        ],
-                        borderWidth: 5
-                    }
-                ]
+                    ],
+                    borderWidth: 5
+                }]
             },
             options: {
                 plugins: {
@@ -381,9 +378,9 @@
                         display: false
                     }
                 },
-                elements:{
-                    line:{
-                        tension:0.5
+                elements: {
+                    line: {
+                        tension: 0.5
                     }
                 },
                 scales: {

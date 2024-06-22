@@ -13,7 +13,7 @@ class AdminHaKCiptaController extends Controller
         $tolak = HakCipta::where('status', 'Ditolak')->count();
         $null = HakCipta::where('status', 'Keterangan Belum Lengkap')->count();
         $mvdov = HakCipta::where('status', 'Menunggu Verifikasi Data Oleh Verifikator ')->count();
-        $hak_cipta = HakCipta::with('cekhc')->latest()->paginate();
+        $hak_cipta = HakCipta::with('cekhc')->latest()->paginate(5);
         return view('admin.adminhk.index', compact('hak_cipta','tercatat','null','tolak','mvdov'));
     }
 

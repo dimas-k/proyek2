@@ -37,7 +37,7 @@ class CheckerController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/checker/dashboard');
+            return redirect()->intended('/verifikator/dashboard');
         }
 
         return back()->with('loginError', 'Login Gagal!');
@@ -79,7 +79,7 @@ class CheckerController extends Controller
         $cek->keterangan = $request->keterangan;
         $cek->save($validasi);
 
-        return redirect('/checker/cek/paten')->with('success', 'Data Paten berhasil dinilai!');
+        return redirect('/verifikator/cek/paten')->with('success', 'Data Paten berhasil dinilai!');
     }
     public function lamanupdatePaten(string $id)
     {
@@ -99,7 +99,7 @@ class CheckerController extends Controller
         $cek->keterangan = $request->keterangan;
         $cek->save($validasi);
 
-        return redirect('/checker/cek/paten')->with('success', 'Peniliaian Paten Berhasil diupdate!');
+        return redirect('/verifikator/cek/paten')->with('success', 'Peniliaian Paten Berhasil diupdate!');
     }
 
     public function lamanHc()
@@ -135,7 +135,7 @@ class CheckerController extends Controller
         $cek->keterangan = $request->keterangan;
         $cek->save($validasi);
 
-        return redirect('/checker/cek/hak-cipta')->with('success', 'Data Hak Cipta berhasil dinilai!');
+        return redirect('/verifikator/cek/hak-cipta')->with('success', 'Data Hak Cipta berhasil dinilai!');
     }
     public function lamanUpdateCekhc(string $id)
     {
@@ -155,7 +155,7 @@ class CheckerController extends Controller
         $cek->keterangan = $request->keterangan;
         $cek->save($validasi);
 
-        return redirect('/checker/cek/hak-cipta')->with('success', 'Penilaian Hak Cipta Berhasil diupdate!');
+        return redirect('/verifikator/cek/hak-cipta')->with('success', 'Penilaian Hak Cipta Berhasil diupdate!');
     }
     public function lamanDi()
     {
@@ -191,7 +191,7 @@ class CheckerController extends Controller
         $cek->keterangan = $request->keterangan;
         $cek->save($validasi);
 
-        return redirect('/checker/cek/desain-industri')->with('success', 'Data Desain industri berhasil dinilai!');
+        return redirect('/verifikator/cek/desain-industri')->with('success', 'Data Desain industri berhasil dinilai!');
     }
     public function updateCekDi(Request $request, string $id)
     {
@@ -204,7 +204,7 @@ class CheckerController extends Controller
         $updatedi->cek_data = $request->cek_data;
         $updatedi->keterangan = $request->keterangan;
         $updatedi->save($validasi);
-        return redirect('/checker/cek/desain-industri')->with('success', 'Penilaian Desain Industri Berhasil diupdate!');
+        return redirect('/verifikator/cek/desain-industri')->with('success', 'Penilaian Desain Industri Berhasil diupdate!');
     }
     public function lamanUpdateCekDi(string $id)
     {
@@ -215,6 +215,6 @@ class CheckerController extends Controller
     {
         Auth::logout();
         $request->session()->invalidate();
-        return redirect('/login/checker');
+        return redirect('/login/verifikator');
     }
 }

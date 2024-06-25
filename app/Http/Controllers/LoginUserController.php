@@ -62,6 +62,7 @@ class LoginUserController extends Controller
             'no_telepon'=>'required|string',
             'email' => 'required|email:dns|unique:users',
             'ktp'=>'required|mimes:pdf|max:2028',
+            'nip'=>'unique:users',
             'username'=>'required|min:5|unique:users',
             'password'=> 'required|min:5|max:15'
         ]);

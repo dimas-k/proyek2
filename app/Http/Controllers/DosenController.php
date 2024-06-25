@@ -8,6 +8,7 @@ use App\Models\Paten;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class DosenController extends Controller
 {
@@ -162,6 +163,9 @@ class DosenController extends Controller
     public function editPaten(string $id)
     {
         $p = Paten::find($id);
+        // echo Storage::get($p->ktp_inventor);
+
+
         return view('dosen.paten.edit.index', compact('p'));
     }
 

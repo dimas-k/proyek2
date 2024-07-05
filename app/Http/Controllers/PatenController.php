@@ -33,6 +33,7 @@ class PatenController extends Controller
         $mts = Paten::where('status', 'Menunggu Tanggapan Substansif')->count();
         $catat = Paten::where('status', 'Diberi')->count();
         $tolak = Paten::where('status', 'Ditolak')->count();
+        $mvdov = Paten::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->count();
 
         $paten = Paten::where('institusi')->count();
         $patenPF = Paten::where('status', 'Pemeriksaan formalitas')->count();
@@ -66,7 +67,7 @@ class PatenController extends Controller
         $di2027 = DesainIndustri::whereYear('tanggal_permohonan','2027')->count();
         $gabungKi2027 = $paten2027 + $di2027 + $hc2027 ;
         
-        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','paten2024','paten2025','paten2026','paten2027','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027','paten2024'));
+        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','paten2024','paten2025','paten2026','paten2027','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027','paten2024','mvdov'));
     }
 
     public function cari(Request $request){
@@ -129,6 +130,11 @@ class PatenController extends Controller
     {
         $cek = Paten::latest()->where('status', 'Substansif Tahap Akhir')->get();
         return view('paten-stak.index', compact('cek'));
+    }
+    public function mvdov()
+    {
+        $mvdov = Paten::latest()->where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->get();
+        return view('umum-page.paten.paten-mvdov.index', compact('mvdov'));
     }
     public function mengungguTanggapanSubstansif()
     {

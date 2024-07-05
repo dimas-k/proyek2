@@ -62,8 +62,12 @@ class CheckerController extends Controller
         $paten = Paten::with('cek')->find($id);
         return view('checker.cekpaten.lihat.index', compact('paten'));
     }
-    public function cek()
+    public function cek(string $id)
     {
+        $paten = CheckPaten::find($id);
+        if($paten != null){
+            return back()->with('warning', 'Data Paten Sudah diverifikasi, Silahkan Update Data Jikalau Ada Perubahan');
+        }
         return view('checker.cekpaten.nilai.index');
     }
     public function simpanCek(Request $request, string $id)
@@ -79,12 +83,17 @@ class CheckerController extends Controller
         $cek->keterangan = $request->keterangan;
         $cek->save($validasi);
 
-        return redirect('/verifikator/cek/paten')->with('success', 'Data Paten berhasil dinilai!');
+        return redirect('/verifikator/cek/paten')->with('success', 'Data Paten berhasil diverifikasi!');
     }
     public function lamanupdatePaten(string $id)
     {
         $paten = CheckPaten::find($id);
-        return view('checker.cekpaten.update.index', compact('paten'));
+        if ($paten === null) {
+            return back()->with('warning', 'Data Paten Belum diverifikasi, Silahkan Verifikasi Terlebih Dahulu');
+        }
+        else{
+            return view('checker.cekpaten.update.index', compact('paten'));
+        }
     }
     public function updateCekPaten(Request $request, string $id)
     {
@@ -99,7 +108,7 @@ class CheckerController extends Controller
         $cek->keterangan = $request->keterangan;
         $cek->save($validasi);
 
-        return redirect('/verifikator/cek/paten')->with('success', 'Peniliaian Paten Berhasil diupdate!');
+        return redirect('/verifikator/cek/paten')->with('success', 'verifikasi Data Paten Berhasil diupdate!');
     }
 
     public function lamanHc()
@@ -118,12 +127,18 @@ class CheckerController extends Controller
         $hc = HakCipta::with('cekhc')->where('judul_ciptaan', 'LIKE', "%" . $cari . "%")->orWhere('nama_lengkap', 'LIKE', "%" . $cari . "%")->orWhere('status', 'LIKE', "%" . $cari . "%")->paginate(5);
         return view('checker.cekhc.index', compact('hc'));
     }
-    public function lamanCekHc()
+    public function lamanCekHc(string $id)
     {
-        return view('checker.cekhc.nilai.index');
+        $hc = CheckHc::find($id);
+        if($hc != null){
+            return back()->with('warning', 'Data Hak Cipta Sudah diverifikasi, Silahkan Update Data Jikalau Ada Perubahan');
+        }
+        else{
+            return view('checker.cekhc.nilai.index');
+        }
     }
     public function simpanCekHc(Request $request, string $id)
-    {
+    {   
         $validasi = $request->validate([
             'cek_data' => 'required',
             'keterangan' => 'required'
@@ -135,12 +150,18 @@ class CheckerController extends Controller
         $cek->keterangan = $request->keterangan;
         $cek->save($validasi);
 
-        return redirect('/verifikator/cek/hak-cipta')->with('success', 'Data Hak Cipta berhasil dinilai!');
+        return redirect('/verifikator/cek/hak-cipta')->with('success', 'Data Hak Cipta Berhasil diverifikasi!');
     }
     public function lamanUpdateCekhc(string $id)
     {
         $hc = CheckHc::find($id);
-        return view('checker.cekhc.update.index', compact('hc'));
+        
+        if ($hc === null) {
+            return back()->with('warning', 'Data Hak Cipta Belum diverifikasi, Silahkan verifikasi Terlebih Dahulu');
+        }
+        else{
+            return view('checker.cekhc.update.index', compact('hc'));
+        }
     }
     public function updateCekHc(Request $request, string $id)
     {
@@ -155,7 +176,7 @@ class CheckerController extends Controller
         $cek->keterangan = $request->keterangan;
         $cek->save($validasi);
 
-        return redirect('/verifikator/cek/hak-cipta')->with('success', 'Penilaian Hak Cipta Berhasil diupdate!');
+        return redirect('/verifikator/cek/hak-cipta')->with('success', 'verifikasi Hak Cipta Berhasil diupdate!');
     }
     public function lamanDi()
     {
@@ -173,9 +194,16 @@ class CheckerController extends Controller
         $di = DesainIndustri::with('cekDi')->find($id);
         return view('checker.cekdi.lihat.index', compact('di'));
     }
-    public function lamanCekDi()
+    public function lamanCekDi(string $id)
     {
-        return view('checker.cekdi.nilai.index');
+        $di = CheckDi::find($id);
+        if($di != null){
+            return back()->with('warning', 'Data Desain Industri Sudah diverifikasi, Silahkan Update Data Jikalau Ada Perubahan');
+        }
+        else{
+
+            return view('checker.cekdi.nilai.index');
+        }
     }
 
     public function simpanCekDi(Request $request, string $id)
@@ -191,7 +219,7 @@ class CheckerController extends Controller
         $cek->keterangan = $request->keterangan;
         $cek->save($validasi);
 
-        return redirect('/verifikator/cek/desain-industri')->with('success', 'Data Desain industri berhasil dinilai!');
+        return redirect('/verifikator/cek/desain-industri')->with('success', 'Data Desain industri berhasil diverifikasi!');
     }
     public function updateCekDi(Request $request, string $id)
     {
@@ -204,12 +232,17 @@ class CheckerController extends Controller
         $updatedi->cek_data = $request->cek_data;
         $updatedi->keterangan = $request->keterangan;
         $updatedi->save($validasi);
-        return redirect('/verifikator/cek/desain-industri')->with('success', 'Penilaian Desain Industri Berhasil diupdate!');
+        return redirect('/verifikator/cek/desain-industri')->with('success', 'Verifikasi Desain Industri Berhasil diupdate!');
     }
     public function lamanUpdateCekDi(string $id)
     {
         $di = CheckDi::find($id);
-        return view('checker.cekdi.update.index', compact('di'));
+        if ($di === null) {
+            return back()->with('warning', 'Data Desain Industri Belum diverifikasi, Silahkan VerifikasiTerlebih Dahulu');
+        }
+        else{ 
+            return view('checker.cekdi.update.index', compact('di'));
+        }
     }
     public function logout(request $request)
     {

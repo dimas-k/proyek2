@@ -63,6 +63,7 @@ Route::get('/paten/substansif-tahap-akhir', [PatenController::class, 'substansif
 Route::get('/paten/menunggu-tanggapan-substansif', [PatenController::class, 'mengungguTanggapanSubstansif']);
 Route::get('/paten/diberi', [PatenController::class, 'diberi']);
 Route::get('/paten/ditolak', [PatenController::class, 'ditolak']);
+Route::get('/paten/menunggu-verifikasi', [PatenController::class, 'mvdov']);
 Route::get('/cari', [PatenController::class, 'cari'])->name('paten.cari');
 
 Route::get('/hak-cipta', [HakCiptaController::class, 'index']);
@@ -70,6 +71,7 @@ Route::get('/hak-cipta/tercatat', [HakCiptaController::class, 'listTercatat']);
 Route::get('/hak-cipta/ditolak', [HakCiptaController::class, 'tolak']);
 Route::get('/hak-cipta/keterangan-belum-lengkap', [HakCiptaController::class, 'belumLengkap']);
 Route::get('/hak-cipta/show/{id}', [HakCiptaController::class, 'show'])->name('hak-cipta.show');
+Route::get('/hak-cipta/menunggu-verifikasi', [HakCiptaController::class, 'mvdov']);
 Route::get('/cari/hak-cipta', [HakCiptaController::class, 'cari'])->name('hc.cari');
 
 Route::get('/desain-industri', [DesainIndustriController::class, 'index']);
@@ -78,6 +80,7 @@ Route::get('/desain-industri/dalam-proses-usulan', [DesainIndustriController::cl
 Route::get('/desain-industri/pemeriksaan', [DesainIndustriController::class, 'pemeriksaan']);
 Route::get('/desain-industri/ditolak', [DesainIndustriController::class, 'ditolak']);
 Route::get('/desain-industri/keterangan-belum-lengkap', [DesainIndustriController::class, 'keteranganBelumLengkap']);
+Route::get('/desain-industri/menunggu-verifikasi', [DesainIndustriController::class, 'mvdov']);
 Route::get('/desain-industri/show/{id}', [DesainIndustriController::class, 'show'])->name('desain-industri.show');
 
 Route::get('/login-admin', [AdminController::class, 'index'])->name('login');
@@ -137,7 +140,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/desain-industri/show/{id}', [AdminDesainIndustriController::class, 'show'])->name('admin_desainindustri.show');
     Route::get('/admin/desain-industri/cari', [AdminDesainIndustriController::class, 'cariDI']);
 
-    Route::get('/admin/pengguna/umum', [AdminController::class, 'lihatUmum'])->name('lihat.dosen');
+    Route::get('/admin/pengguna/umum', [AdminController::class, 'lihatUmum'])->name('lihat.umum');
     Route::post('/admin/pengguna/umum/tambah', [AdminController::class, 'umumNew'])->name('tambah.umum');
 
     Route::get('/admin/pengguna/dosen', [AdminController::class, 'lihatDosen'])->name('lihat.dosen');
@@ -172,7 +175,7 @@ Route::middleware(['auth', 'role:Dosen'])->group(function () {
     Route::get('dosen/paten/edit/{id}', [DosenController::class, 'editPaten'])->name('dsn.edit.paten');
     Route::post('/dosen/paten/update/{id}', [DosenController::class, 'updatePaten'])->name('dsn.update.paten');
     Route::get('/dosen/paten/hapus/{id}', [DosenController::class, 'hapusPaten'])->name('dsn.paten.hapus');
-    Route::get('/paten/cari', [DosenController::class, 'cariPaten'])->name('paten.cari');
+    Route::get('/paten/cari', [DosenController::class, 'cariPaten']);
 
 
     Route::get('/dosen/hak-cipta', [DosenController::class, 'hakCipta']);
@@ -208,7 +211,7 @@ Route::middleware(['auth', 'role:Umum'])->group(function () {
     Route::get('/umum/paten/edit/{id}', [UmumController::class, 'editPaten'])->name('umum.paten.edit');
     Route::post('/umum/paten/update/simpan/{id}', [UmumController::class, 'updatepaten'])->name('umum.paten.update');
     Route::get('/umum/paten/hapus/{id}', [UmumController::class, 'hapusPaten'])->name('umum.paten.hapus');
-    Route::get('umum/paten/cari', [UmumController::class, 'cariPaten'])->name('paten.cari');
+    Route::get('umum/paten/cari', [UmumController::class, 'cariPaten'])->name('umum.paten.cari');
     Route::get('umum/hak-cipta/cari', [UmumController::class, 'cariHc']);
     Route::get('umum/desain-industri/cari', [UmumController::class, 'cariDi']);
 
@@ -262,7 +265,7 @@ Route::middleware(['auth', 'role:Checker'])->group(function () {
     Route::get('/verifikator/cek/desain-industri/nilai/{id}', [CheckerController::class, 'lamanCekDi']);
     Route::post('verifikator/cek/desain-industri/nilai/simpan/{id}', [CheckerController::class, 'simpanCekDi'])->name('cekdi.simpan');
     Route::get('/verifikator/cek/desain-industri/nilai/update/{id}', [CheckerController::class, 'lamanUpdateCekDi'])->name('update.cekdi');
-    Route::post('verifikator/cek/desain-industri/nilai/update/simpan/{id}', [CheckerController::class, 'updateCekDi'])->name('update.cekdi');
+    Route::post('verifikator/cek/desain-industri/nilai/update/simpan/{id}', [CheckerController::class, 'updateCekDi'])->name('update.cekdi.simpan');
     Route::get('/verifikator/cek/desain-industri/cari', [CheckerController::class, 'cariDi']);
 
     Route::get('/verifikator/logout', [CheckerController::class, 'logout']);

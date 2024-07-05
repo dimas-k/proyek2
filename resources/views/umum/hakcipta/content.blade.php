@@ -127,10 +127,10 @@
                                                 </td>
                                                 <td>{{ $p->status }}</td>
                                                 <td>
-                                                    @if ($p->cekhc?->cek_data == 'Benar')
+                                                    @if ($p->cekhc?->cek_data == 'Valid')
                                                         <i class="fa fa-check-circle" style="color: green"
                                                             data-bs-toggle="tooltip"></i>
-                                                    @elseif($p->cekhc?->cek_data == 'Salah')
+                                                    @elseif($p->cekhc?->cek_data == 'Tidak Valid')
                                                         <i class="fa fa-times-circle" style="color: red"
                                                             data-bs-toggle="tooltip"></i>
                                                     @else
@@ -140,7 +140,7 @@
                                                 </td>
                                                 <td>
                                                     @if ($p->cekhc?->keterangan == null)
-                                                        Data HakCipta Belum Diverifikasi
+                                                        Data Hak Cipta Belum Diverifikasi
                                                     @else
                                                         {{ $p->cekhc?->keterangan }}
                                                     @endif

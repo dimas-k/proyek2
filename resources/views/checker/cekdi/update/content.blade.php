@@ -27,7 +27,7 @@
                         </div>
                         <div class="card-body">
 
-                            <form action={{ route('update.cekdi', ['id'=>request()->segment(6)]) }} enctype="multipart/form-data"
+                            <form action={{ route('update.cekdi.simpan', ['id'=>request()->segment(6)]) }} enctype="multipart/form-data"
                                 method="post">
                                 @csrf
                                 <div class="table-responsive">
@@ -39,9 +39,9 @@
                                                 <select class="form-select @error('cek_data') is-invalid @enderror"
                                                     aria-label="Default select example" name="cek_data">
                                                     <option selected>Pilih Status Hak Cipta</option>
-                                                    <option value="Benar">Benar
+                                                    <option value="Valid">Valid
                                                     </option>
-                                                    <option value="Salah">Salah</option>
+                                                    <option value="Tidak Valid">Tidak Valid</option>
                                                     <option value="Menunggu Pemeriksaan">Menunggu Pemeriksaan</option>
                                                 </select>
                                                 @error('status')

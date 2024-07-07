@@ -53,17 +53,20 @@ class AdminController extends Controller
         $patenMTS = Paten::where('status', 'Menunggu tanggapan substansif')->count();
         $patenDI = Paten::where('status', 'Diberi')->count();
         $patenDK = Paten::where('status', 'Ditolak')->count();
+        $patenmvdov = Paten::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->count();
         //desain Industri
         $desainDi = DesainIndustri::where('status', 'Diberi')->count();
         $desainDK = DesainIndustri::where('status', 'Ditolak')->count();
         $desainP = DesainIndustri::where('status', 'Pemeriksaan')->count();
         $desainKBL = DesainIndustri::where('status', 'Keterangan belum lengkap')->count();
         $desainDPU = DesainIndustri::where('status', 'Dalam proses usulan')->count();
+        $dmvdov = DesainIndustri::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->count();
         ///hak cipta
         $hcTolak = HakCipta::where('status', 'Ditolak')->count();
         $hcTerima = HakCipta::where('status', 'Diterima')->count();
         $hcKet = HakCipta::where('status', 'Keterangan belum lengkap')->count();
-        return view('admin.dashboard.index', compact('paten','hc','di','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','desainDi','desainDK','desainP','desainKBL','desainDPU','hcTolak','hcTerima','hcKet'));
+        $hcmvdov = HakCipta::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->count();
+        return view('admin.dashboard.index', compact('paten','hc','di','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','desainDi','desainDK','desainP','desainKBL','desainDPU','hcTolak','hcTerima','hcKet','patenmvdov', 'dmvdov', 'hcmvdov'));
     }
 
     public function logout(request $request)

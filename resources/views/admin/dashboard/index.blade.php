@@ -125,16 +125,19 @@
                                     <input type="hidden" id="patenMTS" value="{{ $patenMTS }}">
                                     <input type="hidden" id="patenDI" value="{{ $patenDI }}">
                                     <input type="hidden" id="patenDK" value="{{ $patenDK }}">
+                                    <input type="hidden" id="patenmvdov" value="{{ $patenmvdov }}">
                                     <canvas class="canvas-chart" id="paten-chart"></canvas>
                                     <input type="hidden" id="hcTolak" value="{{ $hcTolak }}">
                                     <input type="hidden" id="hcTerima" value="{{ $hcTerima }}">
                                     <input type="hidden" id="hcKet" value="{{ $hcKet }}">
+                                    <input type="hidden" id="hcmvdov" value="{{ $hcmvdov }}">
                                     <canvas class="canvas-chart" id="hc-chart"></canvas>
                                     <input type="hidden" id="desainDi" value="{{ $desainDi }}">
                                     <input type="hidden" id="desainDK" value="{{ $desainDK }}">
                                     <input type="hidden" id="desainP" value="{{ $desainP }}">
                                     <input type="hidden" id="desainKBL" value="{{ $desainKBL }}">
                                     <input type="hidden" id="desainDPU" value="{{ $desainDPU }}">
+                                    <input type="hidden" id="desainmvdov" value="{{ $dmvdov }}">
                                     <canvas class="canvas-chart" id="di-chart"></canvas>  
                                 </div>
                             </div>
@@ -155,6 +158,7 @@
         </script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
+        const patenmvdov = document.getElementById('patenmvdov').value;
         const patenPF = document.getElementById('patenPF').value;
         const patenMTF = document.getElementById('patenMTF').value;
         const patenMP = document.getElementById('patenMP').value;
@@ -169,11 +173,11 @@
         const patenChart = new Chart(paten, {
             type: 'bar',
             data: {
-                labels: ['Diberi', 'Ditolak', 'Pemeriksaan Formalitas','Menunggu pembayaran substansif','Menunggu tanggapan substansif','Substansif tahap awal','Substansi tahap lanjut','Substansi tahap akhir','Masa pengumuman','Menunggu tanggapan formalitas'],
+                labels: ['Diberi', 'Ditolak', 'Pemeriksaan Formalitas','Menunggu pembayaran substansif','Menunggu tanggapan substansif','Substansif tahap awal','Substansi tahap lanjut','Substansi tahap akhir','Masa pengumuman','Menunggu tanggapan formalitas','Menunggu Verifikasi Data Oleh Verifikator'],
                 datasets: [
                     {
                     label: 'PATEN',
-                    data: [patenDI,patenDK,patenPF,patenMPS,patenMTS,patenSTAW,patenSTL,patenSTAK,patenMP,patenMTF],
+                    data: [patenDI,patenDK,patenPF,patenMPS,patenMTS,patenSTAW,patenSTL,patenSTAK,patenMP,patenMTF,patenmvdov],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -218,15 +222,16 @@
         const hcTolak = document.getElementById('hcTolak').value;
         const hcTerima = document.getElementById('hcTerima').value;
         const hcKet = document.getElementById('hcKet').value;
+        const hcmvdov = document.getElementById('hcmvdov').value;
         const hc = document.getElementById('hc-chart').getContext('2d');
         const hcChart = new Chart(hc, {
             type: 'bar',
             data: {
-                labels: ['Keterangan belum lengkap', 'Ditolak', 'Diterima'],
+                labels: ['Keterangan belum lengkap', 'Ditolak', 'Diterima','Menunggu Verifiksi Data Oleh Verifikator'],
                 datasets: [
                     {
                     label: 'HAK CIPTA',
-                    data: [hcKet, hcTolak, hcTerima],
+                    data: [hcKet, hcTolak, hcTerima, hcmvdov],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -258,15 +263,16 @@
         const desainP = document.getElementById('desainP').value;
         const desainKBL = document.getElementById('desainKBL').value;
         const desainDPU = document.getElementById('desainDPU').value;
+        const desainmvdov = document.getElementById('desainmvdov').value;
         const di = document.getElementById('di-chart').getContext('2d');
         const diChart = new Chart(di, {
             type: 'bar',
             data: {
-                labels: ['Ditolak', 'Diberi','Pemeriksaan','Dalam proses usulan','Keterangan belum lengkap'],
+                labels: ['Ditolak', 'Diberi','Pemeriksaan','Dalam proses usulan','Keterangan belum lengkap', 'Menunggu Verifikasi Data Oleh Verifikator'],
                 datasets: [
                     {
                     label: 'DESAIN INDUSTRI',
-                    data: [desainDK, desainDi, desainP,desainDPU,desainKBL],
+                    data: [desainDK, desainDi, desainP,desainDPU,desainKBL, desainmvdov],
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',

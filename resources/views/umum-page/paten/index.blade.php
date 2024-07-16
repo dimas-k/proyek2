@@ -214,14 +214,14 @@
             </div>
             <div class="col-xl-3 col-sm-6 col-12 mt-4">
                 <div class="card shadow-sm" style="width: 18rem;">
-                    <a href="/paten/diberi" class="link-dark link-underline link-underline-opacity-0">
+                    <a href="/paten/menunggu-verifikasi" class="link-dark link-underline link-underline-opacity-0">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="align-self-center">
-                                    <i class="bi bi-check-square float-start me-2 pe-5" style="font-size: 50px;"></i>
+                                    <i class="bi bi-question-square float-start me-2 pe-5" style="font-size: 50px;"></i>
                                 </div>
                                 <div class="align-self-center">
-                                    <h3 class=" d-flex justify-content-end">{{ $catat }}
+                                    <h3 class=" d-flex justify-content-end">{{ $mvdov }}
                                     </h3>
                                     <span class=" d-flex justify-content-end">Menunggu Verifikasi Data Oleh
                                         Verifikator</span>

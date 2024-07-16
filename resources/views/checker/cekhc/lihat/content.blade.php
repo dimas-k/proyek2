@@ -27,6 +27,13 @@
                             </h3>
                         </div>
                         <div class="card-body">
+                            @if (session()->has('warning'))
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    {{ session('warning') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
                             <div class="table-responsive">
                                 <table class="table table-borderless p-1">
 
@@ -123,8 +130,9 @@
                                     </tr>
                                 </table>
                                 <a class="btn btn-primary me-3"
-                                    href="/checker/cek/hak-cipta/nilai/{{ request()->segment(5) }}">Nilai Data Hak Cipta</a>
-                                <a href="/checker/cek/hak-cipta/nilai/update/{{ request()->segment(5) }}" class="btn btn-outline-secondary">Update nilai Data hak Cipta</a>
+                                    href="/verifikator/cek/hak-cipta/nilai/{{ request()->segment(5) }}">Nilai Data Hak Cipta</a>
+                                
+                                <a href="/verifikator/cek/hak-cipta/nilai/update/{{ request()->segment(5) }}" class="btn btn-outline-secondary">Update nilai Data hak Cipta</a>
                             </div>
                         </div>
                     </div>

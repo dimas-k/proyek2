@@ -9,7 +9,7 @@
                 <h1 class="page-title">Desain Industri</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/checker/cek/desain-industri">Desain Industri</a></li>
+                        <li class="breadcrumb-item"><a href="/verifikator/cek/desain-industri">Desain Industri</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Lihat</li>
                     </ol>
                 </div>
@@ -21,11 +21,19 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Desain Industri
+                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Desain
+                                Industri
                                 {{ $di->nama_lengkap }}
                             </h3>
                         </div>
                         <div class="card-body">
+                            @if (session()->has('warning'))
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    {{ session('warning') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
                             <div class="table-responsive">
                                 <table class="table table-borderless p-1">
 
@@ -123,8 +131,10 @@
                                     </tr>
                                 </table>
                                 <a class="btn btn-primary me-3"
-                                    href="/checker/cek/desain-industri/nilai/{{ request()->segment(5) }}">Nilai Data Desain Industri</a>
-                                <a href="/checker/cek/desain-industri/nilai/update/{{ request()->segment(5) }}" class="btn btn-outline-secondary">Update Nilai Data Desain Industri</a>
+                                    href="/verifikator/cek/desain-industri/nilai/{{ request()->segment(5) }}">Nilai
+                                    Data Desain Industri</a>
+                                <a href="/verifikator/cek/desain-industri/nilai/update/{{ request()->segment(5) }}"
+                                    class="btn btn-outline-secondary">Update Nilai Data Desain Industri</a>
                             </div>
                         </div>
                     </div>

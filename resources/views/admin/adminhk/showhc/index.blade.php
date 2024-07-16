@@ -46,7 +46,8 @@
             {{-- end of sidebar --}}
             <div class="col-lg-10 mt-2">
                 <div class="container bg-light rounded border pt-3">
-                    <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-person me-3"></i>Data hak cipta {{ $hc->nama_lengkap }}
+                    <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-person me-3"></i>Data hak cipta
+                        {{ $hc->nama_lengkap }}
                     </h3>
                     <div class="table-responsive p-3">
                         <table class="table table-borderless rounded">
@@ -86,11 +87,21 @@
                             </tr>
                             <tr>
                                 <th>Jurusan</th>
-                                <td>: {{ $hc->jurusan }}</td>
+                                <td>: @if ($hc->jurusan == null)
+                                        Bukan Akun Dosen
+                                    @else
+                                        {{ $hc->jurusan }}
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <th>prodi</th>
-                                <td>: {{ $hc->prodi }}</td>
+                                <td>: @if ($hc->prodi == null)
+                                        Bukan Akun Dosen
+                                    @else
+                                        {{ $hc->prodi }}
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <th>Jenis Ciptaan</th>
@@ -102,7 +113,7 @@
                             </tr>
                             <tr>
                                 <th>Abstrak Ciptaan</th>
-                                <td >: {{ $hc->uraian_singkat }}</td>
+                                <td>: {{ $hc->uraian_singkat }}</td>
                             </tr>
                             <tr>
                                 <th>Dokumen invensi</th>
@@ -125,12 +136,13 @@
                             </tr>
                             <tr>
                                 <th>Sertifikat Hak Cipta</th>
-                                <td>: @if ($hc->sertifikat_hakcipta != "")
-                                    <a href={{ asset('storage/' . $hc->sertifikat_paten) }} class=""
-                                        target="_blank">Lihat sertifikat</a>
-                                @else
-                                    Paten Ini Belum Mendapatkan Sertifikat
-                                @endif</td>
+                                <td>: @if ($hc->sertifikat_hakcipta != '')
+                                        <a href={{ asset('storage/' . $hc->sertifikat_paten) }} class=""
+                                            target="_blank">Lihat sertifikat</a>
+                                    @else
+                                        Paten Ini Belum Mendapatkan Sertifikat
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <th>Status Paten</th>

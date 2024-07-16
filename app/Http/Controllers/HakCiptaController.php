@@ -21,6 +21,7 @@ class HakCiptaController extends Controller
         $hcTolak = HakCipta::where('status', 'Ditolak')->count();
         $hcTerima = HakCipta::where('status', 'Tercatat')->count();
         $hcKet = HakCipta::where('status', 'Keterangan belum lengkap')->count();
+        $mvdov = HakCipta::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->count();
 
         $paten2024 = Paten::whereYear('tanggal_permohonan','2024')->count();
         $hc2024 = HakCipta::whereYear('tanggal_permohonan','2024')->count();
@@ -42,7 +43,7 @@ class HakCiptaController extends Controller
         $di2027 = DesainIndustri::whereYear('tanggal_permohonan','2027')->count();
         $gabungKi2027 = $paten2027 + $di2027 + $hc2027 ;
         
-        return view('umum-page.Hakcipta.index', compact('hc','tercatat','null','tolak','itung','hcTolak','hcTerima','hcKet','hc2024','hc2025','hc2026','hc2027','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027'));
+        return view('umum-page.Hakcipta.index', compact('hc','tercatat','null','tolak','itung','hcTolak','hcTerima','hcKet','hc2024','hc2025','hc2026','hc2027','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027','mvdov'));
     }
     public function cari(Request $request){
         $carijudul = $request->input('cari_hc');
@@ -74,6 +75,11 @@ class HakCiptaController extends Controller
     {
         $cek = HakCipta::latest()->where('status', 'Ditolak')->get();
         return view('hc-t.index', compact('cek'));
+    }
+    public function mvdov()
+    {
+        $mvdov = HakCipta::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->get();
+        return view('hc-mvdov.index', compact('mvdov'));
     }
 
     /**

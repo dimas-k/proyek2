@@ -122,14 +122,14 @@
             </div>
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card shadow-sm" style="width: 18rem;">
-                    <a href="/hak-cipta/keterangan-belum-lengkap" class="link-dark link-underline link-underline-opacity-0">
+                    <a href="/hak-cipta/menunggu-verifikasi" class="link-dark link-underline link-underline-opacity-0">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="align-self-center ">
                                     <i class="bi bi-question-square float-start pe-2" style="font-size: 50px;"></i>
                                 </div>
                                 <div class="align-self-center">
-                                    <h3 class="ms-4 d-flex justify-content-end pe-2">{{ $null }}
+                                    <h3 class="ms-4 d-flex justify-content-end pe-2">{{ $mvdov }}
                                     </h3>
                                     <span class="ms-4 d-flex justify-content-end">Menunggu Verifikasi Data oleh Verifikator</span>
                                 </div>

@@ -20,13 +20,20 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Hak Cipta
+                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Hak
+                                Cipta
                             </h3>
                         </div>
                         <div class="card-body">
                             @if (session()->has('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @elseif (session()->has('warning'))
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    {{ session('warning') }}
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
                                 </div>
@@ -73,10 +80,10 @@
                                                 </td>
                                                 <td>{{ $p->status }}</td>
                                                 <td>
-                                                    @if ($p->cekHc?->cek_data == 'Benar')
+                                                    @if ($p->cekHc?->cek_data == 'Valid')
                                                         <i class="fa fa-check-circle" style="color: green"
                                                             data-bs-toggle="tooltip"></i>
-                                                    @elseif($p->cekHc?->cek_data == 'Salah')
+                                                    @elseif($p->cekHc?->cek_data == 'Tidak Valid')
                                                         <i class="fa fa-times-circle" style="color: red"
                                                             data-bs-toggle="tooltip"></i>
                                                     @else

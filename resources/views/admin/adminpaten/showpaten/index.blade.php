@@ -46,7 +46,8 @@
             {{-- end of sidebar --}}
             <div class="col-lg-10 mt-2">
                 <div class="container bg-light rounded border pt-3">
-                    <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-person me-3"></i>Data Paten {{ $p->nama_lengkap }}
+                    <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-person me-3"></i>Data Paten
+                        {{ $p->nama_lengkap }}
                     </h3>
                     <div class="table-responsive p-3">
                         <table class="table table-borderless rounded">
@@ -86,11 +87,21 @@
                             </tr>
                             <tr>
                                 <th>Jurusan</th>
-                                <td>: {{ $p->jurusan }}</td>
+                                <td>: @if ($p->jurusan == null)
+                                        Bukan Akun Dosen
+                                    @else
+                                        {{ $p->jurusan }}
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <th>prodi</th>
-                                <td>: {{ $p->prodi }}</td>
+                                <td>: @if ($p->prodi == null)
+                                        Bukan Akun Dosen
+                                    @else
+                                        {{ $p->prodi }}
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <th>Jenis Paten</th>
@@ -117,8 +128,8 @@
                             </tr>
                             <tr>
                                 <th>Klaim</th>
-                                <td>: <a href={{ asset('storage/' . $p->klaim) }} class=""
-                                        target="_blank">Lihat Klaim</a></td>
+                                <td>: <a href={{ asset('storage/' . $p->klaim) }} class="" target="_blank">Lihat
+                                        Klaim</a></td>
                             </tr>
                             <tr>
                                 <th>Pernyataan Kepemilikan</th>
@@ -146,12 +157,13 @@
                             </tr>
                             <tr>
                                 <th>Sertifikat Paten</th>
-                                <td>: @if ($p->sertifikat_paten != "")
-                                    <a href={{ asset('storage/' . $p->sertifikat_paten) }} class=""
-                                        target="_blank">Lihat sertifikat</a>
-                                @else
-                                    Paten Ini Belum Mendapatkan Sertifikat
-                                @endif</td>
+                                <td>: @if ($p->sertifikat_paten != '')
+                                        <a href={{ asset('storage/' . $p->sertifikat_paten) }} class=""
+                                            target="_blank">Lihat sertifikat</a>
+                                    @else
+                                        Paten Ini Belum Mendapatkan Sertifikat
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <th>Status Paten</th>
@@ -163,10 +175,10 @@
                                 </th>
                                 <td>:
                                     @if ($p->cek?->keterangan == '')
-                                                Data Paten Belum Dicek
-                                            @else
-                                                {{ $p->cek?->keterangan }}
-                                            @endif
+                                        Data Paten Belum Dicek
+                                    @else
+                                        {{ $p->cek?->keterangan }}
+                                    @endif
                                 </td>
                             </tr>
                         </table>

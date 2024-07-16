@@ -46,7 +46,8 @@
             {{-- end of sidebar --}}
             <div class="col-lg-10 mt-2">
                 <div class="container bg-light rounded border pt-3">
-                    <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-person me-3"></i>Data Paten {{ $di->nama_lengkap }}
+                    <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-person me-3"></i>Data Paten
+                        {{ $di->nama_lengkap }}
                     </h3>
                     <div class="table-responsive p-3 ">
                         <table class="table table-borderless p-1">
@@ -86,15 +87,21 @@
                             </tr>
                             <tr>
                                 <th>Jurusan</th>
-                                <td>: {{ $di->jurusan }}</td>
+                                <td>: @if ($di->jurusan == null)
+                                        Bukan Akun Dosen
+                                    @else
+                                        {{ $di->jurusan }}
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <th>Prodi</th>
-                                <td>: @if ($di->institusi = "Dosen")
-                                    {{ $di->prodi }}
-                                @else
-                                    
-                                @endif</td>
+                                <td>: @if ($di->prodi == null)
+                                        Bukan Akun Dosen
+                                    @else
+                                        {{ $di->prodi }}
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <th>Jenis Disain Industri</th>
@@ -106,8 +113,8 @@
                             </tr>
                             <tr>
                                 <th>Gambar desain Industri</th>
-                                <td >: <a href={{ asset('storage/' . $di->gambar_di) }} class=""
-                                    target="_blank">Lihat Dokumen Invensi</a></td>
+                                <td>: <a href={{ asset('storage/' . $di->gambar_di) }} class=""
+                                        target="_blank">Lihat Dokumen Invensi</a></td>
                             </tr>
                             <tr>
                                 <th>Uraian Desain Industri</th>
@@ -129,11 +136,11 @@
                             </tr>
                             <tr>
                                 <th>Sertifikat Paten</th>
-                                <td>: @if ($di->sertifikat_hakcipta != "")
-                                        <a href={{ asset('storage/' . $di->sertifikat_hakcipta) }}
-                                            class="" target="_blank">Lihat sertifikat</a>
-                                    @else 
-                                    Desain Industri Ini Belum Mendapatkan Sertifikat    
+                                <td>: @if ($di->sertifikat_hakcipta != '')
+                                        <a href={{ asset('storage/' . $di->sertifikat_hakcipta) }} class=""
+                                            target="_blank">Lihat sertifikat</a>
+                                    @else
+                                        Desain Industri Ini Belum Mendapatkan Sertifikat
                                     @endif
                                     </a>
                                 </td>

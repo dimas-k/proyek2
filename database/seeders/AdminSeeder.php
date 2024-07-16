@@ -27,6 +27,6 @@ class AdminSeeder extends Seeder
                 'password'=>Hash::make('12345')
             ]
         ));
-        // User::factory()->count(5)->create();
+        // User::factory()->count(2)->create();
     }
 }

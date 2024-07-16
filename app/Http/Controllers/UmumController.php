@@ -65,7 +65,7 @@ class UmumController extends Controller
         $tercatat = HakCipta::where('user_id', Auth::user()->id)->where('user_id', Auth::user()->id)->where('status', 'Tercatat')->where('institusi', 'Umum')->count();
         $null = HakCipta::where('user_id', Auth::user()->id)->where('user_id', Auth::user()->id)->where('status', 'Keterangan Belum Lengkap')->where('institusi', 'Umum')->count();
         $tolak = HakCipta::where('user_id', Auth::user()->id)->where('user_id', Auth::user()->id)->where('status', 'Ditolak')->where('institusi', 'Umum')->count();
-        $mvdov = HakCipta::where('user_id', Auth::user()->id)->where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->where('institusi', 'Dosen')->count();
+        $mvdov = HakCipta::where('user_id', Auth::user()->id)->where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->where('institusi', 'Umum')->count();
         return view('umum.hakcipta.index', compact('hc', 'tercatat', 'null', 'tolak','mvdov'));
     }
     public function cariHc(Request $request)

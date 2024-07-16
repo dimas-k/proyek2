@@ -22,6 +22,7 @@ class DesainIndustriController extends Controller
         $priksa = DesainIndustri::where('status','Pemeriksaan')->count();
         $null = DesainIndustri::where('status','Keterangan Belum Lengkap')->count();
         $tolak = DesainIndustri::where('status','Ditolak')->count();
+        $mvdov = DesainIndustri::where('status','Menunggu Verifikasi Data Oleh Verifikator')->count();
 
         $desainDi = DesainIndustri::where('status', 'Diberi')->count();
         $desainDK = DesainIndustri::where('status', 'Ditolak')->count();
@@ -50,7 +51,7 @@ class DesainIndustriController extends Controller
         $gabungKi2027 = $paten2027 + $di2027 + $hc2027 ;
 
 
-        return view('umum-page.Desainindustri.index', compact('di', 'priksa', 'proses', 'null','tolak','beri','itung','desainDi','desainDK','desainP','desainKBL','desainDPU','di2024','di2025','di2026','di2027','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027')); 
+        return view('umum-page.Desainindustri.index', compact('di', 'priksa', 'proses', 'null','tolak','beri','itung','desainDi','desainDK','desainP','desainKBL','desainDPU','di2024','di2025','di2026','di2027','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027','mvdov')); 
     }
     
     public function diberi()
@@ -72,6 +73,11 @@ class DesainIndustriController extends Controller
     {
         $cek = DesainIndustri::latest()->where('status','Ditolak')->get();
         return view('di-tolak.index', compact('cek'));
+    }
+    public function mvdov()
+    {
+        $mvdov = DesainIndustri::where('status','Menunggu Verifikasi Data Oleh Verifikator')->get();
+        return view('di-mvdov.index', compact('mvdov'));
     }
     public function keteranganBelumLengkap()
     {

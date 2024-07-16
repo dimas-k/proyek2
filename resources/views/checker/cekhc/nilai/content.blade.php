@@ -38,10 +38,10 @@
                                             <td>
                                                 <select class="form-select @error('cek_data') is-invalid @enderror"
                                                     aria-label="Default select example" name="cek_data">
-                                                    <option selected>Pilih Status Desain industri</option>
-                                                    <option value="Benar">Benar
+                                                    <option selected>Pilih Status Hak Cipta</option>
+                                                    <option value="Valid">Valid
                                                     </option>
-                                                    <option value="Salah">Salah</option>
+                                                    <option value="Tidak Valid">Tidak Valid</option>
                                                     <option value="Menunggu Pemeriksaan">Menunggu Pemeriksaan</option>
                                                 </select>
                                                 @error('status')

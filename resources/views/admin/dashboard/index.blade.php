@@ -101,7 +101,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="card">
                                 <div class="card-header">
@@ -114,7 +114,6 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    {{-- paten --}}
                                     <input type="hidden" id="patenPF" value="{{ $patenPF }}">
                                     <input type="hidden" id="patenMTF" value="{{ $patenMTF }}">
                                     <input type="hidden" id="patenMP" value="{{ $patenMP }}">
@@ -139,7 +138,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

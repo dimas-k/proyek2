@@ -107,17 +107,6 @@
                                                 @enderror
                                             </div>
                                             <div class="mb-2">
-                                                <label class="col-form-label" for="">KTP</label>
-                                                <input type="file" id="" name="ktp"
-                                                    class="form-control form-control @error('ktp') is-invalid @enderror"
-                                                    required>
-                                                @error('ktp')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                            <div class="mb-2">
                                                 <label class="col-form-label" for="pass">Jabatan</label>
                                                 <input type="text" id="" name="jabatan"
                                                     class="form-control form-control @error('jabatan') is-invalid @enderror"

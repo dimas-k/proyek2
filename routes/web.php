@@ -85,7 +85,7 @@ Route::get('/desain-industri/show/{id}', [DesainIndustriController::class, 'show
 
 Route::get('/login-admin', [AdminController::class, 'index'])->name('login');
 Route::post('/autentikasi', [AdminController::class, 'authenticate']);
-Route::get('/logout', [AdminController::class, 'logout']);
+Route::get('/logout', [LoginUserController::class, 'logout']);
 
 Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboardAdmin']);
@@ -268,7 +268,7 @@ Route::middleware(['auth', 'role:Checker'])->group(function () {
     Route::post('verifikator/cek/desain-industri/nilai/update/simpan/{id}', [CheckerController::class, 'updateCekDi'])->name('update.cekdi.simpan');
     Route::get('/verifikator/cek/desain-industri/cari', [CheckerController::class, 'cariDi']);
 
-    Route::get('/verifikator/logout', [CheckerController::class, 'logout']);
+    Route::get('/verifikator/logout', [LoginUserController::class, 'logout']);
 });
 
 

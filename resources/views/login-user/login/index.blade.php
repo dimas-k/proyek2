@@ -42,7 +42,7 @@
     
                   <div class="form-outline form-white mb-4">
                     <label class="form-label" for="username">username</label>
-                    <input type="text" id="username" name="username" class="form-control form-control-lg @error('username') is-invalid @enderror" required value={{ old('username') }}>
+                    <input type="text" id="username" name="username" class="form-control form-control @error('username') is-invalid @enderror" required value={{ old('username') }}>
                     @error('username')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -52,7 +52,7 @@
     
                   <div class="form-outline form-white mb-4">
                     <label class="form-label" for="pass">Password</label>
-                    <input type="password" id="pass" name="password" class="form-control form-control-lg @error('password') is-invalid @enderror" required>
+                    <input type="password" id="pass" name="password" class="form-control form-control @error('password') is-invalid @enderror" required>
                     @error('password')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -60,7 +60,7 @@
                     @enderror
                   </div>
                   <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                    <button class="btn btn-dark btn-lg px-5 text-white" type="submit" id="submit">Login</button>
+                    <button class="btn btn-dark px-3 text-white" type="submit" id="submit">Login</button>
                   </div>
                 </form>
                 <div>

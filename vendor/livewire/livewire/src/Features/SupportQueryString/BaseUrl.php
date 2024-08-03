@@ -54,9 +54,11 @@ class BaseUrl extends LivewireAttribute
             $this->as = $this->getSubName();
         }
 
-        $initialValue = $this->getFromUrlQueryString($this->urlName(), 'noexist');
+        $nonExistentValue = uniqid('__no_exist__', true);
 
-        if ($initialValue === 'noexist') return;
+        $initialValue = $this->getFromUrlQueryString($this->urlName(), $nonExistentValue);
+
+        if ($initialValue === $nonExistentValue) return;
 
         $decoded = is_array($initialValue)
             ? json_decode(json_encode($initialValue), true)
@@ -144,7 +146,7 @@ class BaseUrl extends LivewireAttribute
 
     public function getFromRefererUrlQueryString($url, $key, $default = null)
     {
-        $parsedUrl = parse_url($url);
+        $parsedUrl = parse_url($url ?? '');
         $query = [];
 
         if (isset($parsedUrl['query'])) {

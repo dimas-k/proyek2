@@ -148,6 +148,8 @@ class DosenController extends Controller
     public function lihatDi(string $id)
     {
         $di = DesainIndustri::with('cekDi')->find($id);
+        
+        
         return view('dosen.desainindustri.lihat.index', compact('di'));
     }
     public function hapusPaten(string $id)

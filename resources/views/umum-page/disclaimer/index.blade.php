@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
     <title>SIKI POLINDRA | Disclaimer</title>
 </head>
@@ -36,15 +37,7 @@
             <img src={{ asset('assets/imgdis.png') }} class="mb-5 mt-5">
         </span>
     </div>
-    <footer class="text-center text-lg-star bg-body-white shadow-lg mt-5">
-        <!-- Copyright -->
-        <div class="text-center p-3">
-            © 2023 Copyright:
-            <a class="text-body link-underline link-underline-opacity-0" href="https://polindra.ac.id/">Politeknik
-                Negeri Indramayu</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+    @include('layout.footer')
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>

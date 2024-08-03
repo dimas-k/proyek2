@@ -12,6 +12,7 @@ use PHPStan\PhpDoc\TypeStringResolver;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\ParametersAcceptorSelector;
 use PHPStan\ShouldNotHappenException;
+use PHPStan\Type\Constant\ConstantStringType;
 use PHPStan\Type\Generic\GenericObjectType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\ObjectType;
@@ -20,9 +21,10 @@ use PHPStan\Type\TypeCombinator;
 use ReflectionException;
 
 use function array_key_exists;
+use function array_map;
 use function count;
-use function implode;
 use function in_array;
+use function is_string;
 use function method_exists;
 
 class ModelPropertyHelper
@@ -41,27 +43,35 @@ class ModelPropertyHelper
     /**
      * Determine if the model has a database property.
      */
-    public function hasDatebaseProperty(ClassReflection $classReflection, string $propertyName): bool
+    public function hasDatabaseProperty(ClassReflection|string $classReflectionOrTable, string $propertyName): bool
     {
-        if (! $classReflection->isSubclassOf(Model::class)) {
-            return false;
-        }
-
-        if ($classReflection->isAbstract()) {
-            return false;
-        }
-
-        if (ReflectionHelper::hasPropertyTag($classReflection, $propertyName)) {
-            return false;
-        }
-
         if (! $this->migrationsLoaded()) {
             $this->loadMigrations();
         }
 
+        if (is_string($classReflectionOrTable)) {
+            if (! array_key_exists($classReflectionOrTable, $this->tables)) {
+                return false;
+            }
+
+            return array_key_exists($propertyName, $this->tables[$classReflectionOrTable]->columns);
+        }
+
+        if (! $classReflectionOrTable->isSubclassOf(Model::class)) {
+            return false;
+        }
+
+        if ($classReflectionOrTable->isAbstract()) {
+            return false;
+        }
+
+        if (ReflectionHelper::hasPropertyTag($classReflectionOrTable, $propertyName)) {
+            return false;
+        }
+
         try {
             /** @var Model $modelInstance */
-            $modelInstance = $classReflection->getNativeReflection()->newInstanceWithoutConstructor();
+            $modelInstance = $classReflectionOrTable->getNativeReflection()->newInstanceWithoutConstructor();
         } catch (ReflectionException) {
             return false;
         }
@@ -122,7 +132,10 @@ class ModelPropertyHelper
                 if ($column->options === null || count($column->options) < 1) {
                     $readableType = $writableType = new StringType();
                 } else {
-                    $readableType = $writableType = $this->stringResolver->resolve('\'' . implode('\'|\'', $column->options) . '\'');
+                    $readableType = $writableType = TypeCombinator::union(...array_map(
+                        static fn ($option) => new ConstantStringType($option),
+                        $column->options,
+                    ));
                 }
             } else {
                 $readableType = $this->stringResolver->resolve($column->readableType);

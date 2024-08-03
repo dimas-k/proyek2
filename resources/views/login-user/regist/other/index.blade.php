@@ -49,15 +49,6 @@
                     </div>
                     @enderror
                   </div>
-                  <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="username">KTP</label>
-                    <input type="file" id="username" name="ktp" class="form-control form-control @error('ktp') is-invalid @enderror" required required value="{{ old('ktp') }}">
-                    @error('ktp')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                    @enderror
-                  </div>
     
                   <div class="form-outline form-white mb-4">
                     <label class="form-label" for="pass">Alamat</label>

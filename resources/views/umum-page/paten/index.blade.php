@@ -319,15 +319,7 @@
         </div>
     </div>
 
-    <footer class="text-center text-lg-star bg-body-white shadow-lg mt-5">
-        <!-- Copyright -->
-        <div class="text-center p-3">
-            © 2023 Copyright:
-            <a class="text-body link-underline link-underline-opacity-0" href="https://polindra.ac.id/">Politeknik
-                Negeri Indramayu</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+    @include('layout.footer')
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

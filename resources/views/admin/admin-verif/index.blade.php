@@ -59,7 +59,8 @@
                         {{-- <a href={{ Route('admin.tambah') }} class="btn btn-success mb-2"><i
                                 class="bi bi-plus-circle me-1"></i>Tambah Admin</a> --}}
                         <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"><i class="bi bi-plus-circle me-1"></i>Tambah Verifikator</button>
+                            data-bs-target="#exampleModal"><i class="bi bi-plus-circle me-1"></i>Tambah
+                            Verifikator</button>
                         <div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="static"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable">
@@ -74,54 +75,93 @@
                                             @csrf
                                             <div class="form-outline form-white mb-4">
                                                 <label class="form-label" for="">Nama Lengkap</label>
-                                                <input type="text" id="" class="form-control" name="nama_lengkap" />
+                                                <input type="text" id=""
+                                                    class="form-control @error('nama_lengkap') is-invalid @enderror"
+                                                    name="nama_lengkap" value="{{ old('nama_lengkap') }}" />
+                                                @error('nama_lengkap')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div> 
+                                                @enderror
                                             </div>
                                             <div class="form-outline form-white mb-4">
                                                 <label class="form-label" for="">No Telepon</label>
-                                                <input type="number" id="" class="form-control" name="no_telepon"/>
+                                                <input type="number" id="" class="form-control @error('no_telepon') is-invalid @enderror"
+                                                    name="no_telepon" value="{{ old('no_telepon') }}"/>
+                                                    @error('no_telepon')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div> 
+                                                @enderror
                                             </div>
                                             <div class="form-outline form-white mb-4">
                                                 <label class="form-label" for="">Email</label>
-                                                <input type="email" id="" class="form-control" name="email"/>
+                                                <input type="email" id="" class="form-control @error('email') is-invalid @enderror"
+                                                    name="email" value="{{ old('email') }}"/>
+                                                    @error('email')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div> 
+                                                @enderror
                                             </div>
                                             <div class="form-outline form-white mb-4">
                                                 <label class="form-label" for="">Jabatan</label>
-                                                <input type="text" id="" class="form-control" name="jabatan" />
+                                                <input type="text" id="" class="form-control @error('jabatan') is-invalid @enderror"
+                                                    name="jabatan" value="{{ old('jabatan') }}"/>
+                                                @error('jabatan')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div> 
+                                                @enderror
                                             </div>
                                             <div class="form-outline form-white mb-4">
                                                 <label class="form-label" for="">Nip</label>
-                                                <input type="number" id="" class="form-control" name="nip" />
+                                                <input type="number" id="" class="form-control @error('nip') is-invalid @enderror"
+                                                    name="nip" value="{{ old('nip') }}"/>
+                                                @error('nip')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div> 
+                                                @enderror
                                             </div>
                                             <div class="form-outline form-white mb-4">
                                                 <label class="form-label" for="">Alamat</label>
-                                                <input type="text" id="" class="form-control" name="alamat"/>
+                                                <input type="text" id="" class="form-control @error('alamat') is-invalid @enderror"
+                                                    name="alamat" value="{{ old('alamat') }}"/>
+                                                @error('alamat')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div> 
+                                                @enderror
                                             </div>
                                             <div class="form-outline form-white mb-4">
                                                 <label class="form-label" for="">Username</label>
-                                                <input type="text" id="" class="form-control @error('username') is-invalid @enderror" name="username"/>
+                                                <input type="text" id=""
+                                                    class="form-control @error('username') is-invalid @enderror"
+                                                    name="username" value="{{ old('username') }}"/>
                                                 @error('username')
                                                     <div class="invalid-feedback">
-                                                      {{ $message }}
+                                                        {{ $message }}
                                                     </div>
-                                                    @enderror
+                                                @enderror
                                             </div>
                                             <div class="form-outline form-white mb-4">
                                                 <label class="form-label" for="typePasswordX">Password</label>
-                                                <input type="Password" id="" class="form-control @error('password') is-invalid @enderror" name="password"/>
+                                                <input type="Password" id=""
+                                                    class="form-control @error('password') is-invalid @enderror"
+                                                    name="password" />
                                                 @error('password')
                                                     <div class="invalid-feedback">
-                                                      {{ $message }}
+                                                        {{ $message }}
                                                     </div>
-                                                    @enderror
+                                                @enderror
                                             </div>
-                                            <input type="text" value="Checker" name="role" class="form-control"
-                                                hidden>
+                                            <input type="text" value="Checker" name="role"
+                                                class="form-control" hidden>
                                             <div class="modal-footer">
-                                                <button type="button"
-                                                    class="btn btn-outline-secondary"
+                                                <button type="button" class="btn btn-outline-secondary"
                                                     data-bs-dismiss="modal">Batal</button>
-                                                <button type="submit"
-                                                    class="btn btn-primary">Tambah</button>
+                                                <button type="submit" class="btn btn-primary">Tambah</button>
                                             </div>
                                         </form>
                                     </div>
@@ -129,7 +169,8 @@
                             </div>
                         </div>
                     </div>
-                    <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-3"></i>Daftar Verifikator</h3>
+                    <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-3"></i>Daftar Verifikator
+                    </h3>
                     <table class="table table-hover font-family-Kokoro">
                         <thead>
                             <tr>
@@ -152,7 +193,7 @@
                                     <td>{{ $a->no_telepon }}</td>
                                     <td>{{ $a->username }}</td>
                                     <td><a href={{ Route('lihat.verif', $a->id) }} class="btn btn-info"><i
-                                        class="bi bi-eye"></i></a>
+                                                class="bi bi-eye"></i></a>
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal{{ $a->id }}">
                                             <i class="bi bi-pencil"></i>
@@ -201,8 +242,7 @@
                                                                     value="{{ $a->jabatan }}">
                                                             </div>
                                                             <div class="form-outline form-white mb-3">
-                                                                <label class="form-label"
-                                                                    for="">nip</label>
+                                                                <label class="form-label" for="">nip</label>
                                                                 <input type="number" id=""
                                                                     class="form-control" name="nip"
                                                                     value="{{ $a->nip }}">
@@ -214,7 +254,7 @@
                                                                     class="form-control" name="alamat"
                                                                     value="{{ $a->alamat }}">
                                                             </div>
-                                                            
+
                                                             <div class="form-outline form-white mb-3">
                                                                 <label class="form-label"
                                                                     for="">Username</label>

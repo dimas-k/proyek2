@@ -100,14 +100,13 @@ class AdminController extends Controller
             'email' => 'required|email',
             'username'=>'required|min:3',
             'password'=> 'required|max:10',
-            'ktp'=>'required|mimes:pdf|max:2028',
+           
         ]);
         $user = new User;
         $user->nama_lengkap = $request->nama_lengkap;
         $user->no_telepon = $request->no_telepon;
         $user->email = $request->email;
         $user->alamat = $request->alamat;
-        $user->ktp = $request->file('ktp')->store('dokumen_user');
         $user->kerjaan = $request->kerjaan;
         $user->jabatan = $request->jabatan;
         $user->nip = $request->nip;
@@ -158,14 +157,13 @@ class AdminController extends Controller
             'email' => 'required|email',
             'username'=>'required|min:3',
             'password'=> 'required|max:10',
-            'ktp'=>'required|mimes:pdf|max:2028',
+            
         ]);
         $user = new User;
         $user->nama_lengkap = $request->nama_lengkap;
         $user->no_telepon = $request->no_telepon;
         $user->email = $request->email;
         $user->alamat = $request->alamat;
-        $user->ktp = $request->file('ktp')->store('dokumen_user');
         $user->kerjaan = $request->kerjaan;
         $user->jabatan = $request->jabatan;
         $user->nip = $request->nip;

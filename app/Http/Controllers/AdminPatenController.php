@@ -164,7 +164,7 @@ class AdminPatenController extends Controller
      */
     public function destroy(string $id)
     {
-        Paten::findOrFail($id)->delete();
-        return redirect()->back();
+        Paten::with('cek')->findOrFail($id)->delete();
+        return redirect()->back()->with('success','Data paten berhasil dihapus');
     }
 }

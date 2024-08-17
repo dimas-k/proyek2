@@ -33,8 +33,8 @@
                         Tentang SIKI
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item fs-6 fw-normal font-family-Lucida Sans col-xxl-0 m-0 px-3 py-2" href="#">Visi dan Misi SIKI POLINDRA</a></li>
-                        <li><a class="dropdown-item fs-6 fw-normal font-family-Lucida Sans col-xxl-0 m-0 px-3 py-2" href="#">Struktur Organisasi</a></li>
+                        <li><a class="dropdown-item fs-6 fw-normal font-family-Lucida Sans col-xxl-0 m-0 px-3 py-2" href="/visi-misi">Visi dan Misi SIKI POLINDRA</a></li>
+                        <li><a class="dropdown-item fs-6 fw-normal font-family-Lucida Sans col-xxl-0 m-0 px-3 py-2" href="/struktur-organisasi">Struktur Organisasi</a></li>
                         <li><a class="dropdown-item fs-6 fw-normal font-family-Lucida Sans col-xxl-0 m-0 px-3 py-2" href="#">Panduan Pengajuan</a></li>
                         <li><a class="dropdown-item fs-6 fw-normal font-family-Lucida Sans col-xxl-0 m-0 px-3 py-2" href="/disclaimer">Disclaimer</a></li>
                     </ul>

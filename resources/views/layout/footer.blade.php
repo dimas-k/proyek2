@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-secondary-subtle text-muted">
+<footer class="text-center text-lg-start bg-secondary-subtle text-muted shadow-inner">
     <!-- Section: Social media -->
     {{-- <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <!-- Left -->
@@ -45,7 +45,7 @@
                         POLITEKNIK NEGERI INDRAMAYU
                     </h6>
                     <p>
-                        Politeknik Negeri Indramayu Adalah Perguruan Tinggi Poliktenik Yang Ada di Indramayu
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, at porro. Voluptatem nobis quia distinctio libero voluptatibus in eveniet facere quos ipsam, assumenda nisi doloribus quaerat praesentium, qui et eligendi.
                     </p>
                 </div>
                 <!-- Grid column -->
@@ -54,7 +54,7 @@
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4">
-                        Products
+                        Link Populer
                     </h6>
                     <p>
                         <a href="#!" class="text-reset">Angular</a>
@@ -75,10 +75,10 @@
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4">
-                        Useful links
+                        Link terkait
                     </h6>
                     <p>
-                        <a href="#!" class="text-reset">Pricing</a>
+                        <a href="https://p3m.polindra.ac.id/" class="text-reset" target="_blank">P3M POLINDRA</a>
                     </p>
                     <p>
                         <a href="#!" class="text-reset">Settings</a>

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href={{ asset('assets/css/index.css') }}>
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
     <title>SIKI POLINDRA | Paten</title>
 </head>
@@ -50,6 +51,36 @@
                                     <input type="search"
                                         class="form-control form-control-sm fw-normal font-family-Kokoro" id=""
                                         name="cari_nama">
+                                </div>
+                            </div>
+                            <div class="mb-1 row">
+                                <label for=""
+                                    class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Jurusan</label>
+                                <div class="col-xxl-10">
+                                    <select class="form-select form-select-sm" aria-label="Small select example" name="cari_jurusan">
+                                        <option >Pilih Jurusan</option>
+                                        <option value="Teknik mesin">Teknik Mesin</option>
+                                        <option value="">Teknik Pendingin</option>
+                                        <option value="Teknik Informatika">Teknik Informatika</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-1 row">
+                                <label for=""
+                                    class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Prodi</label>
+                                <div class="col-xxl-10">
+                                    <select class="form-select form-select-sm" aria-label="Small select example" name="cari_prodi">
+                                        <option selected>Pilih Prodi</option>
+                                            <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
+                                            <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat Lunak</option>
+                                            <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi Kota Cerdas
+                                            </option>
+                                            <option value="D3 Tenknik Mesin">D3 Tenknik Mesin</option>
+                                            <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur</option>
+                                            <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan Tata Udara</option>
+                                            <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi Kontrol</option>
+                                            <option value="D3 Keperawatan">D3 Keperawan</option>
+                                    </select>
                                 </div>
                             </div>
                             <button type="submit"
@@ -218,7 +249,8 @@
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="align-self-center">
-                                    <i class="bi bi-question-square float-start me-2 pe-5" style="font-size: 50px;"></i>
+                                    <i class="bi bi-question-square float-start me-2 pe-5"
+                                        style="font-size: 50px;"></i>
                                 </div>
                                 <div class="align-self-center">
                                     <h3 class=" d-flex justify-content-end">{{ $mvdov }}
@@ -268,6 +300,46 @@
                 </div>
             </div>
         </div>
+        <hr class="border border-black border-2 opacity-75 rounded">
+        <div class="row ms-5">
+            <div class="d-flex justify-content-center">
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow-sm p-1" style="width: 14rem;">
+                        <a href="/paten/list/perorangan/"
+                            class="link-dark link-underline link-underline-opacity-0 text-center" id="perorangan">
+                            <div class="card-body">
+                                <i class="bi bi-person-circle" style="font-size: 30px;"></i> <br>
+                                <h5>Pegawai</h5>
+                            </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow-sm p-1" style="width: 14rem;">
+                        <a href="/paten/list/jurusan/"
+                            class="link-dark link-underline link-underline-opacity-0 text-center" id="perorangan">
+                            <div class="card-body">
+                                <i class="bi bi-bank" style="font-size: 30px;"></i> <br>
+                                <h5>Jurusan</h5>
+                            </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow-sm p-1" style="width: 14rem;">
+                        <a href="/paten/list/prodi/"
+                            class="link-dark link-underline link-underline-opacity-0 text-center">
+                            <div class="card-body">
+                                <i class="bi bi-bank" style="font-size: 30px;"></i> <br>
+                                <h5>Prodi</h5>
+                            </div>
+                        </a>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
     <div class="container p-4">
@@ -279,6 +351,8 @@
                     <th scope="col">Nama lengkap</th>
                     <th scope="col">Jenis Paten</th>
                     <th scope="col">Judul paten</th>
+                    <th scope="col">Jurusan</th>
+                    <th scope="col">Prodi</th>
                     <th scope="col">Tanggal pengajuan</th>
                     <th scope="col">Status paten</th>
                 </tr>
@@ -290,6 +364,8 @@
                         <td>{{ $p->nama_lengkap }}</td>
                         <td>{{ $p->jenis_paten }}</td>
                         <td>{{ $p->judul_paten }}</td>
+                        <td>{{ $p->jurusan }}</td>
+                        <td>{{ $p->prodi }}</td>
                         <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y') }}</td>
                         <td>{{ $p->status }}</td>
                     </tr>

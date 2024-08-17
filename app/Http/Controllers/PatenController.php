@@ -73,7 +73,9 @@ class PatenController extends Controller
     public function cari(Request $request){
         $carijudul = $request->input('cari_judul');
         $carinama = $request->input('cari_nama');
-        $paten = Paten::where('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //yang bener
+        $carijurusan = $request->input('cari_jurusan');
+        $cariprodi = $request->input('cari_prodi');
+        $paten1 = Paten::where('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->orWhere('jurusan','LIKE',"%".$carijurusan."%")->orWhere('prodi','LIKE',"%".$cariprodi."%")->paginate(5); //yang bener
         // $paten = DB::table('paten')->whereRaw('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //penggunaan raw queri
 
         $hitung = Paten:: all()->count();
@@ -87,8 +89,75 @@ class PatenController extends Controller
         $mts = Paten::where('status', 'Menunggu Tanggapan Substansif')->count();
         $catat = Paten::where('status', 'Diberi')->count();
         $tolak = Paten::where('status', 'Ditolak')->count();
+        $mvdov = Paten::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->count();
 
-        return view('umum-page.paten.index', compact('paten','pf','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung'));
+        $paten = Paten::where('institusi')->count();
+        $patenPF = Paten::where('status', 'Pemeriksaan formalitas')->count();
+        $patenMTF = Paten::where('status', 'Menunggu tanggapan formalitas')->count();
+        $patenMP = Paten::where('status', 'Masa pengumuman')->count();
+        $patenMPS = Paten::where('status', 'Menunggu pembayaran substansif')->count();
+        $patenSTAW = Paten::where('status', 'Substansif tahap awal')->count();
+        $patenSTL = Paten::where('status', 'Substansif tahap lanjut')->count();
+        $patenSTAK = Paten::where('status', 'Substansif tahap akhir')->count();
+        $patenMTS = Paten::where('status', 'Menunggu tanggapan substansif')->count();
+        $patenDI = Paten::where('status', 'Diberi')->count();
+        $patenDK = Paten::where('status', 'Ditolak')->count();
+        
+        $paten2024 = Paten::whereYear('tanggal_permohonan','2024')->count();
+        $hc2024 = HakCipta::whereYear('tanggal_permohonan','2024')->count();
+        $di2024 = DesainIndustri::whereYear('tanggal_permohonan','2024')->count();
+        $gabungKi2024 = $paten2024 + $di2024 + $hc2024 ;
+
+        $paten2025 = Paten::whereYear('tanggal_permohonan','2025')->count();
+        $hc2025 = HakCipta::whereYear('tanggal_permohonan','2025')->count();
+        $di2025 = DesainIndustri::whereYear('tanggal_permohonan','2025')->count();
+        $gabungKi2025 = $paten2025 + $di2025 + $hc2025 ;
+
+        $paten2026 = Paten::whereYear('tanggal_permohonan','2026')->count();
+        $hc2026 = HakCipta::whereYear('tanggal_permohonan','2026')->count();
+        $di2026 = DesainIndustri::whereYear('tanggal_permohonan','2026')->count();
+        $gabungKi2026 = $paten2026 + $di2026 + $hc2026 ;
+
+        $paten2027 = Paten::whereYear('tanggal_permohonan','2027')->count();
+        $hc2027 = HakCipta::whereYear('tanggal_permohonan','2027')->count();
+        $di2027 = DesainIndustri::whereYear('tanggal_permohonan','2027')->count();
+        $gabungKi2027 = $paten2027 + $di2027 + $hc2027;
+
+        return view('umum-page.paten.index', compact('paten1','pf','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','mvdov','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','paten2024','paten2025','paten2026','paten2027','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027','paten2024'));
+    }
+    public function orang()
+    {
+        $orang = Paten::orderBy('nama_lengkap','asc')->get();
+        
+        return view('umum-page.paten.perorangan.index', compact('orang'));
+    }
+    public function cariOrang(Request $request)
+    {
+        $cario = $request->input('nama');
+        $nama = Paten::orderBy('nama_lengkap','asc')->get();
+        $orang = Paten::where('nama_lengkap','LIKE',"%".$cario."%")->orderBy('nama_lengkap', 'asc')->paginate(15);
+        return view('umum-page.paten.perorangan.cari', compact('orang','nama'));
+    }
+    public function jurusan()
+    {
+        return view('umum-page.paten.jurusan.index');
+    }
+    public function cariJurusan(Request $request)
+    {
+        $carij = $request->input('jurusan');
+        $jurusan = Paten::where('jurusan','LIKE',"%".$carij."%")->paginate(15);
+        return view('umum-page.paten.jurusan.cari', compact('jurusan'));
+    }
+    public function prodi()
+    {
+        return view('umum-page.paten.prodi.index');
+    }
+    public function cariProdi(Request $request)
+    {
+        $cariprodi = $request->input('prodi');
+        $prodi = Paten::where('prodi','LIKE',"%".$cariprodi."%")->paginate(15);
+
+        return view('umum-page.paten.prodi.cari', compact('prodi'));
     }
 
     public function pemeriksaanFormalitas()

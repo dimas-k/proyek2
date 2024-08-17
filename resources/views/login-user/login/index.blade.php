@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container mt-4">
-        <img class="float-start mt-2 me-1" src={{ asset('assets/polindra2.jpg') }} alt="">
+        <img class="float-start mt-2 me-1" src={{ asset('assets/polindra21.png') }} alt="">
         <p class="fs-6 fw-normal font-family-Kokoro">Sistem Informasi Kekayaan Intelektual<br>Politeknik Negeri Indramayu</p>
     </div>
     <br>

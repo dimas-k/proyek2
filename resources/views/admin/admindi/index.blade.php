@@ -238,9 +238,9 @@
                                         <td>{{ \Carbon\Carbon::parse($di->tanggal_permohonan)->format('d-m-Y ') }}</td>
                                         <td>{{ $di->status }}</td>
                                         <td>
-                                            @if ($di->cekhc?->cek_data == 'Benar')
+                                            @if ($di->cekhc?->cek_data == 'Valid')
                                                 <i class="bi bi-check-circle-fill" style="color: green"></i>
-                                            @elseif($di->cekhc?->cek_data == 'Salah')
+                                            @elseif($di->cekhc?->cek_data == 'Tidak Valid')
                                                 <i class="bi bi-times-circle" style="color: red"></i>
                                             @else
                                                 <i class="bi bi-dash-circle-fill"

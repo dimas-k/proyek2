@@ -88,6 +88,39 @@ class DesainIndustriController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+     public function orang()
+     {
+        $orang = DesainIndustri::orderBy('nama_lengkap','asc')->get();
+        return view('umum-page.Desainindustri.perorangan.index', compact('orang'));
+     }
+     public function cariOrang(Request $request)
+     {
+        $cario = $request->input('nama');
+        $nama = DesainIndustri::orderBy('nama_lengkap','asc')->get();
+        $orang = DesainIndustri::where('nama_lengkap','LIKE',"%".$cario."%")->orderBy('nama_lengkap', 'asc')->paginate(15);
+        return view('umum-page.Desainindustri.perorangan.cari', compact('nama', 'orang'));
+     }
+     public function jurusan()
+     {
+        return view('umum-page.Desainindustri.jurusan.index');
+     }
+     public function cariJurusan(Request $request)
+     {
+        $carij = $request->input('jurusan');
+        $jurusan = DesainIndustri::where('jurusan','LIKE',"%".$carij."%")->paginate(15);
+        return view('umum-page.Desainindustri.jurusan.cari', compact('jurusan'));
+    }
+    public function prodi()
+    {
+        return view('umum-page.Desainindustri.prodi.index');
+    }
+    public function cariProdi(Request $request)
+    {
+        $cariprodi = $request->input('prodi');
+        $prodi = DesainIndustri::where('prodi','LIKE',"%".$cariprodi."%")->paginate(15);
+        return view('umum-page.Desainindustri.prodi.cari', compact('prodi'));
+    }
     public function pengajuan()
     {
         return view('pengajuandi.index');

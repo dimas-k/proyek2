@@ -37,7 +37,7 @@
                             @csrf
                             <div class="mb-1 row">
                                 <label for="staticEmail"
-                                    class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Judul Paten</label>
+                                    class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Judul Desain</label>
                                 <div class="col-xxl-10">
                                     <input type="search"
                                         class="form-control form-control-sm fw-normal font-family-Kokoro">
@@ -172,6 +172,45 @@
                 </div>
             </div>
         </div>
+        <hr class="border border-black border-2 opacity-75 rounded">
+        <div class="row ms-5">
+            <div class="d-flex justify-content-center">
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow-sm p-1" style="width: 14rem;">
+                        <a href="/desain-industri/list/pegawai"
+                            class="link-dark link-underline link-underline-opacity-0 text-center" id="perorangan">
+                            <div class="card-body">
+                                <i class="bi bi-person-circle" style="font-size: 30px;"></i> <br>
+                                <h5>Pegawai</h5>
+                            </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow-sm p-1" style="width: 14rem;">
+                        <a href="/desain-industri/list/jurusan"
+                            class="link-dark link-underline link-underline-opacity-0 text-center" id="perorangan">
+                            <div class="card-body">
+                                <i class="bi bi-bank" style="font-size: 30px;"></i> <br>
+                                <h5>Jurusan</h5>
+                            </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow-sm p-1" style="width: 14rem;">
+                        <a href="/desain-industri/list/prodi"
+                            class="link-dark link-underline link-underline-opacity-0 text-center" id="perorangan">
+                            <div class="card-body">
+                                <i class="bi bi-bank" style="font-size: 30px;"></i> <br>
+                                <h5>Prodi</h5>
+                            </div>
+                        </a>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container p-4">
         <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-2"></i>Daftar Desain Industri</h3>
@@ -226,6 +265,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
     
     @include('layout.footer')

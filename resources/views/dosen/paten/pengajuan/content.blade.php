@@ -164,7 +164,7 @@
                                             <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat Lunak</option>
                                             <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi Kota Cerdas
                                             </option>
-                                            <option value="D3 Tenknik Mesin">D3 Tenknik Mesin</option>
+                                            <option value="D3 Teknik Mesin">D3 Teknik Mesin</option>
                                             <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur</option>
                                             <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan Tata Udara</option>
                                             <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi Kontrol</option>

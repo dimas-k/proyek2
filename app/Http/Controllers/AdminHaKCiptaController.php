@@ -103,7 +103,7 @@ class AdminHaKCiptaController extends Controller
      */
     public function destroy(string $id)
     {
-        HakCipta::findOrFail($id)->delete();
-        return redirect()->back();
+        HakCipta::with('cehc')->findOrFail($id)->delete();
+        return redirect()->back()->with('success','Data hak cipta berhasil dihapus');
     }
 }

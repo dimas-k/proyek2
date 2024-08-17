@@ -75,7 +75,7 @@ class PatenController extends Controller
         $carinama = $request->input('cari_nama');
         $carijurusan = $request->input('cari_jurusan');
         $cariprodi = $request->input('cari_prodi');
-        $paten1 = Paten::where('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->orWhere('jurusan','LIKE',"%".$carijurusan."%")->orWhere('prodi','LIKE',"%".$cariprodi."%")->paginate(5); //yang bener
+        $paten1 = Paten::where('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //yang bener
         // $paten = DB::table('paten')->whereRaw('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //penggunaan raw queri
 
         $hitung = Paten:: all()->count();

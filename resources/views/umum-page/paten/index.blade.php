@@ -53,36 +53,7 @@
                                         name="cari_nama">
                                 </div>
                             </div>
-                            <div class="mb-1 row">
-                                <label for=""
-                                    class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Jurusan</label>
-                                <div class="col-xxl-10">
-                                    <select class="form-select form-select-sm" aria-label="Small select example" name="cari_jurusan">
-                                        <option >Pilih Jurusan</option>
-                                        <option value="Teknik mesin">Teknik Mesin</option>
-                                        <option value="">Teknik Pendingin</option>
-                                        <option value="Teknik Informatika">Teknik Informatika</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mb-1 row">
-                                <label for=""
-                                    class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Prodi</label>
-                                <div class="col-xxl-10">
-                                    <select class="form-select form-select-sm" aria-label="Small select example" name="cari_prodi">
-                                        <option selected>Pilih Prodi</option>
-                                            <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
-                                            <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat Lunak</option>
-                                            <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi Kota Cerdas
-                                            </option>
-                                            <option value="D3 Tenknik Mesin">D3 Tenknik Mesin</option>
-                                            <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur</option>
-                                            <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan Tata Udara</option>
-                                            <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi Kontrol</option>
-                                            <option value="D3 Keperawatan">D3 Keperawan</option>
-                                    </select>
-                                </div>
-                            </div>
+                            
                             <button type="submit"
                                 class="btn btn-primary mb-2 mt-3 fw-normal font-family-Kokoro">Cari</button>
                         </form>

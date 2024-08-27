@@ -255,10 +255,10 @@
                                                 <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y ') }}</td>
                                                 <td>{{ $p->status }}</td>
                                                 <td>
-                                                    @if ($p->cek?->cek_data == 'Benar')
+                                                    @if ($p->cek?->cek_data == 'Valid')
                                                         <i class="fa fa-check-circle" style="color: green"
                                                             data-bs-toggle="tooltip"></i>
-                                                    @elseif($p->cek?->cek_data == 'Salah')
+                                                    @elseif($p->cek?->cek_data == 'Tidak Valid')
                                                         <i class="fa fa-times-circle" style="color: red"
                                                             data-bs-toggle="tooltip"></i>
                                                     @else

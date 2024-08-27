@@ -72,10 +72,10 @@
                                 <td >: <a href={{ asset('storage/' . $dsn->ktp) }} class=""
                                     target="_blank">Lihat KTP</a></td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>Jabatan</th>
                                 <td>: {{ $dsn->jabatan }}</td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>NIP</th>
                                 <td>: {{ $dsn->nip }}</td>

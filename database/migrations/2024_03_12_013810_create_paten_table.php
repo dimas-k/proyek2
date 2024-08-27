@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('kewarganegaraan');
             $table->integer('kode_pos');
             $table->string('institusi');
-            $table->string('jurusan')->nullable();
-            $table->string('prodi')->nullable();
+            $table->string('jurusan')->default('-');
+            $table->string('prodi')->default('-');
             $table->string('jenis_paten');
             $table->string('judul_paten');
             $table->string('abstrak_paten');

@@ -47,6 +47,9 @@ Route::get('/visi-misi', function () {
 Route::get('/struktur-organisasi', function () {
     return view('umum-page.struktur.index');
 });
+Route::get('/panduan', function () {
+    return view('umum-page.panduan.index');
+});
 
 Route::get('/pengajuan-paten', [PatenController::class, 'showPengajuan']);
 Route::post('/simpanpaten', [PatenController::class, 'store']);

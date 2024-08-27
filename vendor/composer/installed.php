@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '8d5fe43de86d2ecd2ae263cf3f4bd605fa73df17',
+        'reference' => '562b2f928320c41d2aa0cbca3f2bf95a9af1ce50',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -25,6 +25,15 @@
             'reference' => 'd58465084e24dd3b3d587039a27e934ff1c02304',
             'type' => 'library',
             'install_path' => __DIR__ . '/../asantibanez/livewire-charts',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'biscolab/laravel-recaptcha' => array(
+            'pretty_version' => 'v6.1.0',
+            'version' => '6.1.0.0',
+            'reference' => '440fc617cba9f39aab7fda5d7697b76a55286e31',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../biscolab/laravel-recaptcha',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -436,7 +445,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '8d5fe43de86d2ecd2ae263cf3f4bd605fa73df17',
+            'reference' => '562b2f928320c41d2aa0cbca3f2bf95a9af1ce50',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -856,8 +865,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '3.0.0',
+                0 => '3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(

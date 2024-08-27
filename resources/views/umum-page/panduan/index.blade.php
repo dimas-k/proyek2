@@ -9,7 +9,7 @@
     <link rel="stylesheet" href={{ asset('assets/css/index.css') }}>
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
     <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
-    <title>SIKI POLINDRA || Struktur SIKI POLINDRA</title>
+    <title>SIKI POLINDRA || Panduan SIKI POLINDRA</title>
 </head>
 
 <body>
@@ -18,11 +18,18 @@
     {{-- end of nav --}}
 
     <div class="container text-center">
-        <span class="">Struktur Organisasi</span>
-        <h2 class="mb-2">SIKI POLINDRA</h2>
+        <div class="text-center">
+            <span class="">Panduan</span>
+            <h2 class="mb-2">KI POLINDRA</h2>
+        </div>
         <br>
-        <img class="img-fluid" src="{{ asset('assets/struktur.png') }}" alt="" width="800px" style="align-self: center">
+        @include('umum-page.panduan.list')
+        <div class="text-start mt-2">
+            <a class="link-underline link-underline-opacity-0" href="https://hki.pens.ac.id/pdf/modul.pdf" target="_blank"><i class="bi bi-file-earmark-pdf me-2"></i>Download panduan Kekayaan Intelektual</a>
+        </div>
     </div>
+    <br>
+    <br>
 
     {{-- footer --}}
     @include('layout.footer')

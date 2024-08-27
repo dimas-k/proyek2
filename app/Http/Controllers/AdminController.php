@@ -108,7 +108,7 @@ class AdminController extends Controller
         $user->email = $request->email;
         $user->alamat = $request->alamat;
         $user->kerjaan = $request->kerjaan;
-        $user->jabatan = $request->jabatan;
+        // $user->jabatan = $request->jabatan;
         $user->nip = $request->nip;
         $user->username = $request->username;
         $user->password = Hash::make($request->password);
@@ -131,7 +131,7 @@ class AdminController extends Controller
         $user->email = $request->email;
         $user->alamat = $request->alamat;
         $user->ktp = $request->file('ktp')->store('dokumen_user');
-        $user->kerjaan = $request->kerjaan;
+        // $user->kerjaan = $request->kerjaan;
         $user->jabatan = $request->jabatan;
         $user->nip = $request->nip;
         $user->username = $request->username;

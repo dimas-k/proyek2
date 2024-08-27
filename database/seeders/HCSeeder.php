@@ -15,7 +15,7 @@ class HCSeeder extends Seeder
     {
         DB::table('hak_cipta')->insert([
             [
-            'user_id' => 3,
+            'user_id' => 8,
             'nama_lengkap' => "Suhendi",
             'alamat' => "Jatibarang Blok Gudang",
             'no_telepon' => "081214627146",
@@ -38,7 +38,7 @@ class HCSeeder extends Seeder
             'sertifikat_hakcipta' => "Suhendi.pdf",
             ],
             [
-            'user_id' => 3,
+            'user_id' => 8,
             'nama_lengkap' => "Suhendi",
             'alamat' => "Jatibarang Blok Gudang",
             'no_telepon' => "081214627146",
@@ -61,7 +61,7 @@ class HCSeeder extends Seeder
             'sertifikat_hakcipta' => "Suhendi.pdf",
             ],
             [
-            'user_id' => 3,
+            'user_id' => 8,
             'nama_lengkap' => "Suhendi",
             'alamat' => "Jatibarang Blok Gudang",
             'no_telepon' => "081214627146",
@@ -84,7 +84,7 @@ class HCSeeder extends Seeder
             'sertifikat_hakcipta' => "Suhendi.pdf",
             ],
             [
-            'user_id' => 3,
+            'user_id' => 8,
             'nama_lengkap' => "Suhendi",
             'alamat' => "Jatibarang Blok Gudang",
             'no_telepon' => "081214627146",
@@ -107,7 +107,7 @@ class HCSeeder extends Seeder
             'sertifikat_hakcipta' => "Suhendi.pdf",
             ],
             [
-            'user_id' => 3,
+            'user_id' => 8,
             'nama_lengkap' => "Suhendi",
             'alamat' => "Jatibarang Blok Gudang",
             'no_telepon' => "081214627146",
@@ -130,7 +130,7 @@ class HCSeeder extends Seeder
             'sertifikat_hakcipta' => "Suhendi.pdf",
             ],
             [
-            'user_id' => 3,
+            'user_id' => 8,
             'nama_lengkap' => "Suhendi",
             'alamat' => "Jatibarang Blok Gudang",
             'no_telepon' => "081214627146",

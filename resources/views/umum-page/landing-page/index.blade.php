@@ -14,6 +14,113 @@
 </head>
 
 <body>
+    <style>
+        .counter {
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            width: 210px;
+            min-height: 246px;
+            padding: 25px 0 0;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .counter:after {
+            content: '';
+            background: linear-gradient(to right, #eff0f2, #fefefe);
+            height: 152px;
+            width: 152px;
+            border-radius: 15px;
+            border: 3px solid #fff;
+            box-shadow: 5px 0 8px rgba(0, 0, 0, 0.2);
+            transform: translateX(-50%) rotate(45deg);
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            z-index: -1;
+        }
+
+        .counter .counter-value {
+            background: #fe8c00;
+            font-size: 25px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            width: 100%;
+            padding: 10px 0 6px;
+            border-radius: 10px;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6), 0 0 0 2px #fff;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        .counter .counter-icon {
+            background: linear-gradient(to right, #fe8c00, #f83600);
+            font-size: 30px;
+            line-height: 60px;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .counter h3 {
+            color: #f83600;
+            font-size: 17px;
+            font-weight: 500;
+            text-transform: capitalize;
+            line-height: 22px;
+            padding: 0 30px;
+            margin: 0 0 15px;
+        }
+
+        .counter.green .counter-value {
+            background: #01c700;
+        }
+
+        .counter.green .counter-icon {
+            background: linear-gradient(to right, #01c700, #019b01);
+        }
+
+        .counter.green h3 {
+            color: #019b01;
+        }
+
+        .counter.blue .counter-value {
+            background: #28a9e2;
+        }
+
+        .counter.blue .counter-icon {
+            background: linear-gradient(to right, #28a9e2, #0057c5);
+        }
+
+        .counter.blue h3 {
+            color: #0057c5;
+        }
+
+        .counter.gray .counter-value {
+            background: #36474f;
+        }
+
+        .counter.gray .counter-icon {
+            background: linear-gradient(to right, #36474f, #0d0e10);
+        }
+
+        .counter.gray h3 {
+            color: #0d0e10;
+        }
+
+        @media screen and (max-width:990px) {
+            .counter {
+                margin-bottom: 40px;
+            }
+        }
+    </style>
     {{-- nav --}}
     @include('layout.nav')
     {{-- end nav --}}
@@ -57,7 +164,44 @@
                 </div>
             </div>
         </div> --}}
-        <div class="row">
+        <br> <br>
+        <div class="row justify-content-center">
+            <div class="col-md-3 col-sm-6">
+                <div class="counter">
+                    <div class="counter-content">
+                        <div class="counter-icon">
+                            <i class="bi bi-r-circle"></i>
+                        </div>
+                        <h3>Paten</h3>
+                    </div>
+                    <span class="counter-value">{{ $paten }}</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="counter green">
+                    <div class="counter-content">
+                        <div class="counter-icon">
+                            <i class="bi bi-c-circle"></i>
+                        </div>
+                        <h3>Hak Cipta</h3>
+                    </div>
+                    <span class="counter-value">{{ $hc }}</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="counter blue">
+                    <div class="counter-content">
+                        <div class="counter-icon">
+                            <i class="bi bi-gear-wide-connected"></i>
+                        </div>
+                        <h3>Desain Industri</h3>
+                    </div>
+                    <span class="counter-value">{{ $di }}</span>
+                </div>
+            </div>
+
+        </div>
+        {{-- <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="card">
                     <div class="card-header text-center">
@@ -117,10 +261,25 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     @include('layout.footer')
-    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.counter-value').each(function() {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 3500,
+                    easing: 'swing',
+                    step: function(now) {
+                        $(this).text(Math.ceil(now));
+                    }
+                });
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>
@@ -129,6 +288,7 @@
     </script>
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <Script>
         // Paten
         const paten2024 = document.getElementById('paten2024').value;
@@ -156,10 +316,10 @@
         const chartHKI = new Chart(chart, {
             type: 'bar',
             data: {
-                labels: ['2024','2025','2026','2027'],
+                labels: ['2024', '2025', '2026', '2027'],
                 datasets: [{
                         label: 'Paten',
-                        data: [paten2024,paten2025,paten2026,paten2027],
+                        data: [paten2024, paten2025, paten2026, paten2027],
                         backgroundColor: [
                             'rgba(255, 99, 132, 1)',
 
@@ -198,18 +358,17 @@
                 },
                 categoryPercentage: 0.5
             },
-            
+
         });
         //---
-            const p = new Chart(chartgabung, {
+        const p = new Chart(chartgabung, {
             type: 'line',
             data: {
                 labels: ['2024', '2025', '2026', '2027'],
                 datasets: [{
                     label: '',
-                    data: [gabungKi2024,gabungKi2025,gabungKi2026,gabungKi2027],
-                    borderColor:
-                    'rgba(54, 162, 235, 1)',
+                    data: [gabungKi2024, gabungKi2025, gabungKi2026, gabungKi2027],
+                    borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 2
                 }]
             },
@@ -219,9 +378,9 @@
                         display: false
                     }
                 },
-                elements:{
-                    line:{
-                        tension:0.5
+                elements: {
+                    line: {
+                        tension: 0.5
                     }
                 },
                 scales: {
@@ -258,11 +417,8 @@
             },
         });
     </script>
-    <script>
-
-    </script>
+    <script></script>
     </Script>
 </body>
 
 </html>
-

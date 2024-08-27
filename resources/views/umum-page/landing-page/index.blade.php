@@ -74,7 +74,7 @@
                                                     style="font-size: 50px;"></i>
                                             </div>
                                             <div class="align-self-center">
-                                                <h3 class="ms-4 d-flex justify-content-center">{{ $paten }}</h3>
+                                                <h3 class="ms-4 d-flex justify-content-center">{{ $contohpaten }}</h3>
                                                 <span class="ms-4 d-flex justify-content-center">Paten</span>
                                             </div>
                                         </div>

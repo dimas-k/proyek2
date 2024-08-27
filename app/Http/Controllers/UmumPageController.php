@@ -15,6 +15,8 @@ class UmumPageController extends Controller
         $di = DesainIndustri::all()->count();
         $hc = HakCipta::all()->count();
 
+        $contohpaten = Paten::where('status','Diberi')->count();
+
         $paten2024 = Paten::whereYear('tanggal_permohonan','2024')->count();
         $hc2024 = HakCipta::whereYear('tanggal_permohonan','2024')->count();
         $di2024 = DesainIndustri::whereYear('tanggal_permohonan','2024')->count();
@@ -37,6 +39,6 @@ class UmumPageController extends Controller
 
         $jurusan_Ti_Paten = Paten::where('jurusan','Teknik Informatika')->count();
 
-        return view('umum-page.landing-page.index',compact('paten', 'di', 'hc','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027','paten2024','paten2025','paten2026','paten2027','hc2024','hc2025','hc2026','hc2027','di2024','di2025','di2026','di2027'));
+        return view('umum-page.landing-page.index',compact('contohpaten','paten', 'di', 'hc','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027','paten2024','paten2025','paten2026','paten2027','hc2024','hc2025','hc2026','hc2027','di2024','di2025','di2026','di2027'));
     }
 }

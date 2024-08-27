@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('check_hc', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('hak_cipta_id')->constrained('hak_cipta');
+            $table->foreignId('hak_cipta_id')->constrained('hak_cipta')->onDelete('cascade');
             $table->enum('cek_data',['Valid','Tidak Valid','menunggu Pemeriksaan'])->default('Menunggu Pemeriksaan');
-            $table->string('keterangan')->default('Data Hak Cipta Belum DIcek');
+            $table->string('keterangan')->default('Data Hak Cipta Belum Dicek');
             $table->timestamps();
         });
     }

@@ -139,6 +139,45 @@
                 </div>
             </div>
         </div>
+        <hr class="border border-black border-2 opacity-75 rounded">
+        <div class="row ms-5">
+            <div class="d-flex justify-content-center">
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow-sm p-1" style="width: 14rem;">
+                        <a href="/hak-cipta/list/pegawai/"
+                            class="link-dark link-underline link-underline-opacity-0 text-center" id="perorangan">
+                            <div class="card-body">
+                                <i class="bi bi-person-circle" style="font-size: 30px;"></i> <br>
+                                <h5>Pegawai</h5>
+                            </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow-sm p-1" style="width: 14rem;">
+                        <a href="/hak-cipta/list/jurusan/"
+                            class="link-dark link-underline link-underline-opacity-0 text-center" id="perorangan">
+                            <div class="card-body">
+                                <i class="bi bi-bank" style="font-size: 30px;"></i> <br>
+                                <h5>Jurusan</h5>
+                            </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow-sm p-1" style="width: 14rem;">
+                        <a href="/hak-cipta/list/prodi"
+                            class="link-dark link-underline link-underline-opacity-0 text-center" id="perorangan">
+                            <div class="card-body">
+                                <i class="bi bi-bank" style="font-size: 30px;"></i> <br>
+                                <h5>Prodi</h5>
+                            </div>
+                        </a>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="container p-4">
         <h3 class="fw-normal font-family-Kokoro mb-2"><i class="bi bi-table me-2"></i>Daftar Hak Cipta</h3>
@@ -199,15 +238,9 @@
             </div>
         </div>
     </div>
-    <footer class="text-center text-lg-star bg-body-white shadow-lg mt-5">
-        <!-- Copyright -->
-        <div class="text-center p-3">
-            © 2023 Copyright:
-            <a class="text-body link-underline link-underline-opacity-0" href="https://polindra.ac.id/">Politeknik
-                Negeri Indramayu</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+    {{-- footer --}}
+    @include('layout.footer')
+    {{-- end of footer --}}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
     </script>

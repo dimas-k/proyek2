@@ -47,6 +47,14 @@ class LoginUserController extends Controller
            {
                 return redirect('/umum/dashboard');
            }
+           elseif(Auth::user()->role =='Admin')
+           {
+                return redirect('/admin/dashboard');
+           }
+           elseif(Auth::user()->role =='Checker')
+           {
+                return redirect('/verifikator/dashboard');
+           }
         }
         return back()->with('loginError', 'Login Gagal!');
 
@@ -61,7 +69,6 @@ class LoginUserController extends Controller
             'nama_lengkap' => 'required|string',
             'no_telepon'=>'required|string',
             'email' => 'required|email:dns|unique:users',
-            'ktp'=>'required|mimes:pdf|max:2028',
             'nip'=>'unique:users',
             'username'=>'required|min:5|unique:users',
             'password'=> 'required|min:5|max:15'
@@ -72,7 +79,6 @@ class LoginUserController extends Controller
             'no_telepon' =>$request->no_telepon,
             'email'=>$request->email,
             'alamat'=>$request->alamat,
-            'ktp'=>$request->file('ktp')->store('dokumen_user'),
             'kerjaan'=>$request->kerjaan,
             'jabatan'=>$request->jabatan,
             'nip'=>$request->nip,

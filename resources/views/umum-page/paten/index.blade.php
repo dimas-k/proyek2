@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href={{ asset('assets/css/index.css') }}>
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
     <title>SIKI POLINDRA | Paten</title>
 </head>
@@ -52,6 +53,7 @@
                                         name="cari_nama">
                                 </div>
                             </div>
+                            
                             <button type="submit"
                                 class="btn btn-primary mb-2 mt-3 fw-normal font-family-Kokoro">Cari</button>
                         </form>
@@ -218,7 +220,8 @@
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="align-self-center">
-                                    <i class="bi bi-question-square float-start me-2 pe-5" style="font-size: 50px;"></i>
+                                    <i class="bi bi-question-square float-start me-2 pe-5"
+                                        style="font-size: 50px;"></i>
                                 </div>
                                 <div class="align-self-center">
                                     <h3 class=" d-flex justify-content-end">{{ $mvdov }}
@@ -268,6 +271,46 @@
                 </div>
             </div>
         </div>
+        <hr class="border border-black border-2 opacity-75 rounded">
+        <div class="row ms-5">
+            <div class="d-flex justify-content-center">
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow-sm p-1" style="width: 14rem;">
+                        <a href="/paten/list/perorangan/"
+                            class="link-dark link-underline link-underline-opacity-0 text-center" id="perorangan">
+                            <div class="card-body">
+                                <i class="bi bi-person-circle" style="font-size: 30px;"></i> <br>
+                                <h5>Pegawai</h5>
+                            </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow-sm p-1" style="width: 14rem;">
+                        <a href="/paten/list/jurusan/"
+                            class="link-dark link-underline link-underline-opacity-0 text-center" id="perorangan">
+                            <div class="card-body">
+                                <i class="bi bi-bank" style="font-size: 30px;"></i> <br>
+                                <h5>Jurusan</h5>
+                            </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow-sm p-1" style="width: 14rem;">
+                        <a href="/paten/list/prodi/"
+                            class="link-dark link-underline link-underline-opacity-0 text-center">
+                            <div class="card-body">
+                                <i class="bi bi-bank" style="font-size: 30px;"></i> <br>
+                                <h5>Prodi</h5>
+                            </div>
+                        </a>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
     <div class="container p-4">
@@ -279,6 +322,8 @@
                     <th scope="col">Nama lengkap</th>
                     <th scope="col">Jenis Paten</th>
                     <th scope="col">Judul paten</th>
+                    <th scope="col">Jurusan</th>
+                    <th scope="col">Prodi</th>
                     <th scope="col">Tanggal pengajuan</th>
                     <th scope="col">Status paten</th>
                 </tr>
@@ -290,6 +335,8 @@
                         <td>{{ $p->nama_lengkap }}</td>
                         <td>{{ $p->jenis_paten }}</td>
                         <td>{{ $p->judul_paten }}</td>
+                        <td>{{ $p->jurusan }}</td>
+                        <td>{{ $p->prodi }}</td>
                         <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y') }}</td>
                         <td>{{ $p->status }}</td>
                     </tr>
@@ -319,15 +366,7 @@
         </div>
     </div>
 
-    <footer class="text-center text-lg-star bg-body-white shadow-lg mt-5">
-        <!-- Copyright -->
-        <div class="text-center p-3">
-            © 2023 Copyright:
-            <a class="text-body link-underline link-underline-opacity-0" href="https://polindra.ac.id/">Politeknik
-                Negeri Indramayu</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+    @include('layout.footer')
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

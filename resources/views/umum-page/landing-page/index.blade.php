@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>SIKI POLINDRA | Beranda</title>
 </head>
 
@@ -18,9 +19,9 @@
     {{-- end nav --}}
 
     <div class="container">
-        <img class="img-fluid" src={{ asset('assets/gedung.jpg') }}>
+        <img class="img-fluid rounded" src={{ asset('assets/gedung.jpg') }}>
         <p class="fs-6 fw-normal font-family-Kokoro mt-3">
-            <b>Sistem Informasi Kekayaan Intelektual POLINDRA (Sistem Informasi KI POLINDRA)</b> merupakan media
+            <b>Sistem Informasi Kekayaan Intelektual POLINDRA (SIKI POLINDRA)</b> merupakan media
             informasi perkembangan permohonan KI yang dikelola oleh POLINDRA. Para pemangku kepentingan di POLINDRA,
             inventor, dan masyarakat luas dapat mengakses dan melihat perkembangan permohonan KI POLINDRA melalui Sistem
             Informasi KI POLINDRA, baik dalam bentuk grafik, tabel, dan informasi tertulis lainnya. Sistem Informasi KI
@@ -118,15 +119,7 @@
             </div>
         </div>
     </div>
-    <footer class="text-center text-lg-star bg-body-white shadow-lg mt-5">
-        <!-- Copyright -->
-        <div class="text-center p-3">
-            © 2023 Copyright:
-            <a class="text-body link-underline link-underline-opacity-0" href="https://polindra.ac.id/">Politeknik
-                Negeri Indramayu</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
+    @include('layout.footer')
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">

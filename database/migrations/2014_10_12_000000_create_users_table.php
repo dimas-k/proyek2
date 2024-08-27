@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('no_telepon');
             $table->string('email')->nullable();
             $table->string('alamat');
-            $table->string('ktp')->nullable();
             $table->string('kerjaan')->nullable();
             $table->string('jabatan')->nullable();
             $table->bigInteger('nip')->nullable();

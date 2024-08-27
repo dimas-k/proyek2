@@ -41,6 +41,12 @@ Route::get('/',[UmumPageController::class, 'index'] );
 Route::get('/disclaimer', function () {
     return view('umum-page.disclaimer.index');
 });
+Route::get('/visi-misi', function () {
+    return view('umum-page.visi-misi.index');
+});
+Route::get('/struktur-organisasi', function () {
+    return view('umum-page.struktur.index');
+});
 
 Route::get('/pengajuan-paten', [PatenController::class, 'showPengajuan']);
 Route::post('/simpanpaten', [PatenController::class, 'store']);
@@ -65,6 +71,12 @@ Route::get('/paten/diberi', [PatenController::class, 'diberi']);
 Route::get('/paten/ditolak', [PatenController::class, 'ditolak']);
 Route::get('/paten/menunggu-verifikasi', [PatenController::class, 'mvdov']);
 Route::get('/cari', [PatenController::class, 'cari'])->name('paten.cari');
+Route::get('/paten/list/perorangan/', [PatenController::class, 'orang']);
+Route::get('/paten/list/perorangan/cari', [PatenController::class, 'cariOrang']);
+Route::get('/paten/list/jurusan/', [PatenController::class, 'jurusan']);
+Route::get('/paten/list/jurusan/cari/', [PatenController::class, 'cariJurusan']);
+Route::get('paten/list/prodi/', [PatenController::class, 'prodi']);
+Route::get('paten/list/prodi/cari/', [PatenController::class, 'cariProdi'])->name('cari.paten.prodi');
 
 Route::get('/hak-cipta', [HakCiptaController::class, 'index']);
 Route::get('/hak-cipta/tercatat', [HakCiptaController::class, 'listTercatat']);
@@ -73,6 +85,12 @@ Route::get('/hak-cipta/keterangan-belum-lengkap', [HakCiptaController::class, 'b
 Route::get('/hak-cipta/show/{id}', [HakCiptaController::class, 'show'])->name('hak-cipta.show');
 Route::get('/hak-cipta/menunggu-verifikasi', [HakCiptaController::class, 'mvdov']);
 Route::get('/cari/hak-cipta', [HakCiptaController::class, 'cari'])->name('hc.cari');
+Route::get('/hak-cipta/list/pegawai/', [HakCiptaController::class, 'pegawai']);
+Route::get('/hak-cipta/list/pegawai/cari/', [HakCiptaController::class, 'cariPegawai']);
+Route::get('/hak-cipta/list/jurusan/', [HakCiptaController::class, 'jurusan']);
+Route::get('/hak-cipta/list/jurusan/cari/', [HakCiptaController::class, 'cariJurusan']);
+Route::get('/hak-cipta/list/prodi', [HakCiptaController::class, 'prodi']);
+Route::get('/hak-cipta/list/prodi/cari/', [HakCiptaController::class, 'cariProdi']);
 
 Route::get('/desain-industri', [DesainIndustriController::class, 'index']);
 Route::get('/desain-industri/diberi', [DesainIndustriController::class, 'diberi']);
@@ -82,10 +100,16 @@ Route::get('/desain-industri/ditolak', [DesainIndustriController::class, 'ditola
 Route::get('/desain-industri/keterangan-belum-lengkap', [DesainIndustriController::class, 'keteranganBelumLengkap']);
 Route::get('/desain-industri/menunggu-verifikasi', [DesainIndustriController::class, 'mvdov']);
 Route::get('/desain-industri/show/{id}', [DesainIndustriController::class, 'show'])->name('desain-industri.show');
+Route::get('/desain-industri/list/pegawai', [DesainIndustriController::class, 'orang']);
+Route::get('/desain-indstri/list/pegawai/cari', [DesainIndustriController::class, 'cariorang']);
+Route::get('/desain-industri/list/jurusan', [DesainIndustriController::class, 'jurusan']);
+Route::get('/desain-industri/list/jurusan/cari', [DesainIndustriController::class, 'cariJurusan']);
+Route::get('/desain-industri/list/prodi', [DesainIndustriController::class, 'prodi']);
+Route::get('/desain-industri/list/prodi/cari', [DesainIndustriController::class, 'cariProdi']);
 
-Route::get('/login-admin', [AdminController::class, 'index'])->name('login');
+Route::get('/login-admin', [AdminController::class, 'index'])->name('login.admin');
 Route::post('/autentikasi', [AdminController::class, 'authenticate']);
-Route::get('/logout', [AdminController::class, 'logout']);
+Route::get('/logout', [LoginUserController::class, 'logout']);
 
 Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboardAdmin']);
@@ -157,7 +181,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 });
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/login', [LoginUserController::class, 'index']);
+    Route::get('/login', [LoginUserController::class, 'index'])->name('login');
     Route::get('/register', [LoginUserController::class, 'regist']);
     Route::get('/register/dosen/', [LoginUserController::class, 'registDosen'])->name('regist.dosen');
     Route::get('/register/umum/', [LoginUserController::class, 'registUmum'])->name('regist.other');
@@ -268,7 +292,7 @@ Route::middleware(['auth', 'role:Checker'])->group(function () {
     Route::post('verifikator/cek/desain-industri/nilai/update/simpan/{id}', [CheckerController::class, 'updateCekDi'])->name('update.cekdi.simpan');
     Route::get('/verifikator/cek/desain-industri/cari', [CheckerController::class, 'cariDi']);
 
-    Route::get('/verifikator/logout', [CheckerController::class, 'logout']);
+    Route::get('/verifikator/logout', [LoginUserController::class, 'logout']);
 });
 
 

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('check_di', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('desain_industri_id')->constrained('Desain_industri');
-            $table->enum('cek_data',['Benar','Salah','menunggu Pemeriksaan'])->default('Menunggu Pemeriksaan');
-            $table->string('keterangan')->default('Data Desain Industri Belum DIcek');
+            $table->foreignId('desain_industri_id')->constrained('Desain_industri')->onDelete('cascade');
+            $table->enum('cek_data',['Valid','Tidak Valid','menunggu Pemeriksaan'])->default('Menunggu Pemeriksaan');
+            $table->string('keterangan')->default('Data Desain Industri Belum Dicek');
             $table->timestamps();
         });
     }

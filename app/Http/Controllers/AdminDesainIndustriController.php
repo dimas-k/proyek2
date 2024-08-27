@@ -119,7 +119,7 @@ class AdminDesainIndustriController extends Controller
      */
     public function destroy(string $id)
     {
-        DesainIndustri::findOrFail($id)->delete();
-        return redirect()->back();
+        DesainIndustri::with('cekDi')->findOrFail($id)->delete();
+        return redirect()->back()->with('success','Data desain industri berhasil dihapus');
     }
 }

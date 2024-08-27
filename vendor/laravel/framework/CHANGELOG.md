@@ -1,6 +1,60 @@
 # Release Notes for 10.x
 
-## [Unreleased](https://github.com/laravel/framework/compare/v10.48.8...10.x)
+## [Unreleased](https://github.com/laravel/framework/compare/v10.48.17...10.x)
+
+## [v10.48.17](https://github.com/laravel/framework/compare/v10.48.16...v10.48.17) - 2024-07-23
+
+* [10.x] Fix PHP_CLI_SERVER_WORKERS warning by suppressing it by [@pelomedusa](https://github.com/pelomedusa) in https://github.com/laravel/framework/pull/52094
+* [10.x]  Backport #51615  by [@GrahamCampbell](https://github.com/GrahamCampbell) in https://github.com/laravel/framework/pull/52215
+
+## [v10.48.16](https://github.com/laravel/framework/compare/v10.48.15...v10.48.16) - 2024-07-09
+
+* [10.x] Fix Http::retry so that throw is respected for call signature Http::retry([1,2], throw: false) by [@paulyoungnb](https://github.com/paulyoungnb) in https://github.com/laravel/framework/pull/52002
+* [10.x] Set application_name and character set as PostgreSQL DSN string by [@sunaoka](https://github.com/sunaoka) in https://github.com/laravel/framework/pull/51985
+
+## [v10.48.15](https://github.com/laravel/framework/compare/v10.48.14...v10.48.15) - 2024-07-02
+
+* [10.x] Set previous exception on `HttpResponseException` by [@hafezdivandari](https://github.com/hafezdivandari) in https://github.com/laravel/framework/pull/51986
+
+## [v10.48.14](https://github.com/laravel/framework/compare/v10.48.13...v10.48.14) - 2024-06-21
+
+* [10.x] Fixes unable to call another command as a initialized instance of `Command` class by [@crynobone](https://github.com/crynobone) in https://github.com/laravel/framework/pull/51824
+* [10.x] fix handle `shift()` on an empty collection by [@Treggats](https://github.com/Treggats) in https://github.com/laravel/framework/pull/51841
+* [10.x] Ensure`schema:dump` will dump the migrations table only if it exists by [@NickSdot](https://github.com/NickSdot) in https://github.com/laravel/framework/pull/51827
+
+## [v10.48.13](https://github.com/laravel/framework/compare/v10.48.12...v10.48.13) - 2024-06-18
+
+* [10.x] Fix typo in return comment of createSesTransport method by [@zds-s](https://github.com/zds-s) in https://github.com/laravel/framework/pull/51688
+* [10.x] Fix collection shift less than one item by [@faissaloux](https://github.com/faissaloux) in https://github.com/laravel/framework/pull/51686
+* [10.x] Turn `Enumerable unless()`  $callback parameter optional by [@faissaloux](https://github.com/faissaloux) in https://github.com/laravel/framework/pull/51701
+* Revert "[10.x] Turn `Enumerable unless()`  $callback parameter optional" by [@taylorotwell](https://github.com/taylorotwell) in https://github.com/laravel/framework/pull/51707
+
+## [v10.48.12](https://github.com/laravel/framework/compare/v10.48.11...v10.48.12) - 2024-05-28
+
+* [10.x] Fix typo by [@Issei0804-ie](https://github.com/Issei0804-ie) in https://github.com/laravel/framework/pull/51535
+* [10.x] Fix SQL Server detection in database store by [@staudenmeir](https://github.com/staudenmeir) in https://github.com/laravel/framework/pull/51547
+* [10.x] - Fix batch list loading in Horizon when serialization error by [@jeffortegad](https://github.com/jeffortegad) in https://github.com/laravel/framework/pull/51551
+* [10.x] Fixes explicit route binding with `BackedEnum` by [@CAAHS](https://github.com/CAAHS) in https://github.com/laravel/framework/pull/51586
+
+## [v10.48.11](https://github.com/laravel/framework/compare/v10.48.10...v10.48.11) - 2024-05-21
+
+* [10.x] Backport: Fix SesV2Transport to use correct `EmailTags` argument by [@Tietew](https://github.com/Tietew) in https://github.com/laravel/framework/pull/51352
+* [10.x] Fix PHPDoc typo by [@staudenmeir](https://github.com/staudenmeir) in https://github.com/laravel/framework/pull/51390
+* [10.x] Fix `apa` on non ASCII characters by [@faissaloux](https://github.com/faissaloux) in https://github.com/laravel/framework/pull/51428
+* [10.x] Fixes view engine resolvers leaking memory by [@nunomaduro](https://github.com/nunomaduro) in https://github.com/laravel/framework/pull/51450
+* [10.x] Do not use `app()` Foundation helper on `ViewServiceProvider` by [@rodrigopedra](https://github.com/rodrigopedra) in https://github.com/laravel/framework/pull/51522
+
+## [v10.48.10](https://github.com/laravel/framework/compare/v10.48.9...v10.48.10) - 2024-04-30
+
+* [10.x] Fix typo in signed URL tampering tests by @Krisell in https://github.com/laravel/framework/pull/51238
+* [10.x] Add "Server has gone away" to DetectsLostConnection by @Jubeki in https://github.com/laravel/framework/pull/51241
+* [10.x] Fix support for the LARAVEL_STORAGE_PATH env var (#51238) by @dunglas in https://github.com/laravel/framework/pull/51243
+
+## [v10.48.9](https://github.com/laravel/framework/compare/v10.48.8...v10.48.9) - 2024-04-23
+
+* [10.x] Binding order is incorrect when using cursor paginate with multiple unions with a where by [@thijsvdanker](https://github.com/thijsvdanker) in https://github.com/laravel/framework/pull/50884
+* [10.x] Fix cursor paginate with union and column alias by [@thijsvdanker](https://github.com/thijsvdanker) in https://github.com/laravel/framework/pull/50882
+* [10.x] Address Null Parameter Deprecations in UrlGenerator by [@aldobarr](https://github.com/aldobarr) in https://github.com/laravel/framework/pull/51148
 
 ## [v10.48.8](https://github.com/laravel/framework/compare/v10.48.7...v10.48.8) - 2024-04-17
 

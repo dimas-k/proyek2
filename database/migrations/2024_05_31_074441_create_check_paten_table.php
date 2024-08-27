@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('check_paten', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('paten_id')->constrained('paten');
-            $table->enum('cek_data',['Benar','Salah','menunggu Pemeriksaan'])->default('Menunggu Pemeriksaan');
-            $table->string('keterangan')->default('Data Paten Belum DIcek');
+            $table->foreignId('paten_id')->constrained('paten')->onDelete('cascade');
+            $table->enum('cek_data',['Valid','Tidak Valid','menunggu Pemeriksaan'])->default('Menunggu Pemeriksaan');
+            $table->string('keterangan')->default('Data Paten Belum Dicek');
             $table->timestamps();
         });
     }

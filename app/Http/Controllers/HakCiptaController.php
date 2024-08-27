@@ -81,6 +81,38 @@ class HakCiptaController extends Controller
         $mvdov = HakCipta::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->get();
         return view('hc-mvdov.index', compact('mvdov'));
     }
+    public function pegawai()
+    {
+        $orang = HakCipta::orderBy('nama_lengkap', 'asc')->get();
+        return view('umum-page.Hakcipta.perorangan.index', compact('orang'));
+    }
+    public function cariPegawai(Request $request)
+    {
+        $cario = $request->input('nama');
+        $nama = HakCipta::orderBy('nama_lengkap','asc')->get();
+        $orang = HakCipta::where('nama_lengkap','LIKE',"%".$cario."%")->orderBy('nama_lengkap', 'asc')->paginate(15);
+        return view('umum-page.Hakcipta.perorangan.cari', compact('nama', 'orang'));
+    }
+    public function jurusan()
+    {
+        return view('umum-page.Hakcipta.jurusan.index');
+    }
+    public function cariJurusan(Request $request)
+    {
+        $carij = $request->input('jurusan');
+        $jurusan = HakCipta::where('jurusan','LIKE',"%".$carij."%")->paginate(15);
+        return view('umum-page.Hakcipta.jurusan.cari', compact('jurusan'));
+    }
+    public function prodi()
+    {
+        return view('umum-page.Hakcipta.prodi.index');
+    }
+    public function cariProdi(Request $request)
+    {
+        $cariprodi = $request->input('prodi');
+        $prodi = HakCipta::where('prodi','LIKE',"%".$cariprodi."%")->paginate(15);
+        return view('umum-page.Hakcipta.prodi.cari', compact('prodi'));
+    }
 
     /**
      * Show the form for creating a new resource.

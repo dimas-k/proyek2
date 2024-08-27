@@ -52,7 +52,6 @@
                         <div class="d-flex flex-row justify-content-center">
                             <div class="col-xl-3 col-sm-6 col-12">
                                 <div class="card shadow-sm" style="width: 18rem;">
-                                    
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <div class="align-self-center">
@@ -101,47 +100,6 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="row">
-                        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="input-group mb-3">
-                                        <select id="filter-chart" value="chart-paten" name="" id="">
-                                            <option id="chart-paten" value="paten-chart">Paten</option>
-                                            <option id="chart-hc" value="hc-chart">Hak Cipta</option>
-                                            <option id="chart-di" value="di-chart">Desain Industri</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <input type="hidden" id="patenPF" value="{{ $patenPF }}">
-                                    <input type="hidden" id="patenMTF" value="{{ $patenMTF }}">
-                                    <input type="hidden" id="patenMP" value="{{ $patenMP }}">
-                                    <input type="hidden" id="patenMPS" value="{{ $patenMPS }}">
-                                    <input type="hidden" id="patenSTAW" value="{{ $patenSTAW }}">
-                                    <input type="hidden" id="patenSTL" value="{{ $patenSTL }}">
-                                    <input type="hidden" id="patenSTAK" value="{{ $patenSTAK }}">
-                                    <input type="hidden" id="patenMTS" value="{{ $patenMTS }}">
-                                    <input type="hidden" id="patenDI" value="{{ $patenDI }}">
-                                    <input type="hidden" id="patenDK" value="{{ $patenDK }}">
-                                    <input type="hidden" id="patenmvdov" value="{{ $patenmvdov }}">
-                                    <canvas class="canvas-chart" id="paten-chart"></canvas>
-                                    <input type="hidden" id="hcTolak" value="{{ $hcTolak }}">
-                                    <input type="hidden" id="hcTerima" value="{{ $hcTerima }}">
-                                    <input type="hidden" id="hcKet" value="{{ $hcKet }}">
-                                    <input type="hidden" id="hcmvdov" value="{{ $hcmvdov }}">
-                                    <canvas class="canvas-chart" id="hc-chart"></canvas>
-                                    <input type="hidden" id="desainDi" value="{{ $desainDi }}">
-                                    <input type="hidden" id="desainDK" value="{{ $desainDK }}">
-                                    <input type="hidden" id="desainP" value="{{ $desainP }}">
-                                    <input type="hidden" id="desainKBL" value="{{ $desainKBL }}">
-                                    <input type="hidden" id="desainDPU" value="{{ $desainDPU }}">
-                                    <input type="hidden" id="desainmvdov" value="{{ $dmvdov }}">
-                                    <canvas class="canvas-chart" id="di-chart"></canvas>  
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>

@@ -29,30 +29,18 @@
             deskripsi singkat setiap KI, unduh berkas KI, dan formulir pengajuan KI online melalui unit pengelola KI
             POLINDRA.
         </p>
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="card">
-                    {{-- <div class="card-header">
-              <div class="input-group mb-3">
-                <select id="filter-chart" value="chart-paten" name="" id="">
-                  <option id="chart-paten" value="paten-chart">Jumlah Pengajuan KI</option>
-                  <option id="chart-hc" value="hc-chart">Hak Cipta</option>
-                  <option id="chart-di" value="di-chart">Desain Industri</option>
-                </select>
-              </div>
-            </div> --}}
                     <div class="card-body">
-                        {{-- Paten --}}
                         <input type="hidden" id="paten2024" value="{{ $paten2024 }}">
                         <input type="hidden" id="paten2025" value="{{ $paten2025 }}">
                         <input type="hidden" id="paten2026" value="{{ $paten2026 }}">
                         <input type="hidden" id="paten2027" value="{{ $paten2027 }}">
-                        {{-- Hak Cipta --}}
                         <input type="hidden" id="hc2024" value="{{ $hc2024 }}">
                         <input type="hidden" id="hc2025" value="{{ $hc2025 }}">
                         <input type="hidden" id="hc2026" value="{{ $hc2026 }}">
                         <input type="hidden" id="hc2027" value="{{ $hc2027 }}">
-                        {{-- Desain Industri --}}
                         <input type="hidden" id="di2024" value="{{ $di2024 }}">
                         <input type="hidden" id="di2025" value="{{ $di2025 }}">
                         <input type="hidden" id="di2026" value="{{ $di2026 }}">
@@ -68,8 +56,68 @@
                     </div>
                 </div>
             </div>
+        </div> --}}
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-header text-center">
+                        KI yang sudah terverifikasi DJKI
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-row justify-content-center">
+                            <div class="col-xl-3 col-sm-6 col-12">
+                                <div class="card shadow-sm" style="width: 14rem;">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="align-self-center">
+                                                <i class="bi bi-check-square float-start me-5"
+                                                    style="font-size: 50px;"></i>
+                                            </div>
+                                            <div class="align-self-center">
+                                                <h3 class="ms-4 d-flex justify-content-center">{{ $contohPaten }}</h3>
+                                                <span class="ms-4 d-flex justify-content-center">Paten</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 col-12">
+                                <div class="card shadow-sm" style="width: 14rem;">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="align-self-center">
+                                                <i class="bi bi-check-square float-start me-3"
+                                                    style="font-size: 50px;"></i>
+                                            </div>
+                                            <div class="align-self-center">
+                                                <h3 class="ms-4 d-flex justify-content-center">{{ $contohHc }}</h3>
+                                                <span class="ms-4 d-flex justify-content-center">Hak Cipta</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 col-12">
+                                <div class="card shadow-sm" style="width: 14rem;">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div class="align-self-center">
+                                                <i class="bi bi-check-square float-start me-1"
+                                                    style="font-size: 50px;"></i>
+                                            </div>
+                                            <div class="align-self-center">
+                                                <h3 class="ms-4 d-flex justify-content-center">{{ $contohDi }}</h3>
+                                                <span class="ms-3 d-flex justify-content-center">Desain Industri</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
     </div>
     @include('layout.footer')
     

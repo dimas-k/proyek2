@@ -15,7 +15,7 @@ class PatenSeeder extends Seeder
     {
         DB::table('paten')->insert([
             [
-                'user_id' => 3,
+                'user_id' => 8,
                 'nama_lengkap' => "Suhendi",
                 'alamat' => "Suhendi",
                 'no_telepon' => "081214627146",
@@ -40,7 +40,7 @@ class PatenSeeder extends Seeder
                 'status' => "Diberi"
             ],
             [
-                'user_id' => 3,
+                'user_id' => 8,
                 'nama_lengkap' => "Suhendi",
                 'alamat' => "Suhendi",
                 'no_telepon' => "081214627146",
@@ -65,7 +65,7 @@ class PatenSeeder extends Seeder
                 'status' => "Diberi"
             ],
             [
-                'user_id' => 3,
+                'user_id' => 8,
                 'nama_lengkap' => "Suhendi",
                 'alamat' => "Suhendi",
                 'no_telepon' => "081214627146",
@@ -90,7 +90,7 @@ class PatenSeeder extends Seeder
                 'status' => "Diberi"
             ],
             [
-                'user_id' => 3,
+                'user_id' => 8,
                 'nama_lengkap' => "Suhendi",
                 'alamat' => "Suhendi",
                 'no_telepon' => "081214627146",

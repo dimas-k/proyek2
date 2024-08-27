@@ -61,7 +61,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="card">
                     <div class="card-header text-center">
-                        KI yang sudah terverifikasi
+                        KI yang sudah terverifikasi DJKI
                     </div>
                     <div class="card-body">
                         <div class="d-flex flex-row justify-content-center">
@@ -74,7 +74,7 @@
                                                     style="font-size: 50px;"></i>
                                             </div>
                                             <div class="align-self-center">
-                                                <h3 class="ms-4 d-flex justify-content-center">{{ $contohpaten }}</h3>
+                                                <h3 class="ms-4 d-flex justify-content-center">{{ $contohPaten }}</h3>
                                                 <span class="ms-4 d-flex justify-content-center">Paten</span>
                                             </div>
                                         </div>
@@ -90,7 +90,7 @@
                                                     style="font-size: 50px;"></i>
                                             </div>
                                             <div class="align-self-center">
-                                                <h3 class="ms-4 d-flex justify-content-center">{{ $hc }}</h3>
+                                                <h3 class="ms-4 d-flex justify-content-center">{{ $contohHc }}</h3>
                                                 <span class="ms-4 d-flex justify-content-center">Hak Cipta</span>
                                             </div>
                                         </div>
@@ -106,7 +106,7 @@
                                                     style="font-size: 50px;"></i>
                                             </div>
                                             <div class="align-self-center">
-                                                <h3 class="ms-4 d-flex justify-content-center">{{ $di }}</h3>
+                                                <h3 class="ms-4 d-flex justify-content-center">{{ $contohDi }}</h3>
                                                 <span class="ms-3 d-flex justify-content-center">Desain Industri</span>
                                             </div>
                                         </div>

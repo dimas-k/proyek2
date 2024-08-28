@@ -58,7 +58,7 @@
         }
 
         .counter .counter-icon {
-            background: linear-gradient(to right, #fe8c00, #f83600);
+            background: linear-gradient(to right, rgb(255, 99, 132), #f83600);
             font-size: 30px;
             line-height: 60px;
             width: 60px;
@@ -70,8 +70,8 @@
         }
 
         .counter h3 {
-            color: #f83600;
-            font-size: 17px;
+            color: rgb(255, 99, 132);
+            font-size: 22px;
             font-weight: 500;
             text-transform: capitalize;
             line-height: 22px;
@@ -80,27 +80,27 @@
         }
 
         .counter.green .counter-value {
-            background: #01c700;
+            background: rgba(54, 162, 235, 1);
         }
 
         .counter.green .counter-icon {
-            background: linear-gradient(to right, #01c700, #019b01);
+            background: linear-gradient(to right, rgba(54, 162, 235, 1),rgba(54, 182, 235, 1));
         }
 
         .counter.green h3 {
-            color: #019b01;
+            color: rgba(54, 162, 235, 1);
         }
 
         .counter.blue .counter-value {
-            background: #28a9e2;
+            background:rgba(255, 206, 86, 1);
         }
 
         .counter.blue .counter-icon {
-            background: linear-gradient(to right, #28a9e2, #0057c5);
+            background: linear-gradient(to right, rgba(255, 206, 86, 1),rgba(255, 181, 86, 1));
         }
 
         .counter.blue h3 {
-            color: #0057c5;
+            color: rgba(255, 180, 86, 1);
         }
 
         .counter.gray .counter-value {
@@ -170,33 +170,44 @@
                 <div class="counter">
                     <div class="counter-content">
                         <div class="counter-icon">
-                            <i class="bi bi-r-circle"></i>
+                            <i class="bi">{{ $contohPaten }}</i>
+                            {{-- <i class="bi bi-r-circle"></i> --}}
                         </div>
-                        <h3>Paten</h3>
+                        <a href="/paten" style="text-decoration:none;">
+                            <h3 >Paten</h3>
+                        </a>
+
                     </div>
-                    <span class="counter-value">{{ $paten }}</span>
+                    {{-- <span class="counter-value">{{ $contohPaten }}</span> --}}
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="counter green">
                     <div class="counter-content">
                         <div class="counter-icon">
-                            <i class="bi bi-c-circle"></i>
+                            <i class="bi">{{ $contohHc }}</i>
+                            {{-- <i class="bi bi-c-circle"></i> --}}
                         </div>
-                        <h3>Hak Cipta</h3>
+                        <a href="/hak-cipta" style="text-decoration:none;">
+                            <h3>Hak Cipta</h3>
+                        </a>
                     </div>
-                    <span class="counter-value">{{ $hc }}</span>
+                    {{-- <span class="counter-value">{{ $contohHc }}</span> --}}
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="counter blue">
                     <div class="counter-content">
                         <div class="counter-icon">
-                            <i class="bi bi-gear-wide-connected"></i>
+                            <i class="bi">{{ $contohDi }}</i>
+                            {{-- <i class="bi bi-gear-wide-connected"></i> --}}
                         </div>
-                        <h3>Desain Industri</h3>
+                        <a href="/desain-industri" style="text-decoration:none;">
+                            <h3>Desain Industri</h3>
+                        </a>
+                        
                     </div>
-                    <span class="counter-value">{{ $di }}</span>
+                    {{-- <span class="counter-value">{{ $contohDi }}</span> --}}
                 </div>
             </div>
 

@@ -264,7 +264,6 @@
             $(document).ready(function () {
                 $(".canvas-chart").hide()
                 $('#paten-chart').show()
-
                 $('#filter-chart').change(function () {
                     const value = $(this).val()
                     $(".canvas-chart").hide()

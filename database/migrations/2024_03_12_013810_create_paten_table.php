@@ -24,8 +24,11 @@ return new class extends Migration
             $table->string('kewarganegaraan');
             $table->integer('kode_pos');
             $table->string('institusi');
-            $table->string('jurusan')->default('-');
-            $table->string('prodi')->default('-');
+            $table->string('data_pengaju2')->nullable();
+            $table->string('jurusan')->default('tidak ada');
+            $table->string('prodi')->default('tidak ada');
+            // $table->unsignedBigInteger('jurusan_id');
+            // $table->unsignedBigInteger('prodi_id');
             $table->string('jenis_paten');
             $table->string('judul_paten');
             $table->string('abstrak_paten');
@@ -40,6 +43,8 @@ return new class extends Migration
             $table->string('sertifikat_paten')->nullable();
             $table->string('status')->default('Menunggu Verifikasi Data Oleh Verifikator');
             $table->timestamps();
+
+            // $table->foreign('prodi_id')->references('id')->on('prodi');
         });
     }
 

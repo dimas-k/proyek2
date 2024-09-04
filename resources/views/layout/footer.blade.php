@@ -53,7 +53,7 @@
                 <!-- Grid column -->
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                     <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
+                    {{-- <h6 class="text-uppercase fw-bold mb-4">
                         Link Populer
                     </h6>
                     <p>
@@ -67,7 +67,7 @@
                     </p>
                     <p>
                         <a href="#!" class="text-reset">Laravel</a>
-                    </p>
+                    </p> --}}
                 </div>
                 <!-- Grid column -->
 

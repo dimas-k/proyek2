@@ -35,9 +35,8 @@
                             @endif
                             <span class="d-flex justify-content-end">
                                 <a href="https://drive.google.com/drive/folders/19w54Oc_sAmZakE1NNBt5GD3Yg-qEa7XO?usp=drive_link"
-                                    target="_blank" class="link-dark link-underline link-underline-opacity-0"><b><i
-                                            class="bi bi-download"></i></b>
-                                    <img src={{ asset('assets/downloadicon.png') }} alt="">Berkas Yang Di
+                                    target="_blank" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fw-bolder"><b><i class="bi bi-download me-1"></i></b> Yang
+                                    Di
                                     Perlukan
                                 </a>
                             </span>
@@ -48,7 +47,7 @@
                                 <div class="container">
                                     <div class="mb-3">
                                         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                        <input type="text"
+                                        <input type="text" value="{{ auth()->user()->nama_lengkap }}"
                                             class="form-control @error('nama_lengkap') is-invalid @enderror"
                                             id="" placeholder="Masukkan Nama"name="nama_lengkap">
                                         @error('nama_lengkap')
@@ -60,7 +59,8 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Alamat</label>
                                         <input type="text" class="form-control @error('alamat') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Alamat" name="alamat">
+                                            id="" placeholder="Masukkan Alamat" name="alamat"
+                                            value="{{ auth()->user()->alamat }}">
                                         @error('alamat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -71,7 +71,8 @@
                                         <label for="" class="form-label">No telepon</label>
                                         <input type="number"
                                             class="form-control @error('no_telepon') is-invalid @enderror"
-                                            id="" placeholder="Masukkan No telepon" name="no_telepon">
+                                            id="" placeholder="Masukkan No telepon" name="no_telepon"
+                                            value="{{ auth()->user()->no_telepon }}">
                                         @error('no_telepon')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -93,8 +94,9 @@
                                         <input type="file"
                                             class="form-control @error('ktp_inventor') is-invalid @enderror"
                                             id="" name="ktp_inventor">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
                                         @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -104,7 +106,8 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Email</label>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Email" name="email">
+                                            id="" placeholder="Masukkan Email" name="email"
+                                            value="{{ auth()->user()->email }}">
                                         @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -138,6 +141,21 @@
                                         class="form-control @error('institusi') is-invalid @enderror" id=""
                                         value="Dosen" name="institusi" hidden>
                                     <div class="mb-3">
+                                        <label for="" class="form-label">Data Mahasiswa / Dosen <span
+                                                class="text-danger">(Jika Bersama Dosen Yang Lain dan atau Bersama
+                                                Mahasiswa Harap diisi)</span></label>
+                                        <input type="file"
+                                            class="form-control @error('data_pengaju2') is-invalid @enderror"
+                                            name="data_pengaju2">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .xlsx</span>
+                                        @error('data_pengaju2')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="" class="form-label">Jurusan</label>
                                         <select class="form-select @error('jurusan') is-invalid @enderror"
                                             aria-label="Default select example" name="jurusan">
@@ -145,7 +163,8 @@
                                             <option value="Teknik Informatika">Teknik Informatika</option>
                                             <option value="Teknik Mesin">Teknik Mesin
                                             </option>
-                                            <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan Tata Udara</option>
+                                            <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan Tata
+                                                Udara</option>
                                             <option value="Keperawatan">Keperawatan
                                             </option>
                                         </select>
@@ -161,13 +180,18 @@
                                             aria-label="Default select example" name="prodi">
                                             <option selected>Pilih Prodi</option>
                                             <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
-                                            <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat Lunak</option>
-                                            <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi Kota Cerdas
+                                            <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat Lunak
+                                            </option>
+                                            <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi Kota
+                                                Cerdas
                                             </option>
                                             <option value="D3 Teknik Mesin">D3 Teknik Mesin</option>
-                                            <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur</option>
-                                            <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan Tata Udara</option>
-                                            <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi Kontrol</option>
+                                            <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur
+                                            </option>
+                                            <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan
+                                                Tata Udara</option>
+                                            <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi
+                                                Kontrol</option>
                                             <option value="D3 Keperawatan">D3 Keperawan</option>
                                         </select>
                                         @error('prodi')
@@ -211,8 +235,9 @@
                                         <input type="file"
                                             class="form-control @error('abstrak_paten') is-invalid @enderror"
                                             id="" placeholder="" name="abstrak_paten">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
                                         @error('abstrak_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -224,8 +249,9 @@
                                         <input type="file"
                                             class="form-control @error('deskripsi_paten') is-invalid @enderror"
                                             id="" placeholder="" name="deskripsi_paten">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
                                         @error('deskripsi_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -237,8 +263,9 @@
                                         <input type="file"
                                             class="form-control @error('pengalihan_hak') is-invalid @enderror"
                                             id="" placeholder="" name="pengalihan_hak">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
                                         @error('pengalihan_hak')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -250,8 +277,9 @@
                                         <input type="file"
                                             class="form-control @error('abstrak_paten') is-invalid @enderror"
                                             id="" placeholder="" name="klaim">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
                                         @error('klaim')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -264,8 +292,9 @@
                                         <input type="file"
                                             class="form-control @error('pernyataan_kepemilikan') is-invalid @enderror"
                                             id="" placeholder="" name="pernyataan_kepemilikan">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
                                         @error('pernyataan_kepemilikan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -277,8 +306,9 @@
                                         <input type="file"
                                             class="form-control @error('surat_kuasa') is-invalid @enderror"
                                             id="" placeholder="" name="surat_kuasa">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
                                         @error('surat_kuasa')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -290,9 +320,10 @@
                                         <input type="file"
                                             class="form-control @error('gambar_paten') is-invalid @enderror"
                                             id="" placeholder="" name="gambar_paten">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        @error('surat_kuasa')
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
+                                        @error('gambar_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -303,8 +334,9 @@
                                         <input type="file"
                                             class="form-control @error('gambar_tampilan') is-invalid @enderror"
                                             id="" placeholder="" name="gambar_tampilan">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
                                         @error('gambar_tampilan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

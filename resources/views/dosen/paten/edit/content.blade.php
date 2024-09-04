@@ -21,7 +21,7 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Paten
+                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Update Data Paten
                                 {{ $p->nama_lengkap }}
                             </h3>
                         </div>
@@ -30,281 +30,384 @@
                             <form action="{{ Route('dsn.update.paten', $p->id) }}" enctype="multipart/form-data"
                                 method="POST">
                                 @csrf
-                                <p class="fs-4 fw-normal font-family-Kokoro">I.
-                                    IDENTITAS
-                                </p>
-                                <div class="container">
-                                    <div class="mb-3">
-                                        <label for="nama_lengkap" class="form-label">Nama
-                                            Lengkap</label>
-                                        <input type="text"
-                                            class="form-control @error('nama_lengkap') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Nama"name="nama_lengkap"
-                                            value="{{ $p->nama_lengkap }}">
-                                        @error('nama_lengkap')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control @error('alamat') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Alamat" name="alamat"
-                                            value="{{ $p->alamat }}">
-                                        @error('alamat')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">No
-                                            telepon</label>
-                                        <input type="text"
-                                            class="form-control @error('no_telepon') is-invalid @enderror"
-                                            id="" placeholder="Masukkan No telepon" name="no_telepon"
-                                            value={{ $p->no_telepon }}>
-                                        @error('no_telepon')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Tanggal
-                                            Lahir</label>
-                                        <input type="date" name="tanggal_lahir" id=""
-                                            class="form-control @error('tanggal_lahir') is-invalid @enderror"
-                                            value={{ $p->tanggal_lahir }}>
-                                        @error('tanggal_lahir')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">KTP
-                                            Inventor</label>
-                                        <input type="file"
-                                            class="form-control @error('ktp_inventor') is-invalid @enderror"
-                                            id="" name="ktp_inventor">
-                                        <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                            sama atau yang sudah di perbarui</span>
-                                        @error('ktp_inventor')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Email</label>
-                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Email" name="email"
-                                            value={{ $p->email }}>
-                                        @error('email')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Kewarganegaraan</label>
-                                        <input type="text"
-                                            class="form-control @error('kewarganegaraan') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan"
-                                            value={{ $p->kewarganegaraan }}>
-                                        @error('kewarganegaraan')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Kode
-                                            Pos</label>
-                                        <input type="number"
-                                            class="form-control @error('kode_pos') is-invalid @enderror" id=""
-                                            placeholder="Masukkan Kode Pos" name="kode_pos" value={{ $p->kode_pos }}>
-                                        @error('kode_pos')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
+                                <div class="table-responsive">
+                                    <table class="table table-borderless p-1">
+                                        <tr>
+                                            <th>nama lengkap</th>
+                                            <td>
+                                                <input type="text"
+                                                    class="form-control @error('nama_lengkap') is-invalid @enderror"
+                                                    id="" placeholder="Masukkan Nama"name="nama_lengkap"
+                                                    value="{{ $p->nama_lengkap }}">
+                                                @error('nama_lengkap')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>alamat</th>
+                                            <td>
+                                                <input type="text"
+                                                    class="form-control @error('alamat') is-invalid @enderror"
+                                                    id="" placeholder="Masukkan Alamat" name="alamat"
+                                                    value="{{ $p->alamat }}">
+                                                @error('alamat')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>no telepon</th>
+                                            <td>
+                                                <input type="text"
+                                                    class="form-control @error('no_telepon') is-invalid @enderror"
+                                                    id="" placeholder="Masukkan No telepon" name="no_telepon"
+                                                    value={{ $p->no_telepon }}>
+                                                @error('no_telepon')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>tanggal lahir</th>
+                                            <td>
+                                                <input type="date" name="tanggal_lahir" id=""
+                                                    class="form-control @error('tanggal_lahir') is-invalid @enderror"
+                                                    value={{ $p->tanggal_lahir }}>
+                                                @error('tanggal_lahir')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>ktp inventor</th>
+                                            <td>
+                                                <input type="file"
+                                                    class="form-control @error('ktp_inventor') is-invalid @enderror"
+                                                    id="" name="ktp_inventor">
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
+                                                    sama atau yang sudah di perbarui</span>
+                                                @error('ktp_inventor')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>email</th>
+                                            <td>
+                                                <input type="email"
+                                                    class="form-control @error('email') is-invalid @enderror"
+                                                    id="" placeholder="Masukkan Email" name="email"
+                                                    value={{ $p->email }}>
+                                                @error('email')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>kewarganegaraan</th>
+                                            <td>
+                                                <input type="text"
+                                                    class="form-control @error('kewarganegaraan') is-invalid @enderror"
+                                                    id="" placeholder="Masukkan Kewarganegaraan"
+                                                    name="kewarganegaraan" value={{ $p->kewarganegaraan }}>
+                                                @error('kewarganegaraan')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>kode pos</th>
+                                            <td>
+                                                <input type="number"
+                                                    class="form-control @error('kode_pos') is-invalid @enderror"
+                                                    id="" placeholder="Masukkan Kode Pos" name="kode_pos"
+                                                    value={{ $p->kode_pos }}>
+                                                @error('kode_pos')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                                <input type="text"
+                                                    class="form-control @error('institusi') is-invalid @enderror"
+                                                    id="" value="Dosen" name="institusi" hidden>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Data Mahasiswa / Dosen <span class="text-danger">(Jika Bersama Dosen Yang
+                                                    Lain dan atau Bersama
+                                                    Mahasiswa Harap diisi)
+                                            </th>
+                                            <td>
+                                                <input type="file"
+                                                    class="form-control @error('data_pengaju2') is-invalid @enderror"
+                                                    name="data_pengaju2">
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>File harus bertipe .xlsx</span>
+                                                @error('data_pengaju2')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>jurusan</th>
+                                            <td>
+                                                <select class="form-select @error('jurusan') is-invalid @enderror"
+                                                    aria-label="Default select example" name="jurusan">
+                                                    <option selected>Pilih Jurusan</option>
+                                                    <option value="Teknik Informatika">Teknik Informatika</option>
+                                                    <option value="Teknik Mesin">Teknik Mesin
+                                                    </option>
+                                                    <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan
+                                                        Tata
+                                                        Udara</option>
+                                                    <option value="Keperawatan">Keperawatan
+                                                    </option>
+                                                </select>
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
+                                                    sama atau yang sudah di perbarui</span>
+                                                @error('jurusan')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>prodi</th>
+                                            <td>
+                                                <select class="form-select @error('prodi') is-invalid @enderror"
+                                                    aria-label="Default select example" name="prodi">
+                                                    <option selected>Pilih Prodi</option>
+                                                    <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
+                                                    <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat Lunak
+                                                    </option>
+                                                    <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi
+                                                        Kota
+                                                        Cerdas
+                                                    </option>
+                                                    <option value="D3 Teknik Mesin">D3 Teknik Mesin</option>
+                                                    <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur
+                                                    </option>
+                                                    <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin
+                                                        dan
+                                                        Tata Udara</option>
+                                                    <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi
+                                                        Kontrol</option>
+                                                    <option value="D3 Keperawatan">D3 Keperawan</option>
+                                                </select>
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
+                                                    sama atau yang sudah di perbarui</span>
+                                                @error('prodi')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>jenis paten</th>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="jenis_paten"
+                                                        id="" value="Paten">
+                                                    <label class="form-check-label" for="Paten">
+                                                        Paten
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="jenis_paten"
+                                                        id="" value="Paten sederhana">
+                                                    <label class="form-check-label" for="Paten sederhana">
+                                                        Paten Sederhana
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>judul paten</th>
+                                            <td>
+                                                <input type="text"
+                                                    class="form-control @error('judul_paten') is-invalid @enderror"
+                                                    id="" placeholder="Masukkan Judul Paten" name="judul_paten"
+                                                    value="{{ $p->judul_paten }}">
+                                                @error('judul_paten')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>abstrak paten</th>
+                                            <td>
+                                                <input type="file"
+                                                    class="form-control @error('abstrak_paten') is-invalid @enderror"
+                                                    id="" placeholder="" name="abstrak_paten">
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
+                                                    sama atau yang sudah di perbarui</span>
+                                                @error('abstrak_paten')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>deskripsi paten</th>
+                                            <td>
+                                                <input type="file"
+                                                    class="form-control @error('deskripsi_paten') is-invalid @enderror"
+                                                    id="" placeholder="" name="deskripsi_paten">
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
+                                                    sama atau yang sudah di perbarui</span>
+                                                @error('deskripsi_paten')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Pengalihan Hak
+                                                Invensi</th>
+                                            <td>
+                                                <input type="file"
+                                                    class="form-control @error('pengalihan_hak') is-invalid @enderror"
+                                                    id="" placeholder="" name="pengalihan_hak">
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
+                                                    sama atau yang sudah di perbarui</span>
+                                                @error('pengalihan_hak')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>klaim</th>
+                                            <td>
+                                                <input type="file"
+                                                    class="form-control @error('abstrak_paten') is-invalid @enderror"
+                                                    id="" placeholder="" name="klaim">
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
+                                                    sama atau yang sudah di perbarui</span>
+                                                @error('klaim')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Pernyataan kepemikikan
+                                                Inventor</th>
+                                            <td>
+                                                <input type="file"
+                                                    class="form-control @error('pernyataan_kepemilikan') is-invalid @enderror"
+                                                    id="" placeholder="" name="pernyataan_kepemilikan">
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
+                                                    sama atau yang sudah di perbarui</span>
+                                                @error('pernyataan_kepemilikan')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>surat kuasa</th>
+                                            <td>
+                                                <input type="file"
+                                                    class="form-control @error('surat_kuasa') is-invalid @enderror"
+                                                    id="" placeholder="" name="surat_kuasa">
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
+                                                    sama atau yang sudah di perbarui</span>
+                                                @error('surat_kuasa')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>gambar paten</th>
+                                            <td>
+                                                <input type="file"
+                                                    class="form-control @error('gambar_paten') is-invalid @enderror"
+                                                    id="" placeholder="" name="gambar_paten">
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
+                                                    sama atau yang sudah di perbarui</span>
+                                                @error('surat_kuasa')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>gambar tampilan</th>
+                                            <td>
+                                                <input type="file"
+                                                    class="form-control @error('gambar_tampilan') is-invalid @enderror"
+                                                    id="" placeholder="" name="gambar_tampilan">
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
+                                                    sama atau yang sudah di perbarui</span>
+                                                @error('gambar_tampilan')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>tanggal pengajuan</th>
+                                            <td>
+                                                <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
+                                                    class="form-control @error('tanggal_permohonan') is-invalid @enderror"
+                                                    value={{ $p->tanggal_permohonan }}>
+                                                @error('tanggal_permohonan')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
-                                <p class="fs-4 fw-normal font-family-Kokoro mt-5">II.
-                                    FORMULIR PATEN</p>
-                                <div class="container">
-                                    <label for="" class="form-label">Jenis
-                                        Paten</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="jenis_paten"
-                                            id="" value="Paten">
-                                        <label class="form-check-label" for="Paten">
-                                            Paten
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="jenis_paten"
-                                            id="" value="Paten sederhana">
-                                        <label class="form-check-label" for="Paten sederhana">
-                                            Paten Sederhana
-                                        </label>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Judul
-                                            Paten</label>
-                                        <input type="text"
-                                            class="form-control @error('judul_paten') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Judul Paten" name="judul_paten"
-                                            value="{{ $p->judul_paten }}">
-                                        @error('judul_paten')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Abstrak
-                                            Paten</label>
-                                        <input type="file"
-                                            class="form-control @error('abstrak_paten') is-invalid @enderror"
-                                            id="" placeholder="" name="abstrak_paten">
-                                        <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                            sama atau yang sudah di perbarui</span>
-                                        @error('abstrak_paten')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Deskripsi
-                                            Paten</label>
-                                        <input type="file"
-                                            class="form-control @error('deskripsi_paten') is-invalid @enderror"
-                                            id="" placeholder="" name="deskripsi_paten">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                            sama atau yang sudah di perbarui</span>
-                                        @error('deskripsi_paten')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Pengalihan Hak
-                                            Invensi</label>
-                                        <input type="file"
-                                            class="form-control @error('pengalihan_hak') is-invalid @enderror"
-                                            id="" placeholder="" name="pengalihan_hak">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                            sama atau yang sudah di perbarui</span>
-                                        @error('pengalihan_hak')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Klaim</label>
-                                        <input type="file"
-                                            class="form-control @error('abstrak_paten') is-invalid @enderror"
-                                            id="" placeholder="" name="klaim">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                            sama atau yang sudah di perbarui</span>
-                                        @error('klaim')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Pernyataan kepemikikan
-                                            Inventor</label>
-                                        <input type="file"
-                                            class="form-control @error('pernyataan_kepemilikan') is-invalid @enderror"
-                                            id="" placeholder="" name="pernyataan_kepemilikan">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                            sama atau yang sudah di perbarui</span>
-                                        @error('pernyataan_kepemilikan')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Surat
-                                            kuasa</label>
-                                        <input type="file"
-                                            class="form-control @error('surat_kuasa') is-invalid @enderror"
-                                            id="" placeholder="" name="surat_kuasa">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                            sama atau yang sudah di perbarui</span>
-                                        @error('surat_kuasa')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">gambar
-                                            Paten</label>
-                                        <input type="file"
-                                            class="form-control @error('gambar_paten') is-invalid @enderror"
-                                            id="" placeholder="" name="gambar_paten">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                            sama atau yang sudah di perbarui</span>
-                                        @error('surat_kuasa')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">gambar
-                                            Tampilan</label>
-                                        <input type="file"
-                                            class="form-control @error('gambar_tampilan') is-invalid @enderror"
-                                            id="" placeholder="" name="gambar_tampilan">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                            sama atau yang sudah di perbarui</span>
-                                        @error('gambar_tampilan')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Tanggal
-                                            Pengajuan</label>
-                                        <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
-                                            class="form-control @error('tanggal_permohonan') is-invalid @enderror"
-                                            value={{ $p->tanggal_permohonan }}>
-                                        @error('tanggal_permohonan')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-
-                                </div>
-
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
                                     Simpan
                                 </button>
-
+    
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -327,8 +430,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                            </form>
+                            </form>   
                         </div>
                     </div>
                 </div>

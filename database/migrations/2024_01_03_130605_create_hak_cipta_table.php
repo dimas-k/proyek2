@@ -24,8 +24,9 @@ return new class extends Migration
             $table->string('kewarganegaraan');
             $table->integer('kode_pos');
             $table->string('institusi');
-            $table->string('jurusan')->default('-');
-            $table->string('prodi')->default('-');
+            $table->string('data_pengaju2')->nullable();
+            $table->string('jurusan')->default('tidak ada');
+            $table->string('prodi')->default('tidak ada');
             $table->string('jenis_ciptaan');
             $table->string('judul_ciptaan');
             $table->text('uraian_singkat');
@@ -35,6 +36,7 @@ return new class extends Migration
             $table->date('tanggal_permohonan');
             $table->string('status')->default('Menunggu Verifikasi Data Oleh Verifikator');
             $table->string('sertifikat_hakcipta')->nullable();
+            
             $table->timestamps();
         });
     }

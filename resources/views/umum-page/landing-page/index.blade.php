@@ -170,7 +170,7 @@
                 <div class="counter">
                     <div class="counter-content">
                         <div class="counter-icon">
-                            <i class="bi">{{ $contohPaten }}</i>
+                            {{ $contohPaten }}
                             {{-- <i class="bi bi-r-circle"></i> --}}
                         </div>
                         <a href="/paten" style="text-decoration:none;">
@@ -185,7 +185,7 @@
                 <div class="counter green">
                     <div class="counter-content">
                         <div class="counter-icon">
-                            <i class="bi">{{ $contohHc }}</i>
+                            {{ $contohHc }}
                             {{-- <i class="bi bi-c-circle"></i> --}}
                         </div>
                         <a href="/hak-cipta" style="text-decoration:none;">
@@ -199,7 +199,7 @@
                 <div class="counter blue">
                     <div class="counter-content">
                         <div class="counter-icon">
-                            <i class="bi">{{ $contohDi }}</i>
+                            {{ $contohDi }}
                             {{-- <i class="bi bi-gear-wide-connected"></i> --}}
                         </div>
                         <a href="/desain-industri" style="text-decoration:none;">

@@ -35,13 +35,12 @@
                             @endif
                             <span class="d-flex justify-content-end">
                                 <a href="https://drive.google.com/drive/folders/1-7Cop9aiCcB8FOl93FAluVu4FpSXONNl?usp=drive_link"
-                                    target="_blank" class="link-dark link-underline link-underline-opacity-0"><b><i
-                                            class="bi bi-download"></i></b>
-                                    <img src={{ asset('assets/downloadicon.png') }} alt="">Berkas Yang Di
+                                    target="_blank" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fw-bolder"><b><i
+                                            class="bi bi-download me-1"></i></b>Berkas Yang Di
                                     Perlukan
                                 </a>
                             </span>
-                            <form method="post" enctype="multipart/form-data"
+                            <form enctype="multipart/form-data" method="post"
                                 action="/dosen/hak-cipta/pengajuan/simpan">
                                 @csrf
                                 <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
@@ -50,7 +49,7 @@
                                         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                         <input type="text"
                                             class="form-control @error('nama_lengkap') is-invalid @enderror"
-                                            id="nama_lengkap" placeholder="Masukkan Nama"name="nama_lengkap">
+                                            id="nama_lengkap" placeholder="Masukkan Nama"name="nama_lengkap" value="{{ auth()->user()->nama_lengkap}}">
                                         @error('nama_lengkap')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -60,7 +59,7 @@
                                     <div class="mb-3">
                                         <label for="alamat" class="form-label">Alamat</label>
                                         <input type="text" class="form-control @error('alamat') is-invalid @enderror"
-                                            id="alamat" placeholder="Masukkan Alamat" name="alamat">
+                                            id="alamat" placeholder="Masukkan Alamat" name="alamat" value="{{ auth()->user()->alamat }}">
                                         @error('alamat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -71,7 +70,7 @@
                                         <label for="no_telepon" class="form-label">No telepon</label>
                                         <input type="number"
                                             class="form-control @error('no_telepon') is-invalid @enderror"
-                                            id="no_telepon" placeholder="Masukkan No telepon" name="no_telepon">
+                                            id="no_telepon" placeholder="Masukkan No telepon" name="no_telepon" value="{{ auth()->user()->no_telepon }}">
                                         @error('no_telepon')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -104,7 +103,7 @@
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            id="email" placeholder="Masukkan Email" name="email">
+                                            id="email" placeholder="Masukkan Email" name="email" value="{{ auth()->user()->email }}">
                                         @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -134,12 +133,26 @@
                                             </div>
                                         @enderror
                                     </div>
-                                    <label for="jurusan" class="form-label">Jurusan
-                                        <input type="text"
-                                        class="form-control @error('institusi') is-invalid @enderror" id="jurusan"
+                                    <input type="text"
+                                        class="form-control @error('institusi') is-invalid @enderror" id=""
                                         value="Dosen" name="institusi" hidden>
-                                    </label>
                                     <div class="mb-3">
+                                        <label for="" class="form-label">Data Mahasiswa / Dosen <span
+                                                class="text-danger">(Jika Bersama Dosen Yang Lain dan atau Bersama
+                                                Mahasiswa Harap diisi)</span></label>
+                                        <input type="file"
+                                            class="form-control @error('data_pengaju2') is-invalid @enderror"
+                                            name="data_pengaju2" id="data_pengaju2">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .xlsx</span>
+                                        @error('data_pengaju2')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Jurusan</label>
                                         <select class="form-select @error('jurusan') is-invalid @enderror"
                                             aria-label="Default select example" name="jurusan">
                                             <option selected>Pilih Jurusan</option>
@@ -158,29 +171,24 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="prodi" class="form-label">Prodi
-                                            <input type="text"
-                                            class="form-control @error('prodi') is-invalid @enderror" id="prodi"
-                                            value="Dosen" name="prodi" hidden>
-                                        </label>
+                                        <label for="" class="form-label">Prodi</label>
                                         <select class="form-select @error('prodi') is-invalid @enderror"
                                             aria-label="Default select example" name="prodi">
                                             <option selected>Pilih Prodi</option>
                                             <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
                                             <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat Lunak
                                             </option>
-                                            <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi Kota Cerdas
+                                            <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi Kota
+                                                Cerdas
                                             </option>
-                                            <option value="D3 Tenknik Mesin">D3 Tenknik Mesin
-                                            </option>
+                                            <option value="D3 Teknik Mesin">D3 Teknik Mesin</option>
                                             <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur
                                             </option>
-                                            <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan Tata Udara
-                                            </option>
-                                            <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi Kontrol
-                                            </option>
-                                            <option value="D3 Keperawatan">D3 Keperawatan
-                                            </option>
+                                            <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan
+                                                Tata Udara</option>
+                                            <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi
+                                                Kontrol</option>
+                                            <option value="D3 Keperawatan">D3 Keperawan</option>
                                         </select>
                                         @error('prodi')
                                             <div class="invalid-feedback">

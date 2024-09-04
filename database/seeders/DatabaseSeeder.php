@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this -> call(AdminSeeder::class);
         $this -> call(CheckerSeeder::class);
+        $this->call(JurusanSeeder::class);
+        $this->call(ProdiSeeder::class);
     }
 }

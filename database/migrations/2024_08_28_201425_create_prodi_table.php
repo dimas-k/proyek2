@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('check_di', function (Blueprint $table) {
+        Schema::create('prodi', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('desain_industri_id')->constrained('desain_industri')->onDelete('cascade');
-            $table->enum('cek_data',['Valid','Tidak Valid','menunggu Pemeriksaan'])->default('Menunggu Pemeriksaan');
-            $table->string('keterangan')->default('Data Desain Industri Belum Dicek');
+            $table->string('nama_prodi');
+            $table->string('kode_prodi');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('check_di');
+        Schema::dropIfExists('prodi');
     }
 };

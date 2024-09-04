@@ -137,6 +137,21 @@
                                     <input type="text"
                                         class="form-control @error('institusi') is-invalid @enderror" id=""
                                         value="Dosen" name="institusi" hidden>
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">Data Mahasiswa / Dosen <span
+                                                    class="text-danger">(Jika Bersama Dosen Yang Lain dan atau Bersama
+                                                    Mahasiswa Harap diisi)</span></label>
+                                            <input type="file"
+                                                class="form-control @error('data_pengaju2') is-invalid @enderror"
+                                                name="data_pengaju2" id="data_pengaju2">
+                                            <span class="text-danger"><i class="fa fa-warning me-2"
+                                                    data-bs-toggle="tooltip"></i>File harus bertipe .xlsx</span>
+                                            @error('data_pengaju2')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
                                     <div class="mb-3">
                                         <label for="" class="form-label">Jurusan</label>
                                         <select class="form-select @error('jurusan') is-invalid @enderror"

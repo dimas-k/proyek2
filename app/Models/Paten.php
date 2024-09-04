@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Paten extends Model
@@ -22,4 +23,11 @@ class Paten extends Model
     {
         return $this->hasOne(CheckPaten::class);
     }
+
+    public function jurusan() : HasMany
+    {
+        return $this->hasMany(Jurusan::class);
+    }
+
+    
 }

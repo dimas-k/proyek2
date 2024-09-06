@@ -518,7 +518,7 @@ class DosenController extends Controller
         $hc->tanggal_lahir = $request->tanggal_lahir;
 
         if ($request->hasFile('ktp_inventor')) {
-            $hc->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-hc');
+            $hc->ktp_inventor = $request->file('ktp_inventor')->store("dokumen-hc");
         }
 
         $hc->email = $request->email;
@@ -570,6 +570,8 @@ class DosenController extends Controller
             'kewarganegaraan' => 'required',
             'kode_pos' => 'required',
             'institusi' => 'required',
+            'jurusan' => 'required',
+            'prodi' => 'required',
             'jenis_di' => 'required',
             'judul_di' => 'required',
             'uraian_di' => 'required|mimes:pdf',
@@ -585,6 +587,9 @@ class DosenController extends Controller
         $di->no_telepon = $request->no_telepon;
         $di->tanggal_lahir = $request->tanggal_lahir;
         if ($request->hasFile('ktp_inventor')) {
+            if ($di->ktp_inventor) {
+                Storage::delete($di->ktp_inventor);
+            }
             $di->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-di');
         }
         $di->email = $request->email;
@@ -592,6 +597,9 @@ class DosenController extends Controller
         $di->kode_pos = $request->kode_pos;
         $di->institusi = $request->institusi;
         if ($request->hasFile('data_pengaju2')) {
+            if ($di->data_pengaju2) {
+                Storage::delete($di->data_pengaju2);
+            }
             $di->data_pengaju2 = $request->file('data_pengaju2')->store('dokumen-di');
         }
         $di->jurusan = $request->jurusan;
@@ -599,15 +607,27 @@ class DosenController extends Controller
         $di->jenis_di = $request->jenis_di;
         $di->judul_di = $request->judul_di;
         if ($request->hasFile('uraian_di')) {
+            if ($di->uraian_di) {
+                Storage::delete($di->uraian_di);
+            }
             $di->uraian_di = $request->file('uraian_di')->store('dokumen-di');
         }
         if ($request->hasFile('gambar_di')) {
+            if ($di->gambar_di) {
+                Storage::delete($di->gambar_di);
+            }
             $di->gambar_di = $request->file('gambar_di')->store('dokumen-di');
         } 
         if ($request->hasFile('surat_kepemilikan')) {
+            if ($di->surat_kepemilikan) {
+                Storage::delete($di->surat_kepemilikan);
+            }
             $di->surat_kepemilikan = $request->file('surat_kepemilikan')->store('dokumen-di');
         }
         if ($request->hasFile('surat_pengalihan')) {
+            if ($di->surat_pengalihan) {
+                Storage::delete($di->surat_pengalihan);
+            }
             $di->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-di');
         }
         $di->tanggal_permohonan = $request->tanggal_permohonan;

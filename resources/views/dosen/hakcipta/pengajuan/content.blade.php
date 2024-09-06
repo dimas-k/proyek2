@@ -41,7 +41,7 @@
                                 </a>
                             </span>
                             <form enctype="multipart/form-data" method="post"
-                                action="/dosen/hak-cipta/pengajuan/simpan">
+                                action="/dosen/hak-cipta/pengajuan/simpan" id="uploadForm">
                                 @csrf
                                 <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                                 <div class="container">
@@ -88,10 +88,10 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="ktp" class="form-label">KTP Inventor</label>
+                                        <label for="pdf" class="form-label">KTP Inventor</label>
                                         <input type="file"
                                             class="form-control @error('ktp_inventor') is-invalid @enderror"
-                                            id="ktp" name="ktp_inventor">
+                                            id="pdf" name="ktp_inventor">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('ktp_inventor')
@@ -258,7 +258,7 @@
                                     <div class="mb-3">
                                         <label for="pdf" class="form-label">Dokumen Invensi (Manual
                                             Book/Buku/Dll)</label>
-                                        <input type="file"
+                                        <input type="file" id="pdf"
                                             class="form-control @error('dokumen_invensi') is-invalid @enderror"
                                             placeholder="" name="dokumen_invensi" id="pdf">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
@@ -270,8 +270,8 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="pdf" class="form-label">Surat Pengalihan Hak Cipta</label>
-                                        <input type="file"
+                                        <label  class="form-label" for="pdf">Surat Pengalihan Hak Cipta</label>
+                                        <input type="file" id="pdf"
                                             class="form-control @error('surat_pengalihan') is-invalid @enderror"
                                             placeholder="" name="surat_pengalihan" id="pdf">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
@@ -284,9 +284,9 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="pdf" class="form-label">Surat Pernyataan</label>
-                                        <input type="file"
+                                        <input type="file" id="pdf"
                                             class="form-control @error('surat_pernyataan') is-invalid @enderror"
-                                            placeholder="" name="surat_pernyataan" id="pdf">
+                                            placeholder="" name="surat_pernyataan">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
                                         @error('surat_pernyataan')
@@ -296,7 +296,7 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="tanggalpengajuan" class="form-label">Tanggal Pengajuan</label>
+                                        <label for="tanggalpengajuan" class="form-label" >Tanggal Pengajuan</label>
                                         <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
                                             class="form-control @error('tanggal_permohonan') is-invalid @enderror">
                                         @error('tanggal_permohonan')

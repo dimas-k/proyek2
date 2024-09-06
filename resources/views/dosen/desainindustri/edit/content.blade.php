@@ -145,6 +145,24 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <th>Data Mahasiswa / Dosen
+                                            </th>
+                                            <td>
+                                                <input type="file"
+                                                    class="form-control @error('data_pengaju2') is-invalid @enderror"
+                                                    name="data_pengaju2">
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
+                                                    sama atau yang sudah di perbarui
+                                                </span>
+                                                @error('data_pengaju2')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <th>jurusan</th>
                                             <td>
                                                 <select class="form-select @error('jurusan') is-invalid @enderror"

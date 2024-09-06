@@ -34,10 +34,9 @@
                                 </div>
                             @endif
                             <span class="d-flex justify-content-end">
-                                <a href="https://drive.google.com/drive/folders/19w54Oc_sAmZakE1NNBt5GD3Yg-qEa7XO?usp=drive_link"
-                                    target="_blank" class="link-dark link-underline link-underline-opacity-0"><b><i
-                                            class="bi bi-download"></i></b>
-                                    <img src={{ asset('assets/downloadicon.png') }} alt="">Berkas Yang Di
+                                <a href="https://drive.google.com/drive/folders/1-7Cop9aiCcB8FOl93FAluVu4FpSXONNl?usp=drive_link"
+                                    target="_blank" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fw-bolder"><b><i
+                                            class="bi bi-download me-1"></i></b>Berkas Yang Di
                                     Perlukan
                                 </a>
                             </span>
@@ -50,7 +49,7 @@
                                         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                         <input type="text"
                                             class="form-control @error('nama_lengkap') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Nama"name="nama_lengkap">
+                                            id="" placeholder="Masukkan Nama"name="nama_lengkap" value="{{ auth()->user()->nama_lengkap }}">
                                         @error('nama_lengkap')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -60,7 +59,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Alamat</label>
                                         <input type="text" class="form-control @error('alamat') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Alamat" name="alamat">
+                                            id="" placeholder="Masukkan Alamat" name="alamat" value="{{ auth()->user()->alamat }}">
                                         @error('alamat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -71,7 +70,7 @@
                                         <label for="" class="form-label">No telepon</label>
                                         <input type="number"
                                             class="form-control @error('no_telepon') is-invalid @enderror"
-                                            id="" placeholder="Masukkan No telepon" name="no_telepon">
+                                            id="" placeholder="Masukkan No telepon" name="no_telepon" value="{{ auth()->user()->no_telepon }}">
                                         @error('no_telepon')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -104,7 +103,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Email</label>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Email" name="email">
+                                            id="" placeholder="Masukkan Email" name="email" value="{{ auth()->user()->email }}">
                                         @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

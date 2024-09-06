@@ -35,7 +35,7 @@
                             @endif
                             <span class="d-flex justify-content-end">
                                 <a href="https://drive.google.com/drive/folders/19w54Oc_sAmZakE1NNBt5GD3Yg-qEa7XO?usp=drive_link"
-                                    target="_blank" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fw-bolder"><b><i class="bi bi-download me-1"></i></b> Yang
+                                    target="_blank" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fw-bolder"><b><i class="bi bi-download me-1 fw-bolder"></i></b>Berkas Yang
                                     Di
                                     Perlukan
                                 </a>

@@ -34,7 +34,7 @@
                 <div class="card shadow-sm " style="width: 46rem;">
                     <div class="card-body">
                         <h5 class="card-title mb-3 mt-3 fw-normal font-family-Kokoro ">Cari Hak Cipta</h5>
-                        <form action={{ route('hc.cari') }} method="GET">
+                        <form action="/hak-cipta/cari/data" method="POST">
                             @csrf
                             <div class="mb-1 row">
                                 <label for=""
@@ -53,7 +53,7 @@
                                         id="" name="cari_nama">
                                 </div>
                             </div>
-                            <button type="button"
+                            <button type="submit"
                                 class="btn btn-primary mb-2 mt-3 fw-normal font-family-Kokoro ">Cari</button>
                         </form>
                     </div>

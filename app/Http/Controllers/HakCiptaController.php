@@ -54,11 +54,32 @@ class HakCiptaController extends Controller
         $tercatat = HakCipta::where('status', 'Tercatat')->count();
         $null = HakCipta::where('status', 'Keterangan Belum Lengkap')->count();
         $tolak = HakCipta::where('status', 'Ditolak')->count();
+        $mvdov = HakCipta::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->count();
 
         $hcTolak = HakCipta::where('status', 'Ditolak')->count();
         $hcTerima = HakCipta::where('status', 'Tercatat')->count();
         $hcKet = HakCipta::where('status', 'Keterangan belum lengkap')->count();
-        return view('Hakcipta.index', compact('hc','tercatat','null','tolak','itung', 'hcTolak','hcTerima','hcKet'));
+
+        $paten2024 = Paten::whereYear('tanggal_permohonan','2024')->count();
+        $hc2024 = HakCipta::whereYear('tanggal_permohonan','2024')->count();
+        $di2024 = DesainIndustri::whereYear('tanggal_permohonan','2024')->count();
+        $gabungKi2024 = $paten2024 + $di2024 + $hc2024 ;
+
+        $paten2025 = Paten::whereYear('tanggal_permohonan','2025')->count();
+        $hc2025 = HakCipta::whereYear('tanggal_permohonan','2025')->count();
+        $di2025 = DesainIndustri::whereYear('tanggal_permohonan','2025')->count();
+        $gabungKi2025 = $paten2025 + $di2025 + $hc2025 ;
+
+        $paten2026 = Paten::whereYear('tanggal_permohonan','2026')->count();
+        $hc2026 = HakCipta::whereYear('tanggal_permohonan','2026')->count();
+        $di2026 = DesainIndustri::whereYear('tanggal_permohonan','2026')->count();
+        $gabungKi2026 = $paten2026 + $di2026 + $hc2026 ;
+
+        $paten2027 = Paten::whereYear('tanggal_permohonan','2027')->count();
+        $hc2027 = HakCipta::whereYear('tanggal_permohonan','2027')->count();
+        $di2027 = DesainIndustri::whereYear('tanggal_permohonan','2027')->count();
+        $gabungKi2027 = $paten2027 + $di2027 + $hc2027 ;
+        return view('umum-page.Hakcipta.index', compact('hc','tercatat','null','tolak','itung', 'hcTolak','hcTerima','hcKet','mvdov','hc2024','hc2025','hc2026','hc2027','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027'));
     }
 
     public function listTercatat()

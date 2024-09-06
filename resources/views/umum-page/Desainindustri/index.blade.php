@@ -33,26 +33,26 @@
                 <div class="card shadow-sm " style="width: 46rem;">
                     <div class="card-body">
                         <h5 class="card-title mb-3 mt-3 fw-normal font-family-Kokoro ">Cari Desain industri</h5>
-                        <form action="get" method="">
+                        <form action="/desain-industri/cari/data" method="POST">
                             @csrf
                             <div class="mb-1 row">
-                                <label for="staticEmail"
-                                    class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Judul Desain</label>
+                                <label for=""
+                                    class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Judul Desain Industri</label>
                                 <div class="col-xxl-10">
                                     <input type="search"
-                                        class="form-control form-control-sm fw-normal font-family-Kokoro">
+                                        class="form-control form-control-sm fw-normal font-family-Kokoro" name="cari_di">
                                 </div>
                             </div>
                             <div class="mb-1 row">
-                                <label for="inputPassword"
+                                <label for=""
                                     class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Nama Invensi</label>
                                 <div class="col-xxl-10">
                                     <input type="search"
                                         class="form-control form-control-sm fw-normal font-family-Kokoro"
-                                        id="inputPassword">
+                                        id="" name="cari_nama">
                                 </div>
                             </div>
-                            <button type="button"
+                            <button type="submit"
                                 class="btn btn-primary mb-2 mt-3 fw-normal font-family-Kokoro ">Cari</button>
                         </form>
                     </div>

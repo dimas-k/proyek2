@@ -73,7 +73,7 @@ Route::get('/paten/menunggu-tanggapan-substansif', [PatenController::class, 'men
 Route::get('/paten/diberi', [PatenController::class, 'diberi']);
 Route::get('/paten/ditolak', [PatenController::class, 'ditolak']);
 Route::get('/paten/menunggu-verifikasi', [PatenController::class, 'mvdov']);
-Route::get('/cari', [PatenController::class, 'cari'])->name('paten.cari');
+Route::post('/cari', [PatenController::class, 'cari'])->name('paten.cari');
 Route::get('/paten/list/perorangan/', [PatenController::class, 'orang']);
 Route::get('/paten/list/perorangan/cari', [PatenController::class, 'cariOrang']);
 Route::get('/paten/list/jurusan/', [PatenController::class, 'jurusan']);
@@ -87,7 +87,7 @@ Route::get('/hak-cipta/ditolak', [HakCiptaController::class, 'tolak']);
 Route::get('/hak-cipta/keterangan-belum-lengkap', [HakCiptaController::class, 'belumLengkap']);
 Route::get('/hak-cipta/show/{id}', [HakCiptaController::class, 'show'])->name('hak-cipta.show');
 Route::get('/hak-cipta/menunggu-verifikasi', [HakCiptaController::class, 'mvdov']);
-Route::get('/cari/hak-cipta', [HakCiptaController::class, 'cari'])->name('hc.cari');
+Route::post('/hak-cipta/cari/data', [HakCiptaController::class, 'cari'])->name('hc.cari');
 Route::get('/hak-cipta/list/pegawai/', [HakCiptaController::class, 'pegawai']);
 Route::get('/hak-cipta/list/pegawai/cari/', [HakCiptaController::class, 'cariPegawai']);
 Route::get('/hak-cipta/list/jurusan/', [HakCiptaController::class, 'jurusan']);
@@ -109,6 +109,7 @@ Route::get('/desain-industri/list/jurusan', [DesainIndustriController::class, 'j
 Route::get('/desain-industri/list/jurusan/cari', [DesainIndustriController::class, 'cariJurusan']);
 Route::get('/desain-industri/list/prodi', [DesainIndustriController::class, 'prodi']);
 Route::get('/desain-industri/list/prodi/cari', [DesainIndustriController::class, 'cariProdi']);
+Route::post('/desain-industri/cari/data', [DesainIndustriController::class, 'cari']);
 
 Route::get('/login-admin', [AdminController::class, 'index'])->name('login.admin');
 Route::post('/autentikasi', [AdminController::class, 'authenticate']);

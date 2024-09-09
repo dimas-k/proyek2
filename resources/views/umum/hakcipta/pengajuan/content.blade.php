@@ -48,7 +48,7 @@
                                     <div class="mb-3">
                                         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                         <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Nama"name="nama_lengkap">
+                                            id="" placeholder="Masukkan Nama"name="nama_lengkap" value="{{ auth()->user()->nama_lengkap }}">
                                         @error('nama_lengkap')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -58,7 +58,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Alamat</label>
                                         <input type="text" class="form-control @error('alamat') is-invalid @enderror" id=""
-                                            placeholder="Masukkan Alamat" name="alamat">
+                                            placeholder="Masukkan Alamat" name="alamat" value="{{ auth()->user()->alamat }}">
                                         @error('alamat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -68,7 +68,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">No telepon</label>
                                         <input type="number" class="form-control @error('no_telepon') is-invalid @enderror"
-                                            id="" placeholder="Masukkan No telepon" name="no_telepon">
+                                            id="" placeholder="Masukkan No telepon" name="no_telepon" value="{{ auth()->user()->no_telepon }}">
                                         @error('no_telepon')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -78,7 +78,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Tanggal Lahir</label>
                                         <input type="date" name="tanggal_lahir" id=""
-                                            class="form-control @error('tanggal_lahir') is-invalid @enderror">
+                                            class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{ old('tanggal_lahir') }}">
                                         @error('tanggal_lahir')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -100,7 +100,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Email</label>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror" id=""
-                                            placeholder="Masukkan Email" name="email">
+                                            placeholder="Masukkan Email" name="email" value="{{ auth()->user()->email }}">
                                         @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -110,7 +110,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Kewarganegaraan</label>
                                         <input type="text" class="form-control @error('kewarganegaraan') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan">
+                                            id="" placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan" value="{{ old('kewarganegaraan') }}">
                                         @error('kewarganegaraan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -120,7 +120,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Kode Pos</label>
                                         <input type="number" class="form-control @error('kode_pos') is-invalid @enderror" id=""
-                                            placeholder="Masukkan Kode Pos" name="kode_pos">
+                                            placeholder="Masukkan Kode Pos" name="kode_pos" value="{{ old('kode_pos') }}">
                                         @error('kode_pos')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -170,7 +170,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Judul Ciptaan</label>
                                         <input type="text" class="form-control @error('judul_ciptaan') is-invalid @enderror"
-                                            placeholder="Masukkan Judul Ciptaan" name="judul_ciptaan">
+                                            placeholder="Masukkan Judul Ciptaan" name="judul_ciptaan" value="{{ old('judul_ciptaan') }}">
                                         @error('judul_ciptaan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -180,7 +180,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Uraian Singkat Ciptaan</label>
                                         <textarea class="form-control @error('uraian_singkat') is-invalid @enderror" placeholder="Masukkan Uraian Siangkat" name="uraian_singkat" id="floatingTextarea2"
-                                            style="height: 150px"></textarea>
+                                            style="height: 150px">{{ old('uraian_singkat') }}</textarea>
                                             @error('uarian_singkat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -226,7 +226,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Tanggal Pengajuan</label>
                                         <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
-                                            class="form-control @error('tanggal_permohonan') is-invalid @enderror">
+                                            class="form-control @error('tanggal_permohonan') is-invalid @enderror" value="{{ old('tanggal_permohonan') }}">
                                         @error('tanggal_permohonan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

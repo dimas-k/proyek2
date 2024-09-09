@@ -50,7 +50,7 @@
                                         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                         <input type="text"
                                             class="form-control @error('nama_lengkap') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Nama"name="nama_lengkap">
+                                            id="" placeholder="Masukkan Nama"name="nama_lengkap" value="{{ auth()->user()->nama_lengkap }}">
                                         @error('nama_lengkap')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -60,7 +60,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Alamat</label>
                                         <input type="text" class="form-control @error('alamat') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Alamat" name="alamat">
+                                            id="" placeholder="Masukkan Alamat" name="alamat" value="{{ auth()->user()->alamat }}">
                                         @error('alamat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -71,7 +71,7 @@
                                         <label for="" class="form-label">No telepon</label>
                                         <input type="number"
                                             class="form-control @error('no_telepon') is-invalid @enderror"
-                                            id="" placeholder="Masukkan No telepon" name="no_telepon">
+                                            id="" placeholder="Masukkan No telepon" name="no_telepon" value="{{ auth()->user()->no_telepon }}">
                                         @error('no_telepon')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -81,7 +81,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Tanggal Lahir</label>
                                         <input type="date" name="tanggal_lahir" id=""
-                                            class="form-control @error('tanggal_lahir') is-invalid @enderror">
+                                            class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{ old('tanggal_lahir') }}">
                                         @error('tanggal_lahir')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -104,7 +104,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Email</label>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Email" name="email">
+                                            id="" placeholder="Masukkan Email" name="email" value="{{ auth()->user()->email }}">
                                         @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -116,7 +116,7 @@
                                         <input type="text"
                                             class="form-control @error('kewarganegaraan') is-invalid @enderror"
                                             id="" placeholder="Masukkan Kewarganegaraan"
-                                            name="kewarganegaraan">
+                                            name="kewarganegaraan" value="{{ old('kewarganegaraan') }}">
                                         @error('kewarganegaraan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -127,7 +127,7 @@
                                         <label for="" class="form-label">Kode Pos</label>
                                         <input type="number"
                                             class="form-control @error('kode_pos') is-invalid @enderror" id=""
-                                            placeholder="Masukkan Kode Pos" name="kode_pos">
+                                            placeholder="Masukkan Kode Pos" name="kode_pos" value="{{ old('kode_pos') }}">
                                         @error('kode_pos')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -234,7 +234,7 @@
                                         <label for="" class="form-label">Judul Desain Industri</label>
                                         <input type="text"
                                             class="form-control @error('judul_di') is-invalid @enderror"
-                                            placeholder="Masukkan Judul Desain Industri" name="judul_di">
+                                            placeholder="Masukkan Judul Desain Industri" name="judul_di" value="{{ old('judul_di') }}">
                                         @error('judul_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -296,7 +296,7 @@
                                     <div class="mb-3">
                                         <label for="" class="form-label">Tanggal Pengajuan</label>
                                         <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
-                                            class="form-control @error('tanggal_permohonan') is-invalid @enderror">
+                                            class="form-control @error('tanggal_permohonan') is-invalid @enderror" value="{{ old('tanggal_permohonan') }}">
                                         @error('tanggal_permohonan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

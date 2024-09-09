@@ -322,8 +322,6 @@
                     <th scope="col">Nama lengkap</th>
                     <th scope="col">Jenis Paten</th>
                     <th scope="col">Judul paten</th>
-                    <th scope="col">Jurusan</th>
-                    <th scope="col">Prodi</th>
                     <th scope="col">Tanggal pengajuan</th>
                     <th scope="col">Status paten</th>
                 </tr>
@@ -335,8 +333,6 @@
                         <td>{{ $p->nama_lengkap }}</td>
                         <td>{{ $p->jenis_paten }}</td>
                         <td>{{ $p->judul_paten }}</td>
-                        <td>{{ $p->jurusan }}</td>
-                        <td>{{ $p->prodi }}</td>
                         <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y') }}</td>
                         <td>{{ $p->status }}</td>
                     </tr>

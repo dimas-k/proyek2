@@ -80,7 +80,7 @@
                                     <div class="mb-3">
                                         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                                         <input type="date" name="tanggal_lahir" id="tanggal_lahir"
-                                            class="form-control @error('tanggal_lahir') is-invalid @enderror">
+                                            class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{ old('tanggal_lahir') }}">
                                         @error('tanggal_lahir')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -115,7 +115,7 @@
                                         <input type="text"
                                             class="form-control @error('kewarganegaraan') is-invalid @enderror"
                                             id="warga" placeholder="Masukkan Kewarganegaraan"
-                                            name="kewarganegaraan">
+                                            name="kewarganegaraan" value="{{ old('kewarganegaraan') }}">
                                         @error('kewarganegaraan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -126,7 +126,7 @@
                                         <label for="kode_pos" class="form-label">Kode Pos</label>
                                         <input type="number"
                                             class="form-control @error('kode_pos') is-invalid @enderror" id="kode_pos"
-                                            placeholder="Masukkan Kode Pos" name="kode_pos">
+                                            placeholder="Masukkan Kode Pos" name="kode_pos" value="{{ old('kode_pos') }}">
                                         @error('kode_pos')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -238,7 +238,7 @@
                                         <label for="judul_ciptaan" class="form-label">Judul Ciptaan</label>
                                         <input type="text"
                                             class="form-control @error('judul_ciptaan') is-invalid @enderror"
-                                            placeholder="Masukkan Judul Ciptaan" name="judul_ciptaan" id="judul_ciptaan">
+                                            placeholder="Masukkan Judul Ciptaan" name="judul_ciptaan" id="judul_ciptaan" value="{{ old('judul_ciptaan') }}">
                                         @error('judul_ciptaan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -248,7 +248,7 @@
                                     <div class="mb-3">
                                         <label for="uraian" class="form-label">Uraian Singkat Ciptaan</label>
                                         <textarea class="form-control @error('uraian_singkat') is-invalid @enderror" placeholder="Masukkan Uraian Siangkat"
-                                            name="uraian_singkat" id="uraian" style="height: 150px"></textarea>
+                                            name="uraian_singkat" id="uraian" style="height: 150px">{{ old('uraian_singkat') }}</textarea>
                                         @error('uarian_singkat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -298,7 +298,7 @@
                                     <div class="mb-3">
                                         <label for="tanggalpengajuan" class="form-label" >Tanggal Pengajuan</label>
                                         <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
-                                            class="form-control @error('tanggal_permohonan') is-invalid @enderror">
+                                            class="form-control @error('tanggal_permohonan') is-invalid @enderror" value="{{ old('tanggal_permohonan') }}">
                                         @error('tanggal_permohonan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

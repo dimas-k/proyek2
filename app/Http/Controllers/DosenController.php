@@ -385,7 +385,7 @@ class DosenController extends Controller
         }
 
         // Simpan perubahan ke database
-        $paten->save();
+        $paten->save($validasidata);
 
 
         return redirect('/dosen/paten')->with('success', 'Data paten berhasil di update');
@@ -570,6 +570,7 @@ class DosenController extends Controller
             'kewarganegaraan' => 'required',
             'kode_pos' => 'required',
             'institusi' => 'required',
+            'data_pengaju2' => 'mimes:xlsx',
             'jurusan' => 'required',
             'prodi' => 'required',
             'jenis_di' => 'required',

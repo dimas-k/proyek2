@@ -89,9 +89,9 @@ Route::get('/hak-cipta/show/{id}', [HakCiptaController::class, 'show'])->name('h
 Route::get('/hak-cipta/menunggu-verifikasi', [HakCiptaController::class, 'mvdov']);
 Route::post('/hak-cipta/cari/data', [HakCiptaController::class, 'cari'])->name('hc.cari');
 Route::get('/hak-cipta/list/pegawai/', [HakCiptaController::class, 'pegawai']);
-Route::get('/hak-cipta/list/pegawai/cari/', [HakCiptaController::class, 'cariPegawai']);
+Route::post('/hak-cipta/list/pegawai/cari/', [HakCiptaController::class, 'cariPegawai']);
 Route::get('/hak-cipta/list/jurusan/', [HakCiptaController::class, 'jurusan']);
-Route::get('/hak-cipta/list/jurusan/cari/', [HakCiptaController::class, 'cariJurusan']);
+Route::post('/hak-cipta/list/jurusan/cari/', [HakCiptaController::class, 'cariJurusan']);
 Route::get('/hak-cipta/list/prodi', [HakCiptaController::class, 'prodi']);
 Route::get('/hak-cipta/list/prodi/cari/', [HakCiptaController::class, 'cariProdi']);
 

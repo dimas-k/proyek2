@@ -35,6 +35,7 @@
                         <h5 class="card-title mb-3 mt-3 fw-normal font-family-Kokoro ">Cari Paten</h5>
 
                         <form action="/cari" method="POST">
+                            @csrf
                             <div class="mb-1 row">
                                 <label for="" class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Judul
                                     Paten</label>

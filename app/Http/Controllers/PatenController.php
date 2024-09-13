@@ -72,7 +72,7 @@ class PatenController extends Controller
 
     public function cari(Request $request){
         $carijudul = $request->input('cari_judul');
-        $carinama = $request->input('cari_nama'); 
+        $carinama = $request->input('cari_nama');
         $paten1 = Paten::where('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //yang bener
         // $paten = DB::table('paten')->whereRaw('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //penggunaan raw queri
 

@@ -147,47 +147,6 @@
 
     <!-- CUSTOM JS -->
     <script src="{{ asset('assets-user/js/custom.js') }}"></script>
-    
-    <script>
-        $(document).ready(function() {
-        $('#uploadForm').submit(function(e) {
-            e.preventDefault(); // Mencegah form langsung submit
-
-            var fileInput = $('#pdf')[0].files[0]; // Ambil file yang dipilih
-
-            // Jika tidak ada file yang dipilih
-            if (!fileInput) {
-                $('#fileError').text('Harap pilih file terlebih dahulu.').show();
-                return;
-            }
-
-            var allowedExtension = /(\.pdf)$/i; // Hanya PDF
-            var maxSize = 2 * 1024 * 1024; // Maksimal 2 MB
-
-            var errorMessage = ''; // Variabel untuk menyimpan pesan error
-            $('#fileError').hide(); // Sembunyikan pesan error sebelumnya
-
-            // Validasi ekstensi file
-            if (!allowedExtension.exec(fileInput.name)) {
-                errorMessage += 'File yang diperbolehkan hanya format PDF. ';
-            }
-
-            // Validasi ukuran file
-            if (fileInput.size > maxSize) {
-                errorMessage += 'Ukuran file maksimal adalah 2 MB. ';
-            }
-
-            // Jika ada error, tampilkan pesan dan tidak kirim form
-            if (errorMessage !== '') {
-                $('#fileError').text(errorMessage).show();
-                return false; // Stop pengiriman form
-            }
-
-            // Jika validasi berhasil, kirim form
-            this.submit();
-        });
-    });
-    </script>
 
 </body>
 

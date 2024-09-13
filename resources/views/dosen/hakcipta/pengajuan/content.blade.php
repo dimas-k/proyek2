@@ -204,27 +204,23 @@
                                         <label for="jenis_ciptaan" class="form-label">Jenis Ciptaan
                                             <select class="form-select @error('jenis_ciptaan') is-invalid @enderror" aria-label="Default select example" name="jenis_ciptaan" id="jenis_ciptaan">
                                                 <option selected>Pilih Jenis Hak Cipta anda</option>
-                                                <option value="Buku, program komputer, pamflet, perwajahan (layout) karya tulis yang diterbitkan, dan semua hasil karya tulis lain">Buku, program komputer, pamflet, perwajahan (layout) karya tulis yang diterbitkan, dan semua hasil karya tulis lain;
+                                                <option value="Karya Tulis">Karya Tulis
                                                 </option>
-                                                <option value="Ceramah, kuliah, pidato, dan ciptaan lain yang sejenis dengan itu">Ceramah, kuliah, pidato, dan ciptaan lain yang sejenis dengan itu;
+                                                <option value="Karya Seni">Karya Seni
                                                 </option>
-                                                <option value="Alat peraga yang dibuat untuk kepentingan pendidikan dan ilmu pengetahuan">Alat peraga yang dibuat untuk kepentingan pendidikan dan ilmu pengetahuan;
+                                                <option value="Komposisi Musik">Komposisi Musik
                                                 </option>
-                                                <option value="Lagu atau musik dengan atau tanpa teks">Lagu atau musik dengan atau tanpa teks;
+                                                <option value="Karya Audio Visual">Karya Audio Visual
                                                 </option>
-                                                <option value="Drama atau drama musikal, tari, koreografi, pewayangan, dan pantomim">Drama atau drama musikal, tari, koreografi, pewayangan, dan pantomim;
+                                                <option value="Karya Fotografi">Karya Fotografi
                                                 </option>
-                                                <option value="Seni rupa dalam segala bentuk seperti seni lukis, gambar, seni ukir, seni kaligrafi, seni pahat, seni patung, kolase, dan seni terapan">Seni rupa dalam segala bentuk seperti seni lukis, gambar, seni ukir, seni kaligrafi, seni pahat, seni patung, kolase, dan seni terapan;
+                                                <option value="Karya Drama dan Koreografi">Karya Drama dan Koreografi
                                                 </option>
-                                                <option value="Arsitektur">Arsitektur;
+                                                <option value="Karya Rekaman">Karya Rekaman
                                                 </option>
-                                                <option value="Peta">Peta;
+                                                <option value="Karya Lainnya">Karya Lainnya
                                                 </option>
-                                                <option value="Seni Batik">Seni Batik;
-                                                </option>
-                                                <option value="Fotografi">Fotografi;
-                                                </option>
-                                                <option value="Terjemahan, tafsir, saduran, bunga rampai, dan karya lain dari hasil pengalihwujudan">Terjemahan, tafsir, saduran, bunga rampai, dan karya lain dari hasil pengalihwujudan.
+                                                <option value="Seni Batik">Seni Batik
                                                 </option>
                                             </select>
                                         </label>

@@ -39,7 +39,7 @@
                             class="side-menu__label">Desain Industri</span></a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href=""><i class=" side-menu__icon fa fa-wpforms" data-bs-toggle="tooltip" title="fa fa-wpforms"></i><span
+                    <a class="side-menu__item" data-bs-toggle="slide" href="#"><i class=" side-menu__icon fa fa-wpforms" data-bs-toggle="tooltip" title="fa fa-wpforms"></i><span
                             class="side-menu__label">Pengajuan KI</span><i
                             class="angle fe fe-chevron-right"></i></a>
                     <ul class="slide-menu">

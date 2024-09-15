@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary shadow  mb-5 bg-body-tertiary bg-white">
+<nav class="navbar navbar-expand-lg bg-body-tertiary shadow  mb-5 bg-body-tertiary bg-white fixed-top navbar-inverse">
     <div class="container">
         <img class="navbar-brand" src={{ asset('assets/polindra2.jpg') }}>
         <span class="position-absolute border border-start border-1 border-black"></span>

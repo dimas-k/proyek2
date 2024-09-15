@@ -549,7 +549,7 @@ class DosenController extends Controller
         }
 
         $hc->tanggal_permohonan = $request->tanggal_permohonan;
-        $hc->save($validasidata);
+        $hc->save();
 
         return redirect('/dosen/hak-cipta/pengajuan')->with('success', 'Data hak cipta berhasil Disimpan!');
     }

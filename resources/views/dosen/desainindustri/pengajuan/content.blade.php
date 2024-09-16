@@ -42,7 +42,7 @@
                                 </a>
                             </span>
                             <form enctype="multipart/form-data" method="post"
-                                action="/dosen/desain-industri/pengajuan/simpan">
+                                action="/dosen/desain-industri/pengajuan/simpan" id="uploadForm">
                                 @csrf
                                 <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                                 <div class="container">
@@ -237,26 +237,26 @@
                                     <div class="mb-3">
                                         <label for="judul_desain" class="form-label">Judul Desain Industri</label>
                                         <input type="text"
-                                            class="form-control @error('judul_di') is-invalid @enderror"
+                                            class="form-control"
                                             placeholder="Masukkan Judul Desain Industri" name="judul_di" value="{{ old('judul_di') }}" id="judul_desain">
-                                        @error('judul_di')
+                                        {{-- @error('judul_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
                                         <label for="gambar_desain" class="form-label">Gambar Desain Industri</label>
                                         <input type="file"
-                                            class="form-control @error('gambar_di') is-invalid @enderror"
+                                            class="form-control"
                                             placeholder="" name="gambar_di" id="gambar_desain">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        @error('gambar_di')
+                                        {{-- @error('gambar_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
                                         <label for="uraian_desain" class="form-label">Uraian Desain Industri</label>
@@ -265,42 +265,42 @@
                                             placeholder="" name="uraian_di" id="uraian_desain">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        @error('uraian_di')
+                                        {{-- @error('uraian_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="surat_kepemilikan" class="form-label">Surat Pernyataan Kepemilikan</label>
+                                        <label for="pernyataan_kepemilikan" class="form-label">Surat Pernyataan Kepemilikan</label>
                                         <input type="file"
                                             class="form-control"
-                                            placeholder="" name="surat_kepemilikan" id="surat_kepemilikan">
+                                            placeholder="" name="surat_kepemilikan" id="pernyataan_kepemilikan">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        @error('surat_kepemilikan')
+                                        {{-- @error('surat_kepemilikan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Surat Pengalihan Hak</label>
+                                        <label for="pengalihan" class="form-label">Surat Pengalihan Hak</label>
                                         <input type="file"
                                             class="form-control"
-                                            placeholder="" name="surat_pengalihan">
+                                            placeholder="" name="surat_pengalihan" id="pengalihan">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        @error('surat_pengalihan')
+                                        {{-- @error('surat_pengalihan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Tanggal Pengajuan</label>
+                                        <label for="tanggalpengajuan" class="form-label">Tanggal Pengajuan</label>
                                         <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
-                                            class="form-control @error('tanggal_permohonan') is-invalid @enderror" value="{{ old('tanggal_permohonan') }}">
+                                            class="form-control" value="{{ old('tanggal_permohonan') }}">
                                         @error('tanggal_permohonan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

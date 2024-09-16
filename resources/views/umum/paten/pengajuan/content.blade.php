@@ -41,46 +41,48 @@
                                 </a>
                             </span>
                             <form class="p-2" enctype="multipart/form-data" method="post"
-                                action="/umum/pengajuan/paten/simpan">
+                                action="/umum/pengajuan/paten/simpan" id="uploadForm">
                                 @csrf
                                 <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                                 <div class="container">
                                     <div class="mb-3">
                                         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                        <input type="text"
-                                            class="form-control @error('nama_lengkap') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Nama"name="nama_lengkap" value="{{ auth()->user()->nama_lengkap }}">
-                                        @error('nama_lengkap')
+                                        <input type="text" value="{{ auth()->user()->nama_lengkap }}"
+                                            class="form-control"
+                                            id="nama_lengkap" placeholder="Masukkan Nama"name="nama_lengkap">
+                                        {{-- @error('nama_lengkap')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control @error('alamat') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Alamat" name="alamat" value="{{ auth()->user()->alamat }}">
-                                        @error('alamat')
+                                        <label for="alamat" class="form-label">Alamat</label>
+                                        <input type="text" class="form-control"
+                                            id="alamat" placeholder="Masukkan Alamat" name="alamat"
+                                            value="{{ auth()->user()->alamat }}">
+                                        {{-- @error('alamat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">No telepon</label>
+                                        <label for="no_telepon" class="form-label">No telepon</label>
                                         <input type="number"
-                                            class="form-control @error('no_telepon') is-invalid @enderror"
-                                            id="" placeholder="Masukkan No telepon" name="no_telepon" value="{{ auth()->user()->no_telepon }}">
-                                        @error('no_telepon')
+                                            class="form-control "
+                                            id="no_telepon" placeholder="Masukkan No telepon" name="no_telepon"
+                                            value="{{ auth()->user()->no_telepon }}">
+                                        {{-- @error('no_telepon')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Tanggal Lahir</label>
-                                        <input type="date" name="tanggal_lahir" id=""
-                                            class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{ old('tanggal_lahir') }}">
+                                        <label for="tanggal_lahie" class="form-label">Tanggal Lahir</label>
+                                        <input type="date" name="tanggal_lahir" id="tanggal_lahir"
+                                            class="form-control" value="{{ old('tanggal_lahir') }}">
                                         @error('tanggal_lahir')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -88,50 +90,52 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">KTP Inventor</label>
+                                        <label for="ktp" class="form-label">KTP Inventor</label>
                                         <input type="file"
-                                            class="form-control @error('ktp_inventor') is-invalid @enderror"
-                                            id="" name="ktp_inventor">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        @error('ktp_inventor')
+                                            class="form-control"
+                                            id="ktp" name="ktp_inventor">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
+                                        {{-- @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Email</label>
-                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Email" name="email" value="{{ auth()->user()->email }}">
-                                        @error('email')
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control "
+                                            id="email" placeholder="Masukkan Email" name="email"
+                                            value="{{ auth()->user()->email }}">
+                                        {{-- @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Kewarganegaraan</label>
+                                        <label for="warga" class="form-label">Kewarganegaraan</label>
                                         <input type="text"
-                                            class="form-control @error('kewarganegaraan') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Kewarganegaraan"
+                                            class="form-control"
+                                            id="warga" placeholder="Masukkan Kewarganegaraan"
                                             name="kewarganegaraan" value="{{ old('kewarganegaraan') }}">
-                                        @error('kewarganegaraan')
+                                        {{-- @error('kewarganegaraan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Kode Pos</label>
+                                        <label for="pos" class="form-label">Kode Pos</label>
                                         <input type="number"
-                                            class="form-control @error('kode_pos') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Kode Pos" name="kode_pos" value="{{ old('kode_pos') }}">
-                                        @error('kode_pos')
+                                            class="form-control"
+                                            id="pos" placeholder="Masukkan Kode Pos" name="kode_pos" value="{{ old('kode_pos') }}">
+                                        {{-- @error('kode_pos')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <input type="text" class="form-control @error('institusi') is-invalid @enderror"
                                         id="" value="Umum" name="institusi" hidden>
@@ -139,146 +143,154 @@
                                 <br><br>
                                 <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR PATEN</p>
                                 <div class="container">
-                                    <label for="" class="form-label">Jenis Paten</label>
+                                    <label for="paten" class="form-label">Jenis Paten</label>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="jenis_paten"
-                                            id="" value="Paten">
+                                            id="paten" value="Paten">
                                         <label class="form-check-label" for="Paten">
                                             Paten
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="jenis_paten"
-                                            id="" value="Paten sederhana">
-                                        <label class="form-check-label" for="Paten sederhana">
+                                            id="paten_s" value="Paten sederhana">
+                                        <label class="form-check-label" for="Paten sederhana" for="paten_s">
                                             Paten Sederhana
                                         </label>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Judul Paten</label>
+                                        <label for="judul_paten" class="form-label">Judul Paten</label>
                                         <input type="text"
-                                            class="form-control @error('judul_paten') is-invalid @enderror"
-                                            id="" placeholder="Masukkan Judul Paten" name="judul_paten" value="{{ old('judul_paten') }}">
-                                        @error('judul_paten')
+                                            class="form-control"
+                                            id="judul_paten" placeholder="Masukkan Judul Paten" name="judul_paten" value="{{ old('judul_paten') }}">
+                                        {{-- @error('judul_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Abstrak Paten</label>
+                                        <label for="abstrak" class="form-label">Abstrak Paten</label>
                                         <input type="file"
-                                            class="form-control @error('abstrak_paten') is-invalid @enderror"
-                                            id="" placeholder="" name="abstrak_paten">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        @error('abstrak_paten')
+                                            class="form-control"
+                                            id="abstrak" placeholder="" name="abstrak_paten">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
+                                        {{-- @error('abstrak_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Deskripsi Paten</label>
+                                        <label for="deskripsi" class="form-label">Deskripsi Paten</label>
                                         <input type="file"
-                                            class="form-control @error('deskripsi_paten') is-invalid @enderror"
-                                            id="" placeholder="" name="deskripsi_paten">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        @error('deskripsi_paten')
+                                            class="form-control "
+                                            id="deskripsi" placeholder="" name="deskripsi_paten">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
+                                        {{-- @error('deskripsi_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Pengalihan Hak Invensi</label>
+                                        <label for="pengalihan_hak" class="form-label">Pengalihan Hak Invensi</label>
                                         <input type="file"
-                                            class="form-control @error('pengalihan_hak') is-invalid @enderror"
-                                            id="" placeholder="" name="pengalihan_hak">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        @error('pengalihan_hak')
+                                            class="form-control "
+                                            id="pengalihan_hak" placeholder="" name="pengalihan_hak">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
+                                        {{-- @error('pengalihan_hak')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Klaim</label>
+                                        <label for="klaim" class="form-label">Klaim</label>
                                         <input type="file"
-                                            class="form-control @error('abstrak_paten') is-invalid @enderror"
-                                            id="" placeholder="" name="klaim">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        @error('klaim')
+                                            class="form-control "
+                                            id="klaim" placeholder="" name="klaim">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
+                                        {{-- @error('klaim')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Pernyataan kepemikikan
+                                        <label for="kepemilikan" class="form-label">Pernyataan kepemikikan
                                             Inventor</label>
                                         <input type="file"
-                                            class="form-control @error('pernyataan_kepemilikan') is-invalid @enderror"
-                                            id="" placeholder="" name="pernyataan_kepemilikan">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        @error('pernyataan_kepemilikan')
+                                            class="form-control"
+                                            id="kepemilikan" placeholder="" name="pernyataan_kepemilikan">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
+                                        {{-- @error('pernyataan_kepemilikan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Surat kuasa</label>
+                                        <label for="kuasa" class="form-label">Surat kuasa</label>
                                         <input type="file"
-                                            class="form-control @error('surat_kuasa') is-invalid @enderror"
-                                            id="" placeholder="" name="surat_kuasa">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        @error('surat_kuasa')
+                                            class="form-control "
+                                            id="kuasa" placeholder="" name="surat_kuasa">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
+                                        {{-- @error('surat_kuasa')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">gambar Paten</label>
+                                        <label for="g_paten" class="form-label">gambar Paten</label>
                                         <input type="file"
-                                            class="form-control @error('gambar_paten') is-invalid @enderror"
-                                            id="" placeholder="" name="gambar_paten">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        @error('surat_kuasa')
+                                            class="form-control "
+                                            id="g_paten" placeholder="" name="gambar_paten">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
+                                        {{-- @error('gambar_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">gambar Tampilan</label>
+                                        <label for="g_tampilan" class="form-label">gambar Tampilan</label>
                                         <input type="file"
-                                            class="form-control @error('gambar_tampilan') is-invalid @enderror"
-                                            id="" placeholder="" name="gambar_tampilan">
-                                            <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        @error('gambar_tampilan')
+                                            class="form-control "
+                                            id="g_tampilan" placeholder="" name="gambar_tampilan">
+                                        <span class="text-danger"><i class="fa fa-warning me-2"
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
+                                            dari 2mb</span>
+                                        {{-- @error('gambar_tampilan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Tanggal Pengajuan</label>
+                                        <label for="tanggalpengajuan" class="form-label">Tanggal Pengajuan</label>
                                         <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
-                                            class="form-control @error('tanggal_permohonan') is-invalid @enderror" value="{{ old('tanggal_permohonan') }}">
-                                        @error('tanggal_permohonan')
+                                            class="form-control " value="{{ old('tanggal_permohonan') }}">
+                                        {{-- @error('tanggal_permohonan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <p class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>Harap
                                         Isi semua Form Dengan

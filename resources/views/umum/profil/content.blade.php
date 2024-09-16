@@ -53,11 +53,6 @@
                                         <td>: {{ auth()->user()->alamat }}</td>
                                     </tr>
                                     <tr>
-                                        <th>KTP</th>
-                                        <td>: <a href={{ asset('storage/' . auth()->user()->ktp) }} class=""
-                                                target="_blank">Lihat KTP</a></td>
-                                    </tr>
-                                    <tr>
                                         <th>Pekerjaan</th>
                                         <td>: {{ auth()->user()->kerjaan }}</td>
                                     </tr>

@@ -85,20 +85,6 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>KTP</th>
-                                            <td>
-                                                <input type="file"
-                                                    class="form-control @error('ktp') is-invalid @enderror"
-                                                    id="" name="ktp" value="{{ auth()->user()->ktp }}">
-                                                {{-- <span class="text-danger"><i class="fa fa-warning me-2" data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang sama atau yang sudah di perbarui</span> --}}
-                                                @error('ktp')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <th>Pekerjaan</th>
                                             <td>
                                                 <input type="text"

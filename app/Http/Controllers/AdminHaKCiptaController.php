@@ -32,14 +32,21 @@ class AdminHaKCiptaController extends Controller
         $cek = HakCipta::latest()->where('status', 'Ditolak')->get();
         return view('admin.adminhk.admin-hc-t.index', compact('cek'));
     }
+    public function mvdov()
+    {
+        $mvdov = HakCipta::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->paginate(5);
+        return view('admin.adminhk.admin-hc-mvdov.index', compact('mvdov'));
+    }
     public function cariHk(Request $request)
     {
         $cari = $request->input('cari');
-        $hak_cipta = HakCipta::with('cekhc')->where('judul_ciptaan', 'LIKE', "%" . $cari . "%")->orWhere('nama_lengkap', 'LIKE', "%" . $cari . "%")->orWhere('status', 'LIKE', "%" . $cari . "%")->paginate(5);
+        $hak_cipta = HakCipta::with('cekhc')->where('judul_ciptaan', 'LIKE', "%" . $cari . "%")->orWhere('nama_lengkap', 'LIKE', "%" . $cari . "%")->orWhere('status', 'LIKE', "%" . $cari . "%")->orWhere('institusi', 'LIKE', "%" . $cari . "%")->paginate(5);
         $tercatat = HakCipta::where('status', 'Tercatat')->count();
         $tolak = HakCipta::where('status', 'Ditolak')->count();
         $null = HakCipta::where('status', 'Keterangan Belum Lengkap')->count();
-        return view('admin.adminhk.index', compact('hak_cipta','tercatat','null','tolak'));
+        $mvdov = HakCipta::where('status', 'Menunggu Verifikasi Data Oleh Verifikator ')->count();
+
+        return view('admin.adminhk.index', compact('hak_cipta','tercatat','null','tolak', 'mvdov'));
     }
 
     /**

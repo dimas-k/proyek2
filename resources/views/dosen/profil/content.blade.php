@@ -54,14 +54,14 @@
                                     </tr>
                                     <tr>
                                         <th>Pekerjaan</th>
-                                        <td>: {{ auth()->user()->kerjaan }}</td>
+                                        <td>: {{ auth()->user()->nip }}</td>
                                     </tr>
                                     <tr>
                                         <th>Username</th>
                                         <td>: {{ auth()->user()->username }}</td>
                                     </tr>
                                 </table>
-                                {{-- <a href={{ route('umum.profil.edit', auth()->user()->id) }} class="btn btn-primary">Edit Profil</a> --}}
+                                {{-- <a href={{ route('dsn.profil.edit', auth()->user()->id) }} class="btn btn-primary">Edit Profil</a> --}}
                             </div>
                         </div>
                     </div>

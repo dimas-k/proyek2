@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href={{ URL('storage/polindra21.png') }}>
+    <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
     <title>SIKI POLINDRA-Admin | Hak Cipta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -19,7 +19,7 @@
     <div class="container-fluid border">
         <nav class="navbar navbar-expand bg-body-tertiary">
             <div class="container-fluid">
-                <img class="navbar-brand" src={{ URL('storage/polindra2.jpg') }}>
+                <img class="navbar-brand" src={{ asset('assets/polindra2.jpg') }}>
                 <a class="navbar-brand fs-6 fw-normal font-family-Kokoro" href="#">Sistem Informasi Kekayaan
                     Intelektual<br>Politeknik Negeri Indramayu</a>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
@@ -42,51 +42,7 @@
     {{-- end of top naavbar --}}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 bg-light border mt-2 rounded">
-                {{-- Side bar --}}
-                <nav class="navbar navbar-expand-lg bg-light">
-                    <div class="container-fluid">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
-                            aria-labelledby="offcanvasNavbarLabel" style="width: 245px">
-                            <div class="offcanvas-header">
-                                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body">
-                                <ul class="navbar-nav flex-column justify-content-end flex-grow-1">
-                                    <li class="nav-item">
-                                        <a class="nav-link" aria-current="page" href="/admin/dashboard"><i
-                                                class="bi bi-house me-4"></i>Dasboard</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/admin/listadmin"><i
-                                                class="bi bi-person me-4"></i>Admin</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/admin/paten"><i
-                                                class="bi bi-table me-4"></i></i>Paten</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/admin/desain-industri"><i
-                                                class="bi bi-table me-4"></i>DesainIndustri</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/admin/hak-cipta"><i
-                                                class="bi bi-table me-4"></i></i>Hak Cipta</a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
+            @include('admin.layout.sidenav')
             {{-- end of sidebar --}}
             <div class="col-lg-10 mt-2">
                 <div class="container bg-light rounded border pt-3">
@@ -108,31 +64,145 @@
                                 <th scope="col">Jenis Ciptaan</th>
                                 <th scope="col">Judul Ciptaan</th>
                                 <th scope="col">Tanggal pengajuan</th>
+                                <th scope="col">Hak Cipta Milik</th>
                                 <th scope="col">Status Hak Cipta</th>
+                                <th scope="col">Status Cek Data</th>
+                                <th scope="col">Keterangan</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($cek as $i => $hk)
                                 <tr>
-                                    <th scope="row">{{ $i + 1 }}</th>
+                                    <th scope="row">{{ ($cek->currentPage() - 1) * $cek->perPage() + $loop->iteration }}</th>
                                     <td>{{ $hk->nama_lengkap }}</td>
                                     <td>{{ $hk->jenis_ciptaan }}</td>
                                     <td>{{ $hk->judul_ciptaan }}</td>
-                                    <td>{{ $hk->tanggal_permohonan }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($hk->tanggal_permohonan)->format('d-m-Y ') }}</td>
+                                    <td>{{ $hk->institusi }}</td>
                                     <td>{{ $hk->status }}</td>
+                                    <td>
+                                        @if ($hk->cekhc?->cek_data == 'Valid')
+                                            <i class="bi bi-check-circle-fill" style="color: green"></i>
+                                        @elseif($hk->cekhc?->cek_data == 'Tidak Valid')
+                                            <i class="bi bi-times-circle" style="color: red"></i>
+                                        @else
+                                            <i class="bi bi-dash-circle-fill"
+                                                style="color: yellow"></i>{{ $hk->cekhc?->cek_data }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($hk->cekhc?->keterangan == '')
+                                            Data Hak Cipta Belum Dicek
+                                        @else
+                                            {{ $hk->cekhc?->keterangan }}
+                                        @endif
+                                    </td>
                                     <td><a href={{ Route('admin_hakcipta.show', $hk->id) }} class="btn btn-info"><i
                                                 class="bi bi-eye"></i></a>
-                                        <a href={{ Route('admin_hakcipta.edit', $hk->id) }} class="btn btn-warning"><i
-                                                class="bi bi-pencil"></i></a> <a
-                                            href={{ Route('admin_hakcipta.delete', $hk->id) }} class="btn btn-danger"
-                                            onclick="return confirm('Apakah Kamu Yakin?')"><i
-                                                class="bi bi-trash3"></i></a>
+
+                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal{{ $hk->id }}">
+                                            <i class="bi bi-pencil"></i>
+                                        </button>
+                                        <div class="modal fade" id="exampleModal{{ $hk->id }}" tabindex="-1"
+                                            data-bs-backdrop="static" aria-labelledby="exampleModalLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-scrollable">
+                                                <div class="modal-content p-2">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel"> Edit
+                                                            status
+                                                            Hak Cipta {{ $hk->nama_lengkap }}</h1>
+                                                        <button type="button" class="btn-close"
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form enctype="multipart/form-data" method="post"
+                                                            action={{ Route('admin_hakcipta.update', $hk->id) }}>
+                                                            @csrf
+                                                            <div class="mb-3">
+                                                                <label for="" class="form-label">Status
+                                                                    Hak Cipta</label>
+                                                                <select
+                                                                    class="form-select @error('status') is-invalid @enderror"
+                                                                    aria-label="Default select example"
+                                                                    name="status">
+                                                                    <option selected>Pilih Status Hak Cipta</option>
+                                                                    <option value="Tercatat">Tercatat</option>
+                                                                    <option value="Ditolak">Ditolak</option>
+                                                                    <option value="Keterangan Belum Lengkap">
+                                                                        Keterangan Belum Lengkap</option>
+                                                                </select>
+                                                                @error('status')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="" class="form-label">Sertifikat
+                                                                    Hak Cipta</label>
+                                                                <input type="file"
+                                                                    class="form-control @error('sertifikat_hakcipta') is-invalid @enderror"
+                                                                    placeholder="Masukkan sertifikat"
+                                                                    name="sertifikat_hakcipta"
+                                                                    value="{{ $hk->sertifikat_hakcipta }}">
+                                                                @error('sertifikat_hakcipta')
+                                                                    <div class="invalid-feedback">
+                                                                        {{ $message }}
+                                                                    </div>
+                                                                @enderror
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button"
+                                                                    class="btn btn-outline-secondary"
+                                                                    data-bs-dismiss="modal">Batal</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Update</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="#staticBackdrop{{ $hk->id }}">
+                                            <i class="bi bi-trash3"></i>
+                                        </button>
+                                        <div class="modal fade" id="staticBackdrop{{ $hk->id }}"
+                                            data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                                            Peringatan</h1>
+                                                        <button type="button" class="btn-close"
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Anda yakin akan menghapus hak cipta milik
+                                                        {{ $hk->nama_lengkap }},
+                                                        dengan judul ciptaan "{{ $hk->judul_ciptaan }}" ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-outline-secondary"
+                                                            data-bs-dismiss="modal">Batal</button>
+                                                        <a href={{ Route('admin_hakcipta.delete', $hk->id) }}
+                                                            class="btn btn-danger">Hapus</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    <span class="d-flex justify-content-end mb-3 me-3">
+                        {{ $cek->links() }}
+                    </span>
                 </div>
             </div>
         </div>

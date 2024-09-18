@@ -9,50 +9,50 @@ class AdminDesainIndustriController extends Controller
 {
     public function index()
     {   
-        $di = DesainIndustri::with('cekDi')->latest()->get();
+        $desain = DesainIndustri::with('cekDi')->latest()->paginate(5);
         $beri = DesainIndustri::where('status','Diberi')->count();
         $proses = DesainIndustri::where('status','Dalam Proses Usulan')->count();
         $priksa = DesainIndustri::where('status','Pemeriksaan')->count();
         $null = DesainIndustri::where('status','Keterangan Belum Lengkap')->count();
         $mvdov = DesainIndustri::where('status','Menunggu Verifikasi Data Oleh Verifikator')->count();
         $tolak = DesainIndustri::where('status','Ditolak')->count();
-        return view('admin.admindi.index', compact('di', 'priksa', 'proses', 'null','tolak','beri','mvdov')); 
+        return view('admin.admindi.index', compact('desain', 'priksa', 'proses', 'null','tolak','beri','mvdov')); 
     }
     public function cariDi(Request $request)
     {
         $cari = $cari = $request->input('cari');
-        $di = DesainIndustri::with('cekDi')->where('judul_di', 'LIKE', "%" . $cari . "%")->orWhere('nama_lengkap', 'LIKE', "%" . $cari . "%")->orWhere('status', 'LIKE', "%" . $cari . "%")->paginate(5);
+        $desain = DesainIndustri::with('cekDi')->where('judul_di', 'LIKE', "%" . $cari . "%")->orWhere('nama_lengkap', 'LIKE', "%" . $cari . "%")->orWhere('status', 'LIKE', "%" . $cari . "%")->orWhere('institusi', 'LIKE', "%" . $cari . "%")->paginate(5);
         $beri = DesainIndustri::where('status','Diberi')->count();
         $proses = DesainIndustri::where('status','Dalam Proses Usulan')->count();
         $priksa = DesainIndustri::where('status','Pemeriksaan')->count();
         $null = DesainIndustri::where('status','Keterangan Belum Lengkap')->count();
         $tolak = DesainIndustri::where('status','Ditolak')->count();
-        return view('admin.admindi.index', compact('di', 'priksa', 'proses', 'null','tolak','beri')); 
+        return view('admin.admindi.index', compact('desain', 'priksa', 'proses', 'null','tolak','beri')); 
     }
 
     public function diberi()
     {
-        $cek = DesainIndustri::latest()->where('status','Diberi')->get();
+        $cek = DesainIndustri::latest()->where('status','Diberi')->paginate(5);
         return view('admin.admindi.admin-di-beri.index', compact('cek')); 
     }
     public function proses()
     {
-        $cek = DesainIndustri::latest()->where('status','Dalam Proses Usulan')->get();
+        $cek = DesainIndustri::latest()->where('status','Dalam Proses Usulan')->paginate(5);
         return view('admin.admindi.admin-di-proses.index', compact('cek'));
     }
     public function pemeriksaan()
     {
-        $cek = DesainIndustri::latest()->where('status','Pemeriksaan')->get();
+        $cek = DesainIndustri::latest()->where('status','Pemeriksaan')->paginate(5);
         return view('admin.admindi.admin-di-priksa.index', compact('cek'));
     }
     public function ditolak()
     {
-        $cek = DesainIndustri::latest()->where('status','Ditolak')->get();
+        $cek = DesainIndustri::latest()->where('status','Ditolak')->paginate(5);
         return view('admin.admindi.admin-di-tolak.index', compact('cek'));
     }
     public function keteranganBelumLengkap()
     {
-        $cek = DesainIndustri::latest()->where('status','Keterangan Belum Lengkap')->get();
+        $cek = DesainIndustri::latest()->where('status','Keterangan Belum Lengkap')->paginate(5);
         return view('admin.admindi.admin-di-null.index', compact('cek'));
     }
 

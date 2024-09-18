@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href={{ URL('storage/polindra21.png') }}>
+    <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
     <title>SIKI POLINDRA-Admin | Desain Industri</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -19,7 +19,7 @@
     <div class="container-fluid border">
         <nav class="navbar navbar-expand bg-body-tertiary">
             <div class="container-fluid">
-                <img class="navbar-brand" src={{ URL('storage/polindra2.jpg') }}>
+                <img class="navbar-brand" src={{ asset('assets/polindra2.jpg') }}>
                 <a class="navbar-brand fs-6 fw-normal font-family-Kokoro" href="#">Sistem Informasi Kekayaan
                     Intelektual<br>Politeknik Negeri Indramayu</a>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
@@ -106,25 +106,149 @@
                                 <th scope="col">Jenis Ciptaan</th>
                                 <th scope="col">Judul Ciptaan</th>
                                 <th scope="col">Tanggal pengajuan</th>
-                                <th scope="col">Status </th>
+                                <th scope="col">Desain milik</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Status Cek Data </th>
+                                <th scope="col">Keterangan </th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($cek as $i => $di)
-                                <tr>
-                                    <th scope="row">{{ $i + 1 }}</th>
-                                    <td>{{ $di->nama_lengkap }}</td>
-                                    <td>{{ $di->jenis_di }}</td>
-                                    <td>{{ $di->judul_di }}</td>
-                                    <td>{{ $di->tanggal_permohonan }}</td>
-                                    <td>{{ $di->status }}</td>
-                                    <td><a href={{ Route('admin_desainindustri.show', $di->id) }} class="btn btn-info"><i class="bi bi-eye"></i></a>
-                                        <a href={{ Route('admin_desainindustri.edit', $di->id) }}
-                                            class="btn btn-warning"><i class="bi bi-pencil"></i></a> <a
-                                            href={{ Route('admin_desainindustri.delete', $di->id) }}
-                                            class="btn btn-danger" onclick="return confirm('Apakah Kamu Yakin?')"><i class="bi bi-trash3"></i></a></td>
-                                </tr>
+                            <tr>
+                                <th scope="row">
+                                    {{ ($cek->currentPage() - 1) * $cek->perPage() + $loop->iteration }}</th>
+                                <td>{{ $di->nama_lengkap }}</td>
+                                <td>{{ $di->jenis_di }}</td>
+                                <td>{{ $di->judul_di }}</td>
+                                <td>{{ \Carbon\Carbon::parse($di->tanggal_permohonan)->format('d-m-Y ') }}</td>
+                                <td>{{ $di->institusi }}</td>
+                                <td>{{ $di->status }}</td>
+                                <td>
+                                    @if ($di->cekhc?->cek_data == 'Valid')
+                                        <i class="bi bi-check-circle-fill" style="color: green"></i>
+                                    @elseif($di->cekhc?->cek_data == 'Tidak Valid')
+                                        <i class="bi bi-times-circle" style="color: red"></i>
+                                    @else
+                                        <i class="bi bi-dash-circle-fill"
+                                            style="color: yellow"></i>{{ $di->cekhc?->cek_data }}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($di->cekhc?->keterangan == '')
+                                        Data Desain Industri Belum Dicek
+                                    @else
+                                        {{ $di->cekhc?->keterangan }}
+                                    @endif
+                                </td>
+                                <td><a href={{ Route('admin_desainindustri.show', $di->id) }}
+                                        class="btn btn-info"><i class="bi bi-eye"></i></a>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal{{ $di->id }}">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <div class="modal fade" id="exampleModal{{ $di->id }}" tabindex="-1"
+                                        data-bs-backdrop="static" aria-labelledby="exampleModalLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable">
+                                            <div class="modal-content p-2">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel"> Edit
+                                                        Desain {{ $di->nama_lengkap }}</h1>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form enctype="multipart/form-data" method="post"
+                                                        action={{ Route('admin_desainindustri.update', $di->id) }}>
+                                                        @csrf
+                                                        <div class="mb-3">
+                                                            <label for="" class="form-label">Status
+                                                                Desain Industri</label>
+                                                            <select
+                                                                class="form-select @error('status') is-invalid @enderror"
+                                                                aria-label="Default select example"
+                                                                name="status">
+                                                                <option selected>Pilih Status Desain
+                                                                </option>
+                                                                <option value="Dalam Proses Usulan">Dalam
+                                                                    Proses Usulan</option>
+                                                                <option value="Pemeriksaan">Pemeriksaan
+                                                                </option>
+                                                                <option value="Diberi">Diberi</option>
+                                                                <option value="Ditolak">Ditolak</option>
+                                                                <option value="Keterangam Belum Lengkap">
+                                                                    Keterangam Belum Lengkap</option>
+                                                                <option
+                                                                    value="Menunggu Verifikasi Data Oleh Verifikator">
+                                                                    Menunggu Verifikasi Data Oleh Verifikator
+                                                                </option>
+                                                            </select>
+                                                            @error('status')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="" class="form-label">Serifikat
+                                                                Desain Industri</label>
+                                                            <input type="file"
+                                                                class="form-control @error('sertifikat_desain') is-invalid @enderror"
+                                                                id="" placeholder=""
+                                                                name="sertifikat_desain">
+                                                            @error('sertifikat_desain')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button"
+                                                                class="btn btn-outline-secondary"
+                                                                data-bs-dismiss="modal">Batal</button>
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop{{ $di->id }}">
+                                        <i class="bi bi-trash3"></i>
+                                    </button>
+                                    <div class="modal fade" id="staticBackdrop{{ $di->id }}"
+                                        data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                                        Peringatan</h1>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Anda yakin akan menghapus hak cipta milik
+                                                    {{ $di->nama_lengkap }},
+                                                    dengan judul Desain "{{ $di->judul_di }}" ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-outline-secondary"
+                                                        data-bs-dismiss="modal">Batal</button>
+                                                    <a href={{ Route('admin_desainindustri.delete', $di->id) }}
+                                                        class="btn btn-danger">Hapus</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- <a href={{ Route('admin_desainindustri.delete', $di->id) }}
+                                        class="btn btn-danger" onclick="return confirm('Apakah Kamu Yakin?')"><i
+                                            class="bi bi-trash3"></i></a> --}}
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>

@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="col-xl-3 col-sm-6 col-12">
                                     <div class="card shadow-sm" style="width: 18rem;">
-                                        <a href="/admin/hak-cipta/keterangan-belum-lengkap"
+                                        <a href="/admin/hak-cipta/mvdov"
                                             class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">
@@ -126,7 +126,8 @@
                                                     <div class="align-self-center">
                                                         <h3 class="d-flex justify-content-end ms-5">
                                                             {{ $mvdov }}</h3>
-                                                        <span class=" d-flex justify-content-end ms-5">Menunggu Verifikasi Data Oleh Verifikator</span>
+                                                        <span class=" d-flex justify-content-end ms-5">Menunggu
+                                                            Verifikasi Data Oleh Verifikator</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -170,8 +171,8 @@
                                 <th scope="col">Nama lengkap</th>
                                 <th scope="col">Jenis Ciptaan</th>
                                 <th scope="col">Judul Ciptaan</th>
-                                <th scope="col">Institusi</th>
                                 <th scope="col">Tanggal pengajuan</th>
+                                <th scope="col">Hak Cipta Milik</th>
                                 <th scope="col">Status Hak Cipta</th>
                                 <th scope="col">Status Cek Data</th>
                                 <th scope="col">Keterangan</th>
@@ -181,12 +182,12 @@
                         <tbody>
                             @foreach ($hak_cipta as $i => $hk)
                                 <tr>
-                                    <th scope="row">{{ $i + 1 }}</th>
+                                    <th scope="row">{{ ($hak_cipta->currentPage() - 1) * $hak_cipta->perPage() + $loop->iteration }}</th>
                                     <td>{{ $hk->nama_lengkap }}</td>
                                     <td>{{ $hk->jenis_ciptaan }}</td>
                                     <td>{{ $hk->judul_ciptaan }}</td>
-                                    <td>{{ $hk->institusi }}</td>
                                     <td>{{ \Carbon\Carbon::parse($hk->tanggal_permohonan)->format('d-m-Y ') }}</td>
+                                    <td>{{ $hk->institusi }}</td>
                                     <td>{{ $hk->status }}</td>
                                     <td>
                                         @if ($hk->cekhc?->cek_data == 'Valid')
@@ -307,6 +308,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <span class="d-flex justify-content-end mb-3 me-3">
+                        {{ $hak_cipta->links() }}
+                    </span>
                 </div>
             </div>
         </div>

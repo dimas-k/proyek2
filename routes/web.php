@@ -152,6 +152,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/hak-cipta/tercatat', [AdminHaKCiptaController::class, 'listTercatat']);
     Route::get('/admin/hak-cipta/ditolak', [AdminHaKCiptaController::class, 'tolak']);
     Route::get('/admin/hak-cipta/keterangan-belum-lengkap', [AdminHaKCiptaController::class, 'belumLengkap']);
+    Route::get('/admin/hak-cipta/mvdov', [AdminHaKCiptaController::class, 'mvdov']);
     Route::get('/admin/hak-cipta/cari',[AdminHaKCiptaController::class, 'cariHk']);
 
     
@@ -170,6 +171,8 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 
     Route::get('/admin/pengguna/umum', [AdminController::class, 'lihatUmum'])->name('lihat.umum');
     Route::post('/admin/pengguna/umum/tambah', [AdminController::class, 'umumNew'])->name('tambah.umum');
+    Route::post('/admin/pengguna/umum/update/{id}', [AdminController::class, 'updateUmum'])->name('umum.akun.update');
+    Route::get('/admin/pengguna/umum/{id}', [AdminController::class, 'detailUmum'])->name('umum.detail');
 
     Route::get('/admin/pengguna/dosen', [AdminController::class, 'lihatDosen'])->name('lihat.dosen');
     Route::get('/admin/pengguna/dosen/{id}', [AdminController::class, 'detailDosen'])->name('detail.Dosen');
@@ -221,6 +224,10 @@ Route::middleware(['auth', 'role:Dosen'])->group(function () {
     Route::post('/dosen/desain-industri/update/{id}', [DosenController::class, 'updateDi'])->name('dsn.update.di');
     Route::post('/dosen/desain-industri/pengajuan/simpan', [DosenController::class, 'storeDi']);
     Route::get('/desain-industri/cari', [DosenController::class, 'cariDi']);
+
+    Route::get('/dosen/user/lihat/', [DosenController::class, 'lihatProfil']);
+    Route::get('/dosen/user/edit/{id}', [DosenController::class, 'editProfil'])->name('dsn.profil.edit');
+    Route::post('/dosen/user/update/{id}',[DosenController::class, 'updateProfil'])->name('dsn.update.profil');
 
     Route::get('/logout/dosen', [LoginUserController::class, 'logout']);
 });

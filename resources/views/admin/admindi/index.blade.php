@@ -219,8 +219,8 @@
                                     <th scope="col">Nama lengkap</th>
                                     <th scope="col">Jenis Ciptaan</th>
                                     <th scope="col">Judul Ciptaan</th>
-                                    <th scope="col">Institusi</th>
                                     <th scope="col">Tanggal pengajuan</th>
+                                    <th scope="col">Desain Milik</th>
                                     <th scope="col">Status </th>
                                     <th scope="col">Status Cek Data </th>
                                     <th scope="col">Keterangan </th>
@@ -228,14 +228,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($di as $i => $di)
+                                @foreach ($desain as $i => $di)
                                     <tr>
-                                        <th scope="row">{{ $i + 1 }}</th>
+                                        <th scope="row">{{ ($desain->currentPage() - 1) * $desain->perPage() + $loop->iteration }}</th>
                                         <td>{{ $di->nama_lengkap }}</td>
                                         <td>{{ $di->jenis_di }}</td>
                                         <td>{{ $di->judul_di }}</td>
-                                        <td>{{ $di->institusi }}</td>
                                         <td>{{ \Carbon\Carbon::parse($di->tanggal_permohonan)->format('d-m-Y ') }}</td>
+                                        <td>{{ $di->institusi }}</td>
                                         <td>{{ $di->status }}</td>
                                         <td>
                                             @if ($di->cekhc?->cek_data == 'Valid')
@@ -365,6 +365,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <span class="d-flex justify-content-end mb-3 me-3">
+                            {{ $desain->links() }}
+                        </span>
                     </div>
                 </div>
             </div>

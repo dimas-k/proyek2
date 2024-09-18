@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DesainIndustri;
-use App\Models\HakCipta;
+use App\Models\User;
 use App\Models\Paten;
+use App\Models\HakCipta;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\DesainIndustri;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class DosenController extends Controller
@@ -697,6 +698,43 @@ class DosenController extends Controller
         return redirect('/dosen/desain-industri/pengajuan')->with('success', 'Data desain industri berhasil Disimpan!');
     }
 
+    public function lihatProfil()
+    {
+        return view('dosen.profil.index');
+    }
+    public function editProfil(string $id)
+    {
+        $user = User::find($id);
+        // dd($user->ktp);
+
+        return view('dosen.profil.edit.index', compact('user'));
+    }
+    public function updateProfil(Request $request, string $id)
+    {
+        $validasidata = $request->validate([
+            'email' => 'required|email',
+            'username' => 'required|min:3',
+            'ktp' => 'required|mimes:pdf|max:2028',
+        ]);
+        $user = User::find($id);
+        $user->nama_lengkap = $request->nama_lengkap;
+        $user->no_telepon = $request->no_telepon;
+        $user->email = $request->email;
+        $user->alamat = $request->alamat;
+        
+        $user->ktp = $request->file('ktp')->store('dokumen_user');
+        if ($request->hasFile('ktp')) {
+            if ($user->ktp) {
+                Storage::delete($user->ktp);
+            }
+            $user->ktp = $request->file('ktp')->store("dokumen_user");
+        }
+        $user->nip = $request->nip;
+        $user->username = $request->username;
+        $user->password = $request->password;
+        $user->save($validasidata);
+        return redirect('/dosen/user/lihat/')->with('success', 'Data berhasil Diupdate!');
+    }
     /**
      * Display the specified resource.
      */

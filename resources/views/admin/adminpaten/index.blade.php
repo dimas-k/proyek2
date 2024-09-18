@@ -311,7 +311,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <input type="text" id="" class="form-control" aria-describedby=""
-                                        name="cari">
+                                        name="cari" value="{{ old('cari') }}">
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-primary ">Cari</button>
@@ -327,8 +327,8 @@
                                     <th scope="col">Nama lengkap</th>
                                     <th scope="col">Jenis Paten</th>
                                     <th scope="col">Judul paten</th>
-                                    <th scope="col">Institusi</th>
                                     <th scope="col">Tanggal pengajuan</th>
+                                    <th scope="col">Paten Milik</th>
                                     <th scope="col">Status paten</th>
                                     <th scope="col">Status Cek Data</th>
                                     <th scope="col">Keterangan</th>
@@ -338,12 +338,12 @@
                             <tbody>
                                 @foreach ($paten as $i => $p)
                                     <tr>
-                                        <th scope="row">{{ $i + 1 }}</th>
+                                        <th scope="row">{{ ($paten->currentPage() - 1) * $paten->perPage() + $loop->iteration }}</th>
                                         <td>{{ $p->nama_lengkap }}</td>
                                         <td>{{ $p->jenis_paten }}</td>
                                         <td>{{ $p->judul_paten }}</td>
-                                        <td>{{ $p->institusi }}</td>
                                         <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y ') }}</td>
+                                        <td>{{ $p->institusi }}</td>
                                         <td>{{ $p->status }}</td>
                                         <td>
                                             @if ($p->cek?->cek_data == 'Valid')
@@ -485,8 +485,10 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <span class="d-flex justify-content-end mb-3 me-3">
+                            {{ $paten->links() }}
+                        </span>
                     </div>
-                    {{ $paten->links() }}
                 </div>
             </div>
         </div>

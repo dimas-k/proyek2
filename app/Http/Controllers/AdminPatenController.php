@@ -29,7 +29,7 @@ class AdminPatenController extends Controller
     public function cariPaten(Request $request)
     {
         $cari = $request->input('cari');
-        $paten = Paten::with('cek')->where('judul_paten', 'LIKE', "%" . $cari . "%")->orWhere('nama_lengkap', 'LIKE', "%" . $cari . "%")->orWhere('status', 'LIKE', "%" . $cari . "%")->paginate(5);
+        $paten = Paten::with('cek')->where('judul_paten', 'LIKE', "%" . $cari . "%")->orWhere('nama_lengkap', 'LIKE', "%" . $cari . "%")->orWhere('status', 'LIKE', "%" . $cari . "%")->orWhere('institusi', 'LIKE', "%" . $cari . "%")->paginate(5);
         $pf = Paten::where('status', 'Pemeriksaan Formalitas')->count();
         $mt = Paten::where('status', 'Menunggu Tanggapan Formalitas')->count();
         $mp = Paten::where('status', 'Masa pengumuman')->count();
@@ -40,7 +40,8 @@ class AdminPatenController extends Controller
         $mts = Paten::where('status', 'Menunggu Tanggapan Substansif')->count();
         $beri = Paten::where('status', 'Diberi')->count();
         $tolak = Paten::where('status', 'Ditolak')->count();
-        return view('admin.adminpaten.index', compact('paten','pf','mt','mp','mps','staw','stl','stak','mts','beri','tolak'));
+        $mvdov = Paten::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->count();
+        return view('admin.adminpaten.index', compact('paten','pf','mt','mp','mps','staw','stl','stak','mts','beri','tolak','mvdov'));
     }
 
     public function pemeriksaanFormalitas()

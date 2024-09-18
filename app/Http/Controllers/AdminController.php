@@ -93,13 +93,20 @@ class AdminController extends Controller
         $dsn = User::find($id);
         return view('admin.dosen-page.lihat.index', compact('dsn'));
     }
+    public function detailUmum($id)
+    {
+        $um = User::find($id);
+        
+        return view('admin.umum.lihat.index', compact('um'));
+    }
     
     public function dosenNew(Request $request)
     {
         $validasidata = $request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'username'=>'required|min:3',
             'password'=> 'required|max:10',
+            'nip'=> 'required|unique:users'
            
         ]);
         $user = new User;
@@ -120,19 +127,17 @@ class AdminController extends Controller
     public function editDosen(Request $request, string $id)
     {
         $validasidata = $request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'username'=>'required|min:3',
             'password'=> 'required|max:10',
-            'ktp'=>'required|mimes:pdf|max:2028',
+            'nip'=> 'required|unique:users'
+            // 'ktp'=>'required|mimes:pdf|max:2028',
         ]);
         $user = User::find($id);
         $user->nama_lengkap = $request->nama_lengkap;
         $user->no_telepon = $request->no_telepon;
         $user->email = $request->email;
         $user->alamat = $request->alamat;
-        $user->ktp = $request->file('ktp')->store('dokumen_user');
-        // $user->kerjaan = $request->kerjaan;
-        $user->jabatan = $request->jabatan;
         $user->nip = $request->nip;
         $user->username = $request->username;
         $user->password = Hash::make($request->password);
@@ -154,7 +159,7 @@ class AdminController extends Controller
     public function umumNew(Request $request)
     {
         $validasidata = $request->validate([
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'username'=>'required|min:3',
             'password'=> 'required|max:10',
             
@@ -165,14 +170,38 @@ class AdminController extends Controller
         $user->email = $request->email;
         $user->alamat = $request->alamat;
         $user->kerjaan = $request->kerjaan;
-        $user->jabatan = $request->jabatan;
-        $user->nip = $request->nip;
+        // $user->jabatan = $request->jabatan;
+        // $user->nip = $request->nip;
         $user->username = $request->username;
         $user->password = Hash::make($request->password);
         $user->role = $request->role;
         $user->save($validasidata);
 
         return redirect('/admin/pengguna/umum')->with('success','Data dosen telah ditambahkan');
+    }
+    public function updateUmum(Request $request, string $id)
+    {
+        $validasidata = $request->validate([
+            'email' => 'required|email|unique:users',
+            'username'=>'required|min:3',
+            'password'=> 'required|max:10',
+            // 'ktp'=>'required|mimes:pdf|max:2028',
+        ]);
+        $user = User::find($id);
+        $user->nama_lengkap = $request->nama_lengkap;
+        $user->no_telepon = $request->no_telepon;
+        $user->email = $request->email;
+        $user->alamat = $request->alamat;
+        // $user->ktp = $request->file('ktp')->store('dokumen_user');
+        $user->kerjaan = $request->kerjaan;
+        // $user->jabatan = $request->jabatan;
+        // $user->nip = $request->nip;
+        $user->username = $request->username;
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
+        $user->save($validasidata);
+
+        return redirect('/admin/pengguna/umum')->with('success','Data akun umum telah diubah');
     }
 
 

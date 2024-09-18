@@ -173,7 +173,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Nama lengkap</th>
                                     <th scope="col">Email</th>
-                                    <th scope="col">Jabatan</th>
+                                    <th scope="col">NIP</th>
                                     <th scope="col">Alamat</th>
                                     <th scope="col">No telepon</th>
                                     <th scope="col">Action</th>
@@ -185,7 +185,7 @@
                                         <th scope="row">{{ $i + 1 }}</th>
                                         <td>{{ $a->nama_lengkap }}</td>
                                         <td>{{ $a->email }}</td>
-                                        <td>{{ $a->jabatan }}</td>
+                                        <td>{{ $a->nip }}</td>
                                         <td>{{ $a->alamat }}</td>
                                         <td>{{ $a->no_telepon }}</td>
                                         <td><a href={{ Route('detail.Dosen', $a->id) }} class="btn btn-primary"><i

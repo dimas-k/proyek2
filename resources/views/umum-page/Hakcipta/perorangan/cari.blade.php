@@ -18,6 +18,7 @@
                 class="bi bi-arrow-left-circle mb-5" style="font-size: 35px;"></i></a>
         <div class="rounded border shadow-sm p-4 mb-5 mt-4">
             <form action="/hak-cipta/list/pegawai/cari/" method="POST" class="ms-2">
+                @csrf
                 <label for="" class="form-label me-4">Cari Nama</label>
                 <select class="form-select-sm" aria-label="Default select example" name="nama" style="width: 1050px">
                     <option>-</option>
@@ -30,10 +31,7 @@
         </div>
         <div class="rounded border shadow-sm p-3 mb-5">
             <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-2"></i>Daftar Hak Cipta
-                @foreach ($orang as $p)
-                    @if ($loop->odd)
-                        @continue
-                    @endif
+                @foreach ($orang->unique('nama_lengkap') as $p)
                     {{ $p->nama_lengkap }}
                 @break
             @endforeach
@@ -70,7 +68,9 @@
                 </tbody>
             </table>
         </div>
-        {{ $orang->links() }}
+        <span class="d-flex justify-content-end mb-3 me-3">
+            {{ $orang->links() }}
+        </span>
     </div>
 </div>
 

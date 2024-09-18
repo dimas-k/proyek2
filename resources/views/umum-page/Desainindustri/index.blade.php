@@ -36,20 +36,21 @@
                         <form action="/desain-industri/cari/data" method="POST">
                             @csrf
                             <div class="mb-1 row">
-                                <label for=""
-                                    class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Judul Desain Industri</label>
-                                <div class="col-xxl-10">
-                                    <input type="search"
-                                        class="form-control form-control-sm fw-normal font-family-Kokoro" name="cari_di">
-                                </div>
-                            </div>
-                            <div class="mb-1 row">
-                                <label for=""
-                                    class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Nama Invensi</label>
+                                <label for="" class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Judul
+                                    Desain Industri</label>
                                 <div class="col-xxl-10">
                                     <input type="search"
                                         class="form-control form-control-sm fw-normal font-family-Kokoro"
-                                        id="" name="cari_nama">
+                                        name="cari_di">
+                                </div>
+                            </div>
+                            <div class="mb-1 row">
+                                <label for="" class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Nama
+                                    Invensi</label>
+                                <div class="col-xxl-10">
+                                    <input type="search"
+                                        class="form-control form-control-sm fw-normal font-family-Kokoro" id=""
+                                        name="cari_nama">
                                 </div>
                             </div>
                             <button type="submit"
@@ -83,7 +84,8 @@
             </div>
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card shadow-sm " style="width: 18rem;">
-                    <a href="/desain-industri/dalam-proses-usulan" class="link-dark link-underline link-underline-opacity-0">
+                    <a href="/desain-industri/dalam-proses-usulan"
+                        class="link-dark link-underline link-underline-opacity-0">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="align-self-center ">
@@ -119,7 +121,8 @@
             </div>
             <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card shadow-sm" style="width: 18rem;">
-                    <a href="/desain-industri/keterangan-belum-lengkap" class="link-dark link-underline link-underline-opacity-0">
+                    <a href="/desain-industri/keterangan-belum-lengkap"
+                        class="link-dark link-underline link-underline-opacity-0">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="align-self-center">
@@ -137,7 +140,8 @@
             </div>
             <div class="col-xl-3 col-sm-6 col-12 mt-4">
                 <div class="card shadow-sm" style="width: 18rem;">
-                    <a href="/desain-industri/menunggu-verifikasi" class="link-dark link-underline link-underline-opacity-0">
+                    <a href="/desain-industri/menunggu-verifikasi"
+                        class="link-dark link-underline link-underline-opacity-0">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="align-self-center">
@@ -146,7 +150,8 @@
                                 <div class="align-self-center">
                                     <h3 class="ms-5 d-flex justify-content-end">{{ $mvdov }}
                                     </h3>
-                                    <span class="ms-5 d-flex justify-content-end">Menunggu Verifikasi Data Oleh Verifikator</span>
+                                    <span class="ms-5 d-flex justify-content-end">Menunggu Verifikasi Data Oleh
+                                        Verifikator</span>
                                 </div>
                             </div>
                         </div>
@@ -228,7 +233,7 @@
             <tbody>
                 @foreach ($di as $i => $d)
                     <tr>
-                        <th scope="row">{{ $i + 1 }}</th>
+                        <th scope="row">{{ ($di->currentPage() - 1) * $di->perPage() + $loop->iteration }}</th>
                         <td>{{ $d->nama_lengkap }}</td>
                         <td>{{ $d->jenis_di }}</td>
                         <td>{{ $d->judul_di }}</td>
@@ -238,17 +243,20 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $di->links() }}
+        <span class="d-flex justify-content-end mb-3 me-3">
+            {{ $di->links() }}
+        </span>
         <div class="row mt-5">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Diagram Per-tahun Desain Industri</h3>
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </div>
                     <div class="card-body">
@@ -265,9 +273,9 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
-    
+
     @include('layout.footer')
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
@@ -293,22 +301,19 @@
                 labels: ['2024', '2025', '2026', '2027'],
                 datasets: [{
                     label: 'Jumlah Keseluruhan KI',
-                    data: [gabungKi2024,gabungKi2025,gabungKi2026,gabungKi2027],
-                    backgroundColor:
-                    'rgba(255, 159, 64, 0.2)',
-                    borderColor:
-                    'rgba(255, 206, 86, 1)',
+                    data: [gabungKi2024, gabungKi2025, gabungKi2026, gabungKi2027],
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
                     borderWidth: 2
-                },{
-                    type:'line',
+                }, {
+                    type: 'line',
                     label: 'Desain Industri',
-                    data: [di2024, di2025, di2026,di2027],
+                    data: [di2024, di2025, di2026, di2027],
                     borderColor: [
                         'rgba(255, 206, 86, 1)',
                     ],
                     borderWidth: 5
-                }
-                ]
+                }]
             },
             options: {
                 plugins: {
@@ -316,9 +321,9 @@
                         display: false
                     }
                 },
-                elements:{
-                    line:{
-                        tension:0.5
+                elements: {
+                    line: {
+                        tension: 0.5
                     }
                 },
                 scales: {

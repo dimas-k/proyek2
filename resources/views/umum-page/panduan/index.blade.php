@@ -15,6 +15,10 @@
 <body>
     {{-- nav --}}
     @include('layout.nav')
+    <br>
+    <br>
+    <br>
+    <br>
     {{-- end of nav --}}
 
     <div class="container text-center">

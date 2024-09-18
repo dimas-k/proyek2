@@ -12,6 +12,10 @@
 
 <body>
     @include('layout.nav')
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="container">
         <p class="fs-3 fw-bold font-family-Khula col-xxl-1 m-0 px-3 py-2">Disclaimer</p>
         <br>

@@ -15,6 +15,10 @@
 <body>
     {{-- nav --}}
     @include('layout.nav')
+    <br>
+    <br>
+    <br>
+    <br>
     {{-- end of nav --}}
 
     <img src="{{ asset('assets/orang1.png') }}" alt="" class="float-end" width="550px">

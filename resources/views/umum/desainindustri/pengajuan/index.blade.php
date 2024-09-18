@@ -145,6 +145,336 @@
     <!-- CUSTOM JS -->
     <script src="{{ asset('assets-user/js/custom.js') }}"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#uploadForm').submit(function(e) {
+                e.preventDefault(); // Mencegah form terkirim secara otomatis
+
+                // non file
+                var nama = $('#nama_lengkap').val();
+                var alamat = $('#alamat').val();
+                var telepon = $('#no_telepon').val();
+                var tl = $('#tanggal_lahir').val();
+                var email = $('#email').val();
+                var warga = $('#warga').val();
+                var pos = $('#pos').val();
+                var judul_desain = $('#judul_desain').val();
+                var tanggal_pengajuan = $('#tanggalpengajuan').val();
+                var jenis_desain = $('input[name="jenis_di"]:checked').val();
+
+                //file
+                var ktp = $('#ktp')[0].files[0];
+                var gambar_desain = $('#gambar_desain')[0].files[0];
+                var uraian_desain = $('#uraian_desain')[0].files[0];
+                var pernyataan_kepemilikan = $('#pernyataan_kepemilikan')[0].files[0];
+                var pengalihan = $('#pengalihan')[0].files[0];
+
+                // var errorMessage = ''; // Variabel untuk menyimpan pesan error
+
+                // Validasi Nama Lengkap
+                if (!nama) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Nama Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                // Validasi Tanggal Lahir
+                if (!alamat) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Alamat Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!telepon) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan No Telepon Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!tl) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Tangal Lahir Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!email) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Tangal Lahir Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!warga) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Kewarganegaraan Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!pos) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Kode Pos Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!jenis_desain) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Jenis Desain Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!judul_desain) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Judul Desain Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!tanggal_pengajuan) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Tanggal Pengajuan!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+
+                // Validasi File
+                if (!ktp) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan KTP Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!gambar_desain) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Gambar Desain Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!uraian_desain) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Uraian Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!pernyataan_kepemilikan) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Pernyataan Kepemilikan Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!pengalihan) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Surat Pengalihan hak Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                } else {
+                    var allowedExtension = /(\.pdf)$/i; // Hanya memperbolehkan file berformat PDF
+                    var allowedExtensionExel = /(\.xlsx)$/i; // Hanya memperbolehkan file berformat exel
+                    var maxSize = 2 * 1024 * 1024; // Maksimal ukuran file adalah 2 MB
+
+                    // Validasi ekstensi file
+                    // Cek apakah file diinputkan
+
+                    if (!allowedExtension.exec(ktp.name)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan KTP Dengan Ekstensi .pdf!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (!allowedExtension.exec(gambar_desain.name)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan Gambar Desain Dengan Ekstensi .pdf!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (!allowedExtension.exec(uraian_desain.name)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan Uraian Desain Dengan Ekstensi .pdf!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (!allowedExtension.exec(pernyataan_kepemilikan.name)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan Surat Pernyataan Kepemilikan Dengan Ekstensi .pdf!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (!allowedExtension.exec(pengalihan.name)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan Surat Pengalihan Hak Dengan Ekstensi .pdf!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+
+                    // Validasi ukuran file
+                    if (ktp.size > maxSize) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Ukuran File KTP Lebih Dari 2mb!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (gambar_desain.size > maxSize) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Ukuran File Gambar Desain Lebih Dari 2mb!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (uraian_desain.size > maxSize) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Ukuran Uraian Desain Lebih Dari 2mb!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (pernyataan_kepemilikan.size > maxSize) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Ukuran File Pernyataan Kepemilikan Lebih Dari 2mb!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (pengalihan.size > maxSize) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Ukuran File Surat Pengalihan Hak Lebih Dari 2mb!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+
+                }
+
+                // // Jika ada error, tampilkan pesan melalui alert dan cegah pengiriman form
+                // if (errorMessage !== '') {
+                //     alert(errorMessage);
+                //     return false; // Mencegah pengiriman form
+                // }
+                this.submit();
+            });
+        });
+    </script>
+
 </body>
 
 </html>

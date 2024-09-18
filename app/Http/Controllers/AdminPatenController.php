@@ -21,7 +21,7 @@ class AdminPatenController extends Controller
         $stl = Paten::where('status', 'Substansif Tahap Lanjut')->count();
         $stak = Paten::where('status', 'Substansif Tahap Akhir')->count();
         $mts = Paten::where('status', 'Menunggu Tanggapan Substansif')->count();
-        $mvdov = Paten::where('status', 'MenungguVerifikasi Data Oleh Verifikator')->count();
+        $mvdov = Paten::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->count();
         $beri = Paten::where('status', 'Diberi')->count();
         $tolak = Paten::where('status', 'Ditolak')->count();
         return view('admin.adminpaten.index', compact('paten','pf','mt','mp','mps','staw','stl','stak','mts','beri','tolak', 'mvdov'));
@@ -98,6 +98,11 @@ class AdminPatenController extends Controller
     {
         $cek = Paten::latest()->where('status', 'Ditolak')->get();
         return view('admin.adminpaten.admin-paten-tlk.index', compact('cek'));
+    }
+    public function mvdov()
+    {
+        $cek = Paten::latest()->where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->get();
+        return view('admin.adminpaten.admin-paten-mvdov.index', compact('cek'));
     }
 
     /**

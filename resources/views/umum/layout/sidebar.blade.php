@@ -2,7 +2,7 @@
     <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
     <div class="app-sidebar">
         <div class="side-header">
-            <a class="header-brand1" href="/dosen/dashboard">
+            <a class="header-brand1" href="/umum/dashboard">
                 {{-- <img src={{ asset('assets-user/images/brand/logo.png') }} class="header-brand-img desktop-logo" alt="logo">
                 <img src={{ asset('assets-user/images/brand/logo-1.png') }} class="header-brand-img toggle-logo"
                     alt="logo"> --}}

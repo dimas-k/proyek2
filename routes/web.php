@@ -126,6 +126,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/paten/substansif-tahap-lanjut', [AdminPatenController::class, 'substansifLanjut']);
     Route::get('/admin/paten/substansif-tahap-akhir', [AdminPatenController::class, 'substansifAkhir']);
     Route::get('/admin/paten/menunggu-tanggapan-substansif', [AdminPatenController::class, 'mengungguTanggapanSubstansif']);
+    Route::get('/admin/paten/mvdov', [AdminPatenController::class, 'mvdov']);
     Route::get('/admin/paten/diberi', [AdminPatenController::class, 'diberi']);
     Route::get('/admin/paten/ditolak', [AdminPatenController::class, 'ditolak']);
 

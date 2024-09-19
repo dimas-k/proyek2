@@ -101,7 +101,7 @@ class AdminPatenController extends Controller
     }
     public function mvdov()
     {
-        $cek = Paten::latest()->where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->get();
+        $cek = Paten::latest()->where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->paginate(5);
         return view('admin.adminpaten.admin-paten-mvdov.index', compact('cek'));
     }
 

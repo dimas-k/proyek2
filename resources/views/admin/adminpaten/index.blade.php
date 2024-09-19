@@ -229,7 +229,7 @@
                             <div class="d-flex flex-row mt-3">
                                 <div class="col-xl-4 col-sm-6 col-12">
                                     <div class="card shadow-sm p-1" style="width: 23rem;">
-                                        <a href="/admin/paten/diberi"
+                                        <a href="/admin/paten/mvdov"
                                             class="link-dark link-underline link-underline-opacity-0">
                                             <div class="card-body">
                                                 <div class="d-flex">

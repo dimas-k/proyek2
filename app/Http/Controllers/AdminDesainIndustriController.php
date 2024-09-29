@@ -122,4 +122,8 @@ class AdminDesainIndustriController extends Controller
         DesainIndustri::with('cekDi')->findOrFail($id)->delete();
         return redirect()->back()->with('success','Data desain industri berhasil dihapus');
     }
+    public function tambahDiDosen()
+    {
+        return view();
+    }
 }

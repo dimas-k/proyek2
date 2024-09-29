@@ -194,7 +194,15 @@
                         </div>
                     @endif
                     <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-3"></i>Daftar Desain
-                        Industri</h3>
+                        Industri</h3> 
+                    <div class="d-flex justify-content-start">
+                        <a class="btn btn-success mb-2" href="/admin/hak-cipta/tambah/dosen/"><i
+                                class="bi bi-plus-circle me-2"></i>Tambah Desain Industri Dosen</a>
+                    </div>
+                    <div class="d-flex justify-content-start">
+                        <a class="btn btn-outline-secondary" href="/admin/hak-cipta/tambah/umum/"><i
+                                class="bi bi-plus-circle me-2"></i>Tambah Desain Industri Umum</a>
+                    </div>
                     <div class="d-flex justify-content-end mb-3">
                         <form action="/admin/desain-industri/cari" method="GET">
                             <div class="row g-2 align-items-center">
@@ -230,7 +238,9 @@
                             <tbody>
                                 @foreach ($desain as $i => $di)
                                     <tr>
-                                        <th scope="row">{{ ($desain->currentPage() - 1) * $desain->perPage() + $loop->iteration }}</th>
+                                        <th scope="row">
+                                            {{ ($desain->currentPage() - 1) * $desain->perPage() + $loop->iteration }}
+                                        </th>
                                         <td>{{ $di->nama_lengkap }}</td>
                                         <td>{{ $di->jenis_di }}</td>
                                         <td>{{ $di->judul_di }}</td>

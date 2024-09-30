@@ -51,7 +51,7 @@
                     </h3>
                     <hr class="border border-black border-2 opacity-75">
                     <form class="p-2" enctype="multipart/form-data" method="post"
-                        action={{ route('adm.update-data-paten', $p->id) }} id="uploadForm">
+                        action={{ route('adm.updatepaten.umum', $p->id) }} id="uploadForm">
                         @csrf
                         <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                         <div class="container">
@@ -120,7 +120,8 @@
                             <div class="mb-3">
                                 <label for="warga" class="form-label">Kewarganegaraan</label>
                                 <input type="text" class="form-control" id="warga"
-                                    placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan" value="{{ $p->kewarganegaraan }}">
+                                    placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan"
+                                    value="{{ $p->kewarganegaraan }}">
                                 {{-- @error('kewarganegaraan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -138,65 +139,7 @@
                                         @enderror --}}
                             </div>
                             <input type="text" class="form-control @error('institusi') is-invalid @enderror"
-                                id="" value="Dosen" name="institusi" hidden>
-                            <div class="mb-3">
-                                <label for="pengaju2" class="form-label">Data Mahasiswa / Dosen <span
-                                        class="text-danger">(Jika Bersama Dosen Yang Lain dan atau Bersama
-                                        Mahasiswa Harap diisi)</span></label>
-                                <input type="file" class="form-control " name="data_pengaju2" id="pengaju2">
-                                <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
-                                        data-bs-toggle="tooltip"></i>File harus bertipe .xlsx</span>
-                                {{-- @error('data_pengaju2')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror --}}
-                            </div>
-                            <div class="mb-3">
-                                <label for="jurusan" class="form-label">Jurusan</label>
-                                <select class="form-select " aria-label="Default select example" name="jurusan"
-                                    id="jurusan">
-                                    <option value="">Pilih Jurusan</option>
-                                    <option value="Teknik Informatika">Teknik Informatika</option>
-                                    <option value="Teknik Mesin">Teknik Mesin
-                                    </option>
-                                    <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan Tata
-                                        Udara</option>
-                                    <option value="Keperawatan">Keperawatan
-                                    </option>
-                                </select>
-                                {{-- @error('jurusan')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror --}}
-                            </div>
-                            <div class="mb-3">
-                                <label for="prodi" class="form-label">Prodi</label>
-                                <select class="form-select" aria-label="Default select example" name="prodi"
-                                    id="prodi">
-                                    <option value="">Pilih Prodi</option>
-                                    <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
-                                    <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat Lunak
-                                    </option>
-                                    <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi Kota
-                                        Cerdas
-                                    </option>
-                                    <option value="D3 Teknik Mesin">D3 Teknik Mesin</option>
-                                    <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur
-                                    </option>
-                                    <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan
-                                        Tata Udara</option>
-                                    <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi
-                                        Kontrol</option>
-                                    <option value="D3 Keperawatan">D3 Keperawan</option>
-                                </select>
-                                {{-- @error('prodi')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror --}}
-                            </div>
+                                id="" value="Umum" name="institusi" hidden>
                         </div>
                         <br><br>
                         <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR PATEN</p>
@@ -220,7 +163,7 @@
                                 <label for="judul_paten" class="form-label">Judul Paten</label>
                                 <input type="text" class="form-control" id="judul_paten"
                                     placeholder="Masukkan Judul Paten" name="judul_paten"
-                                    value="{{ $p->judul_paten  }}">
+                                    value="{{ $p->judul_paten }}">
                                 {{-- @error('judul_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -403,8 +346,7 @@
                     var email = $('#email').val();
                     var warga = $('#warga').val();
                     var pos = $('#pos').val();
-                    var jurusan = $('#jurusan').val();
-                    var prodi = $('#prodi').val();
+
                     var judul_paten = $('#judul_paten').val();
                     var tanggal_pengajuan = $('#tanggalpengajuan').val();
 
@@ -412,7 +354,7 @@
 
                     //file
                     var ktp = $('#ktp')[0].files[0];
-                    var pengaju = $('#pengaju2')[0].files[0];
+
                     var abstrak = $('#abstrak')[0].files[0];
                     var deskripsi = $('#deskripsi')[0].files[0];
                     var pengalihan_hak = $('#pengalihan_hak')[0].files[0];
@@ -504,28 +446,7 @@
                         });
                         return false;
                     }
-                    if (jurusan === "") {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Jurusan Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (prodi === "") {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Prodi Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
+
                     if (!jenis_paten) {
                         Swal.fire({
                             icon: "error",
@@ -666,21 +587,6 @@
 
                         // Validasi ekstensi file
                         // Cek apakah file diinputkan
-                        if (pengaju) {
-                            // Jika file ada, cek apakah ekstensi sesuai
-                            if (!allowedExtensionExel.exec(pengaju.name)) {
-                                Swal.fire({
-                                    icon: "error",
-                                    title: "Oops... Ada yang salah...",
-                                    text: "Tolong Masukkan Data Mahasiswa Dan Atau Dosen Dengan Ekstensi .xlsx",
-                                    position: "top-end",
-                                    showConfirmButton: false,
-                                    timer: 2500
-                                });
-                                return false; // Gagal, form tidak dikirim
-                            }
-                        }
-
 
                         if (!allowedExtension.exec(ktp.name)) {
                             Swal.fire({

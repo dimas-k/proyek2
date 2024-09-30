@@ -67,11 +67,6 @@
                                 <th>Alamat</th>
                                 <td>: {{ $dsn->alamat }}</td>
                             </tr>
-                            <tr>
-                                <th>KTP</th>
-                                <td >: <a href={{ asset('storage/' . $dsn->ktp) }} class=""
-                                    target="_blank">Lihat KTP</a></td>
-                            </tr>
                             {{-- <tr>
                                 <th>Jabatan</th>
                                 <td>: {{ $dsn->jabatan }}</td>

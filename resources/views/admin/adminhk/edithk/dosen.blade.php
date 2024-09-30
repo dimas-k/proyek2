@@ -47,18 +47,18 @@
             <div class="col-lg-10 mt-2">
                 <div class="container bg-light rounded border pt-3">
                     <h3 class="fw-normal font-family-Kokoro mb-3">
-                        <i class="bi bi-file-earmark me-2"></i>Data Paten {{ $p->nama_lengkap }}
+                        <i class="bi bi-file-earmark me-2"></i>Data Hak Cipta {{ $hk->nama_lengkap }}
                     </h3>
                     <hr class="border border-black border-2 opacity-75">
-                    <form class="p-2" enctype="multipart/form-data" method="post"
-                        action={{ route('adm.update-data-paten', $p->id) }} id="uploadForm">
+                    <form enctype="multipart/form-data" method="post" action={{ route('admin_hakcipta.update_dosen',$hk->id) }}
+                        id="uploadForm">
                         @csrf
                         <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                         <div class="container">
                             <div class="mb-3">
                                 <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama_lengkap"
-                                    placeholder="Masukkan Nama"name="nama_lengkap" value="{{ $p->nama_lengkap }}">
+                                <input type="text" class="form-control " id="nama_lengkap"
+                                    placeholder="Masukkan Nama"name="nama_lengkap" value="{{ $hk->nama_lengkap }}">
                                 {{-- @error('nama_lengkap')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -67,8 +67,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" class="form-control" id="alamat" placeholder="Masukkan Alamat"
-                                    name="alamat" value="{{ $p->alamat }}">
+                                <input type="text" class="form-control " id="alamat" placeholder="Masukkan Alamat"
+                                    name="alamat" value="{{ $hk->alamat }}">
                                 {{-- @error('alamat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -77,8 +77,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="no_telepon" class="form-label">No telepon</label>
-                                <input type="number" class="form-control " id="no_telepon"
-                                    placeholder="Masukkan No telepon" name="no_telepon" value="{{ $p->no_telepon }}">
+                                <input type="number" class="form-control" id="no_telepon"
+                                    placeholder="Masukkan No telepon" name="no_telepon" value="{{ $hk->no_telepon }}">
                                 {{-- @error('no_telepon')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -86,21 +86,20 @@
                                         @enderror --}}
                             </div>
                             <div class="mb-3">
-                                <label for="tanggal_lahie" class="form-label">Tanggal Lahir</label>
-                                <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control"
-                                    value="{{ $p->tanggal_lahir }}">
-                                @error('tanggal_lahir')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                                <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                                <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control " value="{{ $hk->tanggal_lahir }}">
+                                {{-- @error('tanggal_lahir')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror --}}
                             </div>
                             <div class="mb-3">
                                 <label for="ktp" class="form-label">KTP Inventor</label>
-                                <input type="file" class="form-control" id="ktp" name="ktp_inventor">
-                                <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
-                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
+                                <input type="file" class="form-control " id="ktp" name="ktp_inventor" value="{{ $hk->ktp_inventor }}">
+                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
+                                    2mb</span>
                                 {{-- @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -110,7 +109,7 @@
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control " id="email" placeholder="Masukkan Email"
-                                    name="email" value="{{ $p->email }}">
+                                    name="email" value="{{ $hk->email }}">
                                 {{-- @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -119,8 +118,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="warga" class="form-label">Kewarganegaraan</label>
-                                <input type="text" class="form-control" id="warga"
-                                    placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan" value="{{ $p->kewarganegaraan }}">
+                                <input type="text" class="form-control " id="warga"
+                                    placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan" value="{{ $hk->kewarganegaraan }}">
                                 {{-- @error('kewarganegaraan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -129,22 +128,24 @@
                             </div>
                             <div class="mb-3">
                                 <label for="pos" class="form-label">Kode Pos</label>
-                                <input type="number" class="form-control" id="pos"
-                                    placeholder="Masukkan Kode Pos" name="kode_pos" value="{{ $p->kode_pos }}">
+                                <input type="number" class="form-control " id="pos"
+                                    placeholder="Masukkan Kode Pos" name="kode_pos" value="{{ $hk->kode_pos }}">
                                 {{-- @error('kode_pos')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror --}}
                             </div>
-                            <input type="text" class="form-control @error('institusi') is-invalid @enderror"
-                                id="" value="Dosen" name="institusi" hidden>
+                            <input type="text" class="form-control " id="" value="Dosen"
+                                name="institusi" hidden>
                             <div class="mb-3">
                                 <label for="pengaju2" class="form-label">Data Mahasiswa / Dosen <span
                                         class="text-danger">(Jika Bersama Dosen Yang Lain dan atau Bersama
                                         Mahasiswa Harap diisi)</span></label>
-                                <input type="file" class="form-control " name="data_pengaju2" id="pengaju2">
-                                <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
+                                <input type="file"
+                                    class="form-control @error('data_pengaju2') is-invalid @enderror"
+                                    name="data_pengaju2" id="pengaju2">
+                                <span class="text-danger"><i class="fa fa-warning me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .xlsx</span>
                                 {{-- @error('data_pengaju2')
                                             <div class="invalid-feedback">
@@ -198,135 +199,96 @@
                                         @enderror --}}
                             </div>
                         </div>
-                        <br><br>
-                        <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR PATEN</p>
+
+                        <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR HAK CIPTA</p>
                         <div class="container">
-                            <label for="paten" class="form-label">Jenis Paten</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jenis_paten" id="paten"
-                                    value="Paten">
-                                <label class="form-check-label" for="Paten">
-                                    Paten
+                            <div class="mb-3">
+                                <label for="jenis_ciptaan" class="form-label">Jenis Ciptaan
+                                    <select class="form-select" aria-label="Default select example"
+                                        name="jenis_ciptaan" id="jenis_ciptaan">
+                                        <option selected>Pilih Jenis Hak Cipta anda</option>
+                                        <option value="Karya Tulis">Karya Tulis
+                                        </option>
+                                        <option value="Karya Seni">Karya Seni
+                                        </option>
+                                        <option value="Komposisi Musik">Komposisi Musik
+                                        </option>
+                                        <option value="Karya Audio Visual">Karya Audio Visual
+                                        </option>
+                                        <option value="Karya Fotografi">Karya Fotografi
+                                        </option>
+                                        <option value="Karya Drama dan Koreografi">Karya Drama dan Koreografi
+                                        </option>
+                                        <option value="Karya Rekaman">Karya Rekaman
+                                        </option>
+                                        <option value="Karya Lainnya">Karya Lainnya
+                                        </option>
+                                        <option value="Seni Batik">Seni Batik
+                                        </option>
+                                    </select>
                                 </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jenis_paten" id="paten_s"
-                                    value="Paten sederhana">
-                                <label class="form-check-label" for="Paten sederhana" for="paten_s">
-                                    Paten Sederhana
-                                </label>
-                            </div>
-                            <div class="mb-3">
-                                <label for="judul_paten" class="form-label">Judul Paten</label>
-                                <input type="text" class="form-control" id="judul_paten"
-                                    placeholder="Masukkan Judul Paten" name="judul_paten"
-                                    value="{{ $p->judul_paten  }}">
-                                {{-- @error('judul_paten')
+                                {{-- @error('jenis_ciptaan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror --}}
                             </div>
                             <div class="mb-3">
-                                <label for="abstrak" class="form-label">Abstrak Paten</label>
-                                <input type="file" class="form-control" id="abstrak" placeholder=""
-                                    name="abstrak_paten">
-                                <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
-                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
-                                {{-- @error('abstrak_paten')
+                                <label for="judul_ciptaan" class="form-label">Judul Ciptaan</label>
+                                <input type="text"
+                                    class="form-control @error('judul_ciptaan') is-invalid @enderror"
+                                    placeholder="Masukkan Judul Ciptaan" name="judul_ciptaan" id="judul_ciptaan" value="{{ $hk->judul_ciptaan }}">
+                                {{-- @error('judul_ciptaan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror --}}
                             </div>
                             <div class="mb-3">
-                                <label for="deskripsi" class="form-label">Deskripsi Paten</label>
-                                <input type="file" class="form-control " id="deskripsi" placeholder=""
-                                    name="deskripsi_paten">
-                                <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
-                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
-                                {{-- @error('deskripsi_paten')
+                                <label for="uraian" class="form-label">Uraian Singkat Ciptaan</label>
+                                <textarea class="form-control " placeholder="Masukkan Uraian Siangkat" name="uraian_singkat" id="uraian"
+                                    style="height: 150px">{{ $hk->uraian_singkat }}</textarea>
+                                {{-- @error('uarian_singkat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror --}}
                             </div>
                             <div class="mb-3">
-                                <label for="pengalihan_hak" class="form-label">Pengalihan Hak Invensi</label>
-                                <input type="file" class="form-control " id="pengalihan_hak" placeholder=""
-                                    name="pengalihan_hak">
-                                <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
-                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
-                                {{-- @error('pengalihan_hak')
+                                <label for="invensi" class="form-label">Dokumen Invensi (Manual
+                                    Book/Buku/Dll)</label>
+                                <input type="file" class="form-control " placeholder="" name="dokumen_invensi"
+                                    id="invensi">
+                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
+                                    2mb</span>
+                                {{-- @error('dokumen_invensi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror --}}
                             </div>
                             <div class="mb-3">
-                                <label for="klaim" class="form-label">Klaim</label>
-                                <input type="file" class="form-control " id="klaim" placeholder=""
-                                    name="klaim">
-                                <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
-                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
-                                {{-- @error('klaim')
+                                <label class="form-label" for="surat_pengalihan">Surat Pengalihan Hak Cipta</label>
+                                <input type="file" class="form-control " placeholder="" name="surat_pengalihan"
+                                    id="surat_pengalihan">
+                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
+                                    2mb</span>
+                                {{-- @error('surat_pengalihan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror --}}
                             </div>
                             <div class="mb-3">
-                                <label for="kepemilikan" class="form-label">Pernyataan kepemikikan
-                                    Inventor</label>
-                                <input type="file" class="form-control" id="kepemilikan" placeholder=""
-                                    name="pernyataan_kepemilikan">
-                                <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
-                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
-                                {{-- @error('pernyataan_kepemilikan')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror --}}
-                            </div>
-                            <div class="mb-3">
-                                <label for="kuasa" class="form-label">Surat kuasa</label>
-                                <input type="file" class="form-control " id="kuasa" placeholder=""
-                                    name="surat_kuasa">
-                                <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
-                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
-                                {{-- @error('surat_kuasa')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror --}}
-                            </div>
-                            <div class="mb-3">
-                                <label for="g_paten" class="form-label">gambar Paten</label>
-                                <input type="file" class="form-control " id="g_paten" placeholder=""
-                                    name="gambar_paten">
-                                <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
-                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
-                                {{-- @error('gambar_paten')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror --}}
-                            </div>
-                            <div class="mb-3">
-                                <label for="g_tampilan" class="form-label">gambar Tampilan</label>
-                                <input type="file" class="form-control " id="g_tampilan" placeholder=""
-                                    name="gambar_tampilan">
-                                <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
-                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
-                                {{-- @error('gambar_tampilan')
+                                <label for="pernyataan" class="form-label">Surat Pernyataan</label>
+                                <input type="file" id="pernyataan" class="form-control " placeholder=""
+                                    name="surat_pernyataan">
+                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
+                                    2mb</span>
+                                {{-- @error('surat_pernyataan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -335,7 +297,7 @@
                             <div class="mb-3">
                                 <label for="tanggalpengajuan" class="form-label">Tanggal Pengajuan</label>
                                 <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
-                                    class="form-control " value="{{ $p->tanggal_permohonan }}">
+                                    class="form-control" value="{{ $hk->tanggal_permohonan }}">
                                 {{-- @error('tanggal_permohonan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -345,13 +307,10 @@
                             <p class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>Harap
                                 Isi semua Form Dengan
                                 Benar</p>
-                            {{-- <button type="submit" class="btn btn-primary mt-3 ">Submit</button> --}}
-                            <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Simpan
                             </button>
-
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -405,22 +364,17 @@
                     var pos = $('#pos').val();
                     var jurusan = $('#jurusan').val();
                     var prodi = $('#prodi').val();
-                    var judul_paten = $('#judul_paten').val();
+                    var jenis_ciptaan = $('#jenis_ciptaan').val();
+                    var judul_ciptaan = $('#judul_ciptaan').val();
+                    var uraian = $('#uraian').val();
                     var tanggal_pengajuan = $('#tanggalpengajuan').val();
-
-                    var jenis_paten = $('input[name="jenis_paten"]:checked').val();
 
                     //file
                     var ktp = $('#ktp')[0].files[0];
                     var pengaju = $('#pengaju2')[0].files[0];
-                    var abstrak = $('#abstrak')[0].files[0];
-                    var deskripsi = $('#deskripsi')[0].files[0];
-                    var pengalihan_hak = $('#pengalihan_hak')[0].files[0];
-                    var klaim = $('#klaim')[0].files[0];
-                    var kepemilikan = $('#kepemilikan')[0].files[0];
-                    var kuasa = $('#kuasa')[0].files[0];
-                    var g_paten = $('#g_paten')[0].files[0];
-                    var g_tampilan = $('#g_tampilan')[0].files[0];
+                    var invensi = $('#invensi')[0].files[0];
+                    var surat_pengalihan = $('#surat_pengalihan')[0].files[0];
+                    var pernyataan = $('#pernyataan')[0].files[0];
 
                     // var errorMessage = ''; // Variabel untuk menyimpan pesan error
 
@@ -526,18 +480,18 @@
                         });
                         return false;
                     }
-                    if (!jenis_paten) {
+                    if (!jenis_ciptaan) {
                         Swal.fire({
                             icon: "error",
                             title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Jenis Paten Anda!",
+                            text: "Tolong Masukkan Jenis Ciptaan Anda!",
                             position: "top-end",
                             showConfirmButton: false,
                             timer: 2500
                         });
                         return false;
                     }
-                    if (!judul_paten) {
+                    if (!judul_ciptaan) {
                         Swal.fire({
                             icon: "error",
                             title: "Oops... Ada yang salah...",
@@ -559,6 +513,17 @@
                         });
                         return false;
                     }
+                    if (!uraian) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan Uraian Anda!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
 
                     // Validasi File
                     if (!ktp) {
@@ -572,88 +537,33 @@
                         });
                         return false;
                     }
-                    if (!abstrak) {
+                    if (!invensi) {
                         Swal.fire({
                             icon: "error",
                             title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Abstrak Paten Anda!",
+                            text: "Tolong Masukkan Dokumen Invensi Anda!",
                             position: "top-end",
                             showConfirmButton: false,
                             timer: 2500
                         });
                         return false;
                     }
-                    if (!deskripsi) {
+                    if (!surat_pengalihan) {
                         Swal.fire({
                             icon: "error",
                             title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Deskripsi Paten Anda!",
+                            text: "Tolong Masukkan Surat Pengalihan Anda!",
                             position: "top-end",
                             showConfirmButton: false,
                             timer: 2500
                         });
                         return false;
                     }
-                    if (!pengalihan_hak) {
+                    if (!pernyataan) {
                         Swal.fire({
                             icon: "error",
                             title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Surat Pengalihan Hak Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!klaim) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Klaim Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!kepemilikan) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Pernyataan Kepemilikan Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!kuasa) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Surat Kuasa Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!g_paten) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Gambar Paten Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!g_tampilan) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Gambar Tampilan Anda!",
+                            text: "Tolong Masukkan Surat Pernyataan Anda!",
                             position: "top-end",
                             showConfirmButton: false,
                             timer: 2500
@@ -665,7 +575,6 @@
                         var maxSize = 2 * 1024 * 1024; // Maksimal ukuran file adalah 2 MB
 
                         // Validasi ekstensi file
-                        // Cek apakah file diinputkan
                         if (pengaju) {
                             // Jika file ada, cek apakah ekstensi sesuai
                             if (!allowedExtensionExel.exec(pengaju.name)) {
@@ -680,8 +589,6 @@
                                 return false; // Gagal, form tidak dikirim
                             }
                         }
-
-
                         if (!allowedExtension.exec(ktp.name)) {
                             Swal.fire({
                                 icon: "error",
@@ -693,88 +600,33 @@
                             });
                             return false;
                         }
-                        if (!allowedExtension.exec(abstrak.name)) {
+                        if (!allowedExtension.exec(invensi.name)) {
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Abstrak Paten Dengan Ekstensi .pdf!",
+                                text: "Tolong Masukkan Dokumen Invensi Dengan Ekstensi .pdf!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
                             });
                             return false;
                         }
-                        if (!allowedExtension.exec(deskripsi.name)) {
+                        if (!allowedExtension.exec(surat_pengalihan.name)) {
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Deskripsi Paten Dengan Ekstensi .pdf!",
+                                text: "Tolong Masukkan Surat Pengalihan Dengan Ekstensi .pdf!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
                             });
                             return false;
                         }
-                        if (!allowedExtension.exec(pengalihan_hak.name)) {
+                        if (!allowedExtension.exec(pernyataan.name)) {
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Surat Pengalihan hak Dengan Ekstensi .pdf!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (!allowedExtension.exec(klaim.name)) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Klaim Dengan Ekstensi .pdf!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (!allowedExtension.exec(kepemilikan.name)) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Pernyataan Kepemilikan Dengan Ekstensi .pdf!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (!allowedExtension.exec(kuasa.name)) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Surat Kuasa Dengan Ekstensi .pdf!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (!allowedExtension.exec(g_paten.name)) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Gambar Paten Paten Dengan Ekstensi .pdf!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (!allowedExtension.exec(g_tampilan.name)) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Gambar Tampilan Paten Dengan Ekstensi .pdf!",
+                                text: "Tolong Masukkan Surat pernyataan Dengan Ekstensi .pdf!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -794,95 +646,39 @@
                             });
                             return false;
                         }
-                        if (abstrak.size > maxSize) {
+                        if (invensi.size > maxSize) {
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Abstrak Paten Lebih Dari 2mb!",
+                                text: "Ukuran File Dokumen Invensi Lebih Dari 2mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
                             });
                             return false;
                         }
-                        if (deskripsi.size > maxSize) {
+                        if (surat_pengalihan.size > maxSize) {
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran Deskripsi paten Lebih Dari 2mb!",
+                                text: "Ukuran File Surat Pengalihan Lebih Dari 2mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
                             });
                             return false;
                         }
-                        if (pengalihan_hak.size > maxSize) {
+                        if (pernyataan.size > maxSize) {
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Surat Pengalihan Hak Lebih Dari 2mb!",
+                                text: "Ukuran File Surat Pernyataan Lebih Dari 2mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
                             });
                             return false;
                         }
-                        if (klaim.size > maxSize) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Klaim Lebih Dari 2mb!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (kepemilikan.size > maxSize) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Pernyataan Kepemilikan Lebih Dari 2mb!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (kuasa.size > maxSize) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Surat Kuasa Lebih Dari 2mb!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (g_paten.size > maxSize) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Gambar Paten Lebih Dari 2mb!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (g_tampilan.size > maxSize) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Gambar Tampilan Lebih Dari 2mb!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-
                     }
 
                     // // Jika ada error, tampilkan pesan melalui alert dan cegah pengiriman form
@@ -890,6 +686,8 @@
                     //     alert(errorMessage);
                     //     return false; // Mencegah pengiriman form
                     // }
+
+                    // Jika validasi berhasil, submit form
                     this.submit();
                 });
             });

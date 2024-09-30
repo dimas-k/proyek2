@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href={{ URL('storage/polindra21.png') }}>
+    <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
     <title>SIKI POLINDRA-Admin | Paten</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -19,7 +19,7 @@
     <div class="container-fluid border">
         <nav class="navbar navbar-expand bg-body-tertiary">
             <div class="container-fluid">
-                <img class="navbar-brand" src={{ URL('storage/polindra2.jpg') }}>
+                <img class="navbar-brand" src={{ asset('assets/polindra2.jpg') }}>
                 <a class="navbar-brand fs-6 fw-normal font-family-Kokoro" href="#">Sistem Informasi Kekayaan
                     Intelektual<br>Politeknik Negeri Indramayu</a>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">

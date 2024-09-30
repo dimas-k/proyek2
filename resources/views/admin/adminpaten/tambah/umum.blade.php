@@ -2,12 +2,10 @@
 <html lang="en" data-bs-theme="auto">
 
 <head>
-    <script src="../assets/js/color-modes.js"></script>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
-    <title>SIKI POLINDRA-Admin | Paten | Edit</title>
+    <title>SIKI POLINDRA-Admin | Paten | Pengajuan</title>
     <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -47,18 +45,18 @@
             <div class="col-lg-10 mt-2">
                 <div class="container bg-light rounded border pt-3">
                     <h3 class="fw-normal font-family-Kokoro mb-3">
-                        <i class="bi bi-file-earmark me-2"></i>Data Paten {{ $p->nama_lengkap }}
+                        <i class="bi bi-file-earmark-plus me-2"></i>Pengajuan Paten Umum
                     </h3>
                     <hr class="border border-black border-2 opacity-75">
                     <form class="p-2" enctype="multipart/form-data" method="post"
-                        action={{ route('adm.update-data-paten', $p->id) }} id="uploadForm">
+                        action="/admin/paten/tambah/umum/store/" id="uploadForm">
                         @csrf
                         <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                         <div class="container">
                             <div class="mb-3">
                                 <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama_lengkap"
-                                    placeholder="Masukkan Nama"name="nama_lengkap" value="{{ $p->nama_lengkap }}">
+                                <input type="text" class="form-control"
+                                    id="nama_lengkap" placeholder="Masukkan Nama"name="nama_lengkap">
                                 {{-- @error('nama_lengkap')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -68,7 +66,7 @@
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
                                 <input type="text" class="form-control" id="alamat" placeholder="Masukkan Alamat"
-                                    name="alamat" value="{{ $p->alamat }}">
+                                    name="alamat" >
                                 {{-- @error('alamat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -78,7 +76,8 @@
                             <div class="mb-3">
                                 <label for="no_telepon" class="form-label">No telepon</label>
                                 <input type="number" class="form-control " id="no_telepon"
-                                    placeholder="Masukkan No telepon" name="no_telepon" value="{{ $p->no_telepon }}">
+                                    placeholder="Masukkan No telepon" name="no_telepon"
+                                    >
                                 {{-- @error('no_telepon')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -88,12 +87,12 @@
                             <div class="mb-3">
                                 <label for="tanggal_lahie" class="form-label">Tanggal Lahir</label>
                                 <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control"
-                                    value="{{ $p->tanggal_lahir }}">
-                                @error('tanggal_lahir')
+                                    >
+                                {{-- @error('tanggal_lahir')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
-                                @enderror
+                                @enderror --}}
                             </div>
                             <div class="mb-3">
                                 <label for="ktp" class="form-label">KTP Inventor</label>
@@ -110,7 +109,7 @@
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control " id="email" placeholder="Masukkan Email"
-                                    name="email" value="{{ $p->email }}">
+                                    name="email" >
                                 {{-- @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -120,7 +119,8 @@
                             <div class="mb-3">
                                 <label for="warga" class="form-label">Kewarganegaraan</label>
                                 <input type="text" class="form-control" id="warga"
-                                    placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan" value="{{ $p->kewarganegaraan }}">
+                                    placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan"
+                                    >
                                 {{-- @error('kewarganegaraan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -130,7 +130,7 @@
                             <div class="mb-3">
                                 <label for="pos" class="form-label">Kode Pos</label>
                                 <input type="number" class="form-control" id="pos"
-                                    placeholder="Masukkan Kode Pos" name="kode_pos" value="{{ $p->kode_pos }}">
+                                    placeholder="Masukkan Kode Pos" name="kode_pos" >
                                 {{-- @error('kode_pos')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -138,65 +138,7 @@
                                         @enderror --}}
                             </div>
                             <input type="text" class="form-control @error('institusi') is-invalid @enderror"
-                                id="" value="Dosen" name="institusi" hidden>
-                            <div class="mb-3">
-                                <label for="pengaju2" class="form-label">Data Mahasiswa / Dosen <span
-                                        class="text-danger">(Jika Bersama Dosen Yang Lain dan atau Bersama
-                                        Mahasiswa Harap diisi)</span></label>
-                                <input type="file" class="form-control " name="data_pengaju2" id="pengaju2">
-                                <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
-                                        data-bs-toggle="tooltip"></i>File harus bertipe .xlsx</span>
-                                {{-- @error('data_pengaju2')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror --}}
-                            </div>
-                            <div class="mb-3">
-                                <label for="jurusan" class="form-label">Jurusan</label>
-                                <select class="form-select " aria-label="Default select example" name="jurusan"
-                                    id="jurusan">
-                                    <option value="">Pilih Jurusan</option>
-                                    <option value="Teknik Informatika">Teknik Informatika</option>
-                                    <option value="Teknik Mesin">Teknik Mesin
-                                    </option>
-                                    <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan Tata
-                                        Udara</option>
-                                    <option value="Keperawatan">Keperawatan
-                                    </option>
-                                </select>
-                                {{-- @error('jurusan')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror --}}
-                            </div>
-                            <div class="mb-3">
-                                <label for="prodi" class="form-label">Prodi</label>
-                                <select class="form-select" aria-label="Default select example" name="prodi"
-                                    id="prodi">
-                                    <option value="">Pilih Prodi</option>
-                                    <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
-                                    <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat Lunak
-                                    </option>
-                                    <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi Kota
-                                        Cerdas
-                                    </option>
-                                    <option value="D3 Teknik Mesin">D3 Teknik Mesin</option>
-                                    <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur
-                                    </option>
-                                    <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan
-                                        Tata Udara</option>
-                                    <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi
-                                        Kontrol</option>
-                                    <option value="D3 Keperawatan">D3 Keperawan</option>
-                                </select>
-                                {{-- @error('prodi')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror --}}
-                            </div>
+                                id="" value="Umum" name="institusi" hidden>
                         </div>
                         <br><br>
                         <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR PATEN</p>
@@ -220,7 +162,7 @@
                                 <label for="judul_paten" class="form-label">Judul Paten</label>
                                 <input type="text" class="form-control" id="judul_paten"
                                     placeholder="Masukkan Judul Paten" name="judul_paten"
-                                    value="{{ $p->judul_paten  }}">
+                                    >
                                 {{-- @error('judul_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -335,7 +277,7 @@
                             <div class="mb-3">
                                 <label for="tanggalpengajuan" class="form-label">Tanggal Pengajuan</label>
                                 <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
-                                    class="form-control " value="{{ $p->tanggal_permohonan }}">
+                                    class="form-control ">
                                 {{-- @error('tanggal_permohonan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -347,7 +289,7 @@
                                 Benar</p>
                             {{-- <button type="submit" class="btn btn-primary mt-3 ">Submit</button> --}}
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Simpan
                             </button>
@@ -394,7 +336,7 @@
             $(document).ready(function() {
                 $('#uploadForm').submit(function(e) {
                     e.preventDefault(); // Mencegah form terkirim secara otomatis
-
+    
                     // non file
                     var nama = $('#nama_lengkap').val();
                     var alamat = $('#alamat').val();
@@ -403,16 +345,13 @@
                     var email = $('#email').val();
                     var warga = $('#warga').val();
                     var pos = $('#pos').val();
-                    var jurusan = $('#jurusan').val();
-                    var prodi = $('#prodi').val();
                     var judul_paten = $('#judul_paten').val();
                     var tanggal_pengajuan = $('#tanggalpengajuan').val();
-
+    
                     var jenis_paten = $('input[name="jenis_paten"]:checked').val();
-
+    
                     //file
                     var ktp = $('#ktp')[0].files[0];
-                    var pengaju = $('#pengaju2')[0].files[0];
                     var abstrak = $('#abstrak')[0].files[0];
                     var deskripsi = $('#deskripsi')[0].files[0];
                     var pengalihan_hak = $('#pengalihan_hak')[0].files[0];
@@ -421,9 +360,9 @@
                     var kuasa = $('#kuasa')[0].files[0];
                     var g_paten = $('#g_paten')[0].files[0];
                     var g_tampilan = $('#g_tampilan')[0].files[0];
-
+    
                     // var errorMessage = ''; // Variabel untuk menyimpan pesan error
-
+    
                     // Validasi Nama Lengkap
                     if (!nama) {
                         Swal.fire({
@@ -436,7 +375,7 @@
                         });
                         return false;
                     }
-
+    
                     // Validasi Tanggal Lahir
                     if (!alamat) {
                         Swal.fire({
@@ -504,28 +443,6 @@
                         });
                         return false;
                     }
-                    if (jurusan === "") {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Jurusan Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (prodi === "") {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Prodi Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
                     if (!jenis_paten) {
                         Swal.fire({
                             icon: "error",
@@ -559,7 +476,7 @@
                         });
                         return false;
                     }
-
+    
                     // Validasi File
                     if (!ktp) {
                         Swal.fire({
@@ -661,27 +578,10 @@
                         return false;
                     } else {
                         var allowedExtension = /(\.pdf)$/i; // Hanya memperbolehkan file berformat PDF
-                        var allowedExtensionExel = /(\.xlsx)$/i; // Hanya memperbolehkan file berformat exel
                         var maxSize = 2 * 1024 * 1024; // Maksimal ukuran file adalah 2 MB
-
+    
                         // Validasi ekstensi file
                         // Cek apakah file diinputkan
-                        if (pengaju) {
-                            // Jika file ada, cek apakah ekstensi sesuai
-                            if (!allowedExtensionExel.exec(pengaju.name)) {
-                                Swal.fire({
-                                    icon: "error",
-                                    title: "Oops... Ada yang salah...",
-                                    text: "Tolong Masukkan Data Mahasiswa Dan Atau Dosen Dengan Ekstensi .xlsx",
-                                    position: "top-end",
-                                    showConfirmButton: false,
-                                    timer: 2500
-                                });
-                                return false; // Gagal, form tidak dikirim
-                            }
-                        }
-
-
                         if (!allowedExtension.exec(ktp.name)) {
                             Swal.fire({
                                 icon: "error",
@@ -781,7 +681,7 @@
                             });
                             return false;
                         }
-
+    
                         // Validasi ukuran file
                         if (ktp.size > maxSize) {
                             Swal.fire({
@@ -882,9 +782,9 @@
                             });
                             return false;
                         }
-
+    
                     }
-
+    
                     // // Jika ada error, tampilkan pesan melalui alert dan cegah pengiriman form
                     // if (errorMessage !== '') {
                     //     alert(errorMessage);

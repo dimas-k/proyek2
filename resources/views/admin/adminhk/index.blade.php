@@ -148,6 +148,14 @@
                     @endif
                     <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-3"></i>Daftar Hak Cipta
                     </h3>
+                    <div class="d-flex justify-content-start">
+                        <a class="btn btn-success mb-2" href="/admin/hak-cipta/tambah/dosen/"><i
+                                class="bi bi-plus-circle me-2"></i>Tambah Hak Cipta Dosen</a>
+                    </div>
+                    <div class="d-flex justify-content-start">
+                        <a class="btn btn-outline-secondary" href="/admin/hak-cipta/tambah/umum/"><i
+                                class="bi bi-plus-circle me-2"></i>Tambah Hak Cipta Umum</a>
+                    </div>
                     <div class="d-flex justify-content-end mb-3">
                         <form action="/admin/hak-cipta/cari" method="GET">
                             <div class="row g-2 align-items-center">
@@ -176,13 +184,14 @@
                                 <th scope="col">Status Hak Cipta</th>
                                 <th scope="col">Status Cek Data</th>
                                 <th scope="col">Keterangan</th>
-                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($hak_cipta as $i => $hk)
                                 <tr>
-                                    <th scope="row">{{ ($hak_cipta->currentPage() - 1) * $hak_cipta->perPage() + $loop->iteration }}</th>
+                                    <th scope="row">
+                                        {{ ($hak_cipta->currentPage() - 1) * $hak_cipta->perPage() + $loop->iteration }}
+                                    </th>
                                     <td>{{ $hk->nama_lengkap }}</td>
                                     <td>{{ $hk->jenis_ciptaan }}</td>
                                     <td>{{ $hk->judul_ciptaan }}</td>
@@ -207,11 +216,13 @@
                                         @endif
                                     </td>
                                     <td><a href={{ Route('admin_hakcipta.show', $hk->id) }} class="btn btn-info"><i
-                                                class="bi bi-eye"></i></a>
-
+                                                class="bi bi-eye me-1"></i>Lihat</a>
+                                        <a href={{ Route('admin_hakcipta.edit', $hk->id) }}
+                                            class="btn btn-outline-warning"><i class="bi bi-pencil me-1"></i>Edit
+                                            Hak Cipta</a>
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                             data-bs-target="#exampleModal{{ $hk->id }}">
-                                            <i class="bi bi-pencil"></i>
+                                            <i class="bi bi-pencil me-1"></i> Edit Status
                                         </button>
                                         <div class="modal fade" id="exampleModal{{ $hk->id }}" tabindex="-1"
                                             data-bs-backdrop="static" aria-labelledby="exampleModalLabel"
@@ -276,7 +287,7 @@
                                         </div>
                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                             data-bs-target="#staticBackdrop{{ $hk->id }}">
-                                            <i class="bi bi-trash3"></i>
+                                            <i class="bi bi-trash3 me-1"></i>Hapus
                                         </button>
                                         <div class="modal fade" id="staticBackdrop{{ $hk->id }}"
                                             data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

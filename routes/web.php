@@ -134,8 +134,16 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 
     Route::get('/admin/paten/delete/{id}', [AdminPatenController::class, 'destroy'])->name('admin_paten.delete');
     Route::get('/admin/paten/edit/{id}', [AdminPatenController::class, 'edit'])->name('admin_paten.edit');
+    Route::post('/admin/paten/update-data/{id}', [AdminPatenController::class, 'updateData'])->name('adm.update-data-paten');
+    Route::post('/admin/paten/umum/update/{id}', [AdminPatenController::class, 'updateDataUmum'])->name('adm.updatepaten.umum');
     Route::post('/admin/paten/update/{id}', [AdminPatenController::class, 'update'])->name('admin_paten.update');
     Route::get('/admin/paten/show/{id}', [AdminPatenController::class, 'show'])->name('admin_paten.show');
+
+    Route::get('/admin/paten/tambah/dosen/', [AdminPatenController::class, 'tambahPatenDosen'])->name('admin_paten.tambah');
+    Route::post('/admin/paten/tambah/dosen/store/', [AdminPatenController::class, 'storeTambahPatenDosen'])->name('admin_paten.store');
+
+    Route::get('admin/paten/tambah/umum/', [AdminPatenController::class, 'tambahPatenUmum'])->name('admin_paten.tambah_umum');
+    Route::post('/admin/paten/tambah/umum/store/', [AdminPatenController::class, 'storeTambahPatenUmum'])->name('admin_paten.store_umum');
 
     Route::get('/admin/listadmin', [AdminController::class, 'lihat'])->middleware('auth');
     Route::get('/admin/listadmin/edit/{id}', [AdminController::class, 'edit'])->name('admin.edit');
@@ -148,6 +156,8 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get("/admin/hak-cipta", [AdminHaKCiptaController::class, 'index']);
     Route::get('/admin/hak-cipta/delete/{id}', [AdminHaKCiptaController::class, 'destroy'])->name('admin_hakcipta.delete');
     Route::get('/admin/hak-cipta/edit/{id}', [AdminHaKCiptaController::class, 'edit'])->name('admin_hakcipta.edit');
+    Route::post('/admin/hak-cipta/dosen/update/{id}', [AdminHaKCiptaController::class, 'updateHcDosen'])->name('admin_hakcipta.update_dosen');
+    Route::post('/admin/hak-cipta/umum/update/{id}', [AdminHaKCiptaController::class, 'updateHcUmum'])->name('admin_hakcipta.update_umum');
     Route::post('/admin/hak-cipta/update/{id}', [AdminHaKCiptaController::class, 'update'])->name('admin_hakcipta.update');
     Route::get('/admin/hak-cipta/show/{id}', [AdminHaKCiptaController::class, 'show'])->name('admin_hakcipta.show');
     Route::get('/admin/hak-cipta/tercatat', [AdminHaKCiptaController::class, 'listTercatat']);
@@ -155,6 +165,11 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/hak-cipta/keterangan-belum-lengkap', [AdminHaKCiptaController::class, 'belumLengkap']);
     Route::get('/admin/hak-cipta/mvdov', [AdminHaKCiptaController::class, 'mvdov']);
     Route::get('/admin/hak-cipta/cari',[AdminHaKCiptaController::class, 'cariHk']);
+
+    Route::get('/admin/hak-cipta/tambah/dosen/', [AdminHaKCiptaController::class, 'tambahDosen']);
+    Route::post('/admin/hak-cipta/tambah/dosen/store', [AdminHaKCiptaController::class, 'storeTambahHCDosen'])->name('hc.dosen.store');
+    Route::get('/admin/hak-cipta/tambah/umum/', [AdminHaKCiptaController::class, 'tambahHcUmum']);
+    Route::post('/admin/hak-cipta/tambah/umum/store', [AdminHaKCiptaController::class, 'storeTambahHcUmum'])->name('admin.tambahhc.umum');
 
     
 
@@ -236,11 +251,7 @@ Route::middleware(['auth', 'role:Umum'])->group(function () {
     Route::get('/umum/dashboard', [UmumController::class, 'index']);
 
     Route::get('/umum/paten', [UmumController::class, 'paten']);
-    // Route::get('/umum/paten', function(){
-    //     $dpaten = new PatenQueryBuilder();
-    //     $paten = $dpaten->getIdUser()->getInstitusi('Umum')->get();
-    //     return response()->json($paten);
-    // });
+   
     Route::get('/umum/pengajuan/paten', [UmumController::class, 'pengajuanPaten']);
     Route::post('/umum/pengajuan/paten/simpan', [UmumController::class, 'simpanPaten'])->name('simpan.umum.paten');
     Route::get('/umum/paten/lihat/{id}', [UmumController::class, 'lihatPaten'])->name('umum.paten.lihat');

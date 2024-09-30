@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
-    <title>SIKI POLINDRA-Admin | Paten | Edit</title>
+    <title>SIKI POLINDRA-Admin | Paten | Pengajuan</title>
     <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -47,18 +47,18 @@
             <div class="col-lg-10 mt-2">
                 <div class="container bg-light rounded border pt-3">
                     <h3 class="fw-normal font-family-Kokoro mb-3">
-                        <i class="bi bi-file-earmark me-2"></i>Data Paten {{ $p->nama_lengkap }}
+                        <i class="bi bi-file-earmark-plus me-2"></i>Pengajuan Paten Dosen
                     </h3>
                     <hr class="border border-black border-2 opacity-75">
                     <form class="p-2" enctype="multipart/form-data" method="post"
-                        action={{ route('adm.update-data-paten', $p->id) }} id="uploadForm">
+                        action="/admin/paten/tambah/dosen/store/" id="uploadForm">
                         @csrf
                         <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                         <div class="container">
                             <div class="mb-3">
                                 <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                 <input type="text" class="form-control" id="nama_lengkap"
-                                    placeholder="Masukkan Nama"name="nama_lengkap" value="{{ $p->nama_lengkap }}">
+                                    placeholder="Masukkan Nama"name="nama_lengkap">
                                 {{-- @error('nama_lengkap')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -68,7 +68,7 @@
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
                                 <input type="text" class="form-control" id="alamat" placeholder="Masukkan Alamat"
-                                    name="alamat" value="{{ $p->alamat }}">
+                                    name="alamat">
                                 {{-- @error('alamat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -78,7 +78,7 @@
                             <div class="mb-3">
                                 <label for="no_telepon" class="form-label">No telepon</label>
                                 <input type="number" class="form-control " id="no_telepon"
-                                    placeholder="Masukkan No telepon" name="no_telepon" value="{{ $p->no_telepon }}">
+                                    placeholder="Masukkan No telepon" name="no_telepon">
                                 {{-- @error('no_telepon')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -88,7 +88,7 @@
                             <div class="mb-3">
                                 <label for="tanggal_lahie" class="form-label">Tanggal Lahir</label>
                                 <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control"
-                                    value="{{ $p->tanggal_lahir }}">
+                                    value="{{ old('tanggal_lahir') }}">
                                 @error('tanggal_lahir')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -110,7 +110,7 @@
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control " id="email" placeholder="Masukkan Email"
-                                    name="email" value="{{ $p->email }}">
+                                    name="email">
                                 {{-- @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -120,7 +120,7 @@
                             <div class="mb-3">
                                 <label for="warga" class="form-label">Kewarganegaraan</label>
                                 <input type="text" class="form-control" id="warga"
-                                    placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan" value="{{ $p->kewarganegaraan }}">
+                                    placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan">
                                 {{-- @error('kewarganegaraan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -130,7 +130,7 @@
                             <div class="mb-3">
                                 <label for="pos" class="form-label">Kode Pos</label>
                                 <input type="number" class="form-control" id="pos"
-                                    placeholder="Masukkan Kode Pos" name="kode_pos" value="{{ $p->kode_pos }}">
+                                    placeholder="Masukkan Kode Pos" name="kode_pos">
                                 {{-- @error('kode_pos')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -220,7 +220,7 @@
                                 <label for="judul_paten" class="form-label">Judul Paten</label>
                                 <input type="text" class="form-control" id="judul_paten"
                                     placeholder="Masukkan Judul Paten" name="judul_paten"
-                                    value="{{ $p->judul_paten  }}">
+                                    value="{{ old('judul_paten') }}">
                                 {{-- @error('judul_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -335,7 +335,7 @@
                             <div class="mb-3">
                                 <label for="tanggalpengajuan" class="form-label">Tanggal Pengajuan</label>
                                 <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
-                                    class="form-control " value="{{ $p->tanggal_permohonan }}">
+                                    class="form-control ">
                                 {{-- @error('tanggal_permohonan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

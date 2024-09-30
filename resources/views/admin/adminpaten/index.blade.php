@@ -303,6 +303,12 @@
                         </div>
                     @endif
                     <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-3"></i>Daftar Paten</h3>
+                    <div class="d-flex justify-content-start">
+                        <a class="btn btn-success mb-2" href="/admin/paten/tambah/dosen/"><i class="bi bi-plus-circle me-2"></i>Tambah Paten Dosen</a>
+                    </div>
+                    <div class="d-flex justify-content-start">
+                        <a class="btn btn-outline-secondary" href="/admin/paten/tambah/umum/"><i class="bi bi-plus-circle me-2"></i>Tambah Paten Umum</a>
+                    </div>
                     <div class="d-flex justify-content-end mb-3">
                         <form action="/admin/paten/cari" method="GET">
                             <div class="row g-2 align-items-center">
@@ -332,7 +338,6 @@
                                     <th scope="col">Status paten</th>
                                     <th scope="col">Status Cek Data</th>
                                     <th scope="col">Keterangan</th>
-                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -363,10 +368,12 @@
                                             @endif
                                         </td>
                                         <td><a href={{ Route('admin_paten.show', $p->id) }} class="btn btn-info"><i
-                                                    class="bi bi-eye"></i></a>
+                                                    class="bi bi-eye me-1"></i>Lihat</a>
+                                            <a href={{ Route('admin_paten.edit', $p->id) }} class="btn btn-outline-warning"><i
+                                                    class="bi bi-pencil me-1"></i>Edit Paten</a>
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal{{ $p->id }}">
-                                                <i class="bi bi-pencil"></i>
+                                                <i class="bi bi-pencil me-1"></i>Edit Status
                                             </button>
                                             <div class="modal fade" id="exampleModal{{ $p->id }}"
                                                 tabindex="-1" data-bs-backdrop="static"
@@ -447,10 +454,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                                 data-bs-target="#staticBackdrop{{ $p->id }}">
-                                                <i class="bi bi-trash3"></i>
+                                                <i class="bi bi-trash3 me-1"></i>Hapus
                                             </button>
                                             <div class="modal fade" id="staticBackdrop{{ $p->id }}"
                                                 data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

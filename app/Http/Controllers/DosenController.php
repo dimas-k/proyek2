@@ -18,8 +18,8 @@ class DosenController extends Controller
      */
     public function index()
     {
-        $paten = Paten::where('user_id', Auth::user()->id)->where('institusi', 'Dosen')->count();
-        $hc = HakCipta::where('user_id', Auth::user()->id)->where('institusi', 'Dosen')->count();
+        $paten = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('institusi', 'Dosen')->count();
+        $hc = HakCipta::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('institusi', 'Dosen')->count();
         $di = DesainIndustri::where('user_id', Auth::user()->id)->where('institusi', 'Dosen')->count();
         //HakCipta
         $hcTolak = HakCipta::where('status', 'Ditolak')->where('user_id', Auth::user()->id)->count();
@@ -49,61 +49,62 @@ class DosenController extends Controller
     }
     public function paten()
     {
-        $paten = Paten::with('cek')->where('user_id', Auth::user()->id)->where('institusi', 'Dosen')->paginate(5);
-        $pf = Paten::where('user_id', Auth::user()->id)->where('status', 'Pemeriksaan Formalitas')->where('institusi', 'Dosen')->count();
-        $mt = Paten::where('user_id', Auth::user()->id)->where('status', 'Menunggu Tanggapan Formalitas')->where('institusi', 'Dosen')->count();
-        $mp = Paten::where('user_id', Auth::user()->id)->where('status', 'Masa pengumuman')->where('institusi', 'Dosen')->count();
-        $mps = Paten::where('user_id', Auth::user()->id)->where('status', 'Menunggu Pembayaran Substansif')->where('institusi', 'Dosen')->count();
-        $staw = Paten::where('user_id', Auth::user()->id)->where('status', 'Substansif Tahap Awal')->where('institusi', 'Dosen')->count();
-        $stl = Paten::where('user_id', Auth::user()->id)->where('status', 'Substansif Tahap Lanjut')->where('institusi', 'Dosen')->count();
-        $stak = Paten::where('user_id', Auth::user()->id)->where('status', 'Substansif Tahap Akhir')->where('institusi', 'Dosen')->count();
-        $mts = Paten::where('user_id', Auth::user()->id)->where('status', 'Menunggu Tanggapan Substansif')->where('institusi', 'Dosen')->count();
-        $catat = Paten::where('user_id', Auth::user()->id)->where('status', 'Diberi')->where('institusi', 'Dosen')->count();
-        $tolak = Paten::where('user_id', Auth::user()->id)->where('status', 'Ditolak')->where('institusi', 'Dosen')->count();
-        $mvdov = Paten::where('user_id', Auth::user()->id)->where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->where('institusi', 'Dosen')->count();
+        $paten = Paten::with('cek')->where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('institusi', 'Dosen')->paginate(5);
+        $pf = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Pemeriksaan Formalitas')->where('institusi', 'Dosen')->count();
+        $mt = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Menunggu Tanggapan Formalitas')->where('institusi', 'Dosen')->count();
+        $mp = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Masa pengumuman')->where('institusi', 'Dosen')->count();
+        $mps = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Menunggu Pembayaran Substansif')->where('institusi', 'Dosen')->count();
+        $staw = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Substansif Tahap Awal')->where('institusi', 'Dosen')->count();
+        $stl = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Substansif Tahap Lanjut')->where('institusi', 'Dosen')->count();
+        $stak = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Substansif Tahap Akhir')->where('institusi', 'Dosen')->count();
+        $mts = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Menunggu Tanggapan Substansif')->where('institusi', 'Dosen')->count();
+        $catat = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Diberi')->where('institusi', 'Dosen')->count();
+        $tolak = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Ditolak')->where('institusi', 'Dosen')->count();
+        $mvdov = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->where('institusi', 'Dosen')->count();
         return view('dosen.paten.index', compact('pf', 'paten', 'mt', 'mp', 'mps', 'staw', 'stl', 'stak', 'mts', 'catat', 'tolak', 'mvdov'));
     }
     public function cariPaten(Request $request)
     {
         $cari = $request->input('cari');
-        $paten = Paten::with('cek')->where('user_id', Auth::user()->id)->where('judul_paten', 'LIKE', "%" . $cari . "%")->orWhere('nama_lengkap', 'LIKE', "%" . $cari . "%")->orWhere('status', 'LIKE', "%" . $cari . "%")->paginate(5); //yang bener
+        $paten = Paten::with('cek')->where('user_id', Auth::user()->id)->where('nama_lengkap', Auth::user()->nama_lengkap)->where('judul_paten', 'LIKE', "%" . $cari . "%")->orWhere('status', 'LIKE', "%" . $cari . "%")->paginate(5); //yang bener
         // $paten = DB::table('paten')->whereRaw('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //penggunaan raw queri
         // dd($cpaten);
         // $paten = Paten::where('institusi', 'Dosen')->get();
         $pf = Paten::where('user_id', Auth::user()->id)->where('status', 'Pemeriksaan Formalitas')->count();
-        $mt = Paten::where('user_id', Auth::user()->id)->where('status', 'Menunggu Tanggapan Formalitas')->count();
-        $mp = Paten::where('user_id', Auth::user()->id)->where('status', 'Masa pengumuman')->where('institusi', 'Dosen')->count();
-        $mps = Paten::where('user_id', Auth::user()->id)->where('status', 'Menunggu Pembayaran Substansif')->where('institusi', 'Dosen')->count();
-        $staw = Paten::where('user_id', Auth::user()->id)->where('status', 'Substansif Tahap Awal')->where('institusi', 'Dosen')->count();
-        $stl = Paten::where('user_id', Auth::user()->id)->where('status', 'Substansif Tahap Lanjut')->where('institusi', 'Dosen')->count();
-        $stak = Paten::where('user_id', Auth::user()->id)->where('status', 'Substansif Tahap Akhir')->where('institusi', 'Dosen')->count();
-        $mts = Paten::where('user_id', Auth::user()->id)->where('status', 'Menunggu Tanggapan Substansif')->where('institusi', 'Dosen')->count();
-        $catat = Paten::where('user_id', Auth::user()->id)->where('status', 'Diberi')->where('institusi', 'Dosen')->count();
-        $tolak = Paten::where('user_id', Auth::user()->id)->where('status', 'Ditolak')->where('institusi', 'Dosen')->count();
-        $mvdov = Paten::where('user_id', Auth::user()->id)->where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->where('institusi', 'Dosen')->count();
+        $mt = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Menunggu Tanggapan Formalitas')->count();
+        $mp = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Masa pengumuman')->where('institusi', 'Dosen')->count();
+        $mps = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Menunggu Pembayaran Substansif')->where('institusi', 'Dosen')->count();
+        $staw = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Substansif Tahap Awal')->where('institusi', 'Dosen')->count();
+        $stl = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Substansif Tahap Lanjut')->where('institusi', 'Dosen')->count();
+        $stak = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Substansif Tahap Akhir')->where('institusi', 'Dosen')->count();
+        $mts = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Menunggu Tanggapan Substansif')->where('institusi', 'Dosen')->count();
+        $catat = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Diberi')->where('institusi', 'Dosen')->count();
+        $tolak = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Ditolak')->where('institusi', 'Dosen')->count();
+        $mvdov = Paten::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->where('institusi', 'Dosen')->count();
         return view('dosen.paten.index', compact('pf', 'mt', 'mp', 'mps', 'staw', 'stl', 'stak', 'mts', 'catat', 'tolak', 'paten', 'mvdov'));
     }
 
     public function hakCipta()
     {
-        $tolak = HakCipta::where('user_id', Auth::user()->id)->where('status', 'Ditolak')->count();
-        $tercatat = HakCipta::where('user_id', Auth::user()->id)->where('status', 'Diterima')->count();
-        $null = HakCipta::where('user_id', Auth::user()->id)->where('status', 'Keterangan belum lengkap')->count();
-        $hc = HakCipta::with('cekhc')->where('user_id', Auth::user()->id)->where('institusi', 'Dosen')->get();
-        $mvdov = HakCipta::where('user_id', Auth::user()->id)->where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->where('institusi', 'Dosen')->count();
+        $tolak = HakCipta::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Ditolak')->count();
+        $tercatat = HakCipta::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Diterima')->count();
+        $null = HakCipta::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Keterangan belum lengkap')->count();
+        $hc = HakCipta::with('cekhc')->where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('institusi', 'Dosen')->get();
+        $mvdov = HakCipta::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->where('institusi', 'Dosen')->count();
         return view('dosen.hakcipta.index', compact('hc', 'tercatat', 'null', 'tolak', 'mvdov'));
     }
     public function cariHc(Request $request)
     {
         $cari = $request->input('cari');
-        $hc = HakCipta::where('user_id', Auth::user()->id)->where('judul_ciptaan', 'LIKE', "%" . $cari . "%")->orWhere('nama_lengkap', 'LIKE', "%" . $cari . "%")->orWhere('status', 'LIKE', "%" . $cari . "%")->paginate(5); //yang bener
+        $hc = HakCipta::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('judul_ciptaan', 'LIKE', "%" . $cari . "%")->orWhere('status', 'LIKE', "%" . $cari . "%")->paginate(5); //yang bener
         // $paten = DB::table('paten')->whereRaw('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //penggunaan raw queri
         // dd($cpaten);
         // $paten = Paten::where('institusi', 'Dosen')->get();
-        $tercatat = HakCipta::where('user_id', Auth::user()->id)->where('status', 'Tercatat')->where('institusi', 'Dosen')->count();
-        $null = HakCipta::where('user_id', Auth::user()->id)->where('status', 'Keterangan Belum Lengkap')->where('institusi', 'Dosen')->count();
-        $tolak = HakCipta::where('user_id', Auth::user()->id)->where('status', 'Ditolak')->where('institusi', 'Dosen')->count();
-        return view('dosen.hakcipta.index', compact('hc', 'tercatat', 'null', 'tolak'));
+        $mvdov = HakCipta::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->where('institusi', 'Dosen')->count();
+        $tercatat = HakCipta::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Tercatat')->where('institusi', 'Dosen')->count();
+        $null = HakCipta::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Keterangan Belum Lengkap')->where('institusi', 'Dosen')->count();
+        $tolak = HakCipta::where('user_id', Auth::user()->id)->orWhere('nama_lengkap', Auth::user()->nama_lengkap)->where('status', 'Ditolak')->where('institusi', 'Dosen')->count();
+        return view('dosen.hakcipta.index', compact('hc', 'tercatat', 'null', 'tolak', 'mvdov'));
     }
     public function pengajuanPaten()
     {
@@ -298,6 +299,7 @@ class DosenController extends Controller
         ]);
 
         $paten = Paten::find($id);
+        $paten->user_id = Auth::user()->id;
 
         // Mengupdate field yang tidak terkait dengan file
         $paten->nama_lengkap = $request->nama_lengkap;
@@ -551,7 +553,7 @@ class DosenController extends Controller
         }
 
         $hc->tanggal_permohonan = $request->tanggal_permohonan;
-        $hc->save();
+        $hc->save($validasidata);
 
         return redirect('/dosen/hak-cipta/pengajuan')->with('success', 'Data hak cipta berhasil Disimpan!');
     }

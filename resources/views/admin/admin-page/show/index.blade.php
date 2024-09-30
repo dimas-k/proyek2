@@ -73,7 +73,7 @@
                             </tr>
                             <tr>
                                 <th>NIP</th>
-                                <td>{{ $admin->nip }}</td>
+                                <td>: {{ $admin->nip }}</td>
                             </tr>
                             <tr>
                                 <th>Username</th>

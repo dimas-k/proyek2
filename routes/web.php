@@ -181,9 +181,16 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/desain-industri/keterangan-belum-lengkap', [AdminDesainIndustriController::class, 'keteranganBelumLengkap']);
     Route::get('/admin/desain-industri/delete/{id}', [AdminDesainIndustriController::class, 'destroy'])->name('admin_desainindustri.delete');
     Route::get('/admin/desain_industri/edit/{id}', [AdminDesainIndustriController::class, 'edit'])->name('admin_desainindustri.edit');
+    Route::post('/admin/desain-industri/dosen/update/{id}', [AdminDesainIndustriController::class, 'updateDiDosen'])->name('adm.update-di.dosen');
+    Route::post('/admin/desain-industri/umum/update/{id}', [AdminDesainIndustriController::class, 'upateDiUmum'])->name('adm.update-di.umum');
     Route::post('/admin/desain-industri/update/{id}', [AdminDesainIndustriController::class, 'update'])->name('admin_desainindustri.update');
     Route::get('/admin/desain-industri/show/{id}', [AdminDesainIndustriController::class, 'show'])->name('admin_desainindustri.show');
     Route::get('/admin/desain-industri/cari', [AdminDesainIndustriController::class, 'cariDI']);
+
+    Route::get('/admin/desain-industri/tambah/dosen/', [AdminDesainIndustriController::class, 'tambahDiDosen']);
+    Route::post('/admin/desain-industri/tambah/dosen/store/', [AdminDesainIndustriController::class, 'storeDiDosen']);
+    Route::get('/admin/desain-industri/tambah/umum/', [AdminDesainIndustriController::class, 'tambahDiUmum']);
+    route::post('/admin/desain-industri/tambah/umum/store/', [AdminDesainIndustriController::class, 'storeDiUmum']);
 
     Route::get('/admin/pengguna/umum', [AdminController::class, 'lihatUmum'])->name('lihat.umum');
     Route::post('/admin/pengguna/umum/tambah', [AdminController::class, 'umumNew'])->name('tambah.umum');

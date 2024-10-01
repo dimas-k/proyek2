@@ -106,7 +106,7 @@
                                                     </div>
                                                 @enderror
                                             </div>
-                                            {{-- <div class="mb-2">
+                                            <div class="mb-2">
                                                 <label class="col-form-label" for="pass">Jabatan</label>
                                                 <input type="text" id="" name="jabatan"
                                                     class="form-control form-control @error('jabatan') is-invalid @enderror"
@@ -116,7 +116,7 @@
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
-                                            </div> --}}
+                                            </div>
                                             <div class="mb-2">
                                                 <label class="col-form-label" for="">NIP</label>
                                                 <input type="number" id="" name="nip"

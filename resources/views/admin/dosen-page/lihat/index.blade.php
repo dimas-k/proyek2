@@ -56,6 +56,14 @@
                                 <td>: {{ $dsn->nama_lengkap }}</td>
                             </tr>
                             <tr>
+                                <th>NIP</th>
+                                <td>: {{ $dsn->nip }}</td>
+                            </tr>
+                            <tr>
+                                <th>Jabatan</th>
+                                <td>: {{ $dsn->jabatan }}</td>
+                            </tr>
+                            <tr>
                                 <th>No telepon</th>
                                 <td>: {{ $dsn->no_telepon }}</td>
                             </tr>
@@ -67,13 +75,9 @@
                                 <th>Alamat</th>
                                 <td>: {{ $dsn->alamat }}</td>
                             </tr>
-                            {{-- <tr>
-                                <th>Jabatan</th>
-                                <td>: {{ $dsn->jabatan }}</td>
-                            </tr> --}}
                             <tr>
-                                <th>NIP</th>
-                                <td>: {{ $dsn->nip }}</td>
+                                <th>Username</th>
+                                <td>: {{ $dsn->username }}</td>
                             </tr>
                         </table>
                     </div>

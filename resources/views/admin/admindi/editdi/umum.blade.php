@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
-    <title>SIKI POLINDRA-Admin | Hak Cipta | Pengajuan</title>
+    <title>SIKI POLINDRA-Admin | Paten | Edit</title>
     <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -47,18 +47,18 @@
             <div class="col-lg-10 mt-2">
                 <div class="container bg-light rounded border pt-3">
                     <h3 class="fw-normal font-family-Kokoro mb-3">
-                        <i class="bi bi-file-earmark-plus me-2"></i>Pengajuan Desain Industri Dosen
+                        <i class="bi bi-file-earmark me-2"></i>Data Hak Cipta {{ $di->nama_lengkap }}
                     </h3>
                     <hr class="border border-black border-2 opacity-75">
                     <form enctype="multipart/form-data" method="post"
-                        action="/admin/desain-industri/tambah/dosen/store/" id="uploadForm">
+                        action={{ route('adm.update-di.umum', $di->id) }} id="uploadForm">
                         @csrf
                         <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                         <div class="container">
                             <div class="mb-3">
                                 <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                 <input type="text" class="form-control" id="nama_lengkap"
-                                    placeholder="Masukkan Nama"name="nama_lengkap">
+                                    placeholder="Masukkan Nama"name="nama_lengkap" value="{{ $di->nama_lengkap }}">
                                 {{-- @error('nama_lengkap')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -68,7 +68,7 @@
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
                                 <input type="text" class="form-control" id="alamat" placeholder="Masukkan Alamat"
-                                    name="alamat">
+                                    name="alamat" value="{{ $di->alamat }}">
                                 {{-- @error('alamat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -78,7 +78,7 @@
                             <div class="mb-3">
                                 <label for="no_telepon" class="form-label">No telepon</label>
                                 <input type="number" class="form-control " id="no_telepon"
-                                    placeholder="Masukkan No telepon" name="no_telepon">
+                                    placeholder="Masukkan No telepon" name="no_telepon" value="{{ $di->no_telepon }}">
                                 {{-- @error('no_telepon')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -87,7 +87,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="tanggal_lahie" class="form-label">Tanggal Lahir</label>
-                                <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control">
+                                <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control" value="{{ $di->tanggal_lahir }}">
                                 {{-- @error('tanggal_lahir')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -109,7 +109,7 @@
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control " id="email" placeholder="Masukkan Email"
-                                    name="email">
+                                    name="email" value="{{ $di->email }}">
                                 {{-- @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -119,7 +119,7 @@
                             <div class="mb-3">
                                 <label for="warga" class="form-label">Kewarganegaraan</label>
                                 <input type="text" class="form-control" id="warga"
-                                    placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan"
+                                    placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan" value="{{ $di->kewarganegaraan }}"
                                     >
                                 {{-- @error('kewarganegaraan')
                                             <div class="invalid-feedback">
@@ -130,7 +130,7 @@
                             <div class="mb-3">
                                 <label for="pos" class="form-label">Kode Pos</label>
                                 <input type="number" class="form-control" id="pos"
-                                    placeholder="Masukkan Kode Pos" name="kode_pos">
+                                    placeholder="Masukkan Kode Pos" name="kode_pos" value="{{ $di->kode_pos }}">
                                 {{-- @error('kode_pos')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -138,65 +138,7 @@
                                         @enderror --}}
                             </div>
                             <input type="text" class="form-control @error('institusi') is-invalid @enderror"
-                                id="" value="Dosen" name="institusi" hidden>
-                            <div class="mb-3">
-                                <label for="pengaju2" class="form-label">Data Mahasiswa / Dosen <span
-                                        class="text-danger">(Jika Bersama Dosen Yang Lain dan atau Bersama
-                                        Mahasiswa Harap diisi)</span></label>
-                                <input type="file" class="form-control " name="data_pengaju2" id="pengaju2">
-                                <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
-                                        data-bs-toggle="tooltip"></i>File harus bertipe .xlsx</span>
-                                {{-- @error('data_pengaju2')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror --}}
-                            </div>
-                            <div class="mb-3">
-                                <label for="jurusan" class="form-label">Jurusan</label>
-                                <select class="form-select " aria-label="Default select example" name="jurusan"
-                                    id="jurusan">
-                                    <option value="">Pilih Jurusan</option>
-                                    <option value="Teknik Informatika">Teknik Informatika</option>
-                                    <option value="Teknik Mesin">Teknik Mesin
-                                    </option>
-                                    <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan Tata
-                                        Udara</option>
-                                    <option value="Keperawatan">Keperawatan
-                                    </option>
-                                </select>
-                                {{-- @error('jurusan')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror --}}
-                            </div>
-                            <div class="mb-3">
-                                <label for="prodi" class="form-label">Prodi</label>
-                                <select class="form-select" aria-label="Default select example" name="prodi"
-                                    id="prodi">
-                                    <option value="">Pilih Prodi</option>
-                                    <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
-                                    <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat Lunak
-                                    </option>
-                                    <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi Kota
-                                        Cerdas
-                                    </option>
-                                    <option value="D3 Teknik Mesin">D3 Teknik Mesin</option>
-                                    <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur
-                                    </option>
-                                    <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan
-                                        Tata Udara</option>
-                                    <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi
-                                        Kontrol</option>
-                                    <option value="D3 Keperawatan">D3 Keperawan</option>
-                                </select>
-                                {{-- @error('prodi')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror --}}
-                            </div>
+                                id="" value="Umum" name="institusi" hidden>
                         </div>
 
                         <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR DESAIN INDUSTRI</p>
@@ -234,8 +176,7 @@
                             <div class="mb-3">
                                 <label for="judul_desain" class="form-label">Judul Desain Industri</label>
                                 <input type="text" class="form-control"
-                                    placeholder="Masukkan Judul Desain Industri" name="judul_di"
-                                    value="{{ old('judul_di') }}" id="judul_desain">
+                                    placeholder="Masukkan Judul Desain Industri" name="judul_di" id="judul_desain" value="{{ $di->judul_di }}">
                                 {{-- @error('judul_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -285,7 +226,7 @@
                             <div class="mb-3">
                                 <label for="pengalihan" class="form-label">Surat Pengalihan Hak</label>
                                 <input type="file" class="form-control" placeholder="" name="surat_pengalihan"
-                                    id="pengalihan">
+                                    id="pengalihan" value="{{ $di->surat_pengalihan }}">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
                                     2mb</span>
@@ -298,7 +239,7 @@
                             <div class="mb-3">
                                 <label for="tanggalpengajuan" class="form-label">Tanggal Pengajuan</label>
                                 <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
-                                    class="form-control" value="{{ old('tanggal_permohonan') }}">
+                                    class="form-control" value="{{ $di->tanggal_pengajuan }}">
                                 @error('tanggal_permohonan')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -350,7 +291,6 @@
         </script>
         <script src="{{ asset('assets-user/js/jquery.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
         <script>
             $(document).ready(function() {
                 $('#uploadForm').submit(function(e) {

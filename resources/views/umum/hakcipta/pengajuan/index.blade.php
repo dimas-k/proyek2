@@ -88,9 +88,7 @@
     <!-- CHART-CIRCLE JS-->
     <script src="{{ asset('assets-user/js/circle-progress.min.js') }}"></script>
 
-    <!-- PIETY CHART JS-->
-    <script src="{{ asset('assets-user/plugins/peitychart/jquery.peity.min.js') }}"></script>
-    <script src="{{ asset('assets-user/plugins/peitychart/peitychart.init.js') }}"></script>
+  
 
     <!-- SIDEBAR JS -->
     <script src="{{ asset('assets-user/plugins/sidebar/sidebar.js') }}"></script>

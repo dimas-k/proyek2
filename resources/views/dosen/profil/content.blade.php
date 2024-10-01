@@ -41,6 +41,14 @@
                                         <td>: {{ auth()->user()->nama_lengkap }}</td>
                                     </tr>
                                     <tr>
+                                        <th>Nip</th>
+                                        <td>: {{ auth()->user()->nip }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Jabatan</th>
+                                        <td>: {{ auth()->user()->jabatan }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>No Telepon</th>
                                         <td>: {{ auth()->user()->no_telepon }}</td>
                                     </tr>
@@ -53,10 +61,6 @@
                                         <td>: {{ auth()->user()->alamat }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Pekerjaan</th>
-                                        <td>: {{ auth()->user()->nip }}</td>
-                                    </tr>
-                                    <tr>
                                         <th>Username</th>
                                         <td>: {{ auth()->user()->username }}</td>
                                     </tr>
@@ -66,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <!-- ROW-4 END -->
         </div>

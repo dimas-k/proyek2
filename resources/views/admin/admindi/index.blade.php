@@ -194,13 +194,13 @@
                         </div>
                     @endif
                     <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-3"></i>Daftar Desain
-                        Industri</h3> 
+                        Industri</h3>
                     <div class="d-flex justify-content-start">
-                        <a class="btn btn-success mb-2" href="/admin/hak-cipta/tambah/dosen/"><i
+                        <a class="btn btn-success mb-2" href="/admin/desain-industri/tambah/dosen/"><i
                                 class="bi bi-plus-circle me-2"></i>Tambah Desain Industri Dosen</a>
                     </div>
                     <div class="d-flex justify-content-start">
-                        <a class="btn btn-outline-secondary" href="/admin/hak-cipta/tambah/umum/"><i
+                        <a class="btn btn-outline-secondary" href="/admin/desain-industri/tambah/umum/"><i
                                 class="bi bi-plus-circle me-2"></i>Tambah Desain Industri Umum</a>
                     </div>
                     <div class="d-flex justify-content-end mb-3">
@@ -265,10 +265,13 @@
                                             @endif
                                         </td>
                                         <td><a href={{ Route('admin_desainindustri.show', $di->id) }}
-                                                class="btn btn-info"><i class="bi bi-eye"></i></a>
+                                                class="btn btn-info"><i class="bi bi-eye me-1"></i>Lihat</a>
+                                            <a href={{ Route('admin_desainindustri.edit', $di->id) }}
+                                                class="btn btn-outline-warning"><i class="bi bi-pencil me-1"></i>Edit
+                                                Desain Industri</a>
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal{{ $di->id }}">
-                                                <i class="bi bi-pencil"></i>
+                                                <i class="bi bi-pencil me-1"></i>Edit Status
                                             </button>
                                             <div class="modal fade" id="exampleModal{{ $di->id }}"
                                                 tabindex="-1" data-bs-backdrop="static"
@@ -340,7 +343,7 @@
                                             </div>
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                                 data-bs-target="#staticBackdrop{{ $di->id }}">
-                                                <i class="bi bi-trash3"></i>
+                                                <i class="bi bi-trash3 me-1"></i>Hapus
                                             </button>
                                             <div class="modal fade" id="staticBackdrop{{ $di->id }}"
                                                 data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

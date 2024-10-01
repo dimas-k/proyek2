@@ -26,14 +26,6 @@ class AdminSeeder extends Seeder
                 'username'=>'byan',
                 'password'=>Hash::make('12345')
             ],
-            [
-                'nama_lengkap' => 'Icha Syahrotul Anam, S.TP., M.Sc.',
-                'jabatan' => 'Admin',
-                'email' => 'icha@polindra.ac.id',
-                'no_telepon' => '+62 811-242-494',
-                'username' => 'icha',
-                'password' => ''
-            ]
         ));
         // User::factory()->count(2)->create();
     }

@@ -84,12 +84,6 @@
     <!-- Sticky js -->
     <script src="{{ asset('assets-user/js/sticky.js') }}"></script>
 
-    <!-- CHART-CIRCLE JS-->
-    <script src="{{ asset('assets-user/js/circle-progress.min.js') }}"></script>
-
-    <!-- PIETY CHART JS-->
-    <script src="{{ asset('assets-user/plugins/peitychart/jquery.peity.min.js') }}"></script>
-    <script src="{{ asset('assets-user/plugins/peitychart/peitychart.init.js') }}"></script>
 
     <!-- SIDEBAR JS -->
     <script src="{{ asset('assets-user/plugins/sidebar/sidebar.js') }}"></script>
@@ -99,10 +93,6 @@
     <script src="{{ asset('assets-user/plugins/p-scroll/pscroll.js') }}"></script>
     <script src="{{ asset('assets-user/plugins/p-scroll/pscroll-1.js') }}"></script>
 
-    <!-- INTERNAL CHARTJS CHART JS-->
-    <script src="{{ asset('assets-user/plugins/chart/Chart.bundle.js') }}"></script>
-    <script src="{{ asset('assets-user/plugins/chart/rounded-barchart.js') }}"></script>
-    <script src="{{ asset('assets-user/plugins/chart/utils.js') }}"></script>
 
     <!-- INTERNAL SELECT2 JS -->
     <script src="{{ asset('assets-user/plugins/select2/select2.full.min.js') }}"></script>
@@ -116,12 +106,7 @@
     <script src="{{ asset('assets-user/js/apexcharts.js') }}"></script>
     <script src="{{ asset('assets-user/plugins/apexchart/irregular-data-series.js') }}"></script>
 
-    <!-- C3 CHART JS -->
-    <script src="{{ asset('assets-user/plugins/charts-c3/d3.v5.min.js') }}"></script>
-    <script src="{{ asset('assets-user/plugins/charts-c3/c3-chart.js') }}"></script>
 
-    <!-- CHART-DONUT JS -->
-    <script src="{{ asset('assets-user/js/charts.js') }}"></script>
 
     <!-- INTERNAL Flot JS -->
     <script src="{{ asset('assets-user/plugins/flot/jquery.flot.js') }}"></script>
@@ -129,9 +114,7 @@
     <script src="{{ asset('assets-user/plugins/flot/chart.flot.sampledata.js') }}"></script>
     <script src="{{ asset('assets-user/plugins/flot/dashboard.sampledata.js') }}"></script>
 
-    <!-- INTERNAL Vector js -->
-    <script src="{{ asset('assets-user/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
-    <script src="{{ asset('assets-user/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+    
 
     <!-- SIDE-MENU JS-->
     <script src="{{ asset('assets-user/plugins/sidemenu/sidemenu.js') }}"></script>

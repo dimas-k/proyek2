@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\DesainIndustri;
 use Illuminate\Http\Request;
-use App\Models\Paten;
 
-class ApiPatenController extends Controller
+class ApiDiController extends Controller
 {
-
-    public function getAllDataPaten()
+    public function getAllData()
     {
         try {
-            $paten = Paten::first()->get();
+            $di = DesainIndustri::all();
         } catch (\Throwable $th) {
             return response()->json([
                 "status" => 400,
@@ -22,14 +21,14 @@ class ApiPatenController extends Controller
         return response()->json([
             "status" => 200,
             "message" => "Data terpanggil",
-            "list_data" => $paten
+            "list_data" => $di
         ]);
     }
 
-    public function getPatenById($id)
+    public function getDataById($id)
     {
         try {
-            $paten = Paten::find($id);
+            $di = DesainIndustri::find($id);
         } catch (\Throwable $th) {
             return response()->json([
                 "status" => 400,
@@ -39,14 +38,14 @@ class ApiPatenController extends Controller
         return response()->json([
             "status" => 200,
             "message" => "Data terpanggil",
-            "list_data" => $paten
+            "list_data" => $di
         ]);
-
     }
-    public function getPatenDosen()
+    
+    public function getDataDosen()
     {
         try {
-            $paten = Paten::where('institusi', 'Dosen')->get();
+            $di = DesainIndustri::where('institusi', 'Dosen')->get();
         } catch (\Throwable $th) {
             return response()->json([
                 "status" => 400,
@@ -56,13 +55,14 @@ class ApiPatenController extends Controller
         return response()->json([
             "status" => 200,
             "message" => "Data terpanggil",
-            "list_data" => $paten
+            "list_data" => $di
         ]);
     }
-    public function getPatenUmum()
+
+    public function getDataUmum()
     {
         try {
-            $paten = Paten::where('institusi', 'Umum')->get();
+            $di = DesainIndustri::where('institusi', 'Umum')->get();
         } catch (\Throwable $th) {
             return response()->json([
                 "status" => 400,
@@ -72,8 +72,7 @@ class ApiPatenController extends Controller
         return response()->json([
             "status" => 200,
             "message" => "Data terpanggil",
-            "list_data" => $paten
+            "list_data" => $di
         ]);
     }
-
 }

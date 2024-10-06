@@ -83,11 +83,11 @@
                                         <label for="tanggal_lahie" class="form-label">Tanggal Lahir</label>
                                         <input type="date" name="tanggal_lahir" id="tanggal_lahir"
                                             class="form-control" value="{{ old('tanggal_lahir') }}">
-                                        @error('tanggal_lahir')
+                                        {{-- @error('tanggal_lahir')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                     <div class="mb-3">
                                         <label for="ktp" class="form-label">KTP Inventor</label>

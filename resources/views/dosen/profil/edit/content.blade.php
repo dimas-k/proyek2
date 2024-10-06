@@ -116,13 +116,15 @@
                                             <td>
                                                 <input type="password"
                                                     class="form-control @error('password') is-invalid @enderror"
-                                                    id="" value="{{ auth()->user()->password }}"
+                                                    id=""
                                                     name="password">
                                                 @error('password')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                    data-bs-toggle="tooltip"></i>Password harus di inputkan kembali / input password baru</span>
                                             </td>
                                         </tr>
                                     </table>

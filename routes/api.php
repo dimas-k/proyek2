@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\Api\ApiUsersController;
-use App\Http\Controllers\Api\ApiPatenController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ApiDiController;
+use App\Http\Controllers\Api\ApiHcController;
+use App\Http\Controllers\Api\ApiPatenController;
+use App\Http\Controllers\Api\ApiUsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +21,28 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/users/store',[ApiUsersController::class, "store"]);
-Route::get('/users/get/data',[ApiUsersController::class, "getAllData"]);
-Route::get('/users/get/data/{id}',[ApiUsersController::class, "getData"]);
-Route::delete('/users/delete/data/{id}',[ApiUsersController::class, "deleteData"]);
-Route::put('/users/update/data/{id}',[ApiUsersController::class, "updateData"]);
 
+Route::prefix('paten')->group(function () {
+    Route::get('/get/data/all', [ApiPatenController::class, 'getAllDataPaten']);
+    Route::get('/get/data/{id}', [ApiPatenController::class, 'getPatenById']);
+    Route::get('/get/data/dosen', [ApiPatenController::class, 'getPatenDosen']);
+    Route::get('/get/data/umum/{id}', [ApiPatenController::class, 'getPatenUmum']);
+});
 
-Route::get('/paten/get/data',[ApiPatenController::class, "GetAllDataPaten"]);
+// Route Group untuk API Hak Cipta
+Route::prefix('hak-cipta')->group(function () {
+    Route::get('/get/data/all', [ApiHcController::class, 'getAllDataHc']);
+    Route::get('/get/data/{id}', [ApiHcController::class, 'getHcById']);
+    Route::get('/get/data/dosen', [ApiHcController::class, 'getDataDosen']);
+    Route::get('/get/data/umum', [ApiHcController::class, 'getDataUmum']);
+});
+
+// Route Group untuk API Desain Industri
+Route::prefix('desain-industri')->group(function () {
+    Route::get('/get/data/all', [ApiDiController::class, 'getAllData']);
+    Route::get('/get/data/{id}', [ApiDiController::class, 'getDataById']);
+    Route::get('/get/data/dosen', [ApiDiController::class, 'getDataDosen']);
+    Route::get('/get/data/umum', [ApiDiController::class, 'getDataUmum']);
+});
+
 

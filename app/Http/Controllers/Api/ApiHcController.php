@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\HakCipta;
 use Illuminate\Http\Request;
-use App\Models\Paten;
 
-class ApiPatenController extends Controller
+class ApiHcController extends Controller
 {
-
-    public function getAllDataPaten()
+    public function getAllData()
     {
         try {
-            $paten = Paten::first()->get();
+            $hc = HakCipta::all();
         } catch (\Throwable $th) {
             return response()->json([
                 "status" => 400,
@@ -22,14 +21,14 @@ class ApiPatenController extends Controller
         return response()->json([
             "status" => 200,
             "message" => "Data terpanggil",
-            "list_data" => $paten
+            "list_data" => $hc
         ]);
     }
 
-    public function getPatenById($id)
+    public function getDataById($id)
     {
         try {
-            $paten = Paten::find($id);
+            $hc = HakCipta::find($id);
         } catch (\Throwable $th) {
             return response()->json([
                 "status" => 400,
@@ -39,14 +38,14 @@ class ApiPatenController extends Controller
         return response()->json([
             "status" => 200,
             "message" => "Data terpanggil",
-            "list_data" => $paten
+            "list_data" => $hc
         ]);
-
     }
-    public function getPatenDosen()
+    
+    public function getDataDosen()
     {
         try {
-            $paten = Paten::where('institusi', 'Dosen')->get();
+            $hc = HakCipta::where('institusi', 'Dosen')->get();
         } catch (\Throwable $th) {
             return response()->json([
                 "status" => 400,
@@ -56,13 +55,14 @@ class ApiPatenController extends Controller
         return response()->json([
             "status" => 200,
             "message" => "Data terpanggil",
-            "list_data" => $paten
+            "list_data" => $hc
         ]);
     }
-    public function getPatenUmum()
+
+    public function getDataUmum()
     {
         try {
-            $paten = Paten::where('institusi', 'Umum')->get();
+            $hc = HakCipta::where('institusi', 'Umum')->get();
         } catch (\Throwable $th) {
             return response()->json([
                 "status" => 400,
@@ -72,8 +72,7 @@ class ApiPatenController extends Controller
         return response()->json([
             "status" => 200,
             "message" => "Data terpanggil",
-            "list_data" => $paten
+            "list_data" => $hc
         ]);
     }
-
 }

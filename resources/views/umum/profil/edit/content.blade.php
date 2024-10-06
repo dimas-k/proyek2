@@ -27,8 +27,8 @@
                         </div>
                         <div class="card-body">
 
-                            <form action={{ Route('umum.profil.update', auth()->user()->id) }} enctype="multipart/form-data"
-                                method="post">
+                            <form action={{ Route('umum.profil.update', auth()->user()->id) }}
+                                enctype="multipart/form-data" method="post">
                                 @csrf
                                 <div class="table-responsive">
                                     <table class="table table-borderless p-1">
@@ -37,7 +37,8 @@
                                             <th>Nama Lengkap</th>
                                             <td><input type="text"
                                                     class="form-control @error('nama_lengkap') is-invalid @enderror"
-                                                    id=""name="nama_lengkap" value="{{ auth()->user()->nama_lengkap }}">
+                                                    id=""name="nama_lengkap"
+                                                    value="{{ auth()->user()->nama_lengkap }}">
                                                 @error('nama_lengkap')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -50,7 +51,8 @@
                                             <td>
                                                 <input type="text"
                                                     class="form-control @error('no_telepon') is-invalid @enderror"
-                                                    id="" name="no_telepon" value="{{ auth()->user()->no_telepon }}">
+                                                    id="" name="no_telepon"
+                                                    value="{{ auth()->user()->no_telepon }}">
                                                 @error('no_telepon')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -89,7 +91,8 @@
                                             <td>
                                                 <input type="text"
                                                     class="form-control @error('kerjaan') is-invalid @enderror"
-                                                    id="" name="kerjaan" value="{{ auth()->user()->kerjaan }}">
+                                                    id="" name="kerjaan"
+                                                    value="{{ auth()->user()->kerjaan }}">
                                                 @error('kerjaan')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -109,6 +112,22 @@
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Password</th>
+                                            <td>
+                                                <input type="password"
+                                                    class="form-control @error('password') is-invalid @enderror"
+                                                    id="" name="password">
+                                                @error('password')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>Password harus di inputkan kembali
+                                                    / input password baru</span>
                                             </td>
                                         </tr>
                                     </table>

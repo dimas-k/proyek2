@@ -629,18 +629,15 @@ class UmumController extends Controller
         $validasidata = $request->validate([
             'email' => 'required|email',
             'username' => 'required|min:3',
-            'ktp' => 'required|mimes:pdf|max:2028',
         ]);
         $user = User::find($id);
         $user->nama_lengkap = $request->nama_lengkap;
         $user->no_telepon = $request->no_telepon;
         $user->email = $request->email;
         $user->alamat = $request->alamat;
-
-        
-        $user->ktp = $request->file('ktp')->store('dokumen_user');
         $user->kerjaan = $request->kerjaan;
         $user->username = $request->username;
+        $user->password = $request->password;
         $user->save($validasidata);
         return redirect('/umum/user/lihat')->with('success', 'Data berhasil Diupdate!');
     }

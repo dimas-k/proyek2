@@ -61,7 +61,7 @@
                                         <td>: {{ auth()->user()->username }}</td>
                                     </tr>
                                 </table>
-                                {{-- <a href={{ route('umum.profil.edit', auth()->user()->id) }} class="btn btn-primary">Edit Profil</a> --}}
+                                <a href={{ route('umum.profil.edit', auth()->user()->id) }} class="btn btn-primary">Edit Profil</a>
                             </div>
                         </div>
                     </div>

@@ -717,21 +717,12 @@ class DosenController extends Controller
         $validasidata = $request->validate([
             'email' => 'required|email',
             'username' => 'required|min:3',
-            'ktp' => 'required|mimes:pdf|max:2028',
         ]);
         $user = User::find($id);
         $user->nama_lengkap = $request->nama_lengkap;
         $user->no_telepon = $request->no_telepon;
         $user->email = $request->email;
         $user->alamat = $request->alamat;
-        
-        $user->ktp = $request->file('ktp')->store('dokumen_user');
-        if ($request->hasFile('ktp')) {
-            if ($user->ktp) {
-                Storage::delete($user->ktp);
-            }
-            $user->ktp = $request->file('ktp')->store("dokumen_user");
-        }
         $user->nip = $request->nip;
         $user->username = $request->username;
         $user->password = $request->password;

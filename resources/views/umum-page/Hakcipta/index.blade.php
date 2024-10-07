@@ -221,8 +221,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Diagram per-tahun Hak Cipta</h3>
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
+                        {{-- <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Filter</button> --}}
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Action</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -234,14 +234,16 @@
                         <input type="hidden" id="hcTerima" value="{{ $hcTerima }}">
                         <input type="hidden" id="hcKet" value="{{ $hcKet }}">
                         <canvas id="hc-chart" style="height:30vh; width:68vw"></canvas> --}}
+                        <input type="hidden" id="hc2020" value="{{ $hc2020 }}">
+                        <input type="hidden" id="hc2021" value="{{ $hc2021 }}">
+                        <input type="hidden" id="hc2022" value="{{ $hc2022 }}">
+                        <input type="hidden" id="hc2023" value="{{ $hc2023 }}">
                         <input type="hidden" id="hc2024" value="{{ $hc2024 }}">
-                        <input type="hidden" id="hc2025" value="{{ $hc2025 }}">
-                        <input type="hidden" id="hc2026" value="{{ $hc2026 }}">
-                        <input type="hidden" id="hc2027" value="{{ $hc2027 }}">
+                        <input type="hidden" id="gabungKi2020" value="{{ $gabungKi2020 }}">
+                        <input type="hidden" id="gabungKi2021" value="{{ $gabungKi2021 }}">
+                        <input type="hidden" id="gabungKi2022" value="{{ $gabungKi2022 }}">
+                        <input type="hidden" id="gabungKi2023" value="{{ $gabungKi2023 }}">
                         <input type="hidden" id="gabungKi2024" value="{{ $gabungKi2024 }}">
-                        <input type="hidden" id="gabungKi2025" value="{{ $gabungKi2025 }}">
-                        <input type="hidden" id="gabungKi2026" value="{{ $gabungKi2026 }}">
-                        <input type="hidden" id="gabungKi2027" value="{{ $gabungKi2027 }}">
                         <canvas id="gabungHc" style="height:30vh; width:68vw"></canvas>
                     </div>
                 </div>
@@ -261,23 +263,25 @@
 
     <script>
         // hak cipta per-tahun
+        const hc2020 = document.getElementById("hc2020").value;
+        const hc2021 = document.getElementById("hc2021").value;
+        const hc2022 = document.getElementById("hc2022").value;
+        const hc2023 = document.getElementById("hc2023").value;
         const hc2024 = document.getElementById("hc2024").value;
-        const hc2025 = document.getElementById("hc2025").value;
-        const hc2026 = document.getElementById("hc2026").value;
-        const hc2027 = document.getElementById("hc2027").value;
+        const gabungKi2020 = document.getElementById('gabungKi2020').value;
+        const gabungKi2021 = document.getElementById('gabungKi2021').value;
+        const gabungKi2022 = document.getElementById('gabungKi2022').value;
+        const gabungKi2023 = document.getElementById('gabungKi2023').value;
         const gabungKi2024 = document.getElementById('gabungKi2024').value;
-        const gabungKi2025 = document.getElementById('gabungKi2025').value;
-        const gabungKi2026 = document.getElementById('gabungKi2026').value;
-        const gabungKi2027 = document.getElementById('gabungKi2027').value;
         const chartgabung = document.getElementById('gabungHc').getContext('2d');
 
         const h = new Chart(chartgabung, {
             type: 'bar',
             data: {
-                labels: ['2024', '2025', '2026', '2027'],
+                labels: ['2020', '2021', '2022', '2023', '2024'],
                 datasets: [{
                     label: 'Jumlah KI',
-                    data: [gabungKi2024, gabungKi2025, gabungKi2026, gabungKi2027],
+                    data: [gabungKi2020, gabungKi2021, gabungKi2022, gabungKi2023, gabungKi2024],
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: [
                         'rgba(54, 162, 235, 1)',
@@ -286,7 +290,7 @@
                 }, {
                     type: 'line',
                     label: 'Hak Cipta',
-                    data: [hc2024, hc2025, hc2026, hc2027],
+                    data: [hc2020, hc2021, hc2022, hc2023, hc2024],
                     borderColor: [
                         'rgba(54, 162, 235, 1)',
                     ],

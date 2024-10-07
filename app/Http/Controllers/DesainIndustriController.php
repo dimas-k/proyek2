@@ -30,28 +30,32 @@ class DesainIndustriController extends Controller
         $desainKBL = DesainIndustri::where('status', 'Keterangan belum lengkap')->count();
         $desainDPU = DesainIndustri::where('status', 'Dalam proses usulan')->count();
 
+        $paten2020 = Paten::whereYear('tanggal_permohonan','2020')->count();
+        $hc2020 = HakCipta::whereYear('tanggal_permohonan','2020')->count();
+        $di2020 = DesainIndustri::whereYear('tanggal_permohonan','2020')->count();
+        $gabungKi2020 = $paten2020 + $di2020 + $hc2020 ;
+        
+        $paten2021 = Paten::whereYear('tanggal_permohonan','2021')->count();
+        $hc2021 = HakCipta::whereYear('tanggal_permohonan','2021')->count();
+        $di2021 = DesainIndustri::whereYear('tanggal_permohonan','2021')->count();
+        $gabungKi2021 = $paten2021 + $di2021 + $hc2021 ;
+
+        $paten2022 = Paten::whereYear('tanggal_permohonan','2022')->count();
+        $hc2022 = HakCipta::whereYear('tanggal_permohonan','2022')->count();
+        $di2022 = DesainIndustri::whereYear('tanggal_permohonan','2022')->count();
+        $gabungKi2022 = $paten2022 + $di2022 + $hc2022 ;
+
+        $paten2023 = Paten::whereYear('tanggal_permohonan','2023')->count();
+        $hc2023 = HakCipta::whereYear('tanggal_permohonan','2023')->count();
+        $di2023 = DesainIndustri::whereYear('tanggal_permohonan','2023')->count();
+        $gabungKi2023 = $paten2023 + $di2023 + $hc2023 ;
+
         $paten2024 = Paten::whereYear('tanggal_permohonan','2024')->count();
         $hc2024 = HakCipta::whereYear('tanggal_permohonan','2024')->count();
         $di2024 = DesainIndustri::whereYear('tanggal_permohonan','2024')->count();
         $gabungKi2024 = $paten2024 + $di2024 + $hc2024 ;
 
-        $paten2025 = Paten::whereYear('tanggal_permohonan','2025')->count();
-        $hc2025 = HakCipta::whereYear('tanggal_permohonan','2025')->count();
-        $di2025 = DesainIndustri::whereYear('tanggal_permohonan','2025')->count();
-        $gabungKi2025 = $paten2025 + $di2025 + $hc2025 ;
-
-        $paten2026 = Paten::whereYear('tanggal_permohonan','2026')->count();
-        $hc2026 = HakCipta::whereYear('tanggal_permohonan','2026')->count();
-        $di2026 = DesainIndustri::whereYear('tanggal_permohonan','2026')->count();
-        $gabungKi2026 = $paten2026 + $di2026 + $hc2026 ;
-
-        $paten2027 = Paten::whereYear('tanggal_permohonan','2027')->count();
-        $hc2027 = HakCipta::whereYear('tanggal_permohonan','2027')->count();
-        $di2027 = DesainIndustri::whereYear('tanggal_permohonan','2027')->count();
-        $gabungKi2027 = $paten2027 + $di2027 + $hc2027 ;
-
-
-        return view('umum-page.Desainindustri.index', compact('di', 'priksa', 'proses', 'null','tolak','beri','itung','desainDi','desainDK','desainP','desainKBL','desainDPU','di2024','di2025','di2026','di2027','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027','mvdov')); 
+        return view('umum-page.Desainindustri.index', compact('di', 'priksa', 'proses', 'null','tolak','beri','itung','desainDi','desainDK','desainP','desainKBL','desainDPU','di2020','di2021','di2022','di2023','di2024','gabungKi2020','gabungKi2021','gabungKi2022','gabungKi2023','gabungKi2024','mvdov')); 
     }
     public function cari(Request $request)
     {
@@ -73,27 +77,27 @@ class DesainIndustriController extends Controller
         $desainKBL = DesainIndustri::where('status', 'Keterangan belum lengkap')->count();
         $desainDPU = DesainIndustri::where('status', 'Dalam proses usulan')->count();
 
-        $paten2024 = Paten::whereYear('tanggal_permohonan','2024')->count();
-        $hc2024 = HakCipta::whereYear('tanggal_permohonan','2024')->count();
-        $di2024 = DesainIndustri::whereYear('tanggal_permohonan','2024')->count();
-        $gabungKi2024 = $paten2024 + $di2024 + $hc2024 ;
+        // $paten2024 = Paten::whereYear('tanggal_permohonan','2024')->count();
+        // $hc2024 = HakCipta::whereYear('tanggal_permohonan','2024')->count();
+        // $di2024 = DesainIndustri::whereYear('tanggal_permohonan','2024')->count();
+        // $gabungKi2024 = $paten2024 + $di2024 + $hc2024 ;
 
-        $paten2025 = Paten::whereYear('tanggal_permohonan','2025')->count();
-        $hc2025 = HakCipta::whereYear('tanggal_permohonan','2025')->count();
-        $di2025 = DesainIndustri::whereYear('tanggal_permohonan','2025')->count();
-        $gabungKi2025 = $paten2025 + $di2025 + $hc2025 ;
+        // $paten2025 = Paten::whereYear('tanggal_permohonan','2025')->count();
+        // $hc2025 = HakCipta::whereYear('tanggal_permohonan','2025')->count();
+        // $di2025 = DesainIndustri::whereYear('tanggal_permohonan','2025')->count();
+        // $gabungKi2025 = $paten2025 + $di2025 + $hc2025 ;
 
-        $paten2026 = Paten::whereYear('tanggal_permohonan','2026')->count();
-        $hc2026 = HakCipta::whereYear('tanggal_permohonan','2026')->count();
-        $di2026 = DesainIndustri::whereYear('tanggal_permohonan','2026')->count();
-        $gabungKi2026 = $paten2026 + $di2026 + $hc2026 ;
+        // $paten2026 = Paten::whereYear('tanggal_permohonan','2026')->count();
+        // $hc2026 = HakCipta::whereYear('tanggal_permohonan','2026')->count();
+        // $di2026 = DesainIndustri::whereYear('tanggal_permohonan','2026')->count();
+        // $gabungKi2026 = $paten2026 + $di2026 + $hc2026 ;
 
-        $paten2027 = Paten::whereYear('tanggal_permohonan','2027')->count();
-        $hc2027 = HakCipta::whereYear('tanggal_permohonan','2027')->count();
-        $di2027 = DesainIndustri::whereYear('tanggal_permohonan','2027')->count();
-        $gabungKi2027 = $paten2027 + $di2027 + $hc2027 ;
+        // $paten2027 = Paten::whereYear('tanggal_permohonan','2027')->count();
+        // $hc2027 = HakCipta::whereYear('tanggal_permohonan','2027')->count();
+        // $di2027 = DesainIndustri::whereYear('tanggal_permohonan','2027')->count();
+        // $gabungKi2027 = $paten2027 + $di2027 + $hc2027 ;
 
-        return view('umum-page.Desainindustri.index', compact('di', 'priksa', 'proses', 'null','tolak','beri','itung','desainDi','desainDK','desainP','desainKBL','desainDPU','di2024','di2025','di2026','di2027','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027','mvdov')); 
+        return view('umum-page.Desainindustri.index', compact('di', 'priksa', 'proses', 'null','tolak','beri','itung','desainDi','desainDK','desainP','desainKBL','desainDPU','mvdov')); 
     }
     
     public function diberi()

@@ -255,8 +255,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Diagram Per-tahun Desain Industri</h3>
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
+                        {{-- <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Filter</button> --}}
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Action</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -264,14 +264,16 @@
                         </ul>
                     </div>
                     <div class="card-body">
+                        <input type="hidden" id="gabungKi2020" value="{{ $gabungKi2020 }}">
+                        <input type="hidden" id="gabungKi2021" value="{{ $gabungKi2021 }}">
+                        <input type="hidden" id="gabungKi2022" value="{{ $gabungKi2022 }}">
+                        <input type="hidden" id="gabungKi2023" value="{{ $gabungKi2023 }}">
                         <input type="hidden" id="gabungKi2024" value="{{ $gabungKi2024 }}">
-                        <input type="hidden" id="gabungKi2025" value="{{ $gabungKi2025 }}">
-                        <input type="hidden" id="gabungKi2026" value="{{ $gabungKi2026 }}">
-                        <input type="hidden" id="gabungKi2027" value="{{ $gabungKi2027 }}">
+                        <input type="hidden" id="di2020" value="{{ $di2020 }}">
+                        <input type="hidden" id="di2021" value="{{ $di2021 }}">
+                        <input type="hidden" id="di2022" value="{{ $di2022 }}">
+                        <input type="hidden" id="di2023" value="{{ $di2023 }}">
                         <input type="hidden" id="di2024" value="{{ $di2024 }}">
-                        <input type="hidden" id="di2025" value="{{ $di2025 }}">
-                        <input type="hidden" id="di2026" value="{{ $di2026 }}">
-                        <input type="hidden" id="di2027" value="{{ $di2027 }}">
                         <canvas id="di-chart" style="height:30vh; width:68vw"></canvas>
                     </div>
                 </div>
@@ -289,30 +291,32 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        const gabungKi2020 = document.getElementById('gabungKi2020').value;
+        const gabungKi2021 = document.getElementById('gabungKi2021').value;
+        const gabungKi2022 = document.getElementById('gabungKi2022').value;
+        const gabungKi2023 = document.getElementById('gabungKi2023').value;
         const gabungKi2024 = document.getElementById('gabungKi2024').value;
-        const gabungKi2025 = document.getElementById('gabungKi2025').value;
-        const gabungKi2026 = document.getElementById('gabungKi2026').value;
-        const gabungKi2027 = document.getElementById('gabungKi2027').value;
 
+        const di2020 = document.getElementById('di2020').value;
+        const di2021 = document.getElementById('di2021').value;
+        const di2022 = document.getElementById('di2022').value;
+        const di2023 = document.getElementById('di2023').value;
         const di2024 = document.getElementById('di2024').value;
-        const di2025 = document.getElementById('di2025').value;
-        const di2026 = document.getElementById('di2026').value;
-        const di2027 = document.getElementById('di2027').value;
         const diChart = document.getElementById('di-chart').getContext('2d');
         const di = new Chart(diChart, {
             type: 'bar',
             data: {
-                labels: ['2024', '2025', '2026', '2027'],
+                labels: ['2020', '2021', '2022', '2023','2024'],
                 datasets: [{
                     label: 'Jumlah Keseluruhan KI',
-                    data: [gabungKi2024, gabungKi2025, gabungKi2026, gabungKi2027],
+                    data: [gabungKi2020, gabungKi2021, gabungKi2022, gabungKi2023,gabungKi2024],
                     backgroundColor: 'rgba(255, 159, 64, 0.2)',
                     borderColor: 'rgba(255, 206, 86, 1)',
                     borderWidth: 2
                 }, {
                     type: 'line',
                     label: 'Desain Industri',
-                    data: [di2024, di2025, di2026, di2027],
+                    data: [di2020, di2021, di2022, di2023, di2024],
                     borderColor: [
                         'rgba(255, 206, 86, 1)',
                     ],

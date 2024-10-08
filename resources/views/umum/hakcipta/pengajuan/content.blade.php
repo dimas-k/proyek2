@@ -1,9 +1,7 @@
 <div class="main-content app-content mt-0">
     <div class="side-app">
-
         <!-- CONTAINER -->
         <div class="main-container container-fluid">
-
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <h1 class="page-title">Pengajuan Hak Cipta</h1>
@@ -15,7 +13,6 @@
                 </div>
             </div>
             <!-- PAGE-HEADER END -->
-
             <!-- ROW-2 -->
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">

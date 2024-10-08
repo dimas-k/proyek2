@@ -15,5 +15,5 @@
         Tata Udara</option>
     <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi
         Kontrol</option>
-    <option value="D3 Keperawatan">D3 Keperawan</option>
+    <option value="D3 Keperawatan">D3 Keperawatan</option>
 </select>

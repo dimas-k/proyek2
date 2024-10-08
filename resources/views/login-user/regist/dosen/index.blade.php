@@ -34,7 +34,7 @@
           <div class="col-12 col-md-8 col-lg-6 col-xl-5">
             <div class="card bg-light text-black" style="border-radius: 1rem;">
               <div class="card-body p-5">
-                <form class="mb-md-5 mt-md-4 pb-5" enctype="multipart/form-data" method="post" action="/simpan/akun/">
+                <form class="mb-md-5 mt-md-4 pb-5" enctype="multipart/form-data" method="post" action="/simpan/akun">
                   @csrf
                   <h2 class="fw-bold mb-2 text-uppercase text-center">Registrasi Dosen</h2>
                   <p class="text-black-50 mb-5">Masukkan data anda dengan benar!</p>

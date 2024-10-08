@@ -84,24 +84,7 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            Link Populer
-                        </h6>
-                        <p>
-                            <a href="#!" class="text-reset">Angular</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">React</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Vue</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Laravel</a>
-                        </p>
-                    </div>
+                    
                     <!-- Grid column -->
 
                     <!-- Grid column -->
@@ -113,15 +96,7 @@
                         <p>
                             <a href="https://p3m.polindra.ac.id/" class="text-reset" target="_blank">P3M POLINDRA</a>
                         </p>
-                        <p>
-                            <a href="#!" class="text-reset">Settings</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Orders</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Help</a>
-                        </p>
+                        
                     </div>
                     <!-- Grid column -->
 
@@ -135,9 +110,7 @@
                             <i class="bi bi-envelope me-2"></i>info@polindra.ac.id
                         </p>
                         <p><i class="bi bi-telephone me-1"></i>(0234)5746464</p>
-                        <p><i class="bi bi-telephone me-1"></i> <a
-                                class="link-dark link-underline link-underline-opacity-0" href="tel:+62 811-242-494">+62
-                                811-242-494 (Admin SIKI POLINDRA)</a></p>
+                        <p><i class="bi bi-envelope me-1"></i> <a class="link-dark link-underline link-underline-opacity-0" href="mailto:sentra_ki@polindra.ac.id">sentra_ki@polindra.ac.id</a>
                     </div>
                     <!-- Grid column -->
                 </div>

@@ -221,10 +221,13 @@
                                         </option>
                                         <option value="Karya Rekaman">Karya Rekaman
                                         </option>
-                                        <option value="Karya Lainnya">Karya Lainnya
-                                        </option>
                                         <option value="Seni Batik">Seni Batik
                                         </option>
+                                        <option value="Program Komputer">Program Komputer
+                                        </option>
+                                        <option value="Karya Lainnya">Karya Lainnya
+                                        </option>
+
                                     </select>
                                 </label>
                                 {{-- @error('jenis_ciptaan')

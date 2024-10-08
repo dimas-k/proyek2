@@ -188,7 +188,7 @@
                                                 Tata Udara</option>
                                             <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi
                                                 Kontrol</option>
-                                            <option value="D3 Keperawatan">D3 Keperawan</option>
+                                            <option value="D3 Keperawatan">D3 Keperawatan</option>
                                         </select>
                                         {{-- @error('prodi')
                                             <div class="invalid-feedback">
@@ -218,10 +218,13 @@
                                                 </option>
                                                 <option value="Karya Rekaman">Karya Rekaman
                                                 </option>
-                                                <option value="Karya Lainnya">Karya Lainnya
-                                                </option>
                                                 <option value="Seni Batik">Seni Batik
                                                 </option>
+                                                <option value="Program Komputer">Program Komputer
+                                                </option>
+                                                <option value="Karya Lainnya">Karya Lainnya
+                                                </option>
+
                                             </select>
                                         </label>
                                         {{-- @error('jenis_ciptaan')
@@ -243,7 +246,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="uraian" class="form-label">Uraian Singkat Ciptaan</label>
-                                        <textarea class="form-control " placeholder="Masukkan Uraian Siangkat"
+                                        <textarea class="form-control " placeholder="Masukkan Uraian Singkat"
                                             name="uraian_singkat" id="uraian" style="height: 150px">{{ old('uraian_singkat') }}</textarea>
                                         {{-- @error('uarian_singkat')
                                             <div class="invalid-feedback">

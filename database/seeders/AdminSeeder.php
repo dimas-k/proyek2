@@ -17,15 +17,15 @@ class AdminSeeder extends Seeder
     {
         DB::table('users')->insert(array(
             [
-                'nama_lengkap'=> 'Lugh Tuaha De',
+                'nama_lengkap'=> 'Icha Syahrotul Anam, S.TP., M.Sc',
                 'jabatan'=>'Admin',
-                'email'=> 'admin@admin.com',
-                'nip'=> '7382932839',
-                'alamat'=>'Jl. Sudirman No.22 Rt/02 Rw/03 Indramayu',
-                'no_telepon'=>'0897382902',
-                'username'=>'byan',
-                'password'=>Hash::make('12345')
-            ],
+                'email'=>'icha@polindra.ac.id',
+                'nip'=> NULL,
+                'alamat'=>'',
+                'no_telepon'=>'0811242494',
+                'username'=>'icha@polindra.ac.id',
+                'password'=>Hash::make('Admin#123'),
+            ]
         ));
         // User::factory()->count(2)->create();
     }

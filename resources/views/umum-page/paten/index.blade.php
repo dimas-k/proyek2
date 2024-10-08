@@ -352,14 +352,16 @@
                         <h3 class="card-title">Diagram per-tahun Paten</h3>
                     </div>
                     <div class="card-body">
+                        <input type="hidden" id="gabungKi2020" value="{{ $gabungKi2020 }}">
+                        <input type="hidden" id="gabungKi2021" value="{{ $gabungKi2021 }}">
+                        <input type="hidden" id="gabungKi2022" value="{{ $gabungKi2022 }}">
+                        <input type="hidden" id="gabungKi2023" value="{{ $gabungKi2023 }}">
                         <input type="hidden" id="gabungKi2024" value="{{ $gabungKi2024 }}">
-                        <input type="hidden" id="gabungKi2025" value="{{ $gabungKi2025 }}">
-                        <input type="hidden" id="gabungKi2026" value="{{ $gabungKi2026 }}">
-                        <input type="hidden" id="gabungKi2027" value="{{ $gabungKi2027 }}">
+                        <input type="hidden" id="paten2020" value="{{ $paten2020 }}">
+                        <input type="hidden" id="paten2021" value="{{ $paten2021 }}">
+                        <input type="hidden" id="paten2022" value="{{ $paten2022 }}">
+                        <input type="hidden" id="paten2023" value="{{ $paten2023 }}">
                         <input type="hidden" id="paten2024" value="{{ $paten2024 }}">
-                        <input type="hidden" id="paten2025" value="{{ $paten2025 }}">
-                        <input type="hidden" id="paten2026" value="{{ $paten2026 }}">
-                        <input type="hidden" id="paten2027" value="{{ $paten2027 }}">
                         <canvas id="paten-chart" style="height:30vh; width:68vw"></canvas>
                     </div>
                 </div>
@@ -380,32 +382,34 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        const paten2020 = document.getElementById('paten2020').value;
+        const paten2021 = document.getElementById('paten2021').value;
+        const paten2022 = document.getElementById('paten2022').value;
+        const paten2023 = document.getElementById('paten2023').value;
         const paten2024 = document.getElementById('paten2024').value;
-        const paten2025 = document.getElementById('paten2025').value;
-        const paten2026 = document.getElementById('paten2026').value;
-        const paten2027 = document.getElementById('paten2027').value;
 
+        const gabungKi2020 = document.getElementById('gabungKi2020').value;
+        const gabungKi2021 = document.getElementById('gabungKi2021').value;
+        const gabungKi2022 = document.getElementById('gabungKi2022').value;
+        const gabungKi2023 = document.getElementById('gabungKi2023').value;
         const gabungKi2024 = document.getElementById('gabungKi2024').value;
-        const gabungKi2025 = document.getElementById('gabungKi2025').value;
-        const gabungKi2026 = document.getElementById('gabungKi2026').value;
-        const gabungKi2027 = document.getElementById('gabungKi2027').value;
 
         const paten = document.getElementById('paten-chart').getContext('2d');
 
         const p = new Chart(paten, {
             type: 'bar',
             data: {
-                labels: ['2024', '2025', '2026', '2027'],
+                labels: ['2020', '2021', '2022', '2023','2024'],
                 datasets: [{
                     label: 'Jumlah Keseluruhan KI',
-                    data: [gabungKi2024, gabungKi2025, gabungKi2026, gabungKi2027],
+                    data: [gabungKi2020, gabungKi2021, gabungKi2022, gabungKi2023, gabungKi2024],
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     borderColor: 'rgb(255, 99, 132)',
                     borderWidth: 2
                 }, {
                     type: 'line',
                     label: 'Paten',
-                    data: [paten2024, paten2025, paten2026, paten2027],
+                    data: [paten2020, paten2021, paten2022, paten2023, paten2024],
                     borderColor: [
                         'rgba(255, 99, 132, 1)',
 

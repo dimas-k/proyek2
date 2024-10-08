@@ -114,17 +114,17 @@
                             <tr>
                                 <th>Gambar desain Industri</th>
                                 <td>: <a href={{ asset('storage/' . $di->gambar_di) }} class=""
-                                        target="_blank">Lihat Dokumen Invensi</a></td>
+                                        target="_blank">Lihat Gambar Desain Industri</a></td>
                             </tr>
                             <tr>
                                 <th>Uraian Desain Industri</th>
                                 <td>: <a href={{ asset('storage/' . $di->uraian_di) }} class=""
-                                        target="_blank">Lihat Dokumen Invensi</a></td>
+                                        target="_blank">Lihat Uraian Desain Industri</a></td>
                             </tr>
                             <tr>
-                                <th>Surat Pengalihan hak</th>
+                                <th>Surat Pengalihan Hak</th>
                                 <td>: <a href={{ asset('storage/' . $di->surat_pengalihan) }} class=""
-                                        target="_blank">Lihat Pengalihan Hak Invensi</a></td>
+                                        target="_blank">Lihat Surat Pengalihan Hak</a></td>
                             </tr>
                             <tr>
                                 <th>Tanggal pengajuan</th>

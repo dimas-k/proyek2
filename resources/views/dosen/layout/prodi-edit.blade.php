@@ -1,4 +1,4 @@
-<label for="prodi" class="form-label">Prodi</label>
+
 <select class="form-select" aria-label="Default select example" name="prodi"
     id="prodi">
     <option value="">Pilih Prodi</option>

@@ -140,7 +140,7 @@
                                     </div>
                                     <input type="text"
                                         class="form-control @error('institusi') is-invalid @enderror" id=""
-                                        value="Dosen" name="institusi" hidden>
+                                        value="Dosen" name="institusi" hidden id="institusi">
                                     <div class="mb-3">
                                         <label for="pengaju2" class="form-label">Data Mahasiswa / Dosen <span
                                                 class="text-danger">(Jika Bersama Dosen Yang Lain dan atau Bersama
@@ -210,11 +210,7 @@
                                         <input type="text"
                                             class="form-control"
                                             placeholder="Masukkan Judul Desain Industri" name="judul_di" value="{{ old('judul_di') }}" id="judul_desain">
-                                        {{-- @error('judul_di')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror --}}
+                                        
                                     </div>
                                     <div class="mb-3">
                                         <label for="gambar_desain" class="form-label">Gambar Desain Industri</label>

@@ -198,7 +198,6 @@
                                         </option>
                                         <option value="Karya Lainnya">Karya Lainnya
                                         </option>
-
                                     </select>
                                 </label>
                                 {{-- @error('jenis_ciptaan')

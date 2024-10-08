@@ -174,7 +174,7 @@
                                     <th scope="col">Nama lengkap</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">NIP</th>
-                                    <th scope="col">Alamat</th>
+                                    <th scope="col">Jabatan</th>
                                     <th scope="col">No telepon</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -186,7 +186,7 @@
                                         <td>{{ $a->nama_lengkap }}</td>
                                         <td>{{ $a->email }}</td>
                                         <td>{{ $a->nip }}</td>
-                                        <td>{{ $a->alamat }}</td>
+                                        <td>{{ $a->jabatan }}</td>
                                         <td>{{ $a->no_telepon }}</td>
                                         <td><a href={{ Route('detail.Dosen', $a->id) }} class="btn btn-primary"><i
                                                     class="bi bi-eye"></i></a>
@@ -240,17 +240,6 @@
                                                                     @enderror
                                                                 </div>
                                                                 <div class="mb-2">
-                                                                    <label class="col-form-label" for="">KTP</label>
-                                                                    <input type="file" id="" name="ktp"
-                                                                        class="form-control form-control @error('ktp') is-invalid @enderror" value="{{ $a->ktp }}"
-                                                                        required>
-                                                                    @error('ktp')
-                                                                        <div class="invalid-feedback">
-                                                                            {{ $message }}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                {{-- <div class="mb-2">
                                                                     <label class="col-form-label" for="pass">Jabatan</label>
                                                                     <input type="text" id="" name="jabatan"
                                                                         class="form-control form-control @error('jabatan') is-invalid @enderror" value="{{ $a->jabatan }}"
@@ -260,7 +249,7 @@
                                                                             {{ $message }}
                                                                         </div>
                                                                     @enderror
-                                                                </div> --}}
+                                                                </div>
                                                                 <div class="mb-2">
                                                                     <label class="col-form-label" for="">NIP</label>
                                                                     <input type="number" id="" name="nip"

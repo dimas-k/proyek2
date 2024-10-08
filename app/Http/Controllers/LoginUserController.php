@@ -29,8 +29,8 @@ class LoginUserController extends Controller
     public function autentikasi(Request $request){
     
         $credentials = $request-> validate([
-            'username' => 'required',
-            'password' => 'required',
+            'username' => 'required|string',
+            'password' => 'required|string',
             
             
         ]);
@@ -69,8 +69,8 @@ class LoginUserController extends Controller
             'nama_lengkap' => 'required|string',
             'no_telepon'=>'required|string',
             'email' => 'required|email:dns|unique:users',
-            'nip'=>'unique:users',
-            'username'=>'required|min:5|unique:users',
+            'nip'=>'unique:users|integer',
+            'username'=>'required|min:5|unique:users|string',
             'password'=> 'required|min:5|max:15'
         ]);
         $user = User::create([

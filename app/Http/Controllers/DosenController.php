@@ -313,7 +313,7 @@ class DosenController extends Controller
             'kewarganegaraan' => 'required',
             'kode_pos' => 'required|integer',
             'data_pengaju2' => 'mimes:xlsx',
-            'institusi' => 'required',
+            'institusi' => 'required|string',
             'jurusan' => 'required',
             'prodi' => 'required',
             'jenis_paten' => 'required',
@@ -402,7 +402,7 @@ class DosenController extends Controller
             'email' => 'required|email',
             'kewarganegaraan' => 'required|string',
             'kode_pos' => 'required|integer',
-            'institusi' => 'required',
+            'institusi' => 'required|string',
             'data_pengaju2' => 'mimes:xlsx',
             'jurusan' => 'required',
             'prodi' => 'required',
@@ -527,7 +527,7 @@ class DosenController extends Controller
     public function updateHc(Request $request, string $id)
     {
         $validasidata = $request->validate([
-            'nama_lengkap' => 'required',
+            'nama_lengkap' => 'required|string',
             'alamat' => 'required',
             'no_telepon' => 'required',
             'tanggal_lahir' => 'required',
@@ -627,9 +627,9 @@ class DosenController extends Controller
             'jenis_ciptaan' => 'required',
             'judul_ciptaan' => 'required',
             'uraian_singkat' => 'required|max:60000',
-            'dokumen_invensi' => 'required|mimes:pdf',
-            'surat_pengalihan' => 'required|mimes:pdf',
-            'surat_pernyataan' => 'required|mimes:pdf',
+            'dokumen_invensi' => 'required|mimes:pdf|max:2028',
+            'surat_pengalihan' => 'required|mimes:pdf|max:2028',
+            'surat_pernyataan' => 'required|mimes:pdf|max:2028',
             'tanggal_permohonan' => 'required'
 
         ]);
@@ -685,11 +685,11 @@ class DosenController extends Controller
     public function updateDi(Request $request, string $id)
     {
         $validasidata = $request->validate([
-            'nama_lengkap' => 'required',
+            'nama_lengkap' => 'required|string',
             'alamat' => 'required',
             'no_telepon' => 'required',
             'tanggal_lahir' => 'required',
-            'ktp_inventor' => 'required|mimes:pdf',
+            'ktp_inventor' => 'required|mimes:pdf|max:2028',
             'email' => 'required|email',
             'kewarganegaraan' => 'required',
             'kode_pos' => 'required',
@@ -699,10 +699,10 @@ class DosenController extends Controller
             'prodi' => 'required',
             'jenis_di' => 'required',
             'judul_di' => 'required',
-            'uraian_di' => 'required|mimes:pdf',
-            'gambar_di' => 'required|mimes:pdf',
-            'surat_kepemilikan' => 'required|mimes:pdf',
-            'surat_pengalihan' => 'required|mimes:pdf',
+            'uraian_di' => 'required|mimes:pdf|max:2028',
+            'gambar_di' => 'required|mimes:pdf|max:2028',
+            'surat_kepemilikan' => 'required|mimes:pdf|max:2028',
+            'surat_pengalihan' => 'required|mimes:pdf|max:2028',
             'tanggal_permohonan' => 'required'
         ]);
         $di = DesainIndustri::find($id);
@@ -767,7 +767,7 @@ class DosenController extends Controller
             'alamat' => 'required',
             'no_telepon' => 'required',
             'tanggal_lahir' => 'required',
-            'ktp_inventor' => 'required|mimes:pdf',
+            'ktp_inventor' => 'required|mimes:pdf|max:2028',
             'email' => 'required|email',
             'kewarganegaraan' => 'required',
             'kode_pos' => 'required',
@@ -777,10 +777,10 @@ class DosenController extends Controller
             'prodi' => 'required',
             'jenis_di' => 'required',
             'judul_di' => 'required',
-            'uraian_di' => 'required|mimes:pdf',
-            'gambar_di' => 'required|mimes:pdf',
-            'surat_kepemilikan' => 'required|mimes:pdf',
-            'surat_pengalihan' => 'required|mimes:pdf',
+            'uraian_di' => 'required|mimes:pdf|max:2028',
+            'gambar_di' => 'required|mimes:pdf|max:2028',
+            'surat_kepemilikan' => 'required|mimes:pdf|max:2028',
+            'surat_pengalihan' => 'required|mimes:pdf|max:2028',
             'tanggal_permohonan' => 'required'
         ]);
         $di = new DesainIndustri();

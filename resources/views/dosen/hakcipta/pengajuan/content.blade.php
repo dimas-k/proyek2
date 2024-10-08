@@ -160,7 +160,29 @@
                                         @enderror --}}
                                     </div>
                                     <div class="mb-3">
+<<<<<<< HEAD
                                         @include('dosen.layout.prodi')
+=======
+                                        <label for="prodi" class="form-label">Prodi</label>
+                                        <select class="form-select"
+                                            aria-label="Default select example" name="prodi" id="prodi">
+                                            <option value="">Pilih Prodi</option>
+                                            <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
+                                            <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat Lunak
+                                            </option>
+                                            <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi Kota
+                                                Cerdas
+                                            </option>
+                                            <option value="D3 Teknik Mesin">D3 Teknik Mesin</option>
+                                            <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur
+                                            </option>
+                                            <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan
+                                                Tata Udara</option>
+                                            <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik Instrimentasi
+                                                Kontrol</option>
+                                            <option value="D3 Keperawatan">D3 Keperawatan</option>
+                                        </select>
+>>>>>>> e8ad3b0ce77be12cb66727ef716dc3fc96f40f6c
                                         {{-- @error('prodi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -189,10 +211,13 @@
                                                 </option>
                                                 <option value="Karya Rekaman">Karya Rekaman
                                                 </option>
-                                                <option value="Karya Lainnya">Karya Lainnya
-                                                </option>
                                                 <option value="Seni Batik">Seni Batik
                                                 </option>
+                                                <option value="Program Komputer">Program Komputer
+                                                </option>
+                                                <option value="Karya Lainnya">Karya Lainnya
+                                                </option>
+
                                             </select>
                                         </label>
                                         {{-- @error('jenis_ciptaan')
@@ -214,7 +239,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="uraian" class="form-label">Uraian Singkat Ciptaan</label>
-                                        <textarea class="form-control " placeholder="Masukkan Uraian Siangkat"
+                                        <textarea class="form-control " placeholder="Masukkan Uraian Singkat"
                                             name="uraian_singkat" id="uraian" style="height: 150px">{{ old('uraian_singkat') }}</textarea>
                                         {{-- @error('uarian_singkat')
                                             <div class="invalid-feedback">

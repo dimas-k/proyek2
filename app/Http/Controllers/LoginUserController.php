@@ -73,7 +73,6 @@ class LoginUserController extends Controller
             'username'=>'required|min:5|unique:users',
             'password'=> 'required|min:5|max:15'
         ]);
-
         $user = User::create([
             'nama_lengkap' => $request->nama_lengkap,
             'no_telepon' =>$request->no_telepon,

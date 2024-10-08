@@ -16,14 +16,14 @@ class CheckerSeeder extends Seeder
     {
         DB::table('users')->insert(array(
             [
-                'nama_lengkap'=> 'Lugh Tuaha De',
+                'nama_lengkap'=> 'Icha Syahrotul Anam, S.TP., M.Sc.',
                 'jabatan'=>'Verifikator',
-                'alamat'=>'Jl. Sudirman No.22 Rt/02 Rw/03 Indramayu',
-                'no_telepon'=>'0897382902',
-                'email'=>'apalagi@gmail.com',
-                'nip'=>'733282738327',
-                'username'=>'siapa',
-                'password'=>Hash::make('12345'),
+                'alamat'=>'',
+                'no_telepon'=>'0811242494',
+                'email'=>'',
+                'nip'=> NULL,
+                'username'=>'Verifikator',
+                'password'=>Hash::make('Verifikator#123'),
                 'role'=>'Checker'
             ]
         ));

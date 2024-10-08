@@ -45,7 +45,7 @@
                         POLITEKNIK NEGERI INDRAMAYU
                     </h6>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, at porro. Voluptatem nobis quia distinctio libero voluptatibus in eveniet facere quos ipsam, assumenda nisi doloribus quaerat praesentium, qui et eligendi.
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.8880908169504!2d108.27887677495575!3d-6.408414693582335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6eb87d1fcaf97d%3A0x4fc15b3c8407ada4!2sPoliteknik%20Negeri%20Indramayu!5e0!3m2!1sid!2sid!4v1728365465003!5m2!1sid!2sid" width="280" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </p>
                 </div>
                 <!-- Grid column -->

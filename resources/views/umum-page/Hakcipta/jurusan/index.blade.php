@@ -109,7 +109,7 @@
                             <i class="bi bi-envelope me-2"></i>info@polindra.ac.id
                         </p>
                         <p><i class="bi bi-telephone me-1"></i>(0234)5746464</p>
-                        <p><i class="bi bi-envelope me-1"></i> <a class="link-dark link-underline link-underline-opacity-0" href="mailto:sentra_ki@polindra.ac.id">sentra_ki@polindra.ac.id</a>
+                        <p><i class="bi bi-envelope me-1"></i> <a class="link-dark link-underline link-underline-opacity-0" href="mailto:sentra_ki@polindra.ac.id">sentra_ki@polindra.ac.id</a>d
                     </div>
                     <!-- Grid column -->
                 </div>

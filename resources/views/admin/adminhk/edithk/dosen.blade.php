@@ -154,18 +154,7 @@
                                         @enderror --}}
                             </div>
                             <div class="mb-3">
-                                <label for="jurusan" class="form-label">Jurusan</label>
-                                <select class="form-select " aria-label="Default select example" name="jurusan"
-                                    id="jurusan">
-                                    <option value="">Pilih Jurusan</option>
-                                    <option value="Teknik Informatika">Teknik Informatika</option>
-                                    <option value="Teknik Mesin">Teknik Mesin
-                                    </option>
-                                    <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan Tata
-                                        Udara</option>
-                                    <option value="Keperawatan">Keperawatan
-                                    </option>
-                                </select>
+                                @include('admin.layout.jurusan')
                                 {{-- @error('jurusan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -173,6 +162,9 @@
                                         @enderror --}}
                             </div>
                             <div class="mb-3">
+<<<<<<< HEAD
+                                @include('admin.layout.prodi')
+=======
                                 <label for="prodi" class="form-label">Prodi</label>
                                 <select class="form-select" aria-label="Default select example" name="prodi"
                                     id="prodi">
@@ -192,6 +184,7 @@
                                         Kontrol</option>
                                     <option value="D3 Keperawatan">D3 Keperawatan</option>
                                 </select>
+>>>>>>> e8ad3b0ce77be12cb66727ef716dc3fc96f40f6c
                                 {{-- @error('prodi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

@@ -99,7 +99,7 @@
                                     <tbody>
                                         @foreach ($di as $i => $d)
                                             <tr>
-                                                <th scope="row">{{ $i + 1 }}</th>
+                                                <th scope="row">{{ ($di->currentPage() - 1) * $di->perPage() + $loop->iteration }}</th>
                                                 <td>{{ $d->nama_lengkap }}</td>
                                                 <td>{{ $d->jenis_di }}</td>
                                                 <td>{{ $d->judul_di }}</td>
@@ -136,6 +136,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {{ $di->links() }}
                             </div>
                         </div>
                     </div>

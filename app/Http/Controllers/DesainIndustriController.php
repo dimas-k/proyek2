@@ -57,7 +57,14 @@ class DesainIndustriController extends Controller
     {
         $caridesain = $request->input('cari_di');
         $carinama = $request->input('cari_nama');
-        $di = DesainIndustri::where('judul_di','LIKE',"%".$caridesain."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5);
+        // $di = DesainIndustri::where('judul_di','LIKE',"%".$caridesain."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5);
+        $di = DesainIndustri::when($caridesain, function ($query, $caridesain) {
+            return $query->where('judul_di', 'LIKE', "%" . $caridesain . "%");
+        })
+        ->when($carinama, function ($query, $carinama) {
+            return $query->orWhere('nama_lengkap', 'LIKE', "%" . $carinama . "%");
+        })
+        ->paginate(5);
 
         $itung = DesainIndustri::all()->count();
         $beri = DesainIndustri::where('status','Diberi')->count();

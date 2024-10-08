@@ -23,7 +23,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Diberi</h6>
-                                        <h2 class="mb-0 number-font">{{ $beri }}</h2>
+                                        <h2 class="mb-0 number-font">{{ $desainDi }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Ditolak</h6>
-                                        <h2 class="mb-0 number-font">{{ $tolak }}</h2>
+                                        <h2 class="mb-0 number-font">{{ $desainDK }}</h2>
                                     </div>
 
                                 </div>
@@ -48,8 +48,8 @@
                             <div class="card-body">
                                 <div class="d-flex">
                                     <div class="mt-2">
-                                        <h6 class="">Pemeriksaan</h6>
-                                        <h2 class="mb-0 number-font">{{ $priksa }}</h2>
+                                        <h6 class="">Pemeriksaan Formalitas</h6>
+                                        <h2 class="mb-0 number-font">{{ $desainP }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Dalam Proses Usulan</h6>
-                                        <h2 class="mb-0 number-font">{{ $proses }}</h2>
+                                        <h2 class="mb-0 number-font">{{ $desainDPU }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                                 <div class="d-flex">
                                     <div class="mt-2">
                                         <h6 class="">Keterangan Belum Lengkap</h6>
-                                        <h2 class="mb-0 number-font">{{ $null }}</h2>
+                                        <h2 class="mb-0 number-font">{{ $desainKBL }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                                     <tbody>
                                         @foreach ($di as $i => $d)
                                             <tr>
-                                                <th scope="row">{{ $i + 1 }}</th>
+                                                <th scope="row">{{ ($di->currentPage() - 1) * $di->perPage() + $loop->iteration }}</th>
                                                 <td>{{ $d->nama_lengkap }}</td>
                                                 <td>{{ $d->jenis_di }}</td>
                                                 <td>{{ $d->judul_di }}</td>
@@ -182,6 +182,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {{ $di->links() }}
                             </div>
                         </div>
                     </div>

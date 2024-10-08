@@ -48,8 +48,14 @@ class HakCiptaController extends Controller
     public function cari(Request $request){
         $carijudul = $request->input('cari_hc');
         $carinama = $request->input('cari_nama');
-        $hc = HakCipta::where('judul_ciptaan','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5);
-
+        // $hc = HakCipta::where('judul_ciptaan','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5);
+        $hc = HakCipta::when($carijudul, function ($query, $carijudul) {
+            return $query->where('judul_ciptaan', 'LIKE', "%" . $carijudul . "%");
+        })
+        ->when($carinama, function ($query, $carinama) {
+            return $query->orWhere('nama_lengkap', 'LIKE', "%" . $carinama . "%");
+        })
+        ->paginate(5);
         $itung = HakCipta::all()->count();
         $tercatat = HakCipta::where('status', 'Tercatat')->count();
         $null = HakCipta::where('status', 'Keterangan Belum Lengkap')->count();

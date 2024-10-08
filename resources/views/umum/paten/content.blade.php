@@ -212,7 +212,7 @@
                                     <tbody>
                                         @foreach ($paten as $i => $p)
                                             <tr>
-                                                <th scope="row">{{ $i + 1 }}</th>
+                                                <th scope="row">{{ ($paten->currentPage() - 1) * $paten->perPage() + $loop->iteration }}</th>
                                                 <td>{{ $p->nama_lengkap }}</td>
                                                 <td>{{ $p->jenis_paten }}</td>
                                                 <td>{{ $p->judul_paten }}</td>
@@ -242,6 +242,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {{ $paten->links() }}
                             </div>
                         </div>
                     </div>

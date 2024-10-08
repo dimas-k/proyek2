@@ -119,7 +119,7 @@
                                     <tbody>
                                         @foreach ($hc as $i => $p)
                                             <tr>
-                                                <th scope="row">{{ $i + 1 }}</th>
+                                                <th scope="row">{{ ($hc->currentPage() - 1) * $hc->perPage() + $loop->iteration }}</th>
                                                 <td>{{ $p->nama_lengkap }}</td>
                                                 <td>{{ $p->jenis_ciptaan }}</td>
                                                 <td>{{ $p->judul_ciptaan }}</td>
@@ -151,38 +151,13 @@
                                                     <a href={{ Route('umum.hc.edit', $p->id) }}
                                                         class="btn btn-warning"><i class="fa fa-pencil"
                                                             data-bs-toggle="tooltip"></i></a>
-                                                    {{-- <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop">
-                                                        <i class="fa fa-trash" data-bs-toggle="tooltip"></i>
-                                                    </button>
-                                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                                        data-bs-keyboard="false" tabindex="-1"
-                                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                                                                        Peringatan</h1>
-                                                                    <button type="button" class="btn-close"
-                                                                        data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    Anda yakin akan menghapus pengajuan ini
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-outline-secondary"
-                                                                        data-bs-dismiss="modal">Batal</button>
-                                                                    <a href={{ Route('umum.hc.hapus', $p->id) }}
-                                                                        class="btn btn-danger">Hapus</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div> --}}
+                                                    
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {{ $hc->links() }}
                             </div>
                         </div>
                     </div>

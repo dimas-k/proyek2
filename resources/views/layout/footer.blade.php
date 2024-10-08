@@ -80,15 +80,7 @@
                     <p>
                         <a href="https://p3m.polindra.ac.id/" class="text-reset" target="_blank">P3M POLINDRA</a>
                     </p>
-                    <p>
-                        <a href="#!" class="text-reset">Settings</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Orders</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Help</a>
-                    </p>
+                    
                 </div>
                 <!-- Grid column -->
 

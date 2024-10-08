@@ -163,20 +163,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>jurusan</th>
-                                            <td>
-                                                <select class="form-select @error('jurusan') is-invalid @enderror"
-                                                    aria-label="Default select example" name="jurusan">
-                                                    <option selected>Pilih Jurusan</option>
-                                                    <option value="Teknik Informatika">Teknik Informatika</option>
-                                                    <option value="Teknik Mesin">Teknik Mesin
-                                                    </option>
-                                                    <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan
-                                                        Tata
-                                                        Udara</option>
-                                                    <option value="Keperawatan">Keperawatan
-                                                    </option>
-                                                </select>
+                                            @include('dosen.layout.jurusan')
                                                 @error('jurusan')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -187,28 +174,7 @@
                                         <tr>
                                             <th>prodi</th>
                                             <td>
-                                                <select class="form-select @error('prodi') is-invalid @enderror"
-                                                    aria-label="Default select example" name="prodi">
-                                                    <option selected>Pilih Prodi</option>
-                                                    <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
-                                                    <option value="D4 Rekayasa Perangkat Lunak">D4 Rekayasa Perangkat
-                                                        Lunak
-                                                    </option>
-                                                    <option value="D4 Sistem Informasi Kota Cerdas">D4 Sistem Informasi
-                                                        Kota
-                                                        Cerdas
-                                                    </option>
-                                                    <option value="D3 Tenknik Mesin">D3 Tenknik Mesin</option>
-                                                    <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur
-                                                    </option>
-                                                    <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik
-                                                        Pendingin dan
-                                                        Tata Udara</option>
-                                                    <option value="D4 Teknik Instrimentasi Kontrol">D4 Teknik
-                                                        Instrimentasi
-                                                        Kontrol</option>
-                                                    <option value="D3 Keperawatan">D3 Keperawan</option>
-                                                </select>
+                                                @include('dosen.layout.prodi')
                                                 @error('prodi')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}

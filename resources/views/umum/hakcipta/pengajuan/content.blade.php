@@ -133,7 +133,6 @@
                                     <input type="text" class="form-control @error('institusi') is-invalid @enderror" id=""
                                             value="Umum" name="institusi" hidden>
                                 </div>
-                    
                                 <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR HAK CIPTA</p>
                                 <div class="container">
                                     <div class="mb-3">

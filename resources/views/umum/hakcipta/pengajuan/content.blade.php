@@ -137,21 +137,7 @@
                                 <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR HAK CIPTA</p>
                                 <div class="container">
                                     <div class="mb-3">
-                                        <label for="jenis_ciptaan" class="form-label">Jenis Ciptaan
-                                            <select class="form-select" aria-label="Default select example" name="jenis_ciptaan" id="jenis_ciptaan">
-                                                <option selected>Pilih Jenis Hak Cipta anda</option>
-                                                <option value="Karya Tulis">Karya Tulis</option>
-                                                <option value="Karya Seni">Karya Seni</option>
-                                                <option value="Komposisi Musik">Komposisi Musik</option>
-                                                <option value="Karya Audio Visual">Karya Audio Visual</option>
-                                                <option value="Karya Fotografi">Karya Fotografi</option>
-                                                <option value="Karya Drama dan Koreografi">Karya Drama dan Koreografi</option>
-                                                <option value="Karya Rekaman">Karya Rekaman</option>
-                                                <option value="Seni Batik">Seni Batik</option>
-                                                <option value="Program Komputer">Program Komputer</option>
-                                                <option value="Karya Lainnya">Karya Lainnya</option>
-                                            </select>
-                                        </label>
+                                        @include('umum.layout.jenis-ciptaan')
                                         {{-- @error('jenis_ciptaan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

@@ -128,32 +128,7 @@
                                         <tr>
                                             <th>Jenis Ciptaan</th>
                                             <td>
-                                                <select class="form-select " aria-label="Default select example"
-                                                    name="jenis_ciptaan" id="jenis_ciptaan">
-                                                    <option selected>Pilih Jenis Hak Cipta anda</option>
-                                                    <option value="Karya Tulis">Karya Tulis
-                                                    </option>
-                                                    <option value="Karya Seni">Karya Seni
-                                                    </option>
-                                                    <option value="Komposisi Musik">Komposisi Musik
-                                                    </option>
-                                                    <option value="Karya Audio Visual">Karya Audio Visual
-                                                    </option>
-                                                    <option value="Karya Fotografi">Karya Fotografi
-                                                    </option>
-                                                    <option value="Karya Drama dan Koreografi">Karya Drama dan
-                                                        Koreografi
-                                                    </option>
-                                                    <option value="Karya Rekaman">Karya Rekaman
-                                                    </option>
-                                                    <option value="Seni Batik">Seni Batik
-                                                    </option>
-                                                    <option value="Program Komputer">Program Komputer
-                                                    </option>
-                                                    <option value="Karya Lainnya">Karya Lainnya
-                                                    </option>
-
-                                                </select>
+                                                
 
                                             </td>
                                         </tr>

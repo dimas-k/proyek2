@@ -178,7 +178,7 @@ class AdminController extends Controller
         $user->role = $request->role;
         $user->save($validasidata);
 
-        return redirect('/admin/pengguna/umum')->with('success','Data dosen telah ditambahkan');
+        return redirect('/admin/pengguna/umum')->with('success','Data umum telah ditambahkan');
     }
     public function updateUmum(Request $request, string $id)
     {

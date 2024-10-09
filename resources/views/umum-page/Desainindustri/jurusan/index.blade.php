@@ -13,6 +13,10 @@
 
 <body>
     @include('layout.nav')
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="container">
         <a href="/desain-industri" class="link-dark link-underline link-underline-opacity-0 mb-5 "><i
                 class="bi bi-arrow-left-circle mb-5" style="font-size: 35px;"></i></a>
@@ -20,12 +24,11 @@
             <form action="/desain-industri/list/jurusan/cari" method="GET" class="ms-2">
                 <label for="" class="form-label me-4">Cari Jurusan</label>
                 <select class="form-select-sm" aria-label="Default select example" name="jurusan"
-                    style="width: 1050px">
+                    style="width: 1050px;">
                     <option>-</option>
                     <option value="Teknik Informatika">Teknik Informatika</option>
-                    <option value="Teknik Mesin">Teknik Mesin</option>
-                    <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan Tata Udara</option>
-                    <option value="Keperawatan">Keperawatan</option>
+                    <option value="Teknik">Teknik</option>
+                    <option value="Kesehatan">Kesehatan</option>
                 </select>
                 <button type="submit" class="btn btn-sm btn-primary ms-3">Cari</button>
             </form>

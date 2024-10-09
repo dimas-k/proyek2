@@ -13,6 +13,10 @@
 
 <body>
     @include('layout.nav')
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="container">
         <a href="/hak-cipta" class="link-dark link-underline link-underline-opacity-0 mb-5 "><i
                 class="bi bi-arrow-left-circle mb-5" style="font-size: 35px;"></i></a>
@@ -37,40 +41,7 @@
     </div>
     <!-- Footer -->
     <footer class="text-center text-lg-start bg-secondary-subtle text-muted shadow-inner fixed-bottom">
-        <!-- Section: Social media -->
-        {{-- <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-        <!-- Left -->
-        <div class="me-5 d-none d-lg-block">
-            <span>Get connected with us on social networks:</span>
-        </div>
-        <!-- Left -->
-
-        <!-- Right -->
-        <div>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-google"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-github"></i>
-            </a>
-        </div>
-        <!-- Right -->
-    </section> --}}
-        <!-- Section: Social media -->
-
-        <!-- Section: Links  -->
+        
         <section class="pt-1 mt-5">
             <div class="container text-center text-md-start mt-5">
                 <!-- Grid row -->

@@ -19,6 +19,7 @@
     <br>
     <br>
     <br>
+    <br>
     {{-- end of nav --}}
 
     <div class="container text-center">

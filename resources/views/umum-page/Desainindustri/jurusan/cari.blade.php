@@ -13,6 +13,10 @@
 
 <body>
     @include('layout.nav')
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="container">
         <a href="/desain-industri" class="link-dark link-underline link-underline-opacity-0 mb-5 "><i
                 class="bi bi-arrow-left-circle mb-5" style="font-size: 35px;"></i></a>

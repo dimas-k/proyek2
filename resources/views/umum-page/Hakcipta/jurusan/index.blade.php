@@ -13,6 +13,10 @@
 
 <body>
     @include('layout.nav')
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="container">
         <a href="/hak-cipta" class="link-dark link-underline link-underline-opacity-0 mb-5 "><i
                 class="bi bi-arrow-left-circle mb-5" style="font-size: 35px;"></i></a>
@@ -23,9 +27,8 @@
                     style="width: 1050px">
                     <option>-</option>
                     <option value="Teknik Informatika">Teknik Informatika</option>
-                    <option value="Teknik Mesin">Teknik Mesin</option>
-                    <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan Tata Udara</option>
-                    <option value="Keperawatan">Keperawatan</option>
+                    <option value="Teknik">Teknik</option>
+                    <option value="Kesehatan">Kesehatan</option>
                 </select>
                 <button type="submit" class="btn btn-sm btn-primary ms-3">Cari</button>
             </form>
@@ -33,38 +36,7 @@
     </div>
     <!-- Footer -->
     <footer class="text-center text-lg-start bg-secondary-subtle text-muted shadow-inner fixed-bottom">
-        <!-- Section: Social media -->
-        {{-- <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-        <!-- Left -->
-        <div class="me-5 d-none d-lg-block">
-            <span>Get connected with us on social networks:</span>
-        </div>
-        <!-- Left -->
-
-        <!-- Right -->
-        <div>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-google"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-github"></i>
-            </a>
-        </div>
-        <!-- Right -->
-    </section> --}}
-        <!-- Section: Social media -->
+        
 
         <!-- Section: Links  -->
         <section class="pt-1 mt-5">

@@ -72,7 +72,7 @@ class AdminHaKCiptaController extends Controller
      */
     public function show(string $id)
     {
-        $hc = HakCipta::find($id);
+        $hc = HakCipta::with('cekhc')->find($id);
         return view('admin.adminhk.showhc.index', compact('hc'));
     }
 

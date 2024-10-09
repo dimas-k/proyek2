@@ -111,7 +111,7 @@
                                         <td>: {{ $hc->status }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Status Data Hak CIpta</th>
+                                        <th>Status Data Hak Cipta</th>
                                         <td>: @if ($hc->cekhc?->keterangan == null)
                                             Data Hak Cipta Belum Diverifikasi
                                         @else
@@ -119,7 +119,7 @@
                                         @endif</td>
                                     </tr>
                                     <tr>
-                                        <th>Sertifikat Paten</th>
+                                        <th>Sertifikat Hak Cipta</th>
                                         <td>: @if ($hc->sertifikat_hakcipta != "")
                                                 <a href={{ asset('storage/' . $hc->sertifikat_hakcipta) }}
                                                     class="" target="_blank">Lihat sertifikat</a>

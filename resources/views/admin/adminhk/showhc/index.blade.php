@@ -143,19 +143,28 @@
                                 <td>: {{ \Carbon\Carbon::parse($hc->tanggal_permohonan)->format('d-m-Y') }}</td>
                             </tr>
                             <tr>
+                                <th>Status</th>
+                                <td>: {{ $hc->status }}</td>
+                            </tr>
+                            <tr>
+                                <th>Status Data Hak Cipta</th>
+                                <td>: @if ($hc->cekhc?->keterangan == null)
+                                    Data Hak Cipta Belum Diverifikasi
+                                @else
+                                    {{ $hc->cekhc?->keterangan }}
+                                @endif</td>
+                            </tr>
+                            <tr>
                                 <th>Sertifikat Hak Cipta</th>
                                 <td>: @if ($hc->sertifikat_hakcipta != '')
-                                        <a href={{ asset('storage/' . $hc->sertifikat_paten) }} class=""
+                                        <a href={{ asset('storage/' . $hc->sertifikat_hakcipta) }} class=""
                                             target="_blank">Lihat sertifikat</a>
                                     @else
-                                        Paten Ini Belum Mendapatkan Sertifikat
+                                        Hak Cipta Ini Belum Mendapatkan Sertifikat
                                     @endif
                                 </td>
                             </tr>
-                            <tr>
-                                <th>Status Paten</th>
-                                <td>: {{ $hc->status }}</td>
-                            </tr>
+                            
                         </table>
                     </div>
                 </div>

@@ -63,6 +63,10 @@
                                         <td>: {{ $paten->kode_pos }}</td>
                                     </tr>
                                     <tr>
+                                        <th></th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
                                         <th>Jenis Paten</th>
                                         <td>: {{ $paten->jenis_paten }}</td>
                                     </tr>
@@ -113,6 +117,19 @@
                                     <tr>
                                         <th>Tanggal pengajuan</th>
                                         <td>: {{ \Carbon\Carbon::parse($paten->tanggal_permohonan)->format('d-m-Y') }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Status Paten</th>
+                                        <td>: {{ $paten->status }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Keterangan data paten</th>
+                                        <td>: @if ($paten->cek?->keterangan == null)
+                                                Data Paten Belum Diverifikasi
+                                            @else
+                                                {{ $paten->cek?->keterangan }}
+                                            @endif
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Sertifikat Paten</th>

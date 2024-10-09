@@ -63,6 +63,10 @@
                                         <td>: {{ $hc->kode_pos }}</td>
                                     </tr>
                                     <tr>
+                                        <th></th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
                                         <th>Jenis Ciptaann</th>
                                         <td>: {{ $hc->jenis_ciptaan }}</td>
                                     </tr>
@@ -71,7 +75,7 @@
                                         <td>: {{ $hc->judul_ciptaan }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Abstrak Ciptaan</th>
+                                        <th>Uraian Singkat Ciptaan</th>
                                         <td >: {{ $hc->uraian_singkat }}</td>
                                     </tr>
                                     <tr>
@@ -87,7 +91,7 @@
                                     <tr>
                                         <th>surat pernyataan</th>
                                         <td>: <a href={{ asset('storage/' . $hc->surat_pernyataan) }} class=""
-                                                target="_blank">Lihat Klaim</a></td>
+                                                target="_blank">Lihat Surat Pernyataan</a></td>
                                     </tr>
 
                                     <tr>
@@ -99,7 +103,15 @@
                                         <td>: {{ $hc->status }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Sertifikat Paten</th>
+                                        <th>Status Data Hak Cipta</th>
+                                        <td>: @if ($hc->cekhc?->keterangan == null)
+                                            Data Hak Cipta Belum Diverifikasi
+                                        @else
+                                            {{ $hc->cekhc?->keterangan }}
+                                        @endif</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Sertifikat Hak Cipta</th>
                                         <td>: @if ($hc->sertifikat_hakcipta != "")
                                                 <a href={{ asset('storage/' . $hc->sertifikat_hakcipta) }}
                                                     class="" target="_blank">Lihat sertifikat</a>

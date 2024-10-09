@@ -232,7 +232,7 @@
                                     <th scope="col">Status </th>
                                     <th scope="col">Status Cek Data </th>
                                     <th scope="col">Keterangan </th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>

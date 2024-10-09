@@ -338,6 +338,7 @@
                                     <th scope="col">Status paten</th>
                                     <th scope="col">Status Cek Data</th>
                                     <th scope="col">Keterangan</th>
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>

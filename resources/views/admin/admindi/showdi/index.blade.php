@@ -104,6 +104,10 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th></th>
+                                <td></td>
+                            </tr>
+                            <tr>
                                 <th>Jenis Disain Industri</th>
                                 <td>: {{ $di->jenis_di }}</td>
                             </tr>
@@ -135,9 +139,17 @@
                                 <td>: {{ $di->status }}</td>
                             </tr>
                             <tr>
-                                <th>Sertifikat Paten</th>
-                                <td>: @if ($di->sertifikat_hakcipta != '')
-                                        <a href={{ asset('storage/' . $di->sertifikat_hakcipta) }} class=""
+                                <th>status data desain industri</th>
+                                <td>: @if ($di->cekDi?->keterangan == null)
+                                    Data Desain Industri Belum Diverifikasi
+                                @else
+                                    {{ $di->cekDi?->keterangan }}
+                                @endif</td>
+                            </tr>
+                            <tr>
+                                <th>Sertifikat Desain Industri</th>
+                                <td>: @if ($di->sertifikat_desain != '')
+                                        <a href={{ asset('storage/' . $di->sertifikat_desain) }} class=""
                                             target="_blank">Lihat sertifikat</a>
                                     @else
                                         Desain Industri Ini Belum Mendapatkan Sertifikat

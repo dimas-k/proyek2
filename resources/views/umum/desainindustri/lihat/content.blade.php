@@ -63,6 +63,10 @@
                                         <td>: {{ $di->kode_pos }}</td>
                                     </tr>
                                     <tr>
+                                        <th></th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
                                         <th>Jenis Disain Industri</th>
                                         <td>: {{ $di->jenis_di }}</td>
                                     </tr>
@@ -73,17 +77,17 @@
                                     <tr>
                                         <th>Gambar desain Industri</th>
                                         <td >: <a href={{ asset('storage/' . $di->gambar_di) }} class=""
-                                            target="_blank">Lihat Dokumen Invensi</a></td>
+                                            target="_blank">Lihat Gambar Desain</a></td>
                                     </tr>
                                     <tr>
                                         <th>Uraian Desain Industri</th>
                                         <td>: <a href={{ asset('storage/' . $di->uraian_di) }} class=""
-                                                target="_blank">Lihat Dokumen Invensi</a></td>
+                                                target="_blank">Lihat Uraian Desain Industri</a></td>
                                     </tr>
                                     <tr>
                                         <th>Surat Pengalihan hak</th>
                                         <td>: <a href={{ asset('storage/' . $di->surat_pengalihan) }} class=""
-                                                target="_blank">Lihat Pengalihan Hak Invensi</a></td>
+                                                target="_blank">Lihat Pengalihan Hak</a></td>
                                     </tr>
                                     <tr>
                                         <th>Tanggal pengajuan</th>
@@ -94,9 +98,17 @@
                                         <td>: {{ $di->status }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Sertifikat Paten</th>
-                                        <td>: @if ($di->sertifikat_hakcipta != "")
-                                                <a href={{ asset('storage/' . $di->sertifikat_hakcipta) }}
+                                        <th>status data desain industri</th>
+                                        <td>: @if ($di->cekDi?->keterangan == null)
+                                            Data Desain Industri Belum Diverifikasi
+                                        @else
+                                            {{ $di->cekDi?->keterangan }}
+                                        @endif</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Sertifikat desain industri</th>
+                                        <td>: @if ($di->sertifikat_desain != "")
+                                                <a href={{ asset('storage/' . $di->sertifikat_desain) }}
                                                     class="" target="_blank">Lihat sertifikat</a>
                                             @else 
                                             Desain Industri Anda Belum Mendapatkan Sertifikat    

@@ -80,7 +80,7 @@ class AdminDesainIndustriController extends Controller
      */
     public function show(string $id)
     {
-        $di = DesainIndustri::find($id);
+        $di = DesainIndustri::with('cekDi')->find($id);
         return view('admin.admindi.showdi.index', compact('di'));
     }
 

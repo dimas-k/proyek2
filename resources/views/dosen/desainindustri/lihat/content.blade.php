@@ -115,8 +115,8 @@
                                     </tr>
                                     <tr>
                                         <th>Sertifikat Desain Industri</th>
-                                        <td>: @if ($di->sertifikat_hakcipta != "")
-                                                <a href={{ asset('storage/' . $di->sertifikat_hakcipta) }}
+                                        <td>: @if ($di->sertifikat_desain != "")
+                                                <a href={{ asset('storage/' . $di->sertifikat_desain) }}
                                                     class="" target="_blank">Lihat sertifikat</a>
                                             @else 
                                             Desain Industri Anda Belum Mendapatkan Sertifikat    

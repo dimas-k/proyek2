@@ -252,7 +252,7 @@ class UmumController extends Controller
     }
     public function lihatDi(string $id)
     {
-        $di = DesainIndustri::find($id);
+        $di = DesainIndustri::with('cekDi')->find($id);
         return view('umum.desainindustri.lihat.index', compact('di'));
     }
     public function editDi(string $id)
@@ -276,7 +276,7 @@ class UmumController extends Controller
     }
     public function lihatPaten(string $id)
     {
-        $paten = Paten::find($id);
+        $paten = Paten::with('cek')->find($id);
         return view('umum.paten.lihat.index', compact('paten'));
     }
     public function editPaten(string $id)
@@ -409,7 +409,7 @@ class UmumController extends Controller
     }
     public function lihatHc(string $id)
     {
-        $hc = HakCipta::find($id);
+        $hc = HakCipta::with('cekhc')->find($id);
         return view('umum.hakcipta.lihat.index', compact('hc'));
     }
     public function hapusHc(string $id)

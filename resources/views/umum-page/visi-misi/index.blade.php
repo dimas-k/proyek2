@@ -19,23 +19,29 @@
     <br>
     <br>
     <br>
+    <br>
     {{-- end of nav --}}
 
+    <div class="container text-center">
+        <span class="">Visi, Misi, dan Tujuan</span>
+        <h2 class="mb-2">P3M</h2>
+    </div>
     <img src="{{ asset('assets/orang1.png') }}" alt="" class="float-end" width="550px">
     <div class="container">
         <h2>Visi</h2>
-        <ol>
-            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi rerum neque cumque. Facilis illo corporis voluptates inventore vel, dolorem culpa magnam pariatur consequuntur! Rerum omnis esse quibusdam debitis, alias et.</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, harum itaque. Officia ut tempore accusantium ducimus cupiditate adipisci, nemo inventore autem voluptatum esse quasi sapiente quod quas accusamus laborum aperiam!</li>
-        </ol>
+        <p class="ms-2">Pusat Penelitian dan Pengabdian Masyarakat terdepan dalam penelitian terapan dan pengabdian masyarakat di tingkat nasional</p>
         <br>
         <br>
         <h2>Misi</h2>
+        <p class="ms-2">Memandu pelaksanaan penelitian terapan dan pengabdian masyarakat di Polindra guna menyelesaikan persoalan industri dan masyarakat pada tingkat lokal dan nasional</p>
+        <br>
+        <br>
+        <h2>Tujuan</h2>
         <ol>
-            <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam incidunt voluptate magnam, architecto necessitatibus accusamus quae ut nisi optio minus? Accusamus nihil quibusdam eos necessitatibus illo delectus vitae consectetur repellendus!</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate asperiores soluta dolores? Ut fuga quibusdam sapiente commodi? Perspiciatis odio numquam alias, dolore deleniti quam? Tempore temporibus explicabo rem atque repellendus.</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae porro voluptates veniam explicabo, rerum debitis tenetur rem earum illum totam, odit fuga, enim laborum repellendus omnis corrupti maxime ipsam soluta!</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae porro voluptates veniam explicabo, rerum debitis tenetur rem earum illum totam, odit fuga, enim laborum repellendus omnis corrupti maxime ipsam soluta!</li>
+            <li>Mewujudkan tata kelola pusat penelitian dan pengabdian masyarakat yang bermutu</li>
+            <li>Meningkatkan kualitas dan kuantitas penelitian terapan dan pengabdian masyarakat para dosen</li>
+            <li>Bersama-sama industri dan masyarakat dalam menyelesaikan persoalan bidang ketahanan pangan, kemaritiman, ketahanan energi, teknologi industri, serta teknologi informasi dan komunikasi pada tingkat lokal dan nasional sesuai dengan kepakaran para dosen.</li>
+            <li>Mendorong dan memfasilitasi publikasi ilmiah para dosen di tingkat nasional dan internasional.</li>
         </ol>
 
     </div>

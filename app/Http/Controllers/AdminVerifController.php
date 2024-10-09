@@ -10,7 +10,7 @@ class AdminVerifController extends Controller
 {
     public function lamanVerif()
     {
-        $verif = User::where('role', 'Checker')->paginate(5);
+        $verif = User::where('role', 'Checker')->orderBy('nama_lengkap', 'asc')->get();
         return view('admin.admin-verif.index', compact('verif'));
     }
     public function lihat(string $id)

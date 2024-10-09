@@ -31,7 +31,8 @@
     <link href="{{ asset('assets-user/css/icons.css') }}" rel="stylesheet" />
 
     <!-- COLOR SKIN CSS -->
-    <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{ asset('assets-user/colors/color1.css') }}" />
+    <link id="theme" rel="stylesheet" type="text/css" media="all"
+        href="{{ asset('assets-user/colors/color1.css') }}" />
     @yield('css')
     <base href="{{ asset('assets-user') }}/">
 
@@ -142,6 +143,512 @@
 
     <!-- CUSTOM JS -->
     <script src="{{ asset('assets-user/js/custom.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function() {
+            $('#uploadForm').submit(function(e) {
+                e.preventDefault(); // Mencegah form terkirim secara otomatis
+
+                // non file
+                var nama = $('#nama_lengkap').val();
+                var alamat = $('#alamat').val();
+                var telepon = $('#no_telepon').val();
+                var tl = $('#tanggal_lahir').val();
+                var email = $('#email').val();
+                var warga = $('#warga').val();
+                var pos = $('#pos').val();
+                var jurusan = $('#jurusan').val();
+                var prodi = $('#prodi').val();
+                var judul_paten = $('#judul_paten').val();
+                var tanggal_pengajuan = $('#tanggalpengajuan').val();
+
+                var jenis_paten = $('input[name="jenis_paten"]:checked').val();
+
+                //file
+                var ktp = $('#ktp')[0].files[0];
+                var pengaju = $('#pengaju2')[0].files[0];
+                var abstrak = $('#abstrak')[0].files[0];
+                var deskripsi = $('#deskripsi')[0].files[0];
+                var pengalihan_hak = $('#pengalihan_hak')[0].files[0];
+                var klaim = $('#klaim')[0].files[0];
+                var kepemilikan = $('#kepemilikan')[0].files[0];
+                var kuasa = $('#kuasa')[0].files[0];
+                var g_paten = $('#g_paten')[0].files[0];
+                var g_tampilan = $('#g_tampilan')[0].files[0];
+
+                // var errorMessage = ''; // Variabel untuk menyimpan pesan error
+
+                // Validasi Nama Lengkap
+                if (!nama) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Nama Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+
+                // Validasi Tanggal Lahir
+                if (!alamat) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Alamat Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!telepon) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan No Telepon Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!tl) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Tangal Lahir Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!email) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Tangal Lahir Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!warga) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Kewarganegaraan Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!pos) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Kode Pos Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (jurusan === "") {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Jurusan Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (prodi === "") {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Prodi Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!jenis_paten) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Jenis Paten Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!judul_paten) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Judul Ciptaan Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!tanggal_pengajuan) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Tanggal Pengajuan!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+
+                // Validasi File
+                if (!ktp) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan KTP Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!abstrak) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Abstrak Paten Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!deskripsi) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Deskripsi Paten Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!pengalihan_hak) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Surat Pengalihan Hak Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!klaim) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Klaim Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!kepemilikan) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Pernyataan Kepemilikan Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!kuasa) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Surat Kuasa Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!g_paten) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Gambar Paten Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                }
+                if (!g_tampilan) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops... Ada yang salah...",
+                        text: "Tolong Masukkan Gambar Tampilan Anda!",
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2500
+                    });
+                    return false;
+                } else {
+                    var allowedExtension = /(\.pdf)$/i; // Hanya memperbolehkan file berformat PDF
+                    var allowedExtensionExel = /(\.xlsx)$/i; // Hanya memperbolehkan file berformat exel
+                    var maxSize = 2 * 1024 * 1024; // Maksimal ukuran file adalah 2 MB
+
+                    // Validasi ekstensi file
+                    // Cek apakah file diinputkan
+                    if (pengaju) {
+                        // Jika file ada, cek apakah ekstensi sesuai
+                        if (!allowedExtensionExel.exec(pengaju.name)) {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops... Ada yang salah...",
+                                text: "Tolong Masukkan Data Mahasiswa Dan Atau Dosen Dengan Ekstensi .xlsx",
+                                position: "top-end",
+                                showConfirmButton: false,
+                                timer: 2500
+                            });
+                            return false; // Gagal, form tidak dikirim
+                        }
+                    }
+
+
+                    if (!allowedExtension.exec(ktp.name)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan KTP Dengan Ekstensi .pdf!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (!allowedExtension.exec(abstrak.name)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan Abstrak Paten Dengan Ekstensi .pdf!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (!allowedExtension.exec(deskripsi.name)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan Deskripsi Paten Dengan Ekstensi .pdf!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (!allowedExtension.exec(pengalihan_hak.name)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan Surat Pengalihan hak Dengan Ekstensi .pdf!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (!allowedExtension.exec(klaim.name)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan Klaim Dengan Ekstensi .pdf!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (!allowedExtension.exec(kepemilikan.name)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan Pernyataan Kepemilikan Dengan Ekstensi .pdf!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (!allowedExtension.exec(kuasa.name)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan Surat Kuasa Dengan Ekstensi .pdf!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (!allowedExtension.exec(g_paten.name)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan Gambar Paten Paten Dengan Ekstensi .pdf!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (!allowedExtension.exec(g_tampilan.name)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Tolong Masukkan Gambar Tampilan Paten Dengan Ekstensi .pdf!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+
+                    // Validasi ukuran file
+                    if (ktp.size > maxSize) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Ukuran File KTP Lebih Dari 2mb!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (abstrak.size > maxSize) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Ukuran File Abstrak Paten Lebih Dari 2mb!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (deskripsi.size > maxSize) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Ukuran Deskripsi paten Lebih Dari 2mb!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (pengalihan_hak.size > maxSize) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Ukuran File Surat Pengalihan Hak Lebih Dari 2mb!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (klaim.size > maxSize) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Ukuran File Klaim Lebih Dari 2mb!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (kepemilikan.size > maxSize) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Ukuran File Pernyataan Kepemilikan Lebih Dari 2mb!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (kuasa.size > maxSize) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Ukuran File Surat Kuasa Lebih Dari 2mb!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (g_paten.size > maxSize) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Ukuran File Gambar Paten Lebih Dari 2mb!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+                    if (g_tampilan.size > maxSize) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: "Ukuran File Gambar Tampilan Lebih Dari 2mb!",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                        return false;
+                    }
+
+                }
+
+                // // Jika ada error, tampilkan pesan melalui alert dan cegah pengiriman form
+                // if (errorMessage !== '') {
+                //     alert(errorMessage);
+                //     return false; // Mencegah pengiriman form
+                // }
+                this.submit();
+            });
+        });
+    </script>
 
 </body>
 

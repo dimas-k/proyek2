@@ -85,7 +85,8 @@ class AdminController extends Controller
     }
     public function lihatDosen()
     {
-        $dosen = User::where('role', 'Dosen')->get();
+        $dosen = User::where('role', 'Dosen')->orderBy('nama_lengkap', 'asc')->get();
+        
         return view('admin.dosen-page.index', compact('dosen'));
     }
     public function detailDosen($id)
@@ -127,11 +128,11 @@ class AdminController extends Controller
     public function editDosen(Request $request, string $id)
     {
         $validasidata = $request->validate([
+            'nama_lengkap'=>'required|string',
             'email' => 'required|email|unique:users',
             'username'=>'required|min:3',
             'password'=> 'required|max:10',
-            'nip'=> 'required|unique:users'
-            // 'ktp'=>'required|mimes:pdf|max:2028',
+            'nip'=> 'required|unique:users',
         ]);
         $user = User::find($id);
         $user->nama_lengkap = $request->nama_lengkap;
@@ -153,7 +154,7 @@ class AdminController extends Controller
     }
     public function lihatUmum()
     {
-        $umum = User::where('role', 'Umum')->get();
+        $umum = User::where('role', 'Umum')->orderBy('nama_lengkap', 'asc')->get();
         return view('admin.umum.index', compact('umum'));
     }
     public function umumNew(Request $request)
@@ -177,7 +178,7 @@ class AdminController extends Controller
         $user->role = $request->role;
         $user->save($validasidata);
 
-        return redirect('/admin/pengguna/umum')->with('success','Data dosen telah ditambahkan');
+        return redirect('/admin/pengguna/umum')->with('success','Data umum telah ditambahkan');
     }
     public function updateUmum(Request $request, string $id)
     {

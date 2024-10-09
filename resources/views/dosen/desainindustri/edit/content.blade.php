@@ -29,157 +29,101 @@
                         <div class="card-body">
 
                             <form action="{{ Route('dsn.update.di', $di->id) }}" enctype="multipart/form-data"
-                                method="post">
+                                method="post" id="uploadForm">
                                 @csrf
                                 <div class="table-responsive">
                                     <table class="table table-borderless p-1">
 
                                         <tr>
                                             <th>Nama Lengkap</th>
-                                            <td><input type="text"
-                                                    class="form-control @error('nama_lengkap') is-invalid @enderror"
-                                                    id=""name="nama_lengkap" value="{{ $di->nama_lengkap }}">
-                                                @error('nama_lengkap')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                            <td><input type="text" class="form-control" id="nama_lengkap"
+                                                    name="nama_lengkap" value="{{ $di->nama_lengkap }}">
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Alamat</th>
                                             <td>
-                                                <input type="text"
-                                                    class="form-control @error('alamat') is-invalid @enderror"
-                                                    id="" name="alamat" value="{{ $di->alamat }}">
-                                                @error('alamat')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                                <input type="text" class="form-control" id="alamat" name="alamat"
+                                                    value="{{ $di->alamat }}">
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>No Telepon</th>
                                             <td>
-                                                <input type="number"
-                                                    class="form-control @error('no_telepon') is-invalid @enderror"
-                                                    id="" name="no_telepon" value="{{ $di->no_telepon }}">
-                                                @error('no_telepon')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                                <input type="number" class="form-control" id="no_telepon"
+                                                    name="no_telepon" value="{{ $di->no_telepon }}">
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Tanggal lahir</th>
                                             <td>
-                                                <input type="date" name="tanggal_lahir" id=""
-                                                    class="form-control @error('tanggal_lahir') is-invalid @enderror"
-                                                    value="{{ $di->tanggal_lahir }}">
-                                                @error('tanggal_lahir')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                                <input type="date" name="tanggal_lahir" id="tanggal_lahir"
+                                                    class="form-control" value="{{ $di->tanggal_lahir }}">
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>KTP</th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control @error('ktp_inventor') is-invalid @enderror"
-                                                    id="" name="ktp_inventor" value="{{ $di->ktp_inventor }}">
+                                                <input type="file" class="form-control" id="ktp"
+                                                    name="ktp_inventor" value="{{ $di->ktp_inventor }}">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-                                                @error('ktp_inventor')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Email</th>
                                             <td>
-                                                <input type="email"
-                                                    class="form-control @error('email') is-invalid @enderror"
-                                                    id="" name="email" value="{{ $di->email }}">
-                                                @error('email')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                                <input type="email" class="form-control" id="email" name="email"
+                                                    value="{{ $di->email }}">
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Kewarganegaraan</th>
                                             <td>
-                                                <input type="text"
-                                                    class="form-control @error('kewarganegaraan') is-invalid @enderror"
-                                                    id="" value="{{ $di->kewarganegaraan }}"
-                                                    name="kewarganegaraan">
-                                                @error('kewarganegaraan')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                                <input type="text" class="form-control" id="warga"
+                                                    value="{{ $di->kewarganegaraan }}" name="kewarganegaraan">
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Kode Pos</th>
-                                            <td><input type="number"
-                                                    class="form-control @error('kode_pos') is-invalid @enderror"
-                                                    id="" name="kode_pos" value="{{ $di->kode_pos }}">
-                                                @error('kode_pos')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                                <input type="text"
-                                                    class="form-control @error('institusi') is-invalid @enderror"
-                                                    id="" value="{{ $di->institusi }}" name="institusi"
-                                                    hidden>
+                                            <td><input type="number" class="form-control" id="pos"
+                                                    name="kode_pos" value="{{ $di->kode_pos }}">
+
+                                                <input type="text" class="form-control" value="{{ $di->institusi }}"
+                                                    name="institusi" id="institusi" hidden>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Data Mahasiswa / Dosen
                                             </th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control @error('data_pengaju2') is-invalid @enderror"
-                                                    name="data_pengaju2">
+                                                <input type="file" class="form-control" name="data_pengaju2"
+                                                    id="pengaju2">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui
                                                 </span>
-                                                @error('data_pengaju2')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+
                                             </td>
                                         </tr>
                                         <tr>
-                                            @include('dosen.layout.jurusan')
-                                                @error('jurusan')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                            @include('dosen.layout.jurusan-edit')
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>prodi</th>
                                             <td>
-                                                @include('dosen.layout.prodi')
-                                                @error('prodi')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                                @include('dosen.layout.prodi-edit')
+
                                             </td>
                                         </tr>
                                         <tr>
@@ -187,28 +131,28 @@
                                             <td>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="jenis_di"
-                                                        id="" value="Satu desain">
+                                                        value="Satu desain" id="satu_desain">
                                                     <label class="form-check-label" for="Satu desain">
                                                         Satu Desain
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="jenis_di"
-                                                        id="" value="Pecahan satu desain">
+                                                        value="Pecahan satu desain" id="p_satu_desain">
                                                     <label class="form-check-label" for="Pecahan satu desain">
                                                         Pecahan Satu Desain
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="jenis_di"
-                                                        id="" value="Satu kesatuan desain">
+                                                        value="Satu kesatuan desain" id="satu_kesatuan">
                                                     <label class="form-check-label" for="Satu kesatuan desain">
                                                         Satu Kesatuan Desain
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="jenis_di"
-                                                        id="" value="Kesatuan pecahan satu desain">
+                                                        id="kesatuan_pecahan" value="Kesatuan pecahan satu desain">
                                                     <label class="form-check-label"
                                                         for="Kesatuan pecahan satu desain">
                                                         Kesatuan Pecahan Satu Desain
@@ -219,43 +163,27 @@
                                         <tr>
                                             <th>Judul Desain Industri</th>
                                             <td>
-                                                <input type="text"
-                                                    class="form-control @error('judul_di') is-invalid @enderror"
-                                                    value="{{ $di->judul_di }}" name="judul_di">
-                                                @error('judul_di')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                                <input type="text" class="form-control"
+                                                    value="{{ $di->judul_di }}" name="judul_di" id="judul_desain">
+
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Uraian desain industri</th>
+                                            <th>gambar desain</th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control @error('uraian_di') is-invalid @enderror"
-                                                    placeholder="" name="uraian_di" value="{{ $di->uraian_di }}">
-                                                @error('uraian_di')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                                <input type="file" class="form-control" placeholder=""
+                                                    name="gambar_di" id="gambar_desain">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Gambar Desain Industri</th>
+                                            <th>Uraian desain industri</th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control @error('gambar_di') is-invalid @enderror"
-                                                    placeholder="" name="gambar_di" value="{{ $di->gambar_di }}">
-                                                @error('gambar_di')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                                <input type="file" class="form-control" placeholder=""
+                                                    name="uraian_di" value="{{ $di->uraian_di }}" id="uraian_desain">
+
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
@@ -264,32 +192,20 @@
                                         <tr>
                                             <th>Surat Pernyataan Kepemilikan</th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control @error('surat_pengalihan') is-invalid @enderror"
-                                                    placeholder="" name="surat_kepemilikan"
-                                                    value="{{ $di->surat_kepemilikan }}">
+                                                <input type="file" class="form-control" placeholder=""
+                                                    name="surat_kepemilikan" value="{{ $di->surat_kepemilikan }}" id="pernyataan_kepemilikan">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-                                                @error('surat_pengalihan')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Surat Pengalihan Hak</th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control @error('surat_pengalihan') is-invalid @enderror"
-                                                    placeholder="" name="surat_pengalihan"
-                                                    value="{{ $di->surat_pengalihan }}">
-                                                @error('surat_pengalihan')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                                <input type="file" class="form-control" placeholder=""
+                                                    name="surat_pengalihan" value="{{ $di->surat_pengalihan }}" id="pengalihan">
+
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
@@ -298,14 +214,9 @@
                                         <tr>
                                             <th>Tanggal pengajuan</th>
                                             <td>
-                                                <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
-                                                    class="form-control @error('tanggal_permohonan') is-invalid @enderror"
-                                                    value="{{ $di->tanggal_permohonan }}">
-                                                @error('tanggal_permohonan')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
+                                                <input type="date" name="tanggal_permohonan" id="tanggalpengajuan" id="tanggalpengajuan"
+                                                    class="form-control" value="{{ $di->tanggal_permohonan }}">
+
                                             </td>
                                         </tr>
                                     </table>

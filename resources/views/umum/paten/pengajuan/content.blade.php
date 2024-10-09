@@ -80,7 +80,7 @@
                                         @enderror --}}
                                     </div>
                                     <div class="mb-3">
-                                        <label for="tanggal_lahie" class="form-label">Tanggal Lahir</label>
+                                        <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                                         <input type="date" name="tanggal_lahir" id="tanggal_lahir"
                                             class="form-control" value="{{ old('tanggal_lahir') }}">
                                         {{-- @error('tanggal_lahir')

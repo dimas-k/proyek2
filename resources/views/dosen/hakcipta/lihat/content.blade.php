@@ -63,7 +63,19 @@
                                         <td>: {{ $hc->kode_pos }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Jenis Ciptaann</th>
+                                        <th>jurusan</th>
+                                        <td>: {{ $hc->jurusan }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>prodi</th>
+                                        <td>: {{ $hc->prodi }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Jenis Ciptaan</th>
                                         <td>: {{ $hc->jenis_ciptaan }}</td>
                                     </tr>
                                     <tr>
@@ -71,7 +83,7 @@
                                         <td>: {{ $hc->judul_ciptaan }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Abstrak Ciptaan</th>
+                                        <th>Uraian Singkat Ciptaan</th>
                                         <td >: {{ $hc->uraian_singkat }}</td>
                                     </tr>
                                     <tr>
@@ -80,14 +92,14 @@
                                                 target="_blank">Lihat Dokumen Invensi</a></td>
                                     </tr>
                                     <tr>
-                                        <th>Pengalihan hak invensi</th>
+                                        <th>Surat Pengalihan Hak Cipta</th>
                                         <td>: <a href={{ asset('storage/' . $hc->surat_pengalihan) }} class=""
-                                                target="_blank">Lihat Pengalihan Hak Invensi</a></td>
+                                                target="_blank">Surat Pengalihan Hak Cipta</a></td>
                                     </tr>
                                     <tr>
                                         <th>surat pernyataan</th>
                                         <td>: <a href={{ asset('storage/' . $hc->surat_pernyataan) }} class=""
-                                                target="_blank">Lihat Klaim</a></td>
+                                                target="_blank">Lihat Surat Pernyataan</a></td>
                                     </tr>
 
                                     <tr>

@@ -58,7 +58,7 @@
                 <tbody>
                     @foreach ($orang as $i => $or)
                         <tr>
-                            <th scope="row">{{ $i + 1 }}</th>
+                            <th scope="row">{{ ($orang->currentPage() - 1) * $orang->perPage() + $loop->iteration }}</th>
                             <td>{{ $or->nama_lengkap }}</td>
                             <td>{{ $or->jenis_ciptaan }}</td>
                             <td>{{ $or->judul_ciptaan }}</td>

@@ -65,7 +65,7 @@
                 <tbody>
                     @foreach ($prodi as $i => $p)
                         <tr>
-                            <th scope="row">{{ $i + 1 }}</th>
+                            <th scope="row">{{ ($orang->currentPage() - 1) * $orang->perPage() + $loop->iteration }}</th>
                             <td>{{ $p->nama_lengkap }}</td>
                             <td>{{ $p->jenis_ciptaan }}</td>
                             <td>{{ $p->judul_ciptaan }}</td>

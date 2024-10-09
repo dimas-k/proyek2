@@ -58,7 +58,7 @@
                 <tbody>
                     @foreach ($jurusan as $i => $p)
                         <tr>
-                            <th scope="row">{{ $i + 1 }}</th>
+                            <th scope="row">{{ ($jurusan->currentPage() - 1) * $jurusan->perPage() + $loop->iteration }}</th>
                             <td>{{ $p->nama_lengkap }}</td>
                             <td>{{ $p->jenis_ciptaan }}</td>
                             <td>{{ $p->judul_ciptaan }}</td>
@@ -71,6 +71,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $jurusan->links() }}
         </div>
     </div>
     <!-- Footer -->

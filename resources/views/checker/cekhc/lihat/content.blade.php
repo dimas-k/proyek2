@@ -95,7 +95,7 @@
                                     <tr>
                                         <th>surat pernyataan</th>
                                         <td>: <a href={{ asset('storage/' . $hc->surat_pernyataan) }} class=""
-                                                target="_blank">Lihat Klaim</a></td>
+                                                target="_blank">Lihat Surat Pernyataan</a></td>
                                     </tr>
 
                                     <tr>

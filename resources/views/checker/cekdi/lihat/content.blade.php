@@ -86,12 +86,12 @@
                                     <tr>
                                         <th>gambar Desain</th>
                                         <td>: <a href={{ asset('storage/' . $di->gambar_di) }} class=""
-                                                target="_blank">Lihat Dokumen Invensi</a></td>
+                                                target="_blank">Lihat Gambar Desain</a></td>
                                     </tr>
                                     <tr>
                                         <th>surat Kepemilikan</th>
                                         <td>: <a href={{ asset('storage/' . $di->surat_kepemilikan) }} class=""
-                                                target="_blank">Lihat Klaim</a></td>
+                                                target="_blank">Lihat Surat Kepemilikan</a></td>
                                     </tr>
                                     <tr>
                                         <th>Pengalihan hak invensi</th>

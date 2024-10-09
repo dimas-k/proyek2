@@ -73,7 +73,7 @@
                                     <tr>
                                         <th>Jurusan</th>
                                         <td>: @if ($di->jurusan == null)
-                                                Bukan Akun Dosen
+                                                Bukan Dosen
                                             @else
                                                 {{ $di->jurusan }}
                                             @endif
@@ -82,7 +82,7 @@
                                     <tr>
                                         <th>Prodi</th>
                                         <td>: @if ($di->prodi == null)
-                                                Bukan Akun Dosen
+                                                Bukan Dosen
                                             @else
                                                 {{ $di->prodi }}
                                             @endif

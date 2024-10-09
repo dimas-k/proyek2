@@ -22,6 +22,7 @@
                 class="bi bi-arrow-left-circle mb-5" style="font-size: 35px;"></i></a>
         <div class="rounded border shadow-sm p-4 mb-5 mt-4">
             <form action="/paten/list/perorangan/cari" method="GET" class="ms-2">
+                @csrf
                 <label for="" class="form-label me-4">Cari Nama</label>
                 <select class="form-select-sm" aria-label="Default select example" name="nama" style="width: 1050px">
                     <option>-</option>

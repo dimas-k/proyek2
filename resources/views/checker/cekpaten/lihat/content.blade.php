@@ -70,6 +70,28 @@
                                         <td>: {{ $paten->kode_pos }}</td>
                                     </tr>
                                     <tr>
+                                        <th>Jurusan</th>
+                                        <td>: @if ($paten->jurusan == null)
+                                                Bukan Akun Dosen
+                                            @else
+                                                {{ $paten->jurusan }}
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Prodi</th>
+                                        <td>: @if ($paten->prodi == null)
+                                                Bukan Akun Dosen
+                                            @else
+                                                {{ $paten->prodi }}
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
                                         <th>Jenis Paten</th>
                                         <td>: {{ $paten->jenis_paten }}</td>
                                     </tr>
@@ -120,6 +142,21 @@
                                     <tr>
                                         <th>Tanggal pengajuan</th>
                                         <td>: {{ \Carbon\Carbon::parse($paten->tanggal_permohonan)->format('d-m-Y') }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Status</th>
+                                        <td>: {{ $paten->status }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Sertifikat Paten</th>
+                                        <td>: @if ($hc->sertifikat_paten != '')
+                                                <a href={{ asset('storage/' . $hc->sertifikat_paten) }}
+                                                    class="" target="_blank">Lihat sertifikat</a>
+                                            @else
+                                                Paten Ini Belum Mendapatkan Sertifikat
+                                            @endif
+                                            </a>
                                         </td>
                                     </tr>
                                     <tr>

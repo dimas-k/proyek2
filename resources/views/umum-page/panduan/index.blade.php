@@ -29,7 +29,7 @@
         <br>
         @include('umum-page.panduan.list')
         <div class="text-start mt-2">
-            <a class="link-underline link-underline-opacity-0" href="https://hki.pens.ac.id/pdf/modul.pdf" target="_blank"><i class="bi bi-file-earmark-pdf me-2"></i>Download panduan Kekayaan Intelektual</a>
+            <a class="link-underline link-underline-opacity-0" href="{{ asset('modul-kilat-djki.pdf') }}" target="_blank"><i class="bi bi-file-earmark-pdf me-2"></i>Download panduan Kekayaan Intelektual</a>
         </div>
     </div>
     <br>

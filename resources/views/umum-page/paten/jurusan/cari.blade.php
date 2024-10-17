@@ -21,7 +21,8 @@
         <a href="/paten" class="link-dark link-underline link-underline-opacity-0 mb-5 "><i
                 class="bi bi-arrow-left-circle mb-5" style="font-size: 35px;"></i></a>
         <div class="rounded border shadow-sm p-4 mb-5 mt-4">
-            <form action="/paten/list/jurusan/cari/" method="GET" class="ms-2">
+            <form action="/paten/list/jurusan/cari" method="GET" class="ms-2">
+                @csrf
                 <label for="" class="form-label me-4">Cari Jurusan</label>
                 <select class="form-select-sm" aria-label="Default select example" name="jurusan" style="width: 1050px">
                     <option>-</option>
@@ -57,7 +58,7 @@
                 <tbody>
                     @foreach ($jurusan as $i => $p)
                         <tr>
-                            <th scope="row">{{ $i + 1 }}</th>
+                            <th scope="row">{{ ($jurusan->currentPage() - 1) * $jurusan->perPage() + $loop->iteration }}</th>
                             <td>{{ $p->nama_lengkap }}</td>
                             <td>{{ $p->jenis_paten }}</td>
                             <td>{{ $p->judul_paten }}</td>
@@ -70,6 +71,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{ $jurusan->links() }}
         </div>
     </div>
     <!-- Footer -->

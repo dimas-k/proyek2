@@ -71,6 +71,28 @@
                                         <td>: {{ $hc->kode_pos }}</td>
                                     </tr>
                                     <tr>
+                                        <th>Jurusan</th>
+                                        <td>: @if ($hc->jurusan == null)
+                                                Bukan Dosen
+                                            @else
+                                                {{ $hc->jurusan }}
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Prodi</th>
+                                        <td>: @if ($hc->prodi == null)
+                                                Bukan Dosen
+                                            @else
+                                                {{ $hc->prodi }}
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
                                         <th>Jenis Ciptaann</th>
                                         <td>: {{ $hc->jenis_ciptaan }}</td>
                                     </tr>
@@ -95,7 +117,7 @@
                                     <tr>
                                         <th>surat pernyataan</th>
                                         <td>: <a href={{ asset('storage/' . $hc->surat_pernyataan) }} class=""
-                                                target="_blank">Lihat Klaim</a></td>
+                                                target="_blank">Lihat Surat Pernyataan</a></td>
                                     </tr>
 
                                     <tr>
@@ -108,7 +130,7 @@
                                         <td>: {{ $hc->status }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Sertifikat Paten</th>
+                                        <th>Sertifikat Hak Cipta</th>
                                         <td>: @if ($hc->sertifikat_hakcipta != '')
                                                 <a href={{ asset('storage/' . $hc->sertifikat_hakcipta) }}
                                                     class="" target="_blank">Lihat sertifikat</a>

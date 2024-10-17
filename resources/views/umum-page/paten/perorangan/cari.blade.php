@@ -22,6 +22,7 @@
                 class="bi bi-arrow-left-circle mb-5" style="font-size: 35px;"></i></a>
         <div class="rounded border shadow-sm p-4 mb-5 mt-4">
             <form action="/paten/list/perorangan/cari" method="GET" class="ms-2">
+                @csrf
                 <label for="" class="form-label me-4">Cari Nama</label>
                 <select class="form-select-sm" aria-label="Default select example" name="nama" style="width: 1050px">
                     <option>-</option>
@@ -56,7 +57,7 @@
             <tbody>
                 @foreach ($orang as $i => $or)
                     <tr>
-                        <th scope="row">{{ $i + 1 }}</th>
+                        <th scope="row">{{ ($orang->currentPage() - 1) * $orang->perPage() + $loop->iteration }}</th>
                         <td>{{ $or->nama_lengkap }}</td>
                         <td>{{ $or->jenis_paten }}</td>
                         <td>{{ $or->judul_paten }}</td>

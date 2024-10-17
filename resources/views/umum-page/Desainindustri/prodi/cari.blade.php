@@ -22,6 +22,7 @@
                 class="bi bi-arrow-left-circle mb-5" style="font-size: 35px;"></i></a>
         <div class="rounded border shadow-sm p-4 mb-5 mt-4">
             <form action="/desain-industri/list/prodi/cari" method="GET" class="ms-2">
+                @csrf
                 <label for="" class="form-label me-4">Cari Prodi</label>
                 <select class="form-control-sm" aria-label="Default select example" name="prodi"
                     style="width: 1050px">
@@ -64,7 +65,7 @@
                 <tbody>
                     @foreach ($prodi as $i => $p)
                         <tr>
-                            <th scope="row">{{ $i + 1 }}</th>
+                            <th scope="row">{{ ($orang->currentPage() - 1) * $orang->perPage() + $loop->iteration }}</th>
                             <td>{{ $p->nama_lengkap }}</td>
                             <td>{{ $p->jenis_ciptaan }}</td>
                             <td>{{ $p->judul_ciptaan }}</td>

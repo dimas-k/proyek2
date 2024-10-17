@@ -127,7 +127,7 @@ class HakCiptaController extends Controller
     public function cariPegawai(Request $request)
     {
         $cario = $request->input('nama');
-        $nama = HakCipta::orderBy('nama_lengkap','asc')->get();
+        $nama = HakCipta::orderBy('nama_lengkap','asc')->paginate(10);
         $orang = HakCipta::where('nama_lengkap','LIKE',"%".$cario."%")->orderBy('nama_lengkap', 'asc')->paginate(15);
         return view('umum-page.Hakcipta.perorangan.cari', compact('nama', 'orang'));
     }
@@ -138,7 +138,7 @@ class HakCiptaController extends Controller
     public function cariJurusan(Request $request)
     {
         $carij = $request->input('jurusan');
-        $jurusan = HakCipta::where('jurusan','LIKE',"%".$carij."%")->paginate(15);
+        $jurusan = HakCipta::where('jurusan','LIKE',"%".$carij."%")->paginate(10);
         return view('umum-page.Hakcipta.jurusan.cari', compact('jurusan'));
     }
     public function prodi()
@@ -148,7 +148,7 @@ class HakCiptaController extends Controller
     public function cariProdi(Request $request)
     {
         $cariprodi = $request->input('prodi');
-        $prodi = HakCipta::where('prodi','LIKE',"%".$cariprodi."%")->paginate(15);
+        $prodi = HakCipta::where('prodi','LIKE',"%".$cariprodi."%")->paginate(10);
         return view('umum-page.Hakcipta.prodi.cari', compact('prodi'));
     }
 

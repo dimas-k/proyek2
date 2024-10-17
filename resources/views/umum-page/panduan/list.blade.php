@@ -1,12 +1,12 @@
 <div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-        <h2 class="accordion-header">
+    <div class="accordion-item"> {{-- Paten --}}
+        <h2 class="accordion-header">{{-- Paten --}}
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                 Panduan Paten
             </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample"> {{-- Paten --}} 
             <div class="accordion-body text-start">
                 <strong>Definisi Paten</strong> <br>
                 Paten adalah hak eksklusif inventor atas invensi di bidang teknologi untuk selama waktu tertentu
@@ -78,9 +78,18 @@
                     </li>
                 </ol>
             </div>
+            <div class="accordion-body text-start">
+                <a href="https://docs.google.com/document/d/1iFg5xHjcDOvDKK1779ANemjfENKJjSQn/edit" class="link-underline link-underline-opacity-0" target="_blank"><i class="bi bi-download me-2"></i>Download Template Deskripsi paten</a>
+                <br>
+                <a href="https://docs.google.com/document/d/16mU5pUwTmen4hDnrplOWXDgpiog6kUvF/edit" class="link-underline link-underline-opacity-0" target="_blank"><i class="bi bi-download me-2"></i>Download Template Pengalihan Hak Invensi</a>
+                <br>
+                <a href="https://docs.google.com/document/d/1Z3hgJknpuwiH7RHCx91ouJI26Y7N4ChQ/edit" class="link-underline link-underline-opacity-0" target="_blank"><i class="bi bi-download me-2"></i>Download Template Gambar Paten</a>
+                <br>
+                <a href="https://docs.google.com/spreadsheets/d/1jyhZOMhwnfgPRPmcHySaInnaR-giWdPQ/edit?gid=1165322147#gid=1165322147" class="link-underline link-underline-opacity-0" target="_blank"><i class="bi bi-download me-2"></i>Download Template Biodata Dosen / Mahasiswa (Jika bersama Dosen / Mahasiswa)</a>
+            </div>
         </div>
     </div>
-    <div class="accordion-item">
+    <div class="accordion-item">{{-- Hak Cipta --}}
         <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -103,40 +112,15 @@
                 <strong>Ciptaan Yang Dapat Dilindungi</strong> <br>
                 <ol>
                     <li>
-                        Buku, program komputer, pamflet, perwajahan (layout) karya tulis yang diterbitkan, dan semua
-                        hasil karya tulis lain;
+                        Karya Tulis;
                     </li>
                     <li>
-                        Ceramah, kuliah, pidato, dan ciptaan lain yang sejenis dengan itu;
+                        Karya Lainnya;
                     </li>
                     <li>
-                        Alat peraga yang dibuat untuk kepentingan pendidikan dan ilmu pengetahuan;
+                        Program Komputer
                     </li>
-                    <li>
-                        Lagu atau musik dengan atau tanpa teks;
-                    </li>
-                    <li>
-                        Drama atau drama musikal, tari, koreografi, pewayangan, dan pantomim;
-                    </li>
-                    <li>
-                        Seni rupa dalam segala bentuk seperti seni lukis, gambar, seni ukir, seni kaligrafi, seni pahat,
-                        seni patung, kolase, dan seni terapan;
-                    </li>
-                    <li>
-                        Arsitektur;
-                    </li>
-                    <li>
-                        Peta;
-                    </li>
-                    <li>
-                        Seni Batik;
-                    </li>
-                    <li>
-                        Fotografi;
-                    </li>
-                    <li>
-                        Terjemahan, tafsir, saduran, bunga rampai, dan karya lain dari hasil pengalihwujudan.
-                    </li>
+                    
                 </ol>
             </div>
             <div class="accordion-body text-start">
@@ -159,9 +143,16 @@
                     </li>
                 </ol>
             </div>
+            <div class="accordion-body text-start">
+                <a href="https://docs.google.com/document/d/1LkuRVNm8sIxZ4_E0Yj6_6KaDuz9UgeMW/edit" class="link-underline link-underline-opacity-0" target="_blank"><i class="bi bi-download me-2"></i>Download Template Pengalihan Hak Cipta</a>
+                <br>
+                <a href="https://docs.google.com/document/d/1j0pmBeo5iy2bbYJcGfNgGfqDN_Y1eUfz/edit" class="link-underline link-underline-opacity-0" target="_blank"><i class="bi bi-download me-2"></i>Download Template Surat Pernyataan</a>
+                <br>
+                <a href="https://docs.google.com/spreadsheets/d/1jyhZOMhwnfgPRPmcHySaInnaR-giWdPQ/edit?gid=1165322147#gid=1165322147" class="link-underline link-underline-opacity-0" target="_blank"><i class="bi bi-download me-2"></i>Download Template Biodata Dosen / Mahasiswa (Jika bersama Dosen / Mahasiswa)</a>
+            </div>
         </div>
     </div>
-    <div class="accordion-item">
+    <div class="accordion-item"> {{-- Desain industri --}}
         <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -195,6 +186,15 @@
                 Pemegang hak desain industri memiliki hak eksklusif untuk melaksanakan hak yang dimilikinya dan untuk
                 melarang orang lain tanpa persetujuannya membuat, memakai, menjual, mengimpor, mengekspor, dan/atau
                 mengedarkan produk-produk terkait.
+            </div>
+            <div class="accordion-body text-start">
+                <a href="https://docs.google.com/document/d/17yMOTeCCPR7M_IjB9Oy8JCVC1JTcSBVd/edit" class="link-underline link-underline-opacity-0" target="_blank"><i class="bi bi-download me-2"></i>Download Template Surat Pernyataan Kepemilikan Desain Industri</a>
+                <br>
+                <a href="https://docs.google.com/document/d/12wvGWDdcbB93Q-zdOGgZv9fdvo-_l2Ci/edit" class="link-underline link-underline-opacity-0" target="_blank"><i class="bi bi-download me-2"></i>Download Template Surat Pernyataan Pengalihan Hak</a>
+                <br>
+                <a href="https://docs.google.com/document/d/1S4A7c9HsM0vnyAbpySciQiDw0omerjxa/edit" class="link-underline link-underline-opacity-0" target="_blank"><i class="bi bi-download me-2"></i>Download Template Uraian Desain Industri</a>
+                <br>
+                <a href="https://docs.google.com/spreadsheets/d/1jyhZOMhwnfgPRPmcHySaInnaR-giWdPQ/edit?gid=1165322147#gid=1165322147" class="link-underline link-underline-opacity-0" target="_blank"><i class="bi bi-download me-2"></i>Download Template Biodata Dosen / Mahasiswa (Jika bersama Dosen / Mahasiswa)</a>
             </div>
         </div>
     </div>

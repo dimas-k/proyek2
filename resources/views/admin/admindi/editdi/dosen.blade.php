@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
-    <title>SIKI POLINDRA-Admin | Paten | Edit</title>
+    <title>SIKI POLINDRA-Admin | Desain Industri | Edit</title>
     <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -99,7 +99,7 @@
                                 <input type="file" class="form-control" id="ktp" name="ktp_inventor">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
+                                    dari 10mb</span>
                                 {{-- @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -140,10 +140,10 @@
                             <input type="text" class="form-control @error('institusi') is-invalid @enderror"
                                 id="" value="Dosen" name="institusi" hidden>
                             <div class="mb-3">
-                                <label for="pengaju2" class="form-label">Data Mahasiswa / Dosen <span
+                                <label for="data_pengaju2" class="form-label">Data Mahasiswa / Dosen <span
                                         class="text-danger">(Jika Bersama Dosen Yang Lain dan atau Bersama
                                         Mahasiswa Harap diisi)</span></label>
-                                <input type="file" class="form-control " name="data_pengaju2" id="pengaju2">
+                                <input type="file" class="form-control " name="data_pengaju2" id="data_pengaju2">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .xlsx</span>
                                 {{-- @error('data_pengaju2')
@@ -153,7 +153,18 @@
                                         @enderror --}}
                             </div>
                             <div class="mb-3">
-                                @include('admin.layout.jurusan')
+                                {{-- @include('admin.layout.jurusan') --}}
+                                <tr>
+                                    <th>jurusan</th>
+                                    <td>
+                                        <select class="form-select" aria-label="Default select example" name="jurusan" id="jurusan">
+                                            <option value="">Pilih Jurusan</option>
+                                            <option value="Teknik Informatika" {{ old('jurusan',$di->jurusan) == 'Teknik Informatika' ? 'selected' : '' }}>Teknik Informatika</option>
+                                            <option value="Teknik" {{ old('jurusan', $di->jurusan) == 'Teknik' ? 'selected' : '' }}>Teknik</option>
+                                            <option value="Kesehatan" {{ old('jurusan', $di->jurusan) == 'Kesehatan' ? 'selected' : '' }}>Kesehatan</option>
+                                        </select>
+                                    </td>
+                                </tr>
                                 {{-- @error('jurusan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -161,7 +172,23 @@
                                         @enderror --}}
                             </div>
                             <div class="mb-3">
-                                @include('admin.layout.prodi')
+                                {{-- @include('admin.layout.prodi') --}}
+                                <tr>
+                                    <th>prodi</th>
+                                    <td>
+                                        <select class="form-select" aria-label="Default select example" name="prodi" id="prodi">
+                                            <option value="">Pilih Prodi</option>
+                                            <option value="D3 Teknik Informatika" {{ old('prodi', $di->prodi) == 'D3 Teknik Informatika' ? 'selected' : '' }}>D3 Teknik Informatika</option>
+                                            <option value="D4 Rekayasa Perangkat Lunak" {{ old('prodi', $di->prodi) == 'D4 Rekayasa Perangkat Lunak' ? 'selected' : '' }}>D4 Rekayasa Perangkat Lunak</option>
+                                            <option value="D4 Sistem Informasi Kota Cerdas" {{ old('prodi', $di->prodi) == 'D4 Sistem Informasi Kota Cerdas' ? 'selected' : '' }}>D4 Sistem Informasi Kota Cerdas</option>
+                                            <option value="D3 Teknik Mesin" {{ old('prodi', $di->prodi) == 'D3 Teknik Mesin' ? 'selected' : '' }}>D3 Teknik Mesin</option>
+                                            <option value="D4 Perancangan Manufaktur" {{ old('prodi', $di->prodi) == 'D4 Perancangan Manufaktur' ? 'selected' : '' }}>D4 Perancangan Manufaktur</option>
+                                            <option value="D3 Teknik Pendingin dan Tata Udara" {{ old('prodi', $di->prodi) == 'D3 Teknik Pendingin dan Tata Udara' ? 'selected' : '' }}>D3 Teknik Pendingin dan Tata Udara</option>
+                                            <option value="D4 Teknologi Rekayasa Instrumentasi dan Kontrol" {{ old('prodi', $di->prodi) == 'D4 Teknologi Rekayasa Instrumentasi dan Kontrol' ? 'selected' : '' }}>D4 Teknologi Rekayasa Instrumentasi dan Kontrol</option>
+                                            <option value="D3 Keperawatan" {{ old('prodi', $di->prodi) == 'D3 Keperawatan' ? 'selected' : '' }}>D3 Keperawatan</option>
+                                        </select>
+                                    </td>
+                                </tr>
                                 {{-- @error('prodi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -169,39 +196,42 @@
                                         @enderror --}}
                             </div>
                         </div>
-
                         <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR DESAIN INDUSTRI</p>
                         <div class="container">
                             <label for="" class="form-label">Jenis Desain</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jenis_di" id="satu_desain"
-                                    value="Satu desain">
-                                <label class="form-check-label" for="Satu desain" id="satu_desain">
-                                    Satu Desain
-                                </label>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="jenis_di" value="Satu Desain" id="satu_desain"
+                                            {{ old('jenis_di', $di->jenis_di) == 'Satu Desain' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="satu_desain">Satu Desain</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="jenis_di" value="Pecahan Satu Desain" id="pecahan_satu_desain"
+                                            {{ old('jenis_di', $di->jenis_di) == 'Pecahan Satu Desain' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="pecahan_satu_desain">Pecahan Satu Desain</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="jenis_di" value="Satu Kesatuan Desain" id="satu_kesatuan_desain"
+                                            {{ old('jenis_di', $di->jenis_di) == 'Satu Kesatuan Desain' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="satu_kesatuan_desain">Satu Kesatuan Desain</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="jenis_di" value="Kesatuan Pecahan Satu Desain" id="kesatuan_pecahan_satu_desain"
+                                            {{ old('jenis_di', $di->jenis_di) == 'Kesatuan Pecahan Satu Desain' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="kesatuan_pecahan_satu_desain">Kesatuan Pecahan Satu Desain</label>
+                                        </div>
+                                    </div>
+                                </div>       
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jenis_di" id="p_satu_desain"
-                                    value="Pecahan satu desain">
-                                <label class="form-check-label" for="Pecahan satu desain" id="p_satu_desain">
-                                    Pecahan Satu Desain
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jenis_di" id="satu_kesatuan"
-                                    value="Satu kesatuan desain">
-                                <label class="form-check-label" for="Satu kesatuan desain" id="satu_kesatuan">
-                                    Satu Kesatuan Desain
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jenis_di" id="kesatuan_pecahan"
-                                    value="Kesatuan pecahan satu desain">
-                                <label class="form-check-label" for="Kesatuan pecahan satu desain"
-                                    id="kesatuan_pecahan">
-                                    Kesatuan Pecahan Satu Desain
-                                </label>
-                            </div>
+                            <br>
                             <div class="mb-3">
                                 <label for="judul_desain" class="form-label">Judul Desain Industri</label>
                                 <input type="text" class="form-control"
@@ -218,7 +248,7 @@
                                     id="gambar_desain">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
-                                    2mb</span>
+                                    10mb</span>
                                 {{-- @error('gambar_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -231,7 +261,7 @@
                                     id="uraian_desain">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
-                                    2mb</span>
+                                    10mb</span>
                                 {{-- @error('uraian_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -245,7 +275,7 @@
                                     id="pernyataan_kepemilikan">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
-                                    2mb</span>
+                                    10mb</span>
                                 {{-- @error('surat_kepemilikan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -258,7 +288,7 @@
                                     id="pengalihan" value="{{ $di->surat_pengalihan }}">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
-                                    2mb</span>
+                                    10mb</span>
                                 {{-- @error('surat_pengalihan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -316,7 +346,7 @@
         </script>
         <script src="{{ asset('assets-user/js/jquery.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
+        {{-- <script>
             $(document).ready(function() {
                 $('#uploadForm').submit(function(e) {
                     e.preventDefault(); // Mencegah form terkirim secara otomatis
@@ -513,7 +543,7 @@
                     } else {
                         var allowedExtension = /(\.pdf)$/i; // Hanya memperbolehkan file berformat PDF
                         var allowedExtensionExel = /(\.xlsx)$/i; // Hanya memperbolehkan file berformat exel
-                        var maxSize = 2 * 1024 * 1024; // Maksimal ukuran file adalah 2 MB
+                        var maxSize = 10 * 1024 * 1024; // Maksimal ukuran file adalah 2 MB
     
                         // Validasi ekstensi file
                         // Cek apakah file diinputkan
@@ -579,7 +609,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File KTP Lebih Dari 2mb!",
+                                text: "Ukuran File KTP Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -590,7 +620,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Gambar Desain Lebih Dari 2mb!",
+                                text: "Ukuran File Gambar Desain Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -601,7 +631,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran Uraian Desain Lebih Dari 2mb!",
+                                text: "Ukuran Uraian Desain Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -612,7 +642,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Pernyataan Kepemilikan Lebih Dari 2mb!",
+                                text: "Ukuran File Pernyataan Kepemilikan Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -623,7 +653,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Surat Pengalihan Hak Lebih Dari 2mb!",
+                                text: "Ukuran File Surat Pengalihan Hak Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -638,6 +668,96 @@
                     //     alert(errorMessage);
                     //     return false; // Mencegah pengiriman form
                     // }
+                    this.submit();
+                });
+            });
+        </script> --}}
+        <script>
+            $(document).ready(function() {
+                $('#uploadForm').submit(function(e) {
+                    e.preventDefault(); // Prevent automatic form submission
+        
+                    // Non-file inputs
+                    const fields = {
+                        nama: $('#nama_lengkap').val(),
+                        alamat: $('#alamat').val(),
+                        telepon: $('#no_telepon').val(),
+                        tl: $('#tanggal_lahir').val(),
+                        email: $('#email').val(),
+                        warga: $('#warga').val(),
+                        pos: $('#pos').val(),
+                        judul_desain: $('#judul_desain').val(),
+                        tanggal_pengajuan: $('#tanggalpengajuan').val(),
+                        jenis_desain: $('input[name="jenis_di"]:checked').val()
+                    };
+        
+                    // File inputs
+                    const files = {
+                        ktp: $('#ktp')[0].files[0],
+                        anggota_inventor: $('#data_pengaju2')[0].files[0],
+                        gambar_desain: $('#gambar_desain')[0].files[0],
+                        uraian_desain: $('#uraian_desain')[0].files[0],
+                        pernyataan_kepemilikan: $('#pernyataan_kepemilikan')[0].files[0],
+                        pengalihan: $('#pengalihan')[0].files[0]
+                    };
+        
+                    const maxSize = 10 * 1024 * 1024; // Max size: 10MB
+                    const allowedExtensionPDF = /(\.pdf)$/i;
+                    const allowedExtensionExcel = /(\.xlsx)$/i;
+        
+                    // Validation function
+                    function showError(message) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: message,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                    }
+        
+                    // Validate non-file inputs
+                    for (var field in fields) {
+                        if (!fields[field]) {
+                            showError("Tolong Masukkan " + field.replace('_', ' ').toUpperCase() + " Anda!");
+                            return false;
+                        }
+                    }
+        
+                    // List of mandatory file fields
+                    const mandatoryFiles = ['ktp', 'gambar_desain', 'uraian_desain', 'pernyataan_kepemilikan', 'pengalihan'];
+        
+                    // Validate file inputs
+                    for (var file in files) {
+                        // Check mandatory files that are empty
+                        if (mandatoryFiles.includes(file) && !files[file]) {
+                            showError("File " + file.replace('_', ' ').toUpperCase() + " Wajib Diisi!");
+                            return false;
+                        }
+        
+                        // Check file type for anggota inventor only
+                        if (file === 'anggota_inventor' && files[file]) {
+                            if (!allowedExtensionExcel.exec(files[file].name)) {
+                                showError("Tolong Masukkan Data anggota inventor Dengan Ekstensi .xlsx!");
+                                return false;
+                            }
+                        } else if (files[file]) {
+                            // Validate other files
+                            if (!allowedExtensionPDF.exec(files[file].name)) {
+                                showError("Tolong Masukkan " + file.replace('_', ' ').toUpperCase() + " Dengan Ekstensi .pdf!");
+                                return false;
+                            }
+        
+                            // Validate file size
+                            if (files[file].size > maxSize) {
+                                showError("Ukuran File " + file.replace('_', ' ').toUpperCase() + " Lebih Dari 10 MB!");
+                                return false;
+                            }
+                        }
+                    }
+        
+                    // If all validations pass, submit the form
                     this.submit();
                 });
             });

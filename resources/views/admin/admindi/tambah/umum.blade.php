@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
-    <title>SIKI POLINDRA-Admin | Paten | Pengajuan</title>
+    <title>SIKI POLINDRA-Admin | Desain Industri | Pengajuan</title>
     <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -101,7 +101,7 @@
                                         <input type="file" class="form-control" id="ktp" name="ktp_inventor">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -196,7 +196,7 @@
                                             id="gambar_desain">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('gambar_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -209,7 +209,7 @@
                                             id="uraian_desain">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('uraian_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -223,7 +223,7 @@
                                             name="surat_kepemilikan" id="pernyataan_kepemilikan">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('surat_kepemilikan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -236,7 +236,7 @@
                                             name="surat_pengalihan" id="pengalihan">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('surat_pengalihan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -495,7 +495,7 @@
                     } else {
                         var allowedExtension = /(\.pdf)$/i; // Hanya memperbolehkan file berformat PDF
                         var allowedExtensionExel = /(\.xlsx)$/i; // Hanya memperbolehkan file berformat exel
-                        var maxSize = 2 * 1024 * 1024; // Maksimal ukuran file adalah 2 MB
+                        var maxSize = 10 * 1024 * 1024; // Maksimal ukuran file adalah 2 MB
     
                         // Validasi ekstensi file
                         // Cek apakah file diinputkan
@@ -561,7 +561,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File KTP Lebih Dari 2mb!",
+                                text: "Ukuran File KTP Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -572,7 +572,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Gambar Desain Lebih Dari 2mb!",
+                                text: "Ukuran File Gambar Desain Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -583,7 +583,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran Uraian Desain Lebih Dari 2mb!",
+                                text: "Ukuran Uraian Desain Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -594,7 +594,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Pernyataan Kepemilikan Lebih Dari 2mb!",
+                                text: "Ukuran File Pernyataan Kepemilikan Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -605,7 +605,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Surat Pengalihan Hak Lebih Dari 2mb!",
+                                text: "Ukuran File Surat Pengalihan Hak Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500

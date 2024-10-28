@@ -101,7 +101,7 @@
                                     value="{{ $hk->ktp_inventor }}">
                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
-                                    2mb</span>
+                                    10mb</span>
                                 {{-- @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -146,7 +146,7 @@
                         <p class="fs-4 fw-normal font-family-Kokoro mt-5">II. FORMULIR HAK CIPTA</p>
                         <div class="container">
                             <div class="mb-3">
-                                <label for="jenis_ciptaan" class="form-label">Jenis Ciptaan
+                                {{-- <label for="jenis_ciptaan" class="form-label">Jenis Ciptaan
                                     <select class="form-select" aria-label="Default select example"
                                         name="jenis_ciptaan" id="jenis_ciptaan">
                                         <option selected>Pilih Jenis Hak Cipta anda</option>
@@ -169,7 +169,19 @@
                                         <option value="Seni Batik">Seni Batik
                                         </option>
                                     </select>
-                                </label>
+                                </label> --}}
+                                <tr>
+                                    <th>Jenis Ciptaan</th>
+                                    <td>
+                                        <label for="jenis_ciptaan" class="form-label">Jenis Ciptaan</label>
+                                        <select class="form-select" aria-label="Default select example" name="jenis_ciptaan" id="jenis_ciptaan">
+                                            <option value="">Pilih Jenis Hak Cipta</option>
+                                            <option value="Karya Tulis" {{ old('jenis_ciptaan', $hk->jenis_ciptaan) == 'Karya Tulis' ? 'selected' : '' }}>Karya Tulis</option>
+                                            <option value="Program Komputer" {{ old('jenis_ciptaan', $hk->jenis_ciptaan) == 'Program Komputer' ? 'selected' : '' }}>Program Komputer</option>
+                                            <option value="Karya Lainnya" {{ old('jenis_ciptaan', $hk->jenis_ciptaan) == 'Karya Lainnya' ? 'selected' : '' }}>Karya Lainnya</option>
+                                        </select>
+                                    </td>
+                                </tr>
                                 {{-- @error('jenis_ciptaan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -201,11 +213,11 @@
                             <div class="mb-3">
                                 <label for="invensi" class="form-label">Dokumen Invensi (Manual
                                     Book/Buku/Dll)</label>
-                                <input type="file" class="form-control " placeholder="" name="dokumen_invensi"
+                                <input type="file" class="form-control" placeholder="" name="dokumen_invensi"
                                     id="invensi">
                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
-                                    2mb</span>
+                                    10mb</span>
                                 {{-- @error('dokumen_invensi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -214,11 +226,11 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="surat_pengalihan">Surat Pengalihan Hak Cipta</label>
-                                <input type="file" class="form-control " placeholder="" name="surat_pengalihan"
+                                <input type="file" class="form-control" placeholder="" name="surat_pengalihan"
                                     id="surat_pengalihan">
                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
-                                    2mb</span>
+                                    10mb</span>
                                 {{-- @error('surat_pengalihan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -227,11 +239,11 @@
                             </div>
                             <div class="mb-3">
                                 <label for="pernyataan" class="form-label">Surat Pernyataan</label>
-                                <input type="file" id="pernyataan" class="form-control " placeholder=""
+                                <input type="file" id="pernyataan" class="form-control" placeholder=""
                                     name="surat_pernyataan">
                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
-                                    2mb</span>
+                                    10mb</span>
                                 {{-- @error('surat_pernyataan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -293,7 +305,7 @@
         </script>
         <script src="{{ asset('assets-user/js/jquery.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
+        {{-- <script>
             $(document).ready(function() {
                 $('#uploadForm').submit(function(e) {
                     e.preventDefault(); // Mencegah form terkirim secara otomatis
@@ -547,7 +559,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File KTP Lebih Dari 2mb!",
+                                text: "Ukuran File KTP Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -558,7 +570,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Dokumen Invensi Lebih Dari 2mb!",
+                                text: "Ukuran File Dokumen Invensi Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -569,7 +581,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Surat Pengalihan Lebih Dari 2mb!",
+                                text: "Ukuran File Surat Pengalihan Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -580,7 +592,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Surat Pernyataan Lebih Dari 2mb!",
+                                text: "Ukuran File Surat Pernyataan Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -599,7 +611,80 @@
                     this.submit();
                 });
             });
-        </script>
+        </script> --}}
+        <script>
+            $(document).ready(function() {
+                $('#uploadForm').submit(function(e) {
+                    e.preventDefault(); // Prevent automatic form submission
+            
+                    // Non-file inputs
+                    const fields = {
+                        nama: $('#nama_lengkap').val(),
+                        alamat: $('#alamat').val(),
+                        telepon: $('#no_telepon').val(),
+                        tanggal_lahir: $('#tanggal_lahir').val(),
+                        email: $('#email').val(),
+                        warga: $('#warga').val(),
+                        pos: $('#pos').val(),
+                        jenis_ciptaan: $('#jenis_ciptaan').val(),
+                        judul_ciptaan: $('#judul_ciptaan').val(),
+                        uraian: $('#uraian').val(),
+                        tanggal_pengajuan: $('#tanggalpengajuan').val()
+                    };
+            
+                    // File inputs
+                    const files = {
+                        ktp: $('#ktp')[0].files[0],
+                        invensi: $('#invensi')[0].files[0],
+                        surat_pengalihan: $('#surat_pengalihan')[0].files[0],
+                        pernyataan: $('#pernyataan')[0].files[0]
+                    };
+            
+                    const maxSize = 10 * 1024 * 1024; // Max size 10 MB
+                    const allowedExtension = /\.pdf$/i;
+            
+                    // Function to show error messages
+                    function showError(message) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: message,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                    }
+            
+                    // Validate non-file inputs
+                    for (const [key, value] of Object.entries(fields)) {
+                        if (!value) {
+                            showError(`Tolong Masukkan ${key.replace('_', ' ').toUpperCase()} Anda!`);
+                            return false;
+                        }
+                    }
+            
+                    // Validate file inputs
+                    for (const [key, file] of Object.entries(files)) {
+                        if (!file) {
+                            showError(`Tolong Masukkan ${key.replace('_', ' ').toUpperCase()} Anda!`);
+                            return false;
+                        }
+                        if (!allowedExtension.test(file.name)) {
+                            showError(`Tolong Masukkan ${key.replace('_', ' ').toUpperCase()} Dengan Ekstensi .pdf!`);
+                            return false;
+                        }
+                        if (file.size > maxSize) {
+                            showError(`Ukuran File ${key.replace('_', ' ').toUpperCase()} Lebih Dari 10 MB!`);
+                            return false;
+                        }
+                    }
+            
+                    // If validation passes, submit the form
+                    this.submit();
+                });
+            });
+            </script>
+            
 </body>
 
 </html>

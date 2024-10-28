@@ -100,7 +100,7 @@
                                 <input type="file" class="form-control" id="ktp" name="ktp_inventor">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
+                                    dari 10mb</span>
                                 {{-- @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -140,10 +140,10 @@
                             <input type="text" class="form-control @error('institusi') is-invalid @enderror"
                                 id="" value="Dosen" name="institusi" hidden>
                             <div class="mb-3">
-                                <label for="pengaju2" class="form-label">Data Mahasiswa / Dosen <span
+                                <label for="data_pengaju2" class="form-label">Data Mahasiswa / Dosen <span
                                         class="text-danger">(Jika Bersama Dosen Yang Lain dan atau Bersama
                                         Mahasiswa Harap diisi)</span></label>
-                                <input type="file" class="form-control " name="data_pengaju2" id="pengaju2">
+                                <input type="file" class="form-control " name="data_pengaju2" id="data_pengaju2">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .xlsx</span>
                                 {{-- @error('data_pengaju2')
@@ -153,7 +153,15 @@
                                         @enderror --}}
                             </div>
                             <div class="mb-3">
-                                @include('admin.layout.jurusan')
+                                {{-- @include('admin.layout.jurusan') --}}
+                                <label for="jurusan" class="form-label">Jurusan</label>
+                                <select class="form-select" aria-label="Default select example" name="jurusan" id="jurusan">
+                                    <option value="">Pilih Jurusan</option>
+                                    <option value="Teknik Informatika" {{ old('jurusan',$p->jurusan) == 'Teknik Informatika' ? 'selected' : '' }}>Teknik Informatika</option>
+                                    <option value="Teknik" {{ old('jurusan', $p->jurusan) == 'Teknik' ? 'selected' : '' }}>Teknik</option>
+                                    <option value="Kesehatan" {{ old('jurusan', $p->jurusan) == 'Kesehatan' ? 'selected' : '' }}>Kesehatan</option>
+                                </select>
+                                
                                 {{-- @error('jurusan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -161,7 +169,19 @@
                                         @enderror --}}
                             </div>
                             <div class="mb-3">
-                                @include('admin.layout.prodi')
+                                {{-- @include('admin.layout.prodi') --}}
+                                <label for="prodi" class="form-label">Prodi</label>
+                                <select class="form-select" aria-label="Default select example" name="prodi" id="prodi">
+                                    <option value="">Pilih Prodi</option>
+                                    <option value="D3 Teknik Informatika" {{ old('prodi', $p->prodi) == 'D3 Teknik Informatika' ? 'selected' : '' }}>D3 Teknik Informatika</option>
+                                    <option value="D4 Rekayasa Perangkat Lunak" {{ old('prodi', $p->prodi) == 'D4 Rekayasa Perangkat Lunak' ? 'selected' : '' }}>D4 Rekayasa Perangkat Lunak</option>
+                                    <option value="D4 Sistem Informasi Kota Cerdas" {{ old('prodi', $p->prodi) == 'D4 Sistem Informasi Kota Cerdas' ? 'selected' : '' }}>D4 Sistem Informasi Kota Cerdas</option>
+                                    <option value="D3 Teknik Mesin" {{ old('prodi', $p->prodi) == 'D3 Teknik Mesin' ? 'selected' : '' }}>D3 Teknik Mesin</option>
+                                    <option value="D4 Perancangan Manufaktur" {{ old('prodi', $p->prodi) == 'D4 Perancangan Manufaktur' ? 'selected' : '' }}>D4 Perancangan Manufaktur</option>
+                                    <option value="D3 Teknik Pendingin dan Tata Udara" {{ old('prodi', $p->prodi) == 'D3 Teknik Pendingin dan Tata Udara' ? 'selected' : '' }}>D3 Teknik Pendingin dan Tata Udara</option>
+                                    <option value="D4 Teknologi Rekayasa Instrumentasi dan Kontrol" {{ old('prodi', $p->prodi) == 'D4 Teknologi Rekayasa Instrumentasi dan Kontrol' ? 'selected' : '' }}>D4 Teknologi Rekayasa Instrumentasi dan Kontrol</option>
+                                    <option value="D3 Keperawatan" {{ old('prodi', $p->prodi) == 'D3 Keperawatan' ? 'selected' : '' }}>D3 Keperawatan</option>
+                                </select>
                                 {{-- @error('prodi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -174,18 +194,14 @@
                         <div class="container">
                             <label for="paten" class="form-label">Jenis Paten</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jenis_paten" id="paten"
-                                    value="Paten">
-                                <label class="form-check-label" for="Paten">
-                                    Paten
-                                </label>
+                                <input class="form-check-input" type="radio" name="jenis_paten" value="Paten" id="paten"
+                                {{ old('jenis_paten', $p->jenis_paten) == 'Paten' ? 'checked' : '' }}>
+                                <label class="form-check-label" for="paten">Paten</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="jenis_paten" id="paten_s"
-                                    value="Paten sederhana">
-                                <label class="form-check-label" for="Paten sederhana" for="paten_s">
-                                    Paten Sederhana
-                                </label>
+                                <input class="form-check-input" type="radio" name="jenis_paten" value="Paten sederhana" id="paten_s"
+                                {{ old('jenis_paten', $p->jenis_paten) == 'Paten sederhana' ? 'checked' : '' }}>
+                                <label class="form-check-label" for="paten_s">Paten Sederhana</label>
                             </div>
                             <div class="mb-3">
                                 <label for="judul_paten" class="form-label">Judul Paten</label>
@@ -204,7 +220,7 @@
                                     name="abstrak_paten">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
+                                    dari 10mb</span>
                                 {{-- @error('abstrak_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -217,7 +233,7 @@
                                     name="deskripsi_paten">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
+                                    dari 10mb</span>
                                 {{-- @error('deskripsi_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -230,7 +246,7 @@
                                     name="pengalihan_hak">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
+                                    dari 10mb</span>
                                 {{-- @error('pengalihan_hak')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -243,7 +259,7 @@
                                     name="klaim">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
+                                    dari 10mb</span>
                                 {{-- @error('klaim')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -257,7 +273,7 @@
                                     name="pernyataan_kepemilikan">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
+                                    dari 10mb</span>
                                 {{-- @error('pernyataan_kepemilikan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -270,7 +286,7 @@
                                     name="surat_kuasa">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
+                                    dari 10mb</span>
                                 {{-- @error('surat_kuasa')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -283,7 +299,7 @@
                                     name="gambar_paten">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
+                                    dari 10mb</span>
                                 {{-- @error('gambar_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -296,7 +312,7 @@
                                     name="gambar_tampilan">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                    dari 2mb</span>
+                                    dari 10mb</span>
                                 {{-- @error('gambar_tampilan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -361,7 +377,105 @@
         </script>
         <script src="{{ asset('assets-user/js/jquery.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <script>
+            $(document).ready(function() {
+                $('#uploadForm').submit(function(e) {
+                    e.preventDefault(); // Prevent automatic form submission
+        
+                    // Non-file inputs
+                    const fields = {
+                        nama: $('#nama_lengkap').val(),
+                        alamat: $('#alamat').val(),
+                        telepon: $('#no_telepon').val(),
+                        tl: $('#tanggal_lahir').val(),
+                        email: $('#email').val(),
+                        warga: $('#warga').val(),
+                        pos: $('#pos').val(),
+                        jurusan: $('#jurusan').val(),
+                        prodi: $('#prodi').val(),
+                        judul_paten: $('#judul_paten').val(),
+                        tanggal_pengajuan: $('#tanggalpengajuan').val(),
+                        jenis_paten: $('input[name="jenis_paten"]:checked').val(),
+                    };
+        
+                    // File inputs
+                    const files = {
+                        ktp: $('#ktp')[0].files[0],
+                        anggota_inventor: $('#data_pengaju2')[0].files[0],
+                        abstrak: $('#abstrak')[0].files[0],
+                        deskripsi: $('#deskripsi')[0].files[0],
+                        pengalihan_hak: $('#pengalihan_hak')[0].files[0],
+                        klaim: $('#klaim')[0].files[0],
+                        kepemilikan: $('#kepemilikan')[0].files[0],
+                        kuasa: $('#kuasa')[0].files[0],
+                        g_paten: $('#g_paten')[0].files[0],
+                        g_tampilan: $('#g_tampilan')[0].files[0],
+                    };
+        
+                    const maxSize = 10 * 1024 * 1024; // Max size: 10MB
+                    const allowedExtensionPDF = /(\.pdf)$/i;
+                    const allowedExtensionExcel = /(\.xlsx)$/i;
+        
+                    // Validation function
+                    function showError(message) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: message,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                    }
+        
+                    // Validate non-file inputs
+                    for (var field in fields) {
+                        if (!fields[field]) {
+                            showError("Tolong Masukkan " + field.replace('_', ' ').toUpperCase() + " Anda!");
+                            return false;
+                        }
+                    }
+        
+                    // List of mandatory file fields
+                    const mandatoryFiles = ['ktp', 'abstrak', 'deskripsi', 'pengalihan_hak', 'klaim', 'kepemilikan', 'kuasa', 'g_paten', 'g_tampilan'];
+        
+                    // Validate file inputs
+                    for (var file in files) {
+                        // Check mandatory files that are empty
+                        if (mandatoryFiles.includes(file) && !files[file]) {
+                            showError("File " + file.replace('_', ' ').toUpperCase() + " Wajib Diisi!");
+                            return false;
+                        }
+        
+                        // Check file type for anggota inventor only
+                        if (file === 'anggota_inventor' && files[file]) {
+                            if (!allowedExtensionExcel.exec(files[file].name)) {
+                                showError("Tolong Masukkan Data anggota inventor Dengan Ekstensi .xlsx!");
+                                return false;
+                            }
+                        } else if (files[file]) {
+                            // Validate other files
+                            if (!allowedExtensionPDF.exec(files[file].name)) {
+                                showError("Tolong Masukkan " + file.replace('_', ' ').toUpperCase() + " Dengan Ekstensi .pdf!");
+                                return false;
+                            }
+        
+                            // Validate file size
+                            if (files[file].size > maxSize) {
+                                showError("Ukuran File " + file.replace('_', ' ').toUpperCase() + " Lebih Dari 10 MB!");
+                                return false;
+                            }
+                        }
+                    }
+        
+                    // If all validations pass, submit the form
+                    this.submit();
+                });
+            });
+        </script>
+
+            {{-- <script>
             $(document).ready(function() {
                 $('#uploadForm').submit(function(e) {
                     e.preventDefault(); // Mencegah form terkirim secara otomatis
@@ -864,7 +978,8 @@
                     this.submit();
                 });
             });
-        </script>
+        </script> --}}
+    </div>
 </body>
 
 </html>

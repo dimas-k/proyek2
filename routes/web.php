@@ -188,9 +188,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/desain-industri/cari', [AdminDesainIndustriController::class, 'cariDI']);
 
     Route::get('/admin/desain-industri/tambah/dosen/', [AdminDesainIndustriController::class, 'tambahDiDosen']);
-    Route::post('/admin/desain-industri/tambah/dosen/store/', [AdminDesainIndustriController::class, 'storeDiDosen']);
+    Route::post('/admin/desain-industri/tambah/dosen/store', [AdminDesainIndustriController::class, 'storeDiDosen']);
     Route::get('/admin/desain-industri/tambah/umum/', [AdminDesainIndustriController::class, 'tambahDiUmum']);
-    route::post('/admin/desain-industri/tambah/umum/store/', [AdminDesainIndustriController::class, 'storeDiUmum']);
+    route::post('/admin/desain-industri/tambah/umum/store', [AdminDesainIndustriController::class, 'storeDiUmum']);
 
     Route::get('/admin/pengguna/umum', [AdminController::class, 'lihatUmum'])->name('lihat.umum');
     Route::post('/admin/pengguna/umum/tambah', [AdminController::class, 'umumNew'])->name('tambah.umum');

@@ -74,6 +74,16 @@
                                         target="_blank">Lihat KTP</a></td>
                             </tr>
                             <tr>
+                                <th>Anggota Inventor</th>
+                                <td>:        
+                                @if($hc->data_pengaju2)
+                                    <a href="{{ asset('storage/' . $hc->data_pengaju2) }}" target="_blank">Download xlsx Anggota Inventor</a>
+                                @else
+                                    Tidak ada data untuk diunduh.
+                                @endif
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>Email</th>
                                 <td>: {{ $hc->email }}</td>
                             </tr>
@@ -102,14 +112,6 @@
                                         {{ $hc->prodi }}
                                     @endif
                                 </td>
-                            </tr>
-                            <tr>
-                                <th></th>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <th></th>
-                                <td></td>
                             </tr>
                             <tr>
                                 <th>Jenis Ciptaan</th>

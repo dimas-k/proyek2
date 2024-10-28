@@ -28,16 +28,8 @@
                         <td>: {{ $di->nama_lengkap }}</td>
                     </tr>
                     <tr>
-                        <th>Alamat</th>
-                        <td>: {{ $di->alamat }}</td>
-                    </tr>
-                    <tr>
-                        <th>No Telepon</th>
-                        <td>: {{ $di->no_telepon }}</td>
-                    </tr>
-                    <tr>
                         <th>Email</th>
-                        <td>: {{ $di->email }}</td>
+                        <td>: <a href="mailto:{{ $di->email }}">{{ $di->email }}</a></td>
                     </tr>
                     <tr>
                         <th>Jenis Disain Industri</th>

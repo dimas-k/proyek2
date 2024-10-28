@@ -63,10 +63,6 @@
                                         <td>: {{ $di->kode_pos }}</td>
                                     </tr>
                                     <tr>
-                                        <th></th>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
                                         <th>Jenis Disain Industri</th>
                                         <td>: {{ $di->jenis_di }}</td>
                                     </tr>

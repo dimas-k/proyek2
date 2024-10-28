@@ -96,7 +96,7 @@
                                             id="ktp" name="ktp_inventor">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -176,7 +176,7 @@
                                             id="abstrak" placeholder="" name="abstrak_paten">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('abstrak_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -190,7 +190,7 @@
                                             id="deskripsi" placeholder="" name="deskripsi_paten">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('deskripsi_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -204,7 +204,7 @@
                                             id="pengalihan_hak" placeholder="" name="pengalihan_hak">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('pengalihan_hak')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -218,7 +218,7 @@
                                             id="klaim" placeholder="" name="klaim">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('klaim')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -233,7 +233,7 @@
                                             id="kepemilikan" placeholder="" name="pernyataan_kepemilikan">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('pernyataan_kepemilikan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -247,7 +247,7 @@
                                             id="kuasa" placeholder="" name="surat_kuasa">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('surat_kuasa')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -261,7 +261,7 @@
                                             id="g_paten" placeholder="" name="gambar_paten">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('gambar_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -275,7 +275,7 @@
                                             id="g_tampilan" placeholder="" name="gambar_tampilan">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('gambar_tampilan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

@@ -73,7 +73,6 @@
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-
                                             </td>
                                         </tr>
                                         <tr>
@@ -81,7 +80,6 @@
                                             <td>
                                                 <input type="email" id="email" class="form-control" name="email"
                                                     value="{{ $hc->email }}">
-
                                             </td>
                                         </tr>
                                         <tr>
@@ -89,7 +87,6 @@
                                             <td>
                                                 <input type="text" id="warga" class="form-control"
                                                     value="{{ $hc->kewarganegaraan }}" name="kewarganegaraan">
-
                                             </td>
                                         </tr>
                                         <tr>
@@ -108,7 +105,7 @@
                                             </th>
                                             <td>
                                                 <input type="file" class="form-control " name="data_pengaju2"
-                                                    id="pengaju2">
+                                                    id="data_pengaju2">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>File harus bertipe .xlsx</span>
                                             </td>
@@ -116,20 +113,40 @@
                                         <tr>
                                             <th>jurusan</th>
                                             <td>
-                                                @include('dosen.layout.jurusan-edit')
+                                                <select class="form-select" aria-label="Default select example" name="jurusan" id="jurusan">
+                                                    <option value="">Pilih Jurusan</option>
+                                                    <option value="Teknik Informatika" {{ old('jurusan',$hc->jurusan) == 'Teknik Informatika' ? 'selected' : '' }}>Teknik Informatika</option>
+                                                    <option value="Teknik" {{ old('jurusan', $hc->jurusan) == 'Teknik' ? 'selected' : '' }}>Teknik</option>
+                                                    <option value="Kesehatan" {{ old('jurusan', $hc->jurusan) == 'Kesehatan' ? 'selected' : '' }}>Kesehatan</option>
+                                                </select>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>prodi</th>
                                             <td>
-                                                @include('dosen.layout.prodi-edit')
+                                                <select class="form-select" aria-label="Default select example" name="prodi" id="prodi">
+                                                    <option value="">Pilih Prodi</option>
+                                                    <option value="D3 Teknik Informatika" {{ old('prodi', $hc->prodi) == 'D3 Teknik Informatika' ? 'selected' : '' }}>D3 Teknik Informatika</option>
+                                                    <option value="D4 Rekayasa Perangkat Lunak" {{ old('prodi', $hc->prodi) == 'D4 Rekayasa Perangkat Lunak' ? 'selected' : '' }}>D4 Rekayasa Perangkat Lunak</option>
+                                                    <option value="D4 Sistem Informasi Kota Cerdas" {{ old('prodi', $hc->prodi) == 'D4 Sistem Informasi Kota Cerdas' ? 'selected' : '' }}>D4 Sistem Informasi Kota Cerdas</option>
+                                                    <option value="D3 Teknik Mesin" {{ old('prodi', $hc->prodi) == 'D3 Teknik Mesin' ? 'selected' : '' }}>D3 Teknik Mesin</option>
+                                                    <option value="D4 Perancangan Manufaktur" {{ old('prodi', $hc->prodi) == 'D4 Perancangan Manufaktur' ? 'selected' : '' }}>D4 Perancangan Manufaktur</option>
+                                                    <option value="D3 Teknik Pendingin dan Tata Udara" {{ old('prodi', $hc->prodi) == 'D3 Teknik Pendingin dan Tata Udara' ? 'selected' : '' }}>D3 Teknik Pendingin dan Tata Udara</option>
+                                                    <option value="D4 Teknologi Rekayasa Instrumentasi dan Kontrol" {{ old('prodi', $hc->prodi) == 'D4 Teknologi Rekayasa Instrumentasi dan Kontrol' ? 'selected' : '' }}>D4 Teknologi Rekayasa Instrumentasi dan Kontrol</option>
+                                                    <option value="D3 Keperawatan" {{ old('prodi', $hc->prodi) == 'D3 Keperawatan' ? 'selected' : '' }}>D3 Keperawatan</option>
+                                                </select>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Jenis Ciptaan</th>
                                             <td>
-                                                
-
+                                                <label for="jenis_ciptaan" class="form-label">Jenis Ciptaan</label>
+                                                <select class="form-select" aria-label="Default select example" name="jenis_ciptaan" id="jenis_ciptaan">
+                                                    <option value="">Pilih Jenis Hak Cipta</option>
+                                                    <option value="Karya Tulis" {{ old('jenis_ciptaan', $hc->jenis_ciptaan) == 'Karya Tulis' ? 'selected' : '' }}>Karya Tulis</option>
+                                                    <option value="Program Komputer" {{ old('jenis_ciptaan', $hc->jenis_ciptaan) == 'Program Komputer' ? 'selected' : '' }}>Program Komputer</option>
+                                                    <option value="Karya Lainnya" {{ old('jenis_ciptaan', $hc->jenis_ciptaan) == 'Karya Lainnya' ? 'selected' : '' }}>Karya Lainnya</option>
+                                                </select>
                                             </td>
                                         </tr>
                                         <tr>
@@ -138,7 +155,6 @@
                                                 <input type="text" class="form-control " id="judul_ciptaan"
                                                     placeholder="Masukkan Judul Ciptaan" name="judul_ciptaan"
                                                     value="{{ $hc->judul_ciptaan }}">
-
                                             </td>
                                         </tr>
                                         <tr>
@@ -146,7 +162,6 @@
                                             <td>
                                                 <textarea class="form-control " placeholder="Masukkan Uraian Siangkat" id="uraian" name="uraian_singkat"
                                                     id="floatingTextarea2" style="height: 150px">{{ $hc->uraian_singkat }}</textarea>
-
                                             </td>
                                         </tr>
                                         <tr>
@@ -158,7 +173,6 @@
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-
                                             </td>
                                         </tr>
                                         <tr>
@@ -170,7 +184,6 @@
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-
                                             </td>
                                         </tr>
                                         <tr>
@@ -182,7 +195,6 @@
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-
                                             </td>
                                         </tr>
                                         <th>Tanggal pengajuan</th>
@@ -190,7 +202,6 @@
                                             <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
                                                 class="form-control " id="tanggalpengajuan"
                                                 value="{{ $hc->tanggal_permohonan }}">
-
                                         </td>
                                         </tr>
                                     </table>

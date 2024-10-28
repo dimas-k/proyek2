@@ -65,7 +65,7 @@
                 <tbody>
                     @foreach ($prodi as $i => $p)
                         <tr>
-                            <th scope="row">{{ ($orang->currentPage() - 1) * $orang->perPage() + $loop->iteration }}</th>
+                            <th scope="row">{{ ($prodi->currentPage() - 1) * $prodi->perPage() + $loop->iteration }}</th>
                             <td>{{ $p->nama_lengkap }}</td>
                             <td>{{ $p->jenis_ciptaan }}</td>
                             <td>{{ $p->judul_ciptaan }}</td>
@@ -73,7 +73,6 @@
                             <td>{{ $p->prodi }}</td>
                             <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y') }}</td>
                             <td>{{ $p->status }}</td>
-                            {{-- <td><a class="btn btn-primary" href={{ Route('paten.show', $p->id) }}>Selengkapnya</a></td> --}}
                         </tr>
                     @endforeach
                 </tbody>

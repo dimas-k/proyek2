@@ -73,6 +73,7 @@ class AdminHaKCiptaController extends Controller
     public function show(string $id)
     {
         $hc = HakCipta::with('cekhc')->find($id);
+        // dd($hc);
         return view('admin.adminhk.showhc.index', compact('hc'));
     }
 
@@ -238,6 +239,8 @@ class AdminHaKCiptaController extends Controller
 
         // Simpan perubahan ke database
         $hc->save($validasidata);
+        return redirect('/admin/hak-cipta')->with('success','Data hak cipta berhasil di update');
+
     }
 
     /**

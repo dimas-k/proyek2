@@ -48,125 +48,124 @@
                                     <div class="mb-3">
                                         <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                         <input type="text"
-                                            class="form-control "
-                                            id="nama_lengkap" placeholder="Masukkan Nama"name="nama_lengkap" value="{{ auth()->user()->nama_lengkap}}">
-                                        {{-- @error('nama_lengkap')
+                                            class="form-control @error('nama_lengkap') is-invalid @enderror"
+                                            id="nama_lengkap" placeholder="Masukkan Nama" name="nama_lengkap" value="{{ auth()->user()->nama_lengkap }}">
+                                        @error('nama_lengkap')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="alamat" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control "
+                                        <input type="text" class="form-control @error('alamat') is-invalid @enderror"
                                             id="alamat" placeholder="Masukkan Alamat" name="alamat" value="{{ auth()->user()->alamat }}">
-                                        {{-- @error('alamat')
+                                        @error('alamat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="no_telepon" class="form-label">No telepon</label>
                                         <input type="number"
-                                            class="form-control"
+                                            class="form-control @error('no_telepon') is-invalid @enderror"
                                             id="no_telepon" placeholder="Masukkan No telepon" name="no_telepon" value="{{ auth()->user()->no_telepon }}">
-                                        {{-- @error('no_telepon')
+                                        @error('no_telepon')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                                         <input type="date" name="tanggal_lahir" id="tanggal_lahir"
-                                            class="form-control " value="{{ old('tanggal_lahir') }}">
-                                        {{-- @error('tanggal_lahir')
+                                            class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{ old('tanggal_lahir') }}">
+                                        @error('tanggal_lahir')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="ktp" class="form-label">KTP Inventor</label>
                                         <input type="file"
-                                            class="form-control "
+                                            class="form-control @error('ktp_inventor') is-invalid @enderror"
                                             id="ktp" name="ktp_inventor">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        {{-- @error('ktp_inventor')
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 10mb</span>
+                                        @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control "
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
                                             id="email" placeholder="Masukkan Email" name="email" value="{{ auth()->user()->email }}">
-                                        {{-- @error('email')
+                                        @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="warga" class="form-label">Kewarganegaraan</label>
                                         <input type="text"
-                                            class="form-control "
+                                            class="form-control @error('kewarganegaraan') is-invalid @enderror"
                                             id="warga" placeholder="Masukkan Kewarganegaraan"
                                             name="kewarganegaraan" value="{{ old('kewarganegaraan') }}">
-                                        {{-- @error('kewarganegaraan')
+                                        @error('kewarganegaraan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="pos" class="form-label">Kode Pos</label>
                                         <input type="number"
-                                            class="form-control " id="pos"
+                                            class="form-control @error('kode_pos') is-invalid @enderror" id="pos"
                                             placeholder="Masukkan Kode Pos" name="kode_pos" value="{{ old('kode_pos') }}">
-                                        {{-- @error('kode_pos')
+                                        @error('kode_pos')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <input type="text"
-                                        class="form-control " id=""
+                                        class="form-control" id=""
                                         value="Dosen" name="institusi" hidden>
                                     <div class="mb-3">
-                                        <label for="pengaju2" class="form-label">Data Mahasiswa / Dosen <span
+                                        <label for="data_pengaju2" class="form-label">Data Mahasiswa / Dosen <span
                                                 class="text-danger">(Jika Bersama Dosen Yang Lain dan atau Bersama
                                                 Mahasiswa Harap diisi)</span></label>
                                         <input type="file"
                                             class="form-control @error('data_pengaju2') is-invalid @enderror"
-                                            name="data_pengaju2" id="pengaju2">
+                                            name="data_pengaju2" id="data_pengaju2">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .xlsx</span>
-                                        {{-- @error('data_pengaju2')
+                                        @error('data_pengaju2')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         @include('dosen.layout.jurusan')
-                                        {{-- @error('jurusan')
+                                        @error('jurusan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
-
                                         @include('dosen.layout.prodi')
-                                        {{-- @error('prodi')
+                                        @error('prodi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -174,86 +173,87 @@
                                 <div class="container">
                                     <div class="mb-3">
                                         @include('dosen.layout.jenis-ciptaan')
-                                        {{-- @error('jenis_ciptaan')
+                                        @error('jenis_ciptaan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="judul_ciptaan" class="form-label">Judul Ciptaan</label>
                                         <input type="text"
-                                            class="form-control "
+                                            class="form-control @error('judul_ciptaan') is-invalid @enderror"
                                             placeholder="Masukkan Judul Ciptaan" name="judul_ciptaan" id="judul_ciptaan" value="{{ old('judul_ciptaan') }}">
-                                        {{-- @error('judul_ciptaan')
+                                        @error('judul_ciptaan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="uraian" class="form-label">Uraian Singkat Ciptaan</label>
-                                        <textarea class="form-control " placeholder="Masukkan Uraian Singkat"
+                                        <textarea class="form-control @error('uraian_singkat') is-invalid @enderror" placeholder="Masukkan Uraian Singkat"
                                             name="uraian_singkat" id="uraian" style="height: 150px">{{ old('uraian_singkat') }}</textarea>
-                                        {{-- @error('uarian_singkat')
+                                        @error('uraian_singkat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="invensi" class="form-label">Dokumen Invensi (Manual
                                             Book/Buku/Dll)</label>
                                         <input type="file"
-                                            class="form-control "
-                                            placeholder="" name="dokumen_invensi" id="invensi">
+                                            class="form-control @error('dokumen_invensi') is-invalid @enderror"
+                                            name="dokumen_invensi" id="invensi">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        {{-- @error('dokumen_invensi')
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 10mb</span>
+                                        @error('dokumen_invensi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label  class="form-label" for="surat_pengalihan">Surat Pengalihan Hak Cipta</label>
                                         <input type="file"
-                                            class="form-control "
-                                            placeholder="" name="surat_pengalihan" id="surat_pengalihan">
+                                            class="form-control @error('surat_pengalihan') is-invalid @enderror"
+                                            name="surat_pengalihan" id="surat_pengalihan">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        {{-- @error('surat_pengalihan')
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 10mb</span>
+                                        @error('surat_pengalihan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="pernyataan" class="form-label">Surat Pernyataan</label>
                                         <input type="file" id="pernyataan"
-                                            class="form-control "
-                                            placeholder="" name="surat_pernyataan">
+                                            class="form-control @error('surat_pernyataan') is-invalid @enderror"
+                                            name="surat_pernyataan">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
-                                        {{-- @error('surat_pernyataan')
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 10mb</span>
+                                        @error('surat_pernyataan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="tanggalpengajuan" class="form-label" >Tanggal Pengajuan</label>
                                         <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
-                                            class="form-control" value="{{ old('tanggal_permohonan') }}">
-                                        {{-- @error('tanggal_permohonan')
+                                            class="form-control @error('tanggal_permohonan') is-invalid @enderror" value="{{ old('tanggal_permohonan') }}">
+                                        @error('tanggal_permohonan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                     <p class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>Harap
                                         Isi semua Form Dengan
                                         Benar</p>
+                                        <br>
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal">
                                         Simpan

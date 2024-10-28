@@ -27,12 +27,8 @@
                         <td>: {{ $paten->nama_lengkap }}</td>
                     </tr>
                     <tr>
-                        <th>Alamat</th>
-                        <td>: {{ $paten->alamat }}</td>
-                    </tr>
-                    <tr>
-                        <th>No Telepon</th>
-                        <td>: {{ $paten->no_telepon }}</td>
+                        <th>Email</th>
+                        <td>:  <a href="mailto:{{ $paten->email }}">{{ $paten->email }}</a></td>
                     </tr>
                     <tr>
                         <th>Jenis Paten</th>

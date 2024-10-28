@@ -16,7 +16,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/polindra21.png') }}" />
 
     <!-- TITLE -->
-    <title>SIKI POLINDRA | Dosen | Dashbord</title>
+    <title>SIKI POLINDRA | Umum | Dashbord</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('assets-user/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -343,7 +343,7 @@
                 } else {
                     var allowedExtension = /(\.pdf)$/i; // Hanya memperbolehkan file berformat PDF
                     var allowedExtensionExel = /(\.xlsx)$/i; // Hanya memperbolehkan file berformat exel
-                    var maxSize = 2 * 1024 * 1024; // Maksimal ukuran file adalah 2 MB
+                    var maxSize = 10 * 1024 * 1024; // Maksimal ukuran file adalah 2 MB
 
                     // Validasi ekstensi file
                     // Cek apakah file diinputkan
@@ -409,7 +409,7 @@
                         Swal.fire({
                             icon: "error",
                             title: "Oops... Ada yang salah...",
-                            text: "Ukuran File KTP Lebih Dari 2mb!",
+                            text: "Ukuran File KTP Lebih Dari 10mb!",
                             position: "top-end",
                             showConfirmButton: false,
                             timer: 2500
@@ -420,7 +420,7 @@
                         Swal.fire({
                             icon: "error",
                             title: "Oops... Ada yang salah...",
-                            text: "Ukuran File Gambar Desain Lebih Dari 2mb!",
+                            text: "Ukuran File Gambar Desain Lebih Dari 10mb!",
                             position: "top-end",
                             showConfirmButton: false,
                             timer: 2500
@@ -431,7 +431,7 @@
                         Swal.fire({
                             icon: "error",
                             title: "Oops... Ada yang salah...",
-                            text: "Ukuran Uraian Desain Lebih Dari 2mb!",
+                            text: "Ukuran Uraian Desain Lebih Dari 10mb!",
                             position: "top-end",
                             showConfirmButton: false,
                             timer: 2500
@@ -442,7 +442,7 @@
                         Swal.fire({
                             icon: "error",
                             title: "Oops... Ada yang salah...",
-                            text: "Ukuran File Pernyataan Kepemilikan Lebih Dari 2mb!",
+                            text: "Ukuran File Pernyataan Kepemilikan Lebih Dari 10mb!",
                             position: "top-end",
                             showConfirmButton: false,
                             timer: 2500
@@ -453,7 +453,7 @@
                         Swal.fire({
                             icon: "error",
                             title: "Oops... Ada yang salah...",
-                            text: "Ukuran File Surat Pengalihan Hak Lebih Dari 2mb!",
+                            text: "Ukuran File Surat Pengalihan Hak Lebih Dari 10mb!",
                             position: "top-end",
                             showConfirmButton: false,
                             timer: 2500

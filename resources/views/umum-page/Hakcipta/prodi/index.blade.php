@@ -33,7 +33,7 @@
                     <option value="D3 Teknik Mesin">D3 Teknik Mesin</option>
                     <option value="D4 Perancangan Manufaktur">D4 Perancangan Manufaktur</option>
                     <option value="D3 Teknik Pendingin dan Tata Udara">D3 Teknik Pendingin dan Tata Udara</option>
-                    <option value="D4 Teknik instrumentasi Kontrol">D4 Teknik instrumentasi Kontrol</option>
+                    <option value="D4 Teknologi Rekayasa Instrumentasi dan Kontrol">D4 Teknologi Rekayasa Instrumentasi dan Kontrol</option>
                     <option value="D3 Keperawatan">D3 Keperawatan</option>
                 </select>
                 <button type="submit" class="btn btn-sm btn-primary ms-3">Cari</button>

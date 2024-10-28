@@ -16,7 +16,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/polindra21.png') }}" />
 
     <!-- TITLE -->
-    <title>SIKI POLINDRA | Dosen | Hak-Cipta | Lihat</title>
+    <title>SIKI POLINDRA | Umum | Hak-Cipta | Lihat</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('assets-user/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -39,11 +39,6 @@
 
 <body class="app sidebar-mini ltr light-mode">
 
-    <!-- GLOBAL-LOADER -->
-    {{-- <div id="global-loader">
-        <img src={{ asset('assets-user/images/loader.svg') }} class="loader-img" alt="Loader">
-    </div> --}}
-    <!-- /GLOBAL-LOADER -->
 
     <!-- PAGE -->
     <div class="page">

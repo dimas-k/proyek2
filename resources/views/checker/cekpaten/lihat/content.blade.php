@@ -58,6 +58,11 @@
                                                 target="_blank">Lihat KTP</a></td>
                                     </tr>
                                     <tr>
+                                        <th>Anggota Inventor</th>
+                                        <td>: <a href={{ asset('storage/' . $paten->data_pengaju2) }} class=""
+                                                target="_blank">Download xlsx Anggota Inventor</a></td>
+                                    </tr>
+                                    <tr>
                                         <th>Email</th>
                                         <td>: {{ $paten->email }}</td>
                                     </tr>
@@ -86,10 +91,6 @@
                                                 {{ $paten->prodi }}
                                             @endif
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <th></th>
-                                        <td></td>
                                     </tr>
                                     <tr>
                                         <th>Jenis Paten</th>
@@ -150,7 +151,7 @@
                                     </tr>
                                     <tr>
                                         <th>Sertifikat Paten</th>
-                                        <td>: @if ($hc->sertifikat_paten != '')
+                                        <td>: @if ($paten->sertifikat_paten != '')
                                                 <a href={{ asset('storage/' . $hc->sertifikat_paten) }}
                                                     class="" target="_blank">Lihat sertifikat</a>
                                             @else

@@ -63,10 +63,6 @@
                                         <td>: {{ $paten->kode_pos }}</td>
                                     </tr>
                                     <tr>
-                                        <th></th>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
                                         <th>Jenis Paten</th>
                                         <td>: {{ $paten->jenis_paten }}</td>
                                     </tr>

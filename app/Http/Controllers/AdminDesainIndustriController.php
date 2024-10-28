@@ -281,6 +281,7 @@ class AdminDesainIndustriController extends Controller
 
     public function storeDiDosen(Request $request)
     {
+        // Validate input data
         $validasidata = $request->validate([
             'nama_lengkap' => 'required',
             'alamat' => 'required',
@@ -291,7 +292,7 @@ class AdminDesainIndustriController extends Controller
             'kewarganegaraan' => 'required',
             'kode_pos' => 'required',
             'institusi' => 'required',
-            'data_pengaju2' => 'mimes:xlxs',
+            'data_pengaju2' => 'mimes:xlsx',
             'jurusan' => 'required',
             'prodi' => 'required',
             'jenis_di' => 'required',
@@ -302,43 +303,47 @@ class AdminDesainIndustriController extends Controller
             'surat_pengalihan' => 'required|mimes:pdf',
             'tanggal_permohonan' => 'required'
         ]);
+    
+        // Create a new DesainIndustri instance
         $di = new DesainIndustri();
         $di->user_id = Auth::user()->id;
         $di->nama_lengkap = $request->nama_lengkap;
         $di->alamat = $request->alamat;
         $di->no_telepon = $request->no_telepon;
         $di->tanggal_lahir = $request->tanggal_lahir;
-        if ($request->hasFile('ktp_inventor')) {
-            $di->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-di');
-        }
         $di->email = $request->email;
         $di->kewarganegaraan = $request->kewarganegaraan;
         $di->kode_pos = $request->kode_pos;
         $di->institusi = $request->institusi;
-        if ($request->hasFile('data_pengaju2')) {
-            $di->data_pengaju2 = $request->file('data_pengaju2')->store('dokumen-di');
-        }
         $di->jurusan = $request->jurusan;
         $di->prodi = $request->prodi;
         $di->jenis_di = $request->jenis_di;
         $di->judul_di = $request->judul_di;
-        if ($request->hasFile('uraian_di')) {
-            $di->uraian_di = $request->file('uraian_di')->store('dokumen-di');
-        }
-        if ($request->hasFile('gambar_di')) {
-            $di->gambar_di = $request->file('gambar_di')->store('dokumen-di');
-        } 
-        if ($request->hasFile('surat_kepemilikan')) {
-            $di->surat_kepemilikan = $request->file('surat_kepemilikan')->store('dokumen-di');
-        }
-        if ($request->hasFile('surat_pengalihan')) {
-            $di->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-di');
-        }
         $di->tanggal_permohonan = $request->tanggal_permohonan;
+    
+        // Handle file uploads
+        $files = [
+            'ktp_inventor' => 'ktp_inventor',
+            'data_pengaju2' => 'data_pengaju2',
+            'uraian_di' => 'uraian_di',
+            'gambar_di' => 'gambar_di',
+            'surat_kepemilikan' => 'surat_kepemilikan',
+            'surat_pengalihan' => 'surat_pengalihan'
+        ];
+    
+        foreach ($files as $field => $storageName) {
+            if ($request->hasFile($field)) {
+                $di->{$storageName} = $request->file($field)->store('dokumen-di');
+            }
+        }
+    
+        // Save the model
         $di->save($validasidata);
-
-        return redirect('/admin/desain-industri')->with('success', 'Data desain industri berhasil di tambahkan');
+    
+        // Redirect with success message
+        return redirect('/admin/desain-industri')->with('success', 'Data desain industri berhasil ditambahkan');
     }
+    
     public function storeDiUmum(Request $request)
     {
         $validasidata = $request->validate([

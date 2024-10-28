@@ -28,16 +28,8 @@
                         <td>: {{ $hc->nama_lengkap }}</td>
                     </tr>
                     <tr>
-                        <th>Alamat</th>
-                        <td>: {{ $hc->alamat }}</td>
-                    </tr>
-                    <tr>
-                        <th>No Telepon</th>
-                        <td>: {{ $hc->no_telepon }}</td>
-                    </tr>
-                    <tr>
                         <th>Email</th>
-                        <td>: {{ $hc->email }}</td>
+                        <td>: <a href="mailto:{{ $hc->email }}">{{ $hc->email }}</a></td>
                     </tr>
                     <tr>
                         <th>Jenis Ciptaann</th>
@@ -54,7 +46,7 @@
                     <tr>
                         <th>Dokumen Invensi</th>
                         <td>
-                            :<a href={{ asset('storage/' . $hc->dokumen_invensi) }} class=""
+                            : <a href={{ asset('storage/' . $hc->dokumen_invensi) }} class=""
                                 target="_blank">Lihat Dokumen Invensi</a>
                         </td>
                     </tr>

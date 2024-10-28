@@ -63,10 +63,6 @@
                                         <td>: {{ $hc->kode_pos }}</td>
                                     </tr>
                                     <tr>
-                                        <th></th>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
                                         <th>Jenis Ciptaann</th>
                                         <td>: {{ $hc->jenis_ciptaan }}</td>
                                     </tr>

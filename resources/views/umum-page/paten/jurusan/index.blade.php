@@ -29,7 +29,6 @@
                     <option>-</option>
                     <option value="Teknik Informatika">Teknik Informatika</option>
                     <option value="Teknik">Teknik</option>
-                    <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan Tata Udara</option>
                     <option value="Kesehatan">Kesehatan</option>
                 </select>
                 <button type="submit" class="btn btn-sm btn-primary ms-3">Cari</button>

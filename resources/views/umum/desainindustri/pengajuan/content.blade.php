@@ -94,7 +94,7 @@
                                         <input type="file" class="form-control" id="ktp" name="ktp_inventor">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -189,7 +189,7 @@
                                             id="gambar_desain">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('gambar_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -202,7 +202,7 @@
                                             id="uraian_desain">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('uraian_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -216,7 +216,7 @@
                                             name="surat_kepemilikan" id="pernyataan_kepemilikan">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('surat_kepemilikan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -229,7 +229,7 @@
                                             name="surat_pengalihan" id="pengalihan">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('surat_pengalihan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

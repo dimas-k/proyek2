@@ -59,6 +59,11 @@
                                                 target="_blank">Lihat KTP</a></td>
                                     </tr>
                                     <tr>
+                                        <th>Anggota Inventor</th>
+                                        <td>: <a href={{ asset('storage/' . $hc->data_pengaju2) }} class=""
+                                                target="_blank">Download xlsx Anggota Inventor</a></td>
+                                    </tr>
+                                    <tr>
                                         <th>Email</th>
                                         <td>: {{ $hc->email }}</td>
                                     </tr>
@@ -89,10 +94,6 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th></th>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
                                         <th>Jenis Ciptaann</th>
                                         <td>: {{ $hc->jenis_ciptaan }}</td>
                                     </tr>
@@ -119,7 +120,6 @@
                                         <td>: <a href={{ asset('storage/' . $hc->surat_pernyataan) }} class=""
                                                 target="_blank">Lihat Surat Pernyataan</a></td>
                                     </tr>
-
                                     <tr>
                                         <th>Tanggal pengajuan</th>
                                         <td>: {{ \Carbon\Carbon::parse($hc->tanggal_permohonan)->format('d-m-Y ') }}

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
-    <title>SIKI POLINDRA-Admin | Paten | Pengajuan</title>
+    <title>SIKI POLINDRA-Admin | Hak Cipta | Pengajuan</title>
     <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -55,7 +55,7 @@
                         <div class="container">
                             <div class="mb-3">
                                 <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control " id="nama_lengkap"
+                                <input type="text" class="form-control" id="nama_lengkap"
                                     placeholder="Masukkan Nama"name="nama_lengkap"
                                     >
                                 {{-- @error('nama_lengkap')
@@ -66,7 +66,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" class="form-control " id="alamat" placeholder="Masukkan Alamat"
+                                <input type="text" class="form-control" id="alamat" placeholder="Masukkan Alamat"
                                     name="alamat">
                                 {{-- @error('alamat')
                                     <div class="invalid-feedback">
@@ -96,10 +96,10 @@
                             </div>
                             <div class="mb-3">
                                 <label for="ktp" class="form-label">KTP Inventor</label>
-                                <input type="file" class="form-control " id="ktp" name="ktp_inventor">
+                                <input type="file" class="form-control" id="ktp" name="ktp_inventor">
                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
-                                    2mb</span>
+                                    10mb</span>
                                 {{-- @error('ktp_inventor')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -108,7 +108,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control " id="email" placeholder="Masukkan Email"
+                                <input type="email" class="form-control" id="email" placeholder="Masukkan Email"
                                     name="email">
                                 {{-- @error('email')
                                     <div class="invalid-feedback">
@@ -118,7 +118,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="warga" class="form-label">Kewarganegaraan</label>
-                                <input type="text" class="form-control " id="warga"
+                                <input type="text" class="form-control" id="warga"
                                     placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan"
                                     value="{{ old('kewarganegaraan') }}">
                                 {{-- @error('kewarganegaraan')
@@ -129,7 +129,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="pos" class="form-label">Kode Pos</label>
-                                <input type="number" class="form-control " id="pos"
+                                <input type="number" class="form-control" id="pos"
                                     placeholder="Masukkan Kode Pos" name="kode_pos">
                                 {{-- @error('kode_pos')
                                     <div class="invalid-feedback">
@@ -165,7 +165,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="uraian" class="form-label">Uraian Singkat Ciptaan</label>
-                                <textarea class="form-control " placeholder="Masukkan Uraian Siangkat" name="uraian_singkat" id="uraian"
+                                <textarea class="form-control" placeholder="Masukkan Uraian Singkat" name="uraian_singkat" id="uraian"
                                     style="height: 150px"></textarea>
                                 {{-- @error('uarian_singkat')
                                     <div class="invalid-feedback">
@@ -180,7 +180,7 @@
                                     id="invensi">
                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
-                                    2mb</span>
+                                    10mb</span>
                                 {{-- @error('dokumen_invensi')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -193,7 +193,7 @@
                                     id="surat_pengalihan">
                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
-                                    2mb</span>
+                                    10mb</span>
                                 {{-- @error('surat_pengalihan')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -206,7 +206,7 @@
                                     name="surat_pernyataan">
                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                         data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
-                                    2mb</span>
+                                    10mb</span>
                                 {{-- @error('surat_pernyataan')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -269,7 +269,7 @@
         </script>
         <script src="{{ asset('assets-user/js/jquery.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
+        {{-- <script>
             $(document).ready(function() {
                 $('#uploadForm').submit(function(e) {
                     e.preventDefault(); // Mencegah form terkirim secara otomatis
@@ -467,7 +467,7 @@
                     } else {
                         var allowedExtension = /(\.pdf)$/i; // Hanya memperbolehkan file berformat PDF
                         var allowedExtensionExel = /(\.xlsx)$/i; // Hanya memperbolehkan file berformat exel
-                        var maxSize = 2 * 1024 * 1024; // Maksimal ukuran file adalah 2 MB
+                        var maxSize =  * 1024 * 1024; // Maksimal ukuran file adalah 2 MB
 
                         // Validasi ekstensi file
                         if (!allowedExtension.exec(ktp.name)) {
@@ -520,7 +520,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File KTP Lebih Dari 2mb!",
+                                text: "Ukuran File KTP Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -531,7 +531,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Dokumen Invensi Lebih Dari 2mb!",
+                                text: "Ukuran File Dokumen Invensi Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -542,7 +542,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Surat Pengalihan Lebih Dari 2mb!",
+                                text: "Ukuran File Surat Pengalihan Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -553,7 +553,7 @@
                             Swal.fire({
                                 icon: "error",
                                 title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Surat Pernyataan Lebih Dari 2mb!",
+                                text: "Ukuran File Surat Pernyataan Lebih Dari 10mb!",
                                 position: "top-end",
                                 showConfirmButton: false,
                                 timer: 2500
@@ -572,7 +572,80 @@
                     this.submit();
                 });
             });
-        </script>
+        </script> --}}
+        <script>
+            $(document).ready(function() {
+                $('#uploadForm').submit(function(e) {
+                    e.preventDefault(); // Prevent automatic form submission
+            
+                    // Non-file inputs
+                    const fields = {
+                        nama: $('#nama_lengkap').val(),
+                        alamat: $('#alamat').val(),
+                        telepon: $('#no_telepon').val(),
+                        tanggal_lahir: $('#tanggal_lahir').val(),
+                        email: $('#email').val(),
+                        warga: $('#warga').val(),
+                        pos: $('#pos').val(),
+                        jenis_ciptaan: $('#jenis_ciptaan').val(),
+                        judul_ciptaan: $('#judul_ciptaan').val(),
+                        uraian: $('#uraian').val(),
+                        tanggal_pengajuan: $('#tanggalpengajuan').val()
+                    };
+            
+                    // File inputs
+                    const files = {
+                        ktp: $('#ktp')[0].files[0],
+                        invensi: $('#invensi')[0].files[0],
+                        surat_pengalihan: $('#surat_pengalihan')[0].files[0],
+                        pernyataan: $('#pernyataan')[0].files[0]
+                    };
+            
+                    const maxSize = 10 * 1024 * 1024; // Max size 10 MB
+                    const allowedExtension = /\.pdf$/i;
+            
+                    // Function to show error messages
+                    function showError(message) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops... Ada yang salah...",
+                            text: message,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2500
+                        });
+                    }
+            
+                    // Validate non-file inputs
+                    for (const [key, value] of Object.entries(fields)) {
+                        if (!value) {
+                            showError(`Tolong Masukkan ${key.replace('_', ' ').toUpperCase()} Anda!`);
+                            return false;
+                        }
+                    }
+            
+                    // Validate file inputs
+                    for (const [key, file] of Object.entries(files)) {
+                        if (!file) {
+                            showError(`Tolong Masukkan ${key.replace('_', ' ').toUpperCase()} Anda!`);
+                            return false;
+                        }
+                        if (!allowedExtension.test(file.name)) {
+                            showError(`Tolong Masukkan ${key.replace('_', ' ').toUpperCase()} Dengan Ekstensi .pdf!`);
+                            return false;
+                        }
+                        if (file.size > maxSize) {
+                            showError(`Ukuran File ${key.replace('_', ' ').toUpperCase()} Lebih Dari 10 MB!`);
+                            return false;
+                        }
+                    }
+            
+                    // If validation passes, submit the form
+                    this.submit();
+                });
+            });
+            </script>
+            
 </body>
 
 </html>

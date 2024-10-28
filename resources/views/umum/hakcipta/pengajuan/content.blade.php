@@ -90,7 +90,7 @@
                                             class="form-control "
                                             id="ktp" name="ktp_inventor">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 10mb</span>
                                         {{-- @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -156,7 +156,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="uraian" class="form-label">Uraian Singkat Ciptaan</label>
-                                        <textarea class="form-control " placeholder="Masukkan Uraian Siangkat"
+                                        <textarea class="form-control " placeholder="Masukkan Uraian Singkat"
                                             name="uraian_singkat" id="uraian" style="height: 150px">{{ old('uraian_singkat') }}</textarea>
                                         @error('uarian_singkat')
                                             <div class="invalid-feedback">
@@ -171,7 +171,7 @@
                                             class="form-control "
                                             placeholder="" name="dokumen_invensi" id="invensi">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 10mb</span>
                                         {{-- @error('dokumen_invensi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -184,7 +184,7 @@
                                             class="form-control "
                                             placeholder="" name="surat_pengalihan" id="surat_pengalihan">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 10mb</span>
                                         {{-- @error('surat_pengalihan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -197,7 +197,7 @@
                                             class="form-control "
                                             placeholder="" name="surat_pernyataan">
                                             <span class="text-danger"><i class="fa fa-warning me-2"
-                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 2mb</span>
+                                                data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 10mb</span>
                                         {{-- @error('surat_pernyataan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

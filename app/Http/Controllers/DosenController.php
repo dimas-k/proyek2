@@ -312,7 +312,7 @@ class DosenController extends Controller
             'email' => 'required|email',
             'kewarganegaraan' => 'required',
             'kode_pos' => 'required|integer',
-            'data_pengaju2' => 'mimes:xlsx',
+            'data_pengaju2' => 'nullable|mimes:xlsx',
             'institusi' => 'required|string',
             'jurusan' => 'required',
             'prodi' => 'required',
@@ -391,6 +391,76 @@ class DosenController extends Controller
 
         return redirect('/dosen/pengajuan/paten')->with('success', 'Data Paten berhasil Disimpan!');
     }
+
+    // public function storePaten(Request $request)
+    // {
+    //     // Validate request data
+    //     $validatedData = $request->validate([
+    //         'nama_lengkap' => 'required|string',
+    //         'alamat' => 'required|string',
+    //         'no_telepon' => 'required|max:14',
+    //         'tanggal_lahir' => 'required|date',
+    //         'ktp_inventor' => 'required|mimes:pdf|max:2048', // max size updated to 2048 KB
+    //         'email' => 'required|email',
+    //         'kewarganegaraan' => 'required|string',
+    //         'kode_pos' => 'required|integer',
+    //         'data_pengaju2' => 'nullable|mimes:xlsx', // make this nullable if not required
+    //         'institusi' => 'required|string',
+    //         'jurusan' => 'required|string',
+    //         'prodi' => 'required|string',
+    //         'jenis_paten' => 'required|string',
+    //         'judul_paten' => 'required|string',
+    //         'deskripsi_paten' => 'required|mimes:pdf|max:2048',
+    //         'abstrak_paten' => 'required|mimes:pdf|max:2048',
+    //         'pengalihan_hak' => 'required|mimes:pdf|max:2048',
+    //         'klaim' => 'required|mimes:pdf|max:2048',
+    //         'pernyataan_kepemilikan' => 'required|mimes:pdf|max:2048',
+    //         'surat_kuasa' => 'required|mimes:pdf|max:2048',
+    //         'gambar_paten' => 'required|mimes:pdf|max:2048',
+    //         'gambar_tampilan' => 'required|mimes:pdf|max:2048',
+    //         'tanggal_permohonan' => 'required|date'
+    //     ]);
+    
+    //     // Create new Paten instance
+    //     $paten = new Paten();
+    //     $paten->user_id = Auth::id(); // Use Auth::id() for brevity
+    
+    //     // Assign validated data to Paten model
+    //     // foreach ($validatedData as $key => $value) {
+    //     //     if ($key !== 'data_pengaju2' && !is_array($value)) { // Check if it's not an array
+    //     //         $paten->$key = $value;
+    //     //     }
+    //     // }
+    
+    //     // Store files if they exist
+    //     $files = [
+    //         'ktp_inventor',
+    //         'data_pengaju2',
+    //         'abstrak_paten',
+    //         'deskripsi_paten',
+    //         'pengalihan_hak',
+    //         'klaim',
+    //         'pernyataan_kepemilikan',
+    //         'surat_kuasa',
+    //         'gambar_paten',
+    //         'gambar_tampilan',
+    //     ];
+    
+    //     foreach ($files as $file) {
+    //         if ($request->hasFile($file)) {
+    //             $paten->$file = $request->file($file)->store('dokumen-paten');
+    //         }
+    //     }
+    
+    //     // Save the Paten model
+    //     $paten->tanggal_permohonan = $validatedData['tanggal_permohonan'];
+    //     $paten->save($validatedData);
+    
+    //     // Redirect with success message
+    //     return redirect('/dosen/pengajuan/paten')->with('success', 'Data Paten berhasil disimpan!');
+    // }
+    
+
     public function updatePaten(Request $request, string $id)
     {
         $validasidata = $request->validate([
@@ -616,67 +686,71 @@ class DosenController extends Controller
             'alamat' => 'required',
             'no_telepon' => 'required',
             'tanggal_lahir' => 'required',
-            'ktp_inventor' => 'required|mimes:pdf',
+            'ktp_inventor' => 'required|mimes:pdf|max:10240', // Max size 10 MB
             'email' => 'required|email',
             'kewarganegaraan' => 'required',
             'kode_pos' => 'required',
             'institusi' => 'required',
-            'data_pengaju2' => 'mimes:xlsx',
+            'data_pengaju2' => 'mimes:xlsx|max:10240', // Max size 10 MB
             'jurusan' => 'required',
             'prodi' => 'required',
             'jenis_ciptaan' => 'required',
             'judul_ciptaan' => 'required',
             'uraian_singkat' => 'required|max:60000',
-            'dokumen_invensi' => 'required|mimes:pdf|max:2028',
-            'surat_pengalihan' => 'required|mimes:pdf|max:2028',
-            'surat_pernyataan' => 'required|mimes:pdf|max:2028',
-            'tanggal_permohonan' => 'required'
-
+            'dokumen_invensi' => 'required|mimes:pdf|max:10240', // Max size 10 MB
+            'surat_pengalihan' => 'required|mimes:pdf|max:10240', // Max size 10 MB
+            'surat_pernyataan' => 'required|mimes:pdf|max:10240', // Max size 10 MB
+            'tanggal_permohonan' => 'required',
         ]);
-
-        $hc = new HakCipta();
-        $hc->user_id = Auth::user()->id;
-        $hc->nama_lengkap = $request->nama_lengkap;
-        $hc->alamat = $request->alamat;
-        $hc->no_telepon = $request->no_telepon;
-        $hc->tanggal_lahir = $request->tanggal_lahir;
-
-        if ($request->hasFile('ktp_inventor')) {
-            $hc->ktp_inventor = $request->file('ktp_inventor')->store("dokumen-hc");
+    
+        try {
+            $hc = new HakCipta();
+            $hc->user_id = Auth::user()->id;
+            $hc->nama_lengkap = $request->nama_lengkap;
+            $hc->alamat = $request->alamat;
+            $hc->no_telepon = $request->no_telepon;
+            $hc->tanggal_lahir = $request->tanggal_lahir;
+    
+            if ($request->hasFile('ktp_inventor')) {
+                $hc->ktp_inventor = $request->file('ktp_inventor')->store("dokumen-hc");
+            }
+    
+            $hc->email = $request->email;
+            $hc->kewarganegaraan = $request->kewarganegaraan;
+            $hc->kode_pos = $request->kode_pos;
+            $hc->institusi = $request->institusi;
+    
+            if ($request->hasFile('data_pengaju2')) {
+                $hc->data_pengaju2 = $request->file('data_pengaju2')->store('dokumen-hc');
+            }
+    
+            $hc->jurusan = $request->jurusan;
+            $hc->prodi = $request->prodi;
+            $hc->jenis_ciptaan = $request->jenis_ciptaan;
+            $hc->judul_ciptaan = $request->judul_ciptaan;
+            $hc->uraian_singkat = $request->uraian_singkat;
+    
+            if ($request->hasFile('dokumen_invensi')) {
+                $hc->dokumen_invensi = $request->file('dokumen_invensi')->store('dokumen-hc');
+            }
+    
+            if ($request->hasFile('surat_pengalihan')) {
+                $hc->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-hc');
+            }
+    
+            if ($request->hasFile('surat_pernyataan')) {
+                $hc->surat_pernyataan = $request->file('surat_pernyataan')->store('dokumen-hc');
+            }
+    
+            $hc->tanggal_permohonan = $request->tanggal_permohonan;
+            $hc->save($validasidata); // No parameters needed here
+    
+            return redirect('/dosen/hak-cipta/pengajuan')->with('success', 'Data hak cipta berhasil disimpan!');
+        } catch (\Exception $e) {
+            return redirect('/dosen/hak-cipta/pengajuan')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
-
-        $hc->email = $request->email;
-        $hc->kewarganegaraan = $request->kewarganegaraan;
-        $hc->kode_pos = $request->kode_pos;
-        $hc->institusi = $request->institusi;
-
-        if ($request->hasFile('data_pengaju2')) {
-            $hc->data_pengaju2 = $request->file('data_pengaju2')->store('dokumen-hc');
-        }
-
-        $hc->jurusan = $request->jurusan;
-        $hc->prodi = $request->prodi;
-        $hc->jenis_ciptaan = $request->jenis_ciptaan;
-        $hc->judul_ciptaan = $request->judul_ciptaan;
-        $hc->uraian_singkat = $request->uraian_singkat;
-
-        if ($request->hasFile('dokumen_invensi')) {
-            $hc->dokumen_invensi = $request->file('dokumen_invensi')->store('dokumen-hc');
-        }
-
-        if ($request->hasFile('surat_pengalihan')) {
-            $hc->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-hc');
-        }
-
-        if ($request->hasFile('surat_pernyataan')) {
-            $hc->surat_pernyataan = $request->file('surat_pernyataan')->store('dokumen-hc');
-        }
-
-        $hc->tanggal_permohonan = $request->tanggal_permohonan;
-        $hc->save($validasidata);
-
-        return redirect('/dosen/hak-cipta/pengajuan')->with('success', 'Data hak cipta berhasil Disimpan!');
     }
+    
     public function editDi(string $id)
     {
         $di = DesainIndustri::find($id);
@@ -694,7 +768,7 @@ class DosenController extends Controller
             'kewarganegaraan' => 'required',
             'kode_pos' => 'required',
             'institusi' => 'required',
-            'data_pengaju2' => 'mimes:xlsx',
+            'data_pengaju2' => 'nullable|mimes:xlsx',
             'jurusan' => 'required',
             'prodi' => 'required',
             'jenis_di' => 'required',
@@ -705,120 +779,142 @@ class DosenController extends Controller
             'surat_pengalihan' => 'required|mimes:pdf|max:2028',
             'tanggal_permohonan' => 'required'
         ]);
-        $di = DesainIndustri::find($id);
+    
+        $di = DesainIndustri::findOrFail($id);
         $di->user_id = Auth::user()->id;
         $di->nama_lengkap = $request->nama_lengkap;
         $di->alamat = $request->alamat;
         $di->no_telepon = $request->no_telepon;
         $di->tanggal_lahir = $request->tanggal_lahir;
+        $di->email = $request->email;
+        $di->kewarganegaraan = $request->kewarganegaraan;
+        $di->kode_pos = $request->kode_pos;
+        $di->institusi = $request->institusi;
+        $di->jurusan = $request->jurusan;
+        $di->prodi = $request->prodi;
+        $di->jenis_di = $request->jenis_di;
+        $di->judul_di = $request->judul_di;
+        $di->tanggal_permohonan = $request->tanggal_permohonan;
+    
+        // Update file only if new input is provided
         if ($request->hasFile('ktp_inventor')) {
             if ($di->ktp_inventor) {
                 Storage::delete($di->ktp_inventor);
             }
             $di->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-di');
         }
-        $di->email = $request->email;
-        $di->kewarganegaraan = $request->kewarganegaraan;
-        $di->kode_pos = $request->kode_pos;
-        $di->institusi = $request->institusi;
+    
         if ($request->hasFile('data_pengaju2')) {
+            // Validate anggota inventor file type
+            if ($request->file('data_pengaju2')->getClientOriginalExtension() !== 'xlsx') {
+                return redirect()->back()->withErrors(['data_pengaju2' => 'Tolong Masukkan Data Anggota Inventor Dengan Ekstensi .xlsx!']);
+            }
             if ($di->data_pengaju2) {
                 Storage::delete($di->data_pengaju2);
             }
             $di->data_pengaju2 = $request->file('data_pengaju2')->store('dokumen-di');
         }
-        $di->jurusan = $request->jurusan;
-        $di->prodi = $request->prodi;
-        $di->jenis_di = $request->jenis_di;
-        $di->judul_di = $request->judul_di;
+    
         if ($request->hasFile('uraian_di')) {
             if ($di->uraian_di) {
                 Storage::delete($di->uraian_di);
             }
             $di->uraian_di = $request->file('uraian_di')->store('dokumen-di');
         }
+    
         if ($request->hasFile('gambar_di')) {
             if ($di->gambar_di) {
                 Storage::delete($di->gambar_di);
             }
             $di->gambar_di = $request->file('gambar_di')->store('dokumen-di');
         }
+    
         if ($request->hasFile('surat_kepemilikan')) {
             if ($di->surat_kepemilikan) {
                 Storage::delete($di->surat_kepemilikan);
             }
             $di->surat_kepemilikan = $request->file('surat_kepemilikan')->store('dokumen-di');
         }
+    
         if ($request->hasFile('surat_pengalihan')) {
             if ($di->surat_pengalihan) {
                 Storage::delete($di->surat_pengalihan);
             }
             $di->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-di');
         }
-        $di->tanggal_permohonan = $request->tanggal_permohonan;
+    
+        // Save the updated data
         $di->save($validasidata);
-
-        return redirect('/dosen/desain-industri')->with('success', 'Data desain industri berhasil Diupdate!');
+    
+        return redirect('/dosen/desain-industri')->with('success', 'Data desain industri berhasil diperbarui!');
     }
+    
+    
+
     public function storeDi(Request $request)
     {
+               // Validate input data
         $validasidata = $request->validate([
             'nama_lengkap' => 'required',
             'alamat' => 'required',
             'no_telepon' => 'required',
             'tanggal_lahir' => 'required',
-            'ktp_inventor' => 'required|mimes:pdf|max:2028',
+            'ktp_inventor' => 'required|mimes:pdf',
             'email' => 'required|email',
             'kewarganegaraan' => 'required',
             'kode_pos' => 'required',
             'institusi' => 'required',
-            'data_pengaju2' => 'mimes:xlxs',
+            'data_pengaju2' => 'mimes:xlsx',
             'jurusan' => 'required',
             'prodi' => 'required',
             'jenis_di' => 'required',
             'judul_di' => 'required',
-            'uraian_di' => 'required|mimes:pdf|max:2028',
-            'gambar_di' => 'required|mimes:pdf|max:2028',
-            'surat_kepemilikan' => 'required|mimes:pdf|max:2028',
-            'surat_pengalihan' => 'required|mimes:pdf|max:2028',
+            'uraian_di' => 'required|mimes:pdf',
+            'gambar_di' => 'required|mimes:pdf',
+            'surat_kepemilikan' => 'required|mimes:pdf',
+            'surat_pengalihan' => 'required|mimes:pdf',
             'tanggal_permohonan' => 'required'
         ]);
+        
+        // Create a new DesainIndustri instance
         $di = new DesainIndustri();
         $di->user_id = Auth::user()->id;
         $di->nama_lengkap = $request->nama_lengkap;
         $di->alamat = $request->alamat;
         $di->no_telepon = $request->no_telepon;
         $di->tanggal_lahir = $request->tanggal_lahir;
-        if ($request->hasFile('ktp_inventor')) {
-            $di->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-di');
-        }
         $di->email = $request->email;
         $di->kewarganegaraan = $request->kewarganegaraan;
         $di->kode_pos = $request->kode_pos;
         $di->institusi = $request->institusi;
-        if ($request->hasFile('data_pengaju2')) {
-            $di->data_pengaju2 = $request->file('data_pengaju2')->store('dokumen-di');
-        }
         $di->jurusan = $request->jurusan;
         $di->prodi = $request->prodi;
         $di->jenis_di = $request->jenis_di;
         $di->judul_di = $request->judul_di;
-        if ($request->hasFile('uraian_di')) {
-            $di->uraian_di = $request->file('uraian_di')->store('dokumen-di');
-        }
-        if ($request->hasFile('gambar_di')) {
-            $di->gambar_di = $request->file('gambar_di')->store('dokumen-di');
-        }
-        if ($request->hasFile('surat_kepemilikan')) {
-            $di->surat_kepemilikan = $request->file('surat_kepemilikan')->store('dokumen-di');
-        }
-        if ($request->hasFile('surat_pengalihan')) {
-            $di->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-di');
-        }
         $di->tanggal_permohonan = $request->tanggal_permohonan;
+    
+        // Handle file uploads
+        $files = [
+            'ktp_inventor' => 'ktp_inventor',
+            'data_pengaju2' => 'data_pengaju2',
+            'uraian_di' => 'uraian_di',
+            'gambar_di' => 'gambar_di',
+            'surat_kepemilikan' => 'surat_kepemilikan',
+            'surat_pengalihan' => 'surat_pengalihan'
+        ];
+    
+        foreach ($files as $field => $storageName) {
+            if ($request->hasFile($field)) {
+                $di->{$storageName} = $request->file($field)->store('dokumen-di');
+            }
+        }
+    
+        // Save the model
         $di->save($validasidata);
+    
+        // Redirect with success message
 
-        return redirect('/dosen/desain-industri/pengajuan')->with('success', 'Data desain industri berhasil Disimpan!');
+        return redirect(to: '/dosen/desain-industri/pengajuan')->with('success', 'Data desain industri berhasil Disimpan!');
     }
 
     public function lihatProfil()

@@ -22,95 +22,149 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Paten
-                                {{ $paten->nama_lengkap }}
+                                {{ $p->nama_lengkap }}
                             </h3>
                         </div>
                         <div class="card-body">
-
-                            <form action="{{ Route('umum.paten.update', $paten->id) }}" enctype="multipart/form-data"
-                                method="post">
+                            <form action="{{ Route('umum.paten.update', $p->id) }}" enctype="multipart/form-data"
+                                method="POST">
                                 @csrf
                                 <div class="table-responsive">
                                     <table class="table table-borderless p-1">
+                                        <tr>
+                                            <th>nama lengkap</th>
+                                            <td>
+                                                <input type="text" id="nama_lengkap" class="form-control"
+                                                    placeholder="Masukkan Nama"name="nama_lengkap"
+                                                    value="{{ $p->nama_lengkap }}">
 
-                                        <tr>
-                                            <th>Nama Lengkap</th>
-                                            <td><input type="text" id="nama_lengkap"
-                                                    class="form-control @error('nama_lengkap') is-invalid @enderror"
-                                                    name="nama_lengkap"
-                                                    value="{{ $paten->nama_lengkap }}">
-                                                
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Alamat</th>
+                                            <th>alamat</th>
                                             <td>
-                                                <input type="text" id="alamat"
-                                                    class="form-control @error('alamat') is-invalid @enderror"
-                                                     name="alamat" value="{{ $paten->alamat }}">
-                                                
+                                                <input type="text" class="form-control" id="alamat"
+                                                    placeholder="Masukkan Alamat" name="alamat"
+                                                    value="{{ $p->alamat }}">
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>No Telepon</th>
+                                            <th>no telepon</th>
                                             <td>
-                                                <input type="number" id="no_telepon"
-                                                    class="form-control @error('no_telepon') is-invalid @enderror"
-                                                     name="no_telepon" value="{{ $paten->no_telepon }}">
-                                                
+                                                <input type="text" class="form-control" id="no_telepon"
+                                                    placeholder="Masukkan No telepon" name="no_telepon"
+                                                    value={{ $p->no_telepon }}>
+
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Tanggal lahir</th>
+                                            <th>tanggal lahir</th>
                                             <td>
                                                 <input type="date" name="tanggal_lahir" id="tanggal_lahir"
-                                                    class="form-control @error('tanggal_lahir') is-invalid @enderror"
-                                                    value="{{ $paten->tanggal_lahir }}">
-                                               
+                                                    class="form-control" value={{ $p->tanggal_lahir }}>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>KTP</th>
+                                            <th>ktp inventor</th>
                                             <td>
-                                                <input type="file" id="ktp"
-                                                    class="form-control @error('ktp_inventor') is-invalid @enderror"
-                                                     name="ktp_inventor"
-                                                    value="{{ $paten->ktp_inventor }}">
+                                                <input type="file" class="form-control" name="ktp_inventor"
+                                                    id="ktp">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-                                                
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Email</th>
+                                            <th>email</th>
                                             <td>
-                                                <input type="email" id="email"
-                                                    class="form-control @error('email') is-invalid @enderror"
-                                                     name="email" value="{{ $paten->email }}">
-                                                
+                                                <input type="email" id="email" class="form-control"
+                                                    placeholder="Masukkan Email" name="email"
+                                                    value={{ $p->email }}>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Kewarganegaraan</th>
+                                            <th>kewarganegaraan</th>
                                             <td>
-                                                <input type="text" id="warga"
-                                                    class="form-control @error('kewarganegaraan') is-invalid @enderror"
-                                                     value="{{ $paten->kewarganegaraan }}"
-                                                    name="kewarganegaraan">
-                                                
+                                                <input type="text" class="form-control"
+                                                    placeholder="Masukkan Kewarganegaraan" id="warga"
+                                                    name="kewarganegaraan" value={{ $p->kewarganegaraan }}>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Kode Pos</th>
-                                            <td><input type="number" id="pos"
-                                                    class="form-control @error('kode_pos') is-invalid @enderror"
-                                                     name="kode_pos" value="{{ $paten->kode_pos }}">
-                                               
-                                                <input type="text"
-                                                    class="form-control @error('institusi') is-invalid @enderror"
-                                                     value="{{ $paten->institusi }}" name="institusi"
-                                                    hidden>
+                                            <th>kode pos</th>
+                                            <td>
+                                                <input type="number" class="form-control" id="pos"
+                                                    placeholder="Masukkan Kode Pos" name="kode_pos"
+                                                    value={{ $p->kode_pos }}>
+                                                    <input type="text" class="form-control" value="{{ $p->institusi }}"
+                                                    name="institusi" id="institusi" hidden>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                Data Mahasiswa / Dosen <span class="text-danger">(Jika Bersama Dosen
+                                                    Yang
+                                                    Lain dan atau Bersama
+                                                    Mahasiswa Harap diisi)
+                                            </th>
+                                            <td>
+                                                <input type="file" class="form-control" id="data_pengaju2"
+                                                    name="data_pengaju2">
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>File harus bertipe .xlsx</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>jurusan</th>
+                                            <td>
+                                                {{-- @include('dosen.layout.jurusan-edit') --}}
+                                                <select class="form-select" aria-label="Default select example"
+                                                    name="jurusan" id="jurusan">
+                                                    <option value="">Pilih Jurusan</option>
+                                                    <option value="Teknik Informatika"
+                                                        {{ old('jurusan', $p->jurusan) == 'Teknik Informatika' ? 'selected' : '' }}>
+                                                        Teknik Informatika</option>
+                                                    <option value="Teknik"
+                                                        {{ old('jurusan', $p->jurusan) == 'Teknik' ? 'selected' : '' }}>
+                                                        Teknik</option>
+                                                    <option value="Kesehatan"
+                                                        {{ old('jurusan', $p->jurusan) == 'Kesehatan' ? 'selected' : '' }}>
+                                                        Kesehatan</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>prodi</th>
+                                            <td>
+                                                {{-- @include('dosen.layout.prodi-edit') --}}
+                                                <select class="form-select" aria-label="Default select example"
+                                                    name="prodi" id="prodi">
+                                                    <option value="">Pilih Prodi</option>
+                                                    <option value="D3 Teknik Informatika"
+                                                        {{ old('prodi', $p->prodi) == 'D3 Teknik Informatika' ? 'selected' : '' }}>
+                                                        D3 Teknik Informatika</option>
+                                                    <option value="D4 Rekayasa Perangkat Lunak"
+                                                        {{ old('prodi', $p->prodi) == 'D4 Rekayasa Perangkat Lunak' ? 'selected' : '' }}>
+                                                        D4 Rekayasa Perangkat Lunak</option>
+                                                    <option value="D4 Sistem Informasi Kota Cerdas"
+                                                        {{ old('prodi', $p->prodi) == 'D4 Sistem Informasi Kota Cerdas' ? 'selected' : '' }}>
+                                                        D4 Sistem Informasi Kota Cerdas</option>
+                                                    <option value="D3 Teknik Mesin"
+                                                        {{ old('prodi', $p->prodi) == 'D3 Teknik Mesin' ? 'selected' : '' }}>
+                                                        D3 Teknik Mesin</option>
+                                                    <option value="D4 Perancangan Manufaktur"
+                                                        {{ old('prodi', $p->prodi) == 'D4 Perancangan Manufaktur' ? 'selected' : '' }}>
+                                                        D4 Perancangan Manufaktur</option>
+                                                    <option value="D3 Teknik Pendingin dan Tata Udara"
+                                                        {{ old('prodi', $p->prodi) == 'D3 Teknik Pendingin dan Tata Udara' ? 'selected' : '' }}>
+                                                        D3 Teknik Pendingin dan Tata Udara</option>
+                                                    <option value="D4 Teknologi Rekayasa Instrumentasi dan Kontrol"
+                                                        {{ old('prodi', $p->prodi) == 'D4 Teknologi Rekayasa Instrumentasi dan Kontrol' ? 'selected' : '' }}>
+                                                        D4 Teknologi Rekayasa Instrumentasi dan Kontrol</option>
+                                                    <option value="D3 Keperawatan"
+                                                        {{ old('prodi', $p->prodi) == 'D3 Keperawatan' ? 'selected' : '' }}>
+                                                        D3 Keperawatan</option>
+                                                </select>
                                             </td>
                                         </tr>
                                         <tr>
@@ -118,133 +172,115 @@
                                             <td>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="jenis_paten"
-                                                        id="paten" value="Paten">
-                                                    <label class="form-check-label" for="Paten">
-                                                        Paten
-                                                    </label>
+                                                        value="Paten" id="paten"
+                                                        {{ old('jenis_paten', $p->jenis_paten) == 'Paten' ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="paten">Paten</label>
                                                 </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="jenis_paten"
-                                                        id="paten_s" value="Paten sederhana">
-                                                    <label class="form-check-label" for="Paten sederhana" for="paten_s">
-                                                        Paten Sederhana
-                                                    </label>
+                                                        value="Paten Sederhana" id="paten_s"
+                                                        {{ old('jenis_paten', $p->jenis_paten) == 'Paten Sederhana' ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="paten_s">Paten
+                                                        Sederhana</label>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Judul Paten</th>
+                                            <th>judul paten</th>
                                             <td>
-                                                <input type="text" id="judul_paten"
-                                                    class="form-control @error('judul_paten') is-invalid @enderror"
-                                                     name="judul_paten"
-                                                    value="{{ $paten->judul_paten }}">
-                                                
+                                                <input type="text" class="form-control" id="judul_paten"
+                                                    placeholder="Masukkan Judul Paten" name="judul_paten"
+                                                    value="{{ $p->judul_paten }}">
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Abstrak Paten</th>
+                                            <th>abstrak paten</th>
                                             <td>
-                                                <input type="file" id="abstrak"
-                                                    class="form-control @error('abstrak_paten') is-invalid @enderror"
-                                                     placeholder="" name="abstrak_paten">
+                                                <input type="file" class="form-control" id="abstrak"
+                                                    placeholder="" name="abstrak_paten">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-                                                
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Deskripsi Paten</th>
+                                            <th>deskripsi paten</th>
                                             <td>
-                                                <input type="file" id="deskripsi"
-                                                    class="form-control @error('deskripsi_paten') is-invalid @enderror"
-                                                     placeholder="" name="deskripsi_paten">
+                                                <input type="file" class="form-control" id="deskripsi"
+                                                    placeholder="" name="deskripsi_paten">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-                                               
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Pengalihan hak invensi</th>
+                                            <th>Pengalihan Hak
+                                                Invensi</th>
                                             <td>
-                                                <input type="file" id="pengalihan_hak"
-                                                    class="form-control @error('pengalihan_hak') is-invalid @enderror"
-                                                     placeholder="" name="pengalihan_hak">
+                                                <input type="file" class="form-control" id="pengalihan_hak"
+                                                    placeholder="" name="pengalihan_hak">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-                                                
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Klaim</th>
+                                            <th>klaim</th>
                                             <td>
-                                                <input type="file" id="klaim"
-                                                    class="form-control @error('abstrak_paten') is-invalid @enderror"
-                                                     placeholder="" name="klaim">
+                                                <input type="file" class="form-control" id="klaim"
+                                                    placeholder="" name="klaim">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-                                               
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Pernyataan Kepemilikan</th>
+                                            <th>Pernyataan kepemikikan
+                                                Inventor</th>
                                             <td>
-                                                <input type="file" id="kepemilikan"
-                                                    class="form-control @error('pernyataan_kepemilikan') is-invalid @enderror"
-                                                     placeholder="" name="pernyataan_kepemilikan">
+                                                <input type="file" class="form-control" id="kepemilikan"
+                                                    placeholder="" name="pernyataan_kepemilikan">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-                                                
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Surat Kuasa</th>
+                                            <th>surat kuasa</th>
                                             <td>
-                                                <input type="file" id="kuasa"
-                                                    class="form-control @error('surat_kuasa') is-invalid @enderror"
-                                                     placeholder="" name="surat_kuasa">
+                                                <input type="file" class="form-control" id="kuasa"
+                                                    placeholder="" name="surat_kuasa">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-                                                
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Gambar Paten</th>
+                                            <th>gambar paten</th>
                                             <td>
-                                                <input type="file" id="g_paten"
-                                                    class="form-control @error('gambar_paten') is-invalid @enderror"
-                                                     placeholder="" name="gambar_paten">
+                                                <input type="file" class="form-control" id="g_paten"
+                                                    placeholder="" name="gambar_paten">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-                                                
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Gambar Tampilan</th>
+                                            <th>gambar tampilan</th>
                                             <td>
-                                                <input type="file" id="g_tampilan"
-                                                    class="form-control @error('gambar_tampilan') is-invalid @enderror"
-                                                     placeholder="" name="gambar_tampilan">
+                                                <input type="file" class="form-control" id="g_tampilan"
+                                                    placeholder="" name="gambar_tampilan">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
                                                     sama atau yang sudah di perbarui</span>
-                                                
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Tanggal pengajuan</th>
+                                            <th>tanggal pengajuan</th>
                                             <td>
                                                 <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
-                                                    class="form-control @error('tanggal_permohonan') is-invalid @enderror"
-                                                    value="{{ $paten->tanggal_permohonan }}">
-                                                
+                                                    class="form-control" id="tanggalpengajuan"
+                                                    value={{ $p->tanggal_permohonan }}>
                                             </td>
                                         </tr>
                                     </table>
@@ -253,7 +289,6 @@
                                     data-bs-target="#exampleModal">
                                     Simpan
                                 </button>
-
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal" data-bs-backdrop="static" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -280,10 +315,7 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
-            
         </div>
-        <!-- CONTAINER END -->
     </div>
 </div>

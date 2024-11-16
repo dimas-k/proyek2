@@ -27,7 +27,6 @@
                             </h3>
                         </div>
                         <div class="card-body">
-
                             <form action={{ Route('dsn.update.hc', $hc->id) }} enctype="multipart/form-data"
                                 method="post" id="uploadForm">
                                 @csrf

@@ -47,18 +47,21 @@
                                     </tr>
                                     <tr>
                                         <th>KTP</th>
-                                        <td>: <a href="{{ asset('storage/' . $paten->ktp_inventor) }}" class=""
-                                                target="_blank">Lihat KTP</a></td>
+                                        <td>:
+                                            <a href="{{ route('private_paten_dosen', ['file' => basename($paten->ktp_inventor)]) }}"
+                                                target="_blank">Lihat KTP</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Anggota Inventor</th>
                                         <td>:
-                                            @if($paten->data_pengaju2)
-                                                <a href="{{ asset('storage/' . $paten->data_pengaju2) }}" target="_blank">Download xlsx Anggota Inventor</a>
+                                            @if ($paten->data_pengaju2)
+                                                <a href="{{ route('private_paten_dosen', ['file' => basename($paten->data_pengaju2)]) }}"
+                                                    target="_blank">Download xlsx Anggota Inventor</a>
                                             @else
                                                 Tidak ada data untuk diunduh.
                                             @endif
-                                            </td>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Email</th>
@@ -90,42 +93,42 @@
                                     </tr>
                                     <tr>
                                         <th>Abstrak Paten</th>
-                                        <td>: <a href={{ asset('storage/' . $paten->abstrak_paten) }} class=""
+                                        <td>: <a href="{{ route('private_paten_dosen', ['file' => basename($paten->abstrak_paten)])  }}""
                                                 target="_blank">Lihat Abstrak Paten</a></td>
                                     </tr>
                                     <tr>
                                         <th>Deskripsi Paten</th>
-                                        <td>: <a href={{ asset('storage/' . $paten->deskripsi_paten) }} class=""
+                                        <td>: <a href="{{ route('private_paten_dosen', ['file' => basename($paten->deskripsi_paten)])  }}" 
                                                 target="_blank">Lihat Deskripsi Paten</a></td>
                                     </tr>
                                     <tr>
                                         <th>Pengalihan hak invensi</th>
-                                        <td>: <a href={{ asset('storage/' . $paten->pengalihan_hak) }} class=""
+                                        <td>: <a href="{{ route('private_paten_dosen', ['file' => basename($paten->pengalihan_hak)])  }}"
                                                 target="_blank">Lihat Pengalihan Hak Invensi</a></td>
                                     </tr>
                                     <tr>
                                         <th>Klaim</th>
-                                        <td>: <a href={{ asset('storage/' . $paten->klaim) }} class=""
+                                        <td>: <a href="{{ route('private_paten_dosen', ['file' => basename($paten->klaim)])  }}"
                                                 target="_blank">Lihat Klaim</a></td>
                                     </tr>
                                     <tr>
                                         <th>Pernyataan Kepemilikan</th>
-                                        <td>: <a href={{ asset('storage/' . $paten->pernyataan_kepemilikan) }}
-                                                class="" target="_blank">Lihat Pernyataan Kepemilikan</a></td>
+                                        <td>: <a href="{{ route('private_paten_dosen', ['file' => basename($paten->pernyataan_kepemilikan)])  }}"
+                                                 target="_blank">Lihat Pernyataan Kepemilikan</a></td>
                                     </tr>
                                     <tr>
                                         <th>Surat Kuasa</th>
-                                        <td>: <a href={{ asset('storage/' . $paten->surat_kuasa) }} class=""
+                                        <td>: <a href="{{ route('private_paten_dosen', ['file' => basename($paten->surat_kuasa)])  }}"
                                                 target="_blank">Lihat Surat Kuasa</a></td>
                                     </tr>
                                     <tr>
                                         <th>Gambar Paten</th>
-                                        <td>: <a href={{ asset('storage/' . $paten->gambar_paten) }} class=""
+                                        <td>: <a href="{{ route('private_paten_dosen', ['file' => basename($paten->gambar_paten)])  }}"
                                                 target="_blank">Lihat Gambar paten</a></td>
                                     </tr>
                                     <tr>
                                         <th>Gambar Tampilan</th>
-                                        <td>: <a href={{ asset('storage/' . $paten->gambar_tampilan) }} class=""
+                                        <td>: <a href="{{ route('private_paten_dosen', ['file' => basename($paten->gambar_tampilan)])  }}"
                                                 target="_blank">Lihat Gambar Tampilan</a></td>
                                     </tr>
                                     <tr>
@@ -151,8 +154,8 @@
                                         <td>: @if ($paten->sertifikat_paten == '')
                                                 Paten Anda Belum Memiliki Sertifikat
                                             @else
-                                                <a href={{ asset('storage/' . $paten->sertifikat_paten) }}
-                                                    class="" target="_blank">Lihat sertifikat</a>
+                                                <a href="{{ route('private_paten_dosen', ['file' => basename($paten->sertifikat_paten)])  }}"
+                                                     target="_blank">Lihat sertifikat</a>
                                             @endif
                                         </td>
                                     </tr>
@@ -162,7 +165,7 @@
                     </div>
                 </div>
             </div>
-        <!-- CONTAINER END -->
+            <!-- CONTAINER END -->
         </div>
     </div>
 </div>

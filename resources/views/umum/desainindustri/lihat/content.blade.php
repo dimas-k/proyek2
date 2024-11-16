@@ -47,8 +47,18 @@
                                     </tr>
                                     <tr>
                                         <th>KTP</th>
-                                        <td>: <a href={{ asset('storage/' . $di->ktp_inventor) }} class=""
+                                        <td>: <a href="{{ route('private_di_umum', ['file' => basename($di->ktp_inventor)]) }}"
                                                 target="_blank">Lihat KTP</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Anggota Inventor</th>
+                                        <td>:        
+                                        @if($di->data_pengaju2)
+                                            <a href="{{ route('private_di_umum', ['file' => basename($di->data_pengaju2)]) }}" target="_blank">Download xlsx Anggota Inventor</a>
+                                        @else
+                                            Tidak ada data untuk diunduh.
+                                        @endif
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Email</th>
@@ -72,18 +82,18 @@
                                     </tr>
                                     <tr>
                                         <th>Gambar desain Industri</th>
-                                        <td >: <a href={{ asset('storage/' . $di->gambar_di) }} class=""
-                                            target="_blank">Lihat Gambar Desain</a></td>
+                                        <td >: <a href="{{ route('private_di_umum', ['file' => basename($di->gambar_di)]) }} "
+                                            target="_blank">Lihat Gambar Desain Industri</a></td>
                                     </tr>
                                     <tr>
                                         <th>Uraian Desain Industri</th>
-                                        <td>: <a href={{ asset('storage/' . $di->uraian_di) }} class=""
+                                        <td>: <a href="{{ route('private_di_umum', ['file' => basename($di->uraian_di)]) }}"
                                                 target="_blank">Lihat Uraian Desain Industri</a></td>
                                     </tr>
                                     <tr>
                                         <th>Surat Pengalihan hak</th>
-                                        <td>: <a href={{ asset('storage/' . $di->surat_pengalihan) }} class=""
-                                                target="_blank">Lihat Pengalihan Hak</a></td>
+                                        <td>: <a href="{{ route('private_di_umum', ['file' => basename($di->surat_pengalihan)]) }}"
+                                                target="_blank">Lihat Surat Pengalihan Hak</a></td>
                                     </tr>
                                     <tr>
                                         <th>Tanggal pengajuan</th>
@@ -102,9 +112,9 @@
                                         @endif</td>
                                     </tr>
                                     <tr>
-                                        <th>Sertifikat desain industri</th>
+                                        <th>Sertifikat Desain Industri</th>
                                         <td>: @if ($di->sertifikat_desain != "")
-                                                <a href={{ asset('storage/' . $di->sertifikat_desain) }}
+                                                <a href="{{ route('private_di_umum', ['file' => basename($di->sertifikat_desain)]) }}""
                                                     class="" target="_blank">Lihat sertifikat</a>
                                             @else 
                                             Desain Industri Anda Belum Mendapatkan Sertifikat    

@@ -32,29 +32,26 @@
                                 @csrf
                                 <div class="table-responsive">
                                     <table class="table table-borderless p-1">
-
                                         <tr>
                                             <th>Nama Lengkap</th>
                                             <td><input type="text"
-                                                    class="form-control @error('nama_lengkap') is-invalid @enderror"
+                                                    class="form-control"
                                                     id="nama_lengkap" name="nama_lengkap" value="{{ $hc->nama_lengkap }}">
-                                                
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Alamat</th>
                                             <td>
                                                 <input type="text" id="alamat"
-                                                    class="form-control @error('alamat') is-invalid @enderror"
+                                                    class="form-control"
                                                      name="alamat" value="{{ $hc->alamat }}">
-                                                
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>No Telepon</th>
                                             <td>
                                                 <input type="number" id="no_telepon"
-                                                    class="form-control @error('no_telepon') is-invalid @enderror"
+                                                    class="form-control"
                                                      name="no_telepon" value="{{ $hc->no_telepon }}">
                                                 
                                             </td>
@@ -63,7 +60,7 @@
                                             <th>Tanggal lahir</th>
                                             <td>
                                                 <input type="date" name="tanggal_lahir" id="tanggal_lahir"
-                                                    class="form-control @error('tanggal_lahir') is-invalid @enderror"
+                                                    class="form-control"
                                                     value="{{ $hc->tanggal_lahir }}">
                                                 
                                             </td>
@@ -72,7 +69,7 @@
                                             <th>KTP</th>
                                             <td>
                                                 <input type="file" id="ktp"
-                                                    class="form-control @error('ktp_inventor') is-invalid @enderror"
+                                                    class="form-control"
                                                      name="ktp_inventor" value="{{ $hc->ktp_inventor }}">
                                                 <span class="text-danger"><i class="fa fa-warning me-2" data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang sama atau yang sudah di perbarui</span>
                                                 
@@ -82,7 +79,7 @@
                                             <th>Email</th>
                                             <td>
                                                 <input type="email" id="email"
-                                                    class="form-control @error('email') is-invalid @enderror"
+                                                    class="form-control"
                                                      name="email" value="{{ $hc->email }}">
                                                 
                                             </td>
@@ -91,7 +88,7 @@
                                             <th>Kewarganegaraan</th>
                                             <td>
                                                 <input type="text" id="warga"
-                                                    class="form-control @error('kewarganegaraan') is-invalid @enderror"
+                                                    class="form-control"
                                                      value="{{ $hc->kewarganegaraan }}"
                                                     name="kewarganegaraan">
                                                 
@@ -100,11 +97,11 @@
                                         <tr>
                                             <th>Kode Pos</th>
                                             <td><input type="number" id="pos"
-                                                    class="form-control @error('kode_pos') is-invalid @enderror"
+                                                    class="form-control"
                                                      name="kode_pos" value="{{ $hc->kode_pos }}">
                                                 
                                                 <input type="text"
-                                                    class="form-control @error('institusi') is-invalid @enderror"
+                                                    class="form-control"
                                                      value="{{ $hc->institusi }}" name="institusi"
                                                     hidden>
                                             </td>
@@ -112,23 +109,28 @@
                                         <tr>
                                             <th>Jenis Ciptaan</th>
                                             <td>
-                                                @include('umum.layout.jenis-ciptaan-edit')
+                                                <label for="jenis_ciptaan" class="form-label">Jenis Ciptaan</label>
+                                                <select class="form-select" aria-label="Default select example" name="jenis_ciptaan" id="jenis_ciptaan">
+                                                    <option value="">Pilih Jenis Hak Cipta</option>
+                                                    <option value="Karya Tulis" {{ old('jenis_ciptaan', $hc->jenis_ciptaan) == 'Karya Tulis' ? 'selected' : '' }}>Karya Tulis</option>
+                                                    <option value="Program Komputer" {{ old('jenis_ciptaan', $hc->jenis_ciptaan) == 'Program Komputer' ? 'selected' : '' }}>Program Komputer</option>
+                                                    <option value="Karya Lainnya" {{ old('jenis_ciptaan', $hc->jenis_ciptaan) == 'Karya Lainnya' ? 'selected' : '' }}>Karya Lainnya</option>
+                                                </select>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Judul Ciptaan</th>
                                             <td>
                                                 <input type="text" id="judul_ciptaan"
-                                                    class="form-control @error('judul_ciptaan') is-invalid @enderror"
+                                                    class="form-control"
                                                     placeholder="Masukkan Judul Ciptaan" name="judul_ciptaan"
                                                     value="{{ $hc->judul_ciptaan }}">
-                                                
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Uraian Singkat Ciptaan</th>
                                             <td>
-                                                <textarea class="form-control @error('uraian_singkat') is-invalid @enderror" placeholder="Masukkan Uraian Siangkat"
+                                                <textarea class="form-control" placeholder="Masukkan Uraian Siangkat"
                                                 id="uraian" name="uraian_singkat" id="floatingTextarea2" style="height: 150px">{{ $hc->uraian_singkat }}</textarea>
                                                 
                                             </td>
@@ -137,7 +139,7 @@
                                             <th>Dokumen Invensi (Manual Book/Buku/Dll)</th>
                                             <td>
                                                 <input type="file" id="invensi"
-                                                    class="form-control @error('dokumen_invensi') is-invalid @enderror"
+                                                    class="form-control"
                                                     placeholder="" name="dokumen_invensi"
                                                     value="{{ $hc->dokumen_invensi }}">
                                                     <span class="text-danger"><i class="fa fa-warning me-2" data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang sama atau yang sudah di perbarui</span>
@@ -148,7 +150,7 @@
                                             <th>Surat Pengalihan Hak Cipta</th>
                                             <td>
                                                 <input type="file" id="surat_pengalihan"
-                                                    class="form-control @error('surat_pengalihan') is-invalid @enderror"
+                                                    class="form-control"
                                                     placeholder="" name="surat_pengalihan"
                                                     value="{{ $hc->surat_pengalihan }}">
                                                     <span class="text-danger"><i class="fa fa-warning me-2" data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang sama atau yang sudah di perbarui</span>
@@ -159,7 +161,7 @@
                                             <th>Surat Pernyataan</th>
                                             <td>
                                                 <input type="file" id="pernyataan"
-                                                    class="form-control @error('surat_pernyataan') is-invalid @enderror"
+                                                    class="form-control"
                                                     placeholder="" name="surat_pernyataan"
                                                     value="{{ $hc->surat_pernyataan }}">
                                                     <span class="text-danger"><i class="fa fa-warning me-2" data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang sama atau yang sudah di perbarui</span>
@@ -169,9 +171,8 @@
                                         <th>Tanggal pengajuan</th>
                                         <td>
                                             <input type="date" name="tanggal_permohonan" id="tanggalpengajuan" id="tanggalpengajuan"
-                                                class="form-control @error('tanggal_permohonan') is-invalid @enderror"
+                                                class="form-control"
                                                 value="{{ $hc->tanggal_permohonan }}">
-                                            
                                         </td>
                                         </tr>
                                     </table>

@@ -145,7 +145,7 @@
     <!-- CUSTOM JS -->
     <script src="{{ asset('assets-user/js/custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('#uploadForm').submit(function(e) {
                 e.preventDefault(); // Prevent form from submitting automatically
@@ -236,7 +236,7 @@
                 this.submit();
             });
         });
-    </script>
+    </script> --}}
 
 </body>
 

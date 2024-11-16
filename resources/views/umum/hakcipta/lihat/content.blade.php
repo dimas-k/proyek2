@@ -21,7 +21,7 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Paten
+                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Data Hak Cipta
                                 {{ $hc->nama_lengkap }}
                             </h3>
                         </div>
@@ -47,7 +47,7 @@
                                     </tr>
                                     <tr>
                                         <th>KTP</th>
-                                        <td>: <a href={{ asset('storage/' . $hc->ktp_inventor) }} class=""
+                                        <td>: <a href="{{ route('private_hc_umum', ['filename' => basename($hc->ktp_inventor)]) }}"
                                                 target="_blank">Lihat KTP</a></td>
                                     </tr>
                                     <tr>
@@ -76,18 +76,18 @@
                                     </tr>
                                     <tr>
                                         <th>Dokumen invensi</th>
-                                        <td>: <a href={{ asset('storage/' . $hc->dokumen_invensi) }} class=""
-                                                target="_blank">Lihat Dokumen Invensi</a></td>
+                                        <td>: <a href="{{ route('private_hc_umum', ['filename' => basename($hc->dokumen_invensi)]) }}"
+                                            target="_blank">Lihat Dokumen Invensi</a></td>
                                     </tr>
                                     <tr>
                                         <th>Pengalihan hak invensi</th>
-                                        <td>: <a href={{ asset('storage/' . $hc->surat_pengalihan) }} class=""
-                                                target="_blank">Lihat Pengalihan Hak Invensi</a></td>
+                                        <td>: <a href="{{ route('private_hc_umum', ['filename' => basename($hc->surat_pengalihan)]) }}"
+                                            target="_blank">Lihat Surat Pengalihan Hak Invensi</a></td>
                                     </tr>
                                     <tr>
                                         <th>surat pernyataan</th>
-                                        <td>: <a href={{ asset('storage/' . $hc->surat_pernyataan) }} class=""
-                                                target="_blank">Lihat Surat Pernyataan</a></td>
+                                        <td>: <a href="{{ route('private_hc_umum', ['filename' => basename($hc->surat_pernyataan)]) }}"
+                                            target="_blank">Lihat Sirat Pernyataan</a></td>
                                     </tr>
 
                                     <tr>
@@ -109,8 +109,8 @@
                                     <tr>
                                         <th>Sertifikat Hak Cipta</th>
                                         <td>: @if ($hc->sertifikat_hakcipta != "")
-                                                <a href={{ asset('storage/' . $hc->sertifikat_hakcipta) }}
-                                                    class="" target="_blank">Lihat sertifikat</a>
+                                            <a href="{{ route('private_hc_umum', ['filename' => basename($hc->sertifikat_hakcipta)]) }}"
+                                                target="_blank">Lihat Sertifikat</a></td>
                                             @else 
                                             Hak Cipta Anda Belum Mendapatkan Sertifikat    
                                             @endif

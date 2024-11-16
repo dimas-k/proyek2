@@ -26,7 +26,6 @@
                             </h3>
                         </div>
                         <div class="card-body">
-
                             <form action="{{ Route('dsn.update.paten', $p->id) }}" enctype="multipart/form-data"
                                 method="POST" id="uploadForm">
                                 @csrf
@@ -162,8 +161,8 @@
                                                     <label class="form-check-label" for="paten">Paten</label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="jenis_paten" value="Paten sederhana" id="paten_s"
-                                                    {{ old('jenis_paten', $p->jenis_paten) == 'Paten sederhana' ? 'checked' : '' }}>
+                                                    <input class="form-check-input" type="radio" name="jenis_paten" value="Paten Sederhana" id="paten_s"
+                                                    {{ old('jenis_paten', $p->jenis_paten) == 'Paten Sederhana' ? 'checked' : '' }}>
                                                     <label class="form-check-label" for="paten_s">Paten Sederhana</label>
                                                 </div>
                                             </td>                                            

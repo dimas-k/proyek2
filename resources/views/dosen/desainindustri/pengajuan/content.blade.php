@@ -178,28 +178,28 @@
                                     <label for="" class="form-label">Jenis Desain</label>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="jenis_di"
-                                            id="satu_desain" value="Satu desain">
+                                            id="satu_desain" value="Satu Desain">
                                         <label class="form-check-label" for="Satu desain" id="satu_desain">
                                             Satu Desain
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="jenis_di"
-                                            id="p_satu_desain" value="Pecahan satu desain">
+                                            id="p_satu_desain" value="Pecahan Satu Desain">
                                         <label class="form-check-label" for="Pecahan satu desain" id="p_satu_desain">
                                             Pecahan Satu Desain
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="jenis_di"
-                                            id="satu_kesatuan" value="Satu kesatuan desain">
+                                            id="satu_kesatuan" value="Satu Kesatuan Desain">
                                         <label class="form-check-label" for="Satu kesatuan desain" id="satu_kesatuan">
                                             Satu Kesatuan Desain
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="jenis_di"
-                                            id="kesatuan_pecahan" value="Kesatuan pecahan satu desain">
+                                            id="kesatuan_pecahan" value="Kesatuan Pecahan Satu Desain">
                                         <label class="form-check-label" for="Kesatuan pecahan satu desain" id="kesatuan_pecahan">
                                             Kesatuan Pecahan Satu Desain
                                         </label>
@@ -209,7 +209,6 @@
                                         <input type="text"
                                             class="form-control"
                                             placeholder="Masukkan Judul Desain Industri" name="judul_di" value="{{ old('judul_di') }}" id="judul_desain">
-                                        
                                     </div>
                                     <div class="mb-3">
                                         <label for="gambar_desain" class="form-label">Gambar Desain Industri</label>

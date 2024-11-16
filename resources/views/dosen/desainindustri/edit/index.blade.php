@@ -130,7 +130,7 @@
     <script src="{{ asset('assets-user/js/custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('#uploadForm').submit(function(e) {
                 e.preventDefault(); // Prevent automatic form submission
@@ -220,7 +220,7 @@
                 this.submit();
             });
         });
-    </script>
+    </script> --}}
 </body>
 
 </html>

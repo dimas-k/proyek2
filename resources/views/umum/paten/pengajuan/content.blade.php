@@ -153,7 +153,7 @@
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="jenis_paten"
-                                            id="paten_s" value="Paten sederhana">
+                                            id="paten_s" value="Paten Sederhana">
                                         <label class="form-check-label" for="Paten sederhana" for="paten_s">
                                             Paten Sederhana
                                         </label>

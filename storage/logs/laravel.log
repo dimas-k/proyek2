@@ -16323,3 +16323,69 @@ Stack trace:
 [stacktrace]
 #0 {main}
 "} 
+[2024-11-16 20:38:52] production.ERROR: Uncaught Error: Class "Illuminate\Foundation\Auth\Checker" not found in D:\POLITEKNIK NEGERI INDRAMAYU\proyek2\app\Models\Checker.php:10
+Stack trace:
+#0 D:\POLITEKNIK NEGERI INDRAMAYU\proyek2\vendor\composer\ClassLoader.php(576): include()
+#1 D:\POLITEKNIK NEGERI INDRAMAYU\proyek2\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('D:\\POLITEKNIK N...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Models\\Chec...')
+#3 Command line code(1): class_exists('App\\Models\\Chec...')
+#4 [internal function]: {closure}('App\\Models\\Chec...')
+#5 Command line code(1): array_filter(Array, Object(Closure))
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Class \"Illuminate\\Foundation\\Auth\\Checker\" not found in D:\\POLITEKNIK NEGERI INDRAMAYU\\proyek2\\app\\Models\\Checker.php:10
+Stack trace:
+#0 D:\\POLITEKNIK NEGERI INDRAMAYU\\proyek2\\vendor\\composer\\ClassLoader.php(576): include()
+#1 D:\\POLITEKNIK NEGERI INDRAMAYU\\proyek2\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}('D:\\\\POLITEKNIK N...')
+#2 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Models\\\\Chec...')
+#3 Command line code(1): class_exists('App\\\\Models\\\\Chec...')
+#4 [internal function]: {closure}('App\\\\Models\\\\Chec...')
+#5 Command line code(1): array_filter(Array, Object(Closure))
+#6 {main}
+  thrown at D:\\POLITEKNIK NEGERI INDRAMAYU\\proyek2\\app\\Models\\Checker.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2024-11-16 20:39:52] production.ERROR: Uncaught Error: Class "Illuminate\Foundation\Auth\Checker" not found in D:\POLITEKNIK NEGERI INDRAMAYU\proyek2\app\Models\Checker.php:10
+Stack trace:
+#0 D:\POLITEKNIK NEGERI INDRAMAYU\proyek2\vendor\composer\ClassLoader.php(576): include()
+#1 D:\POLITEKNIK NEGERI INDRAMAYU\proyek2\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('D:\\POLITEKNIK N...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Models\\Chec...')
+#3 Command line code(1): class_exists('App\\Models\\Chec...')
+#4 [internal function]: {closure}('App\\Models\\Chec...')
+#5 Command line code(1): array_filter(Array, Object(Closure))
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Class \"Illuminate\\Foundation\\Auth\\Checker\" not found in D:\\POLITEKNIK NEGERI INDRAMAYU\\proyek2\\app\\Models\\Checker.php:10
+Stack trace:
+#0 D:\\POLITEKNIK NEGERI INDRAMAYU\\proyek2\\vendor\\composer\\ClassLoader.php(576): include()
+#1 D:\\POLITEKNIK NEGERI INDRAMAYU\\proyek2\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}('D:\\\\POLITEKNIK N...')
+#2 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Models\\\\Chec...')
+#3 Command line code(1): class_exists('App\\\\Models\\\\Chec...')
+#4 [internal function]: {closure}('App\\\\Models\\\\Chec...')
+#5 Command line code(1): array_filter(Array, Object(Closure))
+#6 {main}
+  thrown at D:\\POLITEKNIK NEGERI INDRAMAYU\\proyek2\\app\\Models\\Checker.php:10)
+[stacktrace]
+#0 {main}
+"} 
+[2024-11-16 20:40:52] production.ERROR: Uncaught Error: Class "Illuminate\Foundation\Auth\Checker" not found in D:\POLITEKNIK NEGERI INDRAMAYU\proyek2\app\Models\Checker.php:10
+Stack trace:
+#0 D:\POLITEKNIK NEGERI INDRAMAYU\proyek2\vendor\composer\ClassLoader.php(576): include()
+#1 D:\POLITEKNIK NEGERI INDRAMAYU\proyek2\vendor\composer\ClassLoader.php(427): Composer\Autoload\{closure}('D:\\POLITEKNIK N...')
+#2 [internal function]: Composer\Autoload\ClassLoader->loadClass('App\\Models\\Chec...')
+#3 Command line code(1): class_exists('App\\Models\\Chec...')
+#4 [internal function]: {closure}('App\\Models\\Chec...')
+#5 Command line code(1): array_filter(Array, Object(Closure))
+#6 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught Error: Class \"Illuminate\\Foundation\\Auth\\Checker\" not found in D:\\POLITEKNIK NEGERI INDRAMAYU\\proyek2\\app\\Models\\Checker.php:10
+Stack trace:
+#0 D:\\POLITEKNIK NEGERI INDRAMAYU\\proyek2\\vendor\\composer\\ClassLoader.php(576): include()
+#1 D:\\POLITEKNIK NEGERI INDRAMAYU\\proyek2\\vendor\\composer\\ClassLoader.php(427): Composer\\Autoload\\{closure}('D:\\\\POLITEKNIK N...')
+#2 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Models\\\\Chec...')
+#3 Command line code(1): class_exists('App\\\\Models\\\\Chec...')
+#4 [internal function]: {closure}('App\\\\Models\\\\Chec...')
+#5 Command line code(1): array_filter(Array, Object(Closure))
+#6 {main}
+  thrown at D:\\POLITEKNIK NEGERI INDRAMAYU\\proyek2\\app\\Models\\Checker.php:10)
+[stacktrace]
+#0 {main}
+"} 

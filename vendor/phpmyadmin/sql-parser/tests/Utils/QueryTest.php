@@ -31,7 +31,7 @@ class QueryTest extends TestCase
      * @return array<int, array<int, string|array<string, bool|string>>>
      * @psalm-return list<array{non-empty-string, QueryFlagsType}>
      */
-    public function getFlagsProvider(): array
+    public static function getFlagsProvider(): array
     {
         return [
             [
@@ -175,6 +175,24 @@ class QueryTest extends TestCase
                 'SELECT COUNT(id), SUM(id) FROM tbl',
                 [
                     'is_count' => true,
+                    'is_func' => true,
+                    'is_select' => true,
+                    'select_from' => true,
+                    'querytype' => 'SELECT',
+                ],
+            ],
+            [
+                'SELECT count(*) FROM tbl',
+                [
+                    'is_count' => true,
+                    'is_select' => true,
+                    'select_from' => true,
+                    'querytype' => 'SELECT',
+                ],
+            ],
+            [
+                'SELECT sum(*) FROM tbl',
+                [
                     'is_func' => true,
                     'is_select' => true,
                     'select_from' => true,
@@ -416,7 +434,7 @@ class QueryTest extends TestCase
      * @return array<int, array<int, string|string[]>>
      * @psalm-return list<array{string, string[]}>
      */
-    public function getTablesProvider(): array
+    public static function getTablesProvider(): array
     {
         return [
             [
@@ -598,6 +616,16 @@ class QueryTest extends TestCase
                 $parser->statements[0],
                 $parser->list,
                 'ORDER BY city'
+            )
+        );
+
+        $parser = new Parser('SELECT * FROM `t` FOR UPDATE');
+        $this->assertEquals(
+            'SELECT * FROM `t` LIMIT 0, 25 FOR UPDATE',
+            Query::replaceClause(
+                $parser->statements[0],
+                $parser->list,
+                'LIMIT 0, 25'
             )
         );
     }

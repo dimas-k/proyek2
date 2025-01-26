@@ -19,7 +19,7 @@ class CreateStatementTest extends TestCase
     /**
      * @return string[][]
      */
-    public function createProvider(): array
+    public static function createProvider(): array
     {
         return [
             ['parser/parseCreateDatabase'],
@@ -62,10 +62,12 @@ class CreateStatementTest extends TestCase
             ['parser/parseCreateTableAsSelect'],
             ['parser/parseCreateTableLike'],
             ['parser/parseCreateTableSpatial'],
+            ['parser/parseCreateTableSRID'],
             ['parser/parseCreateTableTimestampWithPrecision'],
             ['parser/parseCreateTableEnforcedCheck'],
             ['parser/parseCreateTableNotEnforcedCheck'],
             ['parser/parseCreateTableWithInvisibleKey'],
+            ['parser/parseCreateTableWithParser'],
             ['parser/parseCreateTrigger'],
             ['parser/parseCreateUser1'],
             ['parser/parseCreateUser2'],

@@ -65,7 +65,11 @@ class GenericModelPropertyType extends StringType
             }
 
             if (count($genericType->getObjectClassNames()) < 1) {
-                return AcceptsResult::createNo();
+                return AcceptsResult::createYes();
+            }
+
+            if (str_contains($givenString, ' as ')) {
+                $givenString = explode(' as ', $givenString)[0];
             }
 
             if (str_contains($givenString, '.')) {

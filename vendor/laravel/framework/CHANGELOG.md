@@ -1,6 +1,31 @@
 # Release Notes for 10.x
 
-## [Unreleased](https://github.com/laravel/framework/compare/v10.48.17...10.x)
+## [Unreleased](https://github.com/laravel/framework/compare/v10.48.24...10.x)
+
+## [v10.48.24](https://github.com/laravel/framework/compare/v10.48.23...v10.48.24) - 2024-11-20
+
+## [v10.48.23](https://github.com/laravel/framework/compare/v10.48.22...v10.48.23) - 2024-11-12
+
+* [10.x] Ensure headers are only attached to illuminate responses by [@timacdonald](https://github.com/timacdonald) in https://github.com/laravel/framework/pull/53019
+* [10.x] Fix append and prepend batch to chain by [@Bencute](https://github.com/Bencute) in https://github.com/laravel/framework/pull/53455
+
+## [v10.48.22](https://github.com/laravel/framework/compare/v10.48.20...v10.48.22) - 2024-09-12
+
+## [v10.48.20](https://github.com/laravel/framework/compare/v10.48.19...v10.48.20) - 2024-08-09
+
+* [10.x] fix: prevent casting empty string to array from triggering json error by [@calebdw](https://github.com/calebdw) in https://github.com/laravel/framework/pull/52415
+
+## [v10.48.19](https://github.com/laravel/framework/compare/v10.48.18...v10.48.19) - 2024-08-06
+
+* Add compatible query type to `Model::resolveRouteBindingQuery` by [@sebj54](https://github.com/sebj54) in https://github.com/laravel/framework/pull/52339
+* [10.x] Fix `Factory::afterCreating` callable argument type by [@villfa](https://github.com/villfa) in https://github.com/laravel/framework/pull/52335
+* [10.x] backport #52204 by [@calebdw](https://github.com/calebdw) in https://github.com/laravel/framework/pull/52389
+* [10.x] In MySQL, harvest last insert ID immediately after query is executed by [@piurafunk](https://github.com/piurafunk) in https://github.com/laravel/framework/pull/52390
+
+## [v10.48.18](https://github.com/laravel/framework/compare/v10.48.17...v10.48.18) - 2024-07-30
+
+* [10.x] backport #52188 by [@calebdw](https://github.com/calebdw) in https://github.com/laravel/framework/pull/52293
+* [10.x] Fix runPaginationCountQuery not working properly for union queries by [@chinleung](https://github.com/chinleung) in https://github.com/laravel/framework/pull/52314
 
 ## [v10.48.17](https://github.com/laravel/framework/compare/v10.48.16...v10.48.17) - 2024-07-23
 

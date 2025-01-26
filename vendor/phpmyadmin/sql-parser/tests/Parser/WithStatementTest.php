@@ -23,7 +23,7 @@ class WithStatementTest extends TestCase
     /**
      * @return string[][]
      */
-    public function parseWith(): array
+    public static function parseWith(): array
     {
         return [
             ['parser/parseWithStatement'],
@@ -69,6 +69,70 @@ SQL;
         // phpcs:disable Generic.Files.LineLength.TooLong
         $expected = <<<SQL
 WITH categories(identifier, name, parent_id) AS (SELECT c.identifier, c.name, c.parent_id FROM category AS `c` WHERE c.identifier = 'a' UNION ALL SELECT c.identifier, c.name, c.parent_id FROM categories, category AS `c` WHERE c.identifier = categories.parent_id), foo AS (SELECT * FROM test) SELECT * FROM categories
+SQL;
+        // phpcs:enable
+        $this->assertEquals($expected, $parser->statements[0]->build());
+    }
+
+    public function testWithRecursive(): void
+    {
+        $sql = <<<SQL
+WITH RECURSIVE number_sequence AS (
+    SELECT 1 AS `number`
+    UNION ALL
+    SELECT `number` + 1
+    FROM number_sequence
+    WHERE `number` < 5
+)
+SELECT * FROM number_sequence;
+SQL;
+
+        $lexer = new Lexer($sql);
+
+        $lexerErrors = $this->getErrorsAsArray($lexer);
+        $this->assertCount(0, $lexerErrors);
+        $parser = new Parser($lexer->list);
+        $parserErrors = $this->getErrorsAsArray($parser);
+        $this->assertCount(0, $parserErrors);
+        $this->assertCount(1, $parser->statements);
+
+        // phpcs:disable Generic.Files.LineLength.TooLong
+        $expected = <<<SQL
+WITH RECURSIVE number_sequence AS (SELECT 1 AS `number` UNION ALL SELECT `number`+ 1 FROM number_sequence WHERE `number` < 5) SELECT * FROM number_sequence
+SQL;
+        // phpcs:enable
+        $this->assertEquals($expected, $parser->statements[0]->build());
+    }
+
+    public function testWithRecursiveWithers(): void
+    {
+        $sql = <<<SQL
+WITH RECURSIVE cte AS
+(
+    SELECT 1 AS n, CAST('abc' AS CHAR(20)) AS str
+    UNION ALL
+    SELECT n + 1, CONCAT(str, str) FROM cte WHERE n < 3
+), cte2 AS
+(
+    SELECT 1 AS n, CAST('def' AS CHAR(20)) AS str
+    UNION ALL
+    SELECT n + 1, CONCAT(str, str) FROM cte WHERE n < 3
+)
+SELECT * FROM cte UNION SELECT * FROM cte2;
+SQL;
+
+        $lexer = new Lexer($sql);
+
+        $lexerErrors = $this->getErrorsAsArray($lexer);
+        $this->assertCount(0, $lexerErrors);
+        $parser = new Parser($lexer->list);
+        $parserErrors = $this->getErrorsAsArray($parser);
+        $this->assertCount(0, $parserErrors);
+        $this->assertCount(1, $parser->statements);
+
+        // phpcs:disable Generic.Files.LineLength.TooLong
+        $expected = <<<SQL
+WITH RECURSIVE cte AS (SELECT 1 AS `n`, CAST('abc' AS CHAR(20)) AS `str` UNION ALL SELECT n+ 1, CONCAT(str, str) FROM cte WHERE n < 3), cte2 AS (SELECT 1 AS `n`, CAST('def' AS CHAR(20)) AS `str` UNION ALL SELECT n+ 1, CONCAT(str, str) FROM cte WHERE n < 3) SELECT * FROM cte UNION SELECT * FROM cte2
 SQL;
         // phpcs:enable
         $this->assertEquals($expected, $parser->statements[0]->build());

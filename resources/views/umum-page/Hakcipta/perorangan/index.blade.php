@@ -8,38 +8,85 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <title>SIKI POLINDRA || Hak Cipta Pegawai</title>
 </head>
 
 <body>
+    <style>
+        @media (max-width: 768px) {
+            .search-form {
+                flex-direction: column;
+                /* Elemen menjadi vertikal */
+                align-items: stretch;
+                /* Elemen memenuhi lebar kontainer */
+            }
+
+            .select2-container {
+                width: 100% !important;
+                /* Pastikan Select2 penuh lebar */
+            }
+
+            .select2-dropdown {
+                width: auto !important;
+                /* Dropdown juga mengikuti lebar */
+                max-width: 100% !important;
+            }
+
+            .search-form>button {
+                width: 80%;
+                margin-left: 0;
+                margin-top: 20px;
+            }
+        }
+
+        /* Default footer is not fixed */
+        footer {
+            position: static;
+        }
+
+        /* Fixed footer on larger screens */
+        @media (min-width: 992px) {
+            footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+        }
+    </style>
+
     @include('layout.nav')
     <br>
     <br>
     <br>
     <br>
-    <div class="container">
-        <a href="/hak-cipta" class="link-dark link-underline link-underline-opacity-0 mb-5"><i
-                class="bi bi-arrow-left-circle mb-5" style="font-size: 35px;"></i></a>
-        <div class="rounded border shadow-sm p-4 mb-5 mt-4">
-            <form action="/hak-cipta/list/pegawai/cari" method="POST" class="ms-2">
+
+    <div class="container search-container">
+        <a href="/hak-cipta" class="link-dark link-underline link-underline-opacity-0 mb-3">
+            <i class="bi bi-arrow-left-circle" style="font-size: 2rem;"></i>
+        </a>
+        <div class="rounded border shadow-sm p-3 mb-4 mt-3">
+            <form action="/hak-cipta/list/pegawai/cari" method="POST" class="search-form d-flex align-items-center">
                 @csrf
-                <label for="" class="form-label me-4">Cari Nama</label>
-                <select class="form-select-sm" data-live-search="true" aria-label="Default select example" name="nama" style="width: 1050px" title="Pilih Nama">
-                    <option>-</option>
+                <label for="nama" class="form-label me-3">Nama</label>
+                <select id="nama" class="form-select form-select-sm select2 flex-grow-1" name="nama"
+                    style="width: 100%;" title="Pilih Nama">
+                    <option></option>
                     @foreach ($orang->unique('nama_lengkap') as $o)
                         <option value="{{ $o->nama_lengkap }}">{{ $o->nama_lengkap }}</option>
                     @endforeach
                 </select>
-                <button type="submit" class="btn btn-sm btn-primary ms-3">Cari</button>
+                <span class="ms-3"></span>
+                <button type="submit" class="btn btn-sm btn-primary">Cari</button>
             </form>
         </div>
     </div>
     <!-- Footer -->
-    <footer class="text-center text-lg-start bg-secondary-subtle text-muted shadow-inner fixed-bottom">
-        
-
-        <!-- Section: Links  -->
-        <section class="pt-1 mt-5">
+    <footer class="text-center text-lg-start bg-secondary-subtle text-muted shadow-inner">
+        <!-- Section: Links -->
+        <section class="pt-1 mt-3">
             <div class="container text-center text-md-start mt-5">
                 <!-- Grid row -->
                 <div class="row mt-3">
@@ -51,15 +98,12 @@
                         </h6>
                         <p>
                             <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.8880908169504!2d108.27887677495575!3d-6.408414693582335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6eb87d1fcaf97d%3A0x4fc15b3c8407ada4!2sPoliteknik%20Negeri%20Indramayu!5e0!3m2!1sid!2sid!4v1728365465003!5m2!1sid!2sid"
-                            width="280" height="200" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.8880908169504!2d108.27887677495575!3d-6.408414693582335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6eb87d1fcaf97d%3A0x4fc15b3c8407ada4!2sPoliteknik%20Negeri%20Indramayu!5e0!3m2!1sid!2sid!4v1728365465003!5m2!1sid!2sid"
+                                width="280" height="200" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </p>
                     </div>
                     <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    
 
                     <!-- Grid column -->
                     <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
@@ -80,7 +124,8 @@
                             <a href="https://patents.google.com/" class="text-reset" target="_blank">Google Patent</a>
                         </p>
                         <p>
-                            <a href="https://pdki-indonesia.dgip.go.id/" class="text-reset" target="_blank">Penelusuran PDKI</a>
+                            <a href="https://pdki-indonesia.dgip.go.id/" class="text-reset" target="_blank">Penelusuran
+                                PDKI</a>
                         </p>
                     </div>
                     <!-- Grid column -->
@@ -92,14 +137,16 @@
                         <p><i class="bi bi-house-door me-2"></i>Jl. Raya Lohbener Lama No. 08 Indramayu 45252
                         </p>
                         <p><i class="bi bi-telephone me-1"></i>(0234)5746464</p>
-                        <p><i class="bi bi-envelope me-1"></i> <a class="link-dark link-underline link-underline-opacity-0" href="mailto:sentra_ki@polindra.ac.id">sentra_ki@polindra.ac.id</a>
+                        <p><i class="bi bi-envelope me-1"></i> <a
+                                class="link-dark link-underline link-underline-opacity-0"
+                                href="mailto:sentra_ki@polindra.ac.id">sentra_ki@polindra.ac.id</a>
                     </div>
                     <!-- Grid column -->
                 </div>
                 <!-- Grid row -->
             </div>
         </section>
-        <!-- Section: Links  -->
+        <!-- Section: Links -->
 
         <!-- Copyright -->
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
@@ -108,6 +155,7 @@
         </div>
         <!-- Copyright -->
     </footer>
+
     <!-- Footer -->
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -115,6 +163,15 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#nama').select2({
+                placeholder: "Pilih Nama", // Tambahkan placeholder
+                allowClear: true // Tambahkan opsi untuk menghapus pilihan
+               
+            });
+        });
     </script>
 </body>
 

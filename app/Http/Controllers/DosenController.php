@@ -305,7 +305,7 @@ class DosenController extends Controller
     public function storePaten(Request $request)
     {
         // Validasi input data
-        $validasidata = $request->validate([
+        $request->validate([
             'nama_lengkap' => 'required',
             'alamat' => 'required',
             'no_telepon' => 'required|max:14',
@@ -349,30 +349,43 @@ class DosenController extends Controller
             $paten->judul_paten = $request->judul_paten;
             $paten->tanggal_permohonan = $request->tanggal_permohonan;
 
-            // Daftar field yang perlu diunggah
-            $files = [
+            // Daftar file yang disimpan di public storage
+            $publicFiles = ['deskripsi_paten', 'abstrak_paten', 'gambar_paten', 'gambar_tampilan'];
+
+            // Daftar file yang disimpan di private storage
+            $privateFiles = [
                 'ktp_inventor' => 'ktp_inventor',
                 'data_pengaju2' => 'data_pengaju2',
-                'deskripsi_paten' => 'deskripsi_paten',
-                'abstrak_paten' => 'abstrak_paten',
                 'pengalihan_hak' => 'pengalihan_hak',
                 'klaim' => 'klaim',
                 'pernyataan_kepemilikan' => 'pernyataan_kepemilikan',
-                'surat_kuasa' => 'surat_kuasa',
-                'gambar_paten' => 'gambar_paten',
-                'gambar_tampilan' => 'gambar_tampilan'
+                'surat_kuasa' => 'surat_kuasa'
             ];
 
-            // Proses unggahan file
-            foreach ($files as $field => $storageName) {
+            // Proses unggahan file ke private storage
+            foreach ($privateFiles as $field => $storageName) {
                 if ($request->hasFile($field)) {
-                    $filename = time() . '_' . str_replace(' ', '_', $request->file($field)->getClientOriginalName());
-                    $paten->{$storageName} = $request->file($field)->storeAs('private/dosen/dokumen-paten', $filename);
+                    $file = $request->file($field);
+                    $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                    // Simpan di disk 'private' dalam folder 'dosen/dokumen-paten'
+                    $path = $file->storeAs('dosen/dokumen-paten', $filename, 'private');
+                    $paten->{$storageName} = $path;
+                }
+            }
+
+            // Proses unggahan file ke public storage
+            foreach ($publicFiles as $field) {
+                if ($request->hasFile($field)) {
+                    $file = $request->file($field);
+                    $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                    // Simpan di disk 'public' dalam folder 'dokumen-paten'
+                    $path = $file->storeAs('dokumen-paten', $filename, 'public');
+                    $paten->{$field} = $path;
                 }
             }
 
             // Simpan model ke database
-            $paten->save($validasidata);
+            $paten->save();
 
             // Redirect dengan pesan sukses
             return redirect('/dosen/pengajuan/paten')->with('success', 'Data Paten berhasil Disimpan!');
@@ -433,30 +446,41 @@ class DosenController extends Controller
             $paten->tanggal_permohonan = $request->tanggal_permohonan;
 
             // Daftar field file untuk di-update
-            $files = [
+            $privateFiles = [
                 'ktp_inventor' => 'ktp_inventor',
                 'data_pengaju2' => 'data_pengaju2',
-                'deskripsi_paten' => 'deskripsi_paten',
-                'abstrak_paten' => 'abstrak_paten',
                 'pengalihan_hak' => 'pengalihan_hak',
                 'klaim' => 'klaim',
                 'pernyataan_kepemilikan' => 'pernyataan_kepemilikan',
-                'surat_kuasa' => 'surat_kuasa',
-                'gambar_paten' => 'gambar_paten',
-                'gambar_tampilan' => 'gambar_tampilan'
+                'surat_kuasa' => 'surat_kuasa'
             ];
+            $publicFiles = ['deskripsi_paten', 'abstrak_paten', 'gambar_paten', 'gambar_tampilan'];
 
             // Perbarui file jika ada yang diunggah
-            foreach ($files as $field => $storageName) {
+            foreach ($privateFiles as $field => $storageName) {
                 if ($request->hasFile($field)) {
                     // Hapus file lama jika ada
                     if ($paten->{$storageName}) {
                         Storage::delete($paten->{$storageName});
                     }
-
-                    // Simpan file baru
-                    $filename = time() . '_' . str_replace(' ', '_', $request->file($field)->getClientOriginalName());
-                    $paten->{$storageName} = $request->file($field)->storeAs('private/dosen/dokumen-paten', $filename);
+                    $file = $request->file($field);
+                    $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                    // Simpan di disk 'private' dalam folder 'dosen/dokumen-paten'
+                    $path = $file->storeAs('dosen/dokumen-paten', $filename, 'private');
+                    $paten->{$storageName} = $path;
+                }
+            }
+            foreach ($publicFiles as $field => $storageName) {
+                if ($request->hasFile($field)) {
+                    // Hapus file lama jika ada
+                    if ($paten->{$storageName}) {
+                        Storage::delete($paten->{$storageName});
+                    }
+                    $file = $request->file($field);
+                    $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                    // Simpan di disk 'private' dalam folder 'dosen/dokumen-paten'
+                    $path = $file->storeAs('dokumen-paten', $filename, 'public');
+                    $paten->{$storageName} = $path;
                 }
             }
 
@@ -526,7 +550,7 @@ class DosenController extends Controller
             $hc->judul_ciptaan = $request->judul_ciptaan;
             $hc->uraian_singkat = $request->uraian_singkat;
             $hc->tanggal_permohonan = $request->tanggal_permohonan;
-            
+
             $files = [
                 'ktp_inventor' => 'ktp_inventor',
                 'data_pengaju2' => 'data_pengaju2',
@@ -559,7 +583,7 @@ class DosenController extends Controller
     // Method untuk menyimpan data hak cipta
     public function storeHc(Request $request)
     {
-        $validasidata = $request->validate([
+        $request->validate([
             'nama_lengkap' => 'required',
             'alamat' => 'required',
             'no_telepon' => 'required',
@@ -598,11 +622,20 @@ class DosenController extends Controller
             $hc->judul_ciptaan = $request->judul_ciptaan;
             $hc->uraian_singkat = $request->uraian_singkat;
             $hc->tanggal_permohonan = $request->tanggal_permohonan;
+            if ($request->hasFile('dokumen_invensi')) {
+                $originalName = $request->file('dokumen_invensi')->getClientOriginalName();
+                $fileName = time() . '_' . str_replace(' ', '_', $originalName);
+
+                // Menyimpan file di dalam disk 'public' dan direktori 'dokumen-hc'
+                $path = $request->file('dokumen_invensi')->storeAs('dokumen-hc', $fileName, 'public');
+
+                // Simpan path file di database
+                $hc->dokumen_invensi = $path;
+            }
             // Proses upload file
             $files = [
                 'ktp_inventor' => 'ktp_inventor',
                 'data_pengaju2' => 'data_pengaju2',
-                'dokumen_invensi' => 'dokumen_invensi',
                 'surat_pengalihan' => 'surat_pengalihan',
                 'surat_pernyataan' => 'surat_pernyataan'
             ];
@@ -614,7 +647,7 @@ class DosenController extends Controller
                 }
             }
             // Simpan data ke database
-            $hc->save($validasidata);
+            $hc->save();
 
             // Redirect ke halaman sukses
             return redirect('/dosen/hak-cipta/pengajuan')->with('success', 'Data hak cipta berhasil disimpan!');
@@ -639,12 +672,11 @@ class DosenController extends Controller
         // Validasi apakah file dimiliki oleh user yang sedang login
         $hc = HakCipta::where('ktp_inventor', 'private/dosen/dokumen-hc/' . $filename)
             ->orWhere('data_pengaju2', 'private/dosen/dokumen-hc/' . $filename)
-            ->orWhere('dokumen_invensi', 'private/dosen/dokumen-hc/' . $filename)
             ->orWhere('surat_pengalihan', 'private/dosen/dokumen-hc/' . $filename)
             ->orWhere('surat_pernyataan', 'private/dosen/dokumen-hc/' . $filename)
             ->first();
 
-        if (!$hc || $hc->user_id !== auth()->id()) {
+        if (!$hc && $hc->user_id !== auth()->id()) {
             abort(403, 'Anda tidak memiliki akses ke file ini.');
         }
 
@@ -682,33 +714,36 @@ class DosenController extends Controller
     }
     public function viewSensitifFilesPaten($filename)
     {
-        // Path file yang akan diakses
+        // Path file di disk 'private'
         $filePaten = storage_path('app/private/dosen/dokumen-paten/' . $filename);
+
         // Pastikan file ada
         if (!file_exists($filePaten)) {
             abort(404, 'File tidak ditemukan.');
         }
-        // Validasi akses file (hanya pemilik file yang bisa mengaksesnya)
-        $paten = Paten::where('ktp_inventor', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('data_pengaju2', 'private/dosen/dokumen-paten/' . $filename)
-            // ->orWhere('dokumen_invensi', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('deskripsi_paten', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('abstrak_paten', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('pengalihan_hak', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('klaim', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('pernyataan_kepemilikan', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('surat_kuasa', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('gambar_paten', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('gambar_paten', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('gambar_tampilan', 'private/dosen/dokumen-paten/' . $filename)
-            ->first();
-        // Pastikan file milik user yang sedang login
-        if (!$paten || $paten->user_id !== auth()->id()) {
+
+        // Cari data paten berdasarkan salah satu kolom file
+        $paten = Paten::where(function ($query) use ($filename) {
+            $query->where('ktp_inventor', 'dosen/dokumen-paten/' . $filename)
+                ->orWhere('data_pengaju2', 'dosen/dokumen-paten/' . $filename)
+                ->orWhere('pengalihan_hak', 'dosen/dokumen-paten/' . $filename)
+                ->orWhere('klaim', 'dosen/dokumen-paten/' . $filename)
+                ->orWhere('pernyataan_kepemilikan', 'dosen/dokumen-paten/' . $filename)
+                ->orWhere('surat_kuasa', 'dosen/dokumen-paten/' . $filename);
+        })->first();
+
+        // Validasi akses: hanya pemilik atau admin/verifikator yang bisa melihat
+        if (!$paten  && $paten->user_id !== auth()->id()) {
             abort(403, 'Anda tidak memiliki akses ke file ini.');
         }
-        // Mengirim file sebagai response
+
+
+
+        // Kirim file sebagai respons
         return response()->file($filePaten);
     }
+
+
 
     public function editDi(string $id)
     {

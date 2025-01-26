@@ -112,7 +112,7 @@
                     </div>
                     @enderror
                   </div>
-                  <input type="text" value="Dosen" name="role" class="form-control form-control" hidden>
+                  
                   <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                     <button class="btn btn-dark btn-lg px-5 text-white" type="submit" id="submit" name="submit">Register</button>
                   </div>

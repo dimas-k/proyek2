@@ -15,6 +15,8 @@ use PhpMyAdmin\SqlParser\Statements\CreateStatement;
 use PhpMyAdmin\SqlParser\Tests\TestCase;
 use PhpMyAdmin\SqlParser\TokensList;
 
+use function implode;
+
 class CreateStatementTest extends TestCase
 {
     public function testBuilder(): void
@@ -252,11 +254,9 @@ class CreateStatementTest extends TestCase
     /**
      * @return string[][]
      */
-    public function partitionQueriesProvider(): array
+    public static function partitionQueriesProvider(): array
     {
-        return [
-            [
-                'subparts' => <<<EOT
+        $subPartitions = <<<EOT
 CREATE TABLE `ts` (
   `id` int(11) DEFAULT NULL,
   `purchased` date DEFAULT NULL
@@ -277,11 +277,9 @@ SUBPARTITION s4 ENGINE=InnoDB,
 SUBPARTITION s5 ENGINE=InnoDB
 )
 )
-EOT
-            ,
-            ],
-            [
-                'parts' => <<<EOT
+EOT;
+
+        $partitions = <<<EOT
 CREATE TABLE ptest (
   `event_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC
@@ -293,10 +291,9 @@ PARTITION p2 ENGINE=InnoDB,
 PARTITION p3 ENGINE=InnoDB,
 PARTITION p4 ENGINE=InnoDB
 )
-EOT
-            ,
-            ],
-        ];
+EOT;
+
+        return ['subpartitions' => [$subPartitions], 'partitions' => [$partitions]];
     }
 
     /**
@@ -402,6 +399,33 @@ EOT
         $this->assertEquals(
             'CREATE view view_name  AS WITH aa(col1)'
             . ' AS (SELECT 1 UNION ALL SELECT 2) SELECT col1 FROM cte AS `d`  ',
+            $stmt->build()
+        );
+
+        $parser = new Parser(
+            implode("\n", [
+                'CREATE VIEW number_sequence_view AS',
+                'WITH RECURSIVE number_sequence AS (',
+                '    SELECT 1 AS `number`',
+                '    UNION ALL',
+                '    SELECT `number` + 1',
+                '    FROM number_sequence',
+                '    WHERE `number` < 5',
+                ')',
+                'SELECT * FROM number_sequence;',
+            ])
+        );
+        $stmt = $parser->statements[0];
+        $this->assertEquals(
+            'CREATE VIEW number_sequence_view  AS'
+                . ' WITH RECURSIVE number_sequence AS ('
+                . 'SELECT 1 AS `number`'
+                . ' UNION ALL'
+                . ' SELECT `number`+ 1'
+                . ' FROM number_sequence'
+                . ' WHERE `number` < 5'
+                . ')'
+                . ' SELECT * FROM number_sequence ',
             $stmt->build()
         );
     }

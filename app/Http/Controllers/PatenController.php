@@ -47,32 +47,25 @@ class PatenController extends Controller
         $patenDI = Paten::where('status', 'Diberi')->count();
         $patenDK = Paten::where('status', 'Ditolak')->count();
 
-        $paten2020 = Paten::whereYear('tanggal_permohonan', '2020')->count();
-        $hc2020 = HakCipta::whereYear('tanggal_permohonan', '2020')->count();
-        $di2020 = DesainIndustri::whereYear('tanggal_permohonan', '2020')->count();
-        $gabungKi2020 = $paten2020 + $hc2020 + $di2020;
+        $data = Paten::selectRaw('YEAR(tanggal_permohonan) as tahun, COUNT(*) as jumlah')
+            ->groupByRaw('YEAR(tanggal_permohonan)')
+            ->orderByRaw('YEAR(tanggal_permohonan) ASC')
+            ->get();
 
-        $paten2021 = Paten::whereYear('tanggal_permohonan', '2021')->count();
-        $hc2021 = HakCipta::whereYear('tanggal_permohonan', '2021')->count();
-        $di2021 = DesainIndustri::whereYear('tanggal_permohonan', '2021')->count();
-        $gabungKi2021 = $paten2021 + $hc2021 + $di2021;
 
-        $paten2022 = Paten::whereYear('tanggal_permohonan', '2022')->count();
-        $hc2022 = HakCipta::whereYear('tanggal_permohonan', '2022')->count();
-        $di2022 = DesainIndustri::whereYear('tanggal_permohonan', '2022')->count();
-        $gabungKi2022 = $paten2022 + $hc2022 + $di2022;
-        
-        $paten2023 = Paten::whereYear('tanggal_permohonan', '2023')->count();
-        $hc2023 = HakCipta::whereYear('tanggal_permohonan', '2023')->count();
-        $di2023 = DesainIndustri::whereYear('tanggal_permohonan', '2023')->count();
-        $gabungKi2023 = $paten2023 + $hc2023 + $di2023;
-        
-        $paten2024 = Paten::whereYear('tanggal_permohonan','2024')->count();
-        $hc2024 = HakCipta::whereYear('tanggal_permohonan','2024')->count();
-        $di2024 = DesainIndustri::whereYear('tanggal_permohonan','2024')->count();
-        $gabungKi2024 = $paten2024 + $di2024 + $hc2024 ;
+        $allYears = range($data->min('tahun'), $data->max('tahun'));
 
-        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','paten2020','paten2021','paten2022','paten2023','paten2024','gabungKi2020','gabungKi2021','gabungKi2022','gabungKi2023','gabungKi2024','mvdov'));
+        $formattedData = collect($allYears)->map(function ($year) use ($data) {
+            return [
+                'tahun' => $year,
+                'jumlah' => $data->firstWhere('tahun', $year)->jumlah ?? 0
+            ];
+        });
+
+        $tahun = $formattedData->pluck('tahun')->toArray();
+        $jumlah = $formattedData->pluck('jumlah')->toArray();
+
+        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','tahun','jumlah','mvdov')); 
     }
 
     public function cari(Request $request){
@@ -112,32 +105,25 @@ class PatenController extends Controller
         $patenDI = Paten::where('status', 'Diberi')->count();
         $patenDK = Paten::where('status', 'Ditolak')->count();
         
-        $paten2020 = Paten::whereYear('tanggal_permohonan', '2020')->count();
-        $hc2020 = HakCipta::whereYear('tanggal_permohonan', '2020')->count();
-        $di2020 = DesainIndustri::whereYear('tanggal_permohonan', '2020')->count();
-        $gabungKi2020 = $paten2020 + $hc2020 + $di2020;
+        $data = Paten::selectRaw('YEAR(tanggal_permohonan) as tahun, COUNT(*) as jumlah')
+            ->groupByRaw('YEAR(tanggal_permohonan)')
+            ->orderByRaw('YEAR(tanggal_permohonan) ASC')
+            ->get();
 
-        $paten2021 = Paten::whereYear('tanggal_permohonan', '2021')->count();
-        $hc2021 = HakCipta::whereYear('tanggal_permohonan', '2021')->count();
-        $di2021 = DesainIndustri::whereYear('tanggal_permohonan', '2021')->count();
-        $gabungKi2021 = $paten2021 + $hc2021 + $di2021;
 
-        $paten2022 = Paten::whereYear('tanggal_permohonan', '2022')->count();
-        $hc2022 = HakCipta::whereYear('tanggal_permohonan', '2022')->count();
-        $di2022 = DesainIndustri::whereYear('tanggal_permohonan', '2022')->count();
-        $gabungKi2022 = $paten2022 + $hc2022 + $di2022;
-        
-        $paten2023 = Paten::whereYear('tanggal_permohonan', '2023')->count();
-        $hc2023 = HakCipta::whereYear('tanggal_permohonan', '2023')->count();
-        $di2023 = DesainIndustri::whereYear('tanggal_permohonan', '2023')->count();
-        $gabungKi2023 = $paten2023 + $hc2023 + $di2023;
-        
-        $paten2024 = Paten::whereYear('tanggal_permohonan','2024')->count();
-        $hc2024 = HakCipta::whereYear('tanggal_permohonan','2024')->count();
-        $di2024 = DesainIndustri::whereYear('tanggal_permohonan','2024')->count();
-        $gabungKi2024 = $paten2024 + $di2024 + $hc2024 ;
+        $allYears = range($data->min('tahun'), $data->max('tahun'));
 
-        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','paten2020','paten2021','paten2022','paten2023','paten2024','gabungKi2020','gabungKi2021','gabungKi2022','gabungKi2023','gabungKi2024','mvdov'));
+        $formattedData = collect($allYears)->map(function ($year) use ($data) {
+            return [
+                'tahun' => $year,
+                'jumlah' => $data->firstWhere('tahun', $year)->jumlah ?? 0
+            ];
+        });
+
+        $tahun = $formattedData->pluck('tahun')->toArray();
+        $jumlah = $formattedData->pluck('jumlah')->toArray();
+
+        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','tahun','jumlah','mvdov'));
     }
     public function orang()
     {

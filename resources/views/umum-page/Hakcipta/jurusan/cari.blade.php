@@ -21,15 +21,15 @@
         <a href="/hak-cipta" class="link-dark link-underline link-underline-opacity-0 mb-5 "><i
                 class="bi bi-arrow-left-circle mb-5" style="font-size: 35px;"></i></a>
         <div class="rounded border shadow-sm p-4 mb-5 mt-4">
-            <form action="/hak-cipta/list/jurusan/cari" method="GET" class="ms-2">
+            <form action="/hak-cipta/list/jurusan/cari" method="POST" class="ms-2">
                 @csrf
                 <label for="" class="form-label me-4">Cari Jurusan</label>
                 <select class="form-select-sm" aria-label="Default select example" name="jurusan" style="width: 1050px">
                     <option>-</option>
+                    <option>-</option>
                     <option value="Teknik Informatika">Teknik Informatika</option>
-                    <option value="Teknik Mesin">Teknik Mesin</option>
-                    <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan Tata Udara</option>
-                    <option value="Keperawatan">Keperawatan</option>
+                    <option value="Teknik">Teknik</option>
+                    <option value="Kesehatan">Kesehatan</option>
                 </select>
                 <button type="submit" class="btn btn-sm btn-primary ms-3">Cari</button>
             </form>

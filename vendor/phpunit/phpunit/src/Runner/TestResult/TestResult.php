@@ -10,6 +10,7 @@
 namespace PHPUnit\TestRunner\TestResult;
 
 use function count;
+use PHPUnit\Event\Test\AfterLastTestMethodErrored;
 use PHPUnit\Event\Test\BeforeFirstTestMethodErrored;
 use PHPUnit\Event\Test\ConsideredRisky;
 use PHPUnit\Event\Test\Errored;
@@ -36,7 +37,7 @@ final class TestResult
     private readonly int $numberOfAssertions;
 
     /**
-     * @psalm-var list<BeforeFirstTestMethodErrored|Errored>
+     * @psalm-var list<AfterLastTestMethodErrored|BeforeFirstTestMethodErrored|Errored>
      */
     private readonly array $testErroredEvents;
 
@@ -131,7 +132,7 @@ final class TestResult
     private readonly int $numberOfIssuesIgnoredByBaseline;
 
     /**
-     * @psalm-param list<BeforeFirstTestMethodErrored|Errored> $testErroredEvents
+     * @psalm-param list<AfterLastTestMethodErrored|BeforeFirstTestMethodErrored|Errored> $testErroredEvents
      * @psalm-param list<Failed> $testFailedEvents
      * @psalm-param array<string,list<ConsideredRisky>> $testConsideredRiskyEvents
      * @psalm-param list<TestSuiteSkipped> $testSuiteSkippedEvents
@@ -188,7 +189,7 @@ final class TestResult
     }
 
     /**
-     * @psalm-return list<BeforeFirstTestMethodErrored|Errored>
+     * @psalm-return list<AfterLastTestMethodErrored|BeforeFirstTestMethodErrored|Errored>
      */
     public function testErroredEvents(): array
     {
@@ -490,6 +491,28 @@ final class TestResult
     public function hasDeprecations(): bool
     {
         return $this->numberOfDeprecations() > 0;
+    }
+
+    public function hasPhpOrUserDeprecations(): bool
+    {
+        return $this->numberOfPhpOrUserDeprecations() > 0;
+    }
+
+    public function numberOfPhpOrUserDeprecations(): int
+    {
+        return count($this->deprecations) +
+               count($this->phpDeprecations);
+    }
+
+    public function hasPhpunitDeprecations(): bool
+    {
+        return $this->numberOfPhpunitDeprecations() > 0;
+    }
+
+    public function numberOfPhpunitDeprecations(): int
+    {
+        return count($this->testTriggeredPhpunitDeprecationEvents) +
+               count($this->testRunnerTriggeredDeprecationEvents);
     }
 
     public function numberOfDeprecations(): int

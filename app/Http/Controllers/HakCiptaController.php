@@ -23,45 +23,39 @@ class HakCiptaController extends Controller
         $hcKet = HakCipta::where('status', 'Keterangan belum lengkap')->count();
         $mvdov = HakCipta::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->count();
 
-        $paten2020 = Paten::whereYear('tanggal_permohonan','2020')->count();
-        $hc2020 = HakCipta::whereYear('tanggal_permohonan','2020')->count();
-        $di2020 = DesainIndustri::whereYear('tanggal_permohonan','2020')->count();
-        $gabungKi2020 = $paten2020 + $di2020 + $hc2020 ;
+        $data = HakCipta::selectRaw('YEAR(tanggal_permohonan) as tahun, COUNT(*) as jumlah')
+            ->groupByRaw('YEAR(tanggal_permohonan)')
+            ->orderByRaw('YEAR(tanggal_permohonan) ASC')
+            ->get();
 
-        $paten2021 = Paten::whereYear('tanggal_permohonan','2021')->count();
-        $hc2021 = HakCipta::whereYear('tanggal_permohonan','2021')->count();
-        $di2021 = DesainIndustri::whereYear('tanggal_permohonan','2021')->count();
-        $gabungKi2021 = $paten2021 + $di2021 + $hc2021 ;
 
-        $paten2022 = Paten::whereYear('tanggal_permohonan','2022')->count();
-        $hc2022 = HakCipta::whereYear('tanggal_permohonan','2022')->count();
-        $di2022 = DesainIndustri::whereYear('tanggal_permohonan','2022')->count();
-        $gabungKi2022 = $paten2022 + $di2022 + $hc2022 ;
+        $allYears = range($data->min('tahun'), $data->max('tahun'));
 
-        $paten2023 = Paten::whereYear('tanggal_permohonan','2023')->count();
-        $hc2023 = HakCipta::whereYear('tanggal_permohonan','2023')->count();
-        $di2023 = DesainIndustri::whereYear('tanggal_permohonan','2023')->count();
-        $gabungKi2023 = $paten2023 + $di2023 + $hc2023 ;
+        $formattedData = collect($allYears)->map(function ($year) use ($data) {
+            return [
+                'tahun' => $year,
+                'jumlah' => $data->firstWhere('tahun', $year)->jumlah ?? 0
+            ];
+        });
 
-        $paten2024 = Paten::whereYear('tanggal_permohonan','2024')->count();
-        $hc2024 = HakCipta::whereYear('tanggal_permohonan','2024')->count();
-        $di2024 = DesainIndustri::whereYear('tanggal_permohonan','2024')->count();
-        $gabungKi2024 = $paten2024 + $di2024 + $hc2024 ;
+        $tahun = $formattedData->pluck('tahun')->toArray();
+        $jumlah = $formattedData->pluck('jumlah')->toArray();
 
-        
-        return view('umum-page.Hakcipta.index', compact('hc','tercatat','null','tolak','itung','hcTolak','hcTerima','hcKet','hc2020','hc2021','hc2022','hc2023','hc2024','gabungKi2020','gabungKi2021','gabungKi2022','gabungKi2023','gabungKi2024','mvdov'));
+
+        return view('umum-page.Hakcipta.index', compact('hc', 'tercatat', 'null', 'tolak', 'itung', 'hcTolak', 'hcTerima', 'hcKet', 'tahun','jumlah', 'mvdov'));
     }
-    public function cari(Request $request){
+    public function cari(Request $request)
+    {
         $carijudul = $request->input('cari_hc');
         $carinama = $request->input('cari_nama');
         // $hc = HakCipta::where('judul_ciptaan','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5);
         $hc = HakCipta::when($carijudul, function ($query, $carijudul) {
             return $query->where('judul_ciptaan', 'LIKE', "%" . $carijudul . "%");
         })
-        ->when($carinama, function ($query, $carinama) {
-            return $query->orWhere('nama_lengkap', 'LIKE', "%" . $carinama . "%");
-        })
-        ->paginate(5);
+            ->when($carinama, function ($query, $carinama) {
+                return $query->orWhere('nama_lengkap', 'LIKE', "%" . $carinama . "%");
+            })
+            ->paginate(5);
         $itung = HakCipta::all()->count();
         $tercatat = HakCipta::where('status', 'Tercatat')->count();
         $null = HakCipta::where('status', 'Keterangan Belum Lengkap')->count();
@@ -72,31 +66,24 @@ class HakCiptaController extends Controller
         $hcTerima = HakCipta::where('status', 'Tercatat')->count();
         $hcKet = HakCipta::where('status', 'Keterangan belum lengkap')->count();
 
-        $paten2020 = Paten::whereYear('tanggal_permohonan','2020')->count();
-        $hc2020 = HakCipta::whereYear('tanggal_permohonan','2020')->count();
-        $di2020 = DesainIndustri::whereYear('tanggal_permohonan','2020')->count();
-        $gabungKi2020 = $paten2020 + $di2020 + $hc2020 ;
+        $data = HakCipta::selectRaw('YEAR(tanggal_permohonan) as tahun, COUNT(*) as jumlah')
+            ->groupByRaw('YEAR(tanggal_permohonan)')
+            ->orderByRaw('YEAR(tanggal_permohonan) ASC')
+            ->get();
 
-        $paten2021 = Paten::whereYear('tanggal_permohonan','2021')->count();
-        $hc2021 = HakCipta::whereYear('tanggal_permohonan','2021')->count();
-        $di2021 = DesainIndustri::whereYear('tanggal_permohonan','2021')->count();
-        $gabungKi2021 = $paten2021 + $di2021 + $hc2021 ;
 
-        $paten2022 = Paten::whereYear('tanggal_permohonan','2022')->count();
-        $hc2022 = HakCipta::whereYear('tanggal_permohonan','2022')->count();
-        $di2022 = DesainIndustri::whereYear('tanggal_permohonan','2022')->count();
-        $gabungKi2022 = $paten2022 + $di2022 + $hc2022 ;
+        $allYears = range($data->min('tahun'), $data->max('tahun'));
 
-        $paten2023 = Paten::whereYear('tanggal_permohonan','2023')->count();
-        $hc2023 = HakCipta::whereYear('tanggal_permohonan','2023')->count();
-        $di2023 = DesainIndustri::whereYear('tanggal_permohonan','2023')->count();
-        $gabungKi2023 = $paten2023 + $di2023 + $hc2023 ;
+        $formattedData = collect($allYears)->map(function ($year) use ($data) {
+            return [
+                'tahun' => $year,
+                'jumlah' => $data->firstWhere('tahun', $year)->jumlah ?? 0
+            ];
+        });
 
-        $paten2024 = Paten::whereYear('tanggal_permohonan','2024')->count();
-        $hc2024 = HakCipta::whereYear('tanggal_permohonan','2024')->count();
-        $di2024 = DesainIndustri::whereYear('tanggal_permohonan','2024')->count();
-        $gabungKi2024 = $paten2024 + $di2024 + $hc2024 ;
-        return view('umum-page.Hakcipta.index', compact('hc','tercatat','null','tolak','itung','hcTolak','hcTerima','hcKet','hc2020','hc2021','hc2022','hc2023','hc2024','gabungKi2020','gabungKi2021','gabungKi2022','gabungKi2023','gabungKi2024','mvdov'));
+        $tahun = $formattedData->pluck('tahun')->toArray();
+        $jumlah = $formattedData->pluck('jumlah')->toArray();
+        return view('umum-page.Hakcipta.index', compact('hc', 'tercatat', 'null', 'tolak', 'itung', 'hcTolak', 'hcTerima', 'hcKet', 'tahun','jumlah', 'mvdov'));
     }
 
     public function listTercatat()
@@ -127,8 +114,8 @@ class HakCiptaController extends Controller
     public function cariPegawai(Request $request)
     {
         $cario = $request->input('nama');
-        $nama = HakCipta::orderBy('nama_lengkap','asc')->paginate(10);
-        $orang = HakCipta::where('nama_lengkap','LIKE',"%".$cario."%")->orderBy('nama_lengkap', 'asc')->paginate(15);
+        $nama = HakCipta::orderBy('nama_lengkap', 'asc')->paginate(10);
+        $orang = HakCipta::where('nama_lengkap', 'LIKE', "%" . $cario . "%")->orderBy('nama_lengkap', 'asc')->paginate(15);
         return view('umum-page.Hakcipta.perorangan.cari', compact('nama', 'orang'));
     }
     public function jurusan()
@@ -138,7 +125,7 @@ class HakCiptaController extends Controller
     public function cariJurusan(Request $request)
     {
         $carij = $request->input('jurusan');
-        $jurusan = HakCipta::where('jurusan','LIKE',"%".$carij."%")->paginate(10);
+        $jurusan = HakCipta::where('jurusan', 'LIKE', "%" . $carij . "%")->paginate(10);
         return view('umum-page.Hakcipta.jurusan.cari', compact('jurusan'));
     }
     public function prodi()
@@ -148,7 +135,7 @@ class HakCiptaController extends Controller
     public function cariProdi(Request $request)
     {
         $cariprodi = $request->input('prodi');
-        $prodi = HakCipta::where('prodi','LIKE',"%".$cariprodi."%")->paginate(10);
+        $prodi = HakCipta::where('prodi', 'LIKE', "%" . $cariprodi . "%")->paginate(10);
         return view('umum-page.Hakcipta.prodi.cari', compact('prodi'));
     }
 
@@ -166,21 +153,21 @@ class HakCiptaController extends Controller
     public function store(Request $request)
     {
         $validasidata = $request->validate([
-            'nama_lengkap'=> 'required',
-            'alamat'=> 'required',
-            'no_telepon'=> 'required',
-            'tanggal_lahir'=> 'required',
-            'ktp_inventor'=> 'required|mimes:pdf',
-            'email'=> 'required|email',
-            'kewarganegaraan'=> 'required',
-            'kode_pos'=> 'required',
-            'jenis_ciptaan'=> 'required',
-            'judul_ciptaan'=> 'required',
-            'uraian_singkat'=>'required|max:60000',
-            'dokumen_invensi'=>'required|mimes:pdf',
-            'surat_pengalihan'=>'required|mimes:pdf',
-            'surat_pernyataan'=>'required|mimes:pdf',
-            'tanggal_permohonan'=>'required'
+            'nama_lengkap' => 'required',
+            'alamat' => 'required',
+            'no_telepon' => 'required',
+            'tanggal_lahir' => 'required',
+            'ktp_inventor' => 'required|mimes:pdf',
+            'email' => 'required|email',
+            'kewarganegaraan' => 'required',
+            'kode_pos' => 'required',
+            'jenis_ciptaan' => 'required',
+            'judul_ciptaan' => 'required',
+            'uraian_singkat' => 'required|max:60000',
+            'dokumen_invensi' => 'required|mimes:pdf',
+            'surat_pengalihan' => 'required|mimes:pdf',
+            'surat_pernyataan' => 'required|mimes:pdf',
+            'tanggal_permohonan' => 'required'
 
         ]);
 
@@ -193,7 +180,7 @@ class HakCiptaController extends Controller
         $hc->email = $request->email;
         $hc->kewarganegaraan = $request->kewarganegaraan;
         $hc->kode_pos = $request->kode_pos;
-        $hc->jenis_ciptaan = $request-> jenis_ciptaan;
+        $hc->jenis_ciptaan = $request->jenis_ciptaan;
         $hc->judul_ciptaan = $request->judul_ciptaan;
         $hc->uraian_singkat = $request->uraian_singkat;
         $hc->dokumen_invensi = $request->file('dokumen_invensi')->store('dokumen-hc');
@@ -238,4 +225,3 @@ class HakCiptaController extends Controller
         //
     }
 }
-

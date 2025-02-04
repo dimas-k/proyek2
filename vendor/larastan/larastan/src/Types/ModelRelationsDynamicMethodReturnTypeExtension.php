@@ -8,17 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Larastan\Larastan\Concerns\HasContainer;
+use Larastan\Larastan\Internal\LaravelVersion;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\MethodReflection;
-use PHPStan\Reflection\ParametersAcceptorSelector;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Type\DynamicMethodReturnTypeExtension;
 use PHPStan\Type\Generic\GenericObjectType;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
-use PHPStan\Type\TypeUtils;
-use PHPStan\Type\UnionType;
 
 use function array_map;
 use function count;
@@ -39,9 +37,9 @@ class ModelRelationsDynamicMethodReturnTypeExtension implements DynamicMethodRet
 
     public function isMethodSupported(MethodReflection $methodReflection): bool
     {
-        $variants = ParametersAcceptorSelector::selectSingle($methodReflection->getVariants());
+        $variant = $methodReflection->getVariants()[0];
 
-        $returnType = $variants->getReturnType();
+        $returnType = $variant->getReturnType();
 
         $classNames = $returnType->getObjectClassNames();
 
@@ -57,7 +55,7 @@ class ModelRelationsDynamicMethodReturnTypeExtension implements DynamicMethodRet
             return false;
         }
 
-        if (count($variants->getParameters()) !== 0) {
+        if (count($variant->getParameters()) !== 0) {
             return false;
         }
 
@@ -79,59 +77,35 @@ class ModelRelationsDynamicMethodReturnTypeExtension implements DynamicMethodRet
             return false;
         }
 
-        $relatedModel = $this
+        $models = $this
             ->relationParserHelper
-            ->findRelatedModelInRelationMethod($methodReflection);
+            ->findModelsInRelationMethod($methodReflection);
 
-        return $relatedModel !== null;
+        return count($models) !== 0;
     }
 
-    /**
-     * @return Type
-     *
-     * @throws ShouldNotHappenException
-     */
+    /** @throws ShouldNotHappenException */
     public function getTypeFromMethodCall(
         MethodReflection $methodReflection,
         MethodCall $methodCall,
         Scope $scope,
     ): Type|null {
-        $returnType                 = ParametersAcceptorSelector::selectSingle($methodReflection->getVariants())->getReturnType();
+        $returnType                 = $methodReflection->getVariants()[0]->getReturnType();
         $returnTypeObjectClassNames = $returnType->getObjectClassNames();
 
         if ($returnTypeObjectClassNames === []) {
             return null;
         }
 
-        /** @var string $relatedModelClassName */
-        $relatedModelClassName = $this
-            ->relationParserHelper
-            ->findRelatedModelInRelationMethod($methodReflection);
+        $models = $this->relationParserHelper->findModelsInRelationMethod($methodReflection);
 
-        if ((new ObjectType(BelongsTo::class))->isSuperTypeOf($returnType)->yes()) {
-            $classReflection = $methodReflection->getDeclaringClass();
-            $types           = [];
+        $types   = array_map(static fn ($model) => new ObjectType((string) $model), $models);
+        $types[] = $scope->getType($methodCall->var);
 
-            foreach (TypeUtils::flattenTypes($returnType) as $flattenType) {
-                if ((new ObjectType(BelongsTo::class))->isSuperTypeOf($flattenType)->yes()) {
-                    $types[] = $flattenType->getTemplateType(BelongsTo::class, 'TChildModel');
-                } else {
-                    $types[] = $flattenType->getTemplateType(Relation::class, 'TRelatedModel');
-                }
-            }
-
-            if (count($types) >= 2) {
-                $childType = new UnionType(array_map(static fn (Type $type) => new ObjectType($type->getObjectClassNames()[0]), $types));
-            } else {
-                $childType = new ObjectType($classReflection->getName());
-            }
-
-            return new GenericObjectType($returnTypeObjectClassNames[0], [
-                new ObjectType($relatedModelClassName),
-                $childType,
-            ]);
+        if (! LaravelVersion::hasLaravel1115Generics() && ! (new ObjectType(BelongsTo::class))->isSuperTypeOf($returnType)->yes()) {
+            $types = [$types[0]];
         }
 
-        return new GenericObjectType($returnTypeObjectClassNames[0], [new ObjectType($relatedModelClassName)]);
+        return new GenericObjectType($returnTypeObjectClassNames[0], $types);
     }
 }

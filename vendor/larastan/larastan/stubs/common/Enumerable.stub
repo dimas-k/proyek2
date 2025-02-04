@@ -7,8 +7,9 @@ namespace Illuminate\Support;
  * @template TValue
  *
  * @extends \IteratorAggregate<TKey, TValue>
+ * @extends \Illuminate\Contracts\Support\Arrayable<TKey, TValue>
  */
-interface Enumerable extends \Countable, \IteratorAggregate, \JsonSerializable
+interface Enumerable extends \Countable, \IteratorAggregate, \JsonSerializable, \Illuminate\Contracts\Support\Arrayable
 {
     /**
      * Search the collection for a given value and return the corresponding key if successful.
@@ -38,4 +39,25 @@ interface Enumerable extends \Countable, \IteratorAggregate, \JsonSerializable
     * @return static<array-key, TCombineValue>
     */
    public function combine($values);
+
+   /**
+    * Key an associative array by a field or using a callback.
+    *
+    * @template TNewKey of array-key
+    *
+    * @param  (callable(TValue, TKey): TNewKey)|array<array-key, mixed>|string  $keyBy
+    * @return static<($keyBy is string ? array-key : ($keyBy is array<int, mixed> ? array-key : TNewKey)), TValue>
+    */
+   public function keyBy($keyBy);
+
+   /**
+    * Group an associative array by a field or using a callback.
+    *
+    * @template TGroupKey of array-key
+    *
+    * @param  (callable(TValue, TKey): TGroupKey)|array<array-key, mixed>|string  $groupBy
+    * @param  bool  $preserveKeys
+    * @return static<($groupBy is string ? array-key : ($groupBy is array<int, mixed> ? array-key : TGroupKey)), static<($preserveKeys is true ? TKey : int), TValue>>
+    */
+   public function groupBy($groupBy, $preserveKeys = false);
 }

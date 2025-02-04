@@ -105,7 +105,7 @@
                                     <tr>
                                         <th>Dokumen Invensi</th>
                                         <td>:
-                                            <a href="{{ route('private_hc_dosen', ['filename' => basename($hc->dokumen_invensi)]) }}"
+                                            <a href="{{ asset('storage/' . $hc->dokumen_invensi)  }}"
                                                 target="_blank">Lihat Dokumen Invensi</a>
                                     </tr>
                                     <tr>

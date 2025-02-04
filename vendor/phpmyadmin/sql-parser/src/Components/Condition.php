@@ -146,14 +146,17 @@ class Condition extends Component
             }
 
             // Conditions are delimited by logical operators.
-            if (in_array($token->value, static::$DELIMITERS, true)) {
+            if (
+                ($token->type === Token::TYPE_KEYWORD || $token->type === Token::TYPE_OPERATOR)
+                && in_array($token->value, static::$DELIMITERS, true)
+            ) {
                 if ($betweenBefore && ($token->value === 'AND')) {
                     // The syntax of keyword `BETWEEN` is hard-coded.
                     $betweenBefore = false;
                 } else {
                     // The expression ended.
                     $expr->expr = trim($expr->expr);
-                    if (! empty($expr->expr)) {
+                    if ($expr->expr !== '') {
                         $ret[] = $expr;
                     }
 
@@ -214,7 +217,7 @@ class Condition extends Component
 
         // Last iteration was not processed.
         $expr->expr = trim($expr->expr);
-        if (! empty($expr->expr)) {
+        if ($expr->expr !== '') {
             $ret[] = $expr;
         }
 

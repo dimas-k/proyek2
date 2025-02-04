@@ -15,35 +15,38 @@
     @include('layout.nav')
 
     <div class="container p-4">
-        <a href="/hak-cipta" class="link-dark link-underline link-underline-opacity-0 mb-3 "><i class="bi bi-arrow-left-circle mb-3" style="font-size: 35px;"></i></a>
+        <a href="/hak-cipta" class="link-dark link-underline link-underline-opacity-0 mb-3 "><i
+                class="bi bi-arrow-left-circle mb-3" style="font-size: 35px;"></i></a>
         <h3 class="fw-normal font-family-Kokoro mb-2 mt-3"><i class="bi bi-table me-2"></i>Daftar Hak Cipta</h3>
-        <table class="table table-hover font-family-Kokoro">
-            <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Nama lengkap</th>
-                    <th scope="col">Jenis Ciptaan</th>
-                    <th scope="col">Judul Ciptaan</th>
-                    <th scope="col">Tanggal pengajuan</th>
-                    <th scope="col">Status paten</th>
-                    <th scope="col">Detail Pengajuan</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($cek as $i => $p)
+        <div class="table-responsive">
+            <table class="table table-hover font-family-Kokoro">
+                <thead>
                     <tr>
-                        <th scope="row">{{ $i + 1 }}</th>
-                        <td>{{ $p->nama_lengkap }}</td>
-                        <td>{{ $p->jenis_ciptaan }}</td>
-                        <td>{{ $p->judul_ciptaan }}</td>
-                        <td>{{ $p->tanggal_permohonan }}</td>
-                        <td>{{ $p->status }}</td>
-                        <td><a class="btn btn-primary" href={{ Route('hak-cipta.show', $p->id) }}>Selengkapnya</a>
-                        </td>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama lengkap</th>
+                        <th scope="col">Jenis Ciptaan</th>
+                        <th scope="col">Judul Ciptaan</th>
+                        <th scope="col">Tanggal pengajuan</th>
+                        <th scope="col">Status paten</th>
+                        <th scope="col">Detail Pengajuan</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($cek as $i => $p)
+                        <tr>
+                            <th scope="row">{{ $i + 1 }}</th>
+                            <td>{{ $p->nama_lengkap }}</td>
+                            <td>{{ $p->jenis_ciptaan }}</td>
+                            <td>{{ $p->judul_ciptaan }}</td>
+                            <td>{{ $p->tanggal_permohonan }}</td>
+                            <td>{{ $p->status }}</td>
+                            <td><a class="btn btn-primary" href={{ Route('hak-cipta.show', $p->id) }}>Selengkapnya</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
     @include('layout.footer')
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

@@ -11,7 +11,6 @@ use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Support\Str;
 use Larastan\Larastan\Methods\BuilderHelper;
 use Larastan\Larastan\Support\CollectionHelper;
-use PhpParser\Node\Expr;
 use PhpParser\Node\Expr\StaticCall;
 use PhpParser\Node\Name;
 use PHPStan\Analyser\Scope;
@@ -61,57 +60,57 @@ final class ModelDynamicStaticMethodReturnTypeExtension implements DynamicStatic
             return true;
         }
 
-        if (! $this->reflectionProvider->getClass(Model::class)->hasNativeMethod($name)) {
-            return false;
-        }
-
-        $method = $this->reflectionProvider->getClass(Model::class)->getNativeMethod($methodReflection->getName());
-
-        $returnType = ParametersAcceptorSelector::selectSingle($method->getVariants())->getReturnType();
-
-        return count(array_intersect([EloquentBuilder::class, QueryBuilder::class, Collection::class], $returnType->getReferencedClasses())) > 0;
+        return $this->reflectionProvider->getClass(Model::class)->hasNativeMethod($name);
     }
 
     public function getTypeFromStaticMethodCall(
         MethodReflection $methodReflection,
         StaticCall $methodCall,
         Scope $scope,
-    ): Type {
+    ): Type|null {
         $method = $methodReflection->getDeclaringClass()
             ->getMethod($methodReflection->getName(), $scope);
 
-        $returnType = ParametersAcceptorSelector::selectSingle($method->getVariants())->getReturnType();
+        $returnType = ParametersAcceptorSelector::selectFromArgs($scope, $methodCall->getArgs(), $method->getVariants())->getReturnType();
+
+        if (count(array_intersect([EloquentBuilder::class, QueryBuilder::class, Collection::class], $returnType->getReferencedClasses())) === 0) {
+            return null;
+        }
 
         if (count(array_intersect([EloquentBuilder::class], $returnType->getReferencedClasses())) > 0) {
             if ($methodCall->class instanceof Name) {
-                $returnType = new GenericObjectType(
+                return new GenericObjectType(
                     $this->builderHelper->determineBuilderName($scope->resolveName($methodCall->class)),
-                    [new ObjectType($scope->resolveName($methodCall->class))],
+                    [$scope->resolveTypeByName($methodCall->class)],
                 );
-            } elseif ($methodCall->class instanceof Expr) {
-                $type = $scope->getType($methodCall->class);
+            }
 
-                $classNames = $type->getObjectClassNames();
+            $type = $scope->getType($methodCall->class);
 
-                $types = [];
+            if ($type->isClassStringType()->yes()) {
+                $type = $type->getClassStringObjectType();
+            }
 
-                foreach ($classNames as $className) {
-                    if (! $this->reflectionProvider->hasClass($className)) {
-                        continue;
-                    }
+            $classNames = $type->getObjectClassNames();
 
-                    try {
-                        $types[] = new GenericObjectType(
-                            $this->builderHelper->determineBuilderName($className),
-                            [new ObjectType($className)],
-                        );
-                    } catch (MissingMethodFromReflectionException) {
-                    }
+            $types = [];
+
+            foreach ($classNames as $className) {
+                if (! $this->reflectionProvider->hasClass($className)) {
+                    continue;
                 }
 
-                if ($types !== []) {
-                    $returnType = TypeCombinator::union(...$types);
+                try {
+                    $types[] = new GenericObjectType(
+                        $this->builderHelper->determineBuilderName($className),
+                        [new ObjectType($className)],
+                    );
+                } catch (MissingMethodFromReflectionException) {
                 }
+            }
+
+            if ($types !== []) {
+                return TypeCombinator::union(...$types);
             }
         }
 

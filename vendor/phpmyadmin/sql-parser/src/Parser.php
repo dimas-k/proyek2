@@ -43,6 +43,7 @@ class Parser extends Core
         'BACKUP' => 'PhpMyAdmin\\SqlParser\\Statements\\BackupStatement',
         'CHECK' => 'PhpMyAdmin\\SqlParser\\Statements\\CheckStatement',
         'CHECKSUM' => 'PhpMyAdmin\\SqlParser\\Statements\\ChecksumStatement',
+        'KILL' => 'PhpMyAdmin\\SqlParser\\Statements\\KillStatement',
         'OPTIMIZE' => 'PhpMyAdmin\\SqlParser\\Statements\\OptimizeStatement',
         'REPAIR' => 'PhpMyAdmin\\SqlParser\\Statements\\RepairStatement',
         'RESTORE' => 'PhpMyAdmin\\SqlParser\\Statements\\RestoreStatement',

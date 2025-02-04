@@ -6,18 +6,18 @@ namespace Larastan\Larastan\Methods;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Larastan\Larastan\Reflection\EloquentBuilderMethodReflection;
+use PHPStan\Analyser\OutOfClassScope;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\MethodReflection;
 use PHPStan\Reflection\MethodsClassReflectionExtension;
 use PHPStan\Reflection\MissingMethodFromReflectionException;
-use PHPStan\Reflection\ParametersAcceptorSelector;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\ShouldNotHappenException;
 use PHPStan\Type\Generic\GenericObjectType;
 use PHPStan\Type\ObjectType;
+use PHPStan\Type\ThisType;
 
 use function array_key_exists;
 
@@ -26,7 +26,7 @@ final class RelationForwardsCallsExtension implements MethodsClassReflectionExte
     /** @var array<string, MethodReflection> */
     private array $cache = [];
 
-    public function __construct(private BuilderHelper $builderHelper, private ReflectionProvider $reflectionProvider, private EloquentBuilderForwardsCallsExtension $eloquentBuilderForwardsCallsExtension)
+    public function __construct(private BuilderHelper $builderHelper, private ReflectionProvider $reflectionProvider)
     {
     }
 
@@ -60,7 +60,7 @@ final class RelationForwardsCallsExtension implements MethodsClassReflectionExte
      */
     private function findMethod(ClassReflection $classReflection, string $methodName): MethodReflection|null
     {
-        if (! $classReflection->isSubclassOf(Relation::class)) {
+        if (! $classReflection->is(Relation::class)) {
             return null;
         }
 
@@ -76,45 +76,29 @@ final class RelationForwardsCallsExtension implements MethodsClassReflectionExte
             $modelReflection = $this->reflectionProvider->getClass(Model::class);
         }
 
-        $builderName = $this->builderHelper->determineBuilderName($modelReflection->getName());
-
-        $builderReflection = $this->reflectionProvider->getClass($builderName)->withTypes([$relatedModel]);
-
-        if ($builderReflection->hasNativeMethod($methodName)) {
-            $reflection = $builderReflection->getNativeMethod($methodName);
-        } elseif ($this->eloquentBuilderForwardsCallsExtension->hasMethod($builderReflection, $methodName)) {
-            $reflection = $this->eloquentBuilderForwardsCallsExtension->getMethod($builderReflection, $methodName);
-        } else {
+        if (! $modelReflection->is(Model::class)) {
             return null;
         }
 
-        $parametersAcceptor = ParametersAcceptorSelector::selectSingle($reflection->getVariants());
-        $returnType         = $parametersAcceptor->getReturnType();
+        $builderName = $this->builderHelper->determineBuilderName($modelReflection->getName());
+        $builderType = new GenericObjectType($builderName, [new ObjectType($modelReflection->getName())]);
 
-        $types = [$relatedModel];
-
-        // BelongsTo relation needs second generic type
-        if ((new ObjectType(BelongsTo::class))->isSuperTypeOf(new ObjectType($classReflection->getName()))->yes()) {
-            $childType = $classReflection->getActiveTemplateTypeMap()->getType('TChildModel');
-
-            if ($childType !== null) {
-                $types[] = $childType;
-            }
+        if (! $builderType->hasMethod($methodName)->yes()) {
+            return null;
         }
 
+        $reflection = $builderType->getMethod($methodName, new OutOfClassScope());
+
+        $parametersAcceptor = $reflection->getVariants()[0];
+        $returnType         = $parametersAcceptor->getReturnType();
+
         if ((new ObjectType(Builder::class))->isSuperTypeOf($returnType)->yes()) {
-            return new EloquentBuilderMethodReflection(
-                $methodName,
-                $classReflection,
-                $parametersAcceptor->getParameters(),
-                new GenericObjectType($classReflection->getName(), $types),
-                $parametersAcceptor->isVariadic(),
-            );
+            $returnType = new ThisType($classReflection);
         }
 
         return new EloquentBuilderMethodReflection(
             $methodName,
-            $classReflection,
+            $reflection->getDeclaringClass(),
             $parametersAcceptor->getParameters(),
             $returnType,
             $parametersAcceptor->isVariadic(),

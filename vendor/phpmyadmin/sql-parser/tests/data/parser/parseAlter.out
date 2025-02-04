@@ -272,6 +272,20 @@
                 "altered": [
                     {
                         "@type": "PhpMyAdmin\\SqlParser\\Components\\AlterOperation",
+                        "ROUTINE_OPTIONS": {
+                            "COMMENT": [
+                                1,
+                                "var"
+                            ],
+                            "LANGUAGE SQL": 2,
+                            "CONTAINS SQL": 3,
+                            "NO SQL": 3,
+                            "READS SQL DATA": 3,
+                            "MODIFIES SQL DATA": 3,
+                            "SQL SECURITY": 4,
+                            "DEFINER": 5,
+                            "INVOKER": 5
+                        },
                         "options": {
                             "@type": "PhpMyAdmin\\SqlParser\\Components\\OptionsArray",
                             "options": {
@@ -295,23 +309,33 @@
                     },
                     {
                         "@type": "PhpMyAdmin\\SqlParser\\Components\\AlterOperation",
+                        "ROUTINE_OPTIONS": {
+                            "COMMENT": [
+                                1,
+                                "var"
+                            ],
+                            "LANGUAGE SQL": 2,
+                            "CONTAINS SQL": 3,
+                            "NO SQL": 3,
+                            "READS SQL DATA": 3,
+                            "MODIFIES SQL DATA": 3,
+                            "SQL SECURITY": 4,
+                            "DEFINER": 5,
+                            "INVOKER": 5
+                        },
                         "options": {
                             "@type": "PhpMyAdmin\\SqlParser\\Components\\OptionsArray",
                             "options": {
                                 "1": "ADD",
-                                "2": "KEY"
+                                "2": {
+                                    "name": "KEY",
+                                    "equals": false,
+                                    "expr": "`idx_actor_last_name`",
+                                    "value": "idx_actor_last_name"
+                                }
                             }
                         },
-                        "field": {
-                            "@type": "PhpMyAdmin\\SqlParser\\Components\\Expression",
-                            "database": null,
-                            "table": null,
-                            "column": "idx_actor_last_name",
-                            "expr": "`idx_actor_last_name`",
-                            "alias": null,
-                            "function": null,
-                            "subquery": null
-                        },
+                        "field": null,
                         "partitions": null,
                         "unknown": [
                             {

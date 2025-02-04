@@ -59,7 +59,7 @@ class LexerTest extends TestCase
     /**
      * @return string[][]
      */
-    public function lexProvider(): array
+    public static function lexProvider(): array
     {
         return [
             ['lexer/lex'],
@@ -79,6 +79,7 @@ class LexerTest extends TestCase
             ['lexer/lexOperator'],
             ['lexer/lexOperatorStarIsArithmetic'],
             ['lexer/lexOperatorStarIsWildcard'],
+            ['lexer/lexEmptyCStyleComment'],
             ['lexer/lexString'],
             ['lexer/lexStringErr1'],
             ['lexer/lexSymbol'],

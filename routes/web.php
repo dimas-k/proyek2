@@ -241,8 +241,7 @@ Route::middleware(['auth', 'role:Dosen'])->group(function () {
 
     Route::get('/private/hc/dosen/{filename}', [DosenController::class, 'viewSensitifFilesHc'])->middleware(['auth', 'role:Dosen'])->name('private_hc_dosen');
     Route::get('/private/di/dosen/{file}', [DosenController::class, 'viewSensitifFilesDi'])->middleware(['auth', 'role:Dosen'])->name('private_di_dosen');
-    Route::get('/private/paten/dosen/{file}', [DosenController::class, 'viewSensitifFilesPaten'])->middleware(['auth', 'role:Dosen'])->name('private_paten_dosen');
-    
+    Route::get('/private/paten/dosen/{file}', [DosenController::class, 'viewSensitifFilesPaten'])->middleware('auth', 'role:Dosen')->name('private_paten_dosen');    
     // Route::get('/private/{file}', [DosenController::class, 'viewSensitifFiles'])->middleware('auth')->name('private');
     // Route::get('/dokumen/{type}/{filename}', [DosenController::class, 'viewSensitifFiles'])->name('dokumen.view');
     // Route::get('/dokumen/view/{type}/{filename}', [DosenController::class, 'viewSensitifFiles'])->name('dokumen.view');

@@ -8,7 +8,7 @@
     <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href={{ asset('assets/css/index.css') }}>
-    <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
+    <link rel="shortcut icon" href={{ asset('assets/logo-polindra.png') }}>
     <title>SIKI POLINDRA | Paten</title>
 </head>
 
@@ -308,7 +308,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($paten1 as $i => $p)
+                    @forelse ($paten1 as $i => $p)
                         <tr>
                             <th scope="row">
                                 {{ ($paten1->currentPage() - 1) * $paten1->perPage() + $loop->iteration }}
@@ -319,7 +319,11 @@
                             <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y') }}</td>
                             <td>{{ $p->status }}</td>
                         </tr>
-                    @endforeach
+                        @empty
+                            <td colspan="10" class="text-center">
+                                <img src="{{ asset('assets/no-data.png') }}" style="width:30%; height:auto">
+                            </td>
+                    @endforelse
                 </tbody>
             </table>
         </div>

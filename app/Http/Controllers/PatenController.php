@@ -135,7 +135,7 @@ class PatenController extends Controller
     {
         $cario = $request->input('nama');
         $nama = Paten::orderBy('nama_lengkap','asc')->paginate(10);
-        $orang = Paten::where('nama_lengkap','LIKE',"%".$cario."%")->orderBy('nama_lengkap', 'asc')->paginate(15);
+        $orang = Paten::where('nama_lengkap',$cario)->orderBy('nama_lengkap', 'asc')->paginate(15);
         return view('umum-page.paten.perorangan.cari', compact('orang','nama'));
     }
     public function jurusan()
@@ -145,7 +145,7 @@ class PatenController extends Controller
     public function cariJurusan(Request $request)
     {
         $carij = $request->input('jurusan');
-        $jurusan = Paten::where('jurusan','LIKE',"%".$carij."%")->paginate(10);
+        $jurusan = Paten::where('jurusan',$carij)->paginate(10);
         return view('umum-page.paten.jurusan.cari', compact('jurusan'));
     }
     public function prodi()
@@ -155,7 +155,7 @@ class PatenController extends Controller
     public function cariProdi(Request $request)
     {
         $cariprodi = $request->input('prodi');
-        $prodi = Paten::where('prodi','LIKE',"%".$cariprodi."%")->paginate(10);
+        $prodi = Paten::where('prodi',$cariprodi)->paginate(10);
 
         return view('umum-page.paten.prodi.cari', compact('prodi'));
     }

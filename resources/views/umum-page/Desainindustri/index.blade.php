@@ -221,11 +221,11 @@
                         <th scope="col">Jenis Desain</th>
                         <th scope="col">Judul Desain</th>
                         <th scope="col">Tanggal pengajuan</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Status Desain Industri</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($di as $i => $d)
+                    @forelse ($di as $i => $d)
                         <tr>
                             <th scope="row">{{ ($di->currentPage() - 1) * $di->perPage() + $loop->iteration }}</th>
                             <td>{{ $d->nama_lengkap }}</td>
@@ -234,7 +234,11 @@
                             <td>{{ \Carbon\Carbon::parse($d->tanggal_permohonan)->format('d-m-Y') }}</td>
                             <td>{{ $d->status }}</td>
                         </tr>
-                    @endforeach
+                        @empty
+                            <td colspan="10" class="text-center">
+                                <img src="{{ asset('assets/no-data.png') }}" style="width:30%; height:auto">
+                            </td>
+                    @endforelse
                 </tbody>
             </table>
         </div>

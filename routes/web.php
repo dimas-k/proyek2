@@ -75,11 +75,11 @@ Route::get('/paten/ditolak', [PatenController::class, 'ditolak']);
 Route::get('/paten/menunggu-verifikasi', [PatenController::class, 'mvdov']);
 Route::post('/cari', [PatenController::class, 'cari'])->name('paten.cari');
 Route::get('/paten/list/perorangan/', [PatenController::class, 'orang']);
-Route::get('/paten/list/perorangan/cari', [PatenController::class, 'cariOrang']);
+Route::post('/paten/list/perorangan/cari', [PatenController::class, 'cariOrang']);
 Route::get('/paten/list/jurusan/', [PatenController::class, 'jurusan']);
-Route::get('/paten/list/jurusan/cari/', [PatenController::class, 'cariJurusan']);
+Route::post('/paten/list/jurusan/cari', [PatenController::class, 'cariJurusan']);
 Route::get('paten/list/prodi/', [PatenController::class, 'prodi']);
-Route::get('paten/list/prodi/cari/', [PatenController::class, 'cariProdi'])->name('cari.paten.prodi');
+Route::post('paten/list/prodi/cari', [PatenController::class, 'cariProdi'])->name('cari.paten.prodi');
 
 Route::get('/hak-cipta', [HakCiptaController::class, 'index']);
 Route::get('/hak-cipta/tercatat', [HakCiptaController::class, 'listTercatat']);
@@ -89,11 +89,11 @@ Route::get('/hak-cipta/show/{id}', [HakCiptaController::class, 'show'])->name('h
 Route::get('/hak-cipta/menunggu-verifikasi', [HakCiptaController::class, 'mvdov']);
 Route::post('/hak-cipta/cari/data', [HakCiptaController::class, 'cari'])->name('hc.cari');
 Route::get('/hak-cipta/list/pegawai/', [HakCiptaController::class, 'pegawai']);
-Route::post('/hak-cipta/list/pegawai/cari/', [HakCiptaController::class, 'cariPegawai']);
+Route::post('/hak-cipta/list/pegawai/cari', [HakCiptaController::class, 'cariPegawai']);
 Route::get('/hak-cipta/list/jurusan/', [HakCiptaController::class, 'jurusan']);
-Route::post('/hak-cipta/list/jurusan/cari/', [HakCiptaController::class, 'cariJurusan']);
+Route::post('/hak-cipta/list/jurusan/cari', [HakCiptaController::class, 'cariJurusan']);
 Route::get('/hak-cipta/list/prodi', [HakCiptaController::class, 'prodi']);
-Route::get('/hak-cipta/list/prodi/cari/', [HakCiptaController::class, 'cariProdi']);
+Route::post('/hak-cipta/list/prodi/cari', [HakCiptaController::class, 'cariProdi']);
 
 Route::get('/desain-industri', [DesainIndustriController::class, 'index']);
 Route::get('/desain-industri/diberi', [DesainIndustriController::class, 'diberi']);
@@ -104,11 +104,11 @@ Route::get('/desain-industri/keterangan-belum-lengkap', [DesainIndustriControlle
 Route::get('/desain-industri/menunggu-verifikasi', [DesainIndustriController::class, 'mvdov']);
 Route::get('/desain-industri/show/{id}', [DesainIndustriController::class, 'show'])->name('desain-industri.show');
 Route::get('/desain-industri/list/pegawai', [DesainIndustriController::class, 'orang']);
-Route::get('/desain-indstri/list/pegawai/cari', [DesainIndustriController::class, 'cariorang']);
+Route::post('/desain-indstri/list/pegawai/cari', [DesainIndustriController::class, 'cariorang']);
 Route::get('/desain-industri/list/jurusan', [DesainIndustriController::class, 'jurusan']);
-Route::get('/desain-industri/list/jurusan/cari', [DesainIndustriController::class, 'cariJurusan']);
+Route::post('/desain-industri/list/jurusan/cari', [DesainIndustriController::class, 'cariJurusan']);
 Route::get('/desain-industri/list/prodi', [DesainIndustriController::class, 'prodi']);
-Route::get('/desain-industri/list/prodi/cari', [DesainIndustriController::class, 'cariProdi']);
+Route::post('/desain-industri/list/prodi/cari', [DesainIndustriController::class, 'cariProdi']);
 Route::post('/desain-industri/cari/data', [DesainIndustriController::class, 'cari']);
 
 Route::get('/login-admin', [AdminController::class, 'index'])->name('login.admin');

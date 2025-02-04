@@ -1,12 +1,12 @@
 <!-- Footer -->
-<style>
+{{-- <style>
     @media (min-width: 992px) {
         footer {
             bottom: 0;
             width: 100%;
         }
     }
-</style>
+</style> --}}
 <footer class="text-center text-lg-start bg-secondary-subtle text-muted shadow-inner">
     <!-- Section: Social media -->
     {{-- <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">

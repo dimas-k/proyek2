@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href=<?php echo e(asset('assets/bootstrap/css/bootstrap.min.css')); ?> rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href=<?php echo e(asset('assets/polindra21.png')); ?>>
+    <link rel="shortcut icon" href=<?php echo e(asset('assets/logo-polindra.png')); ?>>
     <title>SIKI POLINDRA | Hak-Cipta</title>
 </head>
 
@@ -201,11 +201,11 @@
                         <th>Jenis Ciptaan</th>
                         <th>Judul Ciptaan</th>
                         <th>Tanggal pengajuan</th>
-                        <th>Status</th>
+                        <th>Status Hak Cipta</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $__currentLoopData = $hc; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__empty_1 = true; $__currentLoopData = $hc; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
                             <th><?php echo e(($hc->currentPage() - 1) * $hc->perPage() + $loop->iteration); ?></th>
                             <td><?php echo e($p->nama_lengkap); ?></td>
@@ -214,7 +214,11 @@
                             <td><?php echo e(\Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y')); ?></td>
                             <td><?php echo e($p->status); ?></td>
                         </tr>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                            <td colspan="10" class="text-center">
+                                <img src="<?php echo e(asset('assets/no-data.png')); ?>" style="width:30%; height:auto">
+                            </td>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>

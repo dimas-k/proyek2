@@ -13,7 +13,7 @@
 
 <body>
     <?php echo $__env->make('layout.nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
+    <br><br><br>
     <div class="container p-4">
         <a href="/hak-cipta" class="link-dark link-underline link-underline-opacity-0 mb-3 "><i
                 class="bi bi-arrow-left-circle mb-3" style="font-size: 35px;"></i></a>
@@ -27,7 +27,7 @@
                         <th scope="col">Jenis Ciptaan</th>
                         <th scope="col">Judul Ciptaan</th>
                         <th scope="col">Tanggal pengajuan</th>
-                        <th scope="col">Status paten</th>
+                        <th scope="col">Status Hak Cipta</th>
                         <th scope="col">Detail Pengajuan</th>
                     </tr>
                 </thead>

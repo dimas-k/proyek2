@@ -39,12 +39,12 @@
     /* Penyesuaian untuk tampilan kecil */
     @media (max-width: 740px) {
         .navbar-brand {
-            font-size: 14px !important;
+            font-size: 13px !important;
             
         }
 
         .navbar img.navbar-brand {
-            max-height: 55px !important;
+            max-height: 45px !important;
             /* margin-right: 4px !important; */
         }
 

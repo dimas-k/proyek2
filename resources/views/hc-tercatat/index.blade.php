@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
+    <link rel="shortcut icon" href={{ asset('assets/logo-polindra.png') }}>
     <title>SIKI POLINDRA | Hak-Cipta</title>
 </head>
 
 <body>
     @include('layout.nav')
-
+    <br><br><br>
     <div class="container p-4">
         <a href="/hak-cipta" class="link-dark link-underline link-underline-opacity-0 mb-3 "><i
                 class="bi bi-arrow-left-circle mb-3" style="font-size: 35px;"></i></a>
@@ -27,12 +27,12 @@
                         <th scope="col">Jenis Ciptaan</th>
                         <th scope="col">Judul Ciptaan</th>
                         <th scope="col">Tanggal pengajuan</th>
-                        <th scope="col">Status paten</th>
+                        <th scope="col">Status Hak Cipta</th>
                         <th scope="col">Detail Pengajuan</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($cek as $i => $p)
+                    @forelse ($cek as $i => $p)
                         <tr>
                             <th scope="row">{{ $i + 1 }}</th>
                             <td>{{ $p->nama_lengkap }}</td>
@@ -43,7 +43,11 @@
                             <td><a class="btn btn-primary" href={{ Route('hak-cipta.show', $p->id) }}>Selengkapnya</a>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <td colspan="10" class="text-center">
+                            <img src="{{ asset('assets/no-data.png') }}" style="width:30%; height:auto">
+                        </td>
+                    @endforelse
                 </tbody>
             </table>
         </div>

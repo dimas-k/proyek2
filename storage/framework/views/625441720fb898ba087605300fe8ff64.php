@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href=<?php echo e(asset('assets/polindra21.png')); ?>>
+    <link rel="shortcut icon" href=<?php echo e(asset('assets/logo-polindra.png')); ?>>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href=<?php echo e(asset('assets/bootstrap/css/bootstrap.min.css')); ?> rel="stylesheet">
@@ -84,7 +84,7 @@
         }
 
         .counter.green .counter-icon {
-            background: linear-gradient(to right, rgba(54, 162, 235, 1),rgba(54, 182, 235, 1));
+            background: linear-gradient(to right, rgba(54, 162, 235, 1), rgba(54, 182, 235, 1));
         }
 
         .counter.green h3 {
@@ -92,11 +92,11 @@
         }
 
         .counter.blue .counter-value {
-            background:rgba(255, 206, 86, 1);
+            background: rgba(255, 206, 86, 1);
         }
 
         .counter.blue .counter-icon {
-            background: linear-gradient(to right, rgba(255, 206, 86, 1),rgba(255, 181, 86, 1));
+            background: linear-gradient(to right, rgba(255, 206, 86, 1), rgba(255, 181, 86, 1));
         }
 
         .counter.blue h3 {
@@ -140,19 +140,19 @@
             deskripsi singkat setiap KI, unduh berkas KI, dan formulir pengajuan KI online melalui unit pengelola KI
             POLINDRA.
         </p>
-        
+
         <br> <br>
         <div class="row justify-content-center">
             <div class="col-md-3 col-sm-6">
                 <div class="counter">
                     <div class="counter-content">
                         <div class="counter-icon">
-                            <?php echo e($contohPaten); ?>
+                            <?php echo e($paten); ?>
 
                             
                         </div>
                         <a href="/paten" style="text-decoration:none;">
-                            <h3 >Paten</h3>
+                            <h3>Paten</h3>
                         </a>
 
                     </div>
@@ -163,7 +163,7 @@
                 <div class="counter green">
                     <div class="counter-content">
                         <div class="counter-icon">
-                            <?php echo e($contohHc); ?>
+                            <?php echo e($hc); ?>
 
                             
                         </div>
@@ -178,21 +178,32 @@
                 <div class="counter blue">
                     <div class="counter-content">
                         <div class="counter-icon">
-                            <?php echo e($contohDi); ?>
+                            <?php echo e($di); ?>
 
                             
                         </div>
                         <a href="/desain-industri" style="text-decoration:none;">
                             <h3>Desain Industri</h3>
                         </a>
-                        
+
                     </div>
                     
                 </div>
             </div>
 
         </div>
-        
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+
+                            <div id="barChart"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <?php echo $__env->make('layout.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -218,8 +229,64 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var options = {
+                chart: {
+                    type: 'bar',
+                    height: 400
+                },
+                series: [{
+                        name: 'Paten',
+                        data: <?php echo json_encode($data_paten_per_tahun, 15, 512) ?>
+                    },
+                    {
+                        name: 'Hak Cipta',
+                        data: <?php echo json_encode($data_hakCipta_per_tahun, 15, 512) ?>
+                    },
+                    {
+                        name: 'Desain Industri',
+                        data: <?php echo json_encode($data_desainIndustri_per_tahun, 15, 512) ?>
+                    }
+                ],
+                xaxis: {
+                    // Gunakan daftar tahun yang unik
+                    categories: <?php echo json_encode($tahun, 15, 512) ?>,
+                    title: {
+                        text: 'Tahun'
+                    }
+                },
+                yaxis: {
+                    title: {
+                        text: 'Jumlah Kekayaan Intelektual'
+                    },
+                    min: 1,
+                },
+                title: {
+                    text: 'Jumlah Kekayaan Intelektual per Tahun',
+                    align: 'center'
+                },
+                colors: ['#f83600', '#36a2eb', '#ffce56'],
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '50%',
+                        endingShape: 'rounded'
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            };
 
+            var chart = new ApexCharts(document.querySelector("#barChart"), options);
+            chart.render();
+        });
+    </script>
 
     </Script>
 </body>

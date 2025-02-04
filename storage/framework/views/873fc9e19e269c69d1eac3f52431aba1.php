@@ -21,46 +21,44 @@
     <br>
     
     <div class="container">
-        <div class="row">
-            <div class="col-xl-5 col-sm-7 col-13">
-                <div class="card shadow-sm p-3" style="width: 20rem;">
-                    <div class="card-body">
-                        <h5 class="card-title text-center mb-3 mt-3 fw-normal font-family-Kokoro p-3">Total Permohonan
+        <div class="row g-3">
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card shadow-sm h-auto" style="min-height: 150px;">
+                    <div class="card-body d-flex flex-column justify-content-center">
+                        <h5 class="card-title text-center mb-2 fw-normal">Total Permohonan
                             Paten</h5>
-                        <p class="card-text text-center fs-1 mt-2 mb-3 fw-normal font-family-Kokoro p-1 fs-1">
+                        <p class="card-text text-center fs-1 fw-normal m-0">
                             <?php echo e($hitung); ?></p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xl-2 col-sm-8 col-10">
-                <div class="card shadow-sm " style="width: 46rem;">
+            <div class="col-12 col-lg-8 mx-auto">
+                <div class="card shadow-sm h-auto w-80 mx-auto">
                     <div class="card-body">
-                        <h5 class="card-title mb-3 mt-3 fw-normal font-family-Kokoro ">Cari Paten</h5>
+                        <h5 class="card-title mb-3 mt-3 fw-normal text-center">Cari Paten</h5>
 
                         <form action="/cari" method="POST">
                             <?php echo csrf_field(); ?>
-                            <div class="mb-1 row">
-                                <label for="" class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Judul
+                            <div class="mb-3 row align-items-center">
+                                <label for="" class="col-md-4 col-form-label">Judul
                                     Paten</label>
-                                <div class="col-xxl-10">
-                                    <input type="search"
-                                        class="form-control form-control-sm fw-normal font-family-Kokoro"
-                                        name="cari_judul">
+                                <div class="col-md-8">
+                                    <input type="search" class="form-control form-control-sm" name="cari_judul">
                                 </div>
                             </div>
-                            <div class="mb-1 row">
-                                <label for="" class="col-sm-2 col-form-label fw-normal font-family-Kokoro">Nama
+                            <div class="mb-3 row align-items-center">
+                                <label for="" class="col-md-4 col-form-label">Nama
                                     Invensi</label>
-                                <div class="col-xxl-10">
-                                    <input type="search"
-                                        class="form-control form-control-sm fw-normal font-family-Kokoro" id=""
+                                <div class="col-md-8">
+                                    <input type="search" class="form-control form-control-sm" id=""
                                         name="cari_nama">
                                 </div>
                             </div>
-                            
-                            <button type="submit"
-                                class="btn btn-primary mb-2 mt-3 fw-normal font-family-Kokoro">Cari</button>
+
+                            <div class="text-end me-3">
+                                <button type="submit" class="btn btn-primary">Cari</button>
+                            </div>
                         </form>
 
                     </div>
@@ -68,21 +66,32 @@
             </div>
         </div>
     </div>
-    <div class="container mt-5 mb-5">
-        <div class="row">
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card shadow-sm p-1" style="width: 18rem;">
-                    <a href="/paten/pemeriksaan-formalitas" class="link-dark link-underline link-underline-opacity-0">
+    <div class="container mt-4">
+        <div class="row g-3">
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card shadow-sm h-100">
+                    <a href="/paten/pemeriksaan-formalitas" class="text-decoration-none text-dark">
                         <div class="card-body">
-                            <div class="d-flex">
-                                <div class="align-self-center me-5">
-                                    <i class="bi bi-search float-start me-4" style="font-size: 50px;"></i>
+                            <div class="d-flex align-items-center mt-2">
+                                <i class="bi bi-search me-3" style="font-size: 2.5rem;"></i>
+                                <div>
+                                    <h3 class="mb-1"><?php echo e($pf); ?></h3>
+                                    <span>Pemeriksaan Formalitas</span>
                                 </div>
-                                <div class="align-self-center">
-                                    <h3 class="ms-5 d-flex justify-content-end"><?php echo e($pf); ?>
-
-                                    </h3>
-                                    <span class="ms-4 d-flex justify-content-end">Pemeriksaan Formalitas</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card shadow-sm h-100">
+                    <a href="/paten/menunggu-tanggapan-formalitas" class="text-decoration-none text-dark">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-search me-3" style="font-size: 2.5rem;"></i>
+                                <div>
+                                    <h3 class="mb-1"><?php echo e($mt); ?></h3>
+                                    <span>Menunggu Tanggapan Formalitas</span>
                                 </div>
                             </div>
                         </div>
@@ -90,157 +99,125 @@
                 </div>
             </div>
 
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card shadow-sm p-1" style="width: 18rem;">
-                    <a href="/paten/menunggu-tanggapan-formalitas"
-                        class="link-dark link-underline link-underline-opacity-0">
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card shadow-sm h-100">
+                    <a href="/paten/masa-pengumuman" class="text-decoration-none text-dark">
                         <div class="card-body">
-                            <div class="d-flex">
-                                <div class="align-self-center ">
-                                    <i class="bi bi-recycle float-start me-3" style="font-size: 50px;"></i>
-                                </div>
-                                <div class="align-self-center">
-                                    <h3 class="ms-5 d-flex justify-content-end"><?php echo e($mt); ?>
-
-                                    </h3>
-                                    <span class="ms-3 d-flex justify-content-end">Menunggu Tanggapan Formalitas</span>
+                            <div class="d-flex align-items-center mt-2">
+                                <i class="bi bi-exclamation-circle me-3" style="font-size: 2.5rem;"></i>
+                                <div>
+                                    <h3 class="mb-1"><?php echo e($mp); ?></h3>
+                                    <span>Masa Pengumuman</span>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card shadow-sm p-1" style="width: 18rem;">
-                    <a href="/paten/masa-pengumuman" class="link-dark link-underline link-underline-opacity-0">
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card shadow-sm h-100">
+                    <a href="/paten/meunggu-pembayaran-substansif" class="text-decoration-none text-dark">
                         <div class="card-body">
-                            <div class="d-flex">
-                                <div class="align-self-center me-5">
-                                    <i class="bi bi-exclamation-circle float-start me-3" style="font-size: 50px;"></i>
-                                </div>
-                                <div class="align-self-center">
-                                    <h3 class="ms-5 d-flex justify-content-end"><?php echo e($mp); ?>
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-question-square me-3" style="font-size: 2.5rem;"></i>
+                                <div>
+                                    <h3 class="mb-1"><?php echo e($mps); ?>
 
                                     </h3>
-                                    <span class="ms-4 d-flex justify-content-end">Masa Pengumuman</span>
+                                    <span>Menunggu Pembayaran Substansif</span>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-12">
-                <div class="card shadow-sm p-1" style="width: 18rem;">
-                    <a href="/paten/meunggu-pembayaran-substansif"
-                        class="link-dark link-underline link-underline-opacity-0">
+            <div class="col-12 col-sm-6 col-lg-3 mt-4">
+                <div class="card shadow-sm h-100">
+                    <a href="/paten/substansif-tahap-awal" class="text-decoration-none text-dark">
                         <div class="card-body">
-                            <div class="d-flex">
-                                <div class="align-self-center">
-                                    <i class="bi bi-question-square float-start me-3" style="font-size: 50px;"></i>
-                                </div>
-                                <div class="align-self-center">
-                                    <h3 class="ms-5 d-flex justify-content-end"><?php echo e($mps); ?>
+                            <div class="d-flex align-self-center mt-2">
+
+                                <i class="bi bi-clipboard-data me-3" style="font-size: 2.5rem;"></i>
+
+                                <div class="">
+                                    <h3 class="mb-1"><?php echo e($staw); ?>
 
                                     </h3>
-                                    <span class="ms-3 d-flex justify-content-end">Menunggu Pembayaran Substansif</span>
+                                    <span>Substansif Tahap Awal</span>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-12 mt-4">
-                <div class="card shadow-sm p-1" style="width: 18rem;">
-                    <a href="/paten/substansif-tahap-awal" class="link-dark link-underline link-underline-opacity-0">
+            <div class="col-12 col-sm-6 col-lg-3 mt-4">
+                <div class="card shadow-sm h-100">
+                    <a href="/paten/substansif-tahap-lanjut" class="text-decoration-none text-dark">
                         <div class="card-body">
-                            <div class="d-flex">
-                                <div class="align-self-center">
-                                    <i class="bi bi-clipboard-data float-start me-5" style="font-size: 50px;"></i>
-                                </div>
-                                <div class="align-self-center">
-                                    <h3 class="ms-5 d-flex justify-content-end"><?php echo e($staw); ?>
+                            <div class="d-flex align-self-center mt-2">
+                                <i class="bi bi-clipboard-data me-3" style="font-size: 2.5rem;"></i>
+
+                                <div class="">
+                                    <h3 class="mb-1"><?php echo e($stl); ?>
 
                                     </h3>
-                                    <span class="ms-3 d-flex justify-content-end">Substansif Tahap Awal</span>
+                                    <span class="">Substasif Tahap Lanjut</span>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-12 mt-4">
-                <div class="card shadow-sm p-1" style="width: 18rem;">
-                    <a href="/paten/substansif-tahap-lanjut"
-                        class="link-dark link-underline link-underline-opacity-0">
+            <div class="col-12 col-sm-6 col-lg-3 mt-4">
+                <div class="card shadow-sm h-100">
+                    <a href="/paten/substansif-tahap-akhir" class="text-decoration-none text-dark">
                         <div class="card-body">
-                            <div class="d-flex">
-                                <div class="align-self-center">
-                                    <i class="bi bi-clipboard-data float-start me-5" style="font-size: 50px;"></i>
-                                </div>
-                                <div class="align-self-center">
-                                    <h3 class="ms-5 d-flex justify-content-end"><?php echo e($stl); ?>
+                            <div class="d-flex align-self-center mt-2">
+                                <i class="bi bi-clipboard-data float-start me-3" style="font-size: 2.5rem;"></i>
+
+                                <div class="">
+                                    <h3 class="mb-1"><?php echo e($stak); ?>
 
                                     </h3>
-                                    <span class="ms-3 d-flex justify-content-end">Substasif Tahap Lanjut</span>
+                                    <span class="">Substasif Tahap Akhir</span>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-12 mt-4">
-                <div class="card shadow-sm p-1" style="width: 18rem;">
-                    <a href="/paten/substansif-tahap-akhir" class="link-dark link-underline link-underline-opacity-0">
+            <div class="col-12 col-sm-6 col-lg-3 mt-4">
+                <div class="card shadow-sm h-100">
+                    <a href="/paten/menunggu-tanggapan-substansif" class="text-decoration-none text-dark">
                         <div class="card-body">
-                            <div class="d-flex">
-                                <div class="align-self-center">
-                                    <i class="bi bi-clipboard-data float-start me-5" style="font-size: 50px;"></i>
-                                </div>
-                                <div class="align-self-center">
-                                    <h3 class="ms-5 d-flex justify-content-end"><?php echo e($stak); ?>
+                            <div class="d-flex align-self-center">
+
+                                <i class="bi bi-question-square me-3" style="font-size: 2.5rem;"></i>
+
+                                <div class="">
+                                    <h3 class="mb-1"><?php echo e($mts); ?>
 
                                     </h3>
-                                    <span class="ms-3 d-flex justify-content-end">Substasif Tahap Akhir</span>
+                                    <span class="">Menunggu Tanggapan Substansif</span>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-12 mt-4">
-                <div class="card shadow-sm p-1" style="width: 18rem;">
-                    <a href="/paten/menunggu-tanggapan-substansif"
-                        class="link-dark link-underline link-underline-opacity-0">
+            <div class="col-12 col-sm-6 col-lg-3 mt-4">
+                <div class="card shadow-sm h-100">
+                    <a href="/paten/menunggu-verifikasi" class="text-decoration-none text-dark">
                         <div class="card-body">
-                            <div class="d-flex">
-                                <div class="align-self-center">
-                                    <i class="bi bi-question-square float-start me-4" style="font-size: 50px;"></i>
-                                </div>
-                                <div class="align-self-center">
-                                    <h3 class="ms-5 d-flex justify-content-end"><?php echo e($mts); ?>
+                            <div class="d-flex align-self-center">
+
+                                <i class="bi bi-question-square me-3" style="font-size: 2.5rem;"></i>
+
+                                <div class="">
+                                    <h3 class="mb-1"><?php echo e($mvdov); ?>
 
                                     </h3>
-                                    <span class="ms-3 d-flex justify-content-end">Menunggu Tanggapan Substansif</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12 mt-4">
-                <div class="card shadow-sm" style="width: 18rem;">
-                    <a href="/paten/menunggu-verifikasi" class="link-dark link-underline link-underline-opacity-0">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="align-self-center">
-                                    <i class="bi bi-question-square float-start me-2 pe-5"
-                                        style="font-size: 50px;"></i>
-                                </div>
-                                <div class="align-self-center">
-                                    <h3 class=" d-flex justify-content-end"><?php echo e($mvdov); ?>
-
-                                    </h3>
-                                    <span class=" d-flex justify-content-end">Menunggu Verifikasi Data Oleh
+                                    <span class="">Menunggu Verifikasi Data Oleh
                                         Verifikator</span>
                                 </div>
                             </div>
@@ -248,38 +225,38 @@
                     </a>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-12 mt-4">
-                <div class="card shadow-sm p-2" style="width: 18rem;">
-                    <a href="/paten/diberi" class="link-dark link-underline link-underline-opacity-0">
+            <div class="col-12 col-sm-6 col-lg-3 mt-4">
+                <div class="card shadow-sm h-100">
+                    <a href="/paten/diberi" class="text-decoration-none text-dark">
                         <div class="card-body">
-                            <div class="d-flex">
-                                <div class="align-self-center">
-                                    <i class="bi bi-check-square float-start me-5 pe-5" style="font-size: 50px;"></i>
-                                </div>
-                                <div class="align-self-center">
-                                    <h3 class="ms-5 d-flex justify-content-end"><?php echo e($catat); ?>
+                            <div class="d-flex align-self-center mt-2">
+
+                                <i class="bi bi-check-square  me-3" style="font-size: 2.5rem;"></i>
+
+                                <div class="">
+                                    <h3 class="mb-1"><?php echo e($catat); ?>
 
                                     </h3>
-                                    <span class="ms-5 d-flex justify-content-end">Diberi</span>
+                                    <span class="">Diberi</span>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-xl-3 col-sm-6 col-12 mt-4">
-                <div class="card shadow-sm p-2" style="width: 18rem;">
-                    <a href="/paten/ditolak" class="link-dark link-underline link-underline-opacity-0">
+            <div class="col-12 col-sm-6 col-lg-3 mt-4">
+                <div class="card shadow-sm h-100">
+                    <a href="/paten/ditolak" class="text-decoration-none text-dark">
                         <div class="card-body">
-                            <div class="d-flex">
-                                <div class="align-self-center">
-                                    <i class="bi bi-x-square float-start me-5 pe-5" style="font-size: 50px;"></i>
+                            <div class="d-flex align-self-center mt-2">
+                                <div class="">
+                                    <i class="bi bi-x-square  me-3" style="font-size: 2.5rem;"></i>
                                 </div>
-                                <div class="align-self-center">
-                                    <h3 class="ms-5 d-flex justify-content-end"><?php echo e($tolak); ?>
+                                <div class="">
+                                    <h3 class="mb-1"><?php echo e($tolak); ?>
 
                                     </h3>
-                                    <span class="ms-5 d-flex justify-content-end">Ditolak</span>
+                                    <span class="">Ditolak</span>
                                 </div>
                             </div>
                         </div>
@@ -287,94 +264,86 @@
                 </div>
             </div>
         </div>
-        <hr class="border border-black border-2 opacity-75 rounded">
-        <div class="row ms-5">
-            <div class="d-flex justify-content-center">
-                <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card shadow-sm p-1" style="width: 14rem;">
-                        <a href="/paten/list/perorangan/"
-                            class="link-dark link-underline link-underline-opacity-0 text-center" id="perorangan">
-                            <div class="card-body">
-                                <i class="bi bi-person-circle" style="font-size: 30px;"></i> <br>
-                                <h5>Pegawai</h5>
-                            </div>
-                    </div>
+        <hr class="border border-black border-2 opacity-75 rounded my-4">
+        <div class="row g-3 justify-content-center">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card shadow-sm text-center h-100">
+                    <a href="/paten/list/perorangan/" class="text-decoration-none text-dark">
+                        <div class="card-body">
+                            <i class="bi bi-person-circle mb-2" style="font-size: 2rem;"></i>
+                            <h5 class="card-title mb-0">Pegawai</h5>
+                        </div>
                     </a>
                 </div>
-                <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card shadow-sm p-1" style="width: 14rem;">
-                        <a href="/paten/list/jurusan/"
-                            class="link-dark link-underline link-underline-opacity-0 text-center" id="perorangan">
-                            <div class="card-body">
-                                <i class="bi bi-bank" style="font-size: 30px;"></i> <br>
-                                <h5>Jurusan</h5>
-                            </div>
-                    </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card shadow-sm text-center h-100">
+                    <a href="/paten/list/jurusan/" class="text-decoration-none text-dark">
+                        <div class="card-body">
+                            <i class="bi bi-bank mb-2" style="font-size: 2rem;"></i>
+                            <h5 class="card-title mb-0">Jurusan</h5>
+                        </div>
                     </a>
                 </div>
-                <div class="col-xl-3 col-sm-6 col-12">
-                    <div class="card shadow-sm p-1" style="width: 14rem;">
-                        <a href="/paten/list/prodi/"
-                            class="link-dark link-underline link-underline-opacity-0 text-center">
-                            <div class="card-body">
-                                <i class="bi bi-bank" style="font-size: 30px;"></i> <br>
-                                <h5>Prodi</h5>
-                            </div>
-                        </a>
-                    </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card shadow-sm text-center h-100">
+                    <a href="/paten/list/prodi/" class="text-decoration-none text-dark">
+                        <div class="card-body">
+                            <i class="bi bi-bank mb-2" style="font-size: 2rem;"></i>
+                            <h5 class="card-title mb-0">Prodi</h5>
+                        </div>
                     </a>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 
-    <div class="container p-4">
-        <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-2"></i>Daftar Paten</h3>
-        <table class="table table-hover font-family-Kokoro">
-            <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Nama lengkap</th>
-                    <th scope="col">Jenis Paten</th>
-                    <th scope="col">Judul paten</th>
-                    <th scope="col">Tanggal pengajuan</th>
-                    <th scope="col">Status paten</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php $__currentLoopData = $paten1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <div class="container mt-4">
+        <h3 class="fw-normal mb-3"><i class="bi bi-table me-2"></i>Daftar Paten</h3>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
                     <tr>
-                        <th scope="row"><?php echo e(($paten1->currentPage() - 1) * $paten1->perPage() + $loop->iteration); ?></th>
-                        <td><?php echo e($p->nama_lengkap); ?></td>
-                        <td><?php echo e($p->jenis_paten); ?></td>
-                        <td><?php echo e($p->judul_paten); ?></td>
-                        <td><?php echo e(\Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y')); ?></td>
-                        <td><?php echo e($p->status); ?></td>
+                        <th scope="col">No</th>
+                        <th scope="col">Nama lengkap</th>
+                        <th scope="col">Jenis Paten</th>
+                        <th scope="col">Judul paten</th>
+                        <th scope="col">Tanggal pengajuan</th>
+                        <th scope="col">Status</th>
                     </tr>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </tbody>
-        </table>
-        <?php echo e($paten1->links()); ?>
+                </thead>
+                <tbody>
+                    <?php $__currentLoopData = $paten1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <tr>
+                            <th scope="row">
+                                <?php echo e(($paten1->currentPage() - 1) * $paten1->perPage() + $loop->iteration); ?>
 
-        <div class="row mt-5">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Diagram per-tahun Paten</h3>
-                    </div>
+                            </th>
+                            <td><?php echo e($p->nama_lengkap); ?></td>
+                            <td><?php echo e($p->jenis_paten); ?></td>
+                            <td><?php echo e($p->judul_paten); ?></td>
+                            <td><?php echo e(\Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y')); ?></td>
+                            <td><?php echo e($p->status); ?></td>
+                        </tr>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-end mb-3">
+            <?php echo e($paten1->links()); ?>
+
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    
                     <div class="card-body">
-                        <input type="hidden" id="gabungKi2020" value="<?php echo e($gabungKi2020); ?>">
-                        <input type="hidden" id="gabungKi2021" value="<?php echo e($gabungKi2021); ?>">
-                        <input type="hidden" id="gabungKi2022" value="<?php echo e($gabungKi2022); ?>">
-                        <input type="hidden" id="gabungKi2023" value="<?php echo e($gabungKi2023); ?>">
-                        <input type="hidden" id="gabungKi2024" value="<?php echo e($gabungKi2024); ?>">
-                        <input type="hidden" id="paten2020" value="<?php echo e($paten2020); ?>">
-                        <input type="hidden" id="paten2021" value="<?php echo e($paten2021); ?>">
-                        <input type="hidden" id="paten2022" value="<?php echo e($paten2022); ?>">
-                        <input type="hidden" id="paten2023" value="<?php echo e($paten2023); ?>">
-                        <input type="hidden" id="paten2024" value="<?php echo e($paten2024); ?>">
-                        <canvas id="paten-chart" style="height:30vh; width:68vw"></canvas>
+                        <div id="areaChart"></div>
                     </div>
                 </div>
             </div>
@@ -392,90 +361,57 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
     <script>
-        const paten2020 = document.getElementById('paten2020').value;
-        const paten2021 = document.getElementById('paten2021').value;
-        const paten2022 = document.getElementById('paten2022').value;
-        const paten2023 = document.getElementById('paten2023').value;
-        const paten2024 = document.getElementById('paten2024').value;
-
-        const gabungKi2020 = document.getElementById('gabungKi2020').value;
-        const gabungKi2021 = document.getElementById('gabungKi2021').value;
-        const gabungKi2022 = document.getElementById('gabungKi2022').value;
-        const gabungKi2023 = document.getElementById('gabungKi2023').value;
-        const gabungKi2024 = document.getElementById('gabungKi2024').value;
-
-        const paten = document.getElementById('paten-chart').getContext('2d');
-
-        const p = new Chart(paten, {
-            type: 'bar',
-            data: {
-                labels: ['2020', '2021', '2022', '2023','2024'],
-                datasets: [{
-                    label: 'Jumlah Keseluruhan KI',
-                    data: [gabungKi2020, gabungKi2021, gabungKi2022, gabungKi2023, gabungKi2024],
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    borderWidth: 2
-                }, {
-                    type: 'line',
-                    label: 'Paten',
-                    data: [paten2020, paten2021, paten2022, paten2023, paten2024],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-
-                    ],
-                    borderWidth: 5
-                }]
-            },
-            options: {
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                elements: {
-                    line: {
-                        tension: 0.5
-                    }
-                },
-                scales: {
-                    y: {
-                        suggestedMin: 0,
-                        ticks: {
-                            precision: 0
-                        }
-                    }
-                },
-                categoryPercentage: 0.5,
-                transitions: {
-                    show: {
-                        animations: {
-                            x: {
-                                from: 1
+        document.addEventListener('DOMContentLoaded', function() {
+            var options = {
+                chart: {
+                    type: 'area',
+                    height: 350,
+                    responsive: [{
+                        breakpoint: 576,
+                        options: {
+                            chart: {
+                                height: 300
                             },
-                            y: {
-                                from: 1
+                            legend: {
+                                position: 'bottom'
                             }
                         }
-                    },
-                    hide: {
-                        animations: {
-                            x: {
-                                to: 10
-                            },
-                            y: {
-                                to: 10
-                            }
-                        }
+                    }]
+                },
+                series: [{
+                    name: 'Jumlah Paten',
+                    data: <?php echo json_encode($jumlah, 15, 512) ?>
+                }],
+                xaxis: {
+                    categories: <?php echo json_encode($tahun, 15, 512) ?>,
+                    title: {
+                        text: 'Tahun'
                     }
+                },
+                yaxis: {
+                    title: {
+                        text: 'Jumlah Paten'
+                    }
+                },
+                title: {
+                    text: 'Jumlah Paten Berdasarkan Tahun',
+                    align: 'center'
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'smooth'
                 }
-            },
+            };
+
+            var chart = new ApexCharts(document.querySelector("#areaChart"), options);
+            chart.render();
         });
     </script>
-
-
 </body>
 
 </html>

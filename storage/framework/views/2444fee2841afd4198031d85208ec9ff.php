@@ -1,11 +1,19 @@
 <!-- Footer -->
+<style>
+    @media (min-width: 992px) {
+        footer {
+            bottom: 0;
+            width: 100%;
+        }
+    }
+</style>
 <footer class="text-center text-lg-start bg-secondary-subtle text-muted shadow-inner">
     <!-- Section: Social media -->
     
     <!-- Section: Social media -->
 
     <!-- Section: Links  -->
-    <section class="pt-1 mt-5">
+    <section class="pt-4 mt-4">
         <div class="container text-center text-md-start mt-5">
             <!-- Grid row -->
             <div class="row mt-3">
@@ -50,7 +58,8 @@
                         <a href="https://patents.google.com/" class="text-reset" target="_blank">Google Patent</a>
                     </p>
                     <p>
-                        <a href="https://pdki-indonesia.dgip.go.id/" class="text-reset" target="_blank">Penelusuran PDKI</a>
+                        <a href="https://pdki-indonesia.dgip.go.id/" class="text-reset" target="_blank">Penelusuran
+                            PDKI</a>
                     </p>
 
                 </div>

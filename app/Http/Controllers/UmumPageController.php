@@ -15,32 +15,62 @@ class UmumPageController extends Controller
         $di = DesainIndustri::all()->count();
         $hc = HakCipta::all()->count();
 
-        $contohPaten = Paten::where('status','Diberi')->count();
-        $contohDi = DesainIndustri::where('status','Diberi')->count();
-        $contohHc = HakCipta::where('status','Tercatat')->count();
+        $contohPaten = Paten::where('status', 'Diberi')->count();
+        $contohDi = DesainIndustri::where('status', 'Diberi')->count();
+        $contohHc = HakCipta::where('status', 'Tercatat')->count();
 
-        $paten2024 = Paten::whereYear('tanggal_permohonan','2024')->count();
-        $hc2024 = HakCipta::whereYear('tanggal_permohonan','2024')->count();
-        $di2024 = DesainIndustri::whereYear('tanggal_permohonan','2024')->count();
-        $gabungKi2024 = $paten2024 + $di2024 + $hc2024 ;
+        $data_paten = Paten::selectRaw('YEAR(tanggal_permohonan) as tahun, COUNT(*) as jumlah')
+            ->groupBy('tahun')
+            ->orderBy('tahun')
+            ->get();
 
-        $paten2025 = Paten::whereYear('tanggal_permohonan','2025')->count();
-        $hc2025 = HakCipta::whereYear('tanggal_permohonan','2025')->count();
-        $di2025 = DesainIndustri::whereYear('tanggal_permohonan','2025')->count();
-        $gabungKi2025 = $paten2025 + $di2025 + $hc2025 ;
+        // Data untuk Hak Cipta
+        $data_hakCipta = HakCipta::selectRaw('YEAR(tanggal_permohonan) as tahun, COUNT(*) as jumlah')
+            ->groupBy('tahun')
+            ->orderBy('tahun')
+            ->get();
 
-        $paten2026 = Paten::whereYear('tanggal_permohonan','2026')->count();
-        $hc2026 = HakCipta::whereYear('tanggal_permohonan','2026')->count();
-        $di2026 = DesainIndustri::whereYear('tanggal_permohonan','2026')->count();
-        $gabungKi2026 = $paten2026 + $di2026 + $hc2026 ;
 
-        $paten2027 = Paten::whereYear('tanggal_permohonan','2027')->count();
-        $hc2027 = HakCipta::whereYear('tanggal_permohonan','2027')->count();
-        $di2027 = DesainIndustri::whereYear('tanggal_permohonan','2027')->count();
-        $gabungKi2027 = $paten2027 + $di2027 + $hc2027 ;
+        // Data untuk Desain Industri
+        $data_desainIndustri = DesainIndustri::selectRaw('YEAR(tanggal_permohonan) as tahun, COUNT(*) as jumlah')
+            ->groupBy('tahun')
+            ->orderBy('tahun')
+            ->get();
 
-        $jurusan_Ti_Paten = Paten::where('jurusan','Teknik Informatika')->count();
+        $tahun = $data_paten->pluck('tahun')
+            ->merge($data_hakCipta->pluck('tahun'))
+            ->merge($data_desainIndustri->pluck('tahun'))
+            ->unique()
+            ->sort()
+            ->values();
 
-        return view('umum-page.landing-page.index',compact('contohPaten','contohDi','contohHc','paten', 'di', 'hc','gabungKi2024','gabungKi2025','gabungKi2026','gabungKi2027','paten2024','paten2025','paten2026','paten2027','hc2024','hc2025','hc2026','hc2027','di2024','di2025','di2026','di2027'));
+        // Sesuaikan data agar semua tahun memiliki nilai (0 jika tidak ada data)
+        $data_paten_per_tahun = $tahun->map(function ($thn) use ($data_paten) {
+            return $data_paten->firstWhere('tahun', $thn)->jumlah ?? 0;
+        });
+        $data_hakCipta_per_tahun = $tahun->map(function ($thn) use ($data_hakCipta) {
+            return $data_hakCipta->firstWhere('tahun', $thn)->jumlah ?? 0;
+        });
+        $data_desainIndustri_per_tahun = $tahun->map(function ($thn) use ($data_desainIndustri) {
+            return $data_desainIndustri->firstWhere('tahun', $thn)->jumlah ?? 0;
+        });
+
+        // $jurusan_Ti_Paten = Paten::where('jurusan', 'Teknik Informatika')->count();
+
+        return view('umum-page.landing-page.index', compact(
+            'contohPaten',
+            'contohDi',
+            'contohHc',
+            'paten',
+            'di',
+            'hc',
+            'data_paten',
+            'data_hakCipta',
+            'data_desainIndustri',
+            'tahun',
+            'data_paten_per_tahun',
+            'data_hakCipta_per_tahun',
+            'data_desainIndustri_per_tahun'
+        ));
     }
 }

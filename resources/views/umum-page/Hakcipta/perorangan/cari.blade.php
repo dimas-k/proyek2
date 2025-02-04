@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
+    <link rel="shortcut icon" href={{ asset('assets/logo-polindra.png') }}>
     <title>SIKI POLINDRA || Hak CIpta Pegawai</title>
 </head>
 
@@ -23,6 +23,7 @@
                 align-items: stretch;
                 /* Elemen memenuhi lebar kontainer */
             }
+
             .select2-container {
                 width: 100% !important;
                 /* Pastikan Select2 penuh lebar */
@@ -32,7 +33,7 @@
                 width: auto !important;
                 /* Pastikan dropdown menyesuaikan dengan kontainer */
                 max-width: 100% !important;
-                
+
             }
 
             .search-form>button {
@@ -88,7 +89,7 @@
                         <th scope="col">Jurusan</th>
                         <th scope="col">Prodi</th>
                         <th scope="col">Tanggal pengajuan</th>
-                        <th scope="col">Status paten</th>
+                        <th scope="col">Status Hak Cipta</th>
                         {{-- <th scope="col">Detail Pengajuan</th> --}}
                     </tr>
                 </thead>

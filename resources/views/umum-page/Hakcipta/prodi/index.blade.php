@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
+    <link rel="shortcut icon" href={{ asset('assets/logo-polindra.png') }}>
     <title>SIKI POLINDRA || Paten Prodi</title>
 </head>
 
@@ -71,7 +71,7 @@
             <form action="/hak-cipta/list/prodi/cari" method="POST" class="search-form d-flex align-items-center">
                 @csrf
                 <label for="prodi" class="form-label me-3">Prodi</label>
-                <select class="form-select form-select-sm select2 flex-grow-1" name="prodi"
+                <select id="prodi" class="form-select form-select-sm select2 flex-grow-1" name="prodi"
                 style="width: 100%;" title="Pilih Prodi">
                     <option></option>
                     <option value="D3 Teknik Informatika">D3 Teknik Informatika</option>
@@ -92,7 +92,7 @@
     <footer class="text-center text-lg-start bg-secondary-subtle text-muted shadow-inner">
         
         <section class="pt-1 mt-5">
-            <div class="container text-center text-md-start mt-5">
+            <div class="container text-center text-md-start mt-">
                 <!-- Grid row -->
                 <div class="row mt-3">
                     <!-- Grid column -->

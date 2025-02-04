@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
+    <link rel="shortcut icon" href={{ asset('assets/logo-polindra.png') }}>
     <title>SIKI POLINDRA | Hak-Cipta</title>
 </head>
 
@@ -201,11 +201,11 @@
                         <th>Jenis Ciptaan</th>
                         <th>Judul Ciptaan</th>
                         <th>Tanggal pengajuan</th>
-                        <th>Status</th>
+                        <th>Status Hak Cipta</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($hc as $i => $p)
+                    @forelse ($hc as $i => $p)
                         <tr>
                             <th>{{ ($hc->currentPage() - 1) * $hc->perPage() + $loop->iteration }}</th>
                             <td>{{ $p->nama_lengkap }}</td>
@@ -214,7 +214,11 @@
                             <td>{{ \Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y') }}</td>
                             <td>{{ $p->status }}</td>
                         </tr>
-                    @endforeach
+                        @empty
+                            <td colspan="10" class="text-center">
+                                <img src="{{ asset('assets/no-data.png') }}" style="width:30%; height:auto">
+                            </td>
+                    @endforelse
                 </tbody>
             </table>
         </div>

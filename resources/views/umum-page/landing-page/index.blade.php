@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
+    <link rel="shortcut icon" href={{ asset('assets/logo-polindra.png') }}>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href={{ asset('assets/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
@@ -84,7 +84,7 @@
         }
 
         .counter.green .counter-icon {
-            background: linear-gradient(to right, rgba(54, 162, 235, 1),rgba(54, 182, 235, 1));
+            background: linear-gradient(to right, rgba(54, 162, 235, 1), rgba(54, 182, 235, 1));
         }
 
         .counter.green h3 {
@@ -92,11 +92,11 @@
         }
 
         .counter.blue .counter-value {
-            background:rgba(255, 206, 86, 1);
+            background: rgba(255, 206, 86, 1);
         }
 
         .counter.blue .counter-icon {
-            background: linear-gradient(to right, rgba(255, 206, 86, 1),rgba(255, 181, 86, 1));
+            background: linear-gradient(to right, rgba(255, 206, 86, 1), rgba(255, 181, 86, 1));
         }
 
         .counter.blue h3 {
@@ -140,45 +140,18 @@
             deskripsi singkat setiap KI, unduh berkas KI, dan formulir pengajuan KI online melalui unit pengelola KI
             POLINDRA.
         </p>
-        {{-- <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="card">
-                    <div class="card-body">
-                        <input type="hidden" id="paten2024" value="{{ $paten2024 }}">
-                        <input type="hidden" id="paten2025" value="{{ $paten2025 }}">
-                        <input type="hidden" id="paten2026" value="{{ $paten2026 }}">
-                        <input type="hidden" id="paten2027" value="{{ $paten2027 }}">
-                        <input type="hidden" id="hc2024" value="{{ $hc2024 }}">
-                        <input type="hidden" id="hc2025" value="{{ $hc2025 }}">
-                        <input type="hidden" id="hc2026" value="{{ $hc2026 }}">
-                        <input type="hidden" id="hc2027" value="{{ $hc2027 }}">
-                        <input type="hidden" id="di2024" value="{{ $di2024 }}">
-                        <input type="hidden" id="di2025" value="{{ $di2025 }}">
-                        <input type="hidden" id="di2026" value="{{ $di2026 }}">
-                        <input type="hidden" id="di2027" value="{{ $di2027 }}">
-                        <canvas class="canvas-chart" id="chart" style="height:30vh; width:68vw"></canvas>
-                    </div>
-                    <div class="card-body">
-                        <input type="hidden" id="gabungKi2024" value="{{ $gabungKi2024 }}">
-                        <input type="hidden" id="gabungKi2025" value="{{ $gabungKi2025 }}">
-                        <input type="hidden" id="gabungKi2026" value="{{ $gabungKi2026 }}">
-                        <input type="hidden" id="gabungKi2027" value="{{ $gabungKi2027 }}">
-                        <canvas class="canvas-chart" id="gabung2024" style="height:30vh; width:68vw"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
+
         <br> <br>
         <div class="row justify-content-center">
             <div class="col-md-3 col-sm-6">
                 <div class="counter">
                     <div class="counter-content">
                         <div class="counter-icon">
-                            {{ $contohPaten }}
+                            {{ $paten }}
                             {{-- <i class="bi bi-r-circle"></i> --}}
                         </div>
                         <a href="/paten" style="text-decoration:none;">
-                            <h3 >Paten</h3>
+                            <h3>Paten</h3>
                         </a>
 
                     </div>
@@ -189,7 +162,7 @@
                 <div class="counter green">
                     <div class="counter-content">
                         <div class="counter-icon">
-                            {{ $contohHc }}
+                            {{ $hc }}
                             {{-- <i class="bi bi-c-circle"></i> --}}
                         </div>
                         <a href="/hak-cipta" style="text-decoration:none;">
@@ -203,80 +176,31 @@
                 <div class="counter blue">
                     <div class="counter-content">
                         <div class="counter-icon">
-                            {{ $contohDi }}
+                            {{ $di }}
                             {{-- <i class="bi bi-gear-wide-connected"></i> --}}
                         </div>
                         <a href="/desain-industri" style="text-decoration:none;">
                             <h3>Desain Industri</h3>
                         </a>
-                        
+
                     </div>
                     {{-- <span class="counter-value">{{ $contohDi }}</span> --}}
                 </div>
             </div>
 
         </div>
-        {{-- <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="card">
-                    <div class="card-header text-center">
-                        KI yang sudah terverifikasi DJKI
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex flex-row justify-content-center">
-                            <div class="col-xl-3 col-sm-6 col-12">
-                                <div class="card shadow-sm" style="width: 14rem;">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <div class="align-self-center">
-                                                <i class="bi bi-check-square float-start me-5"
-                                                    style="font-size: 50px;"></i>
-                                            </div>
-                                            <div class="align-self-center">
-                                                <h3 class="ms-4 d-flex justify-content-center">{{ $contohPaten }}</h3>
-                                                <span class="ms-4 d-flex justify-content-center">Paten</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-sm-6 col-12">
-                                <div class="card shadow-sm" style="width: 14rem;">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <div class="align-self-center">
-                                                <i class="bi bi-check-square float-start me-3"
-                                                    style="font-size: 50px;"></i>
-                                            </div>
-                                            <div class="align-self-center">
-                                                <h3 class="ms-4 d-flex justify-content-center">{{ $contohHc }}</h3>
-                                                <span class="ms-4 d-flex justify-content-center">Hak Cipta</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-sm-6 col-12">
-                                <div class="card shadow-sm" style="width: 14rem;">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <div class="align-self-center">
-                                                <i class="bi bi-check-square float-start me-1"
-                                                    style="font-size: 50px;"></i>
-                                            </div>
-                                            <div class="align-self-center">
-                                                <h3 class="ms-4 d-flex justify-content-center">{{ $contohDi }}</h3>
-                                                <span class="ms-3 d-flex justify-content-center">Desain Industri</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+
+                            <div id="barChart"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
     </div>
     @include('layout.footer')
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -302,8 +226,64 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
     </script>
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var options = {
+                chart: {
+                    type: 'bar',
+                    height: 400
+                },
+                series: [{
+                        name: 'Paten',
+                        data: @json($data_paten_per_tahun)
+                    },
+                    {
+                        name: 'Hak Cipta',
+                        data: @json($data_hakCipta_per_tahun)
+                    },
+                    {
+                        name: 'Desain Industri',
+                        data: @json($data_desainIndustri_per_tahun)
+                    }
+                ],
+                xaxis: {
+                    // Gunakan daftar tahun yang unik
+                    categories: @json($tahun),
+                    title: {
+                        text: 'Tahun'
+                    }
+                },
+                yaxis: {
+                    title: {
+                        text: 'Jumlah Kekayaan Intelektual'
+                    },
+                    min: 1,
+                },
+                title: {
+                    text: 'Jumlah Kekayaan Intelektual per Tahun',
+                    align: 'center'
+                },
+                colors: ['#f83600', '#36a2eb', '#ffce56'],
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '50%',
+                        endingShape: 'rounded'
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            };
 
+            var chart = new ApexCharts(document.querySelector("#barChart"), options);
+            chart.render();
+        });
+    </script>
 
     </Script>
 </body>

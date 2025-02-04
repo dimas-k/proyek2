@@ -7,39 +7,74 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href={{ asset('assets/polindra21.png') }}>
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="shortcut icon" href={{ asset('assets/logo-polindra.png') }}>
     <title>SIKI POLINDRA || Paten Jurusan</title>
 </head>
 
 <body>
+    <style>
+        @media (max-width: 768px) {
+            .search-form {
+                flex-direction: column;
+                /* Elemen menjadi vertikal */
+                align-items: stretch;
+                /* Elemen memenuhi lebar kontainer */
+            }
+
+            .select2-container {
+                width: 100% !important;
+                /* Pastikan Select2 penuh lebar */
+            }
+
+            .select2-dropdown {
+                width: auto !important;
+                /* Pastikan dropdown menyesuaikan dengan kontainer */
+                max-width: 100% !important;
+
+            }
+
+            .search-form>button {
+                width: 80%;
+                margin-left: 0;
+                margin-top: 20px;
+            }
+        }
+    </style>
     @include('layout.nav')
     <br>
     <br>
     <br>
     <br>
-    <div class="container">
-        <a href="/paten" class="link-dark link-underline link-underline-opacity-0 mb-5 "><i
-                class="bi bi-arrow-left-circle mb-5" style="font-size: 35px;"></i></a>
-        <div class="rounded border shadow-sm p-4 mb-5 mt-4">
-            <form action="/paten/list/jurusan/cari" method="GET" class="ms-2">
+    <div class="container search-container">
+        <a href="/paten" class="link-dark link-underline link-underline-opacity-0 mb-3">
+            <i class="bi bi-arrow-left-circle" style="font-size: 2rem;"></i>
+        </a>
+        <div class="rounded border shadow-sm p-3 mb-4 mt-3">
+            <form action="/paten/list/jurusan/cari" method="POST" class="search-form d-flex align-items-center">
                 @csrf
-                <label for="" class="form-label me-4">Cari Jurusan</label>
-                <select class="form-select-sm" aria-label="Default select example" name="jurusan" style="width: 1050px">
-                    <option>-</option>
+                <label for="" class="form-label me-3">Jurusan</label>
+                <select id="jurusan" class="form-select form-select-sm select2 flex-grow-1" name="jurusan"
+                    style="width: 100%;" title="Pilih Jurusan">
+                    <option></option>
                     <option value="Teknik Informatika">Teknik Informatika</option>
-                    <option value="Teknik Mesin">Teknik Mesin</option>
-                    <option value="Teknik Pendingin dan Tata Udara">Teknik Pendingin dan Tata Udara</option>
-                    <option value="Keperawatan">Keperawatan</option>
+                    <option value="Teknik">Teknik</option>
+                    <option value="Kesehatan">Kesehatan</option>
                 </select>
-                <button type="submit" class="btn btn-sm btn-primary ms-3">Cari</button>
+                <span class="ms-3"></span>
+                <button type="submit" class="btn btn-sm btn-primary">Cari</button>
             </form>
         </div>
-        <div class="rounded border shadow-sm p-4 mb-5">
-            <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-2"></i>Daftar Paten Jurusan
+        <div class="rounded border shadow-sm p-3 mb-5">
+            <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-2"></i>Daftar Paten Jurusan <b>
                 @foreach ($jurusan as $jur)
                     {{ $jur->jurusan }}
                     @break
                 @endforeach
+                </b>
             </h3>
             <table class="table table-hover font-family-Kokoro">
                 <thead>
@@ -83,6 +118,15 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Inisialisasi Select2
+            $('#jurusan').select2({
+                placeholder: "Pilih Nama",
+                allowClear: true
+            });
+        });
     </script>
 </body>
 

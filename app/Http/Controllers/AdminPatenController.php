@@ -316,6 +316,35 @@ class AdminPatenController extends Controller
         return view('admin.adminpaten.showpaten.index', compact('p'));
     }
 
+    public function viewSensitifFilesPaten($filename)
+    {
+        // Path file di disk 'private'
+        $filePaten = storage_path('app/public/umum/dokumen-paten/' . $filename);
+
+        // Pastikan file ada
+        if (!file_exists($filePaten)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+
+        // Cari data paten berdasarkan salah satu kolom file
+        $paten = Paten::where(function ($query) use ($filename) {
+            $query->where('ktp_inventor', 'umum/dokumen-paten/' . $filename)
+                ->orWhere('data_pengaju2', 'umum/dokumen-paten/' . $filename)
+                ->orWhere('pengalihan_hak', 'umum/dokumen-paten/' . $filename)
+                ->orWhere('klaim', 'umum/dokumen-paten/' . $filename)
+                ->orWhere('pernyataan_kepemilikan', 'umum/dokumen-paten/' . $filename)
+                ->orWhere('surat_kuasa', 'umum/dokumen-paten/' . $filename);
+        })->first();
+
+        // Validasi akses: hanya pemilik atau admin/verifikator yang bisa melihat
+        if (!$paten  || $paten->user_id !== auth()->id()) {
+            abort(403, 'Anda tidak memiliki akses ke file ini.');
+        }
+
+        // Kirim file sebagai respons
+        return response()->file($filePaten);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

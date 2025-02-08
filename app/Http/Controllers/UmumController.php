@@ -568,24 +568,41 @@ class UmumController extends Controller
             $paten->judul_paten = $request->judul_paten;
             $paten->tanggal_permohonan = $request->tanggal_permohonan;
 
-            // Proses upload file
-            $files = [
+            // Daftar file yang disimpan di public storage
+            $publicFiles = ['deskripsi_paten', 'abstrak_paten', 'gambar_paten', 'gambar_tampilan','ktp_inventor','data_pengaju2','pengalihan_hak','klaim','pernyataan_kepemilikan','surat_kuasa'];
+
+            // Daftar file yang disimpan di private storage
+            $privateFiles = [
                 'ktp_inventor' => 'ktp_inventor',
-                'abstrak_paten' => 'abstrak_paten',
-                'deskripsi_paten' => 'deskripsi_paten',
                 'pengalihan_hak' => 'pengalihan_hak',
                 'klaim' => 'klaim',
                 'pernyataan_kepemilikan' => 'pernyataan_kepemilikan',
                 'surat_kuasa' => 'surat_kuasa',
-                'gambar_paten' => 'gambar_paten',
-                'gambar_tampilan' => 'gambar_tampilan'
+                'deskripsi_paten'=>'deskripsi_paten',
+                'abstrak_paten'=>'abstrak_paten',
+                'gambar_paten'=>'gambar_paten',
+                'gambar_tampilan'=>'gambar_tampilan'
             ];
 
-            foreach ($files as $field => $storageName) {
+            // Proses unggahan file ke private storage
+            foreach ($privateFiles as $field => $storageName) {
                 if ($request->hasFile($field)) {
-                    $originalName = $request->file($field)->getClientOriginalName();
-                    $filename = time() . '_' . str_replace(' ', '_', $originalName);
-                    $paten->{$storageName} = $request->file($field)->storeAs('private/umum/dokumen-paten', $filename);
+                    $file = $request->file($field);
+                    $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                    // Simpan di disk 'private' dalam folder 'dosen/dokumen-paten'
+                    $path = $file->storeAs('umum/dokumen-paten', $filename, 'private');
+                    $paten->{$storageName} = $path;
+                }
+            }
+
+            // Proses unggahan file ke public storage
+            foreach ($publicFiles as $field) {
+                if ($request->hasFile($field)) {
+                    $file = $request->file($field);
+                    $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                    // Simpan di disk 'public' dalam folder 'dokumen-paten'
+                    $path = $file->storeAs('umum/dokumen-paten', $filename, 'public');
+                    $paten->{$field} = $path;
                 }
             }
 
@@ -726,21 +743,20 @@ class UmumController extends Controller
             abort(404, 'File tidak ditemukan.');
         }
         // Validasi akses file (hanya pemilik file yang bisa mengaksesnya)
-        $paten = Paten::where('ktp_inventor', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('data_pengaju2', 'private/umum/dokumen-paten/' . $filename)
-            // ->orWhere('dokumen_invensi', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('deskripsi_paten', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('abstrak_paten', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('pengalihan_hak', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('klaim', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('pernyataan_kepemilikan', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('surat_kuasa', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('gambar_paten', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('gambar_paten', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('gambar_tampilan', 'private/umum/dokumen-paten/' . $filename)
-            ->first();
+        $paten = Paten::where(function ($query) use ($filename) {
+            $query->where('ktp_inventor', 'umum/dokumen-paten/' . $filename)
+                ->orWhere('data_pengaju2', 'umum/dokumen-paten/' . $filename)
+                ->orWhere('abstrak_paten','umum/dokumen-paten/' . $filename)
+                ->orWhere('deskripsi_paten','umum/dokumen-paten/' . $filename)
+                ->orWhere('gambar_paten','umum/dokumen-paten/' . $filename)
+                ->orWhere('gambar_tampilan','umum/dokumen-paten/' . $filename)
+                ->orWhere('pengalihan_hak', 'umum/dokumen-paten/' . $filename)
+                ->orWhere('klaim', 'umum/dokumen-paten/' . $filename)
+                ->orWhere('pernyataan_kepemilikan', 'umum/dokumen-paten/' . $filename)
+                ->orWhere('surat_kuasa', 'umum/dokumen-paten/' . $filename);
+        })->first();
         // Pastikan file milik user yang sedang login
-        if (!$paten || $paten->user_id !== auth()->id()) {
+        if (!$paten && $paten->user_id !== auth()->id()) {
             abort(403, 'Anda tidak memiliki akses ke file ini.');
         }
         // Mengirim file sebagai response

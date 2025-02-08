@@ -139,6 +139,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::post('/admin/paten/update/{id}', [AdminPatenController::class, 'update'])->name('admin_paten.update');
     Route::get('/admin/paten/show/{id}', [AdminPatenController::class, 'show'])->name('admin_paten.show');
 
+    // Route::get('/public/paten/{file}', [AdminPatenController::class, 'viewSensitifFilesPaten'])->middleware(['auth', 'role:Admin'])->name('private_paten');    
+
+
     Route::get('/admin/paten/tambah/dosen/', [AdminPatenController::class, 'tambahPatenDosen'])->name('admin_paten.tambah');
     Route::post('/admin/paten/tambah/dosen/store/', [AdminPatenController::class, 'storeTambahPatenDosen'])->name('admin_paten.store');
 
@@ -241,7 +244,7 @@ Route::middleware(['auth', 'role:Dosen'])->group(function () {
 
     Route::get('/private/hc/dosen/{filename}', [DosenController::class, 'viewSensitifFilesHc'])->middleware(['auth', 'role:Dosen'])->name('private_hc_dosen');
     Route::get('/private/di/dosen/{file}', [DosenController::class, 'viewSensitifFilesDi'])->middleware(['auth', 'role:Dosen'])->name('private_di_dosen');
-    Route::get('/private/paten/dosen/{file}', [DosenController::class, 'viewSensitifFilesPaten'])->middleware('auth', 'role:Dosen')->name('private_paten_dosen');    
+    Route::get('/private/paten/dosen/{file}', [DosenController::class, 'viewSensitifFilesPaten'])->middleware('auth', 'role:Dosen,Admin')->name('private_paten_dosen');    
     // Route::get('/private/{file}', [DosenController::class, 'viewSensitifFiles'])->middleware('auth')->name('private');
     // Route::get('/dokumen/{type}/{filename}', [DosenController::class, 'viewSensitifFiles'])->name('dokumen.view');
     // Route::get('/dokumen/view/{type}/{filename}', [DosenController::class, 'viewSensitifFiles'])->name('dokumen.view');

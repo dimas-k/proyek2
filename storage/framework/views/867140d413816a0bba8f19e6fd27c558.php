@@ -106,7 +106,7 @@
                                     <tr>
                                         <th>Dokumen Invensi</th>
                                         <td>:
-                                            <a href="<?php echo e(route('private_hc_dosen', ['filename' => basename($hc->dokumen_invensi)])); ?>"
+                                            <a href="<?php echo e(asset('storage/' . $hc->dokumen_invensi)); ?>"
                                                 target="_blank">Lihat Dokumen Invensi</a>
                                     </tr>
                                     <tr>

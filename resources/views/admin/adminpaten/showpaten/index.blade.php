@@ -70,8 +70,10 @@
                             </tr>
                             <tr>
                                 <th>KTP</th>
-                                <td>: <a href={{ route('private_paten_dosen', ['file' => basename($p->ktp_inventor)]) }} class=""
-                                        target="_blank">Lihat KTP</a></td>
+                                <td>: 
+                                    <a href={{ asset('storage/' . $p->ktp_inventor) }} class=""
+                                        target="_blank">Lihat KTP</a>
+                                </td>
                             </tr>
                             <tr>
                                 <th>Anggota Inventor</th>

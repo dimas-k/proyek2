@@ -8,7 +8,7 @@
     <link href=<?php echo e(asset('assets/bootstrap/css/bootstrap.min.css')); ?> rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href=<?php echo e(asset('assets/css/index.css')); ?>>
-    <link rel="shortcut icon" href=<?php echo e(asset('assets/polindra21.png')); ?>>
+    <link rel="shortcut icon" href=<?php echo e(asset('assets/logo-polindra.png')); ?>>
     <title>SIKI POLINDRA | Paten</title>
 </head>
 
@@ -316,7 +316,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $__currentLoopData = $paten1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__empty_1 = true; $__currentLoopData = $paten1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
                             <th scope="row">
                                 <?php echo e(($paten1->currentPage() - 1) * $paten1->perPage() + $loop->iteration); ?>
@@ -328,7 +328,11 @@
                             <td><?php echo e(\Carbon\Carbon::parse($p->tanggal_permohonan)->format('d-m-Y')); ?></td>
                             <td><?php echo e($p->status); ?></td>
                         </tr>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                            <td colspan="10" class="text-center">
+                                <img src="<?php echo e(asset('assets/no-data.png')); ?>" style="width:30%; height:auto">
+                            </td>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>

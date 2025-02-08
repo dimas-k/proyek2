@@ -227,11 +227,11 @@
                         <th scope="col">Jenis Desain</th>
                         <th scope="col">Judul Desain</th>
                         <th scope="col">Tanggal pengajuan</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Status Desain Industri</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $__currentLoopData = $di; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__empty_1 = true; $__currentLoopData = $di; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
                             <th scope="row"><?php echo e(($di->currentPage() - 1) * $di->perPage() + $loop->iteration); ?></th>
                             <td><?php echo e($d->nama_lengkap); ?></td>
@@ -240,7 +240,11 @@
                             <td><?php echo e(\Carbon\Carbon::parse($d->tanggal_permohonan)->format('d-m-Y')); ?></td>
                             <td><?php echo e($d->status); ?></td>
                         </tr>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                            <td colspan="10" class="text-center">
+                                <img src="<?php echo e(asset('assets/no-data.png')); ?>" style="width:30%; height:auto">
+                            </td>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>

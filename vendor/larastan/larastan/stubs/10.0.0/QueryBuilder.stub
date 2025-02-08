@@ -346,7 +346,7 @@ class Builder
     /**
      * Execute the query as a "select" statement.
      *
-     * @param  string[]|string  $columns
+     * @param  array<string|\Illuminate\Contracts\Database\Query\Expression>|string  $columns
      * @return \Illuminate\Support\Collection<int, \stdClass>
      */
     public function get($columns = ['*']);

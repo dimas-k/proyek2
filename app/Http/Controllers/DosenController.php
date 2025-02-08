@@ -350,7 +350,7 @@ class DosenController extends Controller
             $paten->tanggal_permohonan = $request->tanggal_permohonan;
 
             // Daftar file yang disimpan di public storage
-            $publicFiles = ['deskripsi_paten', 'abstrak_paten', 'gambar_paten', 'gambar_tampilan'];
+            $publicFiles = ['deskripsi_paten', 'abstrak_paten', 'gambar_paten', 'gambar_tampilan','ktp_inventor','data_pengaju2','pengalihan_hak','klaim','pernyataan_kepemilikan','surat_kuasa'];
 
             // Daftar file yang disimpan di private storage
             $privateFiles = [
@@ -359,7 +359,11 @@ class DosenController extends Controller
                 'pengalihan_hak' => 'pengalihan_hak',
                 'klaim' => 'klaim',
                 'pernyataan_kepemilikan' => 'pernyataan_kepemilikan',
-                'surat_kuasa' => 'surat_kuasa'
+                'surat_kuasa' => 'surat_kuasa',
+                'deskripsi_paten'=>'deskripsi_paten',
+                'abstrak_paten'=>'abstrak_paten',
+                'gambar_paten'=>'gambar_paten',
+                'gambar_tampilan'=>'gambar_tampilan'
             ];
 
             // Proses unggahan file ke private storage
@@ -379,7 +383,7 @@ class DosenController extends Controller
                     $file = $request->file($field);
                     $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
                     // Simpan di disk 'public' dalam folder 'dokumen-paten'
-                    $path = $file->storeAs('dokumen-paten', $filename, 'public');
+                    $path = $file->storeAs('dosen/dokumen-paten', $filename, 'public');
                     $paten->{$field} = $path;
                 }
             }
@@ -726,6 +730,10 @@ class DosenController extends Controller
         $paten = Paten::where(function ($query) use ($filename) {
             $query->where('ktp_inventor', 'dosen/dokumen-paten/' . $filename)
                 ->orWhere('data_pengaju2', 'dosen/dokumen-paten/' . $filename)
+                ->orWhere('abstrak_paten','dosen/dokumen-paten/' . $filename)
+                ->orWhere('deskripsi_paten','dosen/dokumen-paten/' . $filename)
+                ->orWhere('gambar_paten','dosen/dokumen-paten/' . $filename)
+                ->orWhere('gambar_tampilan','dosen/dokumen-paten/' . $filename)
                 ->orWhere('pengalihan_hak', 'dosen/dokumen-paten/' . $filename)
                 ->orWhere('klaim', 'dosen/dokumen-paten/' . $filename)
                 ->orWhere('pernyataan_kepemilikan', 'dosen/dokumen-paten/' . $filename)
@@ -733,17 +741,13 @@ class DosenController extends Controller
         })->first();
 
         // Validasi akses: hanya pemilik atau admin/verifikator yang bisa melihat
-        if (!$paten  && $paten->user_id !== auth()->id()) {
+        if (!$paten || $paten->user_id !== auth()->id()) {
             abort(403, 'Anda tidak memiliki akses ke file ini.');
         }
-
-
 
         // Kirim file sebagai respons
         return response()->file($filePaten);
     }
-
-
 
     public function editDi(string $id)
     {

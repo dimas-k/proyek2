@@ -70,8 +70,11 @@
                             </tr>
                             <tr>
                                 <th>KTP</th>
-                                <td>: <a href={{ asset('storage/' . $hc->ktp_inventor) }} class=""
-                                        target="_blank">Lihat KTP</a></td>
+                                <td>: 
+                                    <a href={{ asset('storage/' . $hc->ktp_inventor) }} class=""
+                                        target="_blank">Lihat KTP1
+                                    </a>
+                                    </td>
                             </tr>
                             <tr>
                                 <th>Anggota Inventor</th>

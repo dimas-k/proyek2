@@ -93,13 +93,21 @@
                                     </tr>
                                     <tr>
                                         <th>Abstrak Paten</th>
-                                        <td>: <a href="{{ Storage::url('dokumen-paten/' . basename($paten->abstrak_paten))  }}"
-                                                target="_blank">Lihat Abstrak Paten</a></td>
+                                        <td>: 
+                                            {{-- <a href="{{ Storage::url('dokumen-paten/' . basename($paten->abstrak_paten))  }}"
+                                                target="_blank">Lihat Abstrak Paten</a> --}}
+                                            <a href="{{ route('private_paten_dosen', ['file' => basename($paten->abstrak_paten)]) }}"
+                                                target="_blank">Lihat Abstrak Paten</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Deskripsi Paten</th>
-                                        <td>: <a href="{{ Storage::url('dokumen-paten/' . basename($paten->deskripsi_paten))  }}" 
-                                                target="_blank">Lihat Deskripsi Paten</a></td>
+                                        <td>: 
+                                            {{-- <a href="{{ Storage::url('dokumen-paten/' . basename($paten->deskripsi_paten))  }}" 
+                                                target="_blank">Lihat Deskripsi Paten</a> --}}
+                                            <a href="{{ route('private_paten_dosen', ['file' => basename($paten->deskripsi_paten)]) }}" 
+                                                target="_blank">Lihat Deskripsi Paten</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Pengalihan hak invensi</th>
@@ -123,12 +131,21 @@
                                     </tr>
                                     <tr>
                                         <th>Gambar Paten</th>
-                                        <td>: <a href="{{ Storage::url('dokumen-paten/' . basename($paten->gambar_paten)) }}" target="_blank">Lihat Gambar Paten</a></td>
+                                        <td>: 
+                                            {{-- <a href="{{ Storage::url('dokumen-paten/' . basename($paten->gambar_paten)) }}"
+                                                target="_blank">Lihat Gambar Paten</a> --}}
+                                            <a href="{{ route('private_paten_dosen', ['file' => basename($paten->gambar_paten)]) }}"
+                                                target="_blank">Lihat Gambar Paten</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Gambar Tampilan</th>
-                                        <td>: <a href="{{ Storage::url('dokumen-paten/' . basename($paten->gambar_tampilan))  }}"
-                                                target="_blank">Lihat Gambar Tampilan</a></td>
+                                        <td>: 
+                                            {{-- <a href="{{ Storage::url('dokumen-paten/' . basename($paten->gambar_tampilan))  }}"
+                                                target="_blank">Lihat Gambar Tampilan</a> --}}
+                                            <a href="{{ route('private_paten_dosen', ['file' => basename($paten->gambar_tampilan)]) }}"
+                                                target="_blank">Lihat Gambar Tampilan</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Tanggal pengajuan</th>

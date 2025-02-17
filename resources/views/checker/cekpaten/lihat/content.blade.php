@@ -54,18 +54,14 @@
                                     <tr>
                                         <th>KTP</th>
                                         <td>:
-                                            @if ($paten->institusi === 'Dosen')
-                                                <a href="{{ route('private_paten_cek_dosen', ['file' => basename($paten->ktp_inventor)]) }}" target="_blank">Lihat KTP</a>
-                                            @else
-                                                <a href="{{ route('private_paten_cek_umum', ['file' => basename($paten->ktp_inventor)]) }}" target="_blank">Lihat KTP</a>
-                                            @endif
+                                            <a href="{{ route('private_paten_verifikator', ['file' => basename($paten->ktp_inventor)]) }}" target="_blank">Lihat KTP</a>
                                         </td>
                                     </tr>                                    
                                     <tr>
                                         <th>Anggota Inventor</th>
                                         <td>:
                                             @if ($paten->data_pengaju2)
-                                                <a href="{{ route('private_paten_cek_dosen', ['file' => basename($paten->data_pengaju2)]) }}"
+                                                <a href="{{ route('private_paten_verifikator', ['file' => basename($paten->data_pengaju2)]) }}"
                                                     target="_blank">Download xlsx Anggota Inventor</a>
                                             @else
                                                 Tidak ada data untuk diunduh.
@@ -103,74 +99,51 @@
                                     <tr>
                                         <th>Abstrak Paten</th>
                                         <td>: 
-                                            @if ($paten->institusi === 'Dosen')
-                                                <a href="{{ route('private_paten_cek_dosen', ['file' => basename($paten->abstrak_paten)])  }}" target="_blank">Lihat Abstrak Paten</a></td>
-                                            @else
-                                                <a href="{{ route('private_paten_cek_umum', ['file' => basename($paten->abstrak_paten)])  }}" target="_blank">Lihat Abstrak Paten</a></td>
-                                            @endif
+                                            <a href="{{ route('public_paten_verifikator', ['file' => basename($paten->abstrak_paten)])  }}" target="_blank">Lihat Abstrak Paten</a></td>
                                     </tr>
                                     <tr>
                                         <th>Deskripsi Paten</th>
                                         <td>:
-                                            @if ($paten->institusi === 'Dosen')
-                                                <a href="{{ route('private_paten_cek_dosen', ['file' => basename($paten->deskripsi_paten)])  }}" target="_blank">Lihat Deskripsi Paten</a></td>
-                                            @else
-                                                <a href="{{ route('private_paten_cek_umum', ['file' => basename($paten->deskripsi_paten)])  }}" target="_blank">Lihat Deskripsi Paten</a></td>
-                                            @endif
+                                            <a href="{{ route('public_paten_verifikator', ['file' => basename($paten->deskripsi_paten)])  }}" target="_blank">Lihat Deskripsi Paten</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Pengalihan hak invensi</th>
                                         <td>:
-                                            @if ($paten->institusi === 'Dosen')
-                                                <a href="{{ route('private_paten_cek_dosen', ['file' => basename($paten->pengalihan_hak)])  }}" target="_blank">Lihat Pengalihan Hak Invensi</a></td>
-                                            @else
-                                                <a href="{{ route('private_paten_cek_umum', ['file' => basename($paten->pengalihan_hak)])  }}" target="_blank">Lihat Pengalihan Hak Invensi</a></td>
-                                            @endif
+                                            <a href="{{ route('private_paten_verifikator', ['file' => basename($paten->pengalihan_hak)])  }}" target="_blank">Lihat Pengalihan Hak Invensi</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Klaim</th>
                                         <td>:
-                                            @if ($paten->institusi === 'Dosen')
-                                                <a href="{{ route('private_paten_cek_dosen', ['file' => basename($paten->klaim)])  }}" target="_blank">Lihat Klaim</a></td>
-                                            @else
-                                                <a href="{{ route('private_paten_cek_umum', ['file' => basename($paten->klaim)])  }}" target="_blank">Lihat Klaim</a></td>
-                                            @endif
+              
+                                            <a href="{{ route('private_paten_verifikator', ['file' => basename($paten->klaim)])  }}" target="_blank">Lihat Klaim</a>
+                                        </td>
+                                            
                                     </tr>
                                     <tr>
                                         <th>Pernyataan Kepemilikan</th>
                                         <td>: 
-                                            @if ($paten->institusi === 'Dosen')
-                                                <a href="{{ route('private_paten_cek_dosen', ['file' => basename($paten->pernyataan_kepemilikan)])  }}" target="_blank">Lihat Pernyataan Kepemilikan</a></td>
-                                            @else
-                                                <a href="{{ route('private_paten_cek_umum', ['file' => basename($paten->pernyataan_kepemilikan)])  }}" target="_blank">Lihat Pernyataan Kepemilikan</a></td>
-                                            @endif
+                                            <a href="{{ route('private_paten_verifikator', ['file' => basename($paten->pernyataan_kepemilikan)])  }}" target="_blank">Lihat Pernyataan Kepemilikan</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Surat Kuasa</th>
                                         <td>: 
-                                            @if ($paten->institusi === 'Dosen')
-                                                <a href="{{ route('private_paten_cek_dosen', ['file' => basename($paten->surat_kuasa)])  }}" target="_blank">Lihat Surat Kuasa</a></td>
-                                            @else
-                                                <a href="{{ route('private_paten_cek_umum', ['file' => basename($paten->surat_kuasa)])  }}" target="_blank">Lihat Surat Kuasa</a></td>
-                                            @endif
+                                            <a href="{{ route('private_paten_verifikator', ['file' => basename($paten->surat_kuasa)])  }}" target="_blank">Lihat Surat Kuasa</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Gambar Paten</th>
                                         <td>:
-                                            @if ($paten->institusi === 'Dosen')
-                                                <a href="{{ route('private_paten_cek_dosen', ['file' => basename($paten->gambar_paten)])  }}" target="_blank">Lihat Gambar paten</a></td>
-                                            @else
-                                                <a href="{{ route('private_paten_cek_umum', ['file' => basename($paten->gambar_paten)])  }}" target="_blank">Lihat Gambar paten</a></td>
-                                            @endif
+                                            <a href="{{ route('public_paten_verifikator', ['file' => basename($paten->gambar_paten)])  }}" target="_blank">Lihat Gambar paten</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Gambar Tampilan</th>
                                         <td>:
-                                            @if ($paten->institusi === 'Dosen')
-                                                <a href="{{ route('private_paten_cek_dosen', ['file' => basename($paten->gambar_tampilan)])  }}" target="_blank">Lihat Gambar Tampilan</a></td>
-                                            @else
-                                                <a href="{{ route('private_paten_cek_umum', ['file' => basename($paten->gambar_tampilan)])  }}" target="_blank">Lihat Gambar Tampilan</a></td>
-                                            @endif
+                                            <a href="{{ route('public_paten_verifikator', ['file' => basename($paten->gambar_tampilan)])  }}" target="_blank">Lihat Gambar Tampilan</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Tanggal pengajuan</th>
@@ -196,17 +169,36 @@
                                         <td>:
                                             @if ($paten->sertifikat_paten == '')
                                                 Paten Anda Belum Memiliki Sertifikat
-                                            @elseif($paten->institusi === 'Dosen')
-                                                <a href="{{ route('private_paten_cek_Dosen', ['file' => basename($paten->sertifikat_paten)])  }}" target="_blank">Lihat sertifikat</a>
                                             @else
-                                                <a href="{{ route('private_paten_cek_umum', ['file' => basename($paten->sertifikat_paten)])  }}" target="_blank">Lihat sertifikat</a>
+                                                <a href="{{ route('public_paten_verifikator', ['file' => basename($paten->sertifikat_paten)])  }}" target="_blank">Lihat sertifikat</a>
                                             @endif
                                         </td>
                                     </tr>
                                 </table>
-                                <a class="btn btn-primary me-3"
-                                    href="/verifikator/cek/paten/nilai/{{ request()->segment(5) }}">Nilai Data Paten</a>
-                                    <a href="/verifikator/cek/paten/nilai/update/{{ request()->segment(5) }}" class="btn btn-outline-secondary">Update nilai Data Paten</a>
+                                <div class="mb-3">
+                                    @if ($check)
+                                        <!-- Data paten sudah dinilai -->
+                                        <!-- Tombol "Nilai Data Paten" dinonaktifkan -->
+                                        <a class="btn btn-primary me-3 disabled" aria-disabled="true" title="Data Paten sudah dinilai. Gunakan Update">
+                                            Nilai Data Paten
+                                        </a>
+                                        <!-- Tombol "Update nilai Data Paten" aktif -->
+                                        <a href="/verifikator/cek/paten/nilai/update/{{ $paten->id }}" class="btn btn-outline-secondary">
+                                            Update nilai Data Paten
+                                        </a>
+                                    @else
+                                        <!-- Data paten belum dinilai -->
+                                        <!-- Tombol "Nilai Data Paten" aktif -->
+                                        <a href="/verifikator/cek/paten/nilai/{{ $paten->id }}" class="btn btn-primary me-3">
+                                            Nilai Data Paten
+                                        </a>
+                                        <!-- Tombol "Update nilai Data Paten" dinonaktifkan -->
+                                        <a class="btn btn-outline-secondary disabled" aria-disabled="true" title="Data Paten belum dinilai. Silahkan nilai terlebih dahulu">
+                                            Update nilai Data Paten
+                                        </a>
+                                    @endif
+                                </div>
+                                
                             </div>
                         </div>
                     </div>

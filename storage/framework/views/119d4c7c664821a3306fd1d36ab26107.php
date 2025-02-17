@@ -260,13 +260,22 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
-                                                                    aria-label="Default select example"
-                                                                    name="status">
-                                                                    <option selected>Pilih Status Hak Cipta</option>
-                                                                    <option value="Tercatat">Tercatat</option>
-                                                                    <option value="Ditolak">Ditolak</option>
-                                                                    <option value="Keterangan Belum Lengkap">
-                                                                        Keterangan Belum Lengkap</option>
+                                                                    aria-label="Default select example" name="status"
+                                                                    required>
+                                                                    <option value="">Pilih Status Hak Cipta
+                                                                    </option>
+                                                                    <option value="Keterangan Belum Lengkap"
+                                                                        <?php if((old('status', $hk->status) ?? '') == 'Keterangan Belum Lengkap'): ?> selected <?php endif; ?>>
+                                                                        Keterangan Belum Lengkap
+                                                                    </option>
+                                                                    <option value="Ditolak"
+                                                                        <?php if((old('status', $hk->status) ?? '') == 'Ditolak'): ?> selected <?php endif; ?>>
+                                                                        Ditolak
+                                                                    </option>
+                                                                    <option value="Tercatat"
+                                                                        <?php if((old('status', $hk->status) ?? '') == 'Tercatat'): ?> selected <?php endif; ?>>
+                                                                        Tercatat
+                                                                    </option>
                                                                 </select>
                                                                 <?php $__errorArgs = ['status'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -284,7 +293,10 @@ unset($__errorArgs, $__bag); ?>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label">Sertifikat
-                                                                    Hak Cipta</label>
+                                                                    Hak Cipta</label><br>
+                                                                    File :
+                                                                <?php echo e(basename($hk->sertifikat_hakcipta)); ?>
+
                                                                 <input type="file"
                                                                     class="form-control <?php $__errorArgs = ['sertifikat_hakcipta'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

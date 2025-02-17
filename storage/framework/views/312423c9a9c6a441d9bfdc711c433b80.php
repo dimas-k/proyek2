@@ -43,14 +43,12 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>"
-                                                    aria-label="Default select example" name="cek_data">
-                                                    <option selected>Pilih Status Hak Cipta</option>
-                                                    <option value="Valid">Valid
-                                                    </option>
-                                                    <option value="Tidak valid" >Tidak valid</option>
-                                                    <option value="Menunggu Pemeriksaan">Menunggu Pemeriksaan</option>
-                                                </select>
+unset($__errorArgs, $__bag); ?>" name="cek_data" required>
+                                                    <option value="">Pilih Status Paten</option>
+                                                    <option value="Valid" <?php if((old('cek_data') ?? $check->cek_data ?? '') == 'Valid'): ?> selected <?php endif; ?>>Valid</option>
+                                                    <option value="Tidak valid" <?php if((old('cek_data') ?? $check->cek_data ?? '') == 'Tidak Valid'): ?> selected <?php endif; ?>>Tidak Valid</option>
+                                                    <option value="Menunggu Pemeriksaan" <?php if((old('cek_data') ?? $check->cek_data ?? '') == 'Menunggu Pemeriksaan'): ?> selected <?php endif; ?>>Menunggu Pemeriksaan</option>
+                                                </select>  
                                                 <?php $__errorArgs = ['cek_data'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -76,7 +74,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
-                                                    id="" name="keterangan" value="<?php echo e($hc->keterangan); ?>">
+                                                    id="" name="keterangan" value="<?php echo e($check->keterangan); ?>">
                                                 <?php $__errorArgs = ['keterangan'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -126,13 +124,11 @@ unset($__errorArgs, $__bag); ?></td>
                     </div>
                 </div>
                 <!-- COL END -->
-                
                 <!-- COL END -->
             </div>
             <!-- ROW-2 END -->
 
             <!-- ROW-4 -->
-            
             <!-- ROW-4 END -->
         </div>
         <!-- CONTAINER END -->

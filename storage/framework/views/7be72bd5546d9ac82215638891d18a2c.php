@@ -56,18 +56,14 @@
                                     <tr>
                                         <th>KTP</th>
                                         <td>:
-                                            <?php if($paten->institusi === 'Dosen'): ?>
-                                                <a href="<?php echo e(route('private_paten_cek_dosen', ['file' => basename($paten->ktp_inventor)])); ?>" target="_blank">Lihat KTP</a>
-                                            <?php else: ?>
-                                                <a href="<?php echo e(route('private_paten_cek_umum', ['file' => basename($paten->ktp_inventor)])); ?>" target="_blank">Lihat KTP</a>
-                                            <?php endif; ?>
+                                            <a href="<?php echo e(route('private_paten_verifikator', ['file' => basename($paten->ktp_inventor)])); ?>" target="_blank">Lihat KTP</a>
                                         </td>
                                     </tr>                                    
                                     <tr>
                                         <th>Anggota Inventor</th>
                                         <td>:
                                             <?php if($paten->data_pengaju2): ?>
-                                                <a href="<?php echo e(route('private_paten_cek_dosen', ['file' => basename($paten->data_pengaju2)])); ?>"
+                                                <a href="<?php echo e(route('private_paten_verifikator', ['file' => basename($paten->data_pengaju2)])); ?>"
                                                     target="_blank">Download xlsx Anggota Inventor</a>
                                             <?php else: ?>
                                                 Tidak ada data untuk diunduh.
@@ -105,74 +101,51 @@
                                     <tr>
                                         <th>Abstrak Paten</th>
                                         <td>: 
-                                            <?php if($paten->institusi === 'Dosen'): ?>
-                                                <a href="<?php echo e(route('private_paten_cek_dosen', ['file' => basename($paten->abstrak_paten)])); ?>" target="_blank">Lihat Abstrak Paten</a></td>
-                                            <?php else: ?>
-                                                <a href="<?php echo e(route('private_paten_cek_umum', ['file' => basename($paten->abstrak_paten)])); ?>" target="_blank">Lihat Abstrak Paten</a></td>
-                                            <?php endif; ?>
+                                            <a href="<?php echo e(route('public_paten_verifikator', ['file' => basename($paten->abstrak_paten)])); ?>" target="_blank">Lihat Abstrak Paten</a></td>
                                     </tr>
                                     <tr>
                                         <th>Deskripsi Paten</th>
                                         <td>:
-                                            <?php if($paten->institusi === 'Dosen'): ?>
-                                                <a href="<?php echo e(route('private_paten_cek_dosen', ['file' => basename($paten->deskripsi_paten)])); ?>" target="_blank">Lihat Deskripsi Paten</a></td>
-                                            <?php else: ?>
-                                                <a href="<?php echo e(route('private_paten_cek_umum', ['file' => basename($paten->deskripsi_paten)])); ?>" target="_blank">Lihat Deskripsi Paten</a></td>
-                                            <?php endif; ?>
+                                            <a href="<?php echo e(route('public_paten_verifikator', ['file' => basename($paten->deskripsi_paten)])); ?>" target="_blank">Lihat Deskripsi Paten</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Pengalihan hak invensi</th>
                                         <td>:
-                                            <?php if($paten->institusi === 'Dosen'): ?>
-                                                <a href="<?php echo e(route('private_paten_cek_dosen', ['file' => basename($paten->pengalihan_hak)])); ?>" target="_blank">Lihat Pengalihan Hak Invensi</a></td>
-                                            <?php else: ?>
-                                                <a href="<?php echo e(route('private_paten_cek_umum', ['file' => basename($paten->pengalihan_hak)])); ?>" target="_blank">Lihat Pengalihan Hak Invensi</a></td>
-                                            <?php endif; ?>
+                                            <a href="<?php echo e(route('private_paten_verifikator', ['file' => basename($paten->pengalihan_hak)])); ?>" target="_blank">Lihat Pengalihan Hak Invensi</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Klaim</th>
                                         <td>:
-                                            <?php if($paten->institusi === 'Dosen'): ?>
-                                                <a href="<?php echo e(route('private_paten_cek_dosen', ['file' => basename($paten->klaim)])); ?>" target="_blank">Lihat Klaim</a></td>
-                                            <?php else: ?>
-                                                <a href="<?php echo e(route('private_paten_cek_umum', ['file' => basename($paten->klaim)])); ?>" target="_blank">Lihat Klaim</a></td>
-                                            <?php endif; ?>
+              
+                                            <a href="<?php echo e(route('private_paten_verifikator', ['file' => basename($paten->klaim)])); ?>" target="_blank">Lihat Klaim</a>
+                                        </td>
+                                            
                                     </tr>
                                     <tr>
                                         <th>Pernyataan Kepemilikan</th>
                                         <td>: 
-                                            <?php if($paten->institusi === 'Dosen'): ?>
-                                                <a href="<?php echo e(route('private_paten_cek_dosen', ['file' => basename($paten->pernyataan_kepemilikan)])); ?>" target="_blank">Lihat Pernyataan Kepemilikan</a></td>
-                                            <?php else: ?>
-                                                <a href="<?php echo e(route('private_paten_cek_umum', ['file' => basename($paten->pernyataan_kepemilikan)])); ?>" target="_blank">Lihat Pernyataan Kepemilikan</a></td>
-                                            <?php endif; ?>
+                                            <a href="<?php echo e(route('private_paten_verifikator', ['file' => basename($paten->pernyataan_kepemilikan)])); ?>" target="_blank">Lihat Pernyataan Kepemilikan</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Surat Kuasa</th>
                                         <td>: 
-                                            <?php if($paten->institusi === 'Dosen'): ?>
-                                                <a href="<?php echo e(route('private_paten_cek_dosen', ['file' => basename($paten->surat_kuasa)])); ?>" target="_blank">Lihat Surat Kuasa</a></td>
-                                            <?php else: ?>
-                                                <a href="<?php echo e(route('private_paten_cek_umum', ['file' => basename($paten->surat_kuasa)])); ?>" target="_blank">Lihat Surat Kuasa</a></td>
-                                            <?php endif; ?>
+                                            <a href="<?php echo e(route('private_paten_verifikator', ['file' => basename($paten->surat_kuasa)])); ?>" target="_blank">Lihat Surat Kuasa</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Gambar Paten</th>
                                         <td>:
-                                            <?php if($paten->institusi === 'Dosen'): ?>
-                                                <a href="<?php echo e(route('private_paten_cek_dosen', ['file' => basename($paten->gambar_paten)])); ?>" target="_blank">Lihat Gambar paten</a></td>
-                                            <?php else: ?>
-                                                <a href="<?php echo e(route('private_paten_cek_umum', ['file' => basename($paten->gambar_paten)])); ?>" target="_blank">Lihat Gambar paten</a></td>
-                                            <?php endif; ?>
+                                            <a href="<?php echo e(route('public_paten_verifikator', ['file' => basename($paten->gambar_paten)])); ?>" target="_blank">Lihat Gambar paten</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Gambar Tampilan</th>
                                         <td>:
-                                            <?php if($paten->institusi === 'Dosen'): ?>
-                                                <a href="<?php echo e(route('private_paten_cek_dosen', ['file' => basename($paten->gambar_tampilan)])); ?>" target="_blank">Lihat Gambar Tampilan</a></td>
-                                            <?php else: ?>
-                                                <a href="<?php echo e(route('private_paten_cek_umum', ['file' => basename($paten->gambar_tampilan)])); ?>" target="_blank">Lihat Gambar Tampilan</a></td>
-                                            <?php endif; ?>
+                                            <a href="<?php echo e(route('public_paten_verifikator', ['file' => basename($paten->gambar_tampilan)])); ?>" target="_blank">Lihat Gambar Tampilan</a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Tanggal pengajuan</th>
@@ -200,17 +173,36 @@
                                         <td>:
                                             <?php if($paten->sertifikat_paten == ''): ?>
                                                 Paten Anda Belum Memiliki Sertifikat
-                                            <?php elseif($paten->institusi === 'Dosen'): ?>
-                                                <a href="<?php echo e(route('private_paten_cek_Dosen', ['file' => basename($paten->sertifikat_paten)])); ?>" target="_blank">Lihat sertifikat</a>
                                             <?php else: ?>
-                                                <a href="<?php echo e(route('private_paten_cek_umum', ['file' => basename($paten->sertifikat_paten)])); ?>" target="_blank">Lihat sertifikat</a>
+                                                <a href="<?php echo e(route('public_paten_verifikator', ['file' => basename($paten->sertifikat_paten)])); ?>" target="_blank">Lihat sertifikat</a>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
                                 </table>
-                                <a class="btn btn-primary me-3"
-                                    href="/verifikator/cek/paten/nilai/<?php echo e(request()->segment(5)); ?>">Nilai Data Paten</a>
-                                    <a href="/verifikator/cek/paten/nilai/update/<?php echo e(request()->segment(5)); ?>" class="btn btn-outline-secondary">Update nilai Data Paten</a>
+                                <div class="mb-3">
+                                    <?php if($check): ?>
+                                        <!-- Data paten sudah dinilai -->
+                                        <!-- Tombol "Nilai Data Paten" dinonaktifkan -->
+                                        <a class="btn btn-primary me-3 disabled" aria-disabled="true" title="Data Paten sudah dinilai. Gunakan Update">
+                                            Nilai Data Paten
+                                        </a>
+                                        <!-- Tombol "Update nilai Data Paten" aktif -->
+                                        <a href="/verifikator/cek/paten/nilai/update/<?php echo e($paten->id); ?>" class="btn btn-outline-secondary">
+                                            Update nilai Data Paten
+                                        </a>
+                                    <?php else: ?>
+                                        <!-- Data paten belum dinilai -->
+                                        <!-- Tombol "Nilai Data Paten" aktif -->
+                                        <a href="/verifikator/cek/paten/nilai/<?php echo e($paten->id); ?>" class="btn btn-primary me-3">
+                                            Nilai Data Paten
+                                        </a>
+                                        <!-- Tombol "Update nilai Data Paten" dinonaktifkan -->
+                                        <a class="btn btn-outline-secondary disabled" aria-disabled="true" title="Data Paten belum dinilai. Silahkan nilai terlebih dahulu">
+                                            Update nilai Data Paten
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>

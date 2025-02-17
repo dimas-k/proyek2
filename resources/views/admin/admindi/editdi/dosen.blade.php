@@ -58,7 +58,8 @@
                             <div class="mb-3">
                                 <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
                                 <input type="text" class="form-control" id="nama_lengkap"
-                                    placeholder="Masukkan Nama"name="nama_lengkap" value="{{ $di->nama_lengkap }}">
+                                    placeholder="Masukkan Nama"name="nama_lengkap" value="{{ $di->nama_lengkap }}"
+                                    readonly>
                                 {{-- @error('nama_lengkap')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -87,7 +88,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="tanggal_lahie" class="form-label">Tanggal Lahir</label>
-                                <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control" value="{{ $di->tanggal_lahir }}">
+                                <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control"
+                                    value="{{ $di->tanggal_lahir }}">
                                 {{-- @error('tanggal_lahir')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -119,8 +121,8 @@
                             <div class="mb-3">
                                 <label for="warga" class="form-label">Kewarganegaraan</label>
                                 <input type="text" class="form-control" id="warga"
-                                    placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan" value="{{ $di->kewarganegaraan }}"
-                                    >
+                                    placeholder="Masukkan Kewarganegaraan" name="kewarganegaraan"
+                                    value="{{ $di->kewarganegaraan }}">
                                 {{-- @error('kewarganegaraan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -157,11 +159,18 @@
                                 <tr>
                                     <th>jurusan</th>
                                     <td>
-                                        <select class="form-select" aria-label="Default select example" name="jurusan" id="jurusan">
+                                        <select class="form-select" aria-label="Default select example"
+                                            name="jurusan" id="jurusan">
                                             <option value="">Pilih Jurusan</option>
-                                            <option value="Teknik Informatika" {{ old('jurusan',$di->jurusan) == 'Teknik Informatika' ? 'selected' : '' }}>Teknik Informatika</option>
-                                            <option value="Teknik" {{ old('jurusan', $di->jurusan) == 'Teknik' ? 'selected' : '' }}>Teknik</option>
-                                            <option value="Kesehatan" {{ old('jurusan', $di->jurusan) == 'Kesehatan' ? 'selected' : '' }}>Kesehatan</option>
+                                            <option value="Teknik Informatika"
+                                                {{ old('jurusan', $di->jurusan) == 'Teknik Informatika' ? 'selected' : '' }}>
+                                                Teknik Informatika</option>
+                                            <option value="Teknik"
+                                                {{ old('jurusan', $di->jurusan) == 'Teknik' ? 'selected' : '' }}>Teknik
+                                            </option>
+                                            <option value="Kesehatan"
+                                                {{ old('jurusan', $di->jurusan) == 'Kesehatan' ? 'selected' : '' }}>
+                                                Kesehatan</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -176,16 +185,33 @@
                                 <tr>
                                     <th>prodi</th>
                                     <td>
-                                        <select class="form-select" aria-label="Default select example" name="prodi" id="prodi">
+                                        <select class="form-select" aria-label="Default select example"
+                                            name="prodi" id="prodi">
                                             <option value="">Pilih Prodi</option>
-                                            <option value="D3 Teknik Informatika" {{ old('prodi', $di->prodi) == 'D3 Teknik Informatika' ? 'selected' : '' }}>D3 Teknik Informatika</option>
-                                            <option value="D4 Rekayasa Perangkat Lunak" {{ old('prodi', $di->prodi) == 'D4 Rekayasa Perangkat Lunak' ? 'selected' : '' }}>D4 Rekayasa Perangkat Lunak</option>
-                                            <option value="D4 Sistem Informasi Kota Cerdas" {{ old('prodi', $di->prodi) == 'D4 Sistem Informasi Kota Cerdas' ? 'selected' : '' }}>D4 Sistem Informasi Kota Cerdas</option>
-                                            <option value="D3 Teknik Mesin" {{ old('prodi', $di->prodi) == 'D3 Teknik Mesin' ? 'selected' : '' }}>D3 Teknik Mesin</option>
-                                            <option value="D4 Perancangan Manufaktur" {{ old('prodi', $di->prodi) == 'D4 Perancangan Manufaktur' ? 'selected' : '' }}>D4 Perancangan Manufaktur</option>
-                                            <option value="D3 Teknik Pendingin dan Tata Udara" {{ old('prodi', $di->prodi) == 'D3 Teknik Pendingin dan Tata Udara' ? 'selected' : '' }}>D3 Teknik Pendingin dan Tata Udara</option>
-                                            <option value="D4 Teknologi Rekayasa Instrumentasi dan Kontrol" {{ old('prodi', $di->prodi) == 'D4 Teknologi Rekayasa Instrumentasi dan Kontrol' ? 'selected' : '' }}>D4 Teknologi Rekayasa Instrumentasi dan Kontrol</option>
-                                            <option value="D3 Keperawatan" {{ old('prodi', $di->prodi) == 'D3 Keperawatan' ? 'selected' : '' }}>D3 Keperawatan</option>
+                                            <option value="D3 Teknik Informatika"
+                                                {{ old('prodi', $di->prodi) == 'D3 Teknik Informatika' ? 'selected' : '' }}>
+                                                D3 Teknik Informatika</option>
+                                            <option value="D4 Rekayasa Perangkat Lunak"
+                                                {{ old('prodi', $di->prodi) == 'D4 Rekayasa Perangkat Lunak' ? 'selected' : '' }}>
+                                                D4 Rekayasa Perangkat Lunak</option>
+                                            <option value="D4 Sistem Informasi Kota Cerdas"
+                                                {{ old('prodi', $di->prodi) == 'D4 Sistem Informasi Kota Cerdas' ? 'selected' : '' }}>
+                                                D4 Sistem Informasi Kota Cerdas</option>
+                                            <option value="D3 Teknik Mesin"
+                                                {{ old('prodi', $di->prodi) == 'D3 Teknik Mesin' ? 'selected' : '' }}>
+                                                D3 Teknik Mesin</option>
+                                            <option value="D4 Perancangan Manufaktur"
+                                                {{ old('prodi', $di->prodi) == 'D4 Perancangan Manufaktur' ? 'selected' : '' }}>
+                                                D4 Perancangan Manufaktur</option>
+                                            <option value="D3 Teknik Pendingin dan Tata Udara"
+                                                {{ old('prodi', $di->prodi) == 'D3 Teknik Pendingin dan Tata Udara' ? 'selected' : '' }}>
+                                                D3 Teknik Pendingin dan Tata Udara</option>
+                                            <option value="D4 Teknologi Rekayasa Instrumentasi dan Kontrol"
+                                                {{ old('prodi', $di->prodi) == 'D4 Teknologi Rekayasa Instrumentasi dan Kontrol' ? 'selected' : '' }}>
+                                                D4 Teknologi Rekayasa Instrumentasi dan Kontrol</option>
+                                            <option value="D3 Keperawatan"
+                                                {{ old('prodi', $di->prodi) == 'D3 Keperawatan' ? 'selected' : '' }}>D3
+                                                Keperawatan</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -203,39 +229,47 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="jenis_di" value="Satu Desain" id="satu_desain"
-                                            {{ old('jenis_di', $di->jenis_di) == 'Satu Desain' ? 'checked' : '' }}>
+                                            <input class="form-check-input" type="radio" name="jenis_di"
+                                                value="Satu Desain" id="satu_desain"
+                                                {{ old('jenis_di', $di->jenis_di) == 'Satu Desain' ? 'checked' : '' }}>
                                             <label class="form-check-label" for="satu_desain">Satu Desain</label>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="jenis_di" value="Pecahan Satu Desain" id="pecahan_satu_desain"
-                                            {{ old('jenis_di', $di->jenis_di) == 'Pecahan Satu Desain' ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="pecahan_satu_desain">Pecahan Satu Desain</label>
+                                            <input class="form-check-input" type="radio" name="jenis_di"
+                                                value="Pecahan Satu Desain" id="pecahan_satu_desain"
+                                                {{ old('jenis_di', $di->jenis_di) == 'Pecahan Satu Desain' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="pecahan_satu_desain">Pecahan Satu
+                                                Desain</label>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="jenis_di" value="Satu Kesatuan Desain" id="satu_kesatuan_desain"
-                                            {{ old('jenis_di', $di->jenis_di) == 'Satu Kesatuan Desain' ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="satu_kesatuan_desain">Satu Kesatuan Desain</label>
+                                            <input class="form-check-input" type="radio" name="jenis_di"
+                                                value="Satu Kesatuan Desain" id="satu_kesatuan_desain"
+                                                {{ old('jenis_di', $di->jenis_di) == 'Satu Kesatuan Desain' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="satu_kesatuan_desain">Satu Kesatuan
+                                                Desain</label>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="jenis_di" value="Kesatuan Pecahan Satu Desain" id="kesatuan_pecahan_satu_desain"
-                                            {{ old('jenis_di', $di->jenis_di) == 'Kesatuan Pecahan Satu Desain' ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="kesatuan_pecahan_satu_desain">Kesatuan Pecahan Satu Desain</label>
+                                            <input class="form-check-input" type="radio" name="jenis_di"
+                                                value="Kesatuan Pecahan Satu Desain" id="kesatuan_pecahan_satu_desain"
+                                                {{ old('jenis_di', $di->jenis_di) == 'Kesatuan Pecahan Satu Desain' ? 'checked' : '' }}>
+                                            <label class="form-check-label"
+                                                for="kesatuan_pecahan_satu_desain">Kesatuan Pecahan Satu Desain</label>
                                         </div>
                                     </div>
-                                </div>       
+                                </div>
                             </div>
                             <br>
                             <div class="mb-3">
                                 <label for="judul_desain" class="form-label">Judul Desain Industri</label>
                                 <input type="text" class="form-control"
-                                    placeholder="Masukkan Judul Desain Industri" name="judul_di" id="judul_desain" value="{{ $di->judul_di }}">
+                                    placeholder="Masukkan Judul Desain Industri" name="judul_di" id="judul_desain"
+                                    value="{{ $di->judul_di }}">
                                 {{-- @error('judul_di')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -299,7 +333,7 @@
                                 <label for="tanggalpengajuan" class="form-label">Tanggal Pengajuan</label>
                                 <input type="date" name="tanggal_permohonan" id="tanggalpengajuan"
                                     class="form-control" value="{{ $di->tanggal_permohonan }}">
-                                
+
                             </div>
                             <p class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"></i>Harap
                                 Isi semua Form Dengan Benar</p>
@@ -346,366 +380,26 @@
         </script>
         <script src="{{ asset('assets-user/js/jquery.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        {{-- <script>
-            $(document).ready(function() {
-                $('#uploadForm').submit(function(e) {
-                    e.preventDefault(); // Mencegah form terkirim secara otomatis
-    
-                    // non file
-                    var nama = $('#nama_lengkap').val();
-                    var alamat = $('#alamat').val();
-                    var telepon = $('#no_telepon').val();
-                    var tl = $('#tanggal_lahir').val();
-                    var email = $('#email').val();
-                    var warga = $('#warga').val();
-                    var pos = $('#pos').val();
-                    var judul_desain = $('#judul_desain').val();
-                    var tanggal_pengajuan = $('#tanggalpengajuan').val();
-                    var jenis_desain = $('input[name="jenis_di"]:checked').val();
-    
-                    //file
-                    var ktp = $('#ktp')[0].files[0];
-                    var gambar_desain = $('#gambar_desain')[0].files[0];
-                    var uraian_desain = $('#uraian_desain')[0].files[0];
-                    var pernyataan_kepemilikan = $('#pernyataan_kepemilikan')[0].files[0];
-                    var pengalihan = $('#pengalihan')[0].files[0];
-    
-                    // var errorMessage = ''; // Variabel untuk menyimpan pesan error
-    
-                    // Validasi Nama Lengkap
-                    if (!nama) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Nama Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    // Validasi Tanggal Lahir
-                    if (!alamat) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Alamat Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!telepon) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan No Telepon Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!tl) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Tangal Lahir Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!email) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Tangal Lahir Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!warga) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Kewarganegaraan Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!pos) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Kode Pos Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!jenis_desain) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Jenis Desain Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!judul_desain) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Judul Desain Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!tanggal_pengajuan) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Tanggal Pengajuan!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-    
-                    // Validasi File
-                    if (!ktp) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan KTP Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!gambar_desain) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Gambar Desain Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!uraian_desain) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Uraian Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!pernyataan_kepemilikan) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Pernyataan Kepemilikan Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!pengalihan) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Surat Pengalihan hak Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    } else {
-                        var allowedExtension = /(\.pdf)$/i; // Hanya memperbolehkan file berformat PDF
-                        var allowedExtensionExel = /(\.xlsx)$/i; // Hanya memperbolehkan file berformat exel
-                        var maxSize = 10 * 1024 * 1024; // Maksimal ukuran file adalah 2 MB
-    
-                        // Validasi ekstensi file
-                        // Cek apakah file diinputkan
-    
-                        if (!allowedExtension.exec(ktp.name)) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan KTP Dengan Ekstensi .pdf!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (!allowedExtension.exec(gambar_desain.name)) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Gambar Desain Dengan Ekstensi .pdf!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (!allowedExtension.exec(uraian_desain.name)) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Uraian Desain Dengan Ekstensi .pdf!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (!allowedExtension.exec(pernyataan_kepemilikan.name)) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Surat Pernyataan Kepemilikan Dengan Ekstensi .pdf!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (!allowedExtension.exec(pengalihan.name)) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Surat Pengalihan Hak Dengan Ekstensi .pdf!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-    
-                        // Validasi ukuran file
-                        if (ktp.size > maxSize) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Ukuran File KTP Lebih Dari 10mb!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (gambar_desain.size > maxSize) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Gambar Desain Lebih Dari 10mb!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (uraian_desain.size > maxSize) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Ukuran Uraian Desain Lebih Dari 10mb!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (pernyataan_kepemilikan.size > maxSize) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Pernyataan Kepemilikan Lebih Dari 10mb!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (pengalihan.size > maxSize) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Surat Pengalihan Hak Lebih Dari 10mb!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-    
-                    }
-    
-                    // // Jika ada error, tampilkan pesan melalui alert dan cegah pengiriman form
-                    // if (errorMessage !== '') {
-                    //     alert(errorMessage);
-                    //     return false; // Mencegah pengiriman form
-                    // }
-                    this.submit();
-                });
-            });
-        </script> --}}
         <script>
             $(document).ready(function() {
                 $('#uploadForm').submit(function(e) {
-                    e.preventDefault(); // Prevent automatic form submission
-        
-                    // Non-file inputs
+                    e.preventDefault(); // Mencegah submit otomatis
+
+                    // Validasi input non-file
                     const fields = {
-                        nama: $('#nama_lengkap').val(),
+                        nama_lengkap: $('#nama_lengkap').val(),
                         alamat: $('#alamat').val(),
-                        telepon: $('#no_telepon').val(),
-                        tl: $('#tanggal_lahir').val(),
+                        no_telepon: $('#no_telepon').val(),
+                        tanggal_lahir: $('#tanggal_lahir').val(),
                         email: $('#email').val(),
-                        warga: $('#warga').val(),
-                        pos: $('#pos').val(),
-                        judul_desain: $('#judul_desain').val(),
-                        tanggal_pengajuan: $('#tanggalpengajuan').val(),
-                        jenis_desain: $('input[name="jenis_di"]:checked').val()
+                        kewarganegaraan: $('#warga').val(),
+                        kode_pos: $('#pos').val(),
+                        judul_di: $('#judul_desain').val(),
+                        tanggal_permohonan: $('#tanggalpengajuan').val(),
+                        jenis_di: $('input[name="jenis_di"]:checked').val()
                     };
-        
-                    // File inputs
-                    const files = {
-                        ktp: $('#ktp')[0].files[0],
-                        anggota_inventor: $('#data_pengaju2')[0].files[0],
-                        gambar_desain: $('#gambar_desain')[0].files[0],
-                        uraian_desain: $('#uraian_desain')[0].files[0],
-                        pernyataan_kepemilikan: $('#pernyataan_kepemilikan')[0].files[0],
-                        pengalihan: $('#pengalihan')[0].files[0]
-                    };
-        
-                    const maxSize = 10 * 1024 * 1024; // Max size: 10MB
-                    const allowedExtensionPDF = /(\.pdf)$/i;
-                    const allowedExtensionExcel = /(\.xlsx)$/i;
-        
-                    // Validation function
+
+                    // Fungsi untuk menampilkan pesan error menggunakan SweetAlert2
                     function showError(message) {
                         Swal.fire({
                             icon: "error",
@@ -716,52 +410,82 @@
                             timer: 2500
                         });
                     }
-        
-                    // Validate non-file inputs
-                    for (var field in fields) {
-                        if (!fields[field]) {
-                            showError("Tolong Masukkan " + field.replace('_', ' ').toUpperCase() + " Anda!");
+
+                    // Cek semua field non-file harus diisi
+                    for (let key in fields) {
+                        if (!fields[key]) {
+                            showError("Tolong Masukkan " + key.replace('_', ' ').toUpperCase() + " Anda!");
                             return false;
                         }
                     }
-        
-                    // List of mandatory file fields
-                    const mandatoryFiles = ['ktp', 'gambar_desain', 'uraian_desain', 'pernyataan_kepemilikan', 'pengalihan'];
-        
-                    // Validate file inputs
-                    for (var file in files) {
-                        // Check mandatory files that are empty
-                        if (mandatoryFiles.includes(file) && !files[file]) {
-                            showError("File " + file.replace('_', ' ').toUpperCase() + " Wajib Diisi!");
-                            return false;
-                        }
-        
-                        // Check file type for anggota inventor only
-                        if (file === 'anggota_inventor' && files[file]) {
-                            if (!allowedExtensionExcel.exec(files[file].name)) {
-                                showError("Tolong Masukkan Data anggota inventor Dengan Ekstensi .xlsx!");
+
+                    // Mapping file inputs (sesuai name dan id di Blade)
+                    const files = {
+                        ktp_inventor: $('#ktp')[0].files[0],
+                        data_pengaju2: $('#data_pengaju2')[0].files[0],
+                        gambar_di: $('#gambar_desain')[0].files[0],
+                        uraian_di: $('#uraian_desain')[0].files[0],
+                        surat_kepemilikan: $('#pernyataan_kepemilikan')[0].files[0],
+                        surat_pengalihan: $('#pengalihan')[0].files[0]
+                    };
+
+                    const maxSize = 10 * 1024 * 1024; // 10MB dalam byte
+                    const allowedPDF = ['pdf'];
+                    const allowedExcel = ['xls', 'xlsx'];
+
+                    // Field yang seharusnya berformat PDF (jika diupload)
+                    const pdfFields = ['ktp_inventor', 'gambar_di', 'uraian_di', 'surat_kepemilikan',
+                        'surat_pengalihan'
+                    ];
+                    // Field untuk file Excel (opsional)
+                    const excelFields = ['data_pengaju2'];
+
+                    // Validasi untuk file PDF (hanya jika diupload)
+                    for (let key of pdfFields) {
+                        let fileData = files[key];
+                        if (fileData) {
+                            let fileName = fileData.name;
+                            let fileExtension = fileName.split('.').pop().toLowerCase();
+                            if (!allowedPDF.includes(fileExtension)) {
+                                showError("Tolong Masukkan " + key.replace('_', ' ').toUpperCase() +
+                                    " Dalam Format PDF!");
                                 return false;
                             }
-                        } else if (files[file]) {
-                            // Validate other files
-                            if (!allowedExtensionPDF.exec(files[file].name)) {
-                                showError("Tolong Masukkan " + file.replace('_', ' ').toUpperCase() + " Dengan Ekstensi .pdf!");
-                                return false;
-                            }
-        
-                            // Validate file size
-                            if (files[file].size > maxSize) {
-                                showError("Ukuran File " + file.replace('_', ' ').toUpperCase() + " Lebih Dari 10 MB!");
+                            if (fileData.size > maxSize) {
+                                showError("Ukuran File " + key.replace('_', ' ').toUpperCase() +
+                                    " Melebihi 10MB!");
                                 return false;
                             }
                         }
                     }
-        
-                    // If all validations pass, submit the form
+
+                    // Validasi untuk file Excel (hanya jika diupload)
+                    for (let key of excelFields) {
+                        let fileData = files[key];
+                        if (fileData) {
+                            let fileName = fileData.name;
+                            let fileExtension = fileName.split('.').pop().toLowerCase();
+                            if (!allowedExcel.includes(fileExtension)) {
+                                showError("Tolong Masukkan " + key.replace('_', ' ').toUpperCase() +
+                                    " Dalam Format Excel (.xls/.xlsx)!");
+                                return false;
+                            }
+                            if (fileData.size > maxSize) {
+                                showError("Ukuran File " + key.replace('_', ' ').toUpperCase() +
+                                    " Melebihi 10MB!");
+                                return false;
+                            }
+                        }
+                    }
+
+                    // Jika semua validasi lolos, submit form
                     this.submit();
                 });
             });
         </script>
+
+
+
 </body>
 
 </html>

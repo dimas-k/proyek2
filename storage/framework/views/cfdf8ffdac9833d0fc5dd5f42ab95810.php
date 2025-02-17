@@ -44,8 +44,8 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
-                                                    aria-label="Default select example" name="cek_data">
-                                                    <option selected>Pilih Status Paten</option>
+                                                    aria-label="Default select example" name="cek_data" required>
+                                                    <option value="" >Pilih Status Paten</option>
                                                     <option value="Valid">Valid
                                                     </option>
                                                     <option value="Tidak Valid">Tidak Valid</option>
@@ -125,14 +125,13 @@ unset($__errorArgs, $__bag); ?></td>
                         </div>
                     </div>
                 </div>
-                <!-- COL END -->
-                
+
                 <!-- COL END -->
             </div>
             <!-- ROW-2 END -->
 
             <!-- ROW-4 -->
-            
+
             <!-- ROW-4 END -->
         </div>
         <!-- CONTAINER END -->

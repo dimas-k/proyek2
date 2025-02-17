@@ -102,7 +102,8 @@
 
                                                     <?php endif; ?>
                                                 </td>
-                                                <td><a href=<?php echo e(Route('hccek.lihat', $p->id)); ?>
+                                                <td>
+                                                    <a href=<?php echo e(Route('hccek.lihat', $p->id)); ?>
 
                                                         class="btn btn-info">Lihat</a>
                                                 </td>
@@ -116,14 +117,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- COL END -->
-                
-                <!-- COL END -->
             </div>
-            <!-- ROW-2 END -->
 
-            <!-- ROW-4 -->
-            
             <!-- ROW-4 END -->
         </div>
         <!-- CONTAINER END -->

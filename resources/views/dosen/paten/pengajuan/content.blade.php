@@ -6,7 +6,6 @@
 
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Pengajuan Paten</h1>
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/dosen/paten">Paten</a></li>
@@ -21,8 +20,10 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-wpforms me-2" data-bs-toggle="tooltip"></i>Formulir
+                            <h3 class="card-title"><i class="fa fa-wpforms me-2" data-bs-toggle="tooltip">
+                                Formulir
                                 Pengajuan Paten
+                            </i>
                             </h3>
                         </div>
                         <div class="card-body">
@@ -96,7 +97,7 @@
                                             id="ktp" name="ktp_inventor">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('ktp_inventor')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -185,7 +186,7 @@
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="jenis_paten"
-                                            id="paten_s" value="Paten sederhana">
+                                            id="paten_s" value="Paten Sederhana">
                                         <label class="form-check-label" for="Paten sederhana" for="paten_s">
                                             Paten Sederhana
                                         </label>
@@ -208,7 +209,7 @@
                                             id="abstrak" placeholder="" name="abstrak_paten">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('abstrak_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -222,7 +223,7 @@
                                             id="deskripsi" placeholder="" name="deskripsi_paten">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('deskripsi_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -236,7 +237,7 @@
                                             id="pengalihan_hak" placeholder="" name="pengalihan_hak">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('pengalihan_hak')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -250,7 +251,7 @@
                                             id="klaim" placeholder="" name="klaim">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('klaim')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -265,7 +266,7 @@
                                             id="kepemilikan" placeholder="" name="pernyataan_kepemilikan">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('pernyataan_kepemilikan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -279,7 +280,7 @@
                                             id="kuasa" placeholder="" name="surat_kuasa">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('surat_kuasa')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -293,7 +294,7 @@
                                             id="g_paten" placeholder="" name="gambar_paten">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('gambar_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -307,7 +308,7 @@
                                             id="g_tampilan" placeholder="" name="gambar_tampilan">
                                         <span class="text-danger"><i class="fa fa-warning me-2"
                                                 data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih
-                                            dari 2mb</span>
+                                            dari 10mb</span>
                                         {{-- @error('gambar_tampilan')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

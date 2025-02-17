@@ -54,10 +54,22 @@
                                 <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                                 <div class="container">
                                     <div class="mb-3">
-                                        <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                        <input type="text" 
-                                            class="form-control" id="nama_lengkap"
-                                            placeholder="Masukkan Nama"name="nama_lengkap">
+                                        <div class="mb-3">
+                                            <label for="user_id">Pilih Pemilik Desain Industri</label>
+                                            <select name="user_id" id="user_id" class="form-control" onchange="updateNamaLengkap()">
+                                                <option value="" selected disabled>Pilih Nama</option>
+                                                @foreach ($users as $user)
+                                                    <option value="{{ $user->id }}" data-nama="{{ $user->nama_lengkap }}">
+                                                        {{ $user->nama_lengkap }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                                            <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Nama akan terisi otomatis" readonly>
+                                        </div>
                                         {{-- @error('nama_lengkap')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -298,6 +310,15 @@
         </script>
         <script src="{{ asset('assets-user/js/jquery.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function updateNamaLengkap() {
+                var select = document.getElementById("user_id");
+                var selectedOption = select.options[select.selectedIndex];
+                var namaLengkap = selectedOption.getAttribute("data-nama");
+        
+                document.getElementById("nama_lengkap").value = namaLengkap;
+            }
+        </script>
         <script>
             $(document).ready(function() {
                 $('#uploadForm').submit(function(e) {

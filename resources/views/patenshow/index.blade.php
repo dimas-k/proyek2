@@ -40,23 +40,31 @@
                     </tr>
                     <tr>
                         <th>Abstrak Paten</th>
-                        <td>: <a href={{ asset('storage/' . $paten->abstrak_paten) }} class=""
-                                target="_blank">Lihat Abstrak Paten</a></td>
+                        <td>: 
+                            <a href="{{ route('public_paten_guest', ['filename' => basename($paten->abstrak_paten)]) }}"
+                                target="_blank">Lihat Abstrak Paten</a>
+                        </td>
                     </tr>
                     <tr>
                         <th>Deskripsi Paten</th>
-                        <td>: <a href={{ asset('storage/' . $paten->deskripsi_paten) }} class=""
-                                target="_blank">Lihat Deskripsi Paten</a></td>
+                        <td>: 
+                            <a href="{{ route('public_paten_guest', ['filename' => basename($paten->deskripsi_paten)]) }}" 
+                                target="_blank">Lihat Deskripsi Paten</a>
+                        </td>
                     </tr>
                     <tr>
                         <th>Gambar Paten</th>
-                        <td>: <a href={{ asset('storage/' . $paten->gambar_paten) }} class=""
-                                target="_blank">Lihat Gambar paten</a></td>
+                        <td>: 
+                            <a href="{{ route('public_paten_guest', ['filename' => basename($paten->gambar_paten)]) }}"
+                                target="_blank">Lihat Gambar Paten</a>
+                        </td>
                     </tr>
                     <tr>
                         <th>Gambar Tampilan</th>
-                        <td>: <a href={{ asset('storage/' . $paten->gambar_tampilan) }} class=""
-                                target="_blank">Lihat Gambar Tampilan</a></td>
+                        <td>:
+                            <a href="{{ route('public_paten_guest', ['filename' => basename($paten->gambar_tampilan)]) }}"
+                                target="_blank">Lihat Gambar Tampilan</a>
+                        </td>
                     </tr>
                     <tr>
                         <th>Tanggal pengajuan</th>

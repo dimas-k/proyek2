@@ -57,13 +57,28 @@
                                     </tr>
                                     <tr>
                                         <th>KTP</th>
-                                        <td>: <a href=<?php echo e(asset('storage/' . $hc->ktp_inventor)); ?> class=""
-                                                target="_blank">Lihat KTP</a></td>
+                                        <td>:
+                                            <?php if(!empty($hc->ktp_inventor)): ?>
+                                                <a href="<?php echo e(route('private_hc_verifikator', ['file' => basename($hc->ktp_inventor)])); ?>"
+                                                    target="_blank">
+                                                    Lihat KTP
+                                                </a>
+                                            <?php else: ?>
+                                                KTP tidak tersedia.
+                                            <?php endif; ?>
+
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Anggota Inventor</th>
-                                        <td>: <a href=<?php echo e(asset('storage/' . $hc->data_pengaju2)); ?> class=""
-                                                target="_blank">Download xlsx Anggota Inventor</a></td>
+                                        <td>:
+                                            <?php if($hc->data_pengaju2): ?>
+                                                <a href="<?php echo e(route('private_hc_verifikator', ['file' => basename($hc->data_pengaju2)])); ?>"
+                                                    target="_blank">Download xlsx Anggota Inventor</a>
+                                            <?php else: ?>
+                                                Tidak ada data untuk diunduh.
+                                            <?php endif; ?>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Email</th>
@@ -110,18 +125,23 @@
                                         <td>: <?php echo e($hc->uraian_singkat); ?></td>
                                     </tr>
                                     <tr>
-                                        <th>Dokumen invensi</th>
-                                        <td>: <a href=<?php echo e(asset('storage/' . $hc->dokumen_invensi)); ?> class=""
-                                                target="_blank">Lihat Dokumen Invensi</a></td>
+                                        <th>Dokumen Invensi</th>
+                                        <td>:
+                                            <a href="<?php echo e(route('public_hc_verifikator', ['file' => basename($hc->dokumen_invensi)])); ?>"
+                                                target="_blank">Lihat Dokumen Invensi
+                                            </a>
                                     </tr>
                                     <tr>
-                                        <th>Pengalihan hak invensi</th>
-                                        <td>: <a href=<?php echo e(asset('storage/' . $hc->surat_pengalihan)); ?> class=""
-                                                target="_blank">Lihat Pengalihan Hak Invensi</a></td>
+                                        <th>Surat Pengalihan Hak Cipta</th>
+                                        <td>: 
+                                            <a href="<?php echo e(route('private_hc_verifikator', ['file' => basename($hc->surat_pengalihan)])); ?>"
+                                                    target="_blank">Lihat Surat Pengalihan Hak Cipta
+                                            </a>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <th>surat pernyataan</th>
-                                        <td>: <a href=<?php echo e(asset('storage/' . $hc->surat_pernyataan)); ?> class=""
+                                        <th>Surat Pernyataan</th>
+                                        <td>: <a href="<?php echo e(route('private_hc_verifikator', ['file' => basename($hc->surat_pernyataan)])); ?>"
                                                 target="_blank">Lihat Surat Pernyataan</a></td>
                                     </tr>
                                     <tr>
@@ -137,9 +157,10 @@
                                     <tr>
                                         <th>Sertifikat Hak Cipta</th>
                                         <td>: <?php if($hc->sertifikat_hakcipta != ''): ?>
-                                                <a href=<?php echo e(asset('storage/' . $hc->sertifikat_hakcipta)); ?>
-
-                                                    class="" target="_blank">Lihat sertifikat</a>
+                                                
+                                                    <a href="<?php echo e(route('public_hc_verifikator', parameters: ['file' => basename($hc->sertifikat_hakcipta)])); ?>"
+                                                        target="_blank">Lihat sertifikat
+                                                    </a>
                                             <?php else: ?>
                                                 Hak Cipta Ini Belum Mendapatkan Sertifikat
                                             <?php endif; ?>
@@ -158,23 +179,36 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <a class="btn btn-primary me-3"
-                                    href="/verifikator/cek/hak-cipta/nilai/<?php echo e(request()->segment(5)); ?>">Nilai Data Hak Cipta</a>
                                 
-                                <a href="/verifikator/cek/hak-cipta/nilai/update/<?php echo e(request()->segment(5)); ?>" class="btn btn-outline-secondary">Update nilai Data hak Cipta</a>
+                                <div class="mb-3">
+                                    <?php if($check): ?>
+                                        <!-- Data paten sudah dinilai -->
+                                        <!-- Tombol "Nilai Data paten" dinonaktifkan -->
+                                        <a class="btn btn-primary me-3 disabled" aria-disabled="true" title="Data paten sudah dinilai. Gunakan Update">
+                                            Nilai Data Hak Cipta
+                                        </a>
+                                        <!-- Tombol "Update nilai Data paten" aktif -->
+                                        <a href="/verifikator/cek/hak-cipta/nilai/update/<?php echo e($hc->id); ?>" class="btn btn-outline-secondary">
+                                            Update nilai Data Hak Cipta
+                                        </a>
+                                    <?php else: ?>
+                                        <!-- Data hc belum dinilai -->
+                                        <!-- Tombol "Nilai Data hc" aktif -->
+                                        <a href="/verifikator/cek/hak-cipta/nilai/<?php echo e($hc->id); ?>" class="btn btn-primary me-3">
+                                            Nilai Data Hak Cipta
+                                        </a>
+                                        <!-- Tombol "Update nilai Data Hak Cipta" dinonaktifkan -->
+                                        <a class="btn btn-outline-secondary disabled" aria-disabled="true" title="Data Hak Cipta belum dinilai. Silahkan nilai terlebih dahulu">
+                                            Update nilai Data Hak Cipta
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- COL END -->
-                
-                <!-- COL END -->
             </div>
-            <!-- ROW-2 END -->
-
-            <!-- ROW-4 -->
-            
-            <!-- ROW-4 END -->
         </div>
         <!-- CONTAINER END -->
     </div>

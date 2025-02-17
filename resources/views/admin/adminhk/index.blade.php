@@ -246,13 +246,22 @@
                                                                     Hak Cipta</label>
                                                                 <select
                                                                     class="form-select @error('status') is-invalid @enderror"
-                                                                    aria-label="Default select example"
-                                                                    name="status">
-                                                                    <option selected>Pilih Status Hak Cipta</option>
-                                                                    <option value="Tercatat">Tercatat</option>
-                                                                    <option value="Ditolak">Ditolak</option>
-                                                                    <option value="Keterangan Belum Lengkap">
-                                                                        Keterangan Belum Lengkap</option>
+                                                                    aria-label="Default select example" name="status"
+                                                                    required>
+                                                                    <option value="">Pilih Status Hak Cipta
+                                                                    </option>
+                                                                    <option value="Keterangan Belum Lengkap"
+                                                                        @if ((old('status', $hk->status) ?? '') == 'Keterangan Belum Lengkap') selected @endif>
+                                                                        Keterangan Belum Lengkap
+                                                                    </option>
+                                                                    <option value="Ditolak"
+                                                                        @if ((old('status', $hk->status) ?? '') == 'Ditolak') selected @endif>
+                                                                        Ditolak
+                                                                    </option>
+                                                                    <option value="Tercatat"
+                                                                        @if ((old('status', $hk->status) ?? '') == 'Tercatat') selected @endif>
+                                                                        Tercatat
+                                                                    </option>
                                                                 </select>
                                                                 @error('status')
                                                                     <div class="invalid-feedback">
@@ -262,7 +271,9 @@
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label">Sertifikat
-                                                                    Hak Cipta</label>
+                                                                    Hak Cipta</label><br>
+                                                                    File :
+                                                                {{ basename($hk->sertifikat_hakcipta) }}
                                                                 <input type="file"
                                                                     class="form-control @error('sertifikat_hakcipta') is-invalid @enderror"
                                                                     placeholder="Masukkan sertifikat"

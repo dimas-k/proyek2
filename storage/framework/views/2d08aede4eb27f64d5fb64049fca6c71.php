@@ -72,21 +72,22 @@
                             </tr>
                             <tr>
                                 <th>KTP</th>
-                                <td>: 
-                                    <a href=<?php echo e(asset('storage/' . $hc->ktp_inventor)); ?> class=""
-                                        target="_blank">Lihat KTP1
+                                <td>:
+                                    <a href=<?php echo e(route('private_hc', ['file' => basename($hc->ktp_inventor)])); ?>
+
+                                        class="" target="_blank">Lihat KTP
                                     </a>
-                                    <a href="<?php echo e(asset('storage/'. $hc->ktp_inventor)); ?>" target="_blank">Lihat KTP2</a>
-                                    </td>
+                                </td>
                             </tr>
                             <tr>
                                 <th>Anggota Inventor</th>
-                                <td>:        
-                                <?php if($hc->data_pengaju2): ?>
-                                    <a href="<?php echo e(asset('storage/' . $hc->data_pengaju2)); ?>" target="_blank">Download xlsx Anggota Inventor</a>
-                                <?php else: ?>
-                                    Tidak ada data untuk diunduh.
-                                <?php endif; ?>
+                                <td>:
+                                    <?php if($hc->data_pengaju2): ?>
+                                        <a href="<?php echo e(route('private_hc', ['file' => basename($hc->data_pengaju2)])); ?> "
+                                            target="_blank">Download xlsx Anggota Inventor</a>
+                                    <?php else: ?>
+                                        Tidak ada data untuk diunduh.
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                             <tr>
@@ -135,18 +136,22 @@
                             </tr>
                             <tr>
                                 <th>Dokumen invensi</th>
-                                <td>: <a href=<?php echo e(asset('storage/' . $hc->dokumen_invensi)); ?> class=""
-                                        target="_blank">Lihat Dokumen Invensi</a></td>
+                                <td>: <a href=<?php echo e(route('public_hc', ['file' => basename($hc->dokumen_invensi)])); ?>
+
+                                        class="" target="_blank">Lihat Dokumen Invensi</a>
+                                </td>
                             </tr>
                             <tr>
                                 <th>Surat Pengalihan Hak Cipta</th>
-                                <td>: <a href=<?php echo e(asset('storage/' . $hc->surat_pengalihan)); ?> class=""
-                                        target="_blank">Surat Pengalihan Hak Cipta</a></td>
+                                <td>: <a href=<?php echo e(route('private_hc', ['file' => basename($hc->surat_pengalihan)])); ?>
+
+                                        class="" target="_blank">Surat Pengalihan Hak Cipta</a></td>
                             </tr>
                             <tr>
                                 <th>surat pernyataan</th>
-                                <td>: <a href=<?php echo e(asset('storage/' . $hc->surat_pernyataan)); ?> class=""
-                                        target="_blank">Lihat Surat Pernyataan</a></td>
+                                <td>: <a href=<?php echo e(route('private_hc', ['file' => basename($hc->surat_pernyataan)])); ?>
+
+                                        class="" target="_blank">Lihat Surat Pernyataan</a></td>
                             </tr>
                             <tr>
                                 <th>Tanggal pengajuan</th>
@@ -159,23 +164,25 @@
                             <tr>
                                 <th>Status Data Hak Cipta</th>
                                 <td>: <?php if($hc->cekhc?->keterangan == null): ?>
-                                    Data Hak Cipta Belum Diverifikasi
-                                <?php else: ?>
-                                    <?php echo e($hc->cekhc?->keterangan); ?>
+                                        Data Hak Cipta Belum Diverifikasi
+                                    <?php else: ?>
+                                        <?php echo e($hc->cekhc?->keterangan); ?>
 
-                                <?php endif; ?></td>
+                                    <?php endif; ?>
+                                </td>
                             </tr>
                             <tr>
                                 <th>Sertifikat Hak Cipta</th>
                                 <td>: <?php if($hc->sertifikat_hakcipta != ''): ?>
-                                        <a href=<?php echo e(asset('storage/' . $hc->sertifikat_hakcipta)); ?> class=""
-                                            target="_blank">Lihat sertifikat</a>
+                                        <a href=<?php echo e(route('public_hc', ['file' => basename($hc->sertifikat_hakcipta)])); ?>
+
+                                            class="" target="_blank">Lihat sertifikat</a>
                                     <?php else: ?>
                                         Hak Cipta Ini Belum Mendapatkan Sertifikat
                                     <?php endif; ?>
                                 </td>
                             </tr>
-                            
+
                         </table>
                     </div>
                 </div>

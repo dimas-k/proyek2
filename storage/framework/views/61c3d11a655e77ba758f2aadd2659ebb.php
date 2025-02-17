@@ -32,7 +32,6 @@
                                 <?php echo csrf_field(); ?>
                                 <div class="table-responsive">
                                     <table class="table table-borderless p-1">
-
                                         <tr>
                                             <th>Nilai Hak Cipta</th>
                                             <td>
@@ -44,8 +43,8 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
-                                                    aria-label="Default select example" name="cek_data">
-                                                    <option selected>Pilih Status Hak Cipta</option>
+                                                    aria-label="Default select example" name="cek_data" required>
+                                                    <option value="" >Pilih Status Hak Cipta</option>
                                                     <option value="Valid">Valid
                                                     </option>
                                                     <option value="Tidak Valid">Tidak Valid</option>
@@ -125,15 +124,7 @@ unset($__errorArgs, $__bag); ?></td>
                         </div>
                     </div>
                 </div>
-                <!-- COL END -->
-                
-                <!-- COL END -->
             </div>
-            <!-- ROW-2 END -->
-
-            <!-- ROW-4 -->
-            
-            <!-- ROW-4 END -->
         </div>
         <!-- CONTAINER END -->
     </div>

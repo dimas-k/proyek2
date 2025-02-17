@@ -61,11 +61,6 @@
         </div>
 
         <!-- Sidebar-right -->
-        
-        <!--/Sidebar-right-->
-
-        <!-- Country-selector modal-->
-        
         <!-- Country-selector modal-->
 
         <!-- FOOTER -->

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DesainIndustri;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -84,6 +86,58 @@ class AdminDesainIndustriController extends Controller
         return view('admin.admindi.showdi.index', compact('di'));
     }
 
+    public function viewPublicFilesDi($filename)
+    {
+        // Path file di disk 'private'
+        $fileDi = storage_path('app/public/dokumen-di/' . $filename);
+
+        // Pastikan file ada
+        if (!file_exists($fileDi)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+
+        // Cari data paten berdasarkan salah satu kolom file
+        $di = DesainIndustri::where(function ($query) use ($filename) {
+            $query
+            ->Where('uraian_di', 'dokumen-di/' . $filename)
+            ->orWhere('gambar_di', 'dokumen-di/' . $filename);
+        })->first();
+
+        // Validasi akses: hanya pemilik atau admin/verifikator yang bisa melihat
+        if (!$di || ($di->user_id !== auth()->id() && auth()->user()->role !== 'Admin')) {
+            abort(403, 'Anda tidak memiliki akses ke file ini.');
+        }
+
+        // Kirim file sebagai respons
+        return response()->file($fileDi);
+    }
+    public function viewSensitifFilesDi($filename)
+    {
+        // Path file di disk 'private'
+        $fileDi = storage_path('app/private/dokumen-di/' . $filename);
+
+        // Pastikan file ada
+        if (!file_exists($fileDi)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+
+        // Cari data paten berdasarkan salah satu kolom file
+        $di = DesainIndustri::where(function ($query) use ($filename) {
+            $query->where('ktp_inventor', 'dokumen-di/' . $filename)
+            ->orWhere('data_pengaju2', 'dokumen-di/' . $filename)
+            ->orWhere('surat_kepemilikan', 'dokumen-di/' . $filename)
+            ->orWhere('surat_pengalihan', 'dokumen-di/' . $filename);
+        })->first();
+
+        // Validasi akses: hanya pemilik atau admin/verifikator yang bisa melihat
+        if (!$di || ($di->user_id !== auth()->id() && auth()->user()->role !== 'Admin')) {
+            abort(403, 'Anda tidak memiliki akses ke file ini.');
+        }
+
+        // Kirim file sebagai respons
+        return response()->file($fileDi);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -103,7 +157,7 @@ class AdminDesainIndustriController extends Controller
             'alamat' => 'required',
             'no_telepon' => 'required',
             'tanggal_lahir' => 'required',
-            'ktp_inventor' => 'required|mimes:pdf',
+            'ktp_inventor' => 'nullable|mimes:pdf',
             'email' => 'required|email',
             'kewarganegaraan' => 'required',
             'kode_pos' => 'required',
@@ -113,10 +167,10 @@ class AdminDesainIndustriController extends Controller
             'prodi' => 'required',
             'jenis_di' => 'required',
             'judul_di' => 'required',
-            'uraian_di' => 'required|mimes:pdf',
-            'gambar_di' => 'required|mimes:pdf',
-            'surat_kepemilikan' => 'required|mimes:pdf',
-            'surat_pengalihan' => 'required|mimes:pdf',
+            'uraian_di' => 'nullable|mimes:pdf',
+            'gambar_di' => 'nullable|mimes:pdf',
+            'surat_kepemilikan' => 'nullable|mimes:pdf',
+            'surat_pengalihan' => 'nullable|mimes:pdf',
             'tanggal_permohonan' => 'required'
         ]);
         $di = DesainIndustri::find($id);
@@ -124,51 +178,51 @@ class AdminDesainIndustriController extends Controller
         $di->alamat = $request->alamat;
         $di->no_telepon = $request->no_telepon;
         $di->tanggal_lahir = $request->tanggal_lahir;
-        if ($request->hasFile('ktp_inventor')) {
-            if ($di->ktp_inventor) {
-                Storage::delete($di->ktp_inventor);
-            }
-            $di->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-di');
-        }
         $di->email = $request->email;
         $di->kewarganegaraan = $request->kewarganegaraan;
         $di->kode_pos = $request->kode_pos;
         $di->institusi = $request->institusi;
-        if ($request->hasFile('data_pengaju2')) {
-            if ($di->data_pengaju2) {
-                Storage::delete($di->data_pengaju2);
-            }
-            $di->data_pengaju2 = $request->file('data_pengaju2')->store('dokumen-di');
-        }
         $di->jurusan = $request->jurusan;
         $di->prodi = $request->prodi;
         $di->jenis_di = $request->jenis_di;
         $di->judul_di = $request->judul_di;
-        if ($request->hasFile('uraian_di')) {
-            if ($di->uraian_di) {
-                Storage::delete($di->uraian_di);
-            }
-            $di->uraian_di = $request->file('uraian_di')->store('dokumen-di');
-        }
-        if ($request->hasFile('gambar_di')) {
-            if ($di->gambar_di) {
-                Storage::delete($di->gambar_di);
-            }
-            $di->gambar_di = $request->file('gambar_di')->store('dokumen-di');
-        } 
-        if ($request->hasFile('surat_kepemilikan')) {
-            if ($di->surat_kepemilikan) {
-                Storage::delete($di->surat_kepemilikan);
-            }
-            $di->surat_kepemilikan = $request->file('surat_kepemilikan')->store('dokumen-di');
-        }
-        if ($request->hasFile('surat_pengalihan')) {
-            if ($di->surat_pengalihan) {
-                Storage::delete($di->surat_pengalihan);
-            }
-            $di->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-di');
-        }
         $di->tanggal_permohonan = $request->tanggal_permohonan;
+
+        $privateFiles = [
+            'ktp_inventor' => 'ktp_inventor',
+            'data_pengaju2' => 'data_pengaju2',
+            'surat_kepemilikan' => 'surat_kepemilikan',
+            'surat_pengalihan' => 'surat_pengalihan'
+        ];
+
+        foreach ($privateFiles as $field => $storageName) {
+            if ($request->hasFile($field)) {
+                // Jika ada file lama, hapus dari disk 'private'
+                if ($di->{$storageName}) {
+                    Storage::disk('private')->delete($di->{$storageName});
+                }
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan file ke folder 'dokumen-di' pada disk 'private'
+                $path = $file->storeAs('dokumen-di', $filename, 'private');
+                $di->{$storageName} = $path;
+            }
+        }
+
+        $publicFiles = ['uraian_di', 'gambar_di'];
+        foreach ($publicFiles as $field) {
+            if ($request->hasFile($field)) {
+                if ($di->{$field}) {
+                    Storage::disk('public')->delete($di->{$field});
+                }
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan file ke folder 'dokumen-di' pada disk 'public'
+                $path = $file->storeAs('dokumen-di', $filename, 'public');
+                $di->{$field} = $path;
+            }
+        }
+
         $di->save($validasidata);
         return redirect('/admin/desain-industri')->with('success', 'Data desain industri berhasil di update');
     }
@@ -197,44 +251,49 @@ class AdminDesainIndustriController extends Controller
         $di->nama_lengkap = $request->nama_lengkap;
         $di->alamat = $request->alamat;
         $di->no_telepon = $request->no_telepon;
-        $di->tanggal_lahir = $request->tanggal_lahir;
-        if ($request->hasFile('ktp_inventor')) {
-            if ($di->ktp_inventor) {
-                Storage::delete($di->ktp_inventor);
-            }
-            $di->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-di');
-        }
         $di->email = $request->email;
+        $di->tanggal_lahir = $request->tanggal_lahir;
         $di->kewarganegaraan = $request->kewarganegaraan;
         $di->kode_pos = $request->kode_pos;
         $di->institusi = $request->institusi;
         $di->jenis_di = $request->jenis_di;
         $di->judul_di = $request->judul_di;
-        if ($request->hasFile('uraian_di')) {
-            if ($di->uraian_di) {
-                Storage::delete($di->uraian_di);
-            }
-            $di->uraian_di = $request->file('uraian_di')->store('dokumen-di');
-        }
-        if ($request->hasFile('gambar_di')) {
-            if ($di->gambar_di) {
-                Storage::delete($di->gambar_di);
-            }
-            $di->gambar_di = $request->file('gambar_di')->store('dokumen-di');
-        } 
-        if ($request->hasFile('surat_kepemilikan')) {
-            if ($di->surat_kepemilikan) {
-                Storage::delete($di->surat_kepemilikan);
-            }
-            $di->surat_kepemilikan = $request->file('surat_kepemilikan')->store('dokumen-di');
-        }
-        if ($request->hasFile('surat_pengalihan')) {
-            if ($di->surat_pengalihan) {
-                Storage::delete($di->surat_pengalihan);
-            }
-            $di->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-di');
-        }
         $di->tanggal_permohonan = $request->tanggal_permohonan;
+
+        $privateFiles = [
+            'ktp_inventor' => 'ktp_inventor',
+            'surat_kepemilikan' => 'surat_kepemilikan',
+            'surat_pengalihan' => 'surat_pengalihan'
+        ];
+
+        foreach ($privateFiles as $field => $storageName) {
+            if ($request->hasFile($field)) {
+                // Jika ada file lama, hapus dari disk 'private'
+                if ($di->{$storageName}) {
+                    Storage::disk('private')->delete($di->{$storageName});
+                }
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan file ke folder 'dokumen-di' pada disk 'private'
+                $path = $file->storeAs('dokumen-di', $filename, 'private');
+                $di->{$storageName} = $path;
+            }
+        }
+
+        $publicFiles = ['uraian_di', 'gambar_di'];
+        foreach ($publicFiles as $field) {
+            if ($request->hasFile($field)) {
+                if ($di->{$field}) {
+                    Storage::disk('public')->delete($di->{$field});
+                }
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan file ke folder 'dokumen-di' pada disk 'public'
+                $path = $file->storeAs('dokumen-di', $filename, 'public');
+                $di->{$field} = $path;
+            }
+        }
+
         $di->save($validasidata);
         return redirect('/admin/desain-industri')->with('success', 'Data desain industri berhasil di update');
     }
@@ -265,18 +324,32 @@ class AdminDesainIndustriController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy2(string $id)
     {
         DesainIndustri::with('cekDi')->findOrFail($id)->delete();
         return redirect()->back()->with('success','Data desain industri berhasil dihapus');
     }
+    public function destroy(string $id)
+    {
+        $di = DesainIndustri::with('cekDi')->findOrFail($id);
+        $di->delete();
+        return redirect()->back()->with('success', 'Data desain industri dan file-file terkait berhasil dihapus');
+    }
     public function tambahDiDosen()
     {
-        return view('admin.admindi.tambah.dosen');
+        $users = DB::table('users')
+        ->select('id', 'nama_lengkap')
+        ->where('role', '=', 'Dosen')
+        ->get();
+        return view('admin.admindi.tambah.dosen', compact('users'));
     }
     public function tambahDiUmum()
     {
-        return view('admin.admindi.tambah.umum');
+        $users = DB::table('users')
+        ->select('id', 'nama_lengkap')
+        ->Where('role','=','Umum')
+        ->get();
+        return view('admin.admindi.tambah.umum', compact('users'));
     }
 
     public function storeDiDosen(Request $request)
@@ -284,6 +357,7 @@ class AdminDesainIndustriController extends Controller
         // Validate input data
         $validasidata = $request->validate([
             'nama_lengkap' => 'required',
+            'user_id' => 'required|exists:users,id', 
             'alamat' => 'required',
             'no_telepon' => 'required',
             'tanggal_lahir' => 'required',
@@ -306,7 +380,7 @@ class AdminDesainIndustriController extends Controller
     
         // Create a new DesainIndustri instance
         $di = new DesainIndustri();
-        $di->user_id = Auth::user()->id;
+        $di->user_id = $request->user_id;
         $di->nama_lengkap = $request->nama_lengkap;
         $di->alamat = $request->alamat;
         $di->no_telepon = $request->no_telepon;
@@ -321,19 +395,33 @@ class AdminDesainIndustriController extends Controller
         $di->judul_di = $request->judul_di;
         $di->tanggal_permohonan = $request->tanggal_permohonan;
     
-        // Handle file uploads
-        $files = [
+        $publicFiles = ['gambar_di', 'uraian_di'];
+
+        $privateFiles = [
             'ktp_inventor' => 'ktp_inventor',
             'data_pengaju2' => 'data_pengaju2',
-            'uraian_di' => 'uraian_di',
-            'gambar_di' => 'gambar_di',
             'surat_kepemilikan' => 'surat_kepemilikan',
             'surat_pengalihan' => 'surat_pengalihan'
         ];
-    
-        foreach ($files as $field => $storageName) {
+
+        // Proses unggahan file ke private storage
+        foreach ($privateFiles as $field => $storageName) {
             if ($request->hasFile($field)) {
-                $di->{$storageName} = $request->file($field)->store('dokumen-di');
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan di disk 'private' dalam folder '/dokumen-hc'
+                $path = $file->storeAs('dokumen-di', $filename, 'private');
+                $di->{$storageName} = $path;
+            }
+        }
+
+        foreach ($publicFiles as $field) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan di disk 'public' dalam folder 'dokumen-paten'
+                $path = $file->storeAs('dokumen-di', $filename, 'public');
+                $di->{$field} = $path;
             }
         }
     
@@ -348,6 +436,7 @@ class AdminDesainIndustriController extends Controller
     {
         $validasidata = $request->validate([
             'nama_lengkap' => 'required',
+            'user_id' => 'required|exists:users,id', 
             'alamat' => 'required',
             'no_telepon' => 'required',
             'tanggal_lahir' => 'required',
@@ -365,33 +454,46 @@ class AdminDesainIndustriController extends Controller
             'tanggal_permohonan' => 'required'
         ]);
         $di = new DesainIndustri();
-        $di->user_id = Auth::user()->id;
+        $di->user_id = $request->user_id;
         $di->nama_lengkap = $request->nama_lengkap;
         $di->alamat = $request->alamat;
         $di->no_telepon = $request->no_telepon;
         $di->tanggal_lahir = $request->tanggal_lahir;
-        if ($request->hasFile('ktp_inventor')) {
-            $di->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-di');
-        }
         $di->email = $request->email;
         $di->kewarganegaraan = $request->kewarganegaraan;
         $di->kode_pos = $request->kode_pos;
         $di->institusi = $request->institusi;
         $di->jenis_di = $request->jenis_di;
         $di->judul_di = $request->judul_di;
-        if ($request->hasFile('uraian_di')) {
-            $di->uraian_di = $request->file('uraian_di')->store('dokumen-di');
-        }
-        if ($request->hasFile('gambar_di')) {
-            $di->gambar_di = $request->file('gambar_di')->store('dokumen-di');
-        } 
-        if ($request->hasFile('surat_kepemilikan')) {
-            $di->surat_kepemilikan = $request->file('surat_kepemilikan')->store('dokumen-di');
-        }
-        if ($request->hasFile('surat_pengalihan')) {
-            $di->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-di');
-        }
         $di->tanggal_permohonan = $request->tanggal_permohonan;
+        $publicFiles = ['gambar_di', 'uraian_di'];
+
+        $privateFiles = [
+            'ktp_inventor' => 'ktp_inventor',
+            'surat_kepemilikan' => 'surat_kepemilikan',
+            'surat_pengalihan' => 'surat_pengalihan'
+        ];
+
+        // Proses unggahan file ke private storage
+        foreach ($privateFiles as $field => $storageName) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan di disk 'private' dalam folder '/dokumen-hc'
+                $path = $file->storeAs('dokumen-di', $filename, 'private');
+                $di->{$storageName} = $path;
+            }
+        }
+
+        foreach ($publicFiles as $field) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan di disk 'public' dalam folder 'dokumen-paten'
+                $path = $file->storeAs('dokumen-di', $filename, 'public');
+                $di->{$field} = $path;
+            }
+        }
         $di->save($validasidata);
 
         return redirect('/admin/desain-industri')->with('success', 'Data desain industri berhasil di tambahkan');

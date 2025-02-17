@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="shortcut icon" href=<?php echo e(asset('assets/polindra21.png')); ?>>
+    <!-- Custom styles for this template -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    <title>SIKI POLINDRA | Lihat Data Paten </title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="p-4 mt-3">
+            <a href="/paten" class="link-dark link-underline link-underline-opacity-0 mb-5 "><i class="bi bi-arrow-left-circle mb-5" style="font-size: 30px;"></i></a>
+            <h3 class=""><i class="bi bi-clipboard2-data me-2 mt-5"></i>Data Paten</h3>
+
+            <div class="border border-2 border-dark rounded"></div>
+            <div class="table-responsive p-2">
+                <table class="table table-borderless ">
+
+                    <tr>
+                        <th>Nama Lengkap</th>
+                        <td>: <?php echo e($paten->nama_lengkap); ?></td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>:  <a href="mailto:<?php echo e($paten->email); ?>"><?php echo e($paten->email); ?></a></td>
+                    </tr>
+                    <tr>
+                        <th>Jenis Paten</th>
+                        <td>: <?php echo e($paten->jenis_paten); ?></td>
+                    </tr>
+                    <tr>
+                        <th>Judul Paten</th>
+                        <td>: <?php echo e($paten->judul_paten); ?></td>
+                    </tr>
+                    <tr>
+                        <th>Abstrak Paten</th>
+                        <td>: 
+                            <a href="<?php echo e(route('public_paten_guest', ['filename' => basename($paten->abstrak_paten)])); ?>"
+                                target="_blank">Lihat Abstrak Paten</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Deskripsi Paten</th>
+                        <td>: 
+                            <a href="<?php echo e(route('public_paten_guest', ['filename' => basename($paten->deskripsi_paten)])); ?>" 
+                                target="_blank">Lihat Deskripsi Paten</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Gambar Paten</th>
+                        <td>: 
+                            <a href="<?php echo e(route('public_paten_guest', ['filename' => basename($paten->gambar_paten)])); ?>"
+                                target="_blank">Lihat Gambar Paten</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Gambar Tampilan</th>
+                        <td>:
+                            <a href="<?php echo e(route('public_paten_guest', ['filename' => basename($paten->gambar_tampilan)])); ?>"
+                                target="_blank">Lihat Gambar Tampilan</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Tanggal pengajuan</th>
+                        <td>: <?php echo e($paten->tanggal_permohonan); ?></td>
+                    </tr>
+                    <tr>
+                        <th>Status Paten</th>
+                        <td>: <?php echo e($paten->status); ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
+<?php /**PATH D:\POLITEKNIK NEGERI INDRAMAYU\proyek2\resources\views/patenshow/index.blade.php ENDPATH**/ ?>

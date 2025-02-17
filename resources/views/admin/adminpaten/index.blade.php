@@ -235,13 +235,14 @@
                                                 <div class="d-flex">
                                                     <div class="align-self-center">
                                                         <i class="bi bi-question-square float-start me-2"
-                                                        style="font-size: 50px;"></i>
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
                                                         <h3 class=" d-flex justify-content-end">
                                                             {{ $mvdov }}
                                                         </h3>
-                                                        <span class="ms-4 d-flex justify-content-end">Menunggu Verifikasi Data Oleh Verifikator</span>
+                                                        <span class="ms-4 d-flex justify-content-end">Menunggu
+                                                            Verifikasi Data Oleh Verifikator</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -304,10 +305,12 @@
                     @endif
                     <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-3"></i>Daftar Paten</h3>
                     <div class="d-flex justify-content-start">
-                        <a class="btn btn-success mb-2" href="/admin/paten/tambah/dosen/"><i class="bi bi-plus-circle me-2"></i>Tambah Paten Dosen</a>
+                        <a class="btn btn-success mb-2" href="/admin/paten/tambah/dosen/"><i
+                                class="bi bi-plus-circle me-2"></i>Tambah Paten Dosen</a>
                     </div>
                     <div class="d-flex justify-content-start">
-                        <a class="btn btn-outline-secondary" href="/admin/paten/tambah/umum/"><i class="bi bi-plus-circle me-2"></i>Tambah Paten Umum</a>
+                        <a class="btn btn-outline-secondary" href="/admin/paten/tambah/umum/"><i
+                                class="bi bi-plus-circle me-2"></i>Tambah Paten Umum</a>
                     </div>
                     <div class="d-flex justify-content-end mb-3">
                         <form action="/admin/paten/cari" method="GET">
@@ -344,7 +347,9 @@
                             <tbody>
                                 @foreach ($paten as $i => $p)
                                     <tr>
-                                        <th scope="row">{{ ($paten->currentPage() - 1) * $paten->perPage() + $loop->iteration }}</th>
+                                        <th scope="row">
+                                            {{ ($paten->currentPage() - 1) * $paten->perPage() + $loop->iteration }}
+                                        </th>
                                         <td>{{ $p->nama_lengkap }}</td>
                                         <td>{{ $p->jenis_paten }}</td>
                                         <td>{{ $p->judul_paten }}</td>
@@ -370,8 +375,9 @@
                                         </td>
                                         <td><a href={{ Route('admin_paten.show', $p->id) }} class="btn btn-info"><i
                                                     class="bi bi-eye me-1"></i>Lihat</a>
-                                            <a href={{ Route('admin_paten.edit', $p->id) }} class="btn btn-outline-warning"><i
-                                                    class="bi bi-pencil me-1"></i>Edit Paten</a>
+                                            <a href={{ Route('admin_paten.edit', $p->id) }}
+                                                class="btn btn-outline-warning"><i class="bi bi-pencil me-1"></i>Edit
+                                                Paten</a>
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal{{ $p->id }}">
                                                 <i class="bi bi-pencil me-1"></i>Edit Status
@@ -387,41 +393,63 @@
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
+                                                            <div class="modal-header">
+                                                                <p>{{ $p->nama_lengkap }} - {{ $p->status }}</p>
+                                                            </div>
                                                         <div class="modal-body">
                                                             <form action="{{ Route('admin_paten.update', $p->id) }}"
                                                                 enctype="multipart/form-data" method="POST">
                                                                 @csrf
                                                                 <div class="mb-3">
-                                                                    <label for=""
-                                                                        class="form-label">Status
+                                                                    <label for="" class="form-label">Status
                                                                         Paten</label>
                                                                     <select
                                                                         class="form-select @error('status') is-invalid @enderror"
-                                                                        aria-label="Default select example"
-                                                                        name="status">
-                                                                        <option selected>Pilih Status Paten</option>
-                                                                        <option value="Pemeriksaan Formalitas">
-                                                                            Pemeriksaan Formalitas</option>
-                                                                        <option
-                                                                            value="Menunggu Tanggapan Formalitas">
-                                                                            Menunggu Tanggapan Formalitas</option>
-                                                                        <option value="Masa pengumuman">Masa
-                                                                            pengumuman
+                                                                        name="status" required>
+                                                                        <option value=""
+                                                                            @if ((old('status', $p->status) ?? '') == '') selected @endif>
+                                                                            Pilih Status Paten</option>
+                                                                        <option value="Pemeriksaan Formalitas"
+                                                                            @if ((old('status', $p->status) ?? '') == 'Pemeriksaan Formalitas') selected @endif>
+                                                                            Pemeriksaan Formalitas
                                                                         </option>
-                                                                        <option
-                                                                            value="Menunggu Pembayaran Substasif">
-                                                                            Menunggu Pembayaran Substasif</option>
-                                                                        <option value="Substansif Tahap Awal">
-                                                                            Substansif Tahap Awal</option>
-                                                                        <option value="Substansif Tahap Lanjut">
-                                                                            Substansif Tahap Lanjut</option>
-                                                                        <option value="Substansif Tahap Akhir">
-                                                                            Substansif Tahap Akhir</option>
-                                                                        <option
-                                                                            value="Menunggu Tanggapan Substansif">
-                                                                            Menunggu Tanggapan Substansif</option>
-                                                                        <option value="Diberi">Diberi</option>
-                                                                        <option value="Ditolak">Ditolak</option>
+                                                                        <!-- Tambahkan option lainnya dengan struktur yang sama -->
+                                                                        <option value="Menunggu Tanggapan Formalitas"
+                                                                            @if ((old('status', $p->status) ?? '') == 'Menunggu Tanggapan Formalitas') selected @endif>
+                                                                            Menunggu Tanggapan Formalitas
+                                                                        </option>
+                                                                        <option value="Masa pengumuman"
+                                                                            @if ((old('status', $p->status) ?? '') == 'Masa pengumuman') selected @endif>
+                                                                            Masa pengumuman
+                                                                        </option>
+                                                                        <option value="Menunggu Pembayaran Substansif"
+                                                                            @if ((old('status', $p->status) ?? '') == 'Menunggu Pembayaran Substansif') selected @endif>
+                                                                            Menunggu Pembayaran Substansif
+                                                                        </option>
+                                                                        <option value="Substansif Tahap Awal"
+                                                                            @if ((old('status', $p->status) ?? '') == 'Substansif Tahap Awal') selected @endif>
+                                                                            Substansif Tahap Awal
+                                                                        </option>
+                                                                        <option value="Substansif Tahap Lanjut"
+                                                                            @if ((old('status', $p->status) ?? '') == 'Substansif Tahap Lanjut') selected @endif>
+                                                                            Substansif Tahap Lanjut
+                                                                        </option>
+                                                                        <option value="Substansif Tahap Akhir"
+                                                                            @if ((old('status', $p->status) ?? '') == 'Substansif Tahap Akhir') selected @endif>
+                                                                            Substansif Tahap Akhir
+                                                                        </option>
+                                                                        <option value="Menunggu Tanggapan Substansif"
+                                                                            @if ((old('status', $p->status) ?? '') == 'Menunggu Tanggapan Substansif') selected @endif>
+                                                                            Menunggu Tanggapan Substansif
+                                                                        </option>
+                                                                        <option value="Diberi"
+                                                                            @if ((old('status', $p->status) ?? '') == 'Diberi') selected @endif>
+                                                                            Diberi
+                                                                        </option>
+                                                                        <option value="Ditolak"
+                                                                            @if ((old('status', $p->status) ?? '') == 'Ditolak') selected @endif>
+                                                                            Ditolak
+                                                                        </option>
                                                                     </select>
                                                                     @error('status')
                                                                         <div class="invalid-feedback">
@@ -430,9 +458,10 @@
                                                                     @enderror
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for=""
-                                                                        class="form-label">Serifikat
-                                                                        Paten</label>
+                                                                    <label for="" class="form-label">Serifikat
+                                                                        Paten</label><br>
+                                                                        File :
+                                                                    {{ basename($p->sertifikat_paten) }}
                                                                     <input type="file"
                                                                         class="form-control @error('sertifikat_paten') is-invalid @enderror"
                                                                         id="" placeholder=""

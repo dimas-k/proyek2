@@ -21,7 +21,8 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Update Data Paten
+                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Update Data
+                                Paten
                                 {{ $p->nama_lengkap }}
                             </h3>
                         </div>
@@ -34,90 +35,91 @@
                                         <tr>
                                             <th>nama lengkap</th>
                                             <td>
-                                                <input type="text" id="nama_lengkap"
-                                                    class="form-control"
-                                                     placeholder="Masukkan Nama"name="nama_lengkap"
+                                                <input type="text" id="nama_lengkap" class="form-control"
+                                                    placeholder="Masukkan Nama"name="nama_lengkap"
                                                     value="{{ $p->nama_lengkap }}">
-                                                
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>alamat</th>
                                             <td>
-                                                <input type="text"
-                                                    class="form-control" id="alamat"
-                                                     placeholder="Masukkan Alamat" name="alamat"
+                                                <input type="text" class="form-control" id="alamat"
+                                                    placeholder="Masukkan Alamat" name="alamat"
                                                     value="{{ $p->alamat }}">
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>no telepon</th>
                                             <td>
-                                                <input type="text"
-                                                    class="form-control" id="no_telepon"
+                                                <input type="text" class="form-control" id="no_telepon"
                                                     placeholder="Masukkan No telepon" name="no_telepon"
                                                     value={{ $p->no_telepon }}>
-                                                
+
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>tanggal lahir</th>
                                             <td>
                                                 <input type="date" name="tanggal_lahir" id="tanggal_lahir"
-                                                    class="form-control"
-                                                    value={{ $p->tanggal_lahir }}>
+                                                    class="form-control" value={{ $p->tanggal_lahir }}>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>ktp inventor</th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control"
-                                                     name="ktp_inventor" id="ktp">
+                                                @if (!empty($p->ktp_inventor))
+                                                    File : {{ basename($p->ktp_inventor) }}
+                                                @else
+                                                    File : Tidak ada
+                                                @endif
+                                                <input type="file" class="form-control" name="ktp_inventor"
+                                                    id="ktp">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
-                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                                    sama atau yang sudah di perbarui</span>   
+                                                        data-bs-toggle="tooltip">
+                                                    </i>masukan file jika ada perubahan</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>email</th>
                                             <td>
-                                                <input type="email" id="email"
-                                                    class="form-control"
+                                                <input type="email" id="email" class="form-control"
                                                     placeholder="Masukkan Email" name="email"
-                                                    value={{ $p->email }}>                                            
+                                                    value={{ $p->email }}>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>kewarganegaraan</th>
                                             <td>
-                                                <input type="text"
-                                                    class="form-control"
-                                                     placeholder="Masukkan Kewarganegaraan" id="warga"
+                                                <input type="text" class="form-control"
+                                                    placeholder="Masukkan Kewarganegaraan" id="warga"
                                                     name="kewarganegaraan" value={{ $p->kewarganegaraan }}>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>kode pos</th>
                                             <td>
-                                                <input type="number"
-                                                    class="form-control" id="pos"
-                                                     placeholder="Masukkan Kode Pos" name="kode_pos"
+                                                <input type="number" class="form-control" id="pos"
+                                                    placeholder="Masukkan Kode Pos" name="kode_pos"
                                                     value={{ $p->kode_pos }}>
-                                                <input type="text"
-                                                    class="form-control"
-                                                     value="Dosen" name="institusi" hidden>
+                                                <input type="text" class="form-control" value="Dosen"
+                                                    name="institusi" hidden>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>
-                                                Data Mahasiswa / Dosen <span class="text-danger">(Jika Bersama Dosen Yang
-                                                    Lain dan atau Bersama
-                                                    Mahasiswa Harap diisi)
+                                                Data Mahasiswa / Dosen<br>
+                                                {{-- <span class="text-danger">(Jika Bersama Dosen Yang
+                                                    Lain dan atau Bersama Mahasiswa Harap diisi) --}}
+                                                <span class="text-danger">(masukan file jika ada perubahan)
                                             </th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control" id="data_pengaju2"
+                                                @if (!empty($p->data_pengaju2))
+                                                    File : {{ basename($p->data_pengaju2) }}
+                                                @else
+                                                    File : Tidak ada
+                                                @endif
+                                                <input type="file" class="form-control" id="data_pengaju2"
                                                     name="data_pengaju2">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
                                                         data-bs-toggle="tooltip"></i>File harus bertipe .xlsx</span>
@@ -127,11 +129,18 @@
                                             <th>jurusan</th>
                                             <td>
                                                 {{-- @include('dosen.layout.jurusan-edit') --}}
-                                                <select class="form-select" aria-label="Default select example" name="jurusan" id="jurusan">
+                                                <select class="form-select" aria-label="Default select example"
+                                                    name="jurusan" id="jurusan">
                                                     <option value="">Pilih Jurusan</option>
-                                                    <option value="Teknik Informatika" {{ old('jurusan',$p->jurusan) == 'Teknik Informatika' ? 'selected' : '' }}>Teknik Informatika</option>
-                                                    <option value="Teknik" {{ old('jurusan', $p->jurusan) == 'Teknik' ? 'selected' : '' }}>Teknik</option>
-                                                    <option value="Kesehatan" {{ old('jurusan', $p->jurusan) == 'Kesehatan' ? 'selected' : '' }}>Kesehatan</option>
+                                                    <option value="Teknik Informatika"
+                                                        {{ old('jurusan', $p->jurusan) == 'Teknik Informatika' ? 'selected' : '' }}>
+                                                        Teknik Informatika</option>
+                                                    <option value="Teknik"
+                                                        {{ old('jurusan', $p->jurusan) == 'Teknik' ? 'selected' : '' }}>
+                                                        Teknik</option>
+                                                    <option value="Kesehatan"
+                                                        {{ old('jurusan', $p->jurusan) == 'Kesehatan' ? 'selected' : '' }}>
+                                                        Kesehatan</option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -139,16 +148,33 @@
                                             <th>prodi</th>
                                             <td>
                                                 {{-- @include('dosen.layout.prodi-edit') --}}
-                                                <select class="form-select" aria-label="Default select example" name="prodi" id="prodi">
+                                                <select class="form-select" aria-label="Default select example"
+                                                    name="prodi" id="prodi">
                                                     <option value="">Pilih Prodi</option>
-                                                    <option value="D3 Teknik Informatika" {{ old('prodi', $p->prodi) == 'D3 Teknik Informatika' ? 'selected' : '' }}>D3 Teknik Informatika</option>
-                                                    <option value="D4 Rekayasa Perangkat Lunak" {{ old('prodi', $p->prodi) == 'D4 Rekayasa Perangkat Lunak' ? 'selected' : '' }}>D4 Rekayasa Perangkat Lunak</option>
-                                                    <option value="D4 Sistem Informasi Kota Cerdas" {{ old('prodi', $p->prodi) == 'D4 Sistem Informasi Kota Cerdas' ? 'selected' : '' }}>D4 Sistem Informasi Kota Cerdas</option>
-                                                    <option value="D3 Teknik Mesin" {{ old('prodi', $p->prodi) == 'D3 Teknik Mesin' ? 'selected' : '' }}>D3 Teknik Mesin</option>
-                                                    <option value="D4 Perancangan Manufaktur" {{ old('prodi', $p->prodi) == 'D4 Perancangan Manufaktur' ? 'selected' : '' }}>D4 Perancangan Manufaktur</option>
-                                                    <option value="D3 Teknik Pendingin dan Tata Udara" {{ old('prodi', $p->prodi) == 'D3 Teknik Pendingin dan Tata Udara' ? 'selected' : '' }}>D3 Teknik Pendingin dan Tata Udara</option>
-                                                    <option value="D4 Teknologi Rekayasa Instrumentasi dan Kontrol" {{ old('prodi', $p->prodi) == 'D4 Teknologi Rekayasa Instrumentasi dan Kontrol' ? 'selected' : '' }}>D4 Teknologi Rekayasa Instrumentasi dan Kontrol</option>
-                                                    <option value="D3 Keperawatan" {{ old('prodi', $p->prodi) == 'D3 Keperawatan' ? 'selected' : '' }}>D3 Keperawatan</option>
+                                                    <option value="D3 Teknik Informatika"
+                                                        {{ old('prodi', $p->prodi) == 'D3 Teknik Informatika' ? 'selected' : '' }}>
+                                                        D3 Teknik Informatika</option>
+                                                    <option value="D4 Rekayasa Perangkat Lunak"
+                                                        {{ old('prodi', $p->prodi) == 'D4 Rekayasa Perangkat Lunak' ? 'selected' : '' }}>
+                                                        D4 Rekayasa Perangkat Lunak</option>
+                                                    <option value="D4 Sistem Informasi Kota Cerdas"
+                                                        {{ old('prodi', $p->prodi) == 'D4 Sistem Informasi Kota Cerdas' ? 'selected' : '' }}>
+                                                        D4 Sistem Informasi Kota Cerdas</option>
+                                                    <option value="D3 Teknik Mesin"
+                                                        {{ old('prodi', $p->prodi) == 'D3 Teknik Mesin' ? 'selected' : '' }}>
+                                                        D3 Teknik Mesin</option>
+                                                    <option value="D4 Perancangan Manufaktur"
+                                                        {{ old('prodi', $p->prodi) == 'D4 Perancangan Manufaktur' ? 'selected' : '' }}>
+                                                        D4 Perancangan Manufaktur</option>
+                                                    <option value="D3 Teknik Pendingin dan Tata Udara"
+                                                        {{ old('prodi', $p->prodi) == 'D3 Teknik Pendingin dan Tata Udara' ? 'selected' : '' }}>
+                                                        D3 Teknik Pendingin dan Tata Udara</option>
+                                                    <option value="D4 Teknologi Rekayasa Instrumentasi dan Kontrol"
+                                                        {{ old('prodi', $p->prodi) == 'D4 Teknologi Rekayasa Instrumentasi dan Kontrol' ? 'selected' : '' }}>
+                                                        D4 Teknologi Rekayasa Instrumentasi dan Kontrol</option>
+                                                    <option value="D3 Keperawatan"
+                                                        {{ old('prodi', $p->prodi) == 'D3 Keperawatan' ? 'selected' : '' }}>
+                                                        D3 Keperawatan</option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -156,114 +182,148 @@
                                             <th>Jenis Paten</th>
                                             <td>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="jenis_paten" value="Paten" id="paten"
-                                                    {{ old('jenis_paten', $p->jenis_paten) == 'Paten' ? 'checked' : '' }}>
+                                                    <input class="form-check-input" type="radio" name="jenis_paten"
+                                                        value="Paten" id="paten"
+                                                        {{ old('jenis_paten', $p->jenis_paten) == 'Paten' ? 'checked' : '' }}>
                                                     <label class="form-check-label" for="paten">Paten</label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="jenis_paten" value="Paten Sederhana" id="paten_s"
-                                                    {{ old('jenis_paten', $p->jenis_paten) == 'Paten Sederhana' ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="paten_s">Paten Sederhana</label>
+                                                    <input class="form-check-input" type="radio" name="jenis_paten"
+                                                        value="Paten Sederhana" id="paten_s"
+                                                        {{ old('jenis_paten', $p->jenis_paten) == 'Paten Sederhana' ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="paten_s">Paten
+                                                        Sederhana</label>
                                                 </div>
-                                            </td>                                            
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>judul paten</th>
                                             <td>
-                                                <input type="text"
-                                                    class="form-control" id="judul_paten"
-                                                     placeholder="Masukkan Judul Paten" name="judul_paten"
+                                                <input type="text" class="form-control" id="judul_paten"
+                                                    placeholder="Masukkan Judul Paten" name="judul_paten"
                                                     value="{{ $p->judul_paten }}">
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>abstrak paten</th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control" id="abstrak"
-                                                     placeholder="" name="abstrak_paten">
+                                                @if (!empty($p->abstrak_paten))
+                                                File : {{ basename($p->abstrak_paten) }}
+                                            @else
+                                                File : Tidak ada
+                                            @endif
+                                                <input type="file" class="form-control" id="abstrak"
+                                                    placeholder="" name="abstrak_paten">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
-                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                                    sama atau yang sudah di perbarui</span>
+                                                        data-bs-toggle="tooltip"></i>masukan file jika ada
+                                                    perubahan</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>deskripsi paten</th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control" id="deskripsi"
-                                                     placeholder="" name="deskripsi_paten">
+                                                @if (!empty($p->deskripsi_paten))
+                                                File : {{ basename($p->deskripsi_paten) }}
+                                            @else
+                                                File : Tidak ada
+                                            @endif
+                                                <input type="file" class="form-control" id="deskripsi"
+                                                    placeholder="" name="deskripsi_paten">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
-                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                                    sama atau yang sudah di perbarui</span>
+                                                        data-bs-toggle="tooltip"></i>masukan file jika ada
+                                                    perubahan</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Pengalihan Hak
                                                 Invensi</th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control" id="pengalihan_hak"
-                                                     placeholder="" name="pengalihan_hak">
-                                                     <span class="text-danger"><i class="fa fa-warning me-2"
-                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                                    sama atau yang sudah di perbarui</span>
+                                                @if (!empty($p->pengalihan_hak))
+                                                File : {{ basename($p->pengalihan_hak) }}
+                                            @else
+                                                File : Tidak ada
+                                            @endif
+                                                <input type="file" class="form-control" id="pengalihan_hak"
+                                                    placeholder="" name="pengalihan_hak">
+                                                <span class="text-danger"><i class="fa fa-warning me-2"
+                                                        data-bs-toggle="tooltip"></i>masukan file jika ada
+                                                    perubahan</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>klaim</th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control" id="klaim"
-                                                     placeholder="" name="klaim">
+                                                @if (!empty($p->klaim))
+                                                File : {{ basename($p->klaim) }}
+                                            @else
+                                                File : Tidak ada
+                                            @endif
+                                                <input type="file" class="form-control" id="klaim"
+                                                    placeholder="" name="klaim">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
-                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                                    sama atau yang sudah di perbarui</span>
+                                                        data-bs-toggle="tooltip"></i>masukan file jika ada
+                                                    perubahan</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Pernyataan kepemikikan
                                                 Inventor</th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control" id="kepemilikan"
-                                                     placeholder="" name="pernyataan_kepemilikan">
+                                                @if (!empty($p->pernyataan_kepemilikan))
+                                                File : {{ basename($p->pernyataan_kepemilikan) }}
+                                            @else
+                                                File : Tidak ada
+                                            @endif
+                                                <input type="file" class="form-control" id="kepemilikan"
+                                                    placeholder="" name="pernyataan_kepemilikan">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
-                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                                    sama atau yang sudah di perbarui</span>
+                                                        data-bs-toggle="tooltip"></i>masukan file jika ada
+                                                    perubahan</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>surat kuasa</th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control" id="kuasa"
-                                                     placeholder="" name="surat_kuasa">
+                                                @if (!empty($p->surat_kuasa))
+                                                File : {{ basename($p->surat_kuasa) }}
+                                            @else
+                                                File : Tidak ada
+                                            @endif
+                                                <input type="file" class="form-control" id="kuasa"
+                                                    placeholder="" name="surat_kuasa">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
-                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                                    sama atau yang sudah di perbarui</span>
+                                                        data-bs-toggle="tooltip"></i>masukan file jika ada
+                                                    perubahan</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>gambar paten</th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control" id="g_paten"
-                                                     placeholder="" name="gambar_paten">
+                                                @if (!empty($p->gambar_paten))
+                                                File : {{ basename($p->gambar_paten) }}
+                                            @else
+                                                File : Tidak ada
+                                            @endif
+                                                <input type="file" class="form-control" id="g_paten"
+                                                    placeholder="" name="gambar_paten">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
-                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                                    sama atau yang sudah di perbarui</span>
+                                                        data-bs-toggle="tooltip"></i>masukan file jika ada
+                                                    perubahan</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>gambar tampilan</th>
                                             <td>
-                                                <input type="file"
-                                                    class="form-control" id="g_tampilan"
-                                                     placeholder="" name="gambar_tampilan">
+                                                @if (!empty($p->gambar_tampilan))
+                                                File : {{ basename($p->gambar_tampilan) }}
+                                            @else
+                                                File : Tidak ada
+                                            @endif
+                                                <input type="file" class="form-control" id="g_tampilan"
+                                                    placeholder="" name="gambar_tampilan">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
-                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                                    sama atau yang sudah di perbarui</span>
+                                                        data-bs-toggle="tooltip"></i>masukan file jika ada
+                                                    perubahan</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -302,7 +362,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>   
+                            </form>
                         </div>
                     </div>
                 </div>

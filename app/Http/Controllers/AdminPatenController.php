@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Paten;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,7 +30,7 @@ class AdminPatenController extends Controller
         $mvdov = Paten::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->count();
         $beri = Paten::where('status', 'Diberi')->count();
         $tolak = Paten::where('status', 'Ditolak')->count();
-        return view('admin.adminpaten.index', compact('paten','pf','mt','mp','mps','staw','stl','stak','mts','beri','tolak', 'mvdov'));
+        return view('admin.adminpaten.index', compact('paten', 'pf', 'mt', 'mp', 'mps', 'staw', 'stl', 'stak', 'mts', 'beri', 'tolak', 'mvdov'));
     }
     public function cariPaten(Request $request)
     {
@@ -43,7 +47,7 @@ class AdminPatenController extends Controller
         $beri = Paten::where('status', 'Diberi')->count();
         $tolak = Paten::where('status', 'Ditolak')->count();
         $mvdov = Paten::where('status', 'Menunggu Verifikasi Data Oleh Verifikator')->count();
-        return view('admin.adminpaten.index', compact('paten','pf','mt','mp','mps','staw','stl','stak','mts','beri','tolak','mvdov'));
+        return view('admin.adminpaten.index', compact('paten', 'pf', 'mt', 'mp', 'mps', 'staw', 'stl', 'stak', 'mts', 'beri', 'tolak', 'mvdov'));
     }
 
     public function pemeriksaanFormalitas()
@@ -109,17 +113,27 @@ class AdminPatenController extends Controller
 
     public function tambahPatenDosen()
     {
-        return view('admin.adminpaten.tambah.dosen');
+        $users = DB::table('users')
+            ->select('id', 'nama_lengkap')
+            ->where('role', '=', 'Dosen')
+            ->get();
+        // dd($users);
+        return view('admin.adminpaten.tambah.dosen', compact('users'));
     }
     public function tambahPatenUmum()
     {
-        return view('admin.adminpaten.tambah.umum');
+        $users = DB::table('users')
+            ->select('id', 'nama_lengkap')
+            ->Where('role', '=', 'Umum')
+            ->get();
+        return view('admin.adminpaten.tambah.umum', compact('users'));
     }
 
     public function storeTambahPatenDosen(Request $request)
     {
         $validasidata = $request->validate([
             'nama_lengkap' => 'required',
+            'user_id' => 'required|exists:users,id',
             'alamat' => 'required',
             'no_telepon' => 'required|max:14',
             'tanggal_lahir' => 'required|date',
@@ -144,74 +158,65 @@ class AdminPatenController extends Controller
             'tanggal_permohonan' => 'required'
         ]);
         $paten = new Paten();
-        $paten->user_id = Auth::user()->id;
+        $paten->user_id = $request->user_id;
         $paten->nama_lengkap = $request->nama_lengkap;
         $paten->alamat = $request->alamat;
         $paten->no_telepon = $request->no_telepon;
         $paten->tanggal_lahir = $request->tanggal_lahir;
-
-        if ($request->hasFile('ktp_inventor')) {
-            $paten->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-paten');
-        }
-
         $paten->email = $request->email;
         $paten->kewarganegaraan = $request->kewarganegaraan;
         $paten->kode_pos = $request->kode_pos;
-
-        if ($request->hasFile('data_pengaju2')) {
-            $paten->data_pengaju2 = $request->file('data_pengaju2')->store('dokumen-paten');
-        }
-
         $paten->institusi = $request->institusi;
         $paten->jurusan = $request->jurusan;
         $paten->prodi = $request->prodi;
         $paten->jenis_paten = $request->jenis_paten;
         $paten->judul_paten = $request->judul_paten;
-
-        if ($request->hasFile('abstrak_paten')) {
-            $paten->abstrak_paten = $request->file('abstrak_paten')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('deskripsi_paten')) {
-            $paten->deskripsi_paten = $request->file('deskripsi_paten')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('pengalihan_hak')) {
-            $paten->pengalihan_hak = $request->file('pengalihan_hak')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('klaim')) {
-            $paten->klaim = $request->file('klaim')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('pernyataan_kepemilikan')) {
-            $paten->pernyataan_kepemilikan = $request->file('pernyataan_kepemilikan')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('surat_kuasa')) {
-            $paten->surat_kuasa = $request->file('surat_kuasa')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('gambar_paten')) {
-            $paten->gambar_paten = $request->file('gambar_paten')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('gambar_tampilan')) {
-            $paten->gambar_tampilan = $request->file('gambar_tampilan')->store('dokumen-paten');
-        }
-
         $paten->tanggal_permohonan = $request->tanggal_permohonan;
+
+        // Daftar file yang disimpan di public storage
+        $publicFiles = ['deskripsi_paten', 'abstrak_paten', 'gambar_paten', 'gambar_tampilan'];
+        // Daftar file yang disimpan di private storage
+        $privateFiles = [
+            'ktp_inventor' => 'ktp_inventor',
+            'data_pengaju2' => 'data_pengaju2',
+            'pengalihan_hak' => 'pengalihan_hak',
+            'klaim' => 'klaim',
+            'pernyataan_kepemilikan' => 'pernyataan_kepemilikan',
+            'surat_kuasa' => 'surat_kuasa',
+        ];
+        // Proses unggahan file ke private storage
+        foreach ($privateFiles as $field => $storageName) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan di disk 'private' dalam folder 'dosen/dokumen-paten'
+                $path = $file->storeAs('dokumen-paten', $filename, 'private');
+                $paten->{$storageName} = $path;
+            }
+        }
+        // Proses unggahan file ke public storage
+        foreach ($publicFiles as $field) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan di disk 'public' dalam folder 'dokumen-paten'
+                $path = $file->storeAs('dokumen-paten', $filename, 'public');
+                $paten->{$field} = $path;
+            }
+        }
+
         $paten->save($validasidata);
 
         return redirect('/admin/paten')->with('success', 'Data Paten Berhasil Ditambahkan');
     }
 
-    
+
 
     public function storeTambahPatenUmum(Request $request)
     {
         $validasidata = $request->validate([
             'nama_lengkap' => 'required',
+            'user_id' => 'required|exists:users,id',
             'alamat' => 'required',
             'no_telepon' => 'required|max:14',
             'tanggal_lahir' => 'required|date',
@@ -233,67 +238,58 @@ class AdminPatenController extends Controller
             'tanggal_permohonan' => 'required'
         ]);
         $paten = new Paten();
-        $paten->user_id = Auth::user()->id;
+        $paten->user_id = $request->user_id;
         $paten->nama_lengkap = $request->nama_lengkap;
         $paten->alamat = $request->alamat;
         $paten->no_telepon = $request->no_telepon;
         $paten->tanggal_lahir = $request->tanggal_lahir;
-
-        if ($request->hasFile('ktp_inventor')) {
-            $paten->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-paten');
-        }
-
         $paten->email = $request->email;
         $paten->kewarganegaraan = $request->kewarganegaraan;
         $paten->kode_pos = $request->kode_pos;
         $paten->institusi = $request->institusi;
         $paten->jenis_paten = $request->jenis_paten;
         $paten->judul_paten = $request->judul_paten;
-
-        if ($request->hasFile('abstrak_paten')) {
-            $paten->abstrak_paten = $request->file('abstrak_paten')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('deskripsi_paten')) {
-            $paten->deskripsi_paten = $request->file('deskripsi_paten')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('pengalihan_hak')) {
-            $paten->pengalihan_hak = $request->file('pengalihan_hak')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('klaim')) {
-            $paten->klaim = $request->file('klaim')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('pernyataan_kepemilikan')) {
-            $paten->pernyataan_kepemilikan = $request->file('pernyataan_kepemilikan')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('surat_kuasa')) {
-            $paten->surat_kuasa = $request->file('surat_kuasa')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('gambar_paten')) {
-            $paten->gambar_paten = $request->file('gambar_paten')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('gambar_tampilan')) {
-            $paten->gambar_tampilan = $request->file('gambar_tampilan')->store('dokumen-paten');
-        }
-
         $paten->tanggal_permohonan = $request->tanggal_permohonan;
+
+        // Daftar file yang disimpan di public storage
+        $publicFiles = ['deskripsi_paten', 'abstrak_paten', 'gambar_paten', 'gambar_tampilan'];
+        // Daftar file yang disimpan di private storage
+        $privateFiles = [
+            'ktp_inventor' => 'ktp_inventor',
+            'pengalihan_hak' => 'pengalihan_hak',
+            'klaim' => 'klaim',
+            'pernyataan_kepemilikan' => 'pernyataan_kepemilikan',
+            'surat_kuasa' => 'surat_kuasa',
+        ];
+        // Proses unggahan file ke private storage
+        foreach ($privateFiles as $field => $storageName) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan di disk 'private' dalam folder 'dosen/dokumen-paten'
+                $path = $file->storeAs('dokumen-paten', $filename, 'private');
+                $paten->{$storageName} = $path;
+            }
+        }
+        // Proses unggahan file ke public storage
+        foreach ($publicFiles as $field) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan di disk 'public' dalam folder 'dokumen-paten'
+                $path = $file->storeAs('dokumen-paten', $filename, 'public');
+                $paten->{$field} = $path;
+            }
+        }
+
         $paten->save($validasidata);
-        return redirect('/admin/paten')->with('success', 'Data Paten Berhasil Ditambahkan'); 
+        return redirect('/admin/paten')->with('success', 'Data Paten Berhasil Ditambahkan');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function cari(Request $request)
-    {
-        
-    }
+    public function cari(Request $request) {}
     public function create()
     {
         //
@@ -313,13 +309,15 @@ class AdminPatenController extends Controller
     public function show(string $id)
     {
         $p = Paten::with('cek')->find($id);
+        // dd($p->sertifikat_paten);
+
         return view('admin.adminpaten.showpaten.index', compact('p'));
     }
 
     public function viewSensitifFilesPaten($filename)
     {
         // Path file di disk 'private'
-        $filePaten = storage_path('app/public/umum/dokumen-paten/' . $filename);
+        $filePaten = storage_path('app/private/dokumen-paten/' . $filename);
 
         // Pastikan file ada
         if (!file_exists($filePaten)) {
@@ -328,16 +326,71 @@ class AdminPatenController extends Controller
 
         // Cari data paten berdasarkan salah satu kolom file
         $paten = Paten::where(function ($query) use ($filename) {
-            $query->where('ktp_inventor', 'umum/dokumen-paten/' . $filename)
-                ->orWhere('data_pengaju2', 'umum/dokumen-paten/' . $filename)
-                ->orWhere('pengalihan_hak', 'umum/dokumen-paten/' . $filename)
-                ->orWhere('klaim', 'umum/dokumen-paten/' . $filename)
-                ->orWhere('pernyataan_kepemilikan', 'umum/dokumen-paten/' . $filename)
-                ->orWhere('surat_kuasa', 'umum/dokumen-paten/' . $filename);
+            $query->where('ktp_inventor', 'dokumen-paten/' . $filename)
+                ->orWhere('data_pengaju2', 'dokumen-paten/' . $filename)
+                ->orWhere('pengalihan_hak', 'dokumen-paten/' . $filename)
+                ->orWhere('klaim', 'dokumen-paten/' . $filename)
+                ->orWhere('pernyataan_kepemilikan', 'dokumen-paten/' . $filename)
+                ->orWhere('surat_kuasa', 'dokumen-paten/' . $filename);
         })->first();
-
         // Validasi akses: hanya pemilik atau admin/verifikator yang bisa melihat
-        if (!$paten  || $paten->user_id !== auth()->id()) {
+        if ($paten->user_id !== auth()->id() && !in_array(auth()->user()->role, ['Checker', 'Admin'])) {
+            abort(403, 'Anda tidak memiliki akses ke file ini.');
+        }
+        // Kirim file sebagai respons
+        return response()->file($filePaten);
+    }
+
+    public function viewPublicFilesPaten($filename)
+    {
+        // Path file di disk 'private'
+        $filePaten = storage_path('app/public/dokumen-paten/' . $filename);
+
+        // Pastikan file ada
+        if (!file_exists($filePaten)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+
+        // Cari data paten berdasarkan salah satu kolom file
+        $paten = Paten::where(function ($query) use ($filename) {
+            $query->Where('abstrak_paten', 'dokumen-paten/' . $filename)
+                ->orWhere('deskripsi_paten', 'dokumen-paten/' . $filename)
+                ->orWhere('gambar_paten', 'dokumen-paten/' . $filename)
+                ->orWhere('gambar_tampilan', 'dokumen-paten/' . $filename)
+                ->orWhere('sertifikat_paten', 'dokumen-paten/' . $filename);
+        })->first();
+        // Validasi akses: hanya pemilik atau admin/verifikator yang bisa melihat
+        if (!$paten || ($paten->user_id !== auth()->id() && !in_array(auth()->user()->role, ['Checker', 'Admin']))) {
+            abort(403, 'Anda tidak memiliki akses ke file ini.');
+        }
+
+        // Kirim file sebagai respons
+        return response()->file($filePaten);
+    }
+
+    public function viewFilesPaten($filename)
+    {
+        // Path file di disk 'private'
+        $filePaten = storage_path('app/public/dokumen-paten/' . $filename);
+
+        // Pastikan file ada
+        if (!file_exists($filePaten)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+        // Cari data paten berdasarkan salah satu kolom file
+        $paten = Paten::where(function ($query) use ($filename) {
+            $query
+                ->Where('abstrak_paten', 'dokumen-paten/' . $filename)
+                ->orWhere('deskripsi_paten', 'dokumen-paten/' . $filename)
+                ->orWhere('gambar_paten', 'dokumen-paten/' . $filename)
+                ->orWhere('gambar_tampilan', 'dokumen-paten/' . $filename)
+                ->orWhere('sertifikat_paten', 'dokumen-paten/' . $filename);
+        })->first();
+        // Validasi akses: hanya pemilik atau admin/verifikator yang bisa melihat
+        // if (!$paten || $paten->user_id !== auth()->id()) {
+        //     abort(403, 'Anda tidak memiliki akses ke file ini.');
+        // }
+        if (!$paten || ($paten->user_id !== auth()->id() && auth()->user()->role !== 'Admin')) {
             abort(403, 'Anda tidak memiliki akses ke file ini.');
         }
 
@@ -351,160 +404,233 @@ class AdminPatenController extends Controller
     public function edit(string $id)
     {
         $p = Paten::find($id);
-        if($p->institusi === 'Dosen'){
+        if ($p->institusi === 'Dosen') {
             return view('admin.adminpaten.editpaten.index', compact('p'));
-        }else if($p->institusi === 'Umum'){
+        } else if ($p->institusi === 'Umum') {
             return view('admin.adminpaten.editpaten.umum', compact('p'));
         }
     }
 
+    // public function updateData(Request $request, string $id)
+    // {
+    //     // Validasi input
+    //     $validasidata = $request->validate([
+    //         'nama_lengkap' => 'required',
+    //         'alamat' => 'required',
+    //         'no_telepon' => 'required|max:14',
+    //         'tanggal_lahir' => 'required|date',
+    //         'ktp_inventor' => 'nullable|mimes:pdf|max:2028',
+    //         'email' => 'required|email',
+    //         'kewarganegaraan' => 'required',
+    //         'kode_pos' => 'required|integer',
+    //         'data_pengaju2' => 'nullable|mimes:xlsx',
+    //         'institusi' => 'required|string',
+    //         'jurusan' => 'required',
+    //         'prodi' => 'required',
+    //         'jenis_paten' => 'required',
+    //         'judul_paten' => 'required',
+    //         'deskripsi_paten' => 'nullable|mimes:pdf|max:2028',
+    //         'abstrak_paten' => 'nullable|mimes:pdf|max:2028',
+    //         'pengalihan_hak' => 'nullable|mimes:pdf|max:2028',
+    //         'klaim' => 'nullable|mimes:pdf|max:2028',
+    //         'pernyataan_kepemilikan' => 'nullable|mimes:pdf|max:2028',
+    //         'surat_kuasa' => 'nullable|mimes:pdf|max:2028',
+    //         'gambar_paten' => 'nullable|mimes:pdf|max:2028',
+    //         'gambar_tampilan' => 'nullable|mimes:pdf|max:2028',
+    //         'tanggal_permohonan' => 'required'
+    //     ]);
+
+    //     try {
+    //         // Cari data paten berdasarkan ID
+    //         $paten = Paten::findOrFail($id);
+
+    //         // Perbarui field non-file
+    //         $paten->nama_lengkap = $request->nama_lengkap;
+    //         $paten->alamat = $request->alamat;
+    //         $paten->no_telepon = $request->no_telepon;
+    //         $paten->tanggal_lahir = $request->tanggal_lahir;
+    //         $paten->email = $request->email;
+    //         $paten->kewarganegaraan = $request->kewarganegaraan;
+    //         $paten->kode_pos = $request->kode_pos;
+    //         $paten->institusi = $request->institusi;
+    //         $paten->jurusan = $request->jurusan;
+    //         $paten->prodi = $request->prodi;
+    //         $paten->jenis_paten = $request->jenis_paten;
+    //         $paten->judul_paten = $request->judul_paten;
+    //         $paten->tanggal_permohonan = $request->tanggal_permohonan;
+
+    //         // Daftar field file untuk di-update
+    //         $privateFiles = [
+    //             'ktp_inventor' => 'ktp_inventor',
+    //             'data_pengaju2' => 'data_pengaju2',
+    //             'pengalihan_hak' => 'pengalihan_hak',
+    //             'klaim' => 'klaim',
+    //             'pernyataan_kepemilikan' => 'pernyataan_kepemilikan',
+    //             'surat_kuasa' => 'surat_kuasa'
+    //         ];
+    //         $publicFiles = ['deskripsi_paten', 'abstrak_paten', 'gambar_paten', 'gambar_tampilan'];
+
+    //         // Perbarui file jika ada yang diunggah
+    //         foreach ($privateFiles as $field => $storageName) {
+    //             if ($request->hasFile($field)) {
+    //                 // Hapus file lama jika ada
+    //                 if ($paten->{$storageName}) {
+    //                     Storage::delete($paten->{$storageName});
+    //                 }
+    //                 $file = $request->file($field);
+    //                 $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+    //                 // Simpan di disk 'private' dalam folder 'dosen/dokumen-paten'
+    //                 $path = $file->storeAs('dokumen-paten', $filename, 'private');
+    //                 $paten->{$storageName} = $path;
+    //             }
+    //         }
+    //         foreach ($publicFiles as $field => $storageName) {
+    //             if ($request->hasFile($field)) {
+    //                 // Hapus file lama jika ada
+    //                 if ($paten->{$storageName}) {
+    //                     Storage::delete($paten->{$storageName});
+    //                 }
+    //                 $file = $request->file($field);
+    //                 $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+    //                 // Simpan di disk 'private' dalam folder 'dosen/dokumen-paten'
+    //                 $path = $file->storeAs('dokumen-paten', $filename, 'public');
+    //                 $paten->{$storageName} = $path;
+    //             }
+    //         }
+
+    //         // Simpan perubahan ke database
+    //         $paten->save($validasidata);
+
+    //         // Redirect dengan pesan sukses
+    //         return redirect('/admin/paten')->with('success', 'Data Paten berhasil diperbarui!');
+    //     } catch (\Exception $e) {
+    //         // Log error dan tampilkan pesan error
+    //         Log::error('Error saat mengupdate paten: ' . $e->getMessage());
+    //         return redirect('/admin/paten')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+    //     }
+    // }
+
+    // return redirect('/admin/paten')->with('success', 'Data paten berhasil di update');
+
+
     public function updateData(Request $request, string $id)
     {
-        $validasidata = $request->validate([
-            'nama_lengkap' => 'required|string',
-            'alamat' => 'required|string',
-            'no_telepon' => 'required',
-            'tanggal_lahir' => 'required|date',
-            'ktp_inventor' => 'required|mimes:pdf|max:2028',
-            'email' => 'required|email',
-            'kewarganegaraan' => 'required|string',
-            'kode_pos' => 'required|integer',
-            'institusi' => 'required',
-            'data_pengaju2' => 'mimes:xlsx',
-            'jurusan' => 'required',
-            'prodi' => 'required',
-            'jenis_paten' => 'required',
-            'judul_paten' => 'required|string',
-            'deskripsi_paten' => 'required|mimes:pdf|max:2028',
-            'abstrak_paten' => 'required|mimes:pdf|max:2028',
-            'pengalihan_hak' => 'required|mimes:pdf|max:2028',
-            'klaim' => 'required|mimes:pdf|max:2028',
-            'pernyataan_kepemilikan' => 'required|mimes:pdf',
-            'surat_kuasa' => 'required|mimes:pdf|max:2028',
-            'gambar_paten' => 'required|mimes:pdf|max:2028',
-            'gambar_tampilan' => 'required|mimes:pdf|max:2028',
+        // Validasi input; untuk file diupdate, gunakan aturan 'nullable' agar tidak wajib diunggah ulang
+        $request->validate([
+            'nama_lengkap'              => 'required',
+            'alamat'                    => 'required',
+            'no_telepon'                => 'required|max:14',
+            'tanggal_lahir'             => 'required|date',
+            'ktp_inventor'              => 'nullable|mimes:pdf|max:2028',
+            'email'                     => 'required|email',
+            'kewarganegaraan'           => 'required',
+            'kode_pos'                  => 'required|integer',
+            'data_pengaju2'             => 'nullable|mimes:xlsx',
+            'institusi'                 => 'required|string',
+            'jurusan'                   => 'required',
+            'prodi'                     => 'required',
+            'jenis_paten'               => 'required',
+            'judul_paten'               => 'required',
+            'deskripsi_paten'           => 'nullable|mimes:pdf|max:2028',
+            'abstrak_paten'             => 'nullable|mimes:pdf|max:2028',
+            'pengalihan_hak'            => 'nullable|mimes:pdf|max:2028',
+            'klaim'                     => 'nullable|mimes:pdf|max:2028',
+            'pernyataan_kepemilikan'    => 'nullable|mimes:pdf|max:2028',
+            'surat_kuasa'               => 'nullable|mimes:pdf|max:2028',
+            'gambar_paten'              => 'nullable|mimes:pdf|max:2028',
+            'gambar_tampilan'           => 'nullable|mimes:pdf|max:2028',
+            'tanggal_permohonan'        => 'required'
         ]);
 
-        $paten = Paten::find($id);
+        // Temukan data Paten yang akan diupdate
+        $paten = Paten::findOrFail($id);
 
-        // Mengupdate field yang tidak terkait dengan file
-        $paten->nama_lengkap = $request->nama_lengkap;
-        $paten->alamat = $request->alamat;
-        $paten->no_telepon = $request->no_telepon;
-        $paten->tanggal_lahir = $request->tanggal_lahir;
-        $paten->email = $request->email;
-        $paten->kewarganegaraan = $request->kewarganegaraan;
-        $paten->kode_pos = $request->kode_pos;
-        $paten->institusi = $request->institusi;
-        $paten->jurusan = $request->jurusan;
-        $paten->prodi = $request->prodi;
-        $paten->jenis_paten = $request->jenis_paten;
-        $paten->judul_paten = $request->judul_paten;
-        $paten->tanggal_permohonan = $request->tanggal_permohonan;
+        // Update field yang tidak terkait file
+        $paten->nama_lengkap         = $request->nama_lengkap;
+        $paten->alamat               = $request->alamat;
+        $paten->no_telepon           = $request->no_telepon;
+        $paten->tanggal_lahir        = $request->tanggal_lahir;
+        $paten->email                = $request->email;
+        $paten->kewarganegaraan      = $request->kewarganegaraan;
+        $paten->kode_pos             = $request->kode_pos;
+        $paten->institusi            = $request->institusi;
+        $paten->jurusan              = $request->jurusan;
+        $paten->prodi                = $request->prodi;
+        $paten->jenis_paten          = $request->jenis_paten;
+        $paten->judul_paten          = $request->judul_paten;
+        $paten->tanggal_permohonan   = $request->tanggal_permohonan;
 
-        // Mengupdate file jika ada file baru yang diunggah
-        if ($request->hasFile('ktp_inventor')) {
-            // Opsional: Hapus file lama jika perlu
-            if ($paten->ktp_inventor) {
-                Storage::delete($paten->ktp_inventor);
+        $privateFiles = [
+            'ktp_inventor'           => 'ktp_inventor',
+            'data_pengaju2'          => 'data_pengaju2',
+            'pengalihan_hak'         => 'pengalihan_hak',
+            'klaim'                  => 'klaim',
+            'pernyataan_kepemilikan' => 'pernyataan_kepemilikan',
+            'surat_kuasa'            => 'surat_kuasa'
+        ];
+
+        foreach ($privateFiles as $field => $storageName) {
+            if ($request->hasFile($field)) {
+                // Jika ada file lama, hapus dari disk 'private'
+                if ($paten->{$storageName}) {
+                    Storage::disk('private')->delete($paten->{$storageName});
+                }
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan file ke folder 'dokumen-paten' pada disk 'private'
+                $path = $file->storeAs('dokumen-paten', $filename, 'private');
+                $paten->{$storageName} = $path;
             }
-            $paten->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-paten');
         }
 
-        if ($request->hasFile('data_pengaju2')) {
-            if ($paten->data_pengaju2) {
-                Storage::delete($paten->data_pengaju2);
+        $publicFiles = ['deskripsi_paten', 'abstrak_paten', 'gambar_paten', 'gambar_tampilan'];
+        foreach ($publicFiles as $field) {
+            if ($request->hasFile($field)) {
+                if ($paten->{$field}) {
+                    Storage::disk('public')->delete($paten->{$field});
+                }
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan file ke folder 'dokumen-paten' pada disk 'public'
+                $path = $file->storeAs('dokumen-paten', $filename, 'public');
+                $paten->{$field} = $path;
             }
-            $paten->data_pengaju2 = $request->file('data_pengaju2')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('abstrak_paten')) {
-            if ($paten->abstrak_paten) {
-                Storage::delete($paten->abstrak_paten);
-            }
-            $paten->abstrak_paten = $request->file('abstrak_paten')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('deskripsi_paten')) {
-            if ($paten->deskripsi_paten) {
-                Storage::delete($paten->deskripsi_paten);
-            }
-            $paten->deskripsi_paten = $request->file('deskripsi_paten')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('pengalihan_hak')) {
-            if ($paten->pengalihan_hak) {
-                Storage::delete($paten->pengalihan_hak);
-            }
-            $paten->pengalihan_hak = $request->file('pengalihan_hak')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('klaim')) {
-            if ($paten->klaim) {
-                Storage::delete($paten->klaim);
-            }
-            $paten->klaim = $request->file('klaim')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('pernyataan_kepemilikan')) {
-            if ($paten->pernyataan_kepemilikan) {
-                Storage::delete($paten->pernyataan_kepemilikan);
-            }
-            $paten->pernyataan_kepemilikan = $request->file('pernyataan_kepemilikan')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('surat_kuasa')) {
-            if ($paten->surat_kuasa) {
-                Storage::delete($paten->surat_kuasa);
-            }
-            $paten->surat_kuasa = $request->file('surat_kuasa')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('gambar_paten')) {
-            if ($paten->gambar_paten) {
-                Storage::delete($paten->gambar_paten);
-            }
-            $paten->gambar_paten = $request->file('gambar_paten')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('gambar_tampilan')) {
-            if ($paten->gambar_tampilan) {
-                Storage::delete($paten->gambar_tampilan);
-            }
-            $paten->gambar_tampilan = $request->file('gambar_tampilan')->store('dokumen-paten');
         }
 
         // Simpan perubahan ke database
-        $paten->save($validasidata);
-        return redirect('/admin/paten')->with('success','Data paten berhasil di update');
+        $paten->save();
+
+        return redirect('/admin/paten')->with('success', 'Data Paten berhasil diupdate!');
     }
+
     public function updateDataUmum(Request $request, string $id)
     {
+        // Validasi input data
         $validasidata = $request->validate([
-            'nama_lengkap' => 'required|string',
-            'alamat' => 'required|string',
-            'no_telepon' => 'required',
+            'nama_lengkap' => 'required',
+            'alamat' => 'required',
+            'no_telepon' => 'required|max:14',
             'tanggal_lahir' => 'required|date',
             'ktp_inventor' => 'required|mimes:pdf|max:2028',
             'email' => 'required|email',
-            'kewarganegaraan' => 'required|string',
+            'kewarganegaraan' => 'required',
             'kode_pos' => 'required|integer',
             'institusi' => 'required',
             'jenis_paten' => 'required',
-            'judul_paten' => 'required|string',
+            'judul_paten' => 'required',
             'deskripsi_paten' => 'required|mimes:pdf|max:2028',
             'abstrak_paten' => 'required|mimes:pdf|max:2028',
             'pengalihan_hak' => 'required|mimes:pdf|max:2028',
             'klaim' => 'required|mimes:pdf|max:2028',
-            'pernyataan_kepemilikan' => 'required|mimes:pdf',
+            'pernyataan_kepemilikan' => 'required|mimes:pdf|max:2028',
             'surat_kuasa' => 'required|mimes:pdf|max:2028',
             'gambar_paten' => 'required|mimes:pdf|max:2028',
             'gambar_tampilan' => 'required|mimes:pdf|max:2028',
+            'tanggal_permohonan' => 'required'
         ]);
 
-        $paten = Paten::find($id);
-
-        // Mengupdate field yang tidak terkait dengan file
+        // Cari data paten berdasarkan ID
+        $paten = Paten::findOrFail($id);
         $paten->nama_lengkap = $request->nama_lengkap;
         $paten->alamat = $request->alamat;
         $paten->no_telepon = $request->no_telepon;
@@ -517,74 +643,46 @@ class AdminPatenController extends Controller
         $paten->judul_paten = $request->judul_paten;
         $paten->tanggal_permohonan = $request->tanggal_permohonan;
 
-        // Mengupdate file jika ada file baru yang diunggah
-        if ($request->hasFile('ktp_inventor')) {
-            // Opsional: Hapus file lama jika perlu
-            if ($paten->ktp_inventor) {
-                Storage::delete($paten->ktp_inventor);
+        // Daftar field file untuk di-update
+        $privateFiles = [
+            'ktp_inventor'           => 'ktp_inventor',
+            'pengalihan_hak'         => 'pengalihan_hak',
+            'klaim'                  => 'klaim',
+            'pernyataan_kepemilikan' => 'pernyataan_kepemilikan',
+            'surat_kuasa'            => 'surat_kuasa'
+        ];
+
+        foreach ($privateFiles as $field => $storageName) {
+            if ($request->hasFile($field)) {
+                // Jika ada file lama, hapus dari disk 'private'
+                if ($paten->{$storageName}) {
+                    Storage::disk('private')->delete($paten->{$storageName});
+                }
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan file ke folder 'dokumen-paten' pada disk 'private'
+                $path = $file->storeAs('dokumen-paten', $filename, 'private');
+                $paten->{$storageName} = $path;
             }
-            $paten->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-paten');
         }
 
-        if ($request->hasFile('abstrak_paten')) {
-            if ($paten->abstrak_paten) {
-                Storage::delete($paten->abstrak_paten);
+        $publicFiles = ['deskripsi_paten', 'abstrak_paten', 'gambar_paten', 'gambar_tampilan'];
+        foreach ($publicFiles as $field) {
+            if ($request->hasFile($field)) {
+                if ($paten->{$field}) {
+                    Storage::disk('public')->delete($paten->{$field});
+                }
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan file ke folder 'dokumen-paten' pada disk 'public'
+                $path = $file->storeAs('dokumen-paten', $filename, 'public');
+                $paten->{$field} = $path;
             }
-            $paten->abstrak_paten = $request->file('abstrak_paten')->store('dokumen-paten');
         }
-
-        if ($request->hasFile('deskripsi_paten')) {
-            if ($paten->deskripsi_paten) {
-                Storage::delete($paten->deskripsi_paten);
-            }
-            $paten->deskripsi_paten = $request->file('deskripsi_paten')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('pengalihan_hak')) {
-            if ($paten->pengalihan_hak) {
-                Storage::delete($paten->pengalihan_hak);
-            }
-            $paten->pengalihan_hak = $request->file('pengalihan_hak')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('klaim')) {
-            if ($paten->klaim) {
-                Storage::delete($paten->klaim);
-            }
-            $paten->klaim = $request->file('klaim')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('pernyataan_kepemilikan')) {
-            if ($paten->pernyataan_kepemilikan) {
-                Storage::delete($paten->pernyataan_kepemilikan);
-            }
-            $paten->pernyataan_kepemilikan = $request->file('pernyataan_kepemilikan')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('surat_kuasa')) {
-            if ($paten->surat_kuasa) {
-                Storage::delete($paten->surat_kuasa);
-            }
-            $paten->surat_kuasa = $request->file('surat_kuasa')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('gambar_paten')) {
-            if ($paten->gambar_paten) {
-                Storage::delete($paten->gambar_paten);
-            }
-            $paten->gambar_paten = $request->file('gambar_paten')->store('dokumen-paten');
-        }
-
-        if ($request->hasFile('gambar_tampilan')) {
-            if ($paten->gambar_tampilan) {
-                Storage::delete($paten->gambar_tampilan);
-            }
-            $paten->gambar_tampilan = $request->file('gambar_tampilan')->store('dokumen-paten');
-        }
-
         // Simpan perubahan ke database
         $paten->save($validasidata);
-        return redirect('/admin/paten')->with('success','Data paten berhasil di update');
+
+        return redirect('/admin/paten')->with('success', 'Data paten berhasil di update');
     }
 
     /**
@@ -592,29 +690,54 @@ class AdminPatenController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $validasidata = $request->validate([
-            'status'=>'required',
-            'sertifikat_paten'=> 'mimes:pdf'
+        // Validasi input, file sertifikat_paten bersifat opsional
+        $data = $request->validate([
+            'status' => 'required',
+            'sertifikat_paten' => 'nullable|mimes:pdf'
         ]);
-        $paten = Paten::find($id);
-        
-        $paten->status = $request->status;
-        if ($request->file('sertifikat_paten') == null) {
-            $paten->sertifikat_paten = "";
-        }else{
-           $paten->sertifikat_paten = $request->file('sertifikat_paten')->store('dokumen-paten');  
+
+        // Cari data paten, jika tidak ditemukan otomatis error 404
+        $paten = Paten::findOrFail($id);
+
+        // Update status
+        $paten->status = $data['status'];
+
+        // Daftar field file yang ingin diproses
+        $publicFiles = [
+            // key: nama field di form, value: properti model yang akan diisi
+            'sertifikat_paten' => 'sertifikat_paten'
+        ];
+
+        foreach ($publicFiles as $field => $storageName) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                // Buat nama file baru dengan timestamp dan mengganti spasi dengan underscore
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan file di disk 'private' dalam folder 'dokumen-paten'
+                $path = $file->storeAs('dokumen-paten', $filename, 'public');
+                // Set nilai properti model sesuai dengan $storageName
+                $paten->{$storageName} = $path;
+            }
         }
-        $paten->save($validasidata);
-        // dd($request);
-        return redirect('/admin/paten')->with('success','Status paten berhasil di update');
+
+        // Simpan perubahan ke database
+        $paten->save();
+
+        return redirect('/admin/paten')->with('success', 'Status paten berhasil di update');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy2(string $id)
     {
         Paten::with('cek')->findOrFail($id)->delete();
-        return redirect()->back()->with('success','Data paten berhasil dihapus');
+        return redirect()->back()->with('success', 'Data paten berhasil dihapus');
+    }
+    public function destroy(string $id)
+    {
+        $paten = Paten::with('cek')->findOrFail($id);
+        $paten->delete();
+        return redirect()->back()->with('success', 'Data paten dan file-file terkait berhasil dihapus');
     }
 }

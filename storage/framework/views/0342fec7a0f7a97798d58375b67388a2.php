@@ -59,15 +59,6 @@
             <!--app-content close-->
 
         </div>
-
-        <!-- Sidebar-right -->
-        
-        <!--/Sidebar-right-->
-
-        <!-- Country-selector modal-->
-        
-        <!-- Country-selector modal-->
-
         <!-- FOOTER -->
         <?php echo $__env->make('dosen.layout.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         <!-- FOOTER END -->

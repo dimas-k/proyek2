@@ -55,13 +55,19 @@
                                     </tr>
                                     <tr>
                                         <th>KTP</th>
-                                        <td>: <a href={{ asset('storage/' . $di->ktp_inventor) }} class=""
-                                                target="_blank">Lihat KTP</a></td>
+                                        <td>: <a href={{ route('private_di_verifikator', ['file' => basename($di->ktp_inventor)]) }}
+                                                class="" target="_blank">Lihat KTP</a></td>
                                     </tr>
                                     <tr>
                                         <th>Anggota Inventor</th>
-                                        <td>: <a href={{ asset('storage/' . $di->data_pengaju2) }} class=""
-                                                target="_blank">Download xlsx Anggota Inventor</a></td>
+                                        <td>:
+                                            @if ($di->data_pengaju2)
+                                                <a href="{{ route('private_di_verifikator', ['file' => basename($di->data_pengaju2)]) }}"
+                                                    target="_blank">Download xlsx Anggota Inventor</a>
+                                            @else
+                                                Tidak ada data untuk diunduh.
+                                            @endif
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Email</th>
@@ -102,24 +108,24 @@
                                         <td>: {{ $di->judul_di }}</td>
                                     </tr>
                                     <tr>
-                                        <th>uraian Desain</th>
-                                        <td>: <a href={{ asset('storage/' . $di->uraian_di) }} class=""
-                                                target="_blank">Lihat uraian Desain</a></td>
+                                        <th>Uraian Desain Industri</th>
+                                        <td>: <a href={{ route('private_di_verifikator', ['file' => basename($di->uraian_di)]) }}
+                                                class="" target="_blank">Lihat Uraian Desain Industri</a></td>
                                     </tr>
                                     <tr>
-                                        <th>gambar Desain</th>
-                                        <td>: <a href={{ asset('storage/' . $di->gambar_di) }} class=""
-                                                target="_blank">Lihat Gambar Desain</a></td>
+                                        <th>Gambar desain Industri</th>
+                                        <td>: <a href={{ route('private_di_verifikator', ['file' => basename($di->gambar_di)]) }}
+                                                class="" target="_blank">Lihat Gambar Desain Industri</a></td>
                                     </tr>
                                     <tr>
                                         <th>surat Kepemilikan</th>
-                                        <td>: <a href={{ asset('storage/' . $di->surat_kepemilikan) }} class=""
-                                                target="_blank">Lihat Surat Kepemilikan</a></td>
+                                        <td>: <a href={{ route('private_di_verifikator', ['file' => basename($di->surat_kepemilikan)]) }}
+                                                class="" target="_blank">Lihat Surat Kepemilikan</a></td>
                                     </tr>
                                     <tr>
-                                        <th>Pengalihan hak invensi</th>
-                                        <td>: <a href={{ asset('storage/' . $di->surat_pengalihan) }} class=""
-                                                target="_blank">Lihat Pengalihan Hak Invensi</a></td>
+                                        <th>Surat Pengalihan Hak</th>
+                                        <td>: <a href={{ route('private_di_verifikator', ['file' => basename($di->surat_pengalihan)]) }}
+                                                class="" target="_blank">Lihat Surat Pengalihan Hak</a></td>
                                     </tr>
 
                                     <tr>
@@ -134,8 +140,8 @@
                                     <tr>
                                         <th>Sertifikat Desain Industri</th>
                                         <td>: @if ($di->sertifikat_desain != '')
-                                                <a href={{ asset('storage/' . $di->sertifikat_desain) }}
-                                                    class="" target="_blank">Lihat sertifikat</a>
+                                                <a href={{ asset('storage/' . $di->sertifikat_desain) }} class=""
+                                                    target="_blank">Lihat sertifikat</a>
                                             @else
                                                 Desain Industri Ini Belum Mendapatkan Sertifikat
                                             @endif
@@ -153,18 +159,46 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <a class="btn btn-primary me-3"
+                                {{-- <a class="btn btn-primary me-3"
                                     href="/verifikator/cek/desain-industri/nilai/{{ request()->segment(5) }}">Nilai
                                     Data Desain Industri</a>
                                 <a href="/verifikator/cek/desain-industri/nilai/update/{{ request()->segment(5) }}"
-                                    class="btn btn-outline-secondary">Update Nilai Data Desain Industri</a>
+                                    class="btn btn-outline-secondary">Update Nilai Data Desain Industri</a> --}}
+
+                                <div class="mb-3">
+                                    @if ($check)
+                                        <!-- Data Desain Industri sudah dinilai -->
+                                        <!-- Tombol "Nilai Data Desain Industri" dinonaktifkan -->
+                                        <a class="btn btn-primary me-3 disabled" aria-disabled="true"
+                                            title="Data Desain Industri sudah dinilai. Gunakan Update">
+                                            Nilai Data Desain Industri
+                                        </a>
+                                        <!-- Tombol "Update nilai Data Desain Industri" aktif -->
+                                        <a href="/verifikator/cek/desain-industri/nilai/update/{{ $di->id }}"
+                                            class="btn btn-outline-secondary">
+                                            Update nilai Data Desain Industri
+                                        </a>
+                                    @else
+                                        <!-- Data hc belum dinilai -->
+                                        <!-- Tombol "Nilai Data hc" aktif -->
+                                        <a href="/verifikator/cek/desain-industri/nilai/{{ $di->id }}"
+                                            class="btn btn-primary me-3">
+                                            Nilai Data Desain Industri
+                                        </a>
+                                        <!-- Tombol "Update nilai Data Hak Cipta" dinonaktifkan -->
+                                        <a class="btn btn-outline-secondary disabled" aria-disabled="true"
+                                            title="Data Hak Cipta belum dinilai. Silahkan nilai terlebih dahulu">
+                                            Update nilai Data Desain Industri
+                                        </a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
-           
+
         </div>
         <!-- CONTAINER END -->
     </div>

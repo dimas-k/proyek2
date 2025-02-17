@@ -62,6 +62,11 @@ Route::post('/simpandi', [DesainIndustriController::class, 'store']);
 
 Route::get('/paten', [PatenController::class, 'index']);
 Route::get('/paten/show/{id}', [PatenController::class, 'show'])->name('paten.show');
+
+Route::get('/public/guest/dokumen-paten/{filename}', [PatenController::class, 'viewPublicFilesPatenGuest'])->name('public_paten_guest');    
+Route::get('/public/guest/dokumen-di/{filename}', [PatenController::class, 'viewPublicFilesDiGuest'])->name('public_di_guest');    
+Route::get('/public/guest/dokumen-hc/{filename}', [PatenController::class, 'viewPublicFilesHcGuest'])->name('public_hc_guest');    
+
 Route::get('/paten/pemeriksaan-formalitas', [PatenController::class, 'pemeriksaanFormalitas']);
 Route::get('/paten/menunggu-tanggapan-formalitas', [PatenController::class, 'menungguTanggapan']);
 Route::get('/paten/masa-pengumuman', [PatenController::class, 'masaPengumuman']);
@@ -139,7 +144,20 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::post('/admin/paten/update/{id}', [AdminPatenController::class, 'update'])->name('admin_paten.update');
     Route::get('/admin/paten/show/{id}', [AdminPatenController::class, 'show'])->name('admin_paten.show');
 
-    // Route::get('/public/paten/{file}', [AdminPatenController::class, 'viewSensitifFilesPaten'])->middleware(['auth', 'role:Admin'])->name('private_paten');    
+    Route::get('/paten/{file}', [AdminPatenController::class, 'viewSensitifFilesPaten'])
+    ->middleware(['auth', 'role:Admin'])
+    ->name('private_paten_admin');
+    Route::get('public/paten/{file}', [AdminPatenController::class, 'viewPublicFilesPaten'])
+    ->middleware(['auth', 'role:Admin'])
+    ->name('public_paten_admin');
+
+    Route::get('/hak-cipta/{file}', [AdminHakCiptaController::class, 'viewSensitifFilesHc'])->middleware(['auth', 'role:Admin'])->name('private_hc');
+    Route::get('/public/hak-cipta/{file}', [AdminHakCiptaController::class, 'viewPublicFilesHc'])->middleware(['auth', 'role:Admin'])->name('public_hc');    
+   
+    Route::get('/desain-industri/{file}', [AdminDesainIndustriController::class, 'viewSensitifFilesDi'])->middleware(['auth', 'role:Admin'])->name('private_di');  
+    Route::get('/public/desain-industri/{file}', [AdminDesainIndustriController::class, 'viewPublicFilesDi'])->middleware(['auth', 'role:Admin'])->name('public_di');  
+
+    Route::get('/sertifikat-paten/{file}', [AdminPatenController::class, 'viewFilesPaten'])->middleware(['auth', 'role:Admin'])->name('public_paten');    
 
 
     Route::get('/admin/paten/tambah/dosen/', [AdminPatenController::class, 'tambahPatenDosen'])->name('admin_paten.tambah');
@@ -173,8 +191,6 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::post('/admin/hak-cipta/tambah/dosen/store', [AdminHaKCiptaController::class, 'storeTambahHCDosen'])->name('hc.dosen.store');
     Route::get('/admin/hak-cipta/tambah/umum/', [AdminHaKCiptaController::class, 'tambahHcUmum']);
     Route::post('/admin/hak-cipta/tambah/umum/store', [AdminHaKCiptaController::class, 'storeTambahHcUmum'])->name('admin.tambahhc.umum');
-
-
 
     Route::get('/admin/desain-industri', [AdminDesainIndustriController::class, 'index']);
     Route::get('/admin/desain-industri/diberi', [AdminDesainIndustriController::class, 'diberi']);
@@ -229,7 +245,7 @@ Route::middleware(['auth', 'role:Dosen'])->group(function () {
     Route::get('/dosen/pengajuan/paten', [DosenController::class, 'pengajuanPaten']);
     Route::post('/dosen/pengajuan/paten/simpan', [DosenController::class, 'storePaten'])->name('simpan.dosen.paten');
     Route::get('/dosen/paten/lihat/{id}', [DosenController::class, 'lihatPaten'])->name('dsn.paten.lihat');
-    Route::get('dosen/paten/edit/{id}', [DosenController::class, 'editPaten'])->name('dsn.edit.paten');
+    Route::get('/dosen/paten/edit/{id}', [DosenController::class, 'editPaten'])->name('dsn.edit.paten');
     Route::post('/dosen/paten/update/{id}', [DosenController::class, 'updatePaten'])->name('dsn.update.paten');
     Route::get('/dosen/paten/hapus/{id}', [DosenController::class, 'hapusPaten'])->name('dsn.paten.hapus');
     Route::get('/paten/cari', [DosenController::class, 'cariPaten']);
@@ -242,14 +258,13 @@ Route::middleware(['auth', 'role:Dosen'])->group(function () {
     Route::get('/dosen/hak-cipta/pengajuan', [DosenController::class, 'pengajuanHc']);
     Route::post('/dosen/hak-cipta/pengajuan/simpan', [DosenController::class, 'storeHc']);
 
-    Route::get('/private/hc/dosen/{filename}', [DosenController::class, 'viewSensitifFilesHc'])->middleware(['auth', 'role:Dosen'])->name('private_hc_dosen');
-    Route::get('/private/di/dosen/{file}', [DosenController::class, 'viewSensitifFilesDi'])->middleware(['auth', 'role:Dosen'])->name('private_di_dosen');
-    Route::get('/private/paten/dosen/{file}', [DosenController::class, 'viewSensitifFilesPaten'])->middleware('auth', 'role:Dosen,Admin')->name('private_paten_dosen');    
-    // Route::get('/private/{file}', [DosenController::class, 'viewSensitifFiles'])->middleware('auth')->name('private');
-    // Route::get('/dokumen/{type}/{filename}', [DosenController::class, 'viewSensitifFiles'])->name('dokumen.view');
-    // Route::get('/dokumen/view/{type}/{filename}', [DosenController::class, 'viewSensitifFiles'])->name('dokumen.view');
-    // Route::get('/file/viewSensitifFile/{filename}/{type}', [DosenController::class, 'viewSensitifFile']);
-    // Route::get('/file/viewSensitifFile/{filename}/{type}', [DosenController::class, 'viewSensitifFile'])->name('file.viewSensitifFile');
+    Route::get('/private/dokumen-hc/{filename}', [DosenController::class, 'viewSensitifFilesHc'])->middleware(['auth', 'role:Dosen'])->name('private_hc_dosen');
+    Route::get('/private/dokumen-di/{file}', [DosenController::class, 'viewSensitifFilesDi'])->middleware(['auth', 'role:Dosen'])->name('private_di_dosen');
+    Route::get('/private/dokumen-paten/{filename}', [DosenController::class, 'viewSensitifFilesPaten'])->middleware('auth', 'role:Dosen')->name('private_paten_dosen'); 
+
+    Route::get('/public/dokumen-paten/{filename}', [DosenController::class, 'viewPublicFilesPaten'])->middleware('auth', 'role:Dosen')->name('public_paten_dosen');    
+    Route::get('/public/dokumen-di/{filename}', [DosenController::class, 'viewPublicFilesDi'])->middleware('auth', 'role:Dosen')->name('public_di_dosen');    
+    Route::get('/public/dokumen-hc/{filename}', [DosenController::class, 'viewPublicFilesHc'])->middleware('auth', 'role:Dosen')->name('public_hc_dosen');    
 
     Route::get('/hak-cipta/cari', [DosenController::class, 'cariHc']);
     Route::get('/dosen/desain-industri', [DosenController::class, 'desainIndustri']);
@@ -290,6 +305,7 @@ Route::middleware(['auth', 'role:Umum'])->group(function () {
     Route::get('/private/hc/umum/{filename}', [UmumController::class, 'viewSensitifFilesHc'])->middleware(['auth', 'role:Umum'])->name('private_hc_umum');
     Route::get('/private/di/umum/{file}', [UmumController::class, 'viewSensitifFilesDi'])->middleware(['auth', 'role:Umum'])->name('private_di_umum');
     Route::get('/private/paten/umum/{file}', [UmumController::class, 'viewSensitifFilesPaten'])->middleware(['auth', 'role:Umum'])->name('private_paten_umum');
+    Route::get('/public/paten/umum/{file}', [UmumController::class, 'viewPublicFilesPaten'])->middleware(['auth', 'role:Umum'])->name('public_paten_umum');
 
     Route::get('/umum/desain-industri', [UmumController::class, 'desainIndustri']);
     Route::get('/umum/desain-industri/pengajuan', [UmumController::class, 'pengajuanDi']);
@@ -320,8 +336,13 @@ Route::middleware(['auth', 'role:Checker'])->group(function () {
     Route::post('/verifikator/cek/paten/nilai/update/{id}', [CheckerController::class, 'updateCekPaten'])->name('update.cek.paten');
     Route::get('/verifikator/cek/paten/cari', [CheckerController::class, 'cariPaten']);
 
-    Route::get('/private/paten/cek_dosen/{file}', [CheckerController::class, 'viewSensitifFilesPatenDosen'])->middleware(['auth', 'role:Checker'])->name('private_paten_cek_dosen');
-    Route::get('/private/paten/cek_umum/{file}', [CheckerController::class, 'viewSensitifFilesPatenUmum'])->middleware(['auth', 'role:Checker'])->name('private_paten_cek_umum');
+    Route::get('/private/cek/dokumen-paten/{file}', [CheckerController::class, 'viewSensitifFilesPaten'])->middleware(['auth', 'role:Checker'])->name('private_paten_verifikator');
+    Route::get('/private/cek/dokumen-hc/{file}', [CheckerController::class, 'viewSensitifFilesHc'])->middleware(['auth', 'role:Checker'])->name('private_hc_verifikator');
+    Route::get('/private/cek/dokumen-di/{file}', [CheckerController::class, 'viewSensitifFilesDi'])->middleware(['auth', 'role:Checker'])->name('private_di_verifikator');
+
+    Route::get('/public/cek/dokumen-paten/{file}', [CheckerController::class, 'viewPublicFilesPaten'])->middleware(['auth', 'role:Checker'])->name('public_paten_verifikator');
+    Route::get('/public/cek/dokumen-hc/{file}', [CheckerController::class, 'viewPublicFilesHc'])->middleware(['auth', 'role:Checker'])->name('public_hc_verifikator');
+    Route::get('/public/cek/dokumen-di/{file}', [CheckerController::class, 'viewPublicFilesDi'])->middleware(['auth', 'role:Checker'])->name('public_di_verifikator');
 
 
     Route::get('/verifikator/cek/hak-cipta', [CheckerController::class, 'lamanHc']);

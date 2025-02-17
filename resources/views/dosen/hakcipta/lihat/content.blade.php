@@ -105,13 +105,17 @@
                                     <tr>
                                         <th>Dokumen Invensi</th>
                                         <td>:
-                                            <a href="{{ asset('storage/' . $hc->dokumen_invensi)  }}"
-                                                target="_blank">Lihat Dokumen Invensi</a>
+                                            <a href="{{ route('public_hc_dosen', ['filename' => basename($hc->dokumen_invensi)]) }}"
+                                                target="_blank">Lihat Dokumen Invensi
+                                            </a>
                                     </tr>
                                     <tr>
                                         <th>Surat Pengalihan Hak Cipta</th>
-                                        <td>: <a href="{{ route('private_hc_dosen', ['filename' => basename($hc->surat_pengalihan)]) }}"
-                                                target="_blank">Lihat Surat Pengalihan Hak Cipta</a></td>
+                                        <td>: 
+                                            <a href="{{ route('private_hc_dosen', ['filename' => basename($hc->surat_pengalihan)]) }}"
+                                                    target="_blank">Lihat Surat Pengalihan Hak Cipta
+                                            </a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Surat Pernyataan</th>
@@ -141,7 +145,7 @@
                                         <th>Sertifikat Hak Cipta</th>
                                         <td>:
                                             @if ($hc->sertifikat_hakcipta != '')
-                                                <a href="{{ route('private_hc_dosen', ['filename' => basename($hc->sertifikat_hakcipta)]) }}"
+                                                <a href="{{ route('public_hc_dosen', ['filename' => basename($hc->sertifikat_hakcipta)]) }}"
                                                     target="_blank">Lihat Sertifikat</a>
                                             @else
                                                 Hak Cipta Anda Belum Mendapatkan Sertifikat

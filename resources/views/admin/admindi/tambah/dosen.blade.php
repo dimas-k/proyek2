@@ -54,9 +54,22 @@
                         <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                         <div class="container">
                             <div class="mb-3">
-                                <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama_lengkap"
-                                    placeholder="Masukkan Nama"name="nama_lengkap">
+                                <div class="mb-3">
+                                    <label for="user_id">Pilih Pemilik Desain Industri</label>
+                                    <select name="user_id" id="user_id" class="form-control" onchange="updateNamaLengkap()">
+                                        <option value="" selected disabled>Pilih Nama</option>
+                                        @foreach ($users as $user)
+                                            <option value="{{ $user->id }}" data-nama="{{ $user->nama_lengkap }}">
+                                                {{ $user->nama_lengkap }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Nama akan terisi otomatis" readonly>
+                                </div>
                                 {{-- @error('nama_lengkap')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -173,28 +186,28 @@
                             <label for="" class="form-label">Jenis Desain</label>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="jenis_di" id="satu_desain"
-                                    value="Satu desain">
+                                    value="Satu Desain">
                                 <label class="form-check-label" for="Satu desain" id="satu_desain">
                                     Satu Desain
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="jenis_di" id="p_satu_desain"
-                                    value="Pecahan satu desain">
+                                    value="Pecahan Satu Desain">
                                 <label class="form-check-label" for="Pecahan satu desain" id="p_satu_desain">
                                     Pecahan Satu Desain
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="jenis_di" id="satu_kesatuan"
-                                    value="Satu kesatuan desain">
+                                    value="Satu Kesatuan Desain">
                                 <label class="form-check-label" for="Satu kesatuan desain" id="satu_kesatuan">
                                     Satu Kesatuan Desain
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="jenis_di" id="kesatuan_pecahan"
-                                    value="Kesatuan pecahan satu desain">
+                                    value="Kesatuan Pecahan Satu Desain">
                                 <label class="form-check-label" for="Kesatuan pecahan satu desain"
                                     id="kesatuan_pecahan">
                                     Kesatuan Pecahan Satu Desain
@@ -319,6 +332,15 @@
         </script>
         <script src="{{ asset('assets-user/js/jquery.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function updateNamaLengkap() {
+                var select = document.getElementById("user_id");
+                var selectedOption = select.options[select.selectedIndex];
+                var namaLengkap = selectedOption.getAttribute("data-nama");
+        
+                document.getElementById("nama_lengkap").value = namaLengkap;
+            }
+        </script>
         <script>
             $(document).ready(function() {
                 $('#uploadForm').submit(function(e) {

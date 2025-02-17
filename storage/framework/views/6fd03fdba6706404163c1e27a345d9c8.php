@@ -126,7 +126,7 @@
     <!-- CUSTOM JS -->
     <script src="<?php echo e(asset('assets-user/js/custom.js')); ?>"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 
 
 </body>

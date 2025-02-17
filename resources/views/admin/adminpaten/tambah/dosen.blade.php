@@ -56,15 +56,22 @@
                         <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                         <div class="container">
                             <div class="mb-3">
-                                <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama_lengkap"
-                                    placeholder="Masukkan Nama"name="nama_lengkap">
-                                {{-- @error('nama_lengkap')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror --}}
+                                <label for="user_id">Pilih Pemilik Paten</label>
+                                <select name="user_id" id="user_id" class="form-control" onchange="updateNamaLengkap()">
+                                    <option value="" selected disabled>Pilih Nama</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}" data-nama="{{ $user->nama_lengkap }}">
+                                            {{ $user->nama_lengkap }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
+                            
+                            <div class="mb-3">
+                                <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Nama akan terisi otomatis" readonly>
+                            </div>
+
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
                                 <input type="text" class="form-control" id="alamat" placeholder="Masukkan Alamat"
@@ -183,7 +190,7 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="jenis_paten" id="paten_s"
                                     value="Paten sederhana">
-                                <label class="form-check-label" for="Paten sederhana" for="paten_s">
+                                <label class="form-check-label" for="Paten Sederhana" for="paten_s">
                                     Paten Sederhana
                                 </label>
                             </div>
@@ -203,7 +210,8 @@
                                 <input type="file" class="form-control" id="abstrak" placeholder=""
                                     name="abstrak_paten">
                                 <span class="text-danger"><i class="bi bi-exclamation-triangle-fill me-2"
-                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari 10mb</span>
+                                        data-bs-toggle="tooltip"></i>File harus bertipe .pdf dan tidak lebih dari
+                                    10mb</span>
                                 {{-- @error('abstrak_paten')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -362,10 +370,20 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script>
+            function updateNamaLengkap() {
+                var select = document.getElementById("user_id");
+                var selectedOption = select.options[select.selectedIndex];
+                var namaLengkap = selectedOption.getAttribute("data-nama");
+        
+                document.getElementById("nama_lengkap").value = namaLengkap;
+            }
+        </script>
+
+        <script>
             $(document).ready(function() {
                 $('#uploadForm').submit(function(e) {
                     e.preventDefault(); // Prevent automatic form submission
-        
+
                     // Non-file inputs
                     const fields = {
                         nama: $('#nama_lengkap').val(),
@@ -381,7 +399,7 @@
                         tanggal_pengajuan: $('#tanggalpengajuan').val(),
                         jenis_paten: $('input[name="jenis_paten"]:checked').val(),
                     };
-        
+
                     // File inputs
                     const files = {
                         ktp: $('#ktp')[0].files[0],
@@ -395,11 +413,11 @@
                         g_paten: $('#g_paten')[0].files[0],
                         g_tampilan: $('#g_tampilan')[0].files[0],
                     };
-        
+
                     const maxSize = 10 * 1024 * 1024; // Max size: 10MB
                     const allowedExtensionPDF = /(\.pdf)$/i;
                     const allowedExtensionExcel = /(\.xlsx)$/i;
-        
+
                     // Validation function
                     function showError(message) {
                         Swal.fire({
@@ -411,7 +429,7 @@
                             timer: 2500
                         });
                     }
-        
+
                     // Validate non-file inputs
                     for (var field in fields) {
                         if (!fields[field]) {
@@ -419,10 +437,12 @@
                             return false;
                         }
                     }
-        
+
                     // List of mandatory file fields
-                    const mandatoryFiles = ['ktp', 'abstrak', 'deskripsi', 'pengalihan_hak', 'klaim', 'kepemilikan', 'kuasa', 'g_paten', 'g_tampilan'];
-        
+                    const mandatoryFiles = ['ktp', 'abstrak', 'deskripsi', 'pengalihan_hak', 'klaim',
+                        'kepemilikan', 'kuasa', 'g_paten', 'g_tampilan'
+                    ];
+
                     // Validate file inputs
                     for (var file in files) {
                         // Check mandatory files that are empty
@@ -430,7 +450,7 @@
                             showError("File " + file.replace('_', ' ').toUpperCase() + " Wajib Diisi!");
                             return false;
                         }
-        
+
                         // Check file type for anggota inventor only
                         if (file === 'anggota_inventor' && files[file]) {
                             if (!allowedExtensionExcel.exec(files[file].name)) {
@@ -440,18 +460,20 @@
                         } else if (files[file]) {
                             // Validate other files
                             if (!allowedExtensionPDF.exec(files[file].name)) {
-                                showError("Tolong Masukkan " + file.replace('_', ' ').toUpperCase() + " Dengan Ekstensi .pdf!");
+                                showError("Tolong Masukkan " + file.replace('_', ' ').toUpperCase() +
+                                    " Dengan Ekstensi .pdf!");
                                 return false;
                             }
-        
+
                             // Validate file size
                             if (files[file].size > maxSize) {
-                                showError("Ukuran File " + file.replace('_', ' ').toUpperCase() + " Lebih Dari 10 MB!");
+                                showError("Ukuran File " + file.replace('_', ' ').toUpperCase() +
+                                    " Lebih Dari 10 MB!");
                                 return false;
                             }
                         }
                     }
-        
+
                     // If all validations pass, submit the form
                     this.submit();
                 });

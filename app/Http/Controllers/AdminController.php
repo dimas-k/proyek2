@@ -162,7 +162,7 @@ class AdminController extends Controller
         $validasidata = $request->validate([
             'email' => 'required|email|unique:users',
             'username'=>'required|min:3',
-            'password'=> 'required|max:10',
+            'password'=> 'required|max:10'
             
         ]);
         $user = new User;

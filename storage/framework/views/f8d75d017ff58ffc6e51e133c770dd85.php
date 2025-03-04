@@ -92,6 +92,11 @@
                                                 target="_blank">Lihat Uraian Desain Industri</a></td>
                                     </tr>
                                     <tr>
+                                        <th>Surat Kepemilikan</th>
+                                        <td>: <a href="<?php echo e(route('private_di_umum', ['file' => basename($di->surat_kepemilikan)])); ?>"
+                                                target="_blank">Lihat Surat Kepemilikan</a></td>
+                                    </tr>
+                                    <tr>
                                         <th>Surat Pengalihan hak</th>
                                         <td>: <a href="<?php echo e(route('private_di_umum', ['file' => basename($di->surat_pengalihan)])); ?>"
                                                 target="_blank">Lihat Surat Pengalihan Hak</a></td>

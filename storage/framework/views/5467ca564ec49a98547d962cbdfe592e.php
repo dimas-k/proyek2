@@ -1,9 +1,7 @@
 <div class="main-content app-content mt-0">
     <div class="side-app">
-
         <!-- CONTAINER -->
         <div class="main-container container-fluid">
-
             <!-- PAGE-HEADER -->
             <div class="page-header">
                 <h1 class="page-title">Hak Cipta</h1>
@@ -15,7 +13,6 @@
                 </div>
             </div>
             <!-- PAGE-HEADER END -->
-
             <!-- ROW-2 -->
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -33,7 +30,6 @@
                                 <?php echo csrf_field(); ?>
                                 <div class="table-responsive">
                                     <table class="table table-borderless p-1">
-
                                         <tr>
                                             <th>Nama Lengkap</th>
                                             <td><input type="text" class="form-control" id="nama_lengkap"
@@ -68,11 +64,17 @@
                                         <tr>
                                             <th>KTP</th>
                                             <td>
+                                                <?php if(!empty($hc->ktp_inventor)): ?>
+                                                    File : <?php echo e(basename($hc->ktp_inventor)); ?>
+
+                                                <?php else: ?>
+                                                    File : Tidak ada
+                                                <?php endif; ?>
                                                 <input type="file" class="form-control " id="ktp"
-                                                    name="ktp_inventor" value="<?php echo e($hc->ktp_inventor); ?>">
+                                                    name="ktp_inventor">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
-                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                                    sama atau yang sudah di perbarui</span>
+                                                        data-bs-toggle="tooltip"></i>masukan file jika ada
+                                                    perubahan</span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -99,11 +101,16 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <th>Data Mahasiswa / Dosen <span class="text-danger">(Jika Bersama Dosen
-                                                    Yang Lain dan atau Bersama
-                                                    Mahasiswa Harap diisi)</span>
+                                            <th>Data Mahasiswa / Dosen <span class="text-danger"><br>
+                                                    (masukan file jika ada perubahan)</span>
                                             </th>
                                             <td>
+                                                <?php if(!empty($hc->data_pengaju2)): ?>
+                                                    File : <?php echo e(basename($hc->data_pengaju2)); ?>
+
+                                                <?php else: ?>
+                                                    File : Tidak ada
+                                                <?php endif; ?>
                                                 <input type="file" class="form-control " name="data_pengaju2"
                                                     id="data_pengaju2">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
@@ -113,39 +120,70 @@
                                         <tr>
                                             <th>jurusan</th>
                                             <td>
-                                                <select class="form-select" aria-label="Default select example" name="jurusan" id="jurusan">
+                                                <select class="form-select" aria-label="Default select example"
+                                                    name="jurusan" id="jurusan">
                                                     <option value="">Pilih Jurusan</option>
-                                                    <option value="Teknik Informatika" <?php echo e(old('jurusan',$hc->jurusan) == 'Teknik Informatika' ? 'selected' : ''); ?>>Teknik Informatika</option>
-                                                    <option value="Teknik" <?php echo e(old('jurusan', $hc->jurusan) == 'Teknik' ? 'selected' : ''); ?>>Teknik</option>
-                                                    <option value="Kesehatan" <?php echo e(old('jurusan', $hc->jurusan) == 'Kesehatan' ? 'selected' : ''); ?>>Kesehatan</option>
+                                                    <option value="Teknik Informatika"
+                                                        <?php echo e(old('jurusan', $hc->jurusan) == 'Teknik Informatika' ? 'selected' : ''); ?>>
+                                                        Teknik Informatika</option>
+                                                    <option value="Teknik"
+                                                        <?php echo e(old('jurusan', $hc->jurusan) == 'Teknik' ? 'selected' : ''); ?>>
+                                                        Teknik</option>
+                                                    <option value="Kesehatan"
+                                                        <?php echo e(old('jurusan', $hc->jurusan) == 'Kesehatan' ? 'selected' : ''); ?>>
+                                                        Kesehatan</option>
                                                 </select>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>prodi</th>
                                             <td>
-                                                <select class="form-select" aria-label="Default select example" name="prodi" id="prodi">
+                                                <select class="form-select" aria-label="Default select example"
+                                                    name="prodi" id="prodi">
                                                     <option value="">Pilih Prodi</option>
-                                                    <option value="D3 Teknik Informatika" <?php echo e(old('prodi', $hc->prodi) == 'D3 Teknik Informatika' ? 'selected' : ''); ?>>D3 Teknik Informatika</option>
-                                                    <option value="D4 Rekayasa Perangkat Lunak" <?php echo e(old('prodi', $hc->prodi) == 'D4 Rekayasa Perangkat Lunak' ? 'selected' : ''); ?>>D4 Rekayasa Perangkat Lunak</option>
-                                                    <option value="D4 Sistem Informasi Kota Cerdas" <?php echo e(old('prodi', $hc->prodi) == 'D4 Sistem Informasi Kota Cerdas' ? 'selected' : ''); ?>>D4 Sistem Informasi Kota Cerdas</option>
-                                                    <option value="D3 Teknik Mesin" <?php echo e(old('prodi', $hc->prodi) == 'D3 Teknik Mesin' ? 'selected' : ''); ?>>D3 Teknik Mesin</option>
-                                                    <option value="D4 Perancangan Manufaktur" <?php echo e(old('prodi', $hc->prodi) == 'D4 Perancangan Manufaktur' ? 'selected' : ''); ?>>D4 Perancangan Manufaktur</option>
-                                                    <option value="D3 Teknik Pendingin dan Tata Udara" <?php echo e(old('prodi', $hc->prodi) == 'D3 Teknik Pendingin dan Tata Udara' ? 'selected' : ''); ?>>D3 Teknik Pendingin dan Tata Udara</option>
-                                                    <option value="D4 Teknologi Rekayasa Instrumentasi dan Kontrol" <?php echo e(old('prodi', $hc->prodi) == 'D4 Teknologi Rekayasa Instrumentasi dan Kontrol' ? 'selected' : ''); ?>>D4 Teknologi Rekayasa Instrumentasi dan Kontrol</option>
-                                                    <option value="D3 Keperawatan" <?php echo e(old('prodi', $hc->prodi) == 'D3 Keperawatan' ? 'selected' : ''); ?>>D3 Keperawatan</option>
+                                                    <option value="D3 Teknik Informatika"
+                                                        <?php echo e(old('prodi', $hc->prodi) == 'D3 Teknik Informatika' ? 'selected' : ''); ?>>
+                                                        D3 Teknik Informatika</option>
+                                                    <option value="D4 Rekayasa Perangkat Lunak"
+                                                        <?php echo e(old('prodi', $hc->prodi) == 'D4 Rekayasa Perangkat Lunak' ? 'selected' : ''); ?>>
+                                                        D4 Rekayasa Perangkat Lunak</option>
+                                                    <option value="D4 Sistem Informasi Kota Cerdas"
+                                                        <?php echo e(old('prodi', $hc->prodi) == 'D4 Sistem Informasi Kota Cerdas' ? 'selected' : ''); ?>>
+                                                        D4 Sistem Informasi Kota Cerdas</option>
+                                                    <option value="D3 Teknik Mesin"
+                                                        <?php echo e(old('prodi', $hc->prodi) == 'D3 Teknik Mesin' ? 'selected' : ''); ?>>
+                                                        D3 Teknik Mesin</option>
+                                                    <option value="D4 Perancangan Manufaktur"
+                                                        <?php echo e(old('prodi', $hc->prodi) == 'D4 Perancangan Manufaktur' ? 'selected' : ''); ?>>
+                                                        D4 Perancangan Manufaktur</option>
+                                                    <option value="D3 Teknik Pendingin dan Tata Udara"
+                                                        <?php echo e(old('prodi', $hc->prodi) == 'D3 Teknik Pendingin dan Tata Udara' ? 'selected' : ''); ?>>
+                                                        D3 Teknik Pendingin dan Tata Udara</option>
+                                                    <option value="D4 Teknologi Rekayasa Instrumentasi dan Kontrol"
+                                                        <?php echo e(old('prodi', $hc->prodi) == 'D4 Teknologi Rekayasa Instrumentasi dan Kontrol' ? 'selected' : ''); ?>>
+                                                        D4 Teknologi Rekayasa Instrumentasi dan Kontrol</option>
+                                                    <option value="D3 Keperawatan"
+                                                        <?php echo e(old('prodi', $hc->prodi) == 'D3 Keperawatan' ? 'selected' : ''); ?>>
+                                                        D3 Keperawatan</option>
                                                 </select>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Jenis Ciptaan</th>
                                             <td>
-                                                <label for="jenis_ciptaan" class="form-label">Jenis Ciptaan</label>
-                                                <select class="form-select" aria-label="Default select example" name="jenis_ciptaan" id="jenis_ciptaan">
+                                                <label for="jenis_ciptaan" class="form-label"></label>
+                                                <select class="form-select" aria-label="Default select example"
+                                                    name="jenis_ciptaan" id="jenis_ciptaan">
                                                     <option value="">Pilih Jenis Hak Cipta</option>
-                                                    <option value="Karya Tulis" <?php echo e(old('jenis_ciptaan', $hc->jenis_ciptaan) == 'Karya Tulis' ? 'selected' : ''); ?>>Karya Tulis</option>
-                                                    <option value="Program Komputer" <?php echo e(old('jenis_ciptaan', $hc->jenis_ciptaan) == 'Program Komputer' ? 'selected' : ''); ?>>Program Komputer</option>
-                                                    <option value="Karya Lainnya" <?php echo e(old('jenis_ciptaan', $hc->jenis_ciptaan) == 'Karya Lainnya' ? 'selected' : ''); ?>>Karya Lainnya</option>
+                                                    <option value="Karya Tulis"
+                                                        <?php echo e(old('jenis_ciptaan', $hc->jenis_ciptaan) == 'Karya Tulis' ? 'selected' : ''); ?>>
+                                                        Karya Tulis</option>
+                                                    <option value="Program Komputer"
+                                                        <?php echo e(old('jenis_ciptaan', $hc->jenis_ciptaan) == 'Program Komputer' ? 'selected' : ''); ?>>
+                                                        Program Komputer</option>
+                                                    <option value="Karya Lainnya"
+                                                        <?php echo e(old('jenis_ciptaan', $hc->jenis_ciptaan) == 'Karya Lainnya' ? 'selected' : ''); ?>>
+                                                        Karya Lainnya</option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -167,34 +205,49 @@
                                         <tr>
                                             <th>Dokumen Invensi (Manual Book/Buku/Dll)</th>
                                             <td>
+                                                <?php if(!empty($hc->dokumen_invensi)): ?>
+                                                    File : <?php echo e(basename($hc->dokumen_invensi)); ?>
+
+                                                <?php else: ?>
+                                                    File : Tidak ada
+                                                <?php endif; ?>
                                                 <input type="file" class="form-control " placeholder=""
-                                                    name="dokumen_invensi" id="invensi"
-                                                    value="<?php echo e($hc->dokumen_invensi); ?>">
+                                                    name="dokumen_invensi" id="invensi">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
-                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                                    sama atau yang sudah di perbarui</span>
+                                                        data-bs-toggle="tooltip"></i>masukan file jika ada
+                                                    perubahan</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Surat Pengalihan Hak Cipta</th>
                                             <td>
+                                                <?php if(!empty($hc->surat_pengalihan)): ?>
+                                                    File : <?php echo e(basename($hc->surat_pengalihan)); ?>
+
+                                                <?php else: ?>
+                                                    File : Tidak ada
+                                                <?php endif; ?>
                                                 <input type="file" class="form-control " placeholder=""
-                                                    name="surat_pengalihan" id="surat_pengalihan"
-                                                    value="<?php echo e($hc->surat_pengalihan); ?>">
+                                                    name="surat_pengalihan" id="surat_pengalihan">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
-                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                                    sama atau yang sudah di perbarui</span>
+                                                        data-bs-toggle="tooltip"></i>masukan file jika ada
+                                                    perubahan</span>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th>Surat Pernyataan</th>
                                             <td>
+                                                <?php if(!empty($hc->surat_pernyataan)): ?>
+                                                    File : <?php echo e(basename($hc->surat_pernyataan)); ?>
+
+                                                <?php else: ?>
+                                                    File : Tidak ada
+                                                <?php endif; ?>
                                                 <input type="file" class="form-control " id="pernyataan"
-                                                    placeholder="" name="surat_pernyataan"
-                                                    value="<?php echo e($hc->surat_pernyataan); ?>">
+                                                    placeholder="" name="surat_pernyataan">
                                                 <span class="text-danger"><i class="fa fa-warning me-2"
-                                                        data-bs-toggle="tooltip"></i>Harus memasukkan kembali file yang
-                                                    sama atau yang sudah di perbarui</span>
+                                                        data-bs-toggle="tooltip"></i>masukan file jika ada
+                                                    perubahan</span>
                                             </td>
                                         </tr>
                                         <th>Tanggal pengajuan</th>

@@ -106,13 +106,17 @@
                                     <tr>
                                         <th>Dokumen Invensi</th>
                                         <td>:
-                                            <a href="<?php echo e(route('private_hc_dosen', ['filename' => basename($hc->dokumen_invensi)])); ?>"
-                                                target="_blank">Lihat Dokumen Invensi</a>
+                                            <a href="<?php echo e(route('public_hc_dosen', ['filename' => basename($hc->dokumen_invensi)])); ?>"
+                                                target="_blank">Lihat Dokumen Invensi
+                                            </a>
                                     </tr>
                                     <tr>
                                         <th>Surat Pengalihan Hak Cipta</th>
-                                        <td>: <a href="<?php echo e(route('private_hc_dosen', ['filename' => basename($hc->surat_pengalihan)])); ?>"
-                                                target="_blank">Lihat Surat Pengalihan Hak Cipta</a></td>
+                                        <td>: 
+                                            <a href="<?php echo e(route('private_hc_dosen', ['filename' => basename($hc->surat_pengalihan)])); ?>"
+                                                    target="_blank">Lihat Surat Pengalihan Hak Cipta
+                                            </a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Surat Pernyataan</th>
@@ -144,7 +148,7 @@
                                         <th>Sertifikat Hak Cipta</th>
                                         <td>:
                                             <?php if($hc->sertifikat_hakcipta != ''): ?>
-                                                <a href="<?php echo e(route('private_hc_dosen', ['filename' => basename($hc->sertifikat_hakcipta)])); ?>"
+                                                <a href="<?php echo e(route('public_hc_dosen', ['filename' => basename($hc->sertifikat_hakcipta)])); ?>"
                                                     target="_blank">Lihat Sertifikat</a>
                                             <?php else: ?>
                                                 Hak Cipta Anda Belum Mendapatkan Sertifikat

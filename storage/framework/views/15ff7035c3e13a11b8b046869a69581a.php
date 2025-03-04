@@ -16,7 +16,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('assets/polindra21.png')); ?>" />
 
     <!-- TITLE -->
-    <title>SIKI POLINDRA | Dosen | Hak-Cipta | Edit</title>
+    <title>SIKI POLINDRA | Dosen | Paten | Edit</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="<?php echo e(asset('assets-user/plugins/bootstrap/css/bootstrap.min.css')); ?>" rel="stylesheet" />
@@ -143,7 +143,6 @@
     <script src="<?php echo e(asset('assets-user/js/custom.js')); ?>"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
 
 </body>
 

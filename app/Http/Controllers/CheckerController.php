@@ -44,18 +44,9 @@ class CheckerController extends Controller
     }
     public function lamanPaten()
     {
-        // $paten = Paten::join('check_paten', 'paten.id', '=', 'check_paten.id')->select('paten_id','nama_lengkap', 'jenis_paten', 'judul_paten', 'tanggal_permohonan', 'status', 'cek_data', 'keterangan')->get();
-        $paten_umum = Paten::with('cek')
-            ->where('institusi', '=', 'Umum')
-            ->paginate(5);
-
-        $paten_dosen = Paten::with('cek')
-            ->where('institusi', '=', 'Dosen')
-            ->paginate(5);
-
-        // dd($paten_umum);
-
-        return view('checker.cekpaten.index', compact('paten_umum', 'paten_dosen'));
+        $paten = Paten::with('cek')->paginate(10);
+        // dd($paten);
+        return view('checker.cekpaten.index', compact('paten'));
     }
     public function cariPaten(Request $request)
     {
@@ -65,77 +56,226 @@ class CheckerController extends Controller
     }
     public function cekPaten(string $id)
     {
-        $paten = Paten::with('cek')->find($id);
+        // $paten = Paten::with('cek')->find($id);
+        // Misalnya, $paten merupakan data paten utama (bukan data verifikasi)
+        $paten = Paten::findOrFail($id);
 
-        return view('checker.cekpaten.lihat.index', compact('paten'));
+        // Cek apakah data paten sudah pernah dinilai.
+        // Jika di tabel check_paten, paten_id merupakan foreign key ke tabel patens,
+        // sebaiknya kita cari berdasarkan paten_id.
+        $check = CheckPaten::where('paten_id', $id)->first();
+
+        return view('checker.cekpaten.lihat.index', compact('paten','check'));
     }
 
-    public function viewSensitifFilesPatenDosen($filename)
+    public function viewSensitifFilesPaten($filename)
     {
-        // Path file yang akan diakses
-        $filePaten = storage_path('app/private/dosen/dokumen-paten/' . $filename);
+        $filePaten = storage_path('app/private/dokumen-paten/' . $filename);
+
         // Pastikan file ada
         if (!file_exists($filePaten)) {
             abort(404, 'File tidak ditemukan.');
         }
-        // Validasi akses file (hanya pemilik file yang bisa mengaksesnya)
-        $paten = Paten::where('ktp_inventor', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('data_pengaju2', 'private/dosen/dokumen-paten/' . $filename)
-            // ->orWhere('dokumen_invensi', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('deskripsi_paten', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('abstrak_paten', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('pengalihan_hak', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('klaim', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('pernyataan_kepemilikan', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('surat_kuasa', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('gambar_paten', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('gambar_paten', 'private/dosen/dokumen-paten/' . $filename)
-            ->orWhere('gambar_tampilan', 'private/dosen/dokumen-paten/' . $filename)
-            ->first();
-        // Pastikan file milik user yang sedang login
-        // if (!$paten || $paten->user_id !== auth()->id()) {
-        //     abort(403, 'Anda tidak memiliki akses ke file ini.');
-        // }
-        // Mengirim file sebagai response
+
+        // Cari data paten berdasarkan file terkait
+        $paten = Paten::where(function ($query) use ($filename) {
+            $query->where('ktp_inventor', 'dokumen-paten/' . $filename)
+                ->orWhere('data_pengaju2', 'dokumen-paten/' . $filename)
+                ->orWhere('pengalihan_hak', 'dokumen-paten/' . $filename)
+                ->orWhere('klaim', 'dokumen-paten/' . $filename)
+                ->orWhere('pernyataan_kepemilikan', 'dokumen-paten/' . $filename)
+                ->orWhere('surat_kuasa', 'dokumen-paten/' . $filename);
+        })->first();
+
+        // Validasi akses: hanya pemilik file atau role Checker
+        if (!$paten || ($paten->user_id !== auth()->id() && auth()->user()->role !== 'Checker')) {
+            abort(403, 'Anda tidak memiliki akses ke file ini.');
+        }
+
+        // Kirim file sebagai response
         return response()->file($filePaten);
     }
-    public function viewSensitifFilesPatenUmum($filename)
+
+
+    public function viewSensitifFilesHc($filename)
     {
-        // Path file yang akan diakses
-        $filePaten = storage_path('app/private/umum/dokumen-paten/' . $filename);
+        // Path file di disk 'private'
+        $fileHc = storage_path('app/private/dokumen-hc/' . $filename);
+
+        // Pastikan file ada
+        if (!file_exists($fileHc)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+
+        // Cari data paten berdasarkan salah satu kolom file
+        $hc = HakCipta::where(function ($query) use ($filename) {
+            $query->where('ktp_inventor', 'dokumen-hc/' . $filename)
+                ->orWhere('data_pengaju2', 'dokumen-hc/' . $filename)
+                ->orWhere('dokumen_invensi', 'dokumen-hc/' . $filename)
+                ->orWhere('surat_pengalihan', 'dokumen-hc/' . $filename)
+                ->orWhere('surat_pernyataan', 'dokumen-hc/' . $filename);
+        })->first();
+
+        // Validasi akses: hanya pemilik atau admin/verifikator yang bisa melihat
+        if (!$hc || ($hc->user_id !== auth()->id() && auth()->user()->role !== 'Checker')) {
+            abort(403, 'Anda tidak memiliki akses ke file ini.');
+        }
+
+
+        // Kirim file sebagai respons
+        return response()->file($fileHc);
+    }
+
+    public function viewSensitifFilesDi($filename)
+    {
+        // Path file di disk 'private'
+        $fileDi = storage_path('app/private/dokumen-di/' . $filename);
+
+        // Pastikan file ada
+        if (!file_exists($fileDi)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+
+        // Cari data paten berdasarkan salah satu kolom file
+        $di = DesainIndustri::where(function ($query) use ($filename) {
+            $query->where('ktp_inventor', 'dokumen-di/' . $filename)
+                ->orWhere('data_pengaju2', 'dokumen-di/' . $filename)
+                ->orWhere('uraian_di', 'dokumen-di/' . $filename)
+                ->orWhere('gambar_di', 'dokumen-di/' . $filename)
+                ->orWhere('surat_kepemilikan', 'dokumen-di/' . $filename)
+                ->orWhere('surat_pengalihan', 'dokumen-di/' . $filename);
+        })->first();
+
+        // Validasi akses: hanya pemilik atau admin/verifikator yang bisa melihat
+        if (!$di || ($di->user_id !== auth()->id() && auth()->user()->role !== 'Checker')) {
+            abort(403, 'Anda tidak memiliki akses ke file ini.');
+        }
+
+        // Kirim file sebagai respons
+        return response()->file($fileDi);
+    }
+
+    public function viewPublicFilesPaten($filename)
+    {
+        $filePaten = storage_path('app/public/dokumen-paten/' . $filename);
+
         // Pastikan file ada
         if (!file_exists($filePaten)) {
             abort(404, 'File tidak ditemukan.');
         }
-        // Validasi akses file (hanya pemilik file yang bisa mengaksesnya)
-        $paten = Paten::where('ktp_inventor', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('data_pengaju2', 'private/umum/dokumen-paten/' . $filename)
-            // ->orWhere('dokumen_invensi', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('deskripsi_paten', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('abstrak_paten', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('pengalihan_hak', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('klaim', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('pernyataan_kepemilikan', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('surat_kuasa', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('gambar_paten', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('gambar_paten', 'private/umum/dokumen-paten/' . $filename)
-            ->orWhere('gambar_tampilan', 'private/umum/dokumen-paten/' . $filename)
-            ->first();
-        // // Pastikan file milik user yang sedang login
-        // if (!$paten || $paten->user_id !== auth()->id()) {
-        //     abort(403, 'Anda tidak memiliki akses ke file ini.');
-        // }
-        // Mengirim file sebagai response
+
+        // Cari data paten berdasarkan file terkait
+        $paten = Paten::where(function ($query) use ($filename) {
+            $query
+                ->Where('abstrak_paten', 'dokumen-paten/' . $filename)
+                ->orWhere('deskripsi_paten', 'dokumen-paten/' . $filename)
+                ->orWhere('gambar_paten', 'dokumen-paten/' . $filename)
+                ->orWhere('gambar_tampilan', 'dokumen-paten/' . $filename)
+                ->orWhere('sertifikat_paten', 'dokumen-paten/' . $filename);
+        })->first();
+
+        // Validasi akses: hanya pemilik file atau role Checker
+        if (!$paten || ($paten->user_id !== auth()->id() && auth()->user()->role !== 'Checker')) {
+            abort(403, 'Anda tidak memiliki akses ke file ini.');
+        }
+
+        // Kirim file sebagai response
         return response()->file($filePaten);
+    }
+
+
+    public function viewPublicFilesHc($filename)
+    {
+        // Path file di disk 'private'
+        $fileHc = storage_path('app/public/dokumen-hc/' . $filename);
+
+        // Pastikan file ada
+        if (!file_exists($fileHc)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+
+        // Cari data paten berdasarkan salah satu kolom file
+        $hc = HakCipta::where(function ($query) use ($filename) {
+            $query->where('dokumen_invensi', 'dokumen-hc/' . $filename)
+                ->orWhere('sertifikat_hakcipta', 'dokumen-hc/' . $filename);
+
+        })->first();
+
+        // Validasi akses: hanya pemilik atau admin/verifikator yang bisa melihat
+        if (!$hc || ($hc->user_id !== auth()->id() && auth()->user()->role !== 'Checker')) {
+            abort(403, 'Anda tidak memiliki akses ke file ini.');
+        }
+
+
+        // Kirim file sebagai respons
+        return response()->file($fileHc);
+    }
+
+    public function viewPublicFilesDi($filename)
+    {
+        // Path file di disk 'private'
+        $fileDi = storage_path('app/private/dokumen-di/' . $filename);
+
+        // Pastikan file ada
+        if (!file_exists($fileDi)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+
+        // Cari data paten berdasarkan salah satu kolom file
+        $di = DesainIndustri::where(function ($query) use ($filename) {
+            $query->where('ktp_inventor', 'dokumen-di/' . $filename)
+                ->orWhere('data_pengaju2', 'dokumen-di/' . $filename)
+                ->orWhere('uraian_di', 'dokumen-di/' . $filename)
+                ->orWhere('gambar_di', 'dokumen-di/' . $filename)
+                ->orWhere('surat_kepemilikan', 'dokumen-di/' . $filename)
+                ->orWhere('surat_pengalihan', 'dokumen-di/' . $filename);
+        })->first();
+
+        // Validasi akses: hanya pemilik atau admin/verifikator yang bisa melihat
+        if (!$di || ($di->user_id !== auth()->id() && auth()->user()->role !== 'Checker')) {
+            abort(403, 'Anda tidak memiliki akses ke file ini.');
+        }
+
+        // Kirim file sebagai respons
+        return response()->file($fileDi);
     }
 
     public function cek(string $id)
     {
-        $paten = CheckPaten::find($id);
-        if ($paten != null) {
-            return back()->with('warning', 'Data Paten Sudah diverifikasi, Silahkan Update Data Jikalau Ada Perubahan');
+        // Cari data verifikasi berdasarkan paten_id
+        $check = CheckPaten::where('paten_id', $id)->first();
+        if ($check !== null) {
+            return back()->with('warning', 'Data Paten sudah dinilai. Silahkan gunakan tombol Update jika ada perubahan.');
         }
         return view('checker.cekpaten.nilai.index');
+    }
+    
+
+    public function lamanUpdatePaten(string $id)
+    {
+        $check = CheckPaten::where('paten_id', $id)->first();
+        if ($check === null) {
+            return back()->with('warning', 'Data Paten belum dinilai. Silahkan lakukan penilaian terlebih dahulu.');
+        }
+        // dd($check->cek_data);
+        return view('checker.cekpaten.update.index', compact('check'));
+    }
+    
+
+    public function updateCekPaten(Request $request, string $id)
+    {
+        $validasi = $request->validate([
+            'cek_data' => 'required',
+            'keterangan' => 'required'
+        ]);
+
+        $cek = CheckPaten::find($id);
+        $cek->paten_id = $id;
+        $cek->cek_data = $request->cek_data;
+        $cek->keterangan = $request->keterangan;
+        $cek->save($validasi);
+
+        return redirect('/verifikator/cek/paten')->with('success', 'verifikasi Data Paten Berhasil diupdate!');
     }
     public function simpanCek(Request $request, string $id)
     {
@@ -152,56 +292,55 @@ class CheckerController extends Controller
 
         return redirect('/verifikator/cek/paten')->with('success', 'Data Paten berhasil diverifikasi!');
     }
-    public function lamanupdatePaten(string $id)
-    {
-        $paten = CheckPaten::find($id);
-        if ($paten === null) {
-            return back()->with('warning', 'Data Paten Belum diverifikasi, Silahkan Verifikasi Terlebih Dahulu');
-        } else {
-            return view('checker.cekpaten.update.index', compact('paten'));
-        }
-    }
-    public function updateCekPaten(Request $request, string $id)
-    {
-        $validasi = $request->validate([
-            'cek_data' => 'required',
-            'keterangan' => 'required'
-        ]);
-
-        $cek = CheckPaten::find($id);
-        $cek->paten_id = $id;
-        $cek->cek_data = $request->cek_data;
-        $cek->keterangan = $request->keterangan;
-        $cek->save($validasi);
-
-        return redirect('/verifikator/cek/paten')->with('success', 'verifikasi Data Paten Berhasil diupdate!');
-    }
 
     public function lamanHc()
     {
         $hc = HakCipta::with('cekHc')->paginate(5);
         return view('checker.cekhc.index', compact('hc'));
     }
+
+    public function lamanCekHc(string $id)
+    {
+        $hc = CheckHc::find($id);
+        if ($hc !== null) {
+            return back()->with('warning', 'Data Hak Cipta Sudah diverifikasi, Silahkan Update Data Jikalau Ada Perubahan');
+        } else {
+            return view('checker.cekhc.nilai.index');
+        }
+    }
+
+    public function lamanUpdateCekhc(string $id)
+    {
+        $check = CheckHc::where('hak_cipta_id', $id)->first();
+        if ($check === null) {
+            return back()->with('warning', 'Data Paten belum dinilai. Silahkan lakukan penilaian terlebih dahulu.');
+        }
+
+        return view('checker.cekhc.update.index', compact('check'));
+        
+    }
     public function cekHc(string $id)
     {
         $hc = HakCipta::with('cekHc')->find($id);
-        return view('checker.cekhc.lihat.index', compact('hc'));
+        $check = CheckHc::where('hak_cipta_id', $id)->first();
+    
+        // Jika data sudah dinilai, flash pesan warning (opsional)
+        if ($check !== null) {
+            session()->flash('warning', 'Data Hak Cipta sudah dinilai. Silahkan gunakan tombol Update jika ada perubahan.');
+        }
+    
+        // Selalu return view detail
+        return view('checker.cekhc.lihat.index', compact('hc', 'check'));
     }
+    
+
     public function cariHc(Request $request)
     {
         $cari = $request->input('cari');
         $hc = HakCipta::with('cekhc')->where('judul_ciptaan', 'LIKE', "%" . $cari . "%")->orWhere('nama_lengkap', 'LIKE', "%" . $cari . "%")->orWhere('status', 'LIKE', "%" . $cari . "%")->paginate(5);
         return view('checker.cekhc.index', compact('hc'));
     }
-    public function lamanCekHc(string $id)
-    {
-        $hc = CheckHc::find($id);
-        if ($hc != null) {
-            return back()->with('warning', 'Data Hak Cipta Sudah diverifikasi, Silahkan Update Data Jikalau Ada Perubahan');
-        } else {
-            return view('checker.cekhc.nilai.index');
-        }
-    }
+
     public function simpanCekHc(Request $request, string $id)
     {
         $validasi = $request->validate([
@@ -217,16 +356,7 @@ class CheckerController extends Controller
 
         return redirect('/verifikator/cek/hak-cipta')->with('success', 'Data Hak Cipta Berhasil diverifikasi!');
     }
-    public function lamanUpdateCekhc(string $id)
-    {
-        $hc = CheckHc::find($id);
 
-        if ($hc === null) {
-            return back()->with('warning', 'Data Hak Cipta Belum diverifikasi, Silahkan verifikasi Terlebih Dahulu');
-        } else {
-            return view('checker.cekhc.update.index', compact('hc'));
-        }
-    }
     public function updateCekHc(Request $request, string $id)
     {
         $validasi = $request->validate([
@@ -245,6 +375,7 @@ class CheckerController extends Controller
     public function lamanDi()
     {
         $di = DesainIndustri::with('cekDi')->paginate(5);
+    
         return view('checker.cekdi.index', compact('di'));
     }
     public function cariDi(Request $request)
@@ -256,7 +387,12 @@ class CheckerController extends Controller
     public function cekDi(string $id)
     {
         $di = DesainIndustri::with('cekDi')->find($id);
-        return view('checker.cekdi.lihat.index', compact('di'));
+        $check = CheckDi::where('desain_industri_id', $id)->first();
+        // Jika data sudah dinilai, flash pesan warning (opsional)
+        if ($check !== null) {
+            session()->flash('warning', 'Data Hak Cipta sudah dinilai. Silahkan gunakan tombol Update jika ada perubahan.');
+        }
+        return view('checker.cekdi.lihat.index', compact('di','check'));
     }
     public function lamanCekDi(string $id)
     {
@@ -300,11 +436,13 @@ class CheckerController extends Controller
     public function lamanUpdateCekDi(string $id)
     {
         $di = CheckDi::find($id);
-        if ($di === null) {
-            return back()->with('warning', 'Data Desain Industri Belum diverifikasi, Silahkan VerifikasiTerlebih Dahulu');
-        } else {
-            return view('checker.cekdi.update.index', compact('di'));
+
+        $check = CheckDi::where('desain_industri_id', $id)->first();
+        if ($check === null) {
+            return back()->with('warning', 'Data Paten belum dinilai. Silahkan lakukan penilaian terlebih dahulu.');
         }
+        return view('checker.cekdi.update.index', compact('di','check'));
+        
     }
     public function logout(request $request)
     {

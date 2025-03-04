@@ -70,17 +70,21 @@
                             </tr>
                             <tr>
                                 <th>KTP</th>
-                                <td>: <a href={{ asset('storage/' . $hc->ktp_inventor) }} class=""
-                                        target="_blank">Lihat KTP</a></td>
+                                <td>:
+                                    <a href={{ route('private_hc', ['file' => basename($hc->ktp_inventor)]) }}
+                                        class="" target="_blank">Lihat KTP
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <th>Anggota Inventor</th>
-                                <td>:        
-                                @if($hc->data_pengaju2)
-                                    <a href="{{ asset('storage/' . $hc->data_pengaju2) }}" target="_blank">Download xlsx Anggota Inventor</a>
-                                @else
-                                    Tidak ada data untuk diunduh.
-                                @endif
+                                <td>:
+                                    @if ($hc->data_pengaju2)
+                                        <a href="{{ route('private_hc', ['file' => basename($hc->data_pengaju2)]) }} "
+                                            target="_blank">Download xlsx Anggota Inventor</a>
+                                    @else
+                                        Tidak ada data untuk diunduh.
+                                    @endif
                                 </td>
                             </tr>
                             <tr>
@@ -127,18 +131,19 @@
                             </tr>
                             <tr>
                                 <th>Dokumen invensi</th>
-                                <td>: <a href={{ asset('storage/' . $hc->dokumen_invensi) }} class=""
-                                        target="_blank">Lihat Dokumen Invensi</a></td>
+                                <td>: <a href={{ route('public_hc', ['file' => basename($hc->dokumen_invensi)]) }}
+                                        class="" target="_blank">Lihat Dokumen Invensi</a>
+                                </td>
                             </tr>
                             <tr>
                                 <th>Surat Pengalihan Hak Cipta</th>
-                                <td>: <a href={{ asset('storage/' . $hc->surat_pengalihan) }} class=""
-                                        target="_blank">Surat Pengalihan Hak Cipta</a></td>
+                                <td>: <a href={{ route('private_hc', ['file' => basename($hc->surat_pengalihan)]) }}
+                                        class="" target="_blank">Surat Pengalihan Hak Cipta</a></td>
                             </tr>
                             <tr>
                                 <th>surat pernyataan</th>
-                                <td>: <a href={{ asset('storage/' . $hc->surat_pernyataan) }} class=""
-                                        target="_blank">Lihat Surat Pernyataan</a></td>
+                                <td>: <a href={{ route('private_hc', ['file' => basename($hc->surat_pernyataan)]) }}
+                                        class="" target="_blank">Lihat Surat Pernyataan</a></td>
                             </tr>
                             <tr>
                                 <th>Tanggal pengajuan</th>
@@ -151,22 +156,23 @@
                             <tr>
                                 <th>Status Data Hak Cipta</th>
                                 <td>: @if ($hc->cekhc?->keterangan == null)
-                                    Data Hak Cipta Belum Diverifikasi
-                                @else
-                                    {{ $hc->cekhc?->keterangan }}
-                                @endif</td>
+                                        Data Hak Cipta Belum Diverifikasi
+                                    @else
+                                        {{ $hc->cekhc?->keterangan }}
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <th>Sertifikat Hak Cipta</th>
                                 <td>: @if ($hc->sertifikat_hakcipta != '')
-                                        <a href={{ asset('storage/' . $hc->sertifikat_hakcipta) }} class=""
-                                            target="_blank">Lihat sertifikat</a>
+                                        <a href={{ route('public_hc', ['file' => basename($hc->sertifikat_hakcipta)]) }}
+                                            class="" target="_blank">Lihat sertifikat</a>
                                     @else
                                         Hak Cipta Ini Belum Mendapatkan Sertifikat
                                     @endif
                                 </td>
                             </tr>
-                            
+
                         </table>
                     </div>
                 </div>

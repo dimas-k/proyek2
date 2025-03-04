@@ -21,14 +21,16 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Upate Nilai Paten
-                                
+                            <h3 class="card-title"><i class="fa fa-table me-1" data-bs-toggle="tooltip"></i>Upate Nilai
+                                Paten
+
                             </h3>
                         </div>
                         <div class="card-body">
 
-                            <form action=<?php echo e(route('update.cek.paten', ['id'=>request()->segment(6)])); ?> enctype="multipart/form-data"
-                                method="post">
+                            <form action=<?php echo e(route('update.cek.paten', ['id' => request()->segment(6)])); ?>
+
+                                enctype="multipart/form-data" method="post">
                                 <?php echo csrf_field(); ?>
                                 <div class="table-responsive">
                                     <table class="table table-borderless p-1">
@@ -43,14 +45,12 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>"
-                                                    aria-label="Default select example" name="cek_data">
-                                                    <option selected>Pilih Status Paten</option>
-                                                    <option value="Valid">Valid
-                                                    </option>
-                                                    <option value="Tidak valid">Tidak valid</option>
-                                                    <option value="Menunggu Pemeriksaan">Menunggu Pemeriksaan</option>
-                                                </select>
+unset($__errorArgs, $__bag); ?>" name="cek_data" required>
+                                                    <option value="">Pilih Status Paten</option>
+                                                    <option value="Valid" <?php if((old('cek_data') ?? $check->cek_data ?? '') == 'Valid'): ?> selected <?php endif; ?>>Valid</option>
+                                                    <option value="Tidak valid" <?php if((old('cek_data') ?? $check->cek_data ?? '') == 'Tidak Valid'): ?> selected <?php endif; ?>>Tidak Valid</option>
+                                                    <option value="Menunggu Pemeriksaan" <?php if((old('cek_data') ?? $check->cek_data ?? '') == 'Menunggu Pemeriksaan'): ?> selected <?php endif; ?>>Menunggu Pemeriksaan</option>
+                                                </select>                                                
                                                 <?php $__errorArgs = ['status'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -65,9 +65,9 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                             </td>
-                                            <tr>
-                                                <th>Keterangan</th>
-                                                <td><input type="text"
+                                        <tr>
+                                            <th>Keterangan</th>
+                                            <td><input type="text"
                                                     class="form-control <?php $__errorArgs = ['keterangan'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -76,7 +76,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
-                                                    id="" name="keterangan" value="<?php echo e($paten->keterangan); ?>">
+                                                    id="" name="keterangan" value="<?php echo e($check->keterangan); ?>">
                                                 <?php $__errorArgs = ['keterangan'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -89,8 +89,9 @@ $message = $__bag->first($__errorArgs[0]); ?>
                                                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?></td>
-                                            </tr>
+unset($__errorArgs, $__bag); ?>
+                                            </td>
+                                        </tr>
                                         </tr>
                                     </table>
                                 </div>
@@ -126,7 +127,7 @@ unset($__errorArgs, $__bag); ?></td>
                     </div>
                 </div>
                 <!-- COL END -->
-                
+
                 <!-- COL END -->
             </div>
             <!-- ROW-2 END -->

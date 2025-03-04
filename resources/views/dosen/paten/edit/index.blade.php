@@ -16,7 +16,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/polindra21.png') }}" />
 
     <!-- TITLE -->
-    <title>SIKI POLINDRA | Dosen | Hak-Cipta | Edit</title>
+    <title>SIKI POLINDRA | Dosen | Paten | Edit</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('assets-user/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -145,102 +145,6 @@
     <script src="{{ asset('assets-user/js/custom.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {{-- <script>
-        $(document).ready(function() {
-            $('#uploadForm').submit(function(e) {
-                e.preventDefault(); // Prevent automatic form submission
-    
-                // Non-file inputs
-                const fields = {
-                    nama: $('#nama_lengkap').val(),
-                    alamat: $('#alamat').val(),
-                    telepon: $('#no_telepon').val(),
-                    tl: $('#tanggal_lahir').val(),
-                    email: $('#email').val(),
-                    warga: $('#warga').val(),
-                    pos: $('#pos').val(),
-                    jurusan: $('#jurusan').val(),
-                    prodi: $('#prodi').val(),
-                    judul_paten: $('#judul_paten').val(),
-                    tanggal_pengajuan: $('#tanggalpengajuan').val(),
-                    jenis_paten: $('input[name="jenis_paten"]:checked').val(),
-                };
-    
-                // File inputs
-                const files = {
-                    ktp: $('#ktp')[0].files[0],
-                    anggota_inventor: $('#data_pengaju2')[0].files[0],
-                    abstrak: $('#abstrak')[0].files[0],
-                    deskripsi: $('#deskripsi')[0].files[0],
-                    pengalihan_hak: $('#pengalihan_hak')[0].files[0],
-                    klaim: $('#klaim')[0].files[0],
-                    kepemilikan: $('#kepemilikan')[0].files[0],
-                    kuasa: $('#kuasa')[0].files[0],
-                    g_paten: $('#g_paten')[0].files[0],
-                    g_tampilan: $('#g_tampilan')[0].files[0],
-                };
-    
-                const maxSize = 10 * 1024 * 1024; // Max size: 10MB
-                const allowedExtensionPDF = /(\.pdf)$/i;
-                const allowedExtensionExcel = /(\.xlsx)$/i;
-    
-                // Validation function
-                function showError(message) {
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops... Ada yang salah...",
-                        text: message,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 2500
-                    });
-                }
-    
-                // Validate non-file inputs
-                for (var field in fields) {
-                    if (!fields[field]) {
-                        showError("Tolong Masukkan " + field.replace('_', ' ').toUpperCase() + " Anda!");
-                        return false;
-                    }
-                }
-    
-                // List of mandatory file fields
-                const mandatoryFiles = ['ktp', 'abstrak', 'deskripsi', 'pengalihan_hak', 'klaim', 'kepemilikan', 'kuasa', 'g_paten', 'g_tampilan'];
-    
-                // Validate file inputs
-                for (var file in files) {
-                    // Check mandatory files that are empty
-                    if (mandatoryFiles.includes(file) && !files[file]) {
-                        showError("File " + file.replace('_', ' ').toUpperCase() + " Wajib Diisi!");
-                        return false;
-                    }
-    
-                    // Check file type for anggota inventor only
-                    if (file === 'anggota_inventor' && files[file]) {
-                        if (!allowedExtensionExcel.exec(files[file].name)) {
-                            showError("Tolong Masukkan Data anggota inventor Dengan Ekstensi .xlsx!");
-                            return false;
-                        }
-                    } else if (files[file]) {
-                        // Validate other files
-                        if (!allowedExtensionPDF.exec(files[file].name)) {
-                            showError("Tolong Masukkan " + file.replace('_', ' ').toUpperCase() + " Dengan Ekstensi .pdf!");
-                            return false;
-                        }
-    
-                        // Validate file size
-                        if (files[file].size > maxSize) {
-                            showError("Ukuran File " + file.replace('_', ' ').toUpperCase() + " Lebih Dari 10 MB!");
-                            return false;
-                        }
-                    }
-                }
-    
-                // If all validations pass, submit the form
-                this.submit();
-            });
-        });
-    </script> --}}
 
 </body>
 

@@ -54,10 +54,22 @@
                         <p class="fs-4 fw-normal font-family-Kokoro">I. IDENTITAS</p>
                         <div class="container">
                             <div class="mb-3">
-                                <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama_lengkap"
-                                    placeholder="Masukkan Nama"name="nama_lengkap"
-                                    >
+                                <div class="mb-3">
+                                    <label for="user_id">Pilih Pemilik Hak Cipta</label>
+                                    <select name="user_id" id="user_id" class="form-control" onchange="updateNamaLengkap()">
+                                        <option value="" selected disabled>Pilih Nama</option>
+                                        @foreach ($users as $user)
+                                            <option value="{{ $user->id }}" data-nama="{{ $user->nama_lengkap }}">
+                                                {{ $user->nama_lengkap }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Nama akan terisi otomatis" readonly>
+                                </div>
                                 {{-- @error('nama_lengkap')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -269,310 +281,15 @@
         </script>
         <script src="{{ asset('assets-user/js/jquery.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        {{-- <script>
-            $(document).ready(function() {
-                $('#uploadForm').submit(function(e) {
-                    e.preventDefault(); // Mencegah form terkirim secara otomatis
-
-                    // non file
-                    var nama = $('#nama_lengkap').val();
-                    var alamat = $('#alamat').val();
-                    var telepon = $('#no_telepon').val();
-                    var tl = $('#tanggal_lahir').val();
-                    var email = $('#email').val();
-                    var warga = $('#warga').val();
-                    var pos = $('#pos').val();
-                    var jenis_ciptaan = $('#jenis_ciptaan').val();
-                    var judul_ciptaan = $('#judul_ciptaan').val();
-                    var uraian = $('#uraian').val();
-                    var tanggal_pengajuan = $('#tanggalpengajuan').val();
-
-                    //file
-                    var ktp = $('#ktp')[0].files[0];
-                    var invensi = $('#invensi')[0].files[0];
-                    var surat_pengalihan = $('#surat_pengalihan')[0].files[0];
-                    var pernyataan = $('#pernyataan')[0].files[0];
-
-                    // var errorMessage = ''; // Variabel untuk menyimpan pesan error
-
-                    // Validasi Nama Lengkap
-                    if (!nama) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Nama Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-
-                    // Validasi Tanggal Lahir
-                    if (!alamat) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Alamat Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!telepon) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan No Telepon Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!tl) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Tangal Lahir Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!email) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Tangal Lahir Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!warga) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Kewarganegaraan Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!pos) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Kode Pos Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!jenis_ciptaan) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Jenis Ciptaan Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!judul_ciptaan) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Judul Ciptaan Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!tanggal_pengajuan) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Tanggal Pengajuan!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!uraian) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Uraian Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-
-                    // Validasi File
-                    if (!ktp) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan KTP Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!invensi) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Dokumen Invensi Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!surat_pengalihan) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Surat Pengalihan Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    }
-                    if (!pernyataan) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops... Ada yang salah...",
-                            text: "Tolong Masukkan Surat Pernyataan Anda!",
-                            position: "top-end",
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        return false;
-                    } else {
-                        var allowedExtension = /(\.pdf)$/i; // Hanya memperbolehkan file berformat PDF
-                        var allowedExtensionExel = /(\.xlsx)$/i; // Hanya memperbolehkan file berformat exel
-                        var maxSize =  * 1024 * 1024; // Maksimal ukuran file adalah 2 MB
-
-                        // Validasi ekstensi file
-                        if (!allowedExtension.exec(ktp.name)) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan KTP Dengan Ekstensi .pdf!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (!allowedExtension.exec(invensi.name)) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Dokumen Invensi Dengan Ekstensi .pdf!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (!allowedExtension.exec(surat_pengalihan.name)) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Surat Pengalihan Dengan Ekstensi .pdf!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (!allowedExtension.exec(pernyataan.name)) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Tolong Masukkan Surat pernyataan Dengan Ekstensi .pdf!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-
-                        // Validasi ukuran file
-                        if (ktp.size > maxSize) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Ukuran File KTP Lebih Dari 10mb!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (invensi.size > maxSize) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Dokumen Invensi Lebih Dari 10mb!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (surat_pengalihan.size > maxSize) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Surat Pengalihan Lebih Dari 10mb!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                        if (pernyataan.size > maxSize) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops... Ada yang salah...",
-                                text: "Ukuran File Surat Pernyataan Lebih Dari 10mb!",
-                                position: "top-end",
-                                showConfirmButton: false,
-                                timer: 2500
-                            });
-                            return false;
-                        }
-                    }
-
-                    // // Jika ada error, tampilkan pesan melalui alert dan cegah pengiriman form
-                    // if (errorMessage !== '') {
-                    //     alert(errorMessage);
-                    //     return false; // Mencegah pengiriman form
-                    // }
-
-                    // Jika validasi berhasil, submit form
-                    this.submit();
-                });
-            });
-        </script> --}}
+        <script>
+            function updateNamaLengkap() {
+                var select = document.getElementById("user_id");
+                var selectedOption = select.options[select.selectedIndex];
+                var namaLengkap = selectedOption.getAttribute("data-nama");
+        
+                document.getElementById("nama_lengkap").value = namaLengkap;
+            }
+        </script>
         <script>
             $(document).ready(function() {
                 $('#uploadForm').submit(function(e) {

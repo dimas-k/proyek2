@@ -16,7 +16,8 @@
 <body>
     <div class="container-fluid">
         <div class=" p-4 mt-3 ">
-            <a href="/hak-cipta" class="link-dark link-underline link-underline-opacity-0 mb-3 "><i class="bi bi-arrow-left-circle mb-3" style="font-size: 30px;"></i></a>
+            <a href="/hak-cipta" class="link-dark link-underline link-underline-opacity-0 mb-3 "><i
+                    class="bi bi-arrow-left-circle mb-3" style="font-size: 30px;"></i></a>
             <h3 class=""><i class="bi bi-clipboard2-data me-2 mt-3"></i>Data Hak Cipta</h3>
 
             <div class="border border-2 border-dark rounded"></div>
@@ -41,13 +42,15 @@
                     </tr>
                     <tr>
                         <th>Uraian Singkat</th>
-                        <td >: {{ $hc->uraian_singkat }}</td>
+                        <td>: {{ $hc->uraian_singkat }}</td>
                     </tr>
                     <tr>
                         <th>Dokumen Invensi</th>
                         <td>
-                            : <a href={{ asset('storage/' . $hc->dokumen_invensi) }} class=""
-                                target="_blank">Lihat Dokumen Invensi</a>
+                            :
+                            <a href="{{ route('public_hc_verifikator', ['file' => basename($hc->dokumen_invensi)]) }}"
+                                target="_blank">Lihat Dokumen Invensi
+                            </a>
                         </td>
                     </tr>
                     <tr>
@@ -59,8 +62,8 @@
                         <td>: {{ $hc->status }}</td>
                     </tr>
                 </table>
-            </div> 
-            
+            </div>
+
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

@@ -21,8 +21,8 @@ class PatenController extends Controller
         $carijudul = $request->get('cari_judul');
         $carinama = $request->get('cari_nama');
 
-        $hitung = Paten:: all()->count();
-        
+        $hitung = Paten::all()->count();
+
         $pf = Paten::where('status', 'Pemeriksaan Formalitas')->count();
         $mt = Paten::where('status', 'Menunggu Tanggapan Formalitas')->count();
         $mp = Paten::where('status', 'Masa pengumuman')->count();
@@ -65,22 +65,23 @@ class PatenController extends Controller
         $tahun = $formattedData->pluck('tahun')->toArray();
         $jumlah = $formattedData->pluck('jumlah')->toArray();
 
-        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','tahun','jumlah','mvdov')); 
+        return view('umum-page.paten.index', compact('pf', 'paten1', 'paten', 'mt', 'mp', 'mps', 'staw', 'stl', 'stak', 'mts', 'catat', 'tolak', 'hitung', 'patenPF', 'patenMTF', 'patenMP', 'patenMPS', 'patenSTAW', 'patenSTL', 'patenSTL', 'patenSTAK', 'patenMTS', 'patenDI', 'patenDK', 'tahun', 'jumlah', 'mvdov'));
     }
 
-    public function cari(Request $request){
+    public function cari(Request $request)
+    {
         $carijudul = $request->input('cari_judul');
         $carinama = $request->input('cari_nama');
         $paten1 = Paten::when($carijudul, function ($query, $carijudul) {
             return $query->where('judul_paten', 'LIKE', "%" . $carijudul . "%");
         })
-        ->when($carinama, function ($query, $carinama) {
-            return $query->orWhere('nama_lengkap', 'LIKE', "%" . $carinama . "%");
-        })
-        ->paginate(5);
+            ->when($carinama, function ($query, $carinama) {
+                return $query->orWhere('nama_lengkap', 'LIKE', "%" . $carinama . "%");
+            })
+            ->paginate(5);
         // $paten = DB::table('paten')->whereRaw('judul_paten','LIKE',"%".$carijudul."%")->orWhere('nama_lengkap','LIKE',"%".$carinama."%")->paginate(5); //penggunaan raw queri
 
-        $hitung = Paten:: all()->count();
+        $hitung = Paten::all()->count();
         $pf = Paten::where('status', 'Pemeriksaan Formalitas')->count();
         $mt = Paten::where('status', 'Menunggu Tanggapan Formalitas')->count();
         $mp = Paten::where('status', 'Masa pengumuman')->count();
@@ -104,7 +105,7 @@ class PatenController extends Controller
         $patenMTS = Paten::where('status', 'Menunggu tanggapan substansif')->count();
         $patenDI = Paten::where('status', 'Diberi')->count();
         $patenDK = Paten::where('status', 'Ditolak')->count();
-        
+
         $data = Paten::selectRaw('YEAR(tanggal_permohonan) as tahun, COUNT(*) as jumlah')
             ->groupByRaw('YEAR(tanggal_permohonan)')
             ->orderByRaw('YEAR(tanggal_permohonan) ASC')
@@ -123,20 +124,20 @@ class PatenController extends Controller
         $tahun = $formattedData->pluck('tahun')->toArray();
         $jumlah = $formattedData->pluck('jumlah')->toArray();
 
-        return view('umum-page.paten.index', compact('pf', 'paten1','paten','mt','mp','mps','staw','stl','stak','mts','catat','tolak','hitung','patenPF','patenMTF','patenMP','patenMPS','patenSTAW','patenSTL','patenSTL','patenSTAK','patenMTS','patenDI','patenDK','tahun','jumlah','mvdov'));
+        return view('umum-page.paten.index', compact('pf', 'paten1', 'paten', 'mt', 'mp', 'mps', 'staw', 'stl', 'stak', 'mts', 'catat', 'tolak', 'hitung', 'patenPF', 'patenMTF', 'patenMP', 'patenMPS', 'patenSTAW', 'patenSTL', 'patenSTL', 'patenSTAK', 'patenMTS', 'patenDI', 'patenDK', 'tahun', 'jumlah', 'mvdov'));
     }
     public function orang()
     {
-        $orang = Paten::orderBy('nama_lengkap','asc')->get();
-        
+        $orang = Paten::orderBy('nama_lengkap', 'asc')->get();
+
         return view('umum-page.paten.perorangan.index', compact('orang'));
     }
     public function cariOrang(Request $request)
     {
         $cario = $request->input('nama');
-        $nama = Paten::orderBy('nama_lengkap','asc')->paginate(10);
-        $orang = Paten::where('nama_lengkap',$cario)->orderBy('nama_lengkap', 'asc')->paginate(15);
-        return view('umum-page.paten.perorangan.cari', compact('orang','nama'));
+        $nama = Paten::orderBy('nama_lengkap', 'asc')->paginate(10);
+        $orang = Paten::where('nama_lengkap', $cario)->orderBy('nama_lengkap', 'asc')->paginate(15);
+        return view('umum-page.paten.perorangan.cari', compact('orang', 'nama'));
     }
     public function jurusan()
     {
@@ -145,7 +146,7 @@ class PatenController extends Controller
     public function cariJurusan(Request $request)
     {
         $carij = $request->input('jurusan');
-        $jurusan = Paten::where('jurusan',$carij)->paginate(10);
+        $jurusan = Paten::where('jurusan', $carij)->paginate(10);
         return view('umum-page.paten.jurusan.cari', compact('jurusan'));
     }
     public function prodi()
@@ -155,7 +156,7 @@ class PatenController extends Controller
     public function cariProdi(Request $request)
     {
         $cariprodi = $request->input('prodi');
-        $prodi = Paten::where('prodi',$cariprodi)->paginate(10);
+        $prodi = Paten::where('prodi', $cariprodi)->paginate(10);
 
         return view('umum-page.paten.prodi.cari', compact('prodi'));
     }
@@ -222,7 +223,7 @@ class PatenController extends Controller
     }
     public function showPengajuan()
     {
-        return view ('p-paten.index');
+        return view('p-paten.index');
     }
 
     /**
@@ -239,24 +240,24 @@ class PatenController extends Controller
     public function store(Request $request)
     {
         $validasidata = $request->validate([
-            'nama_lengkap'=> 'required',
-            'alamat'=> 'required',
-            'no_telepon'=> 'required',
-            'tanggal_lahir'=> 'required',
-            'ktp_inventor'=> 'required|mimes:pdf',
-            'email'=> 'required|email.dns',
-            'kewarganegaraan'=> 'required',
-            'kode_pos'=> 'required|integer',
-            'jenis_paten'=> 'required',
-            'judul_paten'=> 'required',
-            'deskripsi_paten'=> 'required|mimes:pdf|max:2028',
-            'abstrak_paten'=> 'required|mimes:pdf|max:2028',
-            'pengalihan_hak'=> 'required|mimes:pdf|max:2028',
-            'klaim'=> 'required|mimes:pdf',
-            'pernyataan_kepemilikan'=> 'required|mimes:pdf',
-            'surat_kuasa'=> 'required|mimes:pdf',
-            'gambar_paten'=> 'required|mimes:pdf',
-            'gambar_tampilan'=> 'required|mimes:pdf',
+            'nama_lengkap' => 'required',
+            'alamat' => 'required',
+            'no_telepon' => 'required',
+            'tanggal_lahir' => 'required',
+            'ktp_inventor' => 'required|mimes:pdf',
+            'email' => 'required|email.dns',
+            'kewarganegaraan' => 'required',
+            'kode_pos' => 'required|integer',
+            'jenis_paten' => 'required',
+            'judul_paten' => 'required',
+            'deskripsi_paten' => 'required|mimes:pdf|max:2028',
+            'abstrak_paten' => 'required|mimes:pdf|max:2028',
+            'pengalihan_hak' => 'required|mimes:pdf|max:2028',
+            'klaim' => 'required|mimes:pdf',
+            'pernyataan_kepemilikan' => 'required|mimes:pdf',
+            'surat_kuasa' => 'required|mimes:pdf',
+            'gambar_paten' => 'required|mimes:pdf',
+            'gambar_tampilan' => 'required|mimes:pdf',
         ]);
         $paten = new Paten();
         $paten->nama_lengkap = $request->nama_lengkap;
@@ -267,7 +268,7 @@ class PatenController extends Controller
         $paten->email = $request->email;
         $paten->kewarganegaraan = $request->kewarganegaraan;
         $paten->kode_pos = $request->kode_pos;
-        $paten->jenis_paten = $request-> jenis_paten;
+        $paten->jenis_paten = $request->jenis_paten;
         $paten->judul_paten = $request->judul_paten;
         $paten->abstrak_paten = $request->file('abstrak_paten')->store('dokumen-paten');
         $paten->deskripsi_paten = $request->file('deskripsi_paten')->store('dokumen-paten');
@@ -278,9 +279,9 @@ class PatenController extends Controller
         $paten->gambar_paten = $request->file('gambar_paten')->store('dokumen-paten');
         $paten->gambar_tampilan = $request->file('gambar_tampilan')->store('dokumen-paten');
         $paten->tanggal_permohonan = $request->tanggal_permohonan;
-        
+
         $paten->save($validasidata);
-        
+
         return redirect('/pengajuan-paten')->with('success', 'Data Paten berhasil Disimpan!');
     }
 
@@ -292,7 +293,29 @@ class PatenController extends Controller
         $paten = Paten::find($id);
         return view('patenshow.index', compact('paten'));
     }
+    public function viewPublicFilesPatenGuest($filename)
+    {
+        // Path file di disk 'private'
+        $filePaten = storage_path('app/public/dokumen-paten/' . $filename);
 
+        // Pastikan file ada
+        if (!file_exists($filePaten)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+        // Cari data paten berdasarkan salah satu kolom file
+        $paten = Paten::where(function ($query) use ($filename) {
+            $query
+                ->Where('abstrak_paten', 'dokumen-paten/' . $filename)
+                ->orWhere('deskripsi_paten', 'dokumen-paten/' . $filename)
+                ->orWhere('gambar_paten', 'dokumen-paten/' . $filename)
+                ->orWhere('gambar_tampilan', 'dokumen-paten/' . $filename)
+                ->orWhere('sertifikat_paten', 'dokumen-paten/' . $filename);
+        })->first();
+
+
+        // Kirim file sebagai respons
+        return response()->file($filePaten);
+    }
     /**
      * Show the form for editing the specified resource.
      */

@@ -1,6 +1,6 @@
 <label for="jenis_ciptaan" class="form-label">Jenis Ciptaan
     <select class="form-select " aria-label="Default select example" name="jenis_ciptaan" id="jenis_ciptaan">
-        <option selected>Pilih Jenis Hak Cipta</option>
+        <option value="">Pilih Jenis Hak Cipta</option>
         <option value="Karya Tulis">Karya Tulis
         </option>
         <option value="Program Komputer">Program Komputer

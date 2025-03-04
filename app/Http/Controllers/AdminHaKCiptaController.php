@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\HakCipta;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -77,6 +80,59 @@ class AdminHaKCiptaController extends Controller
         return view('admin.adminhk.showhc.index', compact('hc'));
     }
 
+    public function viewPublicFilesHc($filename)
+    {
+        // Path file di disk 'private'
+        $fileHc = storage_path('app/public/dokumen-hc/' . $filename);
+
+        // Pastikan file ada
+        if (!file_exists($fileHc)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+
+        // Cari data paten berdasarkan salah satu kolom file
+        $hc = HakCipta::where(function ($query) use ($filename) {
+            $query->where('dokumen_invensi', 'dokumen-hc/' . $filename)
+                ->orWhere('sertifikat_hakcipta', 'dokumen-hc/' . $filename);
+        })->first();
+
+        // Validasi akses: hanya pemilik atau admin/verifikator yang bisa melihat
+        if (!$hc || ($hc->user_id !== auth()->id() && auth()->user()->role !== 'Admin')) {
+            abort(403, 'Anda tidak memiliki akses ke file ini.');
+        }
+
+        // Kirim file sebagai respons
+        return response()->file($fileHc);
+    }
+    public function viewSensitifFilesHc($filename)
+    {
+        // Path file di disk 'private'
+        $fileHc = storage_path('app/private/dokumen-hc/' . $filename);
+
+        // Pastikan file ada
+        if (!file_exists($fileHc)) {
+            abort(404, 'File tidak ditemukan.');
+        }
+
+        // Cari data paten berdasarkan salah satu kolom file
+        $hc = HakCipta::where(function ($query) use ($filename) {
+            $query->where('ktp_inventor', 'dokumen-hc/' . $filename)
+                ->orWhere('data_pengaju2', 'dokumen-hc/' . $filename)
+                ->orWhere('dokumen_invensi', 'dokumen-hc/' . $filename)
+                ->orWhere('surat_pengalihan', 'dokumen-hc/' . $filename)
+                ->orWhere('surat_pernyataan', 'dokumen-hc/' . $filename);
+
+        })->first();
+
+        // Validasi akses: hanya pemilik atau admin/verifikator yang bisa melihat
+        if (!$hc || ($hc->user_id !== auth()->id() && auth()->user()->role !== 'Admin')) {
+            abort(403, 'Anda tidak memiliki akses ke file ini.');
+        }
+
+        // Kirim file sebagai respons
+        return response()->file($fileHc);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -92,85 +148,84 @@ class AdminHaKCiptaController extends Controller
     public function updateHcDosen(Request $request, string $id)
     {
         $validasidata = $request->validate([
-            'nama_lengkap' => 'required',
+            'nama_lengkap' => 'required|string',
             'alamat' => 'required',
-            'no_telepon' => 'required',
-            'tanggal_lahir' => 'required',
-            'ktp_inventor' => 'required|mimes:pdf',
+            'no_telepon' => 'required|max:14',
+            'tanggal_lahir' => 'required|date',
+            'ktp_inventor' => 'nullable|mimes:pdf|max:2028',
             'email' => 'required|email',
             'kewarganegaraan' => 'required',
-            'kode_pos' => 'required',
-            'institusi' => 'required',
-            'data_pengaju2' => 'mimes:xlsx',
+            'kode_pos' => 'required|integer',
+            'institusi' => 'required|string',
+            'data_pengaju2' => 'nullable|mimes:xlsx',
             'jurusan' => 'required',
             'prodi' => 'required',
             'jenis_ciptaan' => 'required',
             'judul_ciptaan' => 'required',
             'uraian_singkat' => 'required|max:60000',
-            'dokumen_invensi' => 'required|mimes:pdf',
-            'surat_pengalihan' => 'required|mimes:pdf',
-            'surat_pernyataan' => 'required|mimes:pdf',
-            'tanggal_permohonan' => 'required'
+            'dokumen_invensi' => 'nullable|mimes:pdf|max:2028',
+            'surat_pengalihan' => 'nullable|mimes:pdf|max:2028',
+            'surat_pernyataan' => 'nullable|mimes:pdf|max:2028',
+            'tanggal_permohonan' => 'required|date'
 
         ]);
 
-        $hc = HakCipta::find($id);
-        $hc->nama_lengkap = $request->nama_lengkap;
-        $hc->alamat = $request->alamat;
-        $hc->no_telepon = $request->no_telepon;
-        $hc->tanggal_lahir = $request->tanggal_lahir;
-        $hc->email = $request->email;
-        $hc->kewarganegaraan = $request->kewarganegaraan;
-        $hc->kode_pos = $request->kode_pos;
-        $hc->institusi = $request->institusi;
-        $hc->jurusan = $request->jurusan;
-        $hc->prodi = $request->prodi;
-        $hc->jenis_ciptaan = $request->jenis_ciptaan;
-        $hc->judul_ciptaan = $request->judul_ciptaan;
-        $hc->uraian_singkat = $request->uraian_singkat;
-        $hc->tanggal_permohonan = $request->tanggal_permohonan;
-
-        // Mengupdate file jika ada file baru yang diunggah
-        if ($request->hasFile('ktp_inventor')) {
-            // Hapus file lama jika perlu
-            if ($hc->ktp_inventor) {
-                Storage::delete($hc->ktp_inventor);
+        try { 
+            $hc = HakCipta::findOrFail($id);
+            $hc->nama_lengkap = $request->nama_lengkap;
+            $hc->alamat = $request->alamat;
+            $hc->no_telepon = $request->no_telepon;
+            $hc->tanggal_lahir = $request->tanggal_lahir;
+            $hc->email = $request->email;
+            $hc->kewarganegaraan = $request->kewarganegaraan;
+            $hc->kode_pos = $request->kode_pos;
+            $hc->institusi = $request->institusi;
+            $hc->jurusan = $request->jurusan;
+            $hc->prodi = $request->prodi;
+            $hc->jenis_ciptaan = $request->jenis_ciptaan;
+            $hc->judul_ciptaan = $request->judul_ciptaan;
+            $hc->uraian_singkat = $request->uraian_singkat;
+            $hc->tanggal_permohonan = $request->tanggal_permohonan;
+    
+            $publicFiles = ['dokumen_invensi'];
+            $privateFiles = [
+                'ktp_inventor' => 'ktp_inventor',
+                'data_pengaju2' => 'data_pengaju2',
+                'surat_pengalihan' => 'surat_pengalihan',
+                'surat_pernyataan' => 'surat_pernyataan',
+            ];
+    
+            foreach ($privateFiles as $field => $storageName) {
+                if ($request->hasFile($field)) {
+                    // Jika ada file lama, hapus dari disk 'private'
+                    if ($hc->{$storageName}) {
+                        Storage::disk('private')->delete($hc->{$storageName});
+                    }
+                    $file = $request->file($field);
+                    $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                    // Simpan file ke folder 'dokumen-paten' pada disk 'private'
+                    $path = $file->storeAs('dokumen-hc', $filename, 'private');
+                    $hc->{$storageName} = $path;
+                }
             }
-            $hc->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-hc');
-        }
-
-        if ($request->hasFile('data_pengaju2')) {
-            if ($hc->data_pengaju2) {
-                Storage::delete($hc->data_pengaju2);
+            foreach ($publicFiles as $field) {
+                if ($request->hasFile($field)) {
+                    if ($hc->{$field}) {
+                        Storage::disk('public')->delete($hc->{$field});
+                    }
+                    $file = $request->file($field);
+                    $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                    // Simpan file ke folder 'dokumen-hc' pada disk 'public'
+                    $path = $file->storeAs('dokumen-hc', $filename, 'public');
+                    $hc->{$field} = $path;
+                }
             }
-            $hc->data_pengaju2 = $request->file('data_pengaju2')->store('dokumen-hc');
+            $hc->save($validasidata);
+            return redirect('/admin/hak-cipta')->with('success','Data hak cipta berhasil di update');
+        } catch(\Exception $e) {
+            Log::error('Error saat mengupdate Hak Cipta: ' . $e->getMessage());
+            return redirect('/admin/hak-cipta')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
-
-        if ($request->hasFile('dokumen_invensi')) {
-            if ($hc->dokumen_invensi) {
-                Storage::delete($hc->dokumen_invensi);
-            }
-            $hc->dokumen_invensi = $request->file('dokumen_invensi')->store('dokumen-hc');
-        }
-
-        if ($request->hasFile('surat_pengalihan')) {
-            if ($hc->surat_pengalihan) {
-                Storage::delete($hc->surat_pengalihan);
-            }
-            $hc->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-hc');
-        }
-
-        if ($request->hasFile('surat_pernyataan')) {
-            if ($hc->surat_pernyataan) {
-                Storage::delete($hc->surat_pernyataan);
-            }
-            $hc->surat_pernyataan = $request->file('surat_pernyataan')->store('dokumen-hc');
-        }
-
-        // Simpan perubahan ke database
-        $hc->save($validasidata);
-
-        return redirect('/admin/hak-cipta')->with('success','Data hak cipta berhasil di update');
     }
     public function updateHcUmum(Request $request, string $id)
     {
@@ -208,33 +263,37 @@ class AdminHaKCiptaController extends Controller
         $hc->uraian_singkat = $request->uraian_singkat;
         $hc->tanggal_permohonan = $request->tanggal_permohonan;
 
-        // Mengupdate file jika ada file baru yang diunggah
-        if ($request->hasFile('ktp_inventor')) {
-            // Hapus file lama jika perlu
-            if ($hc->ktp_inventor) {
-                Storage::delete($hc->ktp_inventor);
-            }
-            $hc->ktp_inventor = $request->file('ktp_inventor')->store('dokumen-hc');
-        }
-        if ($request->hasFile('dokumen_invensi')) {
-            if ($hc->dokumen_invensi) {
-                Storage::delete($hc->dokumen_invensi);
-            }
-            $hc->dokumen_invensi = $request->file('dokumen_invensi')->store('dokumen-hc');
-        }
+        $publicFiles = ['dokumen_invensi'];
+        $privateFiles = [
+            'ktp_inventor' => 'ktp_inventor',
+            'surat_pengalihan' => 'surat_pengalihan',
+            'surat_pernyataan' => 'surat_pernyataan',
+        ];
 
-        if ($request->hasFile('surat_pengalihan')) {
-            if ($hc->surat_pengalihan) {
-                Storage::delete($hc->surat_pengalihan);
+        foreach ($privateFiles as $field => $storageName) {
+            if ($request->hasFile($field)) {
+                // Jika ada file lama, hapus dari disk 'private'
+                if ($hc->{$storageName}) {
+                    Storage::disk('private')->delete($hc->{$storageName});
+                }
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan file ke folder 'dokumen-paten' pada disk 'private'
+                $path = $file->storeAs('dokumen-hc', $filename, 'private');
+                $hc->{$storageName} = $path;
             }
-            $hc->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-hc');
         }
-
-        if ($request->hasFile('surat_pernyataan')) {
-            if ($hc->surat_pernyataan) {
-                Storage::delete($hc->surat_pernyataan);
+        foreach ($publicFiles as $field) {
+            if ($request->hasFile($field)) {
+                if ($hc->{$field}) {
+                    Storage::disk('public')->delete($hc->{$field});
+                }
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan file ke folder 'dokumen-hc' pada disk 'public'
+                $path = $file->storeAs('dokumen-hc', $filename, 'public');
+                $hc->{$field} = $path;
             }
-            $hc->surat_pernyataan = $request->file('surat_pernyataan')->store('dokumen-hc');
         }
 
         // Simpan perubahan ke database
@@ -246,7 +305,7 @@ class AdminHaKCiptaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update2(Request $request, string $id)
     {
         $validasidata = $request->validate([
            
@@ -265,27 +324,82 @@ class AdminHaKCiptaController extends Controller
         ->withInput();
     }
 
+    public function update(Request $request, string $id)
+    {
+        // Validasi input, file sertifikat_paten bersifat opsional
+        $data = $request->validate([
+            'status' => 'required',
+            'sertifikat_hakcipta' => 'nullable|mimes:pdf'
+        ]);
+
+        // Cari data paten, jika tidak ditemukan otomatis error 404
+        $hc = HakCipta::findOrFail($id);
+
+        // Update status
+        $hc->status = $data['status'];
+
+        // Daftar field file yang ingin diproses
+        $publicFiles = [
+            // key: nama field di form, value: properti model yang akan diisi
+            'sertifikat_hakcipta' => 'sertifikat_hakcipta'
+        ];
+
+        foreach ($publicFiles as $field => $storageName) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                // Buat nama file baru dengan timestamp dan mengganti spasi dengan underscore
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan file di disk 'private' dalam folder 'dokumen-hc'
+                $path = $file->storeAs('dokumen-hc', $filename, 'public');
+                // Set nilai properti model sesuai dengan $storageName
+                $hc->{$storageName} = $path;
+            }
+        }
+
+        // Simpan perubahan ke database
+        $hc->save();
+
+        return redirect('/admin/hak-cipta')->with('success', 'Status Hak Cipta berhasil di update');
+    }
+
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy2(string $id)
     {
         HakCipta::with('cekhc')->findOrFail($id)->delete();
         return redirect()->back()->with('success','Data hak cipta berhasil dihapus');
     }
+
+    public function destroy(string $id)
+    {
+        $hc = HakCipta::with('cekhc')->findOrFail($id);
+        $hc->delete();
+        return redirect()->back()->with('success', 'Data Hak Cipta dan file-file terkait berhasil dihapus');
+    }
+
     public function tambahDosen()
     {
-        return view('admin.adminhk.tambah.dosen');
+        $users = DB::table('users')
+        ->select('id', 'nama_lengkap')
+        ->where('role', '=', 'Dosen')
+        ->get();
+        return view('admin.adminhk.tambah.dosen', compact('users'));
     }
     public function tambahHcUmum()
     {
-        return view('admin.adminhk.tambah.umum');
+        $users = DB::table('users')
+        ->select('id', 'nama_lengkap')
+        ->where('role', '=', 'Umum')
+        ->get();
+        return view('admin.adminhk.tambah.umum', compact('users'));
     }
 
     public function storeTambahHcDosen(Request $request)
     {
         $validasidata = $request->validate([
             'nama_lengkap' => 'required',
+            'user_id' => 'required|exists:users,id', 
             'alamat' => 'required',
             'no_telepon' => 'required',
             'tanggal_lahir' => 'required',
@@ -308,44 +422,50 @@ class AdminHaKCiptaController extends Controller
         ]);
 
         $hc = new HakCipta();
-        $hc->user_id = Auth::user()->id;
+        $hc->user_id = $request->user_id;
         $hc->nama_lengkap = $request->nama_lengkap;
         $hc->alamat = $request->alamat;
         $hc->no_telepon = $request->no_telepon;
         $hc->tanggal_lahir = $request->tanggal_lahir;
-
-        if ($request->hasFile('ktp_inventor')) {
-            $hc->ktp_inventor = $request->file('ktp_inventor')->store("dokumen-hc");
-        }
-
         $hc->email = $request->email;
         $hc->kewarganegaraan = $request->kewarganegaraan;
         $hc->kode_pos = $request->kode_pos;
         $hc->institusi = $request->institusi;
-
-        if ($request->hasFile('data_pengaju2')) {
-            $hc->data_pengaju2 = $request->file('data_pengaju2')->store('dokumen-hc');
-        }
-
         $hc->jurusan = $request->jurusan;
         $hc->prodi = $request->prodi;
         $hc->jenis_ciptaan = $request->jenis_ciptaan;
         $hc->judul_ciptaan = $request->judul_ciptaan;
         $hc->uraian_singkat = $request->uraian_singkat;
-
-        if ($request->hasFile('dokumen_invensi')) {
-            $hc->dokumen_invensi = $request->file('dokumen_invensi')->store('dokumen-hc');
-        }
-
-        if ($request->hasFile('surat_pengalihan')) {
-            $hc->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-hc');
-        }
-
-        if ($request->hasFile('surat_pernyataan')) {
-            $hc->surat_pernyataan = $request->file('surat_pernyataan')->store('dokumen-hc');
-        }
-
         $hc->tanggal_permohonan = $request->tanggal_permohonan;
+
+        $publicFiles = ['dokumen_invensi'];
+        $privateFiles = [
+            'ktp_inventor' => 'ktp_inventor',
+            'data_pengaju2' => 'data_pengaju2',
+            'surat_pengalihan' => 'surat_pengalihan',
+            'surat_pernyataan' => 'surat_pernyataan'
+        ];
+
+        // Proses unggahan file ke private storage
+        foreach ($privateFiles as $field => $storageName) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan di disk 'private' dalam folder '/dokumen-hc'
+                $path = $file->storeAs('dokumen-hc', $filename, 'private');
+                $hc->{$storageName} = $path;
+            }
+        }
+
+        foreach ($publicFiles as $field) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan di disk 'public' dalam folder 'dokumen-paten'
+                $path = $file->storeAs('dokumen-hc', $filename, 'public');
+                $hc->{$field} = $path;
+            }
+        }
         $hc->save($validasidata);
 
         return redirect('/admin/hak-cipta')->with('success', 'Data hak cipta berhasil ditambahkan');
@@ -354,6 +474,7 @@ class AdminHaKCiptaController extends Controller
     {
         $validasidata = $request->validate([
             'nama_lengkap' => 'required',
+            'user_id' => 'required|exists:users,id', 
             'alamat' => 'required',
             'no_telepon' => 'required',
             'tanggal_lahir' => 'required',
@@ -373,16 +494,11 @@ class AdminHaKCiptaController extends Controller
         ]);
 
         $hc = new HakCipta();
-        $hc->user_id = Auth::user()->id;
+        $hc->user_id = $request->user_id;
         $hc->nama_lengkap = $request->nama_lengkap;
         $hc->alamat = $request->alamat;
         $hc->no_telepon = $request->no_telepon;
         $hc->tanggal_lahir = $request->tanggal_lahir;
-
-        if ($request->hasFile('ktp_inventor')) {
-            $hc->ktp_inventor = $request->file('ktp_inventor')->store("dokumen-hc");
-        }
-
         $hc->email = $request->email;
         $hc->kewarganegaraan = $request->kewarganegaraan;
         $hc->kode_pos = $request->kode_pos;
@@ -390,20 +506,36 @@ class AdminHaKCiptaController extends Controller
         $hc->jenis_ciptaan = $request->jenis_ciptaan;
         $hc->judul_ciptaan = $request->judul_ciptaan;
         $hc->uraian_singkat = $request->uraian_singkat;
-
-        if ($request->hasFile('dokumen_invensi')) {
-            $hc->dokumen_invensi = $request->file('dokumen_invensi')->store('dokumen-hc');
-        }
-
-        if ($request->hasFile('surat_pengalihan')) {
-            $hc->surat_pengalihan = $request->file('surat_pengalihan')->store('dokumen-hc');
-        }
-
-        if ($request->hasFile('surat_pernyataan')) {
-            $hc->surat_pernyataan = $request->file('surat_pernyataan')->store('dokumen-hc');
-        }
-
         $hc->tanggal_permohonan = $request->tanggal_permohonan;
+
+        $publicFiles = ['dokumen_invensi'];
+        $privateFiles = [
+            'ktp_inventor' => 'ktp_inventor',
+            'data_pengaju2' => 'data_pengaju2',
+            'surat_pengalihan' => 'surat_pengalihan',
+            'surat_pernyataan' => 'surat_pernyataan'
+        ];
+
+        // Proses unggahan file ke private storage
+        foreach ($privateFiles as $field => $storageName) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan di disk 'private' dalam folder '/dokumen-hc'
+                $path = $file->storeAs('dokumen-hc', $filename, 'private');
+                $hc->{$storageName} = $path;
+            }
+        }
+
+        foreach ($publicFiles as $field) {
+            if ($request->hasFile($field)) {
+                $file = $request->file($field);
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                // Simpan di disk 'public' dalam folder 'dokumen-paten'
+                $path = $file->storeAs('dokumen-hc', $filename, 'public');
+                $hc->{$field} = $path;
+            }
+        }
         $hc->save($validasidata);
         return redirect('/admin/hak-cipta')->with('success', 'Data hak cipta berhasil ditambahkan');
     }

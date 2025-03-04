@@ -91,13 +91,18 @@
                                     </tr>
                                     <tr>
                                         <th>Gambar desain Industri</th>
-                                        <td >: <a href="<?php echo e(route('private_di_dosen', ['file' => basename($di->gambar_di)])); ?> "
+                                        <td >: <a href="<?php echo e(route('public_di_dosen', ['filename' => basename($di->gambar_di)])); ?> "
                                             target="_blank">Lihat Gambar Desain Industri</a></td>
                                     </tr>
                                     <tr>
                                         <th>Uraian Desain Industri</th>
-                                        <td>: <a href="<?php echo e(route('private_di_dosen', ['file' => basename($di->uraian_di)])); ?>"
+                                        <td>: <a href="<?php echo e(route('public_di_dosen', ['filename' => basename($di->uraian_di)])); ?>"
                                                 target="_blank">Lihat Uraian Desain Industri</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th>surat Kepemilikan</th>
+                                        <td>: <a href=<?php echo e(route('private_di_dosen', ['file' => basename($di->surat_kepemilikan)])); ?> class=""
+                                                target="_blank">Lihat Surat Kepemilikan</a></td>
                                     </tr>
                                     <tr>
                                         <th>Surat Pengalihan hak</th>

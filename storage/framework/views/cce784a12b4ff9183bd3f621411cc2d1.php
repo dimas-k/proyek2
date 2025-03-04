@@ -1,12 +1,9 @@
 <div class="main-content app-content mt-0">
     <div class="side-app">
-
         <!-- CONTAINER -->
         <div class="main-container container-fluid">
-
             <!-- PAGE-HEADER -->
             <div class="page-header">
-                <h1 class="page-title">Pengajuan Hak Cipta</h1>
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/dosen/hak-cipta">Hak Cipta</a></li>
@@ -21,8 +18,8 @@
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><i class="fa fa-wpforms me-2" data-bs-toggle="tooltip"></i>Formulir
-                                Pengajuan Hak Cipta
+                            <h3 class="card-title"><i class="fa fa-wpforms me-2" data-bs-toggle="tooltip">
+                                Formulir Pengajuan Hak Cipta</i>
                             </h3>
                         </div>
                         <div class="card-body">

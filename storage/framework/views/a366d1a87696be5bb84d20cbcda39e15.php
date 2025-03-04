@@ -93,12 +93,12 @@
                                     </tr>
                                     <tr>
                                         <th>Abstrak Paten</th>
-                                        <td>: <a href="<?php echo e(route('private_paten_umum', ['file' => basename($paten->abstrak_paten)])); ?>""
+                                        <td>: <a href="<?php echo e(route('public_paten_umum', ['file' => basename($paten->abstrak_paten)])); ?>""
                                                 target="_blank">Lihat Abstrak Paten</a></td>
                                     </tr>
                                     <tr>
                                         <th>Deskripsi Paten</th>
-                                        <td>: <a href="<?php echo e(route('private_paten_umum', ['file' => basename($paten->deskripsi_paten)])); ?>" 
+                                        <td>: <a href="<?php echo e(route('public_paten_umum', ['file' => basename($paten->deskripsi_paten)])); ?>" 
                                                 target="_blank">Lihat Deskripsi Paten</a></td>
                                     </tr>
                                     <tr>
@@ -123,12 +123,12 @@
                                     </tr>
                                     <tr>
                                         <th>Gambar Paten</th>
-                                        <td>: <a href="<?php echo e(route('private_paten_umum', ['file' => basename($paten->gambar_paten)])); ?>"
+                                        <td>: <a href="<?php echo e(route('public_paten_umum', ['file' => basename($paten->gambar_paten)])); ?>"
                                                 target="_blank">Lihat Gambar paten</a></td>
                                     </tr>
                                     <tr>
                                         <th>Gambar Tampilan</th>
-                                        <td>: <a href="<?php echo e(route('private_paten_umum', ['file' => basename($paten->gambar_tampilan)])); ?>"
+                                        <td>: <a href="<?php echo e(route('public_paten_umum', ['file' => basename($paten->gambar_tampilan)])); ?>"
                                                 target="_blank">Lihat Gambar Tampilan</a></td>
                                     </tr>
                                     <tr>
@@ -156,7 +156,7 @@
                                         <td>: <?php if($paten->sertifikat_paten == ''): ?>
                                                 Paten Anda Belum Memiliki Sertifikat
                                             <?php else: ?>
-                                                <a href="<?php echo e(route('private_paten_umum', ['file' => basename($paten->sertifikat_paten)])); ?>"
+                                                <a href="<?php echo e(route('public_paten_umum', ['file' => basename($paten->sertifikat_paten)])); ?>"
                                                      target="_blank">Lihat sertifikat</a>
                                             <?php endif; ?>
                                         </td>

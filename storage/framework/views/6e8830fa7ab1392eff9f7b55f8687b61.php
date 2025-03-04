@@ -244,14 +244,15 @@
                                                 <div class="d-flex">
                                                     <div class="align-self-center">
                                                         <i class="bi bi-question-square float-start me-2"
-                                                        style="font-size: 50px;"></i>
+                                                            style="font-size: 50px;"></i>
                                                     </div>
                                                     <div class="align-self-center">
                                                         <h3 class=" d-flex justify-content-end">
                                                             <?php echo e($mvdov); ?>
 
                                                         </h3>
-                                                        <span class="ms-4 d-flex justify-content-end">Menunggu Verifikasi Data Oleh Verifikator</span>
+                                                        <span class="ms-4 d-flex justify-content-end">Menunggu
+                                                            Verifikasi Data Oleh Verifikator</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -317,10 +318,12 @@
                     <?php endif; ?>
                     <h3 class="fw-normal font-family-Kokoro mb-3"><i class="bi bi-table me-3"></i>Daftar Paten</h3>
                     <div class="d-flex justify-content-start">
-                        <a class="btn btn-success mb-2" href="/admin/paten/tambah/dosen/"><i class="bi bi-plus-circle me-2"></i>Tambah Paten Dosen</a>
+                        <a class="btn btn-success mb-2" href="/admin/paten/tambah/dosen/"><i
+                                class="bi bi-plus-circle me-2"></i>Tambah Paten Dosen</a>
                     </div>
                     <div class="d-flex justify-content-start">
-                        <a class="btn btn-outline-secondary" href="/admin/paten/tambah/umum/"><i class="bi bi-plus-circle me-2"></i>Tambah Paten Umum</a>
+                        <a class="btn btn-outline-secondary" href="/admin/paten/tambah/umum/"><i
+                                class="bi bi-plus-circle me-2"></i>Tambah Paten Umum</a>
                     </div>
                     <div class="d-flex justify-content-end mb-3">
                         <form action="/admin/paten/cari" method="GET">
@@ -357,7 +360,10 @@
                             <tbody>
                                 <?php $__currentLoopData = $paten; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <th scope="row"><?php echo e(($paten->currentPage() - 1) * $paten->perPage() + $loop->iteration); ?></th>
+                                        <th scope="row">
+                                            <?php echo e(($paten->currentPage() - 1) * $paten->perPage() + $loop->iteration); ?>
+
+                                        </th>
                                         <td><?php echo e($p->nama_lengkap); ?></td>
                                         <td><?php echo e($p->jenis_paten); ?></td>
                                         <td><?php echo e($p->judul_paten); ?></td>
@@ -385,8 +391,10 @@
                                         </td>
                                         <td><a href=<?php echo e(Route('admin_paten.show', $p->id)); ?> class="btn btn-info"><i
                                                     class="bi bi-eye me-1"></i>Lihat</a>
-                                            <a href=<?php echo e(Route('admin_paten.edit', $p->id)); ?> class="btn btn-outline-warning"><i
-                                                    class="bi bi-pencil me-1"></i>Edit Paten</a>
+                                            <a href=<?php echo e(Route('admin_paten.edit', $p->id)); ?>
+
+                                                class="btn btn-outline-warning"><i class="bi bi-pencil me-1"></i>Edit
+                                                Paten</a>
                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal<?php echo e($p->id); ?>">
                                                 <i class="bi bi-pencil me-1"></i>Edit Status
@@ -402,13 +410,15 @@
                                                             <button type="button" class="btn-close"
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
+                                                            <div class="modal-header">
+                                                                <p><?php echo e($p->nama_lengkap); ?> - <?php echo e($p->status); ?></p>
+                                                            </div>
                                                         <div class="modal-body">
                                                             <form action="<?php echo e(Route('admin_paten.update', $p->id)); ?>"
                                                                 enctype="multipart/form-data" method="POST">
                                                                 <?php echo csrf_field(); ?>
                                                                 <div class="mb-3">
-                                                                    <label for=""
-                                                                        class="form-label">Status
+                                                                    <label for="" class="form-label">Status
                                                                         Paten</label>
                                                                     <select
                                                                         class="form-select <?php $__errorArgs = ['status'];
@@ -419,31 +429,51 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
-                                                                        aria-label="Default select example"
-                                                                        name="status">
-                                                                        <option selected>Pilih Status Paten</option>
-                                                                        <option value="Pemeriksaan Formalitas">
-                                                                            Pemeriksaan Formalitas</option>
-                                                                        <option
-                                                                            value="Menunggu Tanggapan Formalitas">
-                                                                            Menunggu Tanggapan Formalitas</option>
-                                                                        <option value="Masa pengumuman">Masa
-                                                                            pengumuman
+                                                                        name="status" required>
+                                                                        <option value=""
+                                                                            <?php if((old('status', $p->status) ?? '') == ''): ?> selected <?php endif; ?>>
+                                                                            Pilih Status Paten</option>
+                                                                        <option value="Pemeriksaan Formalitas"
+                                                                            <?php if((old('status', $p->status) ?? '') == 'Pemeriksaan Formalitas'): ?> selected <?php endif; ?>>
+                                                                            Pemeriksaan Formalitas
                                                                         </option>
-                                                                        <option
-                                                                            value="Menunggu Pembayaran Substasif">
-                                                                            Menunggu Pembayaran Substasif</option>
-                                                                        <option value="Substansif Tahap Awal">
-                                                                            Substansif Tahap Awal</option>
-                                                                        <option value="Substansif Tahap Lanjut">
-                                                                            Substansif Tahap Lanjut</option>
-                                                                        <option value="Substansif Tahap Akhir">
-                                                                            Substansif Tahap Akhir</option>
-                                                                        <option
-                                                                            value="Menunggu Tanggapan Substansif">
-                                                                            Menunggu Tanggapan Substansif</option>
-                                                                        <option value="Diberi">Diberi</option>
-                                                                        <option value="Ditolak">Ditolak</option>
+                                                                        <!-- Tambahkan option lainnya dengan struktur yang sama -->
+                                                                        <option value="Menunggu Tanggapan Formalitas"
+                                                                            <?php if((old('status', $p->status) ?? '') == 'Menunggu Tanggapan Formalitas'): ?> selected <?php endif; ?>>
+                                                                            Menunggu Tanggapan Formalitas
+                                                                        </option>
+                                                                        <option value="Masa pengumuman"
+                                                                            <?php if((old('status', $p->status) ?? '') == 'Masa pengumuman'): ?> selected <?php endif; ?>>
+                                                                            Masa pengumuman
+                                                                        </option>
+                                                                        <option value="Menunggu Pembayaran Substansif"
+                                                                            <?php if((old('status', $p->status) ?? '') == 'Menunggu Pembayaran Substansif'): ?> selected <?php endif; ?>>
+                                                                            Menunggu Pembayaran Substansif
+                                                                        </option>
+                                                                        <option value="Substansif Tahap Awal"
+                                                                            <?php if((old('status', $p->status) ?? '') == 'Substansif Tahap Awal'): ?> selected <?php endif; ?>>
+                                                                            Substansif Tahap Awal
+                                                                        </option>
+                                                                        <option value="Substansif Tahap Lanjut"
+                                                                            <?php if((old('status', $p->status) ?? '') == 'Substansif Tahap Lanjut'): ?> selected <?php endif; ?>>
+                                                                            Substansif Tahap Lanjut
+                                                                        </option>
+                                                                        <option value="Substansif Tahap Akhir"
+                                                                            <?php if((old('status', $p->status) ?? '') == 'Substansif Tahap Akhir'): ?> selected <?php endif; ?>>
+                                                                            Substansif Tahap Akhir
+                                                                        </option>
+                                                                        <option value="Menunggu Tanggapan Substansif"
+                                                                            <?php if((old('status', $p->status) ?? '') == 'Menunggu Tanggapan Substansif'): ?> selected <?php endif; ?>>
+                                                                            Menunggu Tanggapan Substansif
+                                                                        </option>
+                                                                        <option value="Diberi"
+                                                                            <?php if((old('status', $p->status) ?? '') == 'Diberi'): ?> selected <?php endif; ?>>
+                                                                            Diberi
+                                                                        </option>
+                                                                        <option value="Ditolak"
+                                                                            <?php if((old('status', $p->status) ?? '') == 'Ditolak'): ?> selected <?php endif; ?>>
+                                                                            Ditolak
+                                                                        </option>
                                                                     </select>
                                                                     <?php $__errorArgs = ['status'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -460,9 +490,11 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for=""
-                                                                        class="form-label">Serifikat
-                                                                        Paten</label>
+                                                                    <label for="" class="form-label">Serifikat
+                                                                        Paten</label><br>
+                                                                        File :
+                                                                    <?php echo e(basename($p->sertifikat_paten)); ?>
+
                                                                     <input type="file"
                                                                         class="form-control <?php $__errorArgs = ['sertifikat_paten'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

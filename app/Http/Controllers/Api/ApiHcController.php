@@ -8,21 +8,21 @@ use Illuminate\Http\Request;
 
 class ApiHcController extends Controller
 {
-    public function getAllData()
+    public function countAllDataHc()
     {
         try {
-            $hc = HakCipta::all();
+            $hc = HakCipta::where('status', 'Tercatat')->count();
+            return response()->json([
+                "status" => 200,
+                "message" => "Data terpanggil",
+                "list_data" => $hc
+            ]);
         } catch (\Throwable $th) {
             return response()->json([
                 "status" => 400,
-                "message" => $th
+                "message" => $th->getMessage()
             ]);
         }
-        return response()->json([
-            "status" => 200,
-            "message" => "Data terpanggil",
-            "list_data" => $hc
-        ]);
     }
 
     public function getDataById($id)

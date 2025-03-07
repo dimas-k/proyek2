@@ -8,27 +8,28 @@ use Illuminate\Http\Request;
 
 class ApiDiController extends Controller
 {
-    public function getAllData()
+    public function countAllDataDi()
     {
         try {
-            $di = DesainIndustri::all();
+            $di = DesainIndustri::where('status', 'Diberi')->count();
+
+            return response()->json([
+                "status" => 200,
+                "message" => "Data terpanggil",
+                "list_data" => $di
+            ]);
         } catch (\Throwable $th) {
             return response()->json([
                 "status" => 400,
-                "message" => $th
+                "message" => $th->getMessage()
             ]);
         }
-        return response()->json([
-            "status" => 200,
-            "message" => "Data terpanggil",
-            "list_data" => $di
-        ]);
     }
 
     public function getDataById($id)
     {
         try {
-            $di = DesainIndustri::find($id);
+            $di = DesainIndustri::where('status', 'Diberi')->count();
         } catch (\Throwable $th) {
             return response()->json([
                 "status" => 400,

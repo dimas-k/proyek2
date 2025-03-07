@@ -4,6 +4,7 @@
 /public/hot
 /storage/framework/sessions/
 /storage/framework/views/
+/storage/framework/cache/
 /storage/*.key
 .phpunit.result.cache
 Homestead.json

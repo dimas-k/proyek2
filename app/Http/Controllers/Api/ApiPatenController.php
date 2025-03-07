@@ -9,22 +9,24 @@ use App\Models\Paten;
 class ApiPatenController extends Controller
 {
 
-    public function getAllDataPaten()
+    public function countAllDataPaten()
     {
         try {
-            $paten = Paten::first()->get();
+            $paten = Paten::where('status', 'Diberi')->count();
+    
+            return response()->json([
+                "status" => 200,
+                "message" => "Data terpanggil",
+                "list_data" => $paten
+            ]);
         } catch (\Throwable $th) {
             return response()->json([
                 "status" => 400,
-                "message" => $th
+                "message" => $th->getMessage()
             ]);
         }
-        return response()->json([
-            "status" => 200,
-            "message" => "Data terpanggil",
-            "list_data" => $paten
-        ]);
     }
+    
 
     public function getPatenById($id)
     {

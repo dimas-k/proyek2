@@ -41,6 +41,7 @@ trait InstallsBladeStack
             $this->removeDarkClasses((new Finder)
                 ->in(resource_path('views'))
                 ->name('*.blade.php')
+                ->notPath('livewire/welcome/navigation.blade.php')
                 ->notName('welcome.blade.php')
             );
         }
@@ -61,7 +62,6 @@ trait InstallsBladeStack
         // "Dashboard" Route...
         $this->replaceInFile('/home', '/dashboard', resource_path('views/welcome.blade.php'));
         $this->replaceInFile('Home', 'Dashboard', resource_path('views/welcome.blade.php'));
-        $this->replaceInFile('/home', '/dashboard', app_path('Providers/RouteServiceProvider.php'));
 
         // Tailwind / Vite...
         copy(__DIR__.'/../../stubs/default/tailwind.config.js', base_path('tailwind.config.js'));
@@ -76,6 +76,10 @@ trait InstallsBladeStack
             $this->runCommands(['pnpm install', 'pnpm run build']);
         } elseif (file_exists(base_path('yarn.lock'))) {
             $this->runCommands(['yarn install', 'yarn run build']);
+        } elseif (file_exists(base_path('bun.lock')) || file_exists(base_path('bun.lockb'))) {
+            $this->runCommands(['bun install', 'bun run build']);
+        } elseif (file_exists(base_path('deno.lock'))) {
+            $this->runCommands(['deno install', 'deno task build']);
         } else {
             $this->runCommands(['npm install', 'npm run build']);
         }

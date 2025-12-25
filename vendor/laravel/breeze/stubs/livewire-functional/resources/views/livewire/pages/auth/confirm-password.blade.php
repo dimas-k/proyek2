@@ -1,6 +1,5 @@
 <?php
 
-use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -28,7 +27,7 @@ $confirmPassword = function () {
 
     session(['auth.password_confirmed_at' => time()]);
 
-    $this->redirectIntended(default: RouteServiceProvider::HOME, navigate: true);
+    $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
 };
 
 ?>

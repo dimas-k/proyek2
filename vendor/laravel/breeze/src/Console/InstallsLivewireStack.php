@@ -26,7 +26,7 @@ trait InstallsLivewireStack
         });
 
         // Install Livewire...
-        if (! $this->requireComposerPackages(['livewire/livewire:^3.4', 'livewire/volt:^1.0'])) {
+        if (! $this->requireComposerPackages(['livewire/livewire:^3.6.4', 'livewire/volt:^1.7.0'])) {
             return 1;
         }
 
@@ -78,6 +78,7 @@ trait InstallsLivewireStack
             $this->removeDarkClasses((new Finder)
                 ->in(resource_path('views'))
                 ->name('*.blade.php')
+                ->notPath('livewire/welcome/navigation.blade.php')
                 ->notName('welcome.blade.php')
             );
         }
@@ -91,9 +92,6 @@ trait InstallsLivewireStack
         copy(__DIR__.'/../../stubs/livewire-common/routes/web.php', base_path('routes/web.php'));
         copy(__DIR__.'/../../stubs/livewire-common/routes/auth.php', base_path('routes/auth.php'));
 
-        // "Dashboard" Route...
-        $this->replaceInFile('/home', '/dashboard', app_path('Providers/RouteServiceProvider.php'));
-
         // Tailwind / Vite...
         copy(__DIR__.'/../../stubs/default/tailwind.config.js', base_path('tailwind.config.js'));
         copy(__DIR__.'/../../stubs/default/postcss.config.js', base_path('postcss.config.js'));
@@ -106,6 +104,10 @@ trait InstallsLivewireStack
             $this->runCommands(['pnpm install', 'pnpm run build']);
         } elseif (file_exists(base_path('yarn.lock'))) {
             $this->runCommands(['yarn install', 'yarn run build']);
+        } elseif (file_exists(base_path('bun.lock')) || file_exists(base_path('bun.lockb'))) {
+            $this->runCommands(['bun install', 'bun run build']);
+        } elseif (file_exists(base_path('deno.lock'))) {
+            $this->runCommands(['deno install', 'deno task build']);
         } else {
             $this->runCommands(['npm install', 'npm run build']);
         }

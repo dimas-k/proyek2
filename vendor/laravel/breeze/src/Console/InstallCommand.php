@@ -5,8 +5,10 @@ namespace Laravel\Breeze\Console;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\PromptsForMissingInput;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use RuntimeException;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Finder\Finder;
@@ -17,6 +19,7 @@ use function Laravel\Prompts\confirm;
 use function Laravel\Prompts\multiselect;
 use function Laravel\Prompts\select;
 
+#[AsCommand(name: 'breeze:install')]
 class InstallCommand extends Command implements PromptsForMissingInput
 {
     use InstallsApiStack, InstallsBladeStack, InstallsInertiaStacks, InstallsLivewireStack;
@@ -30,7 +33,8 @@ class InstallCommand extends Command implements PromptsForMissingInput
                             {--dark : Indicate that dark mode support should be installed}
                             {--pest : Indicate that Pest should be installed}
                             {--ssr : Indicates if Inertia SSR support should be installed}
-                            {--typescript : Indicates if TypeScript is preferred for the Inertia stack (Experimental)}
+                            {--typescript : Indicates if TypeScript is preferred for the Inertia stack}
+                            {--eslint : Indicates if ESLint with Prettier should be installed}
                             {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
 
     /**
@@ -87,7 +91,7 @@ class InstallCommand extends Command implements PromptsForMissingInput
                 $this->removeComposerPackages(['phpunit/phpunit'], true);
             }
 
-            if (! $this->requireComposerPackages(['pestphp/pest:^2.0', 'pestphp/pest-plugin-laravel:^2.0'], true)) {
+            if (! $this->requireComposerPackages(['pestphp/pest', 'pestphp/pest-plugin-laravel'], true)) {
                 return false;
             }
 
@@ -102,33 +106,75 @@ class InstallCommand extends Command implements PromptsForMissingInput
     }
 
     /**
-     * Install the middleware to a group in the application Http Kernel.
+     * Install the given middleware names into the application.
      *
-     * @param  string  $after
-     * @param  string  $name
+     * @param  array|string  $name
      * @param  string  $group
+     * @param  string  $modifier
      * @return void
      */
-    protected function installMiddlewareAfter($after, $name, $group = 'web')
+    protected function installMiddleware($names, $group = 'web', $modifier = 'append')
     {
-        $httpKernel = file_get_contents(app_path('Http/Kernel.php'));
+        $bootstrapApp = file_get_contents(base_path('bootstrap/app.php'));
 
-        $middlewareGroups = Str::before(Str::after($httpKernel, '$middlewareGroups = ['), '];');
-        $middlewareGroup = Str::before(Str::after($middlewareGroups, "'$group' => ["), '],');
+        $names = collect(Arr::wrap($names))
+            ->filter(fn ($name) => ! Str::contains($bootstrapApp, $name))
+            ->whenNotEmpty(function ($names) use ($bootstrapApp, $group, $modifier) {
+                $names = $names->map(fn ($name) => "$name")->implode(','.PHP_EOL.'            ');
 
-        if (! Str::contains($middlewareGroup, $name)) {
-            $modifiedMiddlewareGroup = str_replace(
-                $after.',',
-                $after.','.PHP_EOL.'            '.$name.',',
-                $middlewareGroup,
-            );
+                $stubs = [
+                    '->withMiddleware(function (Middleware $middleware) {',
+                    '->withMiddleware(function (Middleware $middleware): void {',
+                ];
 
-            file_put_contents(app_path('Http/Kernel.php'), str_replace(
-                $middlewareGroups,
-                str_replace($middlewareGroup, $modifiedMiddlewareGroup, $middlewareGroups),
-                $httpKernel
-            ));
-        }
+                $bootstrapApp = str_replace(
+                    $stubs,
+                    collect($stubs)->transform(fn ($stub) => $stub
+                        .PHP_EOL."        \$middleware->$group($modifier: ["
+                        .PHP_EOL."            $names,"
+                        .PHP_EOL.'        ]);'
+                        .PHP_EOL
+                    )->all(),
+                    $bootstrapApp,
+                );
+
+                file_put_contents(base_path('bootstrap/app.php'), $bootstrapApp);
+            });
+    }
+
+    /**
+     * Install the given middleware aliases into the application.
+     *
+     * @param  array  $aliases
+     * @return void
+     */
+    protected function installMiddlewareAliases($aliases)
+    {
+        $bootstrapApp = file_get_contents(base_path('bootstrap/app.php'));
+
+        $aliases = collect($aliases)
+            ->filter(fn ($alias) => ! Str::contains($bootstrapApp, $alias))
+            ->whenNotEmpty(function ($aliases) use ($bootstrapApp) {
+                $aliases = $aliases->map(fn ($name, $alias) => "'$alias' => $name")->implode(','.PHP_EOL.'            ');
+
+                $stubs = [
+                    '->withMiddleware(function (Middleware $middleware) {',
+                    '->withMiddleware(function (Middleware $middleware): void {',
+                ];
+
+                $bootstrapApp = str_replace(
+                    $stubs,
+                    collect($stubs)->transform(fn ($stub) => $stub
+                        .PHP_EOL.'        $middleware->alias(['
+                        .PHP_EOL."            $aliases,"
+                        .PHP_EOL.'        ]);'
+                        .PHP_EOL
+                    )->all(),
+                    $bootstrapApp,
+                );
+
+                file_put_contents(base_path('bootstrap/app.php'), $bootstrapApp);
+            });
     }
 
     /**
@@ -148,7 +194,6 @@ class InstallCommand extends Command implements PromptsForMissingInput
     /**
      * Installs the given Composer Packages into the application.
      *
-     * @param  array  $packages
      * @param  bool  $asDev
      * @return bool
      */
@@ -176,7 +221,6 @@ class InstallCommand extends Command implements PromptsForMissingInput
     /**
      * Removes the given Composer Packages from the application.
      *
-     * @param  array  $packages
      * @param  bool  $asDev
      * @return bool
      */
@@ -202,9 +246,8 @@ class InstallCommand extends Command implements PromptsForMissingInput
     }
 
     /**
-     * Update the "package.json" file.
+     * Update the dependencies in the "package.json" file.
      *
-     * @param  callable  $callback
      * @param  bool  $dev
      * @return void
      */
@@ -232,6 +275,29 @@ class InstallCommand extends Command implements PromptsForMissingInput
     }
 
     /**
+     * Update the scripts in the "package.json" file.
+     *
+     * @return void
+     */
+    protected static function updateNodeScripts(callable $callback)
+    {
+        if (! file_exists(base_path('package.json'))) {
+            return;
+        }
+
+        $content = json_decode(file_get_contents(base_path('package.json')), true);
+
+        $content['scripts'] = $callback(
+            array_key_exists('scripts', $content) ? $content['scripts'] : []
+        );
+
+        file_put_contents(
+            base_path('package.json'),
+            json_encode($content, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT).PHP_EOL
+        );
+    }
+
+    /**
      * Delete the "node_modules" directory and remove the associated lock files.
      *
      * @return void
@@ -241,7 +307,11 @@ class InstallCommand extends Command implements PromptsForMissingInput
         tap(new Filesystem, function ($files) {
             $files->deleteDirectory(base_path('node_modules'));
 
+            $files->delete(base_path('pnpm-lock.yaml'));
             $files->delete(base_path('yarn.lock'));
+            $files->delete(base_path('bun.lock'));
+            $files->delete(base_path('bun.lockb'));
+            $files->delete(base_path('deno.lock'));
             $files->delete(base_path('package-lock.json'));
         });
     }
@@ -266,7 +336,11 @@ class InstallCommand extends Command implements PromptsForMissingInput
      */
     protected function phpBinary()
     {
-        return (new PhpExecutableFinder())->find(false) ?: 'php';
+        if (function_exists('Illuminate\Support\php_binary')) {
+            return \Illuminate\Support\php_binary();
+        }
+
+        return (new PhpExecutableFinder)->find(false) ?: 'php';
     }
 
     /**
@@ -295,7 +369,6 @@ class InstallCommand extends Command implements PromptsForMissingInput
     /**
      * Remove Tailwind dark classes from the given files.
      *
-     * @param  \Symfony\Component\Finder\Finder  $finder
      * @return void
      */
     protected function removeDarkClasses(Finder $finder)
@@ -331,8 +404,6 @@ class InstallCommand extends Command implements PromptsForMissingInput
     /**
      * Interact further with the user if they were prompted for missing arguments.
      *
-     * @param  \Symfony\Component\Console\Input\InputInterface  $input
-     * @param  \Symfony\Component\Console\Output\OutputInterface  $output
      * @return void
      */
     protected function afterPromptingForMissingArguments(InputInterface $input, OutputInterface $output)
@@ -345,8 +416,10 @@ class InstallCommand extends Command implements PromptsForMissingInput
                 options: [
                     'dark' => 'Dark mode',
                     'ssr' => 'Inertia SSR',
-                    'typescript' => 'TypeScript (experimental)',
-                ]
+                    'typescript' => 'TypeScript',
+                    'eslint' => 'ESLint with Prettier',
+                ],
+                hint: 'Use the space bar to select options.'
             ))->each(fn ($option) => $input->setOption($option, true));
         } elseif (in_array($stack, ['blade', 'livewire', 'livewire-functional'])) {
             $input->setOption('dark', confirm(
@@ -357,8 +430,8 @@ class InstallCommand extends Command implements PromptsForMissingInput
 
         $input->setOption('pest', select(
             label: 'Which testing framework do you prefer?',
-            options: ['PHPUnit', 'Pest'],
-            default: $this->isUsingPest() ? 'Pest' : 'PHPUnit',
+            options: ['Pest', 'PHPUnit'],
+            default: 'Pest',
         ) === 'Pest');
     }
 

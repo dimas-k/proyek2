@@ -1,12 +1,12 @@
 <?php return array (
   'andes2912/indobank' => 
   array (
+    'aliases' => 
+    array (
+    ),
     'providers' => 
     array (
       0 => 'Andes2912\\IndoBank\\IndoBankServiceProvider',
-    ),
-    'aliases' => 
-    array (
     ),
   ),
   'asantibanez/livewire-charts' => 
@@ -22,20 +22,13 @@
   ),
   'biscolab/laravel-recaptcha' => 
   array (
-    'providers' => 
-    array (
-      0 => 'Biscolab\\ReCaptcha\\ReCaptchaServiceProvider',
-    ),
     'aliases' => 
     array (
       'ReCaptcha' => 'Biscolab\\ReCaptcha\\Facades\\ReCaptcha',
     ),
-  ),
-  'enlightn/enlightn' => 
-  array (
     'providers' => 
     array (
-      0 => 'Enlightn\\Enlightn\\EnlightnServiceProvider',
+      0 => 'Biscolab\\ReCaptcha\\ReCaptchaServiceProvider',
     ),
   ),
   'laravel/breeze' => 
@@ -96,17 +89,6 @@
     'providers' => 
     array (
       0 => 'Termwind\\Laravel\\TermwindServiceProvider',
-    ),
-  ),
-  'spatie/laravel-ignition' => 
-  array (
-    'aliases' => 
-    array (
-      'Flare' => 'Spatie\\LaravelIgnition\\Facades\\Flare',
-    ),
-    'providers' => 
-    array (
-      0 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
     ),
   ),
 );

@@ -4,12 +4,15 @@ namespace Laravel\Sanctum;
 
 use Mockery;
 
+/**
+ * @template TToken of \Laravel\Sanctum\Contracts\HasAbilities = \Laravel\Sanctum\PersonalAccessToken
+ */
 class Sanctum
 {
     /**
      * The personal access client model class name.
      *
-     * @var string
+     * @var class-string<TToken>
      */
     public static $personalAccessTokenModel = 'Laravel\\Sanctum\\PersonalAccessToken';
 
@@ -28,11 +31,11 @@ class Sanctum
     public static $accessTokenAuthenticationCallback;
 
     /**
-     * Indicates if Sanctum's migrations will be run.
+     * A placeholder to instruct Sanctum to include the current request host in the list of stateful domains.
      *
-     * @var bool
+     * @var string;
      */
-    public static $runsMigrations = true;
+    public static $currentRequestHostPlaceholder = '__SANCTUM_CURRENT_REQUEST_HOST__';
 
     /**
      * Get the current application URL from the "APP_URL" environment variable - with port.
@@ -44,6 +47,16 @@ class Sanctum
         $appUrl = config('app.url');
 
         return $appUrl ? ','.parse_url($appUrl, PHP_URL_HOST).(parse_url($appUrl, PHP_URL_PORT) ? ':'.parse_url($appUrl, PHP_URL_PORT) : '') : '';
+    }
+
+    /**
+     * Get a fixed token instructing Sanctum to include the current request host in the list of stateful domains.
+     *
+     * @return string
+     */
+    public static function currentRequestHost()
+    {
+        return ','.static::$currentRequestHostPlaceholder;
     }
 
     /**
@@ -82,7 +95,7 @@ class Sanctum
     /**
      * Set the personal access token model name.
      *
-     * @param  string  $model
+     * @param  class-string<TToken>  $model
      * @return void
      */
     public static function usePersonalAccessTokenModel($model)
@@ -113,31 +126,9 @@ class Sanctum
     }
 
     /**
-     * Determine if Sanctum's migrations should be run.
-     *
-     * @return bool
-     */
-    public static function shouldRunMigrations()
-    {
-        return static::$runsMigrations;
-    }
-
-    /**
-     * Configure Sanctum to not register its migrations.
-     *
-     * @return static
-     */
-    public static function ignoreMigrations()
-    {
-        static::$runsMigrations = false;
-
-        return new static;
-    }
-
-    /**
      * Get the token model class name.
      *
-     * @return string
+     * @return class-string<TToken>
      */
     public static function personalAccessTokenModel()
     {
